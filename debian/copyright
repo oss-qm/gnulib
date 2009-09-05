@@ -1,0 +1,22 @@
+This package was debianized by Daniel Baumann <daniel@debian.org> on
+Thu,  1 Jun 2006 00:00:00 +0200.
+
+It was downloaded from <http://www.gnu.org/software/gnulib/>.
+
+Copyright Holder: Free Software Foundation and others
+		  (sources of various origins)
+
+License:
+
+	GNULib is a collection of unrelated source files. Each source file is
+	provided under a different license (including GPL, LGPL, GFDL and
+	others) and includes a license headers stating the terms that apply to
+	that particular file.
+
+On Debian systems, the complete text of the GNU General Public License
+can be found in /usr/share/common-licenses/GPL file,
+the GNU Lesser General Public License in /usr/share/common-licenses/LGPL,
+and the GNU Free Document License in /usr/share/common-licenses/GFDL.
+
+The Debian packaging is (C) 2006-2008, Daniel Baumann <daniel@debian.org> and
+is licensed under the GPL-2, see `/usr/share/common-licenses/GPL-2'.
