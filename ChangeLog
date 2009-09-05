@@ -1,3 +1,54 @@
+2009-09-05  Eric Blake  <ebb9@byu.net>
+
+	symlinkat: new module
+	* modules/symlinkat: New file.
+	* lib/symlinkat.c: Likewise.
+	* m4/symlinkat.m4 (gl_FUNC_SYMLINKAT): Likewise.
+	* m4/unistd_h.m4 (gl_UNISTD_H_DEFAULTS): Add witnesses.
+	* modules/unistd (Makefile.am): Use them.
+	* lib/unistd.in.h (symlinkat, readlinkat): Declare them.
+	(faccessat) [GNULIB_POSIXCHECK]: Fix typo.
+	* lib/at-func.c (FUNC_RESULT): New macro, defaulting to int.
+	* MODULES.html.sh (File system functions): Mention module.
+	* doc/posix-functions/symlinkat.texi (symlinkat): Likewise.
+	* doc/posix-functions/readlinkat.texi (readlinkat): Likewise.
+	* modules/symlinkat-tests: New test.
+	* tests/test-symlinkat.c: Likewise.
+
+	test-openat-safer: add more checks
+	* tests/test-openat-safer.c (main): Check more code paths.
+
+2009-09-05  Jim Meyering  <meyering@redhat.com>
+
+	syntax-check: detect unnecessary inclusion of openat.h
+	* top/maint.mk (sc_prohibit_openat_without_use): New rule.
+
+2009-09-05  Bruno Haible  <bruno@clisp.org>
+
+	Support towlower, towupper.
+	* doc/posix-functions/towlower.texi: Mention module wctype.
+	* doc/posix-functions/towupper.texi: Likewise.
+	* lib/wctype.in.h (towlower, towupper): New functions.
+	* tests/test-wctype.c: Include stdio.h, stdlib.h.
+	(ASSERT): New macro.
+	(e): New variable.
+	(main): Test also towlower, towupper. Test WEOF argument.
+	Reported by Alan Hourihane <alanh@fairlite.co.uk>.
+
+2009-09-05  Bruno Haible  <bruno@clisp.org>
+
+	Fix conversion behaviour when the input is invalid.
+	* lib/striconveh.c (mem_cd_iconveh_internal): Fix storing of question
+	mark occurring in first pass of indirect conversion.
+	* tests/test-striconveh.c (main): Test conversion of invalid ASCII
+	input.
+	Found by clang's static analyzer.
+
+2009-09-05  Bruno Haible  <bruno@clisp.org>
+
+	* tests/test-striconveh.c (main): Test indirect conversion on platforms
+	where direct conversion is possible.
+
 2009-09-04  Eric Blake  <ebb9@byu.net>
 
 	openat: fail with ENOENT on empty name
@@ -29,7 +80,7 @@
 
 	faccessat: new module
 	* modules/faccessat: New file.
-	* lib/faccessat.m4: Likewise.
+	* lib/faccessat.c: Likewise.
 	* m4/faccessat.m4 (gl_FUNC_FACCESSAT): Likewise.
 	* m4/unistd_h.m4 (gl_UNISTD_H_DEFAULTS): Add witness.
 	* modules/unistd (Makefile.am): Use it.
