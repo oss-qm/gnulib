@@ -8,8 +8,9 @@ gnulib (20090907+1e2ae3a-1) unstable; urgency=low
   * debian/control:
     + add Depends: ${misc:Depends}.
     + Bump debhelper build-dep to >= 7.0.50~ (for overrides).
+  * Added debian/README.source.
 
- -- Ian Beckwith <ianb@debian.org>  Mon, 07 Sep 2009 02:06:27 +0100
+ -- Ian Beckwith <ianb@debian.org>  Mon, 07 Sep 2009 03:18:34 +0100
 
 gnulib (20090801-2) unstable; urgency=low
 
