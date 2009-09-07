@@ -8,6 +8,7 @@ Homepage: http://www.gnu.org/software/gnulib/
 
 Package: gnulib
 Architecture: all
+Depends: ${misc:Depends}
 Suggests: perl
 Description: GNU Portability Library
  The GNU portability library is a macro system and C declarations and

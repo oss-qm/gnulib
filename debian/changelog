@@ -5,6 +5,7 @@ gnulib (20090907+1e2ae3a-1) unstable; urgency=low
   * debian/rules upstream:
     + use short git hash in package version.
     + use --depth 1 to clone.
+  * debian/control: add Depends: ${misc:Depends}.
 
  -- Ian Beckwith <ianb@debian.org>  Mon, 07 Sep 2009 02:00:10 +0100
 
