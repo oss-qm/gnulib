@@ -1,16 +1,19 @@
 gnulib (20090907+1e2ae3a-1) unstable; urgency=low
 
-  * New Maintainer (closes: #543842).
+  * New maintainer (closes: #543842).
   * New upstream snapshot 20090907+1e2ae3a.
-  * debian/rules upstream:
-    + use short git hash in package version.
-    + use --depth 1 to clone.
+  * debian/rules:
+    + upstream:
+      * use short git hash in package version.
+      * use --depth 1 when cloning.
+    + override_dh_install:
+      * remove .cvsignore and .gitignore files
   * debian/control:
     + add Depends: ${misc:Depends}.
     + Bump debhelper build-dep to >= 7.0.50~ (for overrides).
   * Added debian/README.source.
 
- -- Ian Beckwith <ianb@debian.org>  Mon, 07 Sep 2009 03:18:34 +0100
+ -- Ian Beckwith <ianb@debian.org>  Mon, 07 Sep 2009 03:33:35 +0100
 
 gnulib (20090801-2) unstable; urgency=low
 

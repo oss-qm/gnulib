@@ -56,3 +56,5 @@ override_dh_auto_install:
 
 	# Removing unused files
 	rm -f debian/gnulib/usr/share/gnulib/modules/COPYING
+	rm -f debian/gnulib/usr/share/gnulib/*/.cvsignore
+	rm -f debian/gnulib/usr/share/gnulib/*/.gitignore
