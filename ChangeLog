@@ -1,3 +1,54 @@
+2009-09-07  Eric Blake  <ebb9@byu.net>
+
+	rename: modernize replacement
+	* modules/rename (Depends-on): Add stdio.
+	(configure.ac): Declare witness.
+	* m4/rename.m4 (gl_FUNC_RENAME): Ensure dependency order, and let
+	stdio take care of replacement.
+	* m4/stdio_h.m4 (gl_STDIO_H_DEFAULTS): Add new defaults.
+	* modules/stdio (Makefile.am): Substitute them.
+	* lib/stdio.in.h (rename): Declare replacement.
+	* lib/rename.c (includes): Allow cross-compilation to non-windows
+	machines.
+	* doc/posix-functions/rename.texi (rename): Improve
+	documentation.
+
+	stdio: sort witness names
+	* modules/stdio (Makefile.am): Sort replacements.
+	* m4/stdio_h.m4 (gl_STDIO_H_DEFAULTS): Likewise.
+	* lib/stdio.in.h: Likewise.
+
+	getcwd: minor cleanups
+	* lib/getcwd.c (AT_FDCWD): Delete; rely on <fcntl.h> instead.
+	(is_ENAMETOOLONG): Delete; ENAMETOOLONG is portable.
+
+	openat: provide more convenience names
+	* modules/faccessat (configure.ac): Add C witness.
+	* lib/unistd.in.h (readlinkat): Fix typo.
+	* lib/openat.h (statat, lstatat, accessat, euidaccessat): New
+	convenience wrappers.
+	* top/maint.mk (sc_prohibit_openat_without_use): Allow these
+	wrappers in syntax checks.
+
+2009-09-06  Eric Blake  <ebb9@byu.net>
+
+	doc: fix comments in recent patches
+	* lib/faccessat.c: Mention correct function.
+	* lib/fchmodat.c: Likewise.
+	* lib/fchownat.c: Likewise.
+	* lib/symlinkat.c: Likewise.
+	* doc/posix-headers/fcntl.texi (fcntl.h): Cygwin 1.7 has AT_*
+	constants.
+
+	faccessat, symlinkat: continue cleanup of previous patch
+	* m4/symlinkat.m4 (gl_FUNC_SYMLINKAT): Ensure dependency order.
+	* m4/faccessat.m4 (gl_FUNC_FACCESSAT): Likewise.
+	* modules/unistd (Makefile.am): Substitute GNULIB_READLINKAT.
+	* m4/unistd_h.m4 (gl_UNISTD_H_DEFAULTS): Offer GNULIB_READLINKAT.
+	* modules/symlinkat (configure.ac): Set GNULIB_READLINKAT.
+	* lib/unistd.in.h (readlinkat): Declare if GNULIB_READLINKAT is
+	set.
+
 2009-09-06  Bruno Haible  <bruno@clisp.org>
 
 	* lib/sys_stat.in.h (fchmodat): Declare if GNULIB_FCHMODAT is set.
