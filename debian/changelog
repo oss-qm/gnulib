@@ -14,8 +14,9 @@ gnulib (20090907+1e2ae3a-1) unstable; urgency=low
     + Add clisp to Suggests: for gen-uninames.lisp. Should only
       be needed if you are hacking on gnulib itself.
   * Added debian/README.source.
+  * Added stub debian/watch file.
 
- -- Ian Beckwith <ianb@debian.org>  Mon, 07 Sep 2009 03:56:14 +0100
+ -- Ian Beckwith <ianb@debian.org>  Mon, 07 Sep 2009 22:58:40 +0100
 
 gnulib (20090801-2) unstable; urgency=low
 
