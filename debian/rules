@@ -9,14 +9,21 @@ upstream:
 	# Needs: git-core
 
 	cd .. && \
-	git clone git://git.savannah.gnu.org/gnulib.git && \
-	mv gnulib gnulib-$(DATE)
-
-	rm -rf ../gnulib-$(DATE)/.git ../gnulib-$(DATE)/.gitattributes
-	find ../gnulib-$(DATE) -name .cvsignore | xargs rm -f
-	find ../gnulib-$(DATE) -name .gitignore | xargs rm -f
-
-	tar cfz ../gnulib_$(DATE).orig.tar.gz ../gnulib-$(DATE)
+	git clone --depth 1 git://git.savannah.gnu.org/gnulib.git  gnulib-$(DATE)
+	( \
+	    BUILDDIR="`pwd`" && \
+	    cd ../gnulib-$(DATE) && \
+	    VER=`git log -1 --pretty=%h` && \
+	    cd .. && \
+	    mv gnulib-$(DATE) gnulib-$(DATE)+$$VER && \
+	    cd "$$BUILDDIR" && \
+	    dch -p -v "$(DATE)+$$VER-1" "New upstream snapshot $(DATE)+$$VER." && \
+	    rm -rf ../gnulib-$(DATE)+$$VER/.git ../gnulib-$(DATE)+$$VER/.gitattributes && \
+	    find ../gnulib-$(DATE)+$$VER -name .cvsignore | xargs rm -f && \
+	    find ../gnulib-$(DATE)+$$VER -name .gitignore | xargs rm -f && \
+	    cd .. && \
+	    tar cfz gnulib_$(DATE)+$$VER.orig.tar.gz gnulib-$(DATE)+$$VER \
+	)
 
 override_dh_auto_clean:
 	$(MAKE) -C doc clean

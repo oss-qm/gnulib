@@ -2,8 +2,11 @@ gnulib (20090907+1e2ae3a-1) unstable; urgency=low
 
   * New Maintainer (closes: #543842).
   * New upstream snapshot 20090907+1e2ae3a.
+  * debian/rules upstream:
+    + use short git hash in package version.
+    + use --depth 1 to clone.
 
- -- Ian Beckwith <ianb@debian.org>  Mon, 07 Sep 2009 01:57:04 +0100
+ -- Ian Beckwith <ianb@debian.org>  Mon, 07 Sep 2009 02:00:10 +0100
 
 gnulib (20090801-2) unstable; urgency=low
 
