@@ -1,2 +1,6 @@
+# gnulib's doc directory contains various important GNU files:
+# licenses, maintainers guide, etc.
+# The gnulib git repo is the canonical source for most or all
+# of these docs.
 gnulib: extra-license-file usr/share/gnulib/doc/COPYING.LESSERv2
 gnulib: extra-license-file usr/share/gnulib/doc/COPYING.LESSERv3
