@@ -3,20 +3,28 @@ Thu,  1 Jun 2006 00:00:00 +0200.
 
 It was downloaded from <http://www.gnu.org/software/gnulib/>.
 
-Copyright Holder: Free Software Foundation and others
-		  (sources of various origins)
+The files in here are mostly copyright (C) Free Software Foundation, and
+are under assorted licenses.  Mostly, but not entirely, GPL.
 
-License:
+Many modules are provided dual-license, either GPL or LGPL at your
+option.  The headers of files in the lib directory (e.g., lib/error.c)
+state GPL for convenience, since the bulk of current gnulib users are
+GPL'd programs.  But the files in the modules directory (e.g.,
+modules/error) state the true license of each file, and when you use
+'gnulib-tool --lgpl --import <modules>', gnulib-tool either rewrites
+the files to have an LGPL header as part of copying them from gnulib
+to your project directory, or fails because the modules you requested
+were not licensed under LGPL.
 
-	GNULib is a collection of unrelated source files. Each source file is
-	provided under a different license (including GPL, LGPL, GFDL and
-	others) and includes a license headers stating the terms that apply to
-	that particular file.
+Some of the source files in lib/ have different licenses.  Also, the
+copy of maintain.texi in doc/ has a verbatim-copying license, and
+doc/standards.texi and make-stds.texi are GFDL.
 
 On Debian systems, the complete text of the GNU General Public License
 can be found in /usr/share/common-licenses/GPL file,
 the GNU Lesser General Public License in /usr/share/common-licenses/LGPL,
 and the GNU Free Document License in /usr/share/common-licenses/GFDL.
 
-The Debian packaging is (C) 2006-2008, Daniel Baumann <daniel@debian.org> and
-is licensed under the GPL-2, see `/usr/share/common-licenses/GPL-2'.
+The Debian packaging is Copyright 2006-2008, Daniel Baumann <daniel@debian.org>
+and Copyright 2009 Ian Beckwith <ianb@debian.org>, and is licensed
+under the GPL-2, see `/usr/share/common-licenses/GPL-2'.

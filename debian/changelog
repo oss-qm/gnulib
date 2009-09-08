@@ -16,8 +16,9 @@ gnulib (20090908+c5c46dc-1) unstable; urgency=low
   * Added debian/README.source.
   * Added stub debian/watch file.
   * Registered gnulib.html with doc-base.
+  * debian/copyright: improved somewhat; still needs more work.
 
- -- Ian Beckwith <ianb@debian.org>  Tue, 08 Sep 2009 01:34:08 +0100
+ -- Ian Beckwith <ianb@debian.org>  Tue, 08 Sep 2009 02:30:16 +0100
 
 gnulib (20090801-2) unstable; urgency=low
 
