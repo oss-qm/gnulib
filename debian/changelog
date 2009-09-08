@@ -1,7 +1,7 @@
-gnulib (20090907+1e2ae3a-1) unstable; urgency=low
+gnulib (20090908+c5c46dc-1) unstable; urgency=low
 
   * New maintainer (closes: #543842).
-  * New upstream snapshot 20090907+1e2ae3a.
+  * New upstream snapshot 20090908+c5c46dc.
   * debian/rules:
     + upstream:
       * use short git hash in package version.
@@ -15,8 +15,9 @@ gnulib (20090907+1e2ae3a-1) unstable; urgency=low
       be needed if you are hacking on gnulib itself.
   * Added debian/README.source.
   * Added stub debian/watch file.
+  * Registered gnulib.html with doc-base.
 
- -- Ian Beckwith <ianb@debian.org>  Mon, 07 Sep 2009 22:58:40 +0100
+ -- Ian Beckwith <ianb@debian.org>  Tue, 08 Sep 2009 01:34:08 +0100
 
 gnulib (20090801-2) unstable; urgency=low
 
