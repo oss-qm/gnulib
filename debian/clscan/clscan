@@ -1,6 +1,6 @@
 #!/usr/bin/perl -w
-# Ian Beckwith <ianb@erislabs.net>
-#
+# Copyright 2009 Ian Beckwith <ianb@erislabs.net>
+# License: GPL v2 or later.
 
 use strict;
 use vars qw($me);
@@ -59,11 +59,11 @@ sub write_copyright
     {
 	die("$me: no files known, run $0 --scan\n");
     }
-    unless(copy($COPYRIGHTSTUB, "debian/copyright.new"))
+    unless(copy($COPYRIGHTSTUB, "debian/copyright"))
     {
 	die("$me: cannot copy $COPYRIGHTSTUB to debian/copyright: $!\n");
     }
-    unless(open(COPYRIGHT, ">>debian/copyright.new"))
+    unless(open(COPYRIGHT, ">>debian/copyright"))
     {
 	die("$me: cannot append to debian/copyright: $!\n");
     }
@@ -77,25 +77,36 @@ sub write_copyright
 	my $license_text=$files->{$file}->{license_text};
 	push(@{$licenses->{$license}->{$license_text}->{$copyright}}, $file);
     }
+    my %refs=();
+    my $refnum=0;
     for my $license (sort keys(%$licenses))
     {
 	for my $license_text (sort keys(%{$licenses->{$license}}))
 	{
+	    my $licensestr=$license;
+	    if(length($license_text))
+	    {
+		$refnum++;
+		$licensestr .= " (REF$refnum)";
+		$refs{$licensestr}=$license_text;
+	    }
 	    for my $copyright (sort keys(%{$licenses->{$license}->{$license_text}}))
 	    {
 		next if(!length($license) && !length($copyright) && !length($license_text));
 		my @filelist=sort @{$licenses->{$license}->{$license_text}->{$copyright}};
 		print COPYRIGHT "Files: ", join(', ', @filelist), "\n";
 		print COPYRIGHT "Copyright: $copyright\n" if length($copyright);
-		print COPYRIGHT "License: $license\n" if length($license);
-		if(length($license_text))
-		{
-		    my @text=split(/\n/, $license_text);
-		    print COPYRIGHT map { "    " . $_ . "\n" } @text;
-		}
+		print COPYRIGHT "License: $licensestr\n" if length($licensestr);
 		print COPYRIGHT "\n";
 	    }
 	}
+    }
+    for my $ref (keys(%refs))
+    {
+	print COPYRIGHT "License: $ref\n";
+	my @text=split(/\n/, $refs{$ref});
+	print COPYRIGHT map { "    " . $_ . "\n" } @text;
+	print COPYRIGHT "\n";
     }
     print COPYRIGHT license_trailer(sort keys(%$licenses));
     close(COPYRIGHT);
@@ -141,83 +152,6 @@ TYPE: for my $type (keys(%$license_data))
     return $text;
 }
 
-
-sub merge_new
-{
-    unless(open(NEW, $NEWFILES))
-    {
-	die("$me: $NEWFILES: cannot open: $!\n");
-    }
-    my $license='';
-    my $copyright='';
-    my $hash='';
-    my $file='';
-    my $license_text='';
-    my $in_license_text=0;
-    my $line=0;
-    while(<NEW>)
-    {
-	$line++;
-	chomp;
-	next if(/^\s*$/);
-	next if(/^\s*\#/);
-	if($in_license_text && /^\s+(.*)/)
-	{
-	    $license_text .= "\n" . $1;
-	}
-	elsif(/^File:\s*(.*)/)
-	{
-	    my $newfile=$1;
-	    # save previous entry
-	    if(length($file) && length($hash))
-	    {
-		$files->{$file}={ hash=>$hash,
-				  copyright=>$copyright,
-				  license=>$license,
-				  license_text=>$license_text };
-	    }
-	    $file=$newfile;
-	    $license='';
-	    $copyright='';
-	    $hash='';
-	    $license_text='';
-	}
-	elsif(/^Hash:\s*(.*)/)
-	{
-	    $hash=$1;
-	}
-	elsif(/^Copyright:\s*(.*)/)
-	{
-	    $copyright=$1;
-	}
-	elsif(/^License:\s*(.*)/)
-	{
-	    $license=$1;
-	}
-	elsif(/^License_text:\s*(.*)/)
-	{
-	    $in_license_text=1;
-	    $license_text=$1;
-	}
-	elsif($in_license_text && /^\s+(.*)/)
-	{
-	    $license_text .= "\n" . $1;
-	}
-	else
-	{
-	    warn("$me: $file: line $line not recognized\n");
-	}
-    }
-    close(NEW);
-    # save last entry
-    if(length($file) && length($hash))
-    {
-	$files->{$file}={ hash=>$hash,
-			  copyright=>$copyright,
-			  license=>$license,
-			  license_text=>$license_text };
-    }
-}
 
 sub guess_license
 {
@@ -318,8 +252,6 @@ sub wanted
 sub get_filenames
 {
     find(\&wanted, ".");
-#    find(\&wanted, "lib/uniname");
-#    find(\&wanted, "lib/uniconv");
 }
 
 sub load_cache
@@ -390,6 +322,83 @@ sub write_new
     close NEW;
 }
 
+sub merge_new
+{
+    unless(open(NEW, $NEWFILES))
+    {
+	die("$me: $NEWFILES: cannot open: $!\n");
+    }
+    my $license='';
+    my $copyright='';
+    my $hash='';
+    my $file='';
+    my $license_text='';
+    my $in_license_text=0;
+    my $line=0;
+    while(<NEW>)
+    {
+	$line++;
+	chomp;
+	next if(/^\s*$/);
+	next if(/^\s*\#/);
+	if($in_license_text && /^\s+(.*)/)
+	{
+	    $license_text .= "\n" . $1;
+	}
+	elsif(/^File:\s*(.*)/)
+	{
+	    my $newfile=$1;
+	    # save previous entry
+	    if(length($file) && length($hash))
+	    {
+		$files->{$file}={ hash=>$hash,
+				  copyright=>$copyright,
+				  license=>$license,
+				  license_text=>$license_text };
+	    }
+	    $file=$newfile;
+	    $license='';
+	    $copyright='';
+	    $hash='';
+	    $license_text='';
+	}
+	elsif(/^Hash:\s*(.*)/)
+	{
+	    $hash=$1;
+	}
+	elsif(/^Copyright:\s*(.*)/)
+	{
+	    $copyright=$1;
+	}
+	elsif(/^License:\s*(.*)/)
+	{
+	    $license=$1;
+	}
+	elsif(/^License_text:\s*(.*)/)
+	{
+	    $in_license_text=1;
+	    $license_text=$1;
+	}
+	elsif($in_license_text && /^\s+(.*)/)
+	{
+	    $license_text .= "\n" . $1;
+	}
+	else
+	{
+	    warn("$me: $file: line $line not recognized: $_\n");
+	}
+    }
+    close(NEW);
+    # save last entry
+    if(length($file) && length($hash))
+    {
+	$files->{$file}={ hash=>$hash,
+			  copyright=>$copyright,
+			  license=>$license,
+			  license_text=>$license_text };
+    }
+}
+
 sub find_deleted
 {
     my @deleted=();
@@ -422,8 +431,10 @@ sub backup
 sub usage
 {
     die("usage: $me [--scan] [--merge]\n",
-	"  --scan      Scan for new files & files with changed copyright headers\n",
-	"              Writes to debian/clscan/new.txt for manual review.\n",
-	"  --merge     Merges new data from debian/clscan/new.txt\n",
-	"              Writes updated debian/copyright.\n");
+	"scans for changed copyright/licenses\n",
+	"  -s|-scan      Scan for new files & files with changed copyright headers\n",
+	"                Writes to debian/clscan/new.txt for manual review.\n",
+	"  -m|--merge    Merges new data from debian/clscan/new.txt\n",
+	"  -w|--write    Writes updated debian/copyright.\n",
+	"                --merge implies --write.\n");
 }
