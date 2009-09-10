@@ -298,9 +298,9 @@ sub write_new
     {
 	print NEW "File: $file\n";
 	print NEW "Hash: ", $new->{$file}->{hash}, "\n";
-	print NEW "License: ", $new->{$file}->{license}, "\n";
 	print NEW "Copyright: ", $new->{$file}->{copyright}, "\n";
-	print NEW "Licence-Text: \n";
+	print NEW "License: ", $new->{$file}->{license}, "\n";
+	print NEW "Licence_Text: \n";
 	if($new->{$file}->{license_old})
 	{
 	    print NEW "#License_old: ", $new->{$file}->{license_old}, "\n";
@@ -385,7 +385,7 @@ sub merge_new
 	}
 	else
 	{
-	    warn("$me: $file: line $line not recognized: $_\n");
+	    warn("$me: $NEWFILES: line $line not recognized\n");
 	}
     }
     close(NEW);
