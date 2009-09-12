@@ -95949,7 +95949,7 @@ Licence_Text:
 
 File: ./tests/test-argp-version-etc-1.sh
 Hash: 14124a44a2d4160fc8d3bde7bef3491c53725766368df8d5b97c5473869753bd
-Copyright: Free Software Foundation, Inc / [0-9]\{4,4\}//' | / 2009 Free Software Foundation, Inc
+Copyright: 2009 Free Software Foundation, Inc
 License: GPL-3+ 
 Licence_Text: 
 #Header: 
@@ -96319,7 +96319,7 @@ Licence_Text:
 
 File: ./tests/test-btowc.c
 Hash: 5ebcafef18833867faa6529b403f9ea8209c5b226325a645d7f4213d0daf22c1
-Copyright: != WEOF); / 2008 Free Software Foundation, Inc / == c);
+Copyright: 2008 Free Software Foundation, Inc
 License: GPL-3+ 
 Licence_Text: 
 #Header: 
@@ -96407,7 +96407,7 @@ Licence_Text:
 
 File: ./tests/test-c-ctype.c
 Hash: 13becd45e283e22f97fac9aa9901241affa9a90f9e2e0a10efd1267cb9bada9e
-Copyright: 2005, 2007-2008 Free Software Foundation, Inc / == (c >= 0 && c < 0x80));
+Copyright: 2005, 2007-2008 Free Software Foundation, Inc
 License: GPL-3+ 
 Licence_Text: 
 #Header: 
@@ -96979,7 +96979,7 @@ Licence_Text:
 File: ./tests/test-des.c
 Hash: 2be8e95b0dea714ec5eea7bb03ba88c5768d2dc5376db963fa25bfaae842c979
 Copyright: 2005, 2007 Free Software Foundation
-License: GPL 
+License: GPL-2+
 Licence_Text: 
 #Header: 
 #/*
@@ -97610,7 +97610,7 @@ Licence_Text:
 File: ./tests/test-filevercmp.c
 Hash: e9a609c14b8dce43bffbf6d67ec08a74092aa14c279914cd27cf603657ead587
 Copyright: 2008-2009 Free Software Foundation, Inc
-License: GPL 
+License: GPL-3+
 Licence_Text: 
 #Header: 
 #/* Test of filevercmp() function.
@@ -98533,7 +98533,7 @@ Licence_Text:
 File: ./tests/test-gc-arcfour.c
 Hash: 3b45dbe8307316e3b18c89e65279b9440cfb8f43868ed0bc1a72f499799b1465
 Copyright: 2005 Free Software Foundation
-License: GPL 
+License: GPL-2+
 Licence_Text: 
 #Header: 
 #/*
@@ -98555,7 +98555,7 @@ Licence_Text:
 File: ./tests/test-gc-arctwo.c
 Hash: 3b45dbe8307316e3b18c89e65279b9440cfb8f43868ed0bc1a72f499799b1465
 Copyright: 2005 Free Software Foundation
-License: GPL 
+License: GPL-2+
 Licence_Text: 
 #Header: 
 #/*
@@ -98577,7 +98577,7 @@ Licence_Text:
 File: ./tests/test-gc-des.c
 Hash: 3b45dbe8307316e3b18c89e65279b9440cfb8f43868ed0bc1a72f499799b1465
 Copyright: 2005 Free Software Foundation
-License: GPL 
+License: GPL-2+
 Licence_Text: 
 #Header: 
 #/*
@@ -98599,7 +98599,7 @@ Licence_Text:
 File: ./tests/test-gc-hmac-md5.c
 Hash: 3b45dbe8307316e3b18c89e65279b9440cfb8f43868ed0bc1a72f499799b1465
 Copyright: 2005 Free Software Foundation
-License: GPL 
+License: GPL-2+
 Licence_Text: 
 #Header: 
 #/*
@@ -98621,7 +98621,7 @@ Licence_Text:
 File: ./tests/test-gc-hmac-sha1.c
 Hash: 3b45dbe8307316e3b18c89e65279b9440cfb8f43868ed0bc1a72f499799b1465
 Copyright: 2005 Free Software Foundation
-License: GPL 
+License: GPL-2+
 Licence_Text: 
 #Header: 
 #/*
@@ -98643,7 +98643,7 @@ Licence_Text:
 File: ./tests/test-gc-md2.c
 Hash: 3b45dbe8307316e3b18c89e65279b9440cfb8f43868ed0bc1a72f499799b1465
 Copyright: 2005 Free Software Foundation
-License: GPL 
+License: GPL-2+
 Licence_Text: 
 #Header: 
 #/*
@@ -98665,7 +98665,7 @@ Licence_Text:
 File: ./tests/test-gc-md4.c
 Hash: 3b45dbe8307316e3b18c89e65279b9440cfb8f43868ed0bc1a72f499799b1465
 Copyright: 2005 Free Software Foundation
-License: GPL 
+License: GPL-2+
 Licence_Text: 
 #Header: 
 #/*
@@ -98687,7 +98687,7 @@ Licence_Text:
 File: ./tests/test-gc-md5.c
 Hash: 3b45dbe8307316e3b18c89e65279b9440cfb8f43868ed0bc1a72f499799b1465
 Copyright: 2005 Free Software Foundation
-License: GPL 
+License: GPL-2+
 Licence_Text: 
 #Header: 
 #/*
@@ -98709,7 +98709,7 @@ Licence_Text:
 File: ./tests/test-gc-pbkdf2-sha1.c
 Hash: 7799cf357547a841ccf3afeb7e5d9143abc19ee0a898cb087d2de1bb492bae59
 Copyright: 2002, 2003, 2004, 2005, 2007 Free Software Foundation
-License: GPL 
+License: GPL-2+
 Licence_Text: 
 #Header: 
 #/*
@@ -98731,7 +98731,7 @@ Licence_Text:
 File: ./tests/test-gc-rijndael.c
 Hash: 3b45dbe8307316e3b18c89e65279b9440cfb8f43868ed0bc1a72f499799b1465
 Copyright: 2005 Free Software Foundation
-License: GPL 
+License: GPL-2+
 Licence_Text: 
 #Header: 
 #/*
@@ -98753,7 +98753,7 @@ Licence_Text:
 File: ./tests/test-gc-sha1.c
 Hash: 3b45dbe8307316e3b18c89e65279b9440cfb8f43868ed0bc1a72f499799b1465
 Copyright: 2005 Free Software Foundation
-License: GPL 
+License: GPL-2+
 Licence_Text: 
 #Header: 
 #/*
@@ -98775,7 +98775,7 @@ Licence_Text:
 File: ./tests/test-gc.c
 Hash: 8cb1d73b6c4bd47920f369b94539807ae13559bf31d128fea4584223d60675a0
 Copyright: 2005, 2006 Free Software Foundation
-License: GPL 
+License: GPL-2+
 Licence_Text: 
 #Header: 
 #/*
@@ -98819,7 +98819,7 @@ Licence_Text:
 File: ./tests/test-getdate.c
 Hash: 935427c30258eb6e5a9b394cc5d96c1427d7abe260fe0b81fe448b30a4171ba3
 Copyright: 2008, 2009 Free Software Foundation, Inc
-License: GPL 
+License: GPL-3+
 Licence_Text: 
 #Header: 
 #/* Test of getdate() function.
@@ -98841,7 +98841,7 @@ Licence_Text:
 File: ./tests/test-getdelim.c
 Hash: c90cc89f32a451ccbfe0910eb584fd389f60f2b051affa2dbe2bdc9d80097081
 Copyright: 2007-2008 Free Software Foundation, Inc
-License: GPL 
+License: GPL-3+
 Licence_Text: 
 #Header: 
 #/* Test of getdelim() function.
@@ -98907,7 +98907,7 @@ Licence_Text:
 File: ./tests/test-getline.c
 Hash: 324eb53650a3b992efd3fc0cce526be56e493dac9a686c8f32b40a845358556d
 Copyright: 2007-2008 Free Software Foundation, Inc
-License: GPL 
+License: GPL-3+
 Licence_Text: 
 #Header: 
 #/* Test of getline() function.
@@ -98929,7 +98929,7 @@ Licence_Text:
 File: ./tests/test-getndelim2.c
 Hash: ad18c635ec03c40547062fe271ebb6703e1d91c537b7adf63937c9ae962c1913
 Copyright: 2008 Free Software Foundation, Inc
-License: GPL 
+License: GPL-3+
 Licence_Text: 
 #Header: 
 #/* Test of getndelim2() function.
@@ -101128,7 +101128,7 @@ Licence_Text:
 File: ./tests/test-md2.c
 Hash: abf2f70a1887b653b034add8c99c0436a2e3751e63f73929660b24930fa9f795
 Copyright: 2005 Free Software Foundation
-License: GPL 
+License: GPL-2+
 Licence_Text: 
 #Header: 
 #/*
@@ -101150,7 +101150,7 @@ Licence_Text:
 File: ./tests/test-md4.c
 Hash: 3b45dbe8307316e3b18c89e65279b9440cfb8f43868ed0bc1a72f499799b1465
 Copyright: 2005 Free Software Foundation
-License: GPL 
+License: GPL-2+
 Licence_Text: 
 #Header: 
 #/*
@@ -101480,7 +101480,7 @@ Licence_Text:
 File: ./tests/test-perror.c
 Hash: 63d18ff5d46be6478f9569c7270da67595712bcaf5d1057c6948359c2cc04bf5
 Copyright: 2008 Free Software Foundation, Inc
-License: GPL 
+License: GPL-3+
 Licence_Text: 
 #Header: 
 #/* Test of perror() function.
@@ -101740,7 +101740,7 @@ Licence_Text:
 File: ./tests/test-pipe.c
 Hash: 87b0ce6f07c7dc998dccca7755d36b68474a4fa9fa1c5479346bbd2a228eeaf9
 Copyright: 2009 Free Software Foundation, Inc
-License: GPL 
+License: GPL-3+
 Licence_Text: 
 #Header: 
 #/* Test of create_pipe_bidi/wait_subprocess.
@@ -101777,7 +101777,7 @@ Licence_Text:
 File: ./tests/test-pipe2.c
 Hash: 73c73a849418178f4ce6c9ad2e85a4a66257efbeeb4c1848901ab0c3bcd6a2cd
 Copyright: 2009 Free Software Foundation, Inc
-License: GPL 
+License: GPL-3+
 Licence_Text: 
 #Header: 
 #/* Test of pipe2.
@@ -101799,7 +101799,7 @@ Licence_Text:
 File: ./tests/test-poll.c
 Hash: 7970e5d5d232352391d076f73881bb98e1eaa9346930e8f191a49ce549b152eb
 Copyright: 2008-2009 Free Software Foundation, Inc
-License: GPL 
+License: GPL-3+
 Licence_Text: 
 #Header: 
 #/* Test of poll() function.
@@ -102190,7 +102190,7 @@ Licence_Text:
 File: ./tests/test-quotearg.c
 Hash: 104703e4201fb5c043c5e3504cebdaf76bee31f82635cd179c12eb576cb8e015
 Copyright: 2008-2009 Free Software Foundation, Inc
-License: GPL 
+License: GPL-3+
 Licence_Text: 
 #Header: 
 #/* Test of quotearg family of functions.
@@ -102388,7 +102388,7 @@ Licence_Text:
 File: ./tests/test-round1.c
 Hash: d481632fac56dafed412331dc1d3c962088c31ca9c3b36086d3667160fd6d480
 Copyright: 2007-2008 Free Software Foundation, Inc
-License: GPL 
+License: GPL-3+
 Licence_Text: 
 #Header: 
 #/* Test of rounding to nearest, breaking ties away from zero.
@@ -102432,7 +102432,7 @@ Licence_Text:
 File: ./tests/test-roundf1.c
 Hash: 3d1da36b9e0486cd4e508d505e52d43a8e69194525626087e0570a15fb56bd69
 Copyright: 2007, 2008 Free Software Foundation, Inc
-License: GPL 
+License: GPL-3+
 Licence_Text: 
 #Header: 
 #/* Test of rounding to nearest, breaking ties away from zero.
@@ -102463,7 +102463,7 @@ Licence_Text:
 File: ./tests/test-roundl.c
 Hash: 78692de38971d672500f95f537d99c3625af5e163292a68f569e9b1c0db3deba
 Copyright: 2007-2009 Free Software Foundation, Inc
-License: GPL 
+License: GPL-3+
 Licence_Text: 
 #Header: 
 #/* Test of rounding to nearest, breaking ties away from zero.
@@ -102485,7 +102485,7 @@ Licence_Text:
 File: ./tests/test-safe-alloc.c
 Hash: 06fa48a371192b3703bb2e5e10ccd93a9034d93b7dcff205253b40547dc5f425
 Copyright: 2009 Free Software Foundation, Inc
-License: LGPL-2.1+ (with incorrect FSF address) 
+License: LGPL-2.1+
 Licence_Text: 
 #Header: 
 #/*
@@ -102815,7 +102815,7 @@ Licence_Text:
 File: ./tests/test-sigpipe.c
 Hash: 8babbc5c4c5cf6baadd089082b26b393e84a3d336446bdf26c6170bb3b86fd55
 Copyright: 2008 Free Software Foundation, Inc
-License: GPL 
+License: GPL-3+
 Licence_Text: 
 #Header: 
 #/* Test of SIGPIPE handling.
@@ -103255,7 +103255,7 @@ Licence_Text:
 File: ./tests/test-strerror.c
 Hash: 14a1d27bf7519c28518b2fa09cdbff600099f8fbbdcdd31d19f1e17abd42eec1
 Copyright: 2007-2008 Free Software Foundation, Inc
-License: GPL 
+License: GPL-3+
 Licence_Text: 
 #Header: 
 #/* Test of strerror() function.
@@ -103387,7 +103387,7 @@ Licence_Text:
 File: ./tests/test-strsignal.c
 Hash: 911cff60ea0d2142906a8b6e37b8e316a82700ce9dc6f4419abb1544eeb16255
 Copyright: 2008 Free Software Foundation, Inc
-License: GPL 
+License: GPL-3+
 Licence_Text: 
 #Header: 
 #/* Test of strsignal() function.
@@ -103453,7 +103453,7 @@ Licence_Text:
 File: ./tests/test-strverscmp.c
 Hash: 73715c12c4e50afe8feb14d326eb9d0092f449850bf20bda4a2a09965c37fd2d
 Copyright: 2008 Free Software Foundation, Inc
-License: GPL 
+License: GPL-3+
 Licence_Text: 
 #Header: 
 #/* Test of strverscmp() function.
@@ -103933,7 +103933,7 @@ Licence_Text:
 
 File: ./tests/test-update-copyright.sh
 Hash: 31a6cf464a511c9f798d56d6107ef0eb41dafac06037c8e04649f9ae2d9f2e67
-Copyright: 1990-2005, 2007-2009 Free Software / @{} 1990-2005, 2007-2009 Free Software / 2009 Free Software Foundation, Inc / &copy; 90,2005,2007-2009
+Copyright: 2009 Free Software Foundation, Inc
 License: GPL-3+ 
 Licence_Text: 
 #Header: 
@@ -104218,7 +104218,7 @@ Licence_Text:
 
 File: ./tests/test-version-etc.sh
 Hash: c2dcff71edecfe89df84edb38bc7cf657c88b91a82456014937488b7eed9cf8c
-Copyright: Free Software Foundation, Inc / [0-9]\{4,4\}//' | / 2009 Free Software Foundation, Inc
+Copyright: 2009 Free Software Foundation, Inc
 License: GPL-3+ 
 Licence_Text: 
 #Header: 
@@ -104745,7 +104745,7 @@ Licence_Text:
 File: ./tests/test-xmemdup0.c
 Hash: 4b2575757caf38d863f415b5079c56fd838ffe4a807c81bc83bd296dcbfcaee6
 Copyright: 2008-2009 Free Software Foundation, Inc
-License: GPL 
+License: GPL-3+
 Licence_Text: 
 #Header: 
 #/* Test of xmemdup0() function.
@@ -104843,7 +104843,7 @@ Licence_Text:
 
 File: ./tests/test-xstrtol.c
 Hash: de7b5c726b634ae4f59358f375b594790755ca1a9cc5ca12cd7192f7ad89d763
-Copyright: 1995, 1996, 1998, 1999, 2000, 2001, 2003, 2004, 2005
+Copyright: 1995, 1996, 1998, 1999, 2000, 2001, 2003, 2004, 2005, 2006, 2007, 2008 Free Software Foundation, Inc.
 License: GPL-3+ 
 Licence_Text: 
 #Header: 
@@ -104954,7 +104954,7 @@ Licence_Text:
 File: ./tests/test-yesno.c
 Hash: 3f971eee932cdc6643afc7e82875800dbd694b7d7cce5e5898866d3838e5f8e6
 Copyright: 2007-2008 Free Software Foundation, Inc
-License: GPL 
+License: GPL-3+
 Licence_Text: 
 #Header: 
 #/* Test of yesno module.
@@ -105020,7 +105020,7 @@ Licence_Text:
 File: ./tests/unicase/test-cased.c
 Hash: 62bb326af42b34ad4602e7a6978de7422a8206d559c67df02ae3be4a6d7729af
 Copyright: 2007 Free Software Foundation, Inc
-License: GPL-3+ GENERATED FILE
+License: GPL-3+
 Licence_Text: 
 #Header: 
 #/* DO NOT EDIT! GENERATED AUTOMATICALLY! */
@@ -105042,7 +105042,7 @@ Licence_Text:
 File: ./tests/unicase/test-ignorable.c
 Hash: 62bb326af42b34ad4602e7a6978de7422a8206d559c67df02ae3be4a6d7729af
 Copyright: 2007 Free Software Foundation, Inc
-License: GPL-3+ GENERATED FILE
+License: GPL-3+
 Licence_Text: 
 #Header: 
 #/* DO NOT EDIT! GENERATED AUTOMATICALLY! */
@@ -105239,7 +105239,7 @@ Licence_Text:
 
 File: ./tests/unicase/test-mapping-part2.h
 Hash: d94069b7317bd4b0d2ee6c070d817fbf6eeb80367cede56f39e0cd77bc50d820
-Copyright: == c); / == mapping[i].value); / 2007-2009 Free Software Foundation, Inc
+Copyright: 2007-2009 Free Software Foundation, Inc
 License: GPL-3+ 
 Licence_Text: 
 #Header: 
@@ -106032,7 +106032,7 @@ Licence_Text:
 File: ./tests/unicase/test-uc_tolower.c
 Hash: c2a4263e856558e5d834ff3dfe49b5d3c58de269067e9a3b352162b896a1b27c
 Copyright: 2009 Free Software Foundation, Inc
-License: GPL-3+ GENERATED FILE
+License: GPL-3+
 Licence_Text: 
 #Header: 
 #/* DO NOT EDIT! GENERATED AUTOMATICALLY! */
@@ -106054,7 +106054,7 @@ Licence_Text:
 File: ./tests/unicase/test-uc_totitle.c
 Hash: c2a4263e856558e5d834ff3dfe49b5d3c58de269067e9a3b352162b896a1b27c
 Copyright: 2009 Free Software Foundation, Inc
-License: GPL-3+ GENERATED FILE
+License: GPL-3+
 Licence_Text: 
 #Header: 
 #/* DO NOT EDIT! GENERATED AUTOMATICALLY! */
@@ -106076,7 +106076,7 @@ Licence_Text:
 File: ./tests/unicase/test-uc_toupper.c
 Hash: c2a4263e856558e5d834ff3dfe49b5d3c58de269067e9a3b352162b896a1b27c
 Copyright: 2009 Free Software Foundation, Inc
-License: GPL-3+ GENERATED FILE
+License: GPL-3+
 Licence_Text: 
 #Header: 
 #/* DO NOT EDIT! GENERATED AUTOMATICALLY! */
@@ -106226,6 +106226,11 @@ Licence_Text:
 #
 #LC_ALL=$LOCALE_FR_UTF8 \
 #./test-ulc-casecoll${EXEEXT}
+
+######################################################################
+## UPTOHERE
+######################################################################
+
 
 File: ./tests/uniconv/test-u16-conv-from-enc.c
 Hash: 5334901c00ae1a449f18bb31d4c0c978f79a30d0cb6673480295af5a5ac067b1
