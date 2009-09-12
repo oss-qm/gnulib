@@ -239,7 +239,7 @@ sub filechanged
 
 sub wanted
 {
-    if(/^\.git/ || /^\.cvs/ || /^debian/)
+    if(/^\.git/ || /^\.cvs/ || /^debian/ || /^modules$/)
     {
 	$File::Find::prune=1;
     }
