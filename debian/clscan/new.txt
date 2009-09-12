@@ -106653,7 +106653,7 @@ Licence_Text:
 File: ./tests/unictype/test-categ_C.c
 Hash: 62bb326af42b34ad4602e7a6978de7422a8206d559c67df02ae3be4a6d7729af
 Copyright: 2007 Free Software Foundation, Inc
-License: GPL-3+ GENERATED FILE
+License: GPL-3+
 Licence_Text: 
 #Header: 
 #/* DO NOT EDIT! GENERATED AUTOMATICALLY! */
@@ -106674,8 +106674,8 @@ Licence_Text:
 
 File: ./tests/unictype/test-categ_Cc.c
 Hash: 62bb326af42b34ad4602e7a6978de7422a8206d559c67df02ae3be4a6d7729af
-Copyright: uc_is_general_category (c, UC_CATEGORY_Cc) / 2007 Free Software Foundation, Inc
-License: GPL-3+ GENERATED FILE
+Copyright: 2007 Free Software Foundation, Inc
+License: GPL-3+
 Licence_Text: 
 #Header: 
 #/* DO NOT EDIT! GENERATED AUTOMATICALLY! */
@@ -106696,8 +106696,8 @@ Licence_Text:
 
 File: ./tests/unictype/test-categ_Cf.c
 Hash: 62bb326af42b34ad4602e7a6978de7422a8206d559c67df02ae3be4a6d7729af
-Copyright: uc_is_general_category (c, UC_CATEGORY_Cf) / 2007 Free Software Foundation, Inc
-License: GPL-3+ GENERATED FILE
+Copyright: 2007 Free Software Foundation, Inc
+License: GPL-3+
 Licence_Text: 
 #Header: 
 #/* DO NOT EDIT! GENERATED AUTOMATICALLY! */
@@ -106719,7 +106719,7 @@ Licence_Text:
 File: ./tests/unictype/test-categ_Cn.c
 Hash: 62bb326af42b34ad4602e7a6978de7422a8206d559c67df02ae3be4a6d7729af
 Copyright: 2007 Free Software Foundation, Inc
-License: GPL-3+ GENERATED FILE
+License: GPL-3+
 Licence_Text: 
 #Header: 
 #/* DO NOT EDIT! GENERATED AUTOMATICALLY! */
@@ -106740,8 +106740,8 @@ Licence_Text:
 
 File: ./tests/unictype/test-categ_Co.c
 Hash: 62bb326af42b34ad4602e7a6978de7422a8206d559c67df02ae3be4a6d7729af
-Copyright: uc_is_general_category (c, UC_CATEGORY_Co) / 2007 Free Software Foundation, Inc
-License: GPL-3+ GENERATED FILE
+Copyright: 2007 Free Software Foundation, Inc
+License: GPL-3+ 
 Licence_Text: 
 #Header: 
 #/* DO NOT EDIT! GENERATED AUTOMATICALLY! */
@@ -106762,8 +106762,8 @@ Licence_Text:
 
 File: ./tests/unictype/test-categ_Cs.c
 Hash: 62bb326af42b34ad4602e7a6978de7422a8206d559c67df02ae3be4a6d7729af
-Copyright: uc_is_general_category (c, UC_CATEGORY_Cs) / 2007 Free Software Foundation, Inc
-License: GPL-3+ GENERATED FILE
+Copyright: 2007 Free Software Foundation, Inc
+License: GPL-3+
 Licence_Text: 
 #Header: 
 #/* DO NOT EDIT! GENERATED AUTOMATICALLY! */
@@ -106785,7 +106785,7 @@ Licence_Text:
 File: ./tests/unictype/test-categ_L.c
 Hash: 62bb326af42b34ad4602e7a6978de7422a8206d559c67df02ae3be4a6d7729af
 Copyright: 2007 Free Software Foundation, Inc
-License: GPL-3+ GENERATED FILE
+License: GPL-3+
 Licence_Text: 
 #Header: 
 #/* DO NOT EDIT! GENERATED AUTOMATICALLY! */
@@ -106807,7 +106807,7 @@ Licence_Text:
 File: ./tests/unictype/test-categ_Ll.c
 Hash: 62bb326af42b34ad4602e7a6978de7422a8206d559c67df02ae3be4a6d7729af
 Copyright: 2007 Free Software Foundation, Inc
-License: GPL-3+ GENERATED FILE
+License: GPL-3+
 Licence_Text: 
 #Header: 
 #/* DO NOT EDIT! GENERATED AUTOMATICALLY! */
@@ -106828,8 +106828,8 @@ Licence_Text:
 
 File: ./tests/unictype/test-categ_Lm.c
 Hash: 62bb326af42b34ad4602e7a6978de7422a8206d559c67df02ae3be4a6d7729af
-Copyright: uc_is_general_category (c, UC_CATEGORY_Lm) / 2007 Free Software Foundation, Inc
-License: GPL-3+ GENERATED FILE
+Copyright: 2007 Free Software Foundation, Inc
+License: GPL-3+
 Licence_Text: 
 #Header: 
 #/* DO NOT EDIT! GENERATED AUTOMATICALLY! */
@@ -106851,7 +106851,7 @@ Licence_Text:
 File: ./tests/unictype/test-categ_Lo.c
 Hash: 62bb326af42b34ad4602e7a6978de7422a8206d559c67df02ae3be4a6d7729af
 Copyright: 2007 Free Software Foundation, Inc
-License: GPL-3+ GENERATED FILE
+License: GPL-3+
 Licence_Text: 
 #Header: 
 #/* DO NOT EDIT! GENERATED AUTOMATICALLY! */
@@ -106872,8 +106872,8 @@ Licence_Text:
 
 File: ./tests/unictype/test-categ_Lt.c
 Hash: 62bb326af42b34ad4602e7a6978de7422a8206d559c67df02ae3be4a6d7729af
-Copyright: uc_is_general_category (c, UC_CATEGORY_Lt) / 2007 Free Software Foundation, Inc
-License: GPL-3+ GENERATED FILE
+Copyright: 2007 Free Software Foundation, Inc
+License: GPL-3+
 Licence_Text: 
 #Header: 
 #/* DO NOT EDIT! GENERATED AUTOMATICALLY! */
@@ -106895,7 +106895,7 @@ Licence_Text:
 File: ./tests/unictype/test-categ_Lu.c
 Hash: 62bb326af42b34ad4602e7a6978de7422a8206d559c67df02ae3be4a6d7729af
 Copyright: 2007 Free Software Foundation, Inc
-License: GPL-3+ GENERATED FILE
+License: GPL-3+
 Licence_Text: 
 #Header: 
 #/* DO NOT EDIT! GENERATED AUTOMATICALLY! */
@@ -106917,7 +106917,7 @@ Licence_Text:
 File: ./tests/unictype/test-categ_M.c
 Hash: 62bb326af42b34ad4602e7a6978de7422a8206d559c67df02ae3be4a6d7729af
 Copyright: 2007 Free Software Foundation, Inc
-License: GPL-3+ GENERATED FILE
+License: GPL-3+
 Licence_Text: 
 #Header: 
 #/* DO NOT EDIT! GENERATED AUTOMATICALLY! */
@@ -106939,7 +106939,7 @@ Licence_Text:
 File: ./tests/unictype/test-categ_Mc.c
 Hash: 62bb326af42b34ad4602e7a6978de7422a8206d559c67df02ae3be4a6d7729af
 Copyright: 2007 Free Software Foundation, Inc
-License: GPL-3+ GENERATED FILE
+License: GPL-3+
 Licence_Text: 
 #Header: 
 #/* DO NOT EDIT! GENERATED AUTOMATICALLY! */
@@ -106960,8 +106960,8 @@ Licence_Text:
 
 File: ./tests/unictype/test-categ_Me.c
 Hash: 62bb326af42b34ad4602e7a6978de7422a8206d559c67df02ae3be4a6d7729af
-Copyright: 2007 Free Software Foundation, Inc / uc_is_general_category (c, UC_CATEGORY_Me)
-License: GPL-3+ GENERATED FILE
+Copyright: 2007 Free Software Foundation, Inc
+License: GPL-3+
 Licence_Text: 
 #Header: 
 #/* DO NOT EDIT! GENERATED AUTOMATICALLY! */
@@ -106983,7 +106983,7 @@ Licence_Text:
 File: ./tests/unictype/test-categ_Mn.c
 Hash: 62bb326af42b34ad4602e7a6978de7422a8206d559c67df02ae3be4a6d7729af
 Copyright: 2007 Free Software Foundation, Inc
-License: GPL-3+ GENERATED FILE
+License: GPL-3+
 Licence_Text: 
 #Header: 
 #/* DO NOT EDIT! GENERATED AUTOMATICALLY! */
@@ -107005,7 +107005,7 @@ Licence_Text:
 File: ./tests/unictype/test-categ_N.c
 Hash: 62bb326af42b34ad4602e7a6978de7422a8206d559c67df02ae3be4a6d7729af
 Copyright: 2007 Free Software Foundation, Inc
-License: GPL-3+ GENERATED FILE
+License: GPL-3+
 Licence_Text: 
 #Header: 
 #/* DO NOT EDIT! GENERATED AUTOMATICALLY! */
@@ -107026,8 +107026,8 @@ Licence_Text:
 
 File: ./tests/unictype/test-categ_Nd.c
 Hash: 62bb326af42b34ad4602e7a6978de7422a8206d559c67df02ae3be4a6d7729af
-Copyright: 2007 Free Software Foundation, Inc / uc_is_general_category (c, UC_CATEGORY_Nd)
-License: GPL-3+ GENERATED FILE
+Copyright: 2007 Free Software Foundation, Inc
+License: GPL-3+ 
 Licence_Text: 
 #Header: 
 #/* DO NOT EDIT! GENERATED AUTOMATICALLY! */
@@ -107048,8 +107048,8 @@ Licence_Text:
 
 File: ./tests/unictype/test-categ_Nl.c
 Hash: 62bb326af42b34ad4602e7a6978de7422a8206d559c67df02ae3be4a6d7729af
-Copyright: uc_is_general_category (c, UC_CATEGORY_Nl) / 2007 Free Software Foundation, Inc
-License: GPL-3+ GENERATED FILE
+Copyright: 2007 Free Software Foundation, Inc
+License: GPL-3+
 Licence_Text: 
 #Header: 
 #/* DO NOT EDIT! GENERATED AUTOMATICALLY! */
@@ -107070,8 +107070,8 @@ Licence_Text:
 
 File: ./tests/unictype/test-categ_No.c
 Hash: 62bb326af42b34ad4602e7a6978de7422a8206d559c67df02ae3be4a6d7729af
-Copyright: 2007 Free Software Foundation, Inc / uc_is_general_category (c, UC_CATEGORY_No)
-License: GPL-3+ GENERATED FILE
+Copyright: 2007 Free Software Foundation, Inc
+License: GPL-3+ 
 Licence_Text: 
 #Header: 
 #/* DO NOT EDIT! GENERATED AUTOMATICALLY! */
@@ -107093,7 +107093,7 @@ Licence_Text:
 File: ./tests/unictype/test-categ_P.c
 Hash: 62bb326af42b34ad4602e7a6978de7422a8206d559c67df02ae3be4a6d7729af
 Copyright: 2007 Free Software Foundation, Inc
-License: GPL-3+ GENERATED FILE
+License: GPL-3+ 
 Licence_Text: 
 #Header: 
 #/* DO NOT EDIT! GENERATED AUTOMATICALLY! */
@@ -107114,8 +107114,8 @@ Licence_Text:
 
 File: ./tests/unictype/test-categ_Pc.c
 Hash: 62bb326af42b34ad4602e7a6978de7422a8206d559c67df02ae3be4a6d7729af
-Copyright: uc_is_general_category (c, UC_CATEGORY_Pc) / 2007 Free Software Foundation, Inc
-License: GPL-3+ GENERATED FILE
+Copyright: 2007 Free Software Foundation, Inc
+License: GPL-3+
 Licence_Text: 
 #Header: 
 #/* DO NOT EDIT! GENERATED AUTOMATICALLY! */
@@ -107136,8 +107136,8 @@ Licence_Text:
 
 File: ./tests/unictype/test-categ_Pd.c
 Hash: 62bb326af42b34ad4602e7a6978de7422a8206d559c67df02ae3be4a6d7729af
-Copyright: 2007 Free Software Foundation, Inc / uc_is_general_category (c, UC_CATEGORY_Pd)
-License: GPL-3+ GENERATED FILE
+Copyright: 2007 Free Software Foundation, Inc
+License: GPL-3+ 
 Licence_Text: 
 #Header: 
 #/* DO NOT EDIT! GENERATED AUTOMATICALLY! */
@@ -107159,7 +107159,7 @@ Licence_Text:
 File: ./tests/unictype/test-categ_Pe.c
 Hash: 62bb326af42b34ad4602e7a6978de7422a8206d559c67df02ae3be4a6d7729af
 Copyright: 2007 Free Software Foundation, Inc
-License: GPL-3+ GENERATED FILE
+License: GPL-3+
 Licence_Text: 
 #Header: 
 #/* DO NOT EDIT! GENERATED AUTOMATICALLY! */
@@ -107180,8 +107180,8 @@ Licence_Text:
 
 File: ./tests/unictype/test-categ_Pf.c
 Hash: 62bb326af42b34ad4602e7a6978de7422a8206d559c67df02ae3be4a6d7729af
-Copyright: 2007 Free Software Foundation, Inc / uc_is_general_category (c, UC_CATEGORY_Pf)
-License: GPL-3+ GENERATED FILE
+Copyright: 2007 Free Software Foundation, Inc
+License: GPL-3+ 
 Licence_Text: 
 #Header: 
 #/* DO NOT EDIT! GENERATED AUTOMATICALLY! */
@@ -107202,8 +107202,8 @@ Licence_Text:
 
 File: ./tests/unictype/test-categ_Pi.c
 Hash: 62bb326af42b34ad4602e7a6978de7422a8206d559c67df02ae3be4a6d7729af
-Copyright: uc_is_general_category (c, UC_CATEGORY_Pi) / 2007 Free Software Foundation, Inc
-License: GPL-3+ GENERATED FILE
+Copyright: 2007 Free Software Foundation, Inc
+License: GPL-3+
 Licence_Text: 
 #Header: 
 #/* DO NOT EDIT! GENERATED AUTOMATICALLY! */
@@ -107225,7 +107225,7 @@ Licence_Text:
 File: ./tests/unictype/test-categ_Po.c
 Hash: 62bb326af42b34ad4602e7a6978de7422a8206d559c67df02ae3be4a6d7729af
 Copyright: 2007 Free Software Foundation, Inc
-License: GPL-3+ GENERATED FILE
+License: GPL-3+
 Licence_Text: 
 #Header: 
 #/* DO NOT EDIT! GENERATED AUTOMATICALLY! */
@@ -107247,7 +107247,7 @@ Licence_Text:
 File: ./tests/unictype/test-categ_Ps.c
 Hash: 62bb326af42b34ad4602e7a6978de7422a8206d559c67df02ae3be4a6d7729af
 Copyright: 2007 Free Software Foundation, Inc
-License: GPL-3+ GENERATED FILE
+License: GPL-3+
 Licence_Text: 
 #Header: 
 #/* DO NOT EDIT! GENERATED AUTOMATICALLY! */
@@ -107269,7 +107269,7 @@ Licence_Text:
 File: ./tests/unictype/test-categ_S.c
 Hash: 62bb326af42b34ad4602e7a6978de7422a8206d559c67df02ae3be4a6d7729af
 Copyright: 2007 Free Software Foundation, Inc
-License: GPL-3+ GENERATED FILE
+License: GPL-3+
 Licence_Text: 
 #Header: 
 #/* DO NOT EDIT! GENERATED AUTOMATICALLY! */
@@ -107290,8 +107290,8 @@ Licence_Text:
 
 File: ./tests/unictype/test-categ_Sc.c
 Hash: 62bb326af42b34ad4602e7a6978de7422a8206d559c67df02ae3be4a6d7729af
-Copyright: 2007 Free Software Foundation, Inc / uc_is_general_category (c, UC_CATEGORY_Sc)
-License: GPL-3+ GENERATED FILE
+Copyright: 2007 Free Software Foundation, Inc
+License: GPL-3+
 Licence_Text: 
 #Header: 
 #/* DO NOT EDIT! GENERATED AUTOMATICALLY! */
@@ -107312,8 +107312,8 @@ Licence_Text:
 
 File: ./tests/unictype/test-categ_Sk.c
 Hash: 62bb326af42b34ad4602e7a6978de7422a8206d559c67df02ae3be4a6d7729af
-Copyright: uc_is_general_category (c, UC_CATEGORY_Sk) / 2007 Free Software Foundation, Inc
-License: GPL-3+ GENERATED FILE
+Copyright: 2007 Free Software Foundation, Inc
+License: GPL-3+
 Licence_Text: 
 #Header: 
 #/* DO NOT EDIT! GENERATED AUTOMATICALLY! */
@@ -107335,7 +107335,7 @@ Licence_Text:
 File: ./tests/unictype/test-categ_Sm.c
 Hash: 62bb326af42b34ad4602e7a6978de7422a8206d559c67df02ae3be4a6d7729af
 Copyright: 2007 Free Software Foundation, Inc
-License: GPL-3+ GENERATED FILE
+License: GPL-3+
 Licence_Text: 
 #Header: 
 #/* DO NOT EDIT! GENERATED AUTOMATICALLY! */
@@ -107357,7 +107357,7 @@ Licence_Text:
 File: ./tests/unictype/test-categ_So.c
 Hash: 62bb326af42b34ad4602e7a6978de7422a8206d559c67df02ae3be4a6d7729af
 Copyright: 2007 Free Software Foundation, Inc
-License: GPL-3+ GENERATED FILE
+License: GPL-3+
 Licence_Text: 
 #Header: 
 #/* DO NOT EDIT! GENERATED AUTOMATICALLY! */
@@ -107378,8 +107378,8 @@ Licence_Text:
 
 File: ./tests/unictype/test-categ_Z.c
 Hash: 62bb326af42b34ad4602e7a6978de7422a8206d559c67df02ae3be4a6d7729af
-Copyright: uc_is_general_category (c, UC_CATEGORY_Z) / 2007 Free Software Foundation, Inc
-License: GPL-3+ GENERATED FILE
+Copyright: 2007 Free Software Foundation, Inc
+License: GPL-3+
 Licence_Text: 
 #Header: 
 #/* DO NOT EDIT! GENERATED AUTOMATICALLY! */
@@ -107400,8 +107400,8 @@ Licence_Text:
 
 File: ./tests/unictype/test-categ_Zl.c
 Hash: 62bb326af42b34ad4602e7a6978de7422a8206d559c67df02ae3be4a6d7729af
-Copyright: 2007 Free Software Foundation, Inc / uc_is_general_category (c, UC_CATEGORY_Zl)
-License: GPL-3+ GENERATED FILE
+Copyright: 2007 Free Software Foundation, Inc
+License: GPL-3+
 Licence_Text: 
 #Header: 
 #/* DO NOT EDIT! GENERATED AUTOMATICALLY! */
@@ -107422,8 +107422,8 @@ Licence_Text:
 
 File: ./tests/unictype/test-categ_Zp.c
 Hash: 62bb326af42b34ad4602e7a6978de7422a8206d559c67df02ae3be4a6d7729af
-Copyright: uc_is_general_category (c, UC_CATEGORY_Zp) / 2007 Free Software Foundation, Inc
-License: GPL-3+ GENERATED FILE
+Copyright: 2007 Free Software Foundation, Inc
+License: GPL-3+
 Licence_Text: 
 #Header: 
 #/* DO NOT EDIT! GENERATED AUTOMATICALLY! */
@@ -107444,8 +107444,8 @@ Licence_Text:
 
 File: ./tests/unictype/test-categ_Zs.c
 Hash: 62bb326af42b34ad4602e7a6978de7422a8206d559c67df02ae3be4a6d7729af
-Copyright: uc_is_general_category (c, UC_CATEGORY_Zs) / 2007 Free Software Foundation, Inc
-License: GPL-3+ GENERATED FILE
+Copyright: 2007 Free Software Foundation, Inc
+License: GPL-3+
 Licence_Text: 
 #Header: 
 #/* DO NOT EDIT! GENERATED AUTOMATICALLY! */
@@ -107665,7 +107665,7 @@ Licence_Text:
 File: ./tests/unictype/test-ctype_alnum.c
 Hash: 62bb326af42b34ad4602e7a6978de7422a8206d559c67df02ae3be4a6d7729af
 Copyright: 2007 Free Software Foundation, Inc
-License: GPL-3+ GENERATED FILE
+License: GPL-3+
 Licence_Text: 
 #Header: 
 #/* DO NOT EDIT! GENERATED AUTOMATICALLY! */
@@ -107687,7 +107687,7 @@ Licence_Text:
 File: ./tests/unictype/test-ctype_alpha.c
 Hash: 62bb326af42b34ad4602e7a6978de7422a8206d559c67df02ae3be4a6d7729af
 Copyright: 2007 Free Software Foundation, Inc
-License: GPL-3+ GENERATED FILE
+License: GPL-3+
 Licence_Text: 
 #Header: 
 #/* DO NOT EDIT! GENERATED AUTOMATICALLY! */
@@ -107709,7 +107709,7 @@ Licence_Text:
 File: ./tests/unictype/test-ctype_blank.c
 Hash: 62bb326af42b34ad4602e7a6978de7422a8206d559c67df02ae3be4a6d7729af
 Copyright: 2007 Free Software Foundation, Inc / uc_is_blank 
-License: GPL-3+ GENERATED FILE
+License: GPL-3+
 Licence_Text: 
 #Header: 
 #/* DO NOT EDIT! GENERATED AUTOMATICALLY! */
@@ -107731,7 +107731,7 @@ Licence_Text:
 File: ./tests/unictype/test-ctype_cntrl.c
 Hash: 62bb326af42b34ad4602e7a6978de7422a8206d559c67df02ae3be4a6d7729af
 Copyright: 2007 Free Software Foundation, Inc / uc_is_cntrl 
-License: GPL-3+ GENERATED FILE
+License: GPL-3+
 Licence_Text: 
 #Header: 
 #/* DO NOT EDIT! GENERATED AUTOMATICALLY! */
@@ -107753,7 +107753,7 @@ Licence_Text:
 File: ./tests/unictype/test-ctype_digit.c
 Hash: 62bb326af42b34ad4602e7a6978de7422a8206d559c67df02ae3be4a6d7729af
 Copyright: 2007 Free Software Foundation, Inc / uc_is_digit 
-License: GPL-3+ GENERATED FILE
+License: GPL-3+
 Licence_Text: 
 #Header: 
 #/* DO NOT EDIT! GENERATED AUTOMATICALLY! */
@@ -107775,7 +107775,7 @@ Licence_Text:
 File: ./tests/unictype/test-ctype_graph.c
 Hash: 62bb326af42b34ad4602e7a6978de7422a8206d559c67df02ae3be4a6d7729af
 Copyright: 2007 Free Software Foundation, Inc
-License: GPL-3+ GENERATED FILE
+License: GPL-3+
 Licence_Text: 
 #Header: 
 #/* DO NOT EDIT! GENERATED AUTOMATICALLY! */
@@ -107797,7 +107797,7 @@ Licence_Text:
 File: ./tests/unictype/test-ctype_lower.c
 Hash: 62bb326af42b34ad4602e7a6978de7422a8206d559c67df02ae3be4a6d7729af
 Copyright: 2007 Free Software Foundation, Inc
-License: GPL-3+ GENERATED FILE
+License: GPL-3+
 Licence_Text: 
 #Header: 
 #/* DO NOT EDIT! GENERATED AUTOMATICALLY! */
@@ -107819,7 +107819,7 @@ Licence_Text:
 File: ./tests/unictype/test-ctype_print.c
 Hash: 62bb326af42b34ad4602e7a6978de7422a8206d559c67df02ae3be4a6d7729af
 Copyright: 2007 Free Software Foundation, Inc
-License: GPL-3+ GENERATED FILE
+License: GPL-3+
 Licence_Text: 
 #Header: 
 #/* DO NOT EDIT! GENERATED AUTOMATICALLY! */
@@ -107841,7 +107841,7 @@ Licence_Text:
 File: ./tests/unictype/test-ctype_punct.c
 Hash: 62bb326af42b34ad4602e7a6978de7422a8206d559c67df02ae3be4a6d7729af
 Copyright: 2007 Free Software Foundation, Inc
-License: GPL-3+ GENERATED FILE
+License: GPL-3+
 Licence_Text: 
 #Header: 
 #/* DO NOT EDIT! GENERATED AUTOMATICALLY! */
@@ -107862,8 +107862,8 @@ Licence_Text:
 
 File: ./tests/unictype/test-ctype_space.c
 Hash: 62bb326af42b34ad4602e7a6978de7422a8206d559c67df02ae3be4a6d7729af
-Copyright: 2007 Free Software Foundation, Inc / uc_is_space 
-License: GPL-3+ GENERATED FILE
+Copyright: 2007 Free Software Foundation, Inc
+License: GPL-3+
 Licence_Text: 
 #Header: 
 #/* DO NOT EDIT! GENERATED AUTOMATICALLY! */
@@ -107885,7 +107885,7 @@ Licence_Text:
 File: ./tests/unictype/test-ctype_upper.c
 Hash: 62bb326af42b34ad4602e7a6978de7422a8206d559c67df02ae3be4a6d7729af
 Copyright: 2007 Free Software Foundation, Inc
-License: GPL-3+ GENERATED FILE
+License: GPL-3+
 Licence_Text: 
 #Header: 
 #/* DO NOT EDIT! GENERATED AUTOMATICALLY! */
@@ -107906,8 +107906,8 @@ Licence_Text:
 
 File: ./tests/unictype/test-ctype_xdigit.c
 Hash: 62bb326af42b34ad4602e7a6978de7422a8206d559c67df02ae3be4a6d7729af
-Copyright: uc_is_xdigit  / 2007 Free Software Foundation, Inc
-License: GPL-3+ GENERATED FILE
+Copyright: 2007 Free Software Foundation, Inc
+License: GPL-3+
 Licence_Text: 
 #Header: 
 #/* DO NOT EDIT! GENERATED AUTOMATICALLY! */
@@ -107928,7 +107928,7 @@ Licence_Text:
 
 File: ./tests/unictype/test-decdigit.c
 Hash: a20a323abdbfa289c8ac6694f8b494cbe3c0a7f45989bcf2ad9cb009c8bd8122
-Copyright: == mapping[i].value); / == -1); / 2007-2008 Free Software Foundation, Inc
+Copyright: 2007-2008 Free Software Foundation, Inc
 License: GPL-3+ 
 Licence_Text: 
 #Header: 
@@ -107972,7 +107972,7 @@ Licence_Text:
 
 File: ./tests/unictype/test-digit.c
 Hash: a20a323abdbfa289c8ac6694f8b494cbe3c0a7f45989bcf2ad9cb009c8bd8122
-Copyright: == mapping[i].value); / == -1); / 2007-2008 Free Software Foundation, Inc
+Copyright: 2007-2008 Free Software Foundation, Inc
 License: GPL-3+ 
 Licence_Text: 
 #Header: 
@@ -108083,7 +108083,7 @@ Licence_Text:
 File: ./tests/unictype/test-pr_alphabetic.c
 Hash: 62bb326af42b34ad4602e7a6978de7422a8206d559c67df02ae3be4a6d7729af
 Copyright: 2007 Free Software Foundation, Inc
-License: GPL-3+ GENERATED FILE
+License: GPL-3+
 Licence_Text: 
 #Header: 
 #/* DO NOT EDIT! GENERATED AUTOMATICALLY! */
@@ -108104,8 +108104,8 @@ Licence_Text:
 
 File: ./tests/unictype/test-pr_ascii_hex_digit.c
 Hash: 62bb326af42b34ad4602e7a6978de7422a8206d559c67df02ae3be4a6d7729af
-Copyright: uc_is_property_ascii_hex_digit  / 2007 Free Software Foundation, Inc
-License: GPL-3+ GENERATED FILE
+Copyright: 2007 Free Software Foundation, Inc
+License: GPL-3+
 Licence_Text: 
 #Header: 
 #/* DO NOT EDIT! GENERATED AUTOMATICALLY! */
@@ -108126,8 +108126,8 @@ Licence_Text:
 
 File: ./tests/unictype/test-pr_bidi_arabic_digit.c
 Hash: 62bb326af42b34ad4602e7a6978de7422a8206d559c67df02ae3be4a6d7729af
-Copyright: 2007 Free Software Foundation, Inc / uc_is_property_bidi_arabic_digit 
-License: GPL-3+ GENERATED FILE
+Copyright: 2007 Free Software Foundation, Inc
+License: GPL-3+ 
 Licence_Text: 
 #Header: 
 #/* DO NOT EDIT! GENERATED AUTOMATICALLY! */
@@ -108148,8 +108148,8 @@ Licence_Text:
 
 File: ./tests/unictype/test-pr_bidi_arabic_right_to_left.c
 Hash: 62bb326af42b34ad4602e7a6978de7422a8206d559c67df02ae3be4a6d7729af
-Copyright: uc_is_property_bidi_arabic_right_to_left  / 2007 Free Software Foundation, Inc
-License: GPL-3+ GENERATED FILE
+Copyright: 2007 Free Software Foundation, Inc
+License: GPL-3+
 Licence_Text: 
 #Header: 
 #/* DO NOT EDIT! GENERATED AUTOMATICALLY! */
@@ -108170,8 +108170,8 @@ Licence_Text:
 
 File: ./tests/unictype/test-pr_bidi_block_separator.c
 Hash: 62bb326af42b34ad4602e7a6978de7422a8206d559c67df02ae3be4a6d7729af
-Copyright: 2007 Free Software Foundation, Inc / uc_is_property_bidi_block_separator 
-License: GPL-3+ GENERATED FILE
+Copyright: 2007 Free Software Foundation, Inc
+License: GPL-3+ 
 Licence_Text: 
 #Header: 
 #/* DO NOT EDIT! GENERATED AUTOMATICALLY! */
@@ -108192,8 +108192,8 @@ Licence_Text:
 
 File: ./tests/unictype/test-pr_bidi_boundary_neutral.c
 Hash: 62bb326af42b34ad4602e7a6978de7422a8206d559c67df02ae3be4a6d7729af
-Copyright: uc_is_property_bidi_boundary_neutral  / 2007 Free Software Foundation, Inc
-License: GPL-3+ GENERATED FILE
+Copyright: 2007 Free Software Foundation, Inc
+License: GPL-3+
 Licence_Text: 
 #Header: 
 #/* DO NOT EDIT! GENERATED AUTOMATICALLY! */
@@ -108214,8 +108214,8 @@ Licence_Text:
 
 File: ./tests/unictype/test-pr_bidi_common_separator.c
 Hash: 62bb326af42b34ad4602e7a6978de7422a8206d559c67df02ae3be4a6d7729af
-Copyright: uc_is_property_bidi_common_separator  / 2007 Free Software Foundation, Inc
-License: GPL-3+ GENERATED FILE
+Copyright: 2007 Free Software Foundation, Inc
+License: GPL-3+
 Licence_Text: 
 #Header: 
 #/* DO NOT EDIT! GENERATED AUTOMATICALLY! */
@@ -108236,8 +108236,8 @@ Licence_Text:
 
 File: ./tests/unictype/test-pr_bidi_control.c
 Hash: 62bb326af42b34ad4602e7a6978de7422a8206d559c67df02ae3be4a6d7729af
-Copyright: uc_is_property_bidi_control  / 2007 Free Software Foundation, Inc
-License: GPL-3+ GENERATED FILE
+Copyright: 2007 Free Software Foundation, Inc
+License: GPL-3+
 Licence_Text: 
 #Header: 
 #/* DO NOT EDIT! GENERATED AUTOMATICALLY! */
@@ -108258,8 +108258,8 @@ Licence_Text:
 
 File: ./tests/unictype/test-pr_bidi_embedding_or_override.c
 Hash: 62bb326af42b34ad4602e7a6978de7422a8206d559c67df02ae3be4a6d7729af
-Copyright: uc_is_property_bidi_embedding_or_override  / 2007 Free Software Foundation, Inc
-License: GPL-3+ GENERATED FILE
+Copyright: 2007 Free Software Foundation, Inc
+License: GPL-3+
 Licence_Text: 
 #Header: 
 #/* DO NOT EDIT! GENERATED AUTOMATICALLY! */
@@ -108280,8 +108280,8 @@ Licence_Text:
 
 File: ./tests/unictype/test-pr_bidi_eur_num_separator.c
 Hash: 62bb326af42b34ad4602e7a6978de7422a8206d559c67df02ae3be4a6d7729af
-Copyright: 2007 Free Software Foundation, Inc / uc_is_property_bidi_eur_num_separator 
-License: GPL-3+ GENERATED FILE
+Copyright: 2007 Free Software Foundation, Inc
+License: GPL-3+
 Licence_Text: 
 #Header: 
 #/* DO NOT EDIT! GENERATED AUTOMATICALLY! */
@@ -108302,8 +108302,8 @@ Licence_Text:
 
 File: ./tests/unictype/test-pr_bidi_eur_num_terminator.c
 Hash: 62bb326af42b34ad4602e7a6978de7422a8206d559c67df02ae3be4a6d7729af
-Copyright: uc_is_property_bidi_eur_num_terminator  / 2007 Free Software Foundation, Inc
-License: GPL-3+ GENERATED FILE
+Copyright: 2007 Free Software Foundation, Inc
+License: GPL-3+
 Licence_Text: 
 #Header: 
 #/* DO NOT EDIT! GENERATED AUTOMATICALLY! */
@@ -108324,8 +108324,8 @@ Licence_Text:
 
 File: ./tests/unictype/test-pr_bidi_european_digit.c
 Hash: 62bb326af42b34ad4602e7a6978de7422a8206d559c67df02ae3be4a6d7729af
-Copyright: uc_is_property_bidi_european_digit  / 2007 Free Software Foundation, Inc
-License: GPL-3+ GENERATED FILE
+Copyright: 2007 Free Software Foundation, Inc
+License: GPL-3+
 Licence_Text: 
 #Header: 
 #/* DO NOT EDIT! GENERATED AUTOMATICALLY! */
@@ -108346,8 +108346,8 @@ Licence_Text:
 
 File: ./tests/unictype/test-pr_bidi_hebrew_right_to_left.c
 Hash: 62bb326af42b34ad4602e7a6978de7422a8206d559c67df02ae3be4a6d7729af
-Copyright: 2007 Free Software Foundation, Inc / uc_is_property_bidi_hebrew_right_to_left 
-License: GPL-3+ GENERATED FILE
+Copyright: 2007 Free Software Foundation, Inc
+License: GPL-3+ 
 Licence_Text: 
 #Header: 
 #/* DO NOT EDIT! GENERATED AUTOMATICALLY! */
@@ -108369,7 +108369,7 @@ Licence_Text:
 File: ./tests/unictype/test-pr_bidi_left_to_right.c
 Hash: 62bb326af42b34ad4602e7a6978de7422a8206d559c67df02ae3be4a6d7729af
 Copyright: 2007 Free Software Foundation, Inc
-License: GPL-3+ GENERATED FILE
+License: GPL-3+
 Licence_Text: 
 #Header: 
 #/* DO NOT EDIT! GENERATED AUTOMATICALLY! */
@@ -108391,7 +108391,7 @@ Licence_Text:
 File: ./tests/unictype/test-pr_bidi_non_spacing_mark.c
 Hash: 62bb326af42b34ad4602e7a6978de7422a8206d559c67df02ae3be4a6d7729af
 Copyright: 2007 Free Software Foundation, Inc
-License: GPL-3+ GENERATED FILE
+License: GPL-3+
 Licence_Text: 
 #Header: 
 #/* DO NOT EDIT! GENERATED AUTOMATICALLY! */
@@ -108413,7 +108413,7 @@ Licence_Text:
 File: ./tests/unictype/test-pr_bidi_other_neutral.c
 Hash: 62bb326af42b34ad4602e7a6978de7422a8206d559c67df02ae3be4a6d7729af
 Copyright: 2007 Free Software Foundation, Inc
-License: GPL-3+ GENERATED FILE
+License: GPL-3+
 Licence_Text: 
 #Header: 
 #/* DO NOT EDIT! GENERATED AUTOMATICALLY! */
@@ -108434,8 +108434,8 @@ Licence_Text:
 
 File: ./tests/unictype/test-pr_bidi_pdf.c
 Hash: 62bb326af42b34ad4602e7a6978de7422a8206d559c67df02ae3be4a6d7729af
-Copyright: 2007 Free Software Foundation, Inc / uc_is_property_bidi_pdf 
-License: GPL-3+ GENERATED FILE
+Copyright: 2007 Free Software Foundation, Inc
+License: GPL-3+
 Licence_Text: 
 #Header: 
 #/* DO NOT EDIT! GENERATED AUTOMATICALLY! */
@@ -108456,8 +108456,8 @@ Licence_Text:
 
 File: ./tests/unictype/test-pr_bidi_segment_separator.c
 Hash: 62bb326af42b34ad4602e7a6978de7422a8206d559c67df02ae3be4a6d7729af
-Copyright: 2007 Free Software Foundation, Inc / uc_is_property_bidi_segment_separator 
-License: GPL-3+ GENERATED FILE
+Copyright: 2007 Free Software Foundation, Inc
+License: GPL-3+ 
 Licence_Text: 
 #Header: 
 #/* DO NOT EDIT! GENERATED AUTOMATICALLY! */
@@ -108478,8 +108478,8 @@ Licence_Text:
 
 File: ./tests/unictype/test-pr_bidi_whitespace.c
 Hash: 62bb326af42b34ad4602e7a6978de7422a8206d559c67df02ae3be4a6d7729af
-Copyright: 2007 Free Software Foundation, Inc / uc_is_property_bidi_whitespace 
-License: GPL-3+ GENERATED FILE
+Copyright: 2007 Free Software Foundation, Inc
+License: GPL-3+
 Licence_Text: 
 #Header: 
 #/* DO NOT EDIT! GENERATED AUTOMATICALLY! */
@@ -108523,7 +108523,7 @@ Licence_Text:
 File: ./tests/unictype/test-pr_combining.c
 Hash: 62bb326af42b34ad4602e7a6978de7422a8206d559c67df02ae3be4a6d7729af
 Copyright: 2007 Free Software Foundation, Inc
-License: GPL-3+ GENERATED FILE
+License: GPL-3+
 Licence_Text: 
 #Header: 
 #/* DO NOT EDIT! GENERATED AUTOMATICALLY! */
@@ -108545,7 +108545,7 @@ Licence_Text:
 File: ./tests/unictype/test-pr_composite.c
 Hash: 62bb326af42b34ad4602e7a6978de7422a8206d559c67df02ae3be4a6d7729af
 Copyright: 2007 Free Software Foundation, Inc
-License: GPL-3+ GENERATED FILE
+License: GPL-3+
 Licence_Text: 
 #Header: 
 #/* DO NOT EDIT! GENERATED AUTOMATICALLY! */
@@ -108566,8 +108566,8 @@ Licence_Text:
 
 File: ./tests/unictype/test-pr_currency_symbol.c
 Hash: 62bb326af42b34ad4602e7a6978de7422a8206d559c67df02ae3be4a6d7729af
-Copyright: uc_is_property_currency_symbol  / 2007 Free Software Foundation, Inc
-License: GPL-3+ GENERATED FILE
+Copyright: 2007 Free Software Foundation, Inc
+License: GPL-3+
 Licence_Text: 
 #Header: 
 #/* DO NOT EDIT! GENERATED AUTOMATICALLY! */
@@ -108588,8 +108588,8 @@ Licence_Text:
 
 File: ./tests/unictype/test-pr_dash.c
 Hash: 62bb326af42b34ad4602e7a6978de7422a8206d559c67df02ae3be4a6d7729af
-Copyright: 2007 Free Software Foundation, Inc / uc_is_property_dash 
-License: GPL-3+ GENERATED FILE
+Copyright: 2007 Free Software Foundation, Inc
+License: GPL-3+ 
 Licence_Text: 
 #Header: 
 #/* DO NOT EDIT! GENERATED AUTOMATICALLY! */
@@ -108610,8 +108610,8 @@ Licence_Text:
 
 File: ./tests/unictype/test-pr_decimal_digit.c
 Hash: 62bb326af42b34ad4602e7a6978de7422a8206d559c67df02ae3be4a6d7729af
-Copyright: 2007 Free Software Foundation, Inc / uc_is_property_decimal_digit 
-License: GPL-3+ GENERATED FILE
+Copyright: 2007 Free Software Foundation, Inc
+License: GPL-3+ 
 Licence_Text: 
 #Header: 
 #/* DO NOT EDIT! GENERATED AUTOMATICALLY! */
@@ -108632,8 +108632,8 @@ Licence_Text:
 
 File: ./tests/unictype/test-pr_default_ignorable_code_point.c
 Hash: 62bb326af42b34ad4602e7a6978de7422a8206d559c67df02ae3be4a6d7729af
-Copyright: uc_is_property_default_ignorable_code_point  / 2007 Free Software Foundation, Inc
-License: GPL-3+ GENERATED FILE
+Copyright: 2007 Free Software Foundation, Inc
+License: GPL-3+
 Licence_Text: 
 #Header: 
 #/* DO NOT EDIT! GENERATED AUTOMATICALLY! */
@@ -108654,8 +108654,8 @@ Licence_Text:
 
 File: ./tests/unictype/test-pr_deprecated.c
 Hash: 62bb326af42b34ad4602e7a6978de7422a8206d559c67df02ae3be4a6d7729af
-Copyright: 2007 Free Software Foundation, Inc / uc_is_property_deprecated 
-License: GPL-3+ GENERATED FILE
+Copyright: 2007 Free Software Foundation, Inc
+License: GPL-3+ 
 Licence_Text: 
 #Header: 
 #/* DO NOT EDIT! GENERATED AUTOMATICALLY! */
@@ -108677,7 +108677,7 @@ Licence_Text:
 File: ./tests/unictype/test-pr_diacritic.c
 Hash: 62bb326af42b34ad4602e7a6978de7422a8206d559c67df02ae3be4a6d7729af
 Copyright: 2007 Free Software Foundation, Inc
-License: GPL-3+ GENERATED FILE
+License: GPL-3+
 Licence_Text: 
 #Header: 
 #/* DO NOT EDIT! GENERATED AUTOMATICALLY! */
@@ -108698,8 +108698,8 @@ Licence_Text:
 
 File: ./tests/unictype/test-pr_extender.c
 Hash: 62bb326af42b34ad4602e7a6978de7422a8206d559c67df02ae3be4a6d7729af
-Copyright: 2007 Free Software Foundation, Inc / uc_is_property_extender 
-License: GPL-3+ GENERATED FILE
+Copyright: 2007 Free Software Foundation, Inc
+License: GPL-3+ 
 Licence_Text: 
 #Header: 
 #/* DO NOT EDIT! GENERATED AUTOMATICALLY! */
@@ -108720,8 +108720,8 @@ Licence_Text:
 
 File: ./tests/unictype/test-pr_format_control.c
 Hash: 62bb326af42b34ad4602e7a6978de7422a8206d559c67df02ae3be4a6d7729af
-Copyright: 2007 Free Software Foundation, Inc / uc_is_property_format_control 
-License: GPL-3+ GENERATED FILE
+Copyright: 2007 Free Software Foundation, Inc
+License: GPL-3+ 
 Licence_Text: 
 #Header: 
 #/* DO NOT EDIT! GENERATED AUTOMATICALLY! */
@@ -108743,7 +108743,7 @@ Licence_Text:
 File: ./tests/unictype/test-pr_grapheme_base.c
 Hash: 62bb326af42b34ad4602e7a6978de7422a8206d559c67df02ae3be4a6d7729af
 Copyright: 2007 Free Software Foundation, Inc
-License: GPL-3+ GENERATED FILE
+License: GPL-3+ 
 Licence_Text: 
 #Header: 
 #/* DO NOT EDIT! GENERATED AUTOMATICALLY! */
@@ -108765,7 +108765,7 @@ Licence_Text:
 File: ./tests/unictype/test-pr_grapheme_extend.c
 Hash: 62bb326af42b34ad4602e7a6978de7422a8206d559c67df02ae3be4a6d7729af
 Copyright: 2007 Free Software Foundation, Inc
-License: GPL-3+ GENERATED FILE
+License: GPL-3+ 
 Licence_Text: 
 #Header: 
 #/* DO NOT EDIT! GENERATED AUTOMATICALLY! */
@@ -108786,8 +108786,8 @@ Licence_Text:
 
 File: ./tests/unictype/test-pr_grapheme_link.c
 Hash: 62bb326af42b34ad4602e7a6978de7422a8206d559c67df02ae3be4a6d7729af
-Copyright: 2007 Free Software Foundation, Inc / uc_is_property_grapheme_link 
-License: GPL-3+ GENERATED FILE
+Copyright: 2007 Free Software Foundation, Inc
+License: GPL-3+ 
 Licence_Text: 
 #Header: 
 #/* DO NOT EDIT! GENERATED AUTOMATICALLY! */
@@ -108808,8 +108808,8 @@ Licence_Text:
 
 File: ./tests/unictype/test-pr_hex_digit.c
 Hash: 62bb326af42b34ad4602e7a6978de7422a8206d559c67df02ae3be4a6d7729af
-Copyright: uc_is_property_hex_digit  / 2007 Free Software Foundation, Inc
-License: GPL-3+ GENERATED FILE
+Copyright: 2007 Free Software Foundation, Inc
+License: GPL-3+
 Licence_Text: 
 #Header: 
 #/* DO NOT EDIT! GENERATED AUTOMATICALLY! */
@@ -108830,8 +108830,8 @@ Licence_Text:
 
 File: ./tests/unictype/test-pr_hyphen.c
 Hash: 62bb326af42b34ad4602e7a6978de7422a8206d559c67df02ae3be4a6d7729af
-Copyright: 2007 Free Software Foundation, Inc / uc_is_property_hyphen 
-License: GPL-3+ GENERATED FILE
+Copyright: 2007 Free Software Foundation, Inc
+License: GPL-3+ 
 Licence_Text: 
 #Header: 
 #/* DO NOT EDIT! GENERATED AUTOMATICALLY! */
@@ -108853,7 +108853,7 @@ Licence_Text:
 File: ./tests/unictype/test-pr_id_continue.c
 Hash: 62bb326af42b34ad4602e7a6978de7422a8206d559c67df02ae3be4a6d7729af
 Copyright: 2007 Free Software Foundation, Inc
-License: GPL-3+ GENERATED FILE
+License: GPL-3+ 
 Licence_Text: 
 #Header: 
 #/* DO NOT EDIT! GENERATED AUTOMATICALLY! */
@@ -108875,7 +108875,7 @@ Licence_Text:
 File: ./tests/unictype/test-pr_id_start.c
 Hash: 62bb326af42b34ad4602e7a6978de7422a8206d559c67df02ae3be4a6d7729af
 Copyright: 2007 Free Software Foundation, Inc
-License: GPL-3+ GENERATED FILE
+License: GPL-3+ 
 Licence_Text: 
 #Header: 
 #/* DO NOT EDIT! GENERATED AUTOMATICALLY! */
@@ -108896,8 +108896,8 @@ Licence_Text:
 
 File: ./tests/unictype/test-pr_ideographic.c
 Hash: 62bb326af42b34ad4602e7a6978de7422a8206d559c67df02ae3be4a6d7729af
-Copyright: uc_is_property_ideographic  / 2007 Free Software Foundation, Inc
-License: GPL-3+ GENERATED FILE
+Copyright: 2007 Free Software Foundation, Inc
+License: GPL-3+ 
 Licence_Text: 
 #Header: 
 #/* DO NOT EDIT! GENERATED AUTOMATICALLY! */
@@ -108918,8 +108918,8 @@ Licence_Text:
 
 File: ./tests/unictype/test-pr_ids_binary_operator.c
 Hash: 62bb326af42b34ad4602e7a6978de7422a8206d559c67df02ae3be4a6d7729af
-Copyright: uc_is_property_ids_binary_operator  / 2007 Free Software Foundation, Inc
-License: GPL-3+ GENERATED FILE
+Copyright: 2007 Free Software Foundation, Inc
+License: GPL-3+
 Licence_Text: 
 #Header: 
 #/* DO NOT EDIT! GENERATED AUTOMATICALLY! */
@@ -108940,8 +108940,8 @@ Licence_Text:
 
 File: ./tests/unictype/test-pr_ids_trinary_operator.c
 Hash: 62bb326af42b34ad4602e7a6978de7422a8206d559c67df02ae3be4a6d7729af
-Copyright: 2007 Free Software Foundation, Inc / uc_is_property_ids_trinary_operator 
-License: GPL-3+ GENERATED FILE
+Copyright: 2007 Free Software Foundation, Inc
+License: GPL-3+
 Licence_Text: 
 #Header: 
 #/* DO NOT EDIT! GENERATED AUTOMATICALLY! */
@@ -108962,8 +108962,8 @@ Licence_Text:
 
 File: ./tests/unictype/test-pr_ignorable_control.c
 Hash: 62bb326af42b34ad4602e7a6978de7422a8206d559c67df02ae3be4a6d7729af
-Copyright: uc_is_property_ignorable_control  / 2007 Free Software Foundation, Inc
-License: GPL-3+ GENERATED FILE
+Copyright: 2007 Free Software Foundation, Inc
+License: GPL-3+ 
 Licence_Text: 
 #Header: 
 #/* DO NOT EDIT! GENERATED AUTOMATICALLY! */
@@ -108984,8 +108984,8 @@ Licence_Text:
 
 File: ./tests/unictype/test-pr_iso_control.c
 Hash: 62bb326af42b34ad4602e7a6978de7422a8206d559c67df02ae3be4a6d7729af
-Copyright: 2007 Free Software Foundation, Inc / uc_is_property_iso_control 
-License: GPL-3+ GENERATED FILE
+Copyright: 2007 Free Software Foundation, Inc
+License: GPL-3+ 
 Licence_Text: 
 #Header: 
 #/* DO NOT EDIT! GENERATED AUTOMATICALLY! */
@@ -109006,8 +109006,8 @@ Licence_Text:
 
 File: ./tests/unictype/test-pr_join_control.c
 Hash: 62bb326af42b34ad4602e7a6978de7422a8206d559c67df02ae3be4a6d7729af
-Copyright: uc_is_property_join_control  / 2007 Free Software Foundation, Inc
-License: GPL-3+ GENERATED FILE
+Copyright: 2007 Free Software Foundation, Inc
+License: GPL-3+ 
 Licence_Text: 
 #Header: 
 #/* DO NOT EDIT! GENERATED AUTOMATICALLY! */
@@ -109029,7 +109029,7 @@ Licence_Text:
 File: ./tests/unictype/test-pr_left_of_pair.c
 Hash: 62bb326af42b34ad4602e7a6978de7422a8206d559c67df02ae3be4a6d7729af
 Copyright: 2007 Free Software Foundation, Inc
-License: GPL-3+ GENERATED FILE
+License: GPL-3+ 
 Licence_Text: 
 #Header: 
 #/* DO NOT EDIT! GENERATED AUTOMATICALLY! */
@@ -109050,8 +109050,8 @@ Licence_Text:
 
 File: ./tests/unictype/test-pr_line_separator.c
 Hash: 62bb326af42b34ad4602e7a6978de7422a8206d559c67df02ae3be4a6d7729af
-Copyright: 2007 Free Software Foundation, Inc / uc_is_property_line_separator 
-License: GPL-3+ GENERATED FILE
+Copyright: 2007 Free Software Foundation, Inc
+License: GPL-3+ 
 Licence_Text: 
 #Header: 
 #/* DO NOT EDIT! GENERATED AUTOMATICALLY! */
@@ -109072,8 +109072,8 @@ Licence_Text:
 
 File: ./tests/unictype/test-pr_logical_order_exception.c
 Hash: 62bb326af42b34ad4602e7a6978de7422a8206d559c67df02ae3be4a6d7729af
-Copyright: uc_is_property_logical_order_exception  / 2007 Free Software Foundation, Inc
-License: GPL-3+ GENERATED FILE
+Copyright: 2007 Free Software Foundation, Inc
+License: GPL-3+ 
 Licence_Text: 
 #Header: 
 #/* DO NOT EDIT! GENERATED AUTOMATICALLY! */
@@ -109095,7 +109095,7 @@ Licence_Text:
 File: ./tests/unictype/test-pr_lowercase.c
 Hash: 62bb326af42b34ad4602e7a6978de7422a8206d559c67df02ae3be4a6d7729af
 Copyright: 2007 Free Software Foundation, Inc
-License: GPL-3+ GENERATED FILE
+License: GPL-3+ 
 Licence_Text: 
 #Header: 
 #/* DO NOT EDIT! GENERATED AUTOMATICALLY! */
@@ -109117,7 +109117,7 @@ Licence_Text:
 File: ./tests/unictype/test-pr_math.c
 Hash: 62bb326af42b34ad4602e7a6978de7422a8206d559c67df02ae3be4a6d7729af
 Copyright: 2007 Free Software Foundation, Inc
-License: GPL-3+ GENERATED FILE
+License: GPL-3+ 
 Licence_Text: 
 #Header: 
 #/* DO NOT EDIT! GENERATED AUTOMATICALLY! */
@@ -109138,8 +109138,8 @@ Licence_Text:
 
 File: ./tests/unictype/test-pr_non_break.c
 Hash: 62bb326af42b34ad4602e7a6978de7422a8206d559c67df02ae3be4a6d7729af
-Copyright: uc_is_property_non_break  / 2007 Free Software Foundation, Inc
-License: GPL-3+ GENERATED FILE
+Copyright: 2007 Free Software Foundation, Inc
+License: GPL-3+ 
 Licence_Text: 
 #Header: 
 #/* DO NOT EDIT! GENERATED AUTOMATICALLY! */
@@ -109160,8 +109160,8 @@ Licence_Text:
 
 File: ./tests/unictype/test-pr_not_a_character.c
 Hash: 62bb326af42b34ad4602e7a6978de7422a8206d559c67df02ae3be4a6d7729af
-Copyright: uc_is_property_not_a_character  / 2007 Free Software Foundation, Inc
-License: GPL-3+ GENERATED FILE
+Copyright: 2007 Free Software Foundation, Inc
+License: GPL-3+
 Licence_Text: 
 #Header: 
 #/* DO NOT EDIT! GENERATED AUTOMATICALLY! */
@@ -109183,7 +109183,7 @@ Licence_Text:
 File: ./tests/unictype/test-pr_numeric.c
 Hash: 62bb326af42b34ad4602e7a6978de7422a8206d559c67df02ae3be4a6d7729af
 Copyright: 2007 Free Software Foundation, Inc
-License: GPL-3+ GENERATED FILE
+License: GPL-3+
 Licence_Text: 
 #Header: 
 #/* DO NOT EDIT! GENERATED AUTOMATICALLY! */
@@ -109205,7 +109205,7 @@ Licence_Text:
 File: ./tests/unictype/test-pr_other_alphabetic.c
 Hash: 62bb326af42b34ad4602e7a6978de7422a8206d559c67df02ae3be4a6d7729af
 Copyright: 2007 Free Software Foundation, Inc
-License: GPL-3+ GENERATED FILE
+License: GPL-3+ 
 Licence_Text: 
 #Header: 
 #/* DO NOT EDIT! GENERATED AUTOMATICALLY! */
@@ -109226,8 +109226,8 @@ Licence_Text:
 
 File: ./tests/unictype/test-pr_other_default_ignorable_code_point.c
 Hash: 62bb326af42b34ad4602e7a6978de7422a8206d559c67df02ae3be4a6d7729af
-Copyright: uc_is_property_other_default_ignorable_code_point  / 2007 Free Software Foundation, Inc
-License: GPL-3+ GENERATED FILE
+Copyright: 2007 Free Software Foundation, Inc
+License: GPL-3+
 Licence_Text: 
 #Header: 
 #/* DO NOT EDIT! GENERATED AUTOMATICALLY! */
@@ -109248,8 +109248,8 @@ Licence_Text:
 
 File: ./tests/unictype/test-pr_other_grapheme_extend.c
 Hash: 62bb326af42b34ad4602e7a6978de7422a8206d559c67df02ae3be4a6d7729af
-Copyright: 2007 Free Software Foundation, Inc / uc_is_property_other_grapheme_extend 
-License: GPL-3+ GENERATED FILE
+Copyright: 2007 Free Software Foundation, Inc
+License: GPL-3+ 
 Licence_Text: 
 #Header: 
 #/* DO NOT EDIT! GENERATED AUTOMATICALLY! */
@@ -109270,8 +109270,8 @@ Licence_Text:
 
 File: ./tests/unictype/test-pr_other_id_continue.c
 Hash: 62bb326af42b34ad4602e7a6978de7422a8206d559c67df02ae3be4a6d7729af
-Copyright: uc_is_property_other_id_continue  / 2007 Free Software Foundation, Inc
-License: GPL-3+ GENERATED FILE
+Copyright: 2007 Free Software Foundation, Inc
+License: GPL-3+ 
 Licence_Text: 
 #Header: 
 #/* DO NOT EDIT! GENERATED AUTOMATICALLY! */
@@ -109292,8 +109292,8 @@ Licence_Text:
 
 File: ./tests/unictype/test-pr_other_id_start.c
 Hash: 62bb326af42b34ad4602e7a6978de7422a8206d559c67df02ae3be4a6d7729af
-Copyright: 2007 Free Software Foundation, Inc / uc_is_property_other_id_start 
-License: GPL-3+ GENERATED FILE
+Copyright: 2007 Free Software Foundation, Inc
+License: GPL-3+
 Licence_Text: 
 #Header: 
 #/* DO NOT EDIT! GENERATED AUTOMATICALLY! */
@@ -109314,8 +109314,8 @@ Licence_Text:
 
 File: ./tests/unictype/test-pr_other_lowercase.c
 Hash: 62bb326af42b34ad4602e7a6978de7422a8206d559c67df02ae3be4a6d7729af
-Copyright: uc_is_property_other_lowercase  / 2007 Free Software Foundation, Inc
-License: GPL-3+ GENERATED FILE
+Copyright: 2007 Free Software Foundation, Inc
+License: GPL-3+
 Licence_Text: 
 #Header: 
 #/* DO NOT EDIT! GENERATED AUTOMATICALLY! */
@@ -109337,7 +109337,7 @@ Licence_Text:
 File: ./tests/unictype/test-pr_other_math.c
 Hash: 62bb326af42b34ad4602e7a6978de7422a8206d559c67df02ae3be4a6d7729af
 Copyright: 2007 Free Software Foundation, Inc
-License: GPL-3+ GENERATED FILE
+License: GPL-3+
 Licence_Text: 
 #Header: 
 #/* DO NOT EDIT! GENERATED AUTOMATICALLY! */
@@ -109358,8 +109358,8 @@ Licence_Text:
 
 File: ./tests/unictype/test-pr_other_uppercase.c
 Hash: 62bb326af42b34ad4602e7a6978de7422a8206d559c67df02ae3be4a6d7729af
-Copyright: uc_is_property_other_uppercase  / 2007 Free Software Foundation, Inc
-License: GPL-3+ GENERATED FILE
+Copyright: 2007 Free Software Foundation, Inc
+License: GPL-3+
 Licence_Text: 
 #Header: 
 #/* DO NOT EDIT! GENERATED AUTOMATICALLY! */
@@ -109380,8 +109380,8 @@ Licence_Text:
 
 File: ./tests/unictype/test-pr_paired_punctuation.c
 Hash: 62bb326af42b34ad4602e7a6978de7422a8206d559c67df02ae3be4a6d7729af
-Copyright: 2007 Free Software Foundation, Inc / uc_is_property_paired_punctuation 
-License: GPL-3+ GENERATED FILE
+Copyright: 2007 Free Software Foundation, Inc
+License: GPL-3+ 
 Licence_Text: 
 #Header: 
 #/* DO NOT EDIT! GENERATED AUTOMATICALLY! */
@@ -109402,8 +109402,8 @@ Licence_Text:
 
 File: ./tests/unictype/test-pr_paragraph_separator.c
 Hash: 62bb326af42b34ad4602e7a6978de7422a8206d559c67df02ae3be4a6d7729af
-Copyright: 2007 Free Software Foundation, Inc / uc_is_property_paragraph_separator 
-License: GPL-3+ GENERATED FILE
+Copyright: 2007 Free Software Foundation, Inc
+License: GPL-3+ 
 Licence_Text: 
 #Header: 
 #/* DO NOT EDIT! GENERATED AUTOMATICALLY! */
@@ -109424,8 +109424,8 @@ Licence_Text:
 
 File: ./tests/unictype/test-pr_pattern_syntax.c
 Hash: 62bb326af42b34ad4602e7a6978de7422a8206d559c67df02ae3be4a6d7729af
-Copyright: 2007 Free Software Foundation, Inc / uc_is_property_pattern_syntax 
-License: GPL-3+ GENERATED FILE
+Copyright: 2007 Free Software Foundation, Inc
+License: GPL-3+ 
 Licence_Text: 
 #Header: 
 #/* DO NOT EDIT! GENERATED AUTOMATICALLY! */
@@ -109446,8 +109446,8 @@ Licence_Text:
 
 File: ./tests/unictype/test-pr_pattern_white_space.c
 Hash: 62bb326af42b34ad4602e7a6978de7422a8206d559c67df02ae3be4a6d7729af
-Copyright: 2007 Free Software Foundation, Inc / uc_is_property_pattern_white_space 
-License: GPL-3+ GENERATED FILE
+Copyright: 2007 Free Software Foundation, Inc
+License: GPL-3+ 
 Licence_Text: 
 #Header: 
 #/* DO NOT EDIT! GENERATED AUTOMATICALLY! */
@@ -109468,8 +109468,8 @@ Licence_Text:
 
 File: ./tests/unictype/test-pr_private_use.c
 Hash: 62bb326af42b34ad4602e7a6978de7422a8206d559c67df02ae3be4a6d7729af
-Copyright: uc_is_property_private_use  / 2007 Free Software Foundation, Inc
-License: GPL-3+ GENERATED FILE
+Copyright: 2007 Free Software Foundation, Inc
+License: GPL-3+ 
 Licence_Text: 
 #Header: 
 #/* DO NOT EDIT! GENERATED AUTOMATICALLY! */
@@ -109491,7 +109491,7 @@ Licence_Text:
 File: ./tests/unictype/test-pr_punctuation.c
 Hash: 62bb326af42b34ad4602e7a6978de7422a8206d559c67df02ae3be4a6d7729af
 Copyright: 2007 Free Software Foundation, Inc
-License: GPL-3+ GENERATED FILE
+License: GPL-3+ 
 Licence_Text: 
 #Header: 
 #/* DO NOT EDIT! GENERATED AUTOMATICALLY! */
@@ -109512,8 +109512,8 @@ Licence_Text:
 
 File: ./tests/unictype/test-pr_quotation_mark.c
 Hash: 62bb326af42b34ad4602e7a6978de7422a8206d559c67df02ae3be4a6d7729af
-Copyright: 2007 Free Software Foundation, Inc / uc_is_property_quotation_mark 
-License: GPL-3+ GENERATED FILE
+Copyright: 2007 Free Software Foundation, Inc
+License: GPL-3+ 
 Licence_Text: 
 #Header: 
 #/* DO NOT EDIT! GENERATED AUTOMATICALLY! */
@@ -109534,8 +109534,8 @@ Licence_Text:
 
 File: ./tests/unictype/test-pr_radical.c
 Hash: 62bb326af42b34ad4602e7a6978de7422a8206d559c67df02ae3be4a6d7729af
-Copyright: uc_is_property_radical  / 2007 Free Software Foundation, Inc
-License: GPL-3+ GENERATED FILE
+Copyright: 2007 Free Software Foundation, Inc
+License: GPL-3+ 
 Licence_Text: 
 #Header: 
 #/* DO NOT EDIT! GENERATED AUTOMATICALLY! */
@@ -109556,8 +109556,8 @@ Licence_Text:
 
 File: ./tests/unictype/test-pr_sentence_terminal.c
 Hash: 62bb326af42b34ad4602e7a6978de7422a8206d559c67df02ae3be4a6d7729af
-Copyright: uc_is_property_sentence_terminal  / 2007 Free Software Foundation, Inc
-License: GPL-3+ GENERATED FILE
+Copyright: 2007 Free Software Foundation, Inc
+License: GPL-3+
 Licence_Text: 
 #Header: 
 #/* DO NOT EDIT! GENERATED AUTOMATICALLY! */
@@ -109578,8 +109578,8 @@ Licence_Text:
 
 File: ./tests/unictype/test-pr_soft_dotted.c
 Hash: 62bb326af42b34ad4602e7a6978de7422a8206d559c67df02ae3be4a6d7729af
-Copyright: uc_is_property_soft_dotted  / 2007 Free Software Foundation, Inc
-License: GPL-3+ GENERATED FILE
+Copyright: 2007 Free Software Foundation, Inc
+License: GPL-3+
 Licence_Text: 
 #Header: 
 #/* DO NOT EDIT! GENERATED AUTOMATICALLY! */
@@ -109600,8 +109600,8 @@ Licence_Text:
 
 File: ./tests/unictype/test-pr_space.c
 Hash: 62bb326af42b34ad4602e7a6978de7422a8206d559c67df02ae3be4a6d7729af
-Copyright: 2007 Free Software Foundation, Inc / uc_is_property_space 
-License: GPL-3+ GENERATED FILE
+Copyright: 2007 Free Software Foundation, Inc
+License: GPL-3+ 
 Licence_Text: 
 #Header: 
 #/* DO NOT EDIT! GENERATED AUTOMATICALLY! */
@@ -109623,7 +109623,7 @@ Licence_Text:
 File: ./tests/unictype/test-pr_terminal_punctuation.c
 Hash: 62bb326af42b34ad4602e7a6978de7422a8206d559c67df02ae3be4a6d7729af
 Copyright: 2007 Free Software Foundation, Inc
-License: GPL-3+ GENERATED FILE
+License: GPL-3+ 
 Licence_Text: 
 #Header: 
 #/* DO NOT EDIT! GENERATED AUTOMATICALLY! */
@@ -109666,8 +109666,8 @@ Licence_Text:
 
 File: ./tests/unictype/test-pr_titlecase.c
 Hash: 62bb326af42b34ad4602e7a6978de7422a8206d559c67df02ae3be4a6d7729af
-Copyright: 2007 Free Software Foundation, Inc / uc_is_property_titlecase 
-License: GPL-3+ GENERATED FILE
+Copyright: 2007 Free Software Foundation, Inc
+License: GPL-3+ 
 Licence_Text: 
 #Header: 
 #/* DO NOT EDIT! GENERATED AUTOMATICALLY! */
@@ -109689,7 +109689,7 @@ Licence_Text:
 File: ./tests/unictype/test-pr_unassigned_code_value.c
 Hash: 62bb326af42b34ad4602e7a6978de7422a8206d559c67df02ae3be4a6d7729af
 Copyright: 2007 Free Software Foundation, Inc
-License: GPL-3+ GENERATED FILE
+License: GPL-3+ 
 Licence_Text: 
 #Header: 
 #/* DO NOT EDIT! GENERATED AUTOMATICALLY! */
@@ -109710,8 +109710,8 @@ Licence_Text:
 
 File: ./tests/unictype/test-pr_unified_ideograph.c
 Hash: 62bb326af42b34ad4602e7a6978de7422a8206d559c67df02ae3be4a6d7729af
-Copyright: uc_is_property_unified_ideograph  / 2007 Free Software Foundation, Inc
-License: GPL-3+ GENERATED FILE
+Copyright: 2007 Free Software Foundation, Inc
+License: GPL-3+ 
 Licence_Text: 
 #Header: 
 #/* DO NOT EDIT! GENERATED AUTOMATICALLY! */
@@ -109733,7 +109733,7 @@ Licence_Text:
 File: ./tests/unictype/test-pr_uppercase.c
 Hash: 62bb326af42b34ad4602e7a6978de7422a8206d559c67df02ae3be4a6d7729af
 Copyright: 2007 Free Software Foundation, Inc
-License: GPL-3+ GENERATED FILE
+License: GPL-3+ 
 Licence_Text: 
 #Header: 
 #/* DO NOT EDIT! GENERATED AUTOMATICALLY! */
@@ -109754,8 +109754,8 @@ Licence_Text:
 
 File: ./tests/unictype/test-pr_variation_selector.c
 Hash: 62bb326af42b34ad4602e7a6978de7422a8206d559c67df02ae3be4a6d7729af
-Copyright: uc_is_property_variation_selector  / 2007 Free Software Foundation, Inc
-License: GPL-3+ GENERATED FILE
+Copyright: 2007 Free Software Foundation, Inc
+License: GPL-3+ 
 Licence_Text: 
 #Header: 
 #/* DO NOT EDIT! GENERATED AUTOMATICALLY! */
@@ -109776,8 +109776,8 @@ Licence_Text:
 
 File: ./tests/unictype/test-pr_white_space.c
 Hash: 62bb326af42b34ad4602e7a6978de7422a8206d559c67df02ae3be4a6d7729af
-Copyright: 2007 Free Software Foundation, Inc / uc_is_property_white_space 
-License: GPL-3+ GENERATED FILE
+Copyright: 2007 Free Software Foundation, Inc
+License: GPL-3+ 
 Licence_Text: 
 #Header: 
 #/* DO NOT EDIT! GENERATED AUTOMATICALLY! */
@@ -109799,7 +109799,7 @@ Licence_Text:
 File: ./tests/unictype/test-pr_xid_continue.c
 Hash: 62bb326af42b34ad4602e7a6978de7422a8206d559c67df02ae3be4a6d7729af
 Copyright: 2007 Free Software Foundation, Inc
-License: GPL-3+ GENERATED FILE
+License: GPL-3+ 
 Licence_Text: 
 #Header: 
 #/* DO NOT EDIT! GENERATED AUTOMATICALLY! */
@@ -109821,7 +109821,7 @@ Licence_Text:
 File: ./tests/unictype/test-pr_xid_start.c
 Hash: 62bb326af42b34ad4602e7a6978de7422a8206d559c67df02ae3be4a6d7729af
 Copyright: 2007 Free Software Foundation, Inc
-License: GPL-3+ GENERATED FILE
+License: GPL-3+ 
 Licence_Text: 
 #Header: 
 #/* DO NOT EDIT! GENERATED AUTOMATICALLY! */
@@ -109842,8 +109842,8 @@ Licence_Text:
 
 File: ./tests/unictype/test-pr_zero_width.c
 Hash: 62bb326af42b34ad4602e7a6978de7422a8206d559c67df02ae3be4a6d7729af
-Copyright: 2007 Free Software Foundation, Inc / uc_is_property_zero_width 
-License: GPL-3+ GENERATED FILE
+Copyright: 2007 Free Software Foundation, Inc
+License: GPL-3+ 
 Licence_Text: 
 #Header: 
 #/* DO NOT EDIT! GENERATED AUTOMATICALLY! */
@@ -109952,8 +109952,8 @@ Licence_Text:
 
 File: ./tests/unictype/test-sy_c_whitespace.c
 Hash: 62bb326af42b34ad4602e7a6978de7422a8206d559c67df02ae3be4a6d7729af
-Copyright: 2007 Free Software Foundation, Inc / uc_is_c_whitespace 
-License: GPL-3+ GENERATED FILE
+Copyright: 2007 Free Software Foundation, Inc
+License: GPL-3+ 
 Licence_Text: 
 #Header: 
 #/* DO NOT EDIT! GENERATED AUTOMATICALLY! */
@@ -109996,8 +109996,8 @@ Licence_Text:
 
 File: ./tests/unictype/test-sy_java_whitespace.c
 Hash: 62bb326af42b34ad4602e7a6978de7422a8206d559c67df02ae3be4a6d7729af
-Copyright: uc_is_java_whitespace  / 2007 Free Software Foundation, Inc
-License: GPL-3+ GENERATED FILE
+Copyright: 2007 Free Software Foundation, Inc
+License: GPL-3+ 
 Licence_Text: 
 #Header: 
 #/* DO NOT EDIT! GENERATED AUTOMATICALLY! */
