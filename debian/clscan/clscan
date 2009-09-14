@@ -78,7 +78,7 @@ sub write_copyright
 	push(@{$licenses->{$license}->{$license_text}->{$copyright}}, $file);
     }
     my %refs=();
-    my $refnum=0;
+    my $refnum="00";
     for my $license (sort keys(%$licenses))
     {
 	for my $license_text (sort keys(%{$licenses->{$license}}))
@@ -87,7 +87,7 @@ sub write_copyright
 	    if(length($license_text))
 	    {
 		$refnum++;
-		$licensestr .= " (REF$refnum)";
+		$licensestr .= " [REF$refnum]";
 		$refs{$licensestr}=$license_text;
 	    }
 	    for my $copyright (sort keys(%{$licenses->{$license}->{$license_text}}))
@@ -101,7 +101,7 @@ sub write_copyright
 	    }
 	}
     }
-    for my $ref (keys(%refs))
+    for my $ref (sort keys(%refs))
     {
 	print COPYRIGHT "License: $ref\n";
 	my @text=split(/\n/, $refs{$ref});
@@ -300,7 +300,7 @@ sub write_new
 	print NEW "Hash: ", $new->{$file}->{hash}, "\n";
 	print NEW "Copyright: ", $new->{$file}->{copyright}, "\n";
 	print NEW "License: ", $new->{$file}->{license}, "\n";
-	print NEW "Licence_Text: \n";
+	print NEW "License_Text: \n";
 	if($new->{$file}->{license_old})
 	{
 	    print NEW "#License_old: ", $new->{$file}->{license_old}, "\n";
@@ -343,7 +343,7 @@ sub merge_new
 	next if(/^\s*\#/);
 	if($in_license_text && /^\s+(.*)/)
 	{
-	    $license_text .= "\n" . $1;
+	    $license_text .= $1 . "\n";
 	}
 	elsif(/^File:\s*(.*)/)
 	{
@@ -361,6 +361,7 @@ sub merge_new
 	    $copyright='';
 	    $hash='';
 	    $license_text='';
+	    $in_license_text = 0;
 	}
 	elsif(/^Hash:\s*(.*)/)
 	{
@@ -373,15 +374,8 @@ sub merge_new
 	elsif(/^License:\s*(.*)/)
 	{
 	    $license=$1;
-	}
-	elsif(/^License_text:\s*(.*)/)
-	{
 	    $in_license_text=1;
-	    $license_text=$1;
-	}
-	elsif($in_license_text && /^\s+(.*)/)
-	{
-	    $license_text .= "\n" . $1;
+	    $license_text='';
 	}
 	else
 	{
