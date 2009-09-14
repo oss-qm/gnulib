@@ -257,9 +257,9 @@ File: ./build-aux/config.rpath
 Hash: c52259321cfea86c34876e34db5356168f319d7f0dda0fd76efa9dce5e6fea4d
 Copyright: 1996-2008 Free Software Foundation, Inc.
 License:
-   This file is free software; the Free Software Foundation gives
-   unlimited permission to copy and/or distribute it, with or without
-   modifications, as long as this notice is preserved.
+   This file is free software; the Free Software Foundation
+   gives unlimited permission to copy and/or distribute it,
+   with or without modifications, as long as this notice is preserved.
 #Header:
 ##! /bin/sh
 ## Output a system dependent set of variables, describing how to set the
@@ -475,7 +475,8 @@ License: GPL-3+
 ##
 ######################################################################
 ### UPTOHERE
-######################################################################File: ./build-aux/install-sh
+######################################################################
+File: ./build-aux/install-sh
 Hash: 5dcf8a8dd376f4c95767a2dcb626e89a66d6f2fda2352f534a296ac6cc9a20b3
 Copyright: 1994 X Consortium
 License:
@@ -1477,8 +1478,8 @@ File: ./doc/agpl-3.0.texi
 Hash: 77c3f2a9718accc065836d61cf2575b50220f1f3c121e281fec0a06ee3ad8b46
 Copyright: 2007 Free Software Foundation, Inc.
 License:
- Everyone is permitted to copy and distribute verbatim copies of this
- license document, but changing it is not allowed.
+ Everyone is permitted to copy and distribute verbatim copies
+ of this license document, but changing it is not allowed.
 #
 #@heading Preamble
 File: ./doc/alloca-opt.texi
@@ -18061,8 +18062,8 @@ File: ./doc/gpl-3.0.texi
 Hash: 1c68a24b291a0eebaa1fabba67326ad8c5d48968b84bba0907bf74d8d3b01971
 Copyright: 2007 Free Software Foundation, Inc.
 License:
- Everyone is permitted to copy and distribute verbatim copies of this
- license document, but changing it is not allowed.
+ Everyone is permitted to copy and distribute verbatim copies
+ of this license document, but changing it is not allowed.
 #@end display
 #
 #@heading Preamble
@@ -18109,10 +18110,10 @@ File: ./doc/install.texi
 Hash: 3579aa06fdcde2788de2bdb2ac9e3f7dddaaf305033e3819b0bd5e8bcd321ad5
 Copyright: 1994, 1995, 1996, 1999, 2000, 2001, 2002, 2004, 2005, 2006, 2007, 2008, 2009 Free Software Foundation, Inc.
 License:
- Copying and distribution of this file, with or without modification, are
- permitted in any medium without royalty provided the copyright notice
- and this notice are preserved.  This file is offered as-is, without
- warranty of any kind.
+ Copying and distribution of this file, with or without modification,
+ are permitted in any medium without royalty provided the copyright
+ notice and this notice are preserved.  This file is offered as-is,
+ without warranty of any kind.
 File: ./doc/ld-output-def.texi
 Hash: f3adaf3de58b4ee8286574e8dc7d25e0d536753026018880d7ed6299129dee1c
 Copyright:
@@ -18165,8 +18166,8 @@ File: ./doc/lgpl-3.0.texi
 Hash: a4c865bb56a69cee86c1ab9bb354cd6a81b95e64a6ed096b1b3e616af3f85cc1
 Copyright: 2007 Free Software Foundation, Inc.
 License:
- Everyone is permitted to copy and distribute verbatim copies of this
- license document, but changing it is not allowed.
+ Everyone is permitted to copy and distribute verbatim copies
+ of this license document, but changing it is not allowed.
 #@end display
 #
 #This version of the GNU Lesser General Public License incorporates
@@ -53857,7 +53858,7 @@ License:
 #/* memmove.c -- copy memory.
 #   Copy LENGTH bytes from SOURCE to DEST.  Does not null-terminate.
    In the public domain.
-   By David MacKenzie <djm@gnu.ai.mit.edu>
+   By David MacKenzie <djm@gnu.ai.mit.edu>.
 #
 ##include <config.h>
 #
@@ -56326,7 +56327,8 @@ License: GPL-2+ and other
 #Header:
 #/* rijndael-alg-fst.h --- Rijndael cipher implementation.
 # * Copyright (C) 2005 Free Software Foundation, Inc.
-# *File: ./lib/rijndael-api-fst.c
+# *
+File: ./lib/rijndael-api-fst.c
 Hash: b99f158275dd4fe795b389f5caccddb053dff98d2b957da0f54453adbfd5a538
 Copyright: 2005, 2006 Free Software Foundation, Inc.
 License: GPL-2+ and other
