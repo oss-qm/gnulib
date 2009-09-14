@@ -1637,7 +1637,7 @@ Licence_Text:
 File: ./doc/alloca-opt.texi
 Hash: ba0ad6232fbf3ba81b9dece15497df973cbcf4a4b7e2295ca66b0bed803d82da
 Copyright: 2004, 2007 Free Software Foundation, Inc.
-License: GFDL-1.3+
+License: GFDL-1.3+-NIV
 Licence_Text:
  Permission is granted to copy, distribute and/or modify this document
  under the terms of the GNU Free Documentation License, Version 1.3 or
@@ -1654,7 +1654,7 @@ Licence_Text:
 File: ./doc/alloca.texi
 Hash: abaafa45b821b2064d735be4848a476c92e67742811e7c991eefbf8b0314210c
 Copyright: 2004, 2007 Free Software Foundation, Inc.
-License: GFDL-1.3+
+License: GFDL-1.3+-NIV
 Licence_Text:
  Permission is granted to copy, distribute and/or modify this document
  under the terms of the GNU Free Documentation License, Version 1.3 or
@@ -1682,7 +1682,7 @@ Licence_Text:
 File: ./doc/c-ctype.texi
 Hash: 02681cc5ffcc4bb503782c8ce7f5b053f524a61d77b10dfd3c8d29e8696a8cd5
 Copyright: 2008 Free Software Foundation, Inc.
-License: GFDL-1.3+
+License: GFDL-1.3+-NIV
 Licence_Text:
  Permission is granted to copy, distribute and/or modify this document
  under the terms of the GNU Free Documentation License, Version 1.3 or
@@ -1710,7 +1710,7 @@ Licence_Text:
 File: ./doc/c-strcase.texi
 Hash: 12a8966489a243d56b5727a843e8d199ce1be4cbddf810d6e0546fc0d47c0db9
 Copyright: 2008 Free Software Foundation, Inc.
-License: GFDL-1.3+
+License: GFDL-1.3+-NIV
 Licence_Text:
  Permission is granted to copy, distribute and/or modify this document
  under the terms of the GNU Free Documentation License, Version 1.3 or
@@ -1739,7 +1739,7 @@ Licence_Text:
 File: ./doc/c-strcaseeq.texi
 Hash: 07a09de098c41135d2b8c252e34d16942a2df705d4165259604efc2bc89f32df
 Copyright: 2008 Free Software Foundation, Inc.
-License: GFDL-1.3+
+License: GFDL-1.3+-NIV
 Licence_Text:
  Permission is granted to copy, distribute and/or modify this document
  under the terms of the GNU Free Documentation License, Version 1.3 or
@@ -1767,7 +1767,7 @@ Licence_Text:
 File: ./doc/c-strcasestr.texi
 Hash: 28f551e29d750587564a6c9d605d880b4adc908e73ba20486dad95089bcbe988
 Copyright: 2008 Free Software Foundation, Inc.
-License: GFDL-1.3+
+License: GFDL-1.3+-NIV
 Licence_Text:
  Permission is granted to copy, distribute and/or modify this document
  under the terms of the GNU Free Documentation License, Version 1.3 or
@@ -1796,7 +1796,7 @@ Licence_Text:
 File: ./doc/c-strstr.texi
 Hash: dc0b4e2b4ae14f6c0b231a1cb517386171cdd2e79bad16e5c8468a6d3f05d863
 Copyright: 2008 Free Software Foundation, Inc.
-License: GFDL-1.3+
+License: GFDL-1.3+-NIV
 Licence_Text:
  Permission is granted to copy, distribute and/or modify this document
  under the terms of the GNU Free Documentation License, Version 1.3 or
@@ -1825,7 +1825,7 @@ Licence_Text:
 File: ./doc/c-strtod.texi
 Hash: f12b034c095af6fedebe50970c03692a308cd6d76c710040021e05e14111d0e6
 Copyright: 2008-2009 Free Software Foundation, Inc.
-License: GFDL-1.3+
+License: GFDL-1.3+-NIV
 Licence_Text:
  Permission is granted to copy, distribute and/or modify this document
  under the terms of the GNU Free Documentation License, Version 1.3 or
@@ -1854,7 +1854,7 @@ Licence_Text:
 File: ./doc/c-strtold.texi
 Hash: acd8d275bc49ba09e74845ef9ab62f76fe1ec2a82b7358a85790af57c33de3eb
 Copyright: 2008 Free Software Foundation, Inc.
-License: GFDL-1.3+
+License: GFDL-1.3+-NIV
 Licence_Text:
  Permission is granted to copy, distribute and/or modify this document
  under the terms of the GNU Free Documentation License, Version 1.3 or
@@ -1883,7 +1883,7 @@ Licence_Text:
 File: ./doc/ctime.texi
 Hash: c54a4356bb5de6dc3dd73b82b8ba0e40975a2cf465b639f8cf8456097c6f8658
 Copyright: 2005 Free Software Foundation, Inc.
-License: GFDL-1.3+
+License: GFDL-1.3+-NIV
 Licence_Text:
  Permission is granted to copy, distribute and/or modify this document
  under the terms of the GNU Free Documentation License, Version 1.3 or
@@ -1911,7 +1911,7 @@ Licence_Text:
 File: ./doc/error.texi
 Hash: a5f78c9c537fb0dbb6b9d6740073f5c7cf4f1bc3af0531c33806fbfd624de688
 Copyright: 2007 Free Software Foundation, Inc.
-License: GFDL-1.3+
+License: GFDL-1.3+-NIV
 Licence_Text:
  Permission is granted to copy, distribute and/or modify this document
  under the terms of the GNU Free Documentation License, Version 1.3 or
@@ -1991,7 +1991,7 @@ Licence_Text:
 File: ./doc/gcd.texi
 Hash: aa4594d335a46b562a96ebd76cabc7451a3ba2737bf0b032f1b66f18ab3fc5cb
 Copyright: 2006 Free Software Foundation, Inc.
-License: GFDL-1.3+
+License: GFDL-1.3+-NIV
 Licence_Text:
  Permission is granted to copy, distribute and/or modify this document
  under the terms of the GNU Free Documentation License, Version 1.3 or
@@ -2063,7 +2063,7 @@ Licence_Text:
 File: ./doc/getdate.texi
 Hash: b49cb20e0eb9f85da9aeb64338b8442bd47b45259faf2e6fce118e6c90af6579
 Copyright: 1994, 1995, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006 Free Software Foundation, Inc.
-License: GFDL-1.3+
+License: GFDL-1.3+-NIV
 Licence_Text:
  Permission is granted to copy, distribute and/or modify this document
  under the terms of the GNU Free Documentation License, Version 1.3 or
@@ -19816,7 +19816,7 @@ Licence_Text:
 File: ./doc/gnulib-tool.texi
 Hash: 86878555c512a6423372b2cd838d55c7c6a02da7eb97664a78e4bbf111f33b31
 Copyright: 2005-2009 Free Software Foundation, Inc.
-License: GFDL-1.3+
+License: GFDL-1.3+-NIV
 Licence_Text:
  Permission is granted to copy, distribute and/or modify this document
  under the terms of the GNU Free Documentation License, Version 1.3 or
@@ -19831,7 +19831,7 @@ Licence_Text:
 File: ./doc/gnulib.texi
 Hash: de3a5da4c9cc7db7d7ef6de60a5248025bed7cbc6b9dc0320c0075bb28b18b77
 Copyright: 2004-2009 Free Software Foundation, Inc.
-License: GFDL-1.3+
+License: GFDL-1.3+-NIV
 Licence_Text:
  Permission is granted to copy, distribute and/or modify this document
  under the terms of the GNU Free Documentation License, Version 1.3 or
@@ -19901,7 +19901,7 @@ Licence_Text:
 File: ./doc/inet_ntoa.texi
 Hash: 44cfa1261391ab7b6da6a8387826d35826ef9238214aea7713a3bdae92621afc
 Copyright: 2005 Free Software Foundation, Inc.
-License: GFDL-1.3+
+License: GFDL-1.3+-NIV
 Licence_Text:
 #Header:
 #@node inet_ntoa
@@ -19999,7 +19999,7 @@ Licence_Text:
 File: ./doc/lib-symbol-visibility.texi
 Hash: ace49800754530f3421436b0c69c07faa05fec9319591a7a4d30b2bd37a98525
 Copyright: 2005-2006, 2009 Free Software Foundation, Inc.
-License: GFDL-1.3+
+License: GFDL-1.3+-NIV
 Licence_Text:
  Permission is granted to copy, distribute and/or modify this document
  under the terms of the GNU Free Documentation License, Version 1.3 or
@@ -20013,7 +20013,7 @@ Licence_Text:
 File: ./doc/maintain.texi
 Hash: c3f2ff808bd13ddf5c9dfdecff85d6bc5581e6338bf9919e43aa41a7d2a5ed05
 Copyright: 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009 Free Software Foundation, Inc.
-License: GFDL-1.3+
+License: GFDL-1.3+-NIV
 Licence_Text:
 #Header:
 #\input texinfo.tex    @c -*-texinfo-*-
@@ -20034,7 +20034,7 @@ Licence_Text:
 File: ./doc/make-stds.texi
 Hash: 6856144813c56da2dd64ded78323b4e4e1be9177837113f827f9340b8cb74446
 Copyright: 1992, 1993, 1994, 1995, 1996, 1997, 1998, 2000, 2001, 2004, 2005, 2006, 2007, 2008 Free Software Foundation, Inc.
-License: GFDL-1.3+
+License: GFDL-1.3+-NIV
 Licence_Text:
  Permission is granted to copy, distribute and/or modify this document
  under the terms of the GNU Free Documentation License, Version 1.3 or
@@ -48656,7 +48656,7 @@ Licence_Text:
 File: ./doc/quote.texi
 Hash: 9cc2b24f70ec69e8dbc53ef7d8100f87dbcf6e4f207d834ce82c872fbeed98bf
 Copyright: 2005 Free Software Foundation, Inc.
-License: GFDL-1.3+
+License: GFDL-1.3+-NIV
 Licence_Text:
 #Header:
 #@node Quoting
@@ -48678,7 +48678,7 @@ Licence_Text:
 File: ./doc/regexprops-generic.texi
 Hash: 953ea60aeff18a45851d07c4fd84c6d47156d1cb6056d2808293b45b3663d4c4
 Copyright: 1994, 1996, 1998, 2000, 2001, 2003, 2004, 2005, 2006, 2007 Free Software Foundation, Inc.
-License: GFDL-1.3+
+License: GFDL-1.3+-NIV
 Licence_Text:
 #Header:
 #@c Copyright (C) 1994, 1996, 1998, 2000, 2001, 2003, 2004, 2005, 2006, 2007
@@ -48791,7 +48791,7 @@ Licence_Text:
 File: ./doc/standards.texi
 Hash: 758abab5b6cc5d66a433405b865acfbe95b4ea85d3de8e4f7810aa21cc026056
 Copyright: 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009 Free Software Foundation, Inc.
-License: GFDL-1.3+
+License: GFDL-1.3+-NIV
 Licence_Text:
  Permission is granted to copy, distribute and/or modify this document
  under the terms of the GNU Free Documentation License, Version 1.3 or
@@ -48819,7 +48819,7 @@ Licence_Text:
 File: ./doc/verify.texi
 Hash: d43e9fbb06bf63392263ab1163c57627f0091d17c88ef1ea645d7d77e2054335
 Copyright: 2006 Free Software Foundation, Inc.
-License: GFDL-1.3+
+License: GFDL-1.3+-NIV
 Licence_Text:
 #Header:
 #@c GNU verify module documentation
@@ -49045,8 +49045,6 @@ Hash: 230d3b39d6bea0152df39479efcf3a049c66b9f7816d4e39af503dc54875cc33
 Copyright: 1993 by Sun Microsystems, Inc. All rights reserved
 License:
 Licence_Text:
- Copyright (C) 1993 by Sun Microsystems, Inc. All rights reserved.
-
  Developed at SunPro, a Sun Microsystems, Inc. business.
  Permission to use, copy, modify, and distribute this
  software is freely granted, provided that this notice
@@ -49790,12 +49788,10 @@ Licence_Text:
 
 File: ./lib/asinl.c
 Hash: 230d3b39d6bea0152df39479efcf3a049c66b9f7816d4e39af503dc54875cc33
-Copyright: 1993 by Sun Microsystems, Inc.
+Copyright: 1993 by Sun Microsystems, Inc. All rights reserved
 License:
 Licence_Text:
 #Header:
- Copyright (C) 1993 by Sun Microsystems, Inc. All rights reserved.
-
  Developed at SunPro, a Sun Microsystems, Inc. business.
  Permission to use, copy, modify, and distribute this
  software is freely granted, provided that this notice
@@ -51301,7 +51297,7 @@ Licence_Text:
 
 File: ./lib/cosl.c
 Hash: f94441c30759bff7b800832d4a5ca7f10ab4fdec07fa304c2a367ee6814a1ada
-Copyright: 1993 by Sun Microsystems, Inc.
+Copyright: 1993 by Sun Microsystems, Inc. All rights reserved
 License:
 Licence_Text:
 #Header:
@@ -51311,8 +51307,6 @@ Licence_Text:
 #
 #/*
 # * ====================================================
- Copyright (C) 1993 by Sun Microsystems, Inc. All rights reserved.
-
  Developed at SunPro, a Sun Microsystems, Inc. business.
  Permission to use, copy, modify, and distribute this
  software is freely granted, provided that this notice
@@ -53897,8 +53891,45 @@ Licence_Text:
 File: ./lib/fts.c
 Hash: 031ee2fa332e516ef11403356250388f67d165775a3ca9f03fa43bc7fe3695ec
 Copyright: 1990, 1993, 1994 The Regents of the University of California / 2004-2009 Free Software Foundation, Inc.
-License: GPL-3+
+License: GPL-3+ and BSD (3-clause)
 Licence_Text:
+   This program is free software: you can redistribute it and/or modify
+   it under the terms of the GNU General Public License as published by
+   the Free Software Foundation; either version 3 of the License, or
+   (at your option) any later version.
+
+   This program is distributed in the hope that it will be useful,
+   but WITHOUT ANY WARRANTY; without even the implied warranty of
+   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+   GNU General Public License for more details.
+
+   You should have received a copy of the GNU General Public License
+   along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions
+ are met:
+ 1. Redistributions of source code must retain the above copyright
+    notice, this list of conditions and the following disclaimer.
+ 2. Redistributions in binary form must reproduce the above copyright
+    notice, this list of conditions and the following disclaimer in the
+    documentation and/or other materials provided with the distribution.
+ 4. Neither the name of the University nor the names of its contributors
+    may be used to endorse or promote products derived from this software
+    without specific prior written permission.
+
+  THIS SOFTWARE IS PROVIDED BY THE REGENTS AND CONTRIBUTORS ``AS IS'' AND
+  ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+  IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+  ARE DISCLAIMED.  IN NO EVENT SHALL THE REGENTS OR CONTRIBUTORS BE LIABLE
+  FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+  DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+  OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+  HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+  LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+  OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+  SUCH DAMAGE.
+
 #Header:
 #/* Traverse a file hierarchy.
 #
@@ -53919,8 +53950,44 @@ Licence_Text:
 File: ./lib/fts_.h
 Hash: 031ee2fa332e516ef11403356250388f67d165775a3ca9f03fa43bc7fe3695ec
 Copyright: 1989, 1993 The Regents of the University of California / 2004-2009 Free Software Foundation, Inc.
-License: GPL-3+
+License: GPL-3+ and BSD (3-clause)
 Licence_Text:
+   This program is free software: you can redistribute it and/or modify
+   it under the terms of the GNU General Public License as published by
+   the Free Software Foundation; either version 3 of the License, or
+   (at your option) any later version.
+
+   This program is distributed in the hope that it will be useful,
+   but WITHOUT ANY WARRANTY; without even the implied warranty of
+   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+   GNU General Public License for more details.
+
+   You should have received a copy of the GNU General Public License
+   along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions
+ are met:
+ 1. Redistributions of source code must retain the above copyright
+    notice, this list of conditions and the following disclaimer.
+ 2. Redistributions in binary form must reproduce the above copyright
+    notice, this list of conditions and the following disclaimer in the
+    documentation and/or other materials provided with the distribution.
+ 4. Neither the name of the University nor the names of its contributors
+    may be used to endorse or promote products derived from this software
+    without specific prior written permission.
+
+  THIS SOFTWARE IS PROVIDED BY THE REGENTS AND CONTRIBUTORS ``AS IS'' AND
+  ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+  IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+  ARE DISCLAIMED.  IN NO EVENT SHALL THE REGENTS OR CONTRIBUTORS BE LIABLE
+  FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+  DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+  OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+  HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+  LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+  OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+  SUCH DAMAGE.
 #Header:
 #/* Traverse a file hierarchy.
 #
@@ -57075,8 +57142,7 @@ Licence_Text:
 File: ./lib/inet_ntop.c
 Hash: bb85be451bd6abe2730ae9c900eca3d5dfeb58717a5fe8020fd32c3197efe395
 Copyright: 2005, 2006, 2008, 2009 Free Software Foundation, Inc. / 1996-1999 by Internet Software Consortium
-License: GPL-2+
-#FIXME
+License: GPL-2+ and ISC
 Licence_Text:
 #Header:
 #/* inet_ntop.c -- convert IPv4 and IPv6 addresses from binary to text form
@@ -57098,8 +57164,7 @@ Licence_Text:
 File: ./lib/inet_pton.c
 Hash: 33b53b62f48e6b8843c4109e0cb9632ed41cd3ff07ea81a3842fb24a3d42781e
 Copyright: 1996,1999 by Internet Software Consortium / 2006, 2008, 2009 Free Software Foundation, Inc.
-License: ISC GPL-3+
-# FIXME
+License: GPL-3+ and ISC
 Licence_Text:
 #Header:
 #/* inet_pton.c -- convert IPv4 and IPv6 addresses from text to binary form
@@ -61146,6 +61211,48 @@ Copyright: 1983 Regents of the University of California / 1995, 2005, 2008 Free 
 License: BSD (3 clause) LGPL-2.1+
 #FIXME
 Licence_Text:
+   The GNU C Library is free software; you can redistribute it and/or
+   modify it under the terms of the GNU Lesser General Public
+   License as published by the Free Software Foundation; either
+   version 2.1 of the License, or (at your option) any later version.
+
+   The GNU C Library is distributed in the hope that it will be useful,
+   but WITHOUT ANY WARRANTY; without even the implied warranty of
+   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+   Lesser General Public License for more details.
+
+   You should have received a copy of the GNU Lesser General Public
+   License along with the GNU C Library; if not, write to the Free
+   Software Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA
+   02111-1307 USA.
+
+   Copyright (C) 1983 Regents of the University of California.
+   All rights reserved.
+
+   Redistribution and use in source and binary forms, with or without
+   modification, are permitted provided that the following conditions
+   are met:
+
+   1. Redistributions of source code must retain the above copyright
+      notice, this list of conditions and the following disclaimer.
+   2. Redistributions in binary form must reproduce the above copyright
+      notice, this list of conditions and the following disclaimer in the
+      documentation and/or other materials provided with the distribution.
+   4. Neither the name of the University nor the names of its contributors
+      may be used to endorse or promote products derived from this software
+      without specific prior written permission.
+
+   THIS SOFTWARE IS PROVIDED BY THE REGENTS AND CONTRIBUTORS ``AS IS'' AND
+   ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+   IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+   ARE DISCLAIMED.  IN NO EVENT SHALL THE REGENTS OR CONTRIBUTORS BE LIABLE
+   FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+   DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+   OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+   HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+   LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+   OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+   SUCH DAMAGE.
 #Header:
 #/*
 #   Copyright (C) 1995, 2005, 2008 Free Software Foundation
@@ -61798,9 +61905,36 @@ Licence_Text:
 File: ./lib/rijndael-alg-fst.c
 Hash: 49cc6c6e9d8de361675d0546671526e3109140364ce29855fbb8de575d6fee29
 Copyright: 2005, 2006 Free Software Foundation, Inc.
-License: BSD GPL-2+
-#FIXME
+License: GPL-2+ and other
 Licence_Text:
+  This file is free software; you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published
+  by the Free Software Foundation; either version 2, or (at your
+  option) any later version.
+ 
+  This file is distributed in the hope that it will be useful, but
+  WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+  General Public License for more details.
+ 
+  You should have received a copy of the GNU General Public License
+  along with this file; if not, write to the Free Software
+  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
+  02110-1301, USA.
+  
+ This code is hereby placed in the public domain.
+ 
+ THIS SOFTWARE IS PROVIDED BY THE AUTHORS ''AS IS'' AND ANY EXPRESS
+ OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+ WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ ARE DISCLAIMED.  IN NO EVENT SHALL THE AUTHORS OR CONTRIBUTORS BE
+ LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+ CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+ SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR
+ BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+ WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
+ OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
+ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #Header:
 #/* rijndael-alg-fst.c --- Rijndael cipher implementation.
 # * Copyright (C) 2005, 2006 Free Software Foundation, Inc.
@@ -61821,33 +61955,74 @@ Licence_Text:
 File: ./lib/rijndael-alg-fst.h
 Hash: 162ce649f0d069335d8228a612fdf65ceae6f3475f5dac1558ec29010f225634
 Copyright: 2005 Free Software Foundation, Inc.
-License: BSD GPL-2+
-#FIXME
+License: GPL-2+ and other
 Licence_Text:
+  This file is free software; you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published
+  by the Free Software Foundation; either version 2, or (at your
+  option) any later version.
+ 
+  This file is distributed in the hope that it will be useful, but
+  WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+  General Public License for more details.
+ 
+  You should have received a copy of the GNU General Public License
+  along with this file; if not, write to the Free Software
+  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
+  02110-1301, USA.
+  
+ This code is hereby placed in the public domain.
+ 
+ THIS SOFTWARE IS PROVIDED BY THE AUTHORS ''AS IS'' AND ANY EXPRESS
+ OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+ WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ ARE DISCLAIMED.  IN NO EVENT SHALL THE AUTHORS OR CONTRIBUTORS BE
+ LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+ CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+ SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR
+ BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+ WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
+ OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
+ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #Header:
 #/* rijndael-alg-fst.h --- Rijndael cipher implementation.
 # * Copyright (C) 2005 Free Software Foundation, Inc.
 # *
-# * This file is free software; you can redistribute it and/or modify
-# * it under the terms of the GNU General Public License as published
-# * by the Free Software Foundation; either version 2, or (at your
-# * option) any later version.
-# *
-# * This file is distributed in the hope that it will be useful, but
-# * WITHOUT ANY WARRANTY; without even the implied warranty of
-# * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-# * General Public License for more details.
-# *
-# * You should have received a copy of the GNU General Public License
-# * along with this file; if not, write to the Free Software
-
 File: ./lib/rijndael-api-fst.c
 Hash: b99f158275dd4fe795b389f5caccddb053dff98d2b957da0f54453adbfd5a538
 Copyright: 2005, 2006 Free Software Foundation, Inc.
-License: BSD GPL-2+
-#FIXME
+License: GPL-2+ and other
 Licence_Text:
-#Header:
+  This file is free software; you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published
+  by the Free Software Foundation; either version 2, or (at your
+  option) any later version.
+ 
+  This file is distributed in the hope that it will be useful, but
+  WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+  General Public License for more details.
+ 
+  You should have received a copy of the GNU General Public License
+  along with this file; if not, write to the Free Software
+  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
+  02110-1301, USA.
+  
+ This code is hereby placed in the public domain.
+ 
+ THIS SOFTWARE IS PROVIDED BY THE AUTHORS ''AS IS'' AND ANY EXPRESS
+ OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+ WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ ARE DISCLAIMED.  IN NO EVENT SHALL THE AUTHORS OR CONTRIBUTORS BE
+ LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+ CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+ SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR
+ BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+ WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
+ OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
+ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+Header:
 #/* rijndael-api-fst.c --- Rijndael cipher implementation.
 # * Copyright (C) 2005, 2006 Free Software Foundation, Inc.
 # *
@@ -61867,9 +62042,36 @@ Licence_Text:
 File: ./lib/rijndael-api-fst.h
 Hash: 5e47a11e8fa358f2f9d5b74032b2f486490674675a23560778ff639f0ac38985
 Copyright: 2005 Free Software Foundation, Inc.
-License: BSD GPL-2+
-#FIXME
+License: GPL-2+ and other
 Licence_Text:
+  This file is free software; you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published
+  by the Free Software Foundation; either version 2, or (at your
+  option) any later version.
+ 
+  This file is distributed in the hope that it will be useful, but
+  WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+  General Public License for more details.
+ 
+  You should have received a copy of the GNU General Public License
+  along with this file; if not, write to the Free Software
+  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
+  02110-1301, USA.
+  
+ This code is hereby placed in the public domain.
+ 
+ THIS SOFTWARE IS PROVIDED BY THE AUTHORS ''AS IS'' AND ANY EXPRESS
+ OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+ WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ ARE DISCLAIMED.  IN NO EVENT SHALL THE AUTHORS OR CONTRIBUTORS BE
+ LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+ CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+ SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR
+ BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+ WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
+ OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
+ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #Header:
 #/* rijndael-api-fst.h --- Rijndael cipher implementation.
 # * Copyright (C) 2005 Free Software Foundation, Inc.
@@ -63108,7 +63310,7 @@ Licence_Text:
 
 File: ./lib/sinl.c
 Hash: aec40ee7886ef37669c9218c5d8a5e07ad40fefa4fc7a1e4e48703d51124a9dc
-Copyright: 1993 by Sun Microsystems, Inc.
+Copyright: 1993 by Sun Microsystems, Inc. All rights reserved
 License:
 Licence_Text:
 #Header:
@@ -63118,8 +63320,6 @@ Licence_Text:
 #
 #/*
 # * ====================================================
- Copyright (C) 1993 by Sun Microsystems, Inc. All rights reserved.
-
  Developed at SunPro, a Sun Microsystems, Inc. business.
  Permission to use, copy, modify, and distribute this
  software is freely granted, provided that this notice
@@ -65302,8 +65502,6 @@ Licence_Text:
 #/* @(#)s_tan.c 5.1 93/09/24 */
 #/*
 # * ====================================================
- Copyright (C) 1993 by Sun Microsystems, Inc. All rights reserved.
-
  Developed at SunPro, a Sun Microsystems, Inc. business.
  Permission to use, copy, modify, and distribute this
  software is freely granted, provided that this notice
