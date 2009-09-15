@@ -17,8 +17,24 @@ our $FILESCACHE="$CLSCANDIR/files.yaml";
 our $NEWFILES="$CLSCANDIR/new.txt";
 our $COPYRIGHTSTUB="$CLSCANDIR/copyright.in";
 
+# FIXME: add boilerplate
+our %module_licenses= (
+    "public domain" => "",
+    "unlimited" =>
+        "This file is free software; the Free Software Foundation\n" .
+        "gives unlimited permission to copy and/or distribute it,\n" .
+        "with or without modifications, as long as this notice is preserved.\n",
+    "LGPL" => "",
+    "LGPLv2+" => "",
+    "unmodifiable license text" =>
+        "Everyone is permitted to copy and distribute verbatim copies\n" .
+        "of this license document, but changing it is not allowed.\n",
+    "GPLed build tool" => "",
+    "GPL" => "",
+);
+
 our @filenames=();
-our @modules=();
+our %overrides=();
 our $files={};
 our $new={};
 
@@ -51,6 +67,7 @@ sub scan
 sub merge
 {
     merge_new();
+    load_overrides();
     save_cache();
 }
 
@@ -275,29 +292,21 @@ sub wanted_files
 
 sub wanted_modules
 {
-    if(/^\./ || /^README$/ || /^COPYING$/)
+    if(/^\.[^\/]/ || /^README$/ || /^COPYING$/)
     {
 	$File::Find::prune=1;
+	return;
     }
     elsif(-f)
     {
-	push(@modules, $File::Find::name);
-    }
-}
-
-sub load_overrides
-{
-    find(\&wanted_modules, "modules/");
-    my %modules=();
-    for my $module (@modules)
-    {
-	unless(open(MOD, $module))
+	unless(open(MOD, $File::Find::name))
 	{
-	    warn("$me: cannot open $module: $!\n");
-	    next;
+	    warn("$me: cannot open $File::Find::name: $!\n");
+	    return;
 	}
 	my $infiles=0;
 	my $inlicense=0;
+	my @files=();
 	while(<MOD>)
 	{
 	    chomp;
@@ -307,12 +316,12 @@ sub load_overrides
 	    }
 	    if($inlicense)
 	    {
-		$modules{$module}->{license}=$_;
+		push(@{$overrides{$_}},@files);
 		$inlicense=0;
 	    }
 	    elsif($infiles)
 	    {
-		push(@{$modules{$module}->{files}}, $_);
+		push(@files, $_);
 	    }
 	    elsif(/^License:/)
 	    {
@@ -324,6 +333,17 @@ sub load_overrides
 	    }
 	}
 	close(MOD);
+    }
+}
+
+sub load_overrides
+{
+    find({ wanted => \&wanted_modules, no_chdir => 1}, "modules/");
+    for my $license (keys(%overrides))
+    {
+	print("License: $license\n");
+	print("Files: \n\t");
+	print(join("\n\t", @{$overrides{$license}}),"\n");
     }
 }
 
