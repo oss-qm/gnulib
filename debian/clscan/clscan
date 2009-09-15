@@ -17,27 +17,79 @@ our $FILESCACHE="$CLSCANDIR/files.yaml";
 our $NEWFILES="$CLSCANDIR/new.txt";
 our $COPYRIGHTSTUB="$CLSCANDIR/copyright.in";
 
-# FIXME: add boilerplate
-our %module_licenses= (
-    "public domain" => "",
-    "unlimited" =>
-        "This file is free software; the Free Software Foundation\n" .
-        "gives unlimited permission to copy and/or distribute it,\n" .
-        "with or without modifications, as long as this notice is preserved.\n",
-    "LGPL" => "",
-    "LGPLv2+" => "",
-    "unmodifiable license text" =>
-        "Everyone is permitted to copy and distribute verbatim copies\n" .
-        "of this license document, but changing it is not allowed.\n",
-    "GPLed build tool" => "",
-    "GPL" => "",
-);
+my $gpl_boilerplate=<<"EOL";
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+EOL
+
+my $lgpl_boilerplate=<<"EOL";
+This program is free software; you can redistribute it and/or modify it
+under the terms of the GNU Library General Public License as published
+by the Free Software Foundation; either version 2, or (at your option)
+any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+Library General Public License for more details.
+
+You should have received a copy of the GNU Library General Public
+License along with this program; if not, write to the Free Software
+Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301,
+USA.
+EOL
+
+# license overrides as specified in modules/*
+our $module_licenses = {
+    "public domain" => {
+	license => "PD",
+	license_text => "",
+    },
+    "unlimited" => {
+        license => "other",
+	license_text => "This file is free software; the Free Software Foundation\n" .
+	                "gives unlimited permission to copy and/or distribute it,\n" .
+                        "with or without modifications, as long as this notice is preserved.\n",
+    },
+    "LGPL" => {
+	license => "LGPL",
+	license_text => $lgpl_boilerplate,
+    },
+    "LGPLv2+" => {
+	license => "LGPL-2+",
+	license_text => $lgpl_boilerplate,
+    },
+    "unmodifiable license text" => {
+	license => "other",
+	license_text => "Everyone is permitted to copy and distribute verbatim copies\n" .
+                        "of this license document, but changing it is not allowed.\n",
+    },
+    "GPLed build tool" => {
+	license => "GPL",
+	license_text => $gpl_boilerplate,
+    },
+    "GPL" => {
+	license => "GPL",
+	license_text => $gpl_boilerplate,
+    },
+};
 
 our @filenames=();
 our %overrides=();
 our $files={};
 our $new={};
 
+# actions
 my $scan=0;
 my $merge=0;
 my $writecopyright=0;
@@ -52,6 +104,8 @@ load_cache();
 scan() if($scan);
 merge() if($merge);
 write_copyright() if ($merge || $writecopyright);
+
+
 
 sub scan
 {
@@ -90,9 +144,10 @@ sub write_copyright
     my $licenses={};
     for my $file (sort keys(%$files))
     {
-	my $license=$files->{$file}->{license};
+	my $license=$files->{$file}->{license_override} || $files->{$file}->{license};
 	my $copyright=$files->{$file}->{copyright};
-	my $license_text=$files->{$file}->{license_text};
+	my $license_text=$files->{$file}->{license_text_override} ||
+	    $files->{$file}->{license_text};
 	push(@{$licenses->{$license}->{$license_text}->{$copyright}}, $file);
     }
     my %refs=();
@@ -124,7 +179,7 @@ sub write_copyright
 	    }
 	}
     }
-    for my $ref (sort keys(%refs))
+    for my $ref (sort byref keys(%refs))
     {
 	print COPYRIGHT "License: $ref\n";
 	my @text=split(/\n/, $refs{$ref});
@@ -133,6 +188,17 @@ sub write_copyright
     }
     print COPYRIGHT license_trailer(sort keys(%$licenses));
     close(COPYRIGHT);
+}
+
+sub byref
+{
+    my $aref=($a=~/\[REF(\d+)\]/)[0];
+    my $bref=($b=~/\[REF(\d+)\]/)[0];
+    if($aref && $bref)
+    {
+	return($aref <=> $bref);
+    }
+    return($a cmp $b);
 }
 
 sub license_trailer
@@ -161,7 +227,6 @@ sub license_trailer
 	    if($license =~ /$type(\+|\s|$)/i)
 	    {
 		$types_found{$type}=1;
-		print "FOUND $type [$license]\n";
 	    }
 	}
     }
@@ -340,9 +405,23 @@ sub load_overrides
     find({ wanted => \&wanted_modules, no_chdir => 1}, "modules/");
     for my $license (keys(%overrides))
     {
-#	print("License: $license\n");
-#	print("Files: \n\t");
-#	print(join("\n\t", @{$overrides{$license}}),"\n");
+	if(!exists($module_licenses->{$license}))
+	{
+	    die("$me: license override \"$license\" not found in \$module_licenses\n");
+	}
+	my @overridden_files=map { "./" . $_; } @{$overrides{$license}};
+	for my $file (@overridden_files)
+	{
+	    my $override=$module_licenses->{$license};
+	    if(length($override->{license}))
+	    {
+		$files->{$file}->{license_override}=$override->{license};
+	    }
+	    if(length($override->{license_text}))
+	    {
+		$files->{$file}->{license_text_override}=$override->{license_text};
+	    }
+	}
     }
 }
 
