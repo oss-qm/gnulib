@@ -1,7 +1,7 @@
 This package was debianized by Daniel Baumann <daniel@debian.org> on
 Thu,  1 Jun 2006 00:00:00 +0200.
 
-It was downloaded from <http://www.gnu.org/software/gnulib/>.
+It was downloaded from <git://git.savannah.gnu.org/gnulib.git>.
 
 > The files in here are mostly copyright (C) Free Software Foundation, and
 > are under assorted licenses.  Mostly, but not entirely, GPL.
@@ -20,20 +20,11 @@ It was downloaded from <http://www.gnu.org/software/gnulib/>.
 > copy of maintain.texi in doc/ has a verbatim-copying license, and
 > doc/standards.texi and make-stds.texi are GFDL.
 
-On Debian systems, the complete text of the GNU General Public License
-can be found in /usr/share/common-licenses/GPL file,
-the GNU Lesser General Public License in /usr/share/common-licenses/LGPL,
-and the GNU Free Document License in /usr/share/common-licenses/GFDL.
-
-The Debian packaging is Copyright 2006-2008, Daniel Baumann <daniel@debian.org>
-and Copyright 2009 Ian Beckwith <ianb@debian.org>, and is licensed
-under the GPL-2, see `/usr/share/common-licenses/GPL-2'.
-
 Detailed copyright information follows, see debian/clscan/README
 in the gnulib source package for information on updating this.
 
 Files: debian/*
-Copyright: Copyright 2006-2008, Daniel Baumann <daniel@debian.org> /  Copyright 2009 Ian Beckwith <ianb@debian.org>
+Copyright: 2006-2008, Daniel Baumann <daniel@debian.org> /  2009 Ian Beckwith <ianb@debian.org>
 License: GPL-2
 
 Files: modules/*
