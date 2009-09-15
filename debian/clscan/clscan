@@ -154,15 +154,14 @@ sub license_trailer
     };
 
     my %types_found=();
-TYPE: for my $type (reverse sort keys(%$license_data))
+    for my $type (reverse sort keys(%$license_data))
     {
 	for my $license (@licenses_used)
 	{
-	    if($license =~ /$type(\+|\b)/i)
+	    if($license =~ /$type(\+|\s|$)/i)
 	    {
 		$types_found{$type}=1;
-		# avoid matching eg GPL-2 *and* GPL
-		next TYPE;
+		print "FOUND $type [$license]\n";
 	    }
 	}
     }
@@ -179,10 +178,10 @@ TYPE: for my $type (reverse sort keys(%$license_data))
 	# more than one, use table.
 	$text .= "The complete text of standard licenses referenced above\n";
 	$text .= "can be found in /usr/share/common-licenses/ as follows:\n\n";
-	$text .= sprintf("%-70s %s\n", "LICENSE", "FILE");
+	$text .= sprintf("%-60s %s\n", "LICENSE", "FILE");
 	for my $type (sort keys(%types_found))
 	{
-	    $text .= sprintf("%-70s %s\n", $license_data->{$type}, $type);
+	    $text .= sprintf("%-60s %s\n", $license_data->{$type}, $type);
 	}
     }
     return $text;
@@ -341,9 +340,9 @@ sub load_overrides
     find({ wanted => \&wanted_modules, no_chdir => 1}, "modules/");
     for my $license (keys(%overrides))
     {
-	print("License: $license\n");
-	print("Files: \n\t");
-	print(join("\n\t", @{$overrides{$license}}),"\n");
+#	print("License: $license\n");
+#	print("Files: \n\t");
+#	print(join("\n\t", @{$overrides{$license}}),"\n");
     }
 }
 
