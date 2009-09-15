@@ -18,6 +18,7 @@ our $NEWFILES="$CLSCANDIR/new.txt";
 our $COPYRIGHTSTUB="$CLSCANDIR/copyright.in";
 
 our @filenames=();
+our @modules=();
 our $files={};
 our $new={};
 
@@ -87,6 +88,11 @@ sub write_copyright
 	    if(length($license_text))
 	    {
 		$refnum++;
+		# license_text + empty license = License: other
+		if(!length($license))
+		{
+		    $licensestr = "other";
+		}
 		$licensestr .= " [REF$refnum]";
 		$refs{$licensestr}=$license_text;
 	    }
@@ -131,7 +137,7 @@ sub license_trailer
     };
 
     my %types_found=();
-TYPE: for my $type (keys(%$license_data))
+TYPE: for my $type (reverse sort keys(%$license_data))
     {
 	for my $license (@licenses_used)
 	{
@@ -144,10 +150,23 @@ TYPE: for my $type (keys(%$license_data))
 	}
     }
     my $text="\n";
-    for my $type (sort keys(%types_found))
+    # if just one, use standard style
+    if(keys(%types_found) == 1)
     {
-	$text .= "The complete text of the " . $license_data->{$type} ." can be\n";
-	$text .= "found in /usr/share/common-licenses/$type\n";
+	my ($file, $name)=each(%types_found);
+	$text .= "The complete text of the $name can be\n";
+	$text .= "found in /usr/share/common-licenses/$file\n";
+    }
+    else
+    {
+	# more than one, use table.
+	$text .= "The complete text of standard licenses referenced above\n";
+	$text .= "can be found in /usr/share/common-licenses/ as follows:\n\n";
+	$text .= sprintf("%-70s %s\n", "LICENSE", "FILE");
+	for my $type (sort keys(%types_found))
+	{
+	    $text .= sprintf("%-70s %s\n", $license_data->{$type}, $type);
+	}
     }
     return $text;
 }
@@ -237,7 +256,12 @@ sub filechanged
     }
 }
 
-sub wanted
+sub get_filenames
+{
+    find(\&wanted_files, ".");
+}
+
+sub wanted_files
 {
     if(/^\.git/ || /^\.cvs/ || /^debian/ || /^modules$/)
     {
@@ -249,10 +273,60 @@ sub wanted
     }
 }
 
-sub get_filenames
+sub wanted_modules
 {
-    find(\&wanted, ".");
+    if(/^\./ || /^README$/ || /^COPYING$/)
+    {
+	$File::Find::prune=1;
+    }
+    elsif(-f)
+    {
+	push(@modules, $File::Find::name);
+    }
 }
+
+sub load_overrides
+{
+    find(\&wanted_modules, "modules/");
+    my %modules=();
+    for my $module (@modules)
+    {
+	unless(open(MOD, $module))
+	{
+	    warn("$me: cannot open $module: $!\n");
+	    next;
+	}
+	my $infiles=0;
+	my $inlicense=0;
+	while(<MOD>)
+	{
+	    chomp;
+	    if(/^$/)
+	    {
+		$infiles = $inlicense = 0;
+	    }
+	    if($inlicense)
+	    {
+		$modules{$module}->{license}=$_;
+		$inlicense=0;
+	    }
+	    elsif($infiles)
+	    {
+		push(@{$modules{$module}->{files}}, $_);
+	    }
+	    elsif(/^License:/)
+	    {
+		$inlicense=1;
+	    }
+	    elsif(/^Files:/)
+	    {
+		$infiles=1;
+	    }
+	}
+	close(MOD);
+    }
+}
+
 
 sub load_cache
 {
