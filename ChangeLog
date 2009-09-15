@@ -1,3 +1,139 @@
+2009-09-13  Jim Meyering  <meyering@redhat.com>
+
+	posixtm: don't reject a time that specify "60" as the number of seconds
+	* lib/posixtm.c (posixtime): The code to reject invalid dates
+	would also reject a time specified with the .60 suffix.
+	But POSIX allows that, in order to accommodate leap seconds.
+	So don't reject it.
+	(main): Adjust tests accordingly.
+	* modules/posixtm (Depends-on): Add stpcpy.
+
+2009-09-11  Jim Meyering  <meyering@redhat.com>
+
+	announce-gen: include [$release_type] in emitted Subject:
+	* build-aux/announce-gen (get_tool_versions): Include [$release_type],
+	e.g., [stable] in the emitted Subject: line.
+
+2009-09-10  Ralf Wildenhues  <Ralf.Wildenhues@gmx.de>
+
+	Remove obsolete macros from several modules.
+	* m4/c-stack.m4 (AC_SYS_XSI_STACK_OVERFLOW_HEURISTIC): Replace
+	obsolete Autoconf macros with their modern counterparts.
+	* m4/check-math-lib.m4 (gl_CHECK_MATH_LIB): Likewise.
+	* m4/gc-camellia.m4 (gl_GC_CAMELLIA): Likewise.
+	* m4/getaddrinfo.m4 (gl_GETADDRINFO): Likewise.
+	* m4/getdate.m4 (gl_C_COMPOUND_LITERALS): Likewise.
+	* m4/gethostname.m4 (gl_FUNC_GETHOSTNAME): Likewise.
+	* m4/getline.m4 (gl_FUNC_GETLINE): Likewise.
+	* m4/getopt.m4 (gl_GETOPT_CHECK_HEADERS): Likewise.
+	* m4/isfinite.m4 (gl_ISFINITEL_WORKS): Likewise.
+	* m4/poll.m4 (gl_FUNC_POLL): Likewise.
+	* m4/readline.m4 (gl_FUNC_READLINE): Likewise.
+	* m4/round.m4 (gl_FUNC_ROUND): Likewise.
+	* m4/roundf.m4 (gl_FUNC_ROUNDF): Likewise.
+	* m4/select.m4 (gl_FUNC_SELECT): Likewise.
+	* m4/sockets.m4 (gl_SOCKETS): Likewise.
+	* m4/socklen.m4 (gl_TYPE_SOCKLEN_T): Likewise.
+	* m4/sockpfaf.m4 (gl_SOCKET_FAMILIES): Likewise.
+	* m4/sysexits.m4 (gl_SYSEXITS): Likewise.
+	* m4/time_r.m4 (gl_TIME_R): Likewise.
+	* m4/tsearch.m4 (gl_FUNC_TSEARCH): Likewise.
+	* m4/vararrays.m4 (AC_C_VARARRAYS): Likewise.
+	* m4/wctype.m4 (gl_WCTYPE_H): Likewise.
+
+	Fix copyright header in build-aux scripts.
+	* build-aux/git-version-gen: Fix copyright header to match GPLv3
+	recommendation.
+	* build-aux/ncftpput-ftp: Likewise.
+	* build-aux/update-copyright: Likewise.
+
+2009-09-09  Eric Blake  <ebb9@byu.net>
+
+	test-link: allow Linux choice of errno
+	* tests/test-link.c (main): Relax test for alternate error.
+
+	strndup: fix improper m4 caching
+	* m4/strndup.m4 (gl_FUNC_STRNDUP): Rework to avoid side effects
+	inside AC_CACHE_CHECK.  Use REPLACE_STRNDUP, not HAVE_STRNDUP.
+	(gl_PREREQ_STRNDUP): Delete.
+	* m4/string_h.m4 (gl_HEADER_STRING_H_DEFAULTS): Update default.
+	* modules/string (Makefile.am): Substitute it.
+	* lib/string.in.h (strndup): Modernize prototype.
+
+	getcwd: port to mingw
+	* m4/getcwd.m4 (gl_FUNC_GETCWD): Mingw directories are very
+	different from the POSIX assumptions made throughout the getcwd
+	module; fortunately, the mingw getcwd does not need replacement.
+	(gl_FUNC_GETCWD_NULL): Skip test on mingw.
+	* modules/getcwd-tests: New test.
+	* tests/test-getcwd.c: Likewise.
+
+	link: fix platform bugs
+	* m4/link.m4 (gl_FUNC_LINK): Detect Solaris and Cygwin bugs.
+	* lib/link.c (link): Work around them.  Fix related mingw bug.
+	* m4/unistd_h.m4 (gl_UNISTD_H_DEFAULTS): Add REPLACE_LINK.
+	* modules/unistd (Makefile.am): Substitute it.
+	* lib/unistd.in.h (link): Declare replacement.
+	* doc/posix-functions/link.texi (link): Document this.
+	* modules/link (Depends-on): Add strdup-posix, sys_stat.
+
+	test-link: consolidate into single C program, test more cases
+	* tests/test-link.sh: Delete.
+	* tests/test-link.c: Test more error conditions.  Exposes bugs on
+	at least Cygwin and Solaris.
+	* modules/link-tests (Files): Remove unused file.
+	(Depends-on): Add errno, sys_stat.
+	(Makefile.am): Simplify.
+
+2009-09-08  Bruno Haible  <bruno@clisp.org>
+
+	Work around towlower, towupper bug on mingw.
+	* lib/wctype.in.h (towlower, towupper) [__MINGW32__]: New replacements.
+	* m4/wctype.m4 (gl_WCTYPE_H): Replace <wctype.h> also on mingw.
+	* doc/posix-functions/towlower.texi: Mention the mingw bug.
+	* doc/posix-functions/towupper.texi: Likewise.
+	Reported by Eric Blake.
+
+2009-09-08  Jim Meyering  <meyering@redhat.com>
+
+	build: don't try to run autoheader if we don't use it
+	* build-aux/bootstrap: Define AUTOHEADER=true when AC_CONFIG_HEADERS
+	is not used in configure.ac.
+
+2009-09-08  Eric Blake  <ebb9@byu.net>
+
+	euidaccess: fix compilation error
+	* lib/euidaccess.c (includes): Add <fcntl.h>, for AT_EACCESS.
+
+	rawmemchr: relax license
+	* modules/rawmemchr (License): Derived from glibc, so LGPLv2+ is
+	okay.
+	Reported by Jim Meyering.
+
+	mkfifoat: new module
+	* modules/mkfifoat: New file.
+	* lib/mkfifoat.c: Likewise.
+	* m4/mkfifoat.m4 (gl_FUNC_MKFIFOAT): Likewise.
+	* m4/sys_stat_h.m4 (gl_SYS_STAT_H_DEFAULTS): Add witnesses.
+	* modules/sys_stat (Makefile.am): Use them.
+	* lib/sys_stat.in.h (mkfifoat, mknodat): Declare them.
+	* MODULES.html.sh (File system functions): Mention module.
+	* doc/posix-functions/mkfifoat.texi (mkfifoat): Likewise.
+	* doc/posix-functions/mknodat.texi (mknodat): Likewise.
+	* modules/mkfifoat-tests: New test.
+	* tests/test-mkfifoat.c: Likewise.
+
+	strchrnul: relax license
+	* modules/strchrnul (License): Derived from glibc, so LGPLv2+ is
+	okay.
+	Reported by Jim Meyering.
+
+2009-09-08  Eric Blake  <ebb9@byu.net>
+
+	fstatat: fix compilation on Solaris
+	* lib/fstatat.c (includes): Add fcntl.h.
+	Reported by Pádraig Brady.
+
 2009-09-07  Eric Blake  <ebb9@byu.net>
 
 	rename: modernize replacement
