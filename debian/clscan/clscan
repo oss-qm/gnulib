@@ -88,6 +88,7 @@ our @filenames=();
 our %overrides=();
 our $files={};
 our $new={};
+our @deleted_files=();
 
 # actions
 my $scan=0;
@@ -114,8 +115,8 @@ sub scan
     {
 	scan_file($file);
     }
-    write_new();
     find_deleted();
+    write_new();
 }
 
 sub merge
@@ -462,7 +463,6 @@ sub write_new
     unless(keys(%$new))
     {
 	warn("$me: no new/changed files found\n");
-	return;
     }
     unless(open(NEW,">$NEWFILES"))
     {
@@ -492,6 +492,10 @@ sub write_new
 	@headerlines=map { "#" . $_ } grep { defined $_; } @headerlines;
 	print NEW join("\n", @headerlines);
 	print NEW "\n\n";
+    }
+    if(@deleted_files)
+    {
+	print NEW map { "Deleted: $_\n"; } @deleted_files;
     }
     close NEW;
 }
@@ -554,6 +558,13 @@ sub merge_new
 	    $in_license_text=1;
 	    $license_text='';
 	}
+	elsif(/^Deleted:\s*(.*)/)
+	{
+	    if(exists($files->{$1}))
+	    {
+		delete($files->{$1});
+	    }
+	}
 	else
 	{
 	    warn("$me: $NEWFILES: line $line not recognized\n");
@@ -572,19 +583,18 @@ sub merge_new
 
 sub find_deleted
 {
-    my @deleted=();
     my %newnames = map { $_ => 1 } @filenames;
     for my $file (sort keys(%$files))
     {
 	unless(exists($newnames{$file}))
 	{
-	    push(@deleted, $file);
+	    push(@deleted_files, $file);
 	}
     }
-    if(@deleted)
+    if(@deleted_files)
     {
 	print "Removed files:\n";
-	print join("\n", @deleted),"\n";
+	print join("\n", @deleted_files),"\n";
     }
 }
 

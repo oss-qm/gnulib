@@ -26882,11 +26882,6 @@
   hash: 26cc2a58a305192996a7e8ee065b4bf8254c9b13d4e9f4efbe3c77777e2fc065
   license: GPL-2+
   license_text: "This program is free software; you can redistribute it and/or modify\nit under the terms of the GNU General Public License as published by\nthe Free Software Foundation; either version 2 of the License, or\n(at your option) any later version.\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\nGNU General Public License for more details.\n\nYou should have received a copy of the GNU General Public License\nalong with this program; if not, write to the Free Software Foundation,\nInc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.  */\n"
-./tests/test-link.sh: 
-  copyright: ''
-  hash: 1b15e579dd41f894ef55727093cb2490e586dd857fcd726339f4a59203a8fa68
-  license: ''
-  license_text: ''
 ./tests/test-linked_list.c: 
   copyright: 2006-2008 Free Software Foundation, Inc.
   hash: b585f61497a4fc7c4dfd6e91d04c704703401fecd8b22283b5c421a43a594c37
