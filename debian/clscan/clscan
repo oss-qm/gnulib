@@ -324,15 +324,17 @@ sub filechanged
     {
 	if(exists($files->{$filename}->{copyright}))
 	{
-	    $new->{$filename}->{copyright_old}=$files->{$filename}->{copyright};
+	    $new->{$filename}->{copyright}=$files->{$filename}->{copyright};
+	    $new->{$filename}->{copyright_guess}=$copyright_guess;
 	}
 	if(exists($files->{$filename}->{license}))
 	{
-	    $new->{$filename}->{license_old}=$files->{$filename}->{license};
+	    $new->{$filename}->{license}=$files->{$filename}->{license};
+	    $new->{$filename}->{license_guess}=$license_guess;
 	}
 	if(exists($files->{$filename}->{license_text}))
 	{
-	    $new->{$filename}->{license_text_old}=$files->{$filename}->{license_text};
+	    $new->{$filename}->{license_text}=$files->{$filename}->{license_text};
 	}
     }
 }
@@ -471,19 +473,18 @@ sub write_new
 	print NEW "File: $file\n";
 	print NEW "Hash: ", $new->{$file}->{hash}, "\n";
 	print NEW "Copyright: ", $new->{$file}->{copyright}, "\n";
+	if($new->{$file}->{copyright_guess})
+	{
+	    print NEW "#Copyright_guess: ", $new->{$file}->{copyright_guess}, "\n";
+	}
 	print NEW "License: ", $new->{$file}->{license}, "\n";
-	print NEW "License_Text: \n";
-	if($new->{$file}->{license_old})
+	if($new->{$file}->{license_guess})
 	{
-	    print NEW "#License_old: ", $new->{$file}->{license_old}, "\n";
+	    print NEW "#License_guess: ", $new->{$file}->{license_guess}, "\n";
 	}
-	if($new->{$file}->{copyright_old})
+	if($new->{$file}->{license_text})
 	{
-	    print NEW "#Copyright_old: ", $new->{$file}->{copyright_old}, "\n";
-	}
-	if($new->{$file}->{licence_text_old})
-	{
-	    print NEW "#License_text_old: ", $new->{$file}->{licence_text_old}, "\n";
+	    print NEW $new->{$file}->{license_text}, "\n";
 	}
 	print NEW "#Header: \n";
 	my @headerlines=split(/\n/, $new->{$file}->{header});

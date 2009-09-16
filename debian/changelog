@@ -1,3 +1,9 @@
+gnulib (20090915+f32c9d0-1) unstable; urgency=low
+
+  * New upstream snapshot 20090915+f32c9d0.
+
+ -- Ian Beckwith <ianb@debian.org>  Tue, 15 Sep 2009 23:27:10 +0100
+
 gnulib (20090908+c5c46dc-1) unstable; urgency=low
 
   * New maintainer (closes: #543842).
