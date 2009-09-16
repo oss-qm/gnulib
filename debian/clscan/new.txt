@@ -92,7 +92,7 @@ License: GPL-3+
 
 File: ./build-aux/git-version-gen
 Hash: ee8d2fb3acce7f1e619d1f6fc4afd8798fa90137ddcc2792182b497701ea2511
-Copyright: 2007-2008 Free Software Foundation, Inc.
+Copyright: 2007-2009 Free Software Foundation, Inc.
 #Copyright_guess: 2007-2009 Free Software Foundation
 License: GPL-3+
 #License_guess: GPL-3+ 
@@ -127,7 +127,7 @@ License: GPL-3+
 
 File: ./build-aux/ncftpput-ftp
 Hash: f818fd0b028e38b369dcf4078476ba56ecae9ab96f242303c5fc847c91b77315
-Copyright: 2008 Free Software Foundation, Inc.
+Copyright: 2008, 2009 Free Software Foundation, Inc.
 #Copyright_guess: 2008, 2009 Free Software Foundation
 License: GPL-3+
 #License_guess: GPL-3+ 
@@ -485,7 +485,7 @@ License:
 
 File: ./m4/getcwd.m4
 Hash: b87bad5c36703b1168e0f64b2e5c28bff9b6f6d70fac3e29c9f816ba0a9e65b1
-Copyright: 2001, 2003, 2004, 2005, 2006, 2007 Free Software Foundation, Inc.
+Copyright: 2001, 2003, 2004, 2005, 2006, 2007, 2009 Free Software Foundation, Inc.
 #Copyright_guess: 2001, 2003, 2004, 2005, 2006, 2007, 2009 Free Software
 License: 
 	This file is free software; the Free Software Foundation
@@ -666,10 +666,10 @@ License:
 ## serial 1
 ## See if we need to provide mkfifoat/mknodat replacement.
 #
-#dnl Copyright (C) 2009 Free Software Foundation, Inc.
-#dnl This file is free software; the Free Software Foundation
-#dnl gives unlimited permission to copy and/or distribute it,
-#dnl with or without modifications, as long as this notice is preserved.
+ Copyright (C) 2009 Free Software Foundation, Inc.
+ This file is free software; the Free Software Foundation
+ gives unlimited permission to copy and/or distribute it,
+ with or without modifications, as long as this notice is preserved.
 #
 ## Written by Eric Blake.
 #
@@ -730,7 +730,7 @@ License:
 
 File: ./m4/round.m4
 Hash: 25bf1c083dbfd16815069e4cd39f77e77922486167ef21ce9dc2fae4181c8461
-Copyright: 2007 Free Software Foundation, Inc.
+Copyright: 2007, 2009 Free Software Foundation, Inc.
 #Copyright_guess: 2007, 2009 Free Software Foundation, Inc
 License: 
 	This file is free software; the Free Software Foundation
@@ -830,7 +830,7 @@ License:
 
 File: ./m4/socklen.m4
 Hash: 5e594903defff6d71df160b1d891e8c78ec2991a65f470050c20c2006c3036f2
-Copyright: 2005, 2006, 2007 Free Software Foundation, Inc.
+Copyright: 2005, 2006, 2007, 2009 Free Software Foundation, Inc.
 #Copyright_guess: 2005, 2006, 2007, 2009 Free Software Foundation, Inc
 License: 
 	This file is free software; the Free Software Foundation
@@ -955,7 +955,7 @@ License:
 
 File: ./m4/sysexits.m4
 Hash: 156fcec3fbd92cf7f73279b896b8d1bab8cda64d47312a7318e6c73a4c2285c5
-Copyright: 2003, 2005, 2007 Free Software Foundation, Inc.
+Copyright: 2003, 2005, 2007, 2009 Free Software Foundation, Inc.
 #Copyright_guess: 2003, 2005, 2007, 2009 Free Software Foundation, Inc
 License: 
 	This file is free software; the Free Software Foundation
@@ -980,7 +980,7 @@ License:
 
 File: ./m4/time_r.m4
 Hash: 7a6f5a6a7e505f88f7dc4e9cd840498fc72de69e7ec183931e5ce886c0dfc17b
-Copyright: 2003, 2006, 2007, 2008 Free Software Foundation, Inc.
+Copyright: 2003, 2006, 2007, 2008, 2009 Free Software Foundation, Inc.
 #Copyright_guess: 2003, 2006, 2007, 2008, 2009 Free Software Foundation, Inc
 License: 
 	This file is free software; the Free Software Foundation
@@ -1005,7 +1005,7 @@ License:
 
 File: ./m4/tsearch.m4
 Hash: 7d3c57f659577b8ef5f3a8cbef55f49c7787e25a96ba0d35c46932eaa2cfb421
-Copyright: 2006-2008 Free Software Foundation, Inc.
+Copyright: 2006-2009 Free Software Foundation, Inc.
 #Copyright_guess: 2006-2009 Free Software Foundation, Inc
 License: 
 	This file is free software; the Free Software Foundation
@@ -1080,7 +1080,7 @@ License:
 
 File: ./m4/wctype.m4
 Hash: 0821c0dde71730d9ff6fb6eabb50e44e1800802cca9f810454291595c65d1afb
-Copyright: 2006-2008 Free Software Foundation, Inc.
+Copyright: 2006-2009 Free Software Foundation, Inc.
 #Copyright_guess: 2006-2009 Free Software Foundation, Inc
 License: 
 	This file is free software; the Free Software Foundation
