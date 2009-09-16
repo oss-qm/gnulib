@@ -484,7 +484,8 @@ sub write_new
 	}
 	if($new->{$file}->{license_text})
 	{
-	    print NEW $new->{$file}->{license_text}, "\n";
+	    my @text=split(/\n/, $new->{$file}->{license_text});
+	    print NEW "\t" . join("\n\t", @text), "\n";
 	}
 	print NEW "#Header: \n";
 	my @headerlines=split(/\n/, $new->{$file}->{header});
