@@ -1,8 +1,9 @@
 gnulib (20090915+f32c9d0-2) unstable; urgency=low
 
   * Add top/ to installed directories.
+  * debian/rules: don't chmod canonicalize-lgpl.m4: removed.
 
- -- Ian Beckwith <ianb@debian.org>  Thu, 24 Sep 2009 23:59:27 +0100
+ -- Ian Beckwith <ianb@debian.org>  Sun, 27 Sep 2009 04:11:26 +0100
 
 gnulib (20090915+f32c9d0-1) unstable; urgency=low
 

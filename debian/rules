@@ -45,7 +45,6 @@ override_dh_auto_install:
 	chmod 0755 debian/gnulib/usr/share/gnulib/build-aux/gendocs.sh
 	chmod 0644 debian/gnulib/usr/share/gnulib/doc/gendocs_template
 	chmod 0644 debian/gnulib/usr/share/gnulib/lib/fflush.c
-	chmod 0644 debian/gnulib/usr/share/gnulib/m4/canonicalize-lgpl.m4
 	chmod 0644 debian/gnulib/usr/share/gnulib/m4/fflush.m4
 	chmod 0644 debian/gnulib/usr/share/gnulib/modules/canonicalize-lgpl
 	chmod 0644 debian/gnulib/usr/share/gnulib/modules/fflush
