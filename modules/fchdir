@@ -6,7 +6,6 @@ lib/fchdir.c
 m4/fchdir.m4
 
 Depends-on:
-canonicalize-lgpl
 close
 dirent
 dirfd
@@ -16,6 +15,7 @@ include_next
 malloc-posix
 open
 realloc-posix
+stat
 stdbool
 strdup-posix
 sys_stat
@@ -28,7 +28,7 @@ gl_UNISTD_MODULE_INDICATOR([fchdir])
 Makefile.am:
 
 Include:
-#include <unistd.h>
+<unistd.h>
 
 License:
 LGPL

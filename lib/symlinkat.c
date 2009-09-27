@@ -20,13 +20,9 @@
 
 #include <unistd.h>
 
-#include "dirname.h" /* solely for definition of IS_ABSOLUTE_FILE_NAME */
-#include "openat.h"
-#include "openat-priv.h"
-#include "save-cwd.h"
-
 #if !HAVE_SYMLINK
-/* Mingw lacks symlink, so this wrapper is trivial.  */
+/* Mingw lacks symlink, and it is more efficient to provide a trivial
+   wrapper than to go through at-func.c to call rpl_symlink.  */
 
 # include <errno.h>
 

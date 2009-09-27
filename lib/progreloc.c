@@ -43,7 +43,6 @@
 # include <windows.h>
 #endif
 
-#include "canonicalize.h"
 #include "relocatable.h"
 
 #ifdef NO_XMALLOC
@@ -59,6 +58,11 @@
 #else
 # include "xalloc.h"
 #endif
+
+/* Declare canonicalize_file_name.
+   The <stdlib.h> included above may be the system's one, not the gnulib
+   one.  */
+extern char * canonicalize_file_name (const char *name);
 
 /* Pathname support.
    ISSLASH(C)           tests whether C is a directory separator character.

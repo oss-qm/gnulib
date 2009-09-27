@@ -1,7 +1,12 @@
 Files:
+tests/test-lstat.h
 tests/test-lstat.c
 
 Depends-on:
+errno
+same-inode
+stdbool
+symlink
 
 configure.ac:
 

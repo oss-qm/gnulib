@@ -4,23 +4,26 @@ Return the canonical absolute name of a given file.
 Files:
 lib/canonicalize.h
 lib/canonicalize.c
-lib/pathmax.h
 m4/canonicalize.m4
+m4/double-slash-root.m4
 
 Depends-on:
 areadlink-with-size
 errno
+extensions
 file-set
-filenamecat
 hash-triple
+lstat
 memmove
+pathmax
 sys_stat
 xalloc
 xgetcwd
 
 configure.ac:
-AC_FUNC_CANONICALIZE_FILE_NAME
+gl_FUNC_CANONICALIZE_FILENAME_MODE
 gl_MODULE_INDICATOR([canonicalize])
+gl_STDLIB_MODULE_INDICATOR([canonicalize_file_name])
 
 Makefile.am:
 

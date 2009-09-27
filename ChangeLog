@@ -1,3 +1,732 @@
+2009-09-26  Eric Blake  <ebb9@byu.net>
+
+	argp: fix compilation of getopt
+	* lib/getopt.in.h (includes): Use different guard than glibc.
+	Reported by Sergey Poznyakoff.
+
+	doc: mention more cygwin 1.7 status
+	* doc/posix-functions/access.texi (access): Mention cygwin 1.5
+	bug.
+	* doc/posix-functions/execl.texi (execl): Likewise.
+	* doc/posix-functions/execle.texi (execle): Likewise.
+	* doc/posix-functions/execlp.texi (execlp): Likewise.
+	* doc/posix-functions/execv.texi (execv): Likewise.
+	* doc/posix-functions/execve.texi (execve): Likewise.
+	* doc/posix-functions/execvp.texi (execvp): Likewise.
+	* doc/glibc-functions/canonicalize_file_name.texi
+	(canonicalize_file_name): Cygwin 1.7 now provides this.
+	* doc/glibc-functions/euidaccess.texi (euidaccess): Likewise.
+	* doc/posix-functions/fchmodat.texi (fchmodat): Mention limitation
+	on AT_SYMLINK_NOFOLLOW.
+
+2009-09-24  Eric Blake  <ebb9@byu.net>
+
+	test-linkat: make test more robust
+	* tests/test-linkat.c (main): Avoid collision with EEXIST.
+
+	getopt: fix inclusion guards for cygwin
+	* modules/getopt-posix (Depends-on): Add include-next.
+	(Makefile.am): Substitute more items in replacement header.
+	* m4/getopt.m4 (gl_GETOPT_CHECK_HEADERS): Also check for native
+	<getopt.h>.
+	* lib/getopt.in.h (includes): Use split inclusion guard, and
+	prefer <getopt.h> over include <unistd.h> when one is present.
+	(option): Also override name of 'struct option'.
+
+	same-inode: revert prior change; it is not yet ready
+	* NEWS: Undo mention of this change.
+	* lib/same-inode.h (same-inode.h): Undo tri-state change.
+	* lib/cycle-check.h (CYCLE_CHECK_REFLECT_CHDIR_UP): Update caller.
+	* lib/cycle-check.c (cycle_check): Likewise.
+	* lib/same.c (same_name): Likewise.
+	* lib/at-func2.c (at_func2): Likewise.
+
+2009-09-23  Eric Blake  <ebb9@byu.net>
+
+	linkat: new module
+	* modules/linkat: New file.
+	* lib/at-func2.c (at_func2): Likewise.
+	* lib/linkat.c (linkat): Likewise.
+	* m4/linkat.m4 (gl_FUNC_LINKAT): Likewise.
+	* lib/openat-priv.h (at_func2): Add declaration.
+	* m4/unistd_h.m4 (gl_UNISTD_H_DEFAULTS): Add witnesses.
+	* modules/unistd (Makefile.am): Substitute them.
+	* lib/unistd.in.h (linkat): Declare it.
+	* MODULES.html.sh (systems lacking POSIX:2008): Mention module.
+	* doc/posix-functions/linkat.texi (linkat): Likewise.
+	* doc/posix-functions/link.texi (link): Tweak wording.
+	* tests/test-link.c (main): Move guts...
+	* tests/test-link.h (test_link): ...into new file.
+	* modules/linkat-tests: New test.
+	* tests/test-linkat.c: Likewise.
+	* modules/link-tests (Files): Ship new file.
+	(Depends-on): Add stdbool.
+
+	dirname: add library-safe mdir_name
+	* lib/dirname.h (mdir_name): New prototype.
+	* lib/dirname.c (dir_name): Move guts...
+	(mdir_name): ...to new function that avoids xalloc_die.
+
+	fchdir: another mingw fix
+	* modules/fchdir (Depends-on): Drop canonicalize-lgpl.
+	* lib/fchdir.c (get_name): New helper method; skips canonicalize
+	on mingw (where it has not yet been ported), and make it optional
+	elsewhere.
+	(_gl_register_fd): Use it.
+
+	same-inode: make SAME_INODE tri-state, to port to mingw
+	* NEWS: Mention this change.
+	* lib/same-inode.h (same-inode.h): Recognize mingw limitation of
+	st_ino always being 0.
+	* lib/cycle-check.h (CYCLE_CHECK_REFLECT_CHDIR_UP): Update caller.
+	* lib/cycle-check.c (cycle_check): Likewise.
+	* lib/same.c (same_name): Likewise.
+
+	lstat: avoid mingw compilation error
+	* m4/lstat.m4 (gl_FUNC_LSTAT): Avoid duplicate calls to
+	AC_FUNC_LSTAT_FOLLOWS_SLASHED_SYMLINK, and deal with missing
+	lstat ourselves.
+	* lib/lstat.c [!HAVE_LSTAT]: Do nothing if <sys/stat.h> override
+	was adequate.
+	* m4/sys_stat_h.m4 (gl_HEADER_SYS_STAT_H): Let lstat module handle
+	the checks for lstat.
+	(gl_SYS_STAT_H_DEFAULTS): Set default for HAVE_LSTAT.
+
+	link: fix test failure on Solaris 9
+	* lib/link.c (rpl_link): Don't assume link will catch bogus
+	trailing slash on source.
+
+	test-symlinkat: enhance test
+	* tests/test-readlink.c (main): Move guts...
+	* tests/test-readlink.h (test_readlink): ...into new file.
+	* tests/test-symlink.c (main): Move guts...
+	* tests/test-symlink.h (test_symlink): ...into new file.
+	* tests/test-symlinkat.c (main): Use new files for further
+	coverage.
+	(do_symlink, do_readlink): New helper functions.
+	* modules/symlink-tests (Files): Ship new file.
+	(Depends-on): Add stdbool.
+	* modules/readlink-tests (Files): Ship new file.
+	(Depends-on): Add stdbool.
+	* modules/symlinkat-tests (Files): Use new files.
+
+2009-09-23  Eric Blake  <ebb9@byu.net>
+
+	readlink: document portability issue with symlink length
+	* doc/posix-functions/lstat.texi (lstat): Mention that some file
+	systems have bogus st_size on symlinks, and mention the
+	areadlink-with-size module.
+	* doc/posix-functions/fstatat.texi (fstatat): Likewise.
+	* doc/posix-functions/readlink.texi (readlink): Mention the
+	areadlink module, and ERANGE failure.
+	* doc/posix-functions/readlinkat.texi (readlinkat): Likewise.
+	* tests/test-readlink.c (main): Relax test for AIX, HP-UX.
+
+	readlink: fix Solaris 9 bug with trailing slash
+	* lib/readlink.c (rpl_readlink): Work around trailing slash bug.
+	* m4/readlink.m4 (gl_FUNC_READLINK): Detect the bug.
+	* doc/posix-functions/readlink.texi (readlink): Document this.
+	* modules/readlink-tests: New test.
+	* tests/test-readlink.c: Likewise.
+
+	readlink: fix cygwin 1.5.x bug with return type
+	* m4/readlink.m4 (gl_FUNC_READLINK): Require correct signature.
+	* lib/unistd.in.h (readlink): Use ssize_t.
+	* lib/readlink.c (readlink): Likewise.
+	* m4/unistd_h.m4 (gl_UNISTD_H_DEFAULTS): Add witness.
+	* modules/unistd (Makefile.am): Substitute it.
+	* lib/unistd.in.h (readlink): Declare replacement.
+	* doc/posix-functions/readlink.texi (readlink): Document this.
+
+	symlink: use throughout gnulib
+	* m4/symlinkat.m4 (gl_FUNC_SYMLINKAT): Omit symlink check.
+	* lib/symlinkat.c (symlinkat) [!HAVE_SYMLINK]: Document why
+	symlink is not used.
+	* modules/symlinkat (Depends-on): Add symlink.
+	* modules/canonicalize-lgpl-tests (Depends-on): Likewise.
+	* modules/canonicalize-tests (Depends-on): Likewise.
+	* modules/lstat-tests (Depends-on): Likewise.
+	* modules/openat-tests (Depends-on): Likewise.
+	* modules/remove-tests (Depends-on): Likewise.
+	* modules/rmdir-tests (Depends-on): Likewise.
+	* modules/unlink-tests (Depends-on): Likewise.
+	* tests/test-canonicalize-lgpl.c (symlink): Delete stub.
+	* tests/test-canonicalize.c (symlink): Likewise.
+	* tests/test-fstatat.c (symlink): Likewise.
+	* tests/test-lstat.c (symlink): Likewise.
+	* tests/test-remove.c (symlink): Likewise.
+	* tests/test-rmdir.c (symlink): Likewise.
+	* tests/test-unlink.c (symlink): Likewise.
+	* tests/test-unlinkat.c (symlink): Likewise.
+
+	symlink: new module, for Solaris 9 bug
+	* modules/symlink: New file.
+	* m4/symlink.m4 (gl_FUNC_SYMLINK): Likewise.
+	* lib/symlink.c: Likewise.
+	* m4/unistd_h.m4 (gl_UNISTD_H_DEFAULTS): Add defaults.
+	* modules/unistd (Makefile.am): Substitute them.
+	* lib/unistd.in.h (symlink): Declare replacement.
+	* MODULES.html.sh (File system functions): Mention it.
+	* doc/posix-functions/symlink.texi (symlink): Likewise.
+	* modules/symlink-tests: New test.
+	* tests/test-symlink.c: Likewise.
+
+2009-09-23  Bruno Haible  <bruno@clisp.org>
+
+	* gnulib-tool (func_import): Add 'link-warning' to testsrelated_modules
+	when needed.
+	Test case: gnulib-tool --import --with-tests atexit inttypes.
+	Reported by Pauli Miettinen <pauli.miettinen@cs.helsinki.fi>.
+
+2009-09-23  Bruno Haible  <bruno@clisp.org>
+
+	* gnulib-tool (func_emit_tests_Makefile_am): Set uses_subdirs in a
+	subcommand, not in a subshell.
+
+2009-09-22  Eric Blake  <ebb9@byu.net>
+
+	unistd: sort replacement declarations
+	* lib/unistd.in.h: Sort declarations.
+
+	open, openat: minor optimization
+	* lib/open.c (open): If open succeeded, len is non-zero.
+	* lib/openat.c (rpl_openat): Likewise.
+
+	link-follow: ensure correct result
+	* m4/fcntl_h.m4 (gl_FCNTL_H): Clean up temporary file.
+	* m4/link-follow.m4 (gl_FUNC_LINK_FOLLOWS_SYMLINK): Likewise, and
+	distinguish between possible failures.
+
+2009-09-21  Eric Blake  <ebb9@byu.net>
+
+	fts: avoid compiler warning
+	* lib/fts.c (dirent_inode_sort_may_be_useful)
+	(leaf_optimization_applies) [!__linux__]: Mark unused parameters.
+
+2009-09-19  Bruno Haible  <bruno@clisp.org>
+
+	* lib/progreloc.c (canonicalize_file_name): New declaration.
+
+2009-09-19  Eric Blake  <ebb9@byu.net>
+
+	link: fix quoting
+	* m4/link.m4 (gl_FUNC_LINK): Fix shell quoting.
+
+	openat: fix openat bugs on Solaris 9
+	* lib/openat.c (rpl_openat): Work around Solaris 9 bug.
+	* m4/openat.m4 (gl_FUNC_OPENAT): Also replace openat on Solaris.
+	* modules/openat (Depends-on): Add open.
+	* m4/fcntl_h.m4 (gl_FCNTL_H_DEFAULTS): Provide new default.
+	* modules/fcntl-h (Makefile.am): Substitute it.
+	* lib/fcntl.in.h (openat): Declare replacement.
+	* doc/posix-functions/openat.texi (openat): Document this.
+
+	openat: move fstatat and unlinkat into correct files
+	* m4/openat.m4 (gl_FUNC_OPENAT): Adjust which files will be
+	compiled.
+	* lib/openat.c (fstatat, unlinkat): Move...
+	* lib/fstatat.c (fstatat): ...into correct files.
+	* lib/unlinkat.c (unlinkat): Likewise.
+
+	openat: fix unlinkat bugs on Solaris 9
+	* lib/unlinkat.c (unlinkat): New file.
+	* modules/openat (Depends-on): Add unlink.
+	(Files): Distribute it.
+	* m4/openat.m4 (gl_FUNC_OPENAT): Mark unlinkat for replacement if
+	trailing slash behavior is broken.
+	* m4/unistd_h.m4 (gl_UNISTD_H_DEFAULTS): Add witness.
+	* modules/unistd (Makefile.am): Substitute it.
+	* lib/unistd.in.h (unlinkat): Declare replacement.
+	* doc/posix-functions/unlinkat.texi (unlinkat): Document this.
+
+	openat: fix fstatat bugs on Solaris 9
+	* lib/fstatat.c (rpl_fstatat): Copy recent fixes from lstat and
+	stat.
+	* doc/posix-functions/fstatat.texi (fstatat): Document this.
+
+	test-unlinkat: enhance test, to expose Solaris 9 bug
+	* tests/test-unlink.c (main): Factor guts...
+	* tests/test-unlink.h (test_rmdir_func): ...into new file.
+	* tests/test-rmdir.h (test_rmdir_func): Add parameter.
+	* tests/test-rmdir.c (main): Adjust caller.
+	* tests/test-unlinkat.c (main): Likewise.  Add unlink tests.
+	(unlinker): New helper function.
+	(rmdirat): Enhance check.
+	* modules/rmdir-tests (Depends-on): Add stdbool.
+	* modules/unlink-tests (Depends-on): Likewise.
+	(Files): Add test-unlink.h.
+	* modules/openat-tests (Files): Likewise.
+	(Depends-on): Add unlinkdir.
+
+	test-fstatat: new test, to expose Solaris 9 bugs
+	* tests/test-stat.c (main): Factor guts...
+	* tests/test-stat.h (test_stat_func): ...into new file.
+	* tests/test-lstat.c (main): Factor guts...
+	* tests/test-lstat.h (test_lstat_func): ...into new file.
+	* tests/test-fstatat.c: New file.
+	* modules/stat-tests (Files): Add test-stat.h.
+	* modules/lstat-tests (Files): Add test-lstat.h.
+	(Depends-on): Add stdbool.
+	* modules/openat-tests (Depends-on): Add pathmax.
+	(Files): Add test-lstat.h, test-stat.h, test-fstatat.c.
+	(Makefile.am): Run new test.
+
+	remove: new module, for mingw and Solaris 9 bugs
+	* modules/remove: New file.
+	* lib/remove.c: Likewise.
+	* m4/remove.m4 (gl_FUNC_REMOVE): Likewise.
+	* m4/stdio_h.m4 (gl_STDIO_H_DEFAULTS): Add witnesses.
+	* modules/stdio (Makefile.am): Use them.
+	* lib/stdio.in.h (remove): Declare replacement.
+	* MODULES.html.sh (systems lacking POSIX:2008): Mention module.
+	* doc/posix-functions/remove.texi (remove): Likewise.
+	* modules/remove-tests: New test.
+	* tests/test-remove.c: Likewise.
+
+	unlink: new module, for Solaris 9 bug
+	* modules/unlink: New file.
+	* lib/unlink.c: Likewise.
+	* m4/unlink.m4 (gl_FUNC_UNLINK): Likewise.
+	* m4/unistd_h.m4 (gl_UNISTD_H_DEFAULTS): Add witnesses.
+	* modules/unistd (Makefile.am): Use them.
+	* lib/unistd.in.h (stat): Declare replacement.
+	* MODULES.html.sh (systems lacking POSIX:2008): Mention module.
+	* doc/posix-functions/unlink.texi (unlink): Likewise.
+	* modules/unlink-tests: New test.
+	* tests/test-unlink.c: Likewise.
+
+	lstat: fix Solaris 9 bug
+	* lib/lstat.c (lstat): Also check for trailing slash on
+	non-symlink, non-directories.  Use stat module to simplify logic.
+	* doc/posix-functions/lstat.texi (lstat): Document it.
+	* modules/lstat-tests (Depends-on): Add errno, same-inode.
+	(configure.ac): Check for symlink.
+	* tests/test-lstat.c (main): Add more tests.
+
+	stat: add as dependency to other modules
+	* modules/chown (Depends-on): Add stat.
+	* modules/euidaccess (Depends-on): Likewise.
+	* modules/fchdir (Depends-on): Likewise.
+	* modules/isdir (Depends-on): Likewise.
+	* modules/link (Depends-on): Likewise.
+	* modules/lstat (Depends-on): Likewise.
+	* modules/mkdir-p (Depends-on): Likewise.
+	* modules/modechange (Depends-on): Likewise.
+	* modules/open (Depends-on): Likewise.
+	* modules/readlink (Depends-on): Likewise.
+	* modules/same (Depends-on): Likewise.
+
+	stat: fix Solaris 9 bug
+	* m4/stat.m4 (gl_FUNC_STAT): Detect Solaris 9 bug with trailing
+	slash.
+	* lib/stat.c (rpl_stat): Work around it.
+	* doc/posix-functions/stat.texi (stat): Update documentation.
+
+	stat: new module, for mingw bug
+	* modules/stat: New file.
+	* lib/stat.c: Likewise.
+	* m4/stat.m4 (gl_FUNC_STAT): Likewise.
+	* m4/sys_stat_h.m4 (gl_SYS_STAT_H_DEFAULTS): Add witnesses.
+	* modules/sys_stat (Makefile.am): Use them.
+	* lib/sys_stat.in.h (stat): Declare replacement.
+	* lib/openat.c (fstatat): Deal with lstat and stat being function
+	macros.
+	* modules/openat (Depends-on): Add inline.
+	* MODULES.html.sh (systems lacking POSIX:2008): Mention module.
+	* doc/posix-functions/stat.texi (stat): Likewise.
+	* modules/stat-tests: New test.
+	* tests/test-stat.c: Likewise.
+
+2009-09-19  Jim Meyering  <meyering@redhat.com>
+
+	syntax-check: detect unnecessary inclusion of canonicalize.h
+	* top/maint.mk (sc_prohibit_canonicalize_without_use): New rule.
+
+2009-09-19  Eric Blake  <ebb9@byu.net>
+
+	canonicalize-lgpl: adjust clients to use correct header
+	* m4/canonicalize.m4 (gl_FUNC_CANONICALIZE_FILENAME_MODE)
+	(gl_CANONICALIZE_LGPL): Use correct shell quoting.
+	* modules/relocatable-prog-wrapper (Files): Drop canonicalize.h.
+	* lib/fchdir.c (includes): Use <stdlib.h>, not "canonicalize.h".
+	* lib/progreloc.c (includes): Likewise.
+
+2009-09-19  Jim Meyering  <meyering@redhat.com>
+
+	test-posixtm.c: correct a comment
+	* tests/test-posixtm.c: Correct first-line comment.
+	Spotted by Eric Blake.
+
+2009-09-16  Jim Meyering  <meyering@redhat.com>
+
+	posixtm-tests: make T const-correct; add a test case
+	* tests/test-posixtm.c (T): Declare const.
+	Add a test for -(2^31+1).
+	Remove useless can-succeed-only-in-2002 test.
+
+	posixtm-tests: adjust the sole failing test
+	* tests/test-posixtm.c: Correct 0000-01-01 00:00:00 test so that
+	expected output matches what mktime now produces.  Cross-checked via
+	erlang's calendar:datetime_to_gregorian_seconds({{1970,1,1},{0,0,0}})
+
+	posixtm: move #ifdef'd tests into a new module
+	* lib/posixtm.c (posixtime): Remove #ifdef'd tests.  Move to...
+	* tests/test-posixtm.c: ... this new file.
+	* modules/posixtm-tests: New module.
+
+2009-09-19  Eric Blake  <ebb9@byu.net>
+
+	openat: simplify use of at-func.c
+	* lib/at-func.c (includes): Include prerequisites here, to
+	simplify requirements on client files.
+	* lib/openat-priv.h: Add double-inclusion guard.
+	* lib/faccessat.c (includes): Simplify.
+	* lib/fchmodat.c (includes): Likewise.
+	* lib/fchownat.c (includes): Likewise.
+	* lib/mkdirat.c (includes): Likewise.
+	* lib/mkfifoat.c (includes): Likewise.
+	* lib/symlinkat.c (includes): Likewise.
+
+	openat: allow return of fd 0
+	* modules/chdir-long (Depends-on): Relax openat-safer to openat.
+	* modules/save-cwd (Depends-on): Replace fcntl-safer with
+	unistd-safer.
+	* lib/chdir-long.c (includes): Replace "fcntl--.h" with
+	<fcntl.h>; this module does not leak fds.
+	* lib/openat.c (includes): Do not use "fcntl_safer"; plain openat
+	must be allowed to return 0, leaving openat_safer to add the
+	safety.
+	(openat_permissive): Avoid writing to just-opened fd 2 if
+	restoring the current directory fails.
+	* lib/openat-die.c (openat_restore_fail): Add comment.
+	* lib/save-cwd.c (includes): Make "fcntl--.h" conditional.
+	(save_cwd): Guarantee safe fd, but without use of open_safer.
+	* tests/test-openat.c: New test.
+	* modules/openat-tests (Files, Makefile.am): Distribute and build
+	new file.
+
+	relocatable-prog-wrapper: fix build
+	* modules/relocatable-prog-wrapper (Files): Update name of
+	canonicalize m4 file, broken on 2009-09-17.
+	Reported by emad hajjar <aleppos@hotmail.com>.
+
+2009-09-19  Bruno Haible  <bruno@clisp.org>
+
+	* lib/safe-alloc.h: Use the standard header with GPL copyright.
+	* lib/safe-alloc.c: Likewise.
+	Reported by Ian Beckwith <ianb@erislabs.net>.
+
+2009-09-18  Bruno Haible  <bruno@clisp.org>
+
+	* gnulib-tool: Add advice to "cannot find configure.ac" error message.
+	Reported by <erobles@sensacd.com.mx>.
+
+2009-09-17  Eric Blake  <ebb9@byu.net>
+
+	canonicalize: in CAN_ALL_BUT_LAST, allow trailing slash
+	* lib/canonicalize.c (canonicalize_filename_mode): Skip trailing
+	slashes when checking if last component is missing.
+	* tests/test-canonicalize.c (main): Test this.
+
+	canonicalize, canonicalize-lgpl: honor // if distinct from /
+	* modules/canonicalize (Files): Add double-slash-root.m4.
+	* modules/canonicalize-lgpl (Files): Likewise.
+	* m4/canonicalize.m4 (gl_FUNC_CANONICALIZE_FILENAME_MODE)
+	(gl_CANONICALIZE_LGPL_SEPARATE): Add dependency.
+	* lib/canonicalize.c (DOUBLE_SLASH_IS_DISTINCT_ROOT): Provide
+	fallback definition.
+	(canonicalize_filename_mode): Use it to protect //.
+	* lib/canonicalize-lgpl.c (DOUBLE_SLASH_IS_DISTINCT_ROOT)
+	(__realpath): Likewise.
+	* tests/test-canonicalize.c (main): Test this.
+	* tests/test-canonicalize-lgpl.c (main): Likewise.
+	* modules/canonicalize-tests (Depends-on): Add same-inode.
+	* modules/canonicalize-lgpl-tests (Depends-on): Likewise.
+
+	canonicalize-lgpl: fix glibc bug with trailing slash
+	* m4/canonicalize-lgpl.m4: Move contents...
+	* m4/canonicalize.m4: ...here.
+	(gl_CANONICALIZE_LGPL): Factor realpath check...
+	(gl_FUNC_REALPATH_WORKS): ...into new macro.  Enhance to catch
+	glibc 2.3.5 bug, fixed 2005-04-27.
+	(gl_FUNC_CANONICALIZE_FILENAME_MODE): Use it.
+	(gl_PREREQ_CANONICALIZE_LGPL): Inline...
+	(gl_CANONICALIZE_LGPL_SEPARATE): ...into this macro.
+	* modules/canonicalize-lgpl (Files): Manage file rename.
+	* m4/stdlib_h.m4 (gl_STDLIB_H_DEFAULTS): Provide default.
+	* modules/stdlib (Makefile.am): Substitute witness.
+	* lib/stdlib.in.h (canonicalize_file_name): Declare if replacement
+	is needed.
+	* lib/canonicalize-lgpl.c: Also compile if canonicalize_file_name
+	replacement is required.
+	* lib/canonicalize.c (canonicalize_file_name): Likewise.
+	* doc/glibc-functions/canonicalize_file_name.texi
+	(canonicalize_file_name): Document this.
+	* doc/posix-functions/realpath.texi (realpath): Likewise.
+
+	canonicalize-lgpl: reject non-directory with trailing slash
+	* lib/canonicalize-lgpl.c (__realpath): Synchronize with glibc.
+	* tests/test-canonicalize-lgpl.c (main): Enhance test.  This
+	catches failures in glibc 2.3.5.
+	* tests/test-canonicalize.c (main): Likewise.
+
+	canonicalize-lgpl: use native realpath if it works
+	* lib/canonicalize-lgpl.c (realpath): Guard with
+	FUNC_REALPATH_WORKS.
+	* lib/stdlib.in.h (realpath): Make declaration optional based on
+	HAVE_REALPATH.
+	* m4/canonicalize-lgpl.m4 (gl_CANONICALIZE_LGPL): Check whether
+	native realpath works.
+	* m4/stdlib_h.m4 (gl_STDLIB_H_DEFAULTS): Provide default.
+	* modules/stdlib (Makefile.am): Substitute witness.
+
+	canonicalize, canonicalize-lgpl: use <stdlib.h>
+	* modules/canonicalize-lgpl (Files): Drop canonicalize.h.
+	(Include): Mention <stdlib.h>.
+	(configure.ac): Mention functions we provide.
+	* modules/canonicalize (configure.ac): Likewise.
+	* m4/canonicalize-lgpl.m4 (gl_CANONICALIZE_LGPL): Always replace
+	realpath if canonicalize_file_name is missing.
+	* m4/stdlib_h.m4 (gl_STDLIB_H_DEFAULTS): Provide defaults.
+	* modules/stdlib (Makefile.am): Substitute witnesses.
+	* lib/stdlib.in.h (canonicalize_file_name, realpath): Declare.
+	* lib/canonicalize-lgpl.c (includes): Adjust accordingly.
+	* lib/canonicalize.h (canonicalize_file_name): Drop declaration.
+	* NEWS: Document this.
+	* doc/glibc-functions/canonicalize_file_name.texi
+	(canonicalize_file_name): Likewise.
+	* doc/posix-functions/realpath.texi (realpath): Likewise.
+	* tests/test-canonicalize-lgpl.c (includes): Use <stdlib.h>.
+
+	test-canonicalize: consolidate into single C program
+	* tests/test-canonicalize.sh: Delete; move setup into...
+	* tests/test-canonicalize.c (main): ...the program, making it
+	easier to run in debugger.  Add some tests.
+	* modules/canonicalize-tests (Files): Remove unused file.
+	(Depends-on): Add progname.
+	(configure.ac, Makefile.am): Simplify.
+
+	test-canonicalize-lgpl: consolidate into single C program
+	* tests/test-canonicalize-lgpl.sh: Delete; move setup into...
+	* tests/test-canonicalize-lgpl.c (main): ...the program, making it
+	easier to run in debugger.  Add some tests.
+	* modules/canonicalize-lgpl-tests (Files): Remove unused file.
+	(configure.ac, Makefile.am): Simplify.
+
+	canonicalize: avoid resolvepath
+	* m4/canonicalize.m4 (gl_FUNC_CANONICALIZE_FILENAME_MODE): Delete
+	unnecessary checks.
+	* lib/canonicalize.c (includes): Simplify.
+	(canonicalize_file_name): Drop resolvepath implementation.
+	* modules/canonicalize (Depends-on): Drop filenamecat.
+
+	canonicalize: don't lose errno
+	* lib/canonicalize.c (canonicalize_filename_mode): Protect errno
+	over calls to free.
+
+	canonicalize: simplify errno handling
+	* lib/canonicalize.c (__set_errno): Delete macro, and use direct
+	assignment.
+
+	canonicalize, canonicalize-lgpl: update module dependencies
+	* modules/canonicalize (Depends-on): Add extensions, lstat,
+	pathmax, stdlib.
+	(Files): Drop pathmax.h.
+	(configure.ac): Adjust macro name.
+	* modules/canonicalize-lgpl (Depends-on): Add errno, extensions,
+	lstat, stdlib, sys_stat.
+	* m4/canonicalize.m4 (AC_FUNC_CANONICALIZE_FILE_NAME): Rename...
+	(gl_FUNC_CANONICALIZE_FILENAME_MODE): ...to this, and require
+	extensions.
+	* m4/canonicalize-lgpl.m4 (gl_CANONICALIZE_LGPL)
+	(gl_CANONICALIZE_LGPL_SEPARATE): Require extensions.
+	(gl_PREREQ_CANONICALIZE_LGPL): Assume unistd.h.
+	* lib/canonicalize.h (canonicalize_file_name): Use <stdlib.h>
+	declaration, if available.
+	* lib/canonicalize-lgpl.c [HAVE_READLINK]: Delete this condition;
+	we can rely on the readlink module.
+	(MAXSYMLINKS): Also consult SYMLOOP_MAX.
+	(includes): Use <unistd.h> unconditionally.
+
+2009-09-17  Eric Blake  <ebb9@byu.net>
+
+	maint: make Include sections of modules consistent
+	* modules/alloca: Use only header name; no need to list #include.
+	* modules/alloca-opt: Likewise.
+	* modules/arpa_inet: Likewise.
+	* modules/canon-host: Likewise.
+	* modules/configmake: Likewise.
+	* modules/dirent: Likewise.
+	* modules/eealloc: Likewise.
+	* modules/environ: Likewise.
+	* modules/fchdir: Likewise.
+	* modules/fcntl: Likewise.
+	* modules/fcntl-h: Likewise.
+	* modules/gethrxtime: Likewise.
+	* modules/gettime: Likewise.
+	* modules/ignore-value: Likewise.
+	* modules/inet_ntop: Likewise.
+	* modules/inet_pton: Likewise.
+	* modules/inttypes: Likewise.
+	* modules/isnand-nolibm: Likewise.
+	* modules/isnanf-nolibm: Likewise.
+	* modules/mbchar: Likewise.
+	* modules/mbfile: Likewise.
+	* modules/mbiter: Likewise.
+	* modules/mbuiter: Likewise.
+	* modules/netdb: Likewise.
+	* modules/netinet_in: Likewise.
+	* modules/nproc: Likewise.
+	* modules/pagealign_alloc: Likewise.
+	* modules/poll: Likewise.
+	* modules/printf-frexp: Likewise.
+	* modules/pthread: Likewise.
+	* modules/putenv: Likewise.
+	* modules/random_r: Likewise.
+	* modules/relocatable-prog: Likewise.
+	* modules/search: Likewise.
+	* modules/select: Likewise.
+	* modules/selinux-h: Likewise.
+	* modules/settime: Likewise.
+	* modules/signal: Likewise.
+	* modules/size_max: Likewise.
+	* modules/socklen: Likewise.
+	* modules/ssize_t: Likewise.
+	* modules/stdarg: Likewise.
+	* modules/stdbool: Likewise.
+	* modules/stddef: Likewise.
+	* modules/stdint: Likewise.
+	* modules/stdio: Likewise.
+	* modules/stdlib: Likewise.
+	* modules/string: Likewise.
+	* modules/strings: Likewise.
+	* modules/sys_file: Likewise.
+	* modules/sys_ioctl: Likewise.
+	* modules/sys_select: Likewise.
+	* modules/sys_socket: Likewise.
+	* modules/sys_stat: Likewise.
+	* modules/sys_time: Likewise.
+	* modules/sys_times: Likewise.
+	* modules/sys_utsname: Likewise.
+	* modules/sys_wait: Likewise.
+	* modules/sysexits: Likewise.
+	* modules/time: Likewise.
+	* modules/times: Likewise.
+	* modules/tmpfile: Likewise.
+	* modules/trim: Likewise.
+	* modules/unistd: Likewise.
+	* modules/wchar: Likewise.
+	* modules/wctype: Likewise.
+
+2009-09-17  Bruno Haible  <bruno@clisp.org>
+
+	Make getdate.y compile on QNX and NetBSD 5 / i386.
+	* m4/getdate.m4 (gl_GETDATE): Conditionally define
+	TIME_T_FITS_IN_LONG_INT.
+	* lib/getdate.y (long_time_t): New type.
+	(relative_time): Change type of 'seconds' field to long_time_t.
+	(get_date): Update types of local variables. Check against overflow
+	during conversion from long_time_t to time_t.
+	Reported by Matt Kraai <kraai@ftbfs.org>
+	and Hasso Tepper <hasso@netbsd.org>.
+
+2009-09-17  Bruno Haible  <bruno@clisp.org>
+
+	* modules/COPYING: Update copyright years.
+	* modules/README: Likeiwse.
+	* doc/gnulib-intro.texi (Copyright): Use a wildcard year.
+	Reported by Ian Beckwith <ianb@erislabs.net>.
+
+2009-09-17  Ian Beckwith  <ianb@erislabs.net>  (tiny change)
+
+	* users.txt: Update references for gnuit package.
+
+2009-09-17  Ian Beckwith  <ianb@erislabs.net>  (tiny change)
+
+	* m4/getdelim.m4: Fix typo in copyright line.
+
+2009-09-17  Bruno Haible  <bruno@clisp.org>
+
+	* lib/atoll.c: Use the standard header with GPL copyright.
+	* lib/argz.in.h: Likewise.
+	* lib/glob.c: Likewise.
+	* lib/glob-libc.h: Likewise.
+	* lib/random_r.c: Likewise.
+	* lib/siglist.h: Likewise.
+	* lib/strsignal.c: Likewise.
+	Reported by Ian Beckwith <ianb@erislabs.net>.
+
+2009-09-17  Eric Blake  <ebb9@byu.net>
+
+	rmdir: ensure correct dependency order
+	* m4/rmdir.m4 (gl_FUNC_RMDIR): Require unistd defaults.
+
+2009-09-17  Bruno Haible  <bruno@clisp.org>
+
+	Disable assertion that fails on NetBSD 5 / i386.
+	* lib/mktime.c (ydhms_diff): Disable assertion about time_t size.
+	Reported by Sam Steingold <sds@gnu.org>
+	and Hasso Tepper <hasso@netbsd.org>.
+
+2009-09-16  Eric Blake  <ebb9@byu.net>
+
+	unlinkdir: port to mingw
+	* m4/unlinkdir.m4 (gl_UNLINKDIR): Add mingw to list of platforms
+	on which no one can unlink a directory.
+
+	stdlib: sort witness names
+	* modules/stdlib (Makefile.am): Sort replacements.
+	* m4/stdlib_h.m4 (gl_STDLIB_H_DEFAULTS): Likewise.
+	* lib/stdlib.in.h: Likewise.
+
+	parse-duration-tests: avoid link failure
+	* modules/parse-duration-tests (test_parse_duration_LDADD): Add
+	LIBINTL.
+	Reported by Tom G. Christensen.
+
+	openat-tests: ensure unlinkat behaves like rmdir
+	* tests/test-rmdir.c (main): Factor guts...
+	* tests/test-rmdir.h (test_rmdir_func): ...into new file.
+	* modules/rmdir-tests (Files): Ship new file.
+	* modules/openat-tests: New test.
+	* tests/test-unlinkat.c: Likewise.
+
+	rmdir-errno: mark obsolete, it is unsafe for cross-compilation
+	* modules/rmdir-errno (Status, Notice): Now obsolete.
+
+	rmdir: work around cygwin 1.5.x and mingw bugs
+	* m4/rmdir.m4 (gl_FUNC_RMDIR): Detect the bugs.
+	* lib/rmdir.c (rmdir): Work around it.
+	* modules/rmdir (Status, Notice): No longer obsolete.
+	(Files): Add dos.m4.
+	(Depends-on): Add unistd.
+	(configure.ac): Set witnesses.
+	(License): Relax to LGPLv2+.
+	* m4/unistd_h.m4 (gl_UNISTD_H_DEFAULTS): Set defaults.
+	* modules/unistd (Makefile.am): Substitute witnesses.
+	* lib/unistd.in.h (rmdir): Declare replacement.
+	* doc/posix-functions/rmdir.texi (rmdir): Document this.
+	* modules/rmdir-tests: New tests.
+	* tests/test-rmdir.c: Likewise.
+
+2009-09-15  Eric Blake  <ebb9@byu.net>
+
+	fchdir: improve use of replacement functions
+	* m4/fchdir.m4 (gl_FUNC_FCHDIR): Set appropriate witnesses.
+	* m4/sys_stat_h.m4 (gl_SYS_STAT_H_DEFAULTS): Add REPLACE_FSTAT.
+	* m4/dirent_h.m4 (gl_DIRENT_H_DEFAULTS): Add REPLACE_OPENDIR,
+	REPLACE_CLOSEDIR.
+	* m4/unistd_h.m4 (gl_UNISTD_H_DEFAULTS): Add REPLACE_DUP.
+	* modules/sys_stat (Makefile.am): Substitute correct witness.
+	* modules/dirent (Makefile.am): Likewise.
+	* modules/unistd (Makefile.am): Likewise.
+	* lib/dirent.in.h (opendir, closedir): Use better witnesses.
+	* lib/unistd.in.h (dup): Likewise.
+	* lib/sys_stat.in.h (fstat): Likewise.
+
+	maint: ignore gnulib-tool temp files
+	* .gitignore: Ignore files created during gnulib-tool --test.
+
 2009-09-13  Jim Meyering  <meyering@redhat.com>
 
 	posixtm: don't reject a time that specify "60" as the number of seconds

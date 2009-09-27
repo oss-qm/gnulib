@@ -2276,9 +2276,11 @@ func_all_modules ()
   func_module iconv_open
   func_module inet_ntop
   func_module inet_pton
+  func_module link
+  func_module linkat
+  func_module listen
   func_module locale
   func_module lseek
-  func_module listen
   func_module lstat
   func_module malloc-posix
   func_module mbsnrtowcs
@@ -2319,6 +2321,7 @@ func_all_modules ()
   func_module realloc-posix
   func_module recv
   func_module recvfrom
+  func_module remove
   func_module sched
   func_module select
   func_module send
@@ -2331,6 +2334,7 @@ func_all_modules ()
   func_module socket
   func_module spawn
   func_module sprintf-posix
+  func_module stat
   func_module strdup-posix
   func_module string
   func_module strings
@@ -2358,6 +2362,7 @@ func_all_modules ()
   func_module sys_wait
   func_module tsearch
   func_module unistd
+  func_module unlink
   func_module utime
   func_module vasnprintf-posix
   func_module vasprintf-posix
@@ -2479,6 +2484,7 @@ func_all_modules ()
   func_module savewd
   func_module stat-macros
   func_module stat-time
+  func_module symlink
   func_module symlinkat
   func_module tmpdir
   func_module unlinkdir

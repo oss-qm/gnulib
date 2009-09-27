@@ -1,0 +1,13 @@
+Files:
+tests/test-stat.h
+tests/test-stat.c
+
+Depends-on:
+pathmax
+same-inode
+
+configure.ac:
+
+Makefile.am:
+TESTS += test-stat
+check_PROGRAMS += test-stat

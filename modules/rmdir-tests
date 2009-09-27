@@ -1,0 +1,13 @@
+Files:
+tests/test-rmdir.h
+tests/test-rmdir.c
+
+Depends-on:
+stdbool
+symlink
+
+configure.ac:
+
+Makefile.am:
+TESTS += test-rmdir
+check_PROGRAMS += test-rmdir
