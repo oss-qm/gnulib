@@ -1,3 +1,10 @@
+2009-11-14  Eric Blake  <ebb9@byu.net>
+
+	fnmatch: avoid compiler warning
+	* lib/fnmatch_loop.c (NEW_PATTERN): Coerce addition to unsigned,
+	to silence compiler warning about mismatch signedness in ?:.
+	Reported by Robert Millan.
+
 2009-11-14  Robert Millan  <rmh.grub@aybabtu.com>  (tiny change)
 
 	gnulib-tool: correctly detect absence of m4 directories
