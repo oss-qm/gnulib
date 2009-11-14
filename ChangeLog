@@ -1,3 +1,8 @@
+2009-11-14  Robert Millan  <rmh.grub@aybabtu.com>  (tiny change)
+
+	gnulib-tool: correctly detect absence of m4 directories
+	* gnulib-tool: Avoid extra newline on data passed to wc -l.
+
 2009-11-14  John W. Eaton  <jwe@gnu.org>
 
 	strftime.h: wrap funtion declaration in extern "C" block
