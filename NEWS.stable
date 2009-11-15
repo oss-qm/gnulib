@@ -9,4 +9,25 @@ Date:   Sat Nov 7 16:03:38 2009 -0700
 
 with the following additional commits:
 
-__NEXTCOMMITMARKER__
+    * [26c5fd7]->[7eb2ad0] utimens: remove invalid futimesat call
+    * [6553be8]->[510522d] strftime.c: include ignore-value.h only when FPRINTFTIME is defined
+    * [349396e]->[cc85265] stat: detect FreeBSD bug
+    * [48e9883]->[7f013da] open: detect FreeBSD bug
+    * [d462fe1]->[02634ef] rename: detect FreeBSD bug
+    * [b0d3085]->[fd021c4] autoupdate
+    * [2420877]->[12a64eb] unlink, remove: detect FreeBSD bug
+    * [492960c]->[24c30ab] link: detect FreeBSD bug
+    * [24a6037]->[ec14720] symlink: detect FreeBSD bug
+    * [dfd4d11]->[3bb65d2] readlink: detect FreeBSD bug
+    * [7127847]->[c9698f2] bootstrap: generalize autoheader check
+    * [ac67780]->[3739c19] fts: do not fail on a submount during traversal
+    * [08e6b4c]->[82a192d] getgroups: fix logic error
+    * [80074d1]->[d9cc1a4] getgroups: avoid calling exit
+    * [61b3a42]->[a12148f] getgroups, getugroups: provide stubs for mingw
+    * [0173b1e]->[dc5014b] test-getgroups: avoid compilation failure
+    * [f3a2c4a]->[5390af1] getgroups: avoid compilation failure
+    * [1e642be]->[867cf3b] getgroups: work around FreeBSD bug
+    * [cf0c4ab]->[2d61dc2] getgroups: avoid compiler warning
+    * [ee8909a]->[28fc486] strftime.h: wrap funtion declaration in extern "C" block
+    * [fb1b608]->[d837f67] gnulib-tool: correctly detect absence of m4 directories
+    * [a86ea84][e14e479] fnmatch: avoid compiler warning
