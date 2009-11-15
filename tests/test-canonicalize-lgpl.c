@@ -44,7 +44,7 @@
 #define BASE "t-can-lgpl.tmp"
 
 int
-main ()
+main (void)
 {
 #ifdef GNULIB_CANONICALIZE
   /* No need to test canonicalize-lgpl module if canonicalize is also
@@ -103,7 +103,7 @@ main ()
     {
       ASSERT (remove (BASE "/tra") == 0);
       ASSERT (rmdir (BASE) == 0);
-      fputs ("skipping test: symlinks not supported on this filesystem\n",
+      fputs ("skipping test: symlinks not supported on this file system\n",
 	     stderr);
       return 77;
     }

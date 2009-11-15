@@ -2,17 +2,17 @@ Description:
 Concatenate two arbitrary file names.
 
 Files:
-lib/filenamecat.h
 lib/filenamecat.c
-m4/dos.m4
 m4/filenamecat.m4
 
 Depends-on:
+dirname-lgpl
+filenamecat-lgpl
 xalloc
-dirname
 
 configure.ac:
 gl_FILE_NAME_CONCAT
+gl_MODULE_INDICATOR([filenamecat])
 
 Makefile.am:
 

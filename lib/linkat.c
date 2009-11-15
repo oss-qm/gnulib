@@ -23,6 +23,9 @@
 #include <errno.h>
 #include <fcntl.h>
 #include <limits.h>
+#include <stdint.h>
+#include <stdlib.h>
+#include <string.h>
 #include <sys/stat.h>
 
 #include "areadlink.h"
@@ -41,11 +44,13 @@
 # endif
 #endif
 
+#if !HAVE_LINKAT
+
 /* Create a link.  If FILE1 is a symlink, either create a hardlink to
    that symlink, or fake it by creating an identical symlink.  */
-#if LINK_FOLLOWS_SYMLINKS == 0
-# define link_immediate link
-#else
+# if LINK_FOLLOWS_SYMLINKS == 0
+#  define link_immediate link
+# else
 static int
 link_immediate (char const *file1, char const *file2)
 {
@@ -88,13 +93,13 @@ link_immediate (char const *file1, char const *file2)
     return -1;
   return link (file1, file2);
 }
-#endif
+# endif /* LINK_FOLLOWS_SYMLINKS == 0 */
 
 /* Create a link.  If FILE1 is a symlink, create a hardlink to the
    canonicalized file.  */
-#if 0 < LINK_FOLLOWS_SYMLINKS
-# define link_follow link
-#else
+# if 0 < LINK_FOLLOWS_SYMLINKS
+#  define link_follow link
+# else
 static int
 link_follow (char const *file1, char const *file2)
 {
@@ -159,7 +164,7 @@ link_follow (char const *file1, char const *file2)
     }
   return result;
 }
-#endif
+# endif /* 0 < LINK_FOLLOWS_SYMLINKS */
 
 /* Create a link to FILE1, in the directory open on descriptor FD1, to FILE2,
    in the directory open on descriptor FD2.  If FILE1 is a symlink, FLAG
@@ -179,3 +184,107 @@ linkat (int fd1, char const *file1, int fd2, char const *file2, int flag)
   return at_func2 (fd1, file1, fd2, file2,
                    flag ? link_follow : link_immediate);
 }
+
+#else /* HAVE_LINKAT */
+
+# undef linkat
+
+/* Create a link.  If FILE1 is a symlink, create a hardlink to the
+   canonicalized file.  */
+
+static int
+linkat_follow (int fd1, char const *file1, int fd2, char const *file2)
+{
+  char *name = (char *) file1;
+  char *target;
+  int result;
+  int i = MAXSYMLINKS;
+
+  /* There is no realpathat.  */
+  while (i-- && (target = areadlinkat (fd1, name)))
+    {
+      if (IS_ABSOLUTE_FILE_NAME (target))
+        {
+          if (name != file1)
+            free (name);
+          name = target;
+        }
+      else
+        {
+          char *dir = mdir_name (name);
+          if (name != file1)
+            free (name);
+          if (!dir)
+            {
+              free (target);
+              errno = ENOMEM;
+              return -1;
+            }
+          name = mfile_name_concat (dir, target, NULL);
+          free (dir);
+          free (target);
+          if (!name)
+            {
+              errno = ENOMEM;
+              return -1;
+            }
+        }
+    }
+  if (i < 0)
+    {
+      target = NULL;
+      errno = ELOOP;
+    }
+  if (!target && errno != EINVAL)
+    {
+      if (name != file1)
+        {
+          int saved_errno = errno;
+          free (name);
+          errno = saved_errno;
+        }
+      return -1;
+    }
+  result = linkat (fd1, name, fd2, file2, 0);
+  if (name != file1)
+    {
+      int saved_errno = errno;
+      free (name);
+      errno = saved_errno;
+    }
+  return result;
+}
+
+
+/* Like linkat, but guarantee that AT_SYMLINK_FOLLOW works even on
+   older Linux kernels.  */
+
+int
+rpl_linkat (int fd1, char const *file1, int fd2, char const *file2, int flag)
+{
+  if (!flag)
+    return linkat (fd1, file1, fd2, file2, flag);
+  if (flag & ~AT_SYMLINK_FOLLOW)
+    {
+      errno = EINVAL;
+      return -1;
+    }
+
+  /* Cache the information on whether the system call really works.  */
+  {
+    static int have_follow_really; /* 0 = unknown, 1 = yes, -1 = no */
+    if (0 <= have_follow_really)
+    {
+      int result = linkat (fd1, file1, fd2, file2, flag);
+      if (!(result == -1 && errno == EINVAL))
+        {
+          have_follow_really = 1;
+          return result;
+        }
+      have_follow_really = -1;
+    }
+  }
+  return linkat_follow (fd1, file1, fd2, file2);
+}
+
+#endif /* HAVE_LINKAT */

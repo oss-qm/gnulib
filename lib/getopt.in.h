@@ -22,9 +22,13 @@
 @PRAGMA_SYSTEM_HEADER@
 #endif
 
-/* The include_next requires a split double-inclusion guard.  */
+/* The include_next requires a split double-inclusion guard.  We must
+   also inform the replacement unistd.h to not recursively use
+   <getopt.h>; our definitions will be present soon enough.  */
 #if @HAVE_GETOPT_H@
+# define _GL_SYSTEM_GETOPT
 # @INCLUDE_NEXT@ @NEXT_GETOPT_H@
+# undef _GL_SYSTEM_GETOPT
 #endif
 
 #ifndef _GL_GETOPT_H
@@ -68,6 +72,7 @@
 # define optind __GETOPT_ID (optind)
 # define optopt __GETOPT_ID (optopt)
 # define option __GETOPT_ID (option)
+# define _getopt_internal __GETOPT_ID (getopt_internal)
 #endif
 
 /* Standalone applications get correct prototypes for getopt_long and

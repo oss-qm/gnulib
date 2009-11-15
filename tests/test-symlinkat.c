@@ -64,7 +64,7 @@ do_readlink (char const *name, char *buf, size_t len)
 }
 
 int
-main ()
+main (void)
 {
   char buf[80];
   int result;
@@ -117,7 +117,7 @@ main ()
 
   ASSERT (close (dfd) == 0);
   if (result == 77)
-    fputs ("skipping test: symlinks not supported on this filesystem\n",
+    fputs ("skipping test: symlinks not supported on this file system\n",
 	   stderr);
   return result;
 }

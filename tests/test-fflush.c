@@ -1,5 +1,5 @@
 /* Test of POSIX compatible fflush() function.
-   Copyright (C) 2007 Free Software Foundation, Inc.
+   Copyright (C) 2007, 2009 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -22,7 +22,7 @@
 #include <unistd.h>
 
 int
-main (int argc, char *argv[])
+main (void)
 {
   FILE *f;
   char buffer[10];
@@ -59,7 +59,7 @@ main (int argc, char *argv[])
     }
 #endif
   /* POSIX requires fflush-fseek to set file offset of fd.  */
-  if (fflush (f) != 0 || fseek (f, 0, SEEK_CUR) != 0)
+  if (fflush (f) != 0 || fseeko (f, 0, SEEK_CUR) != 0)
     {
       fputs ("Failed to flush-fseek sample file.\n", stderr);
       fclose (f);

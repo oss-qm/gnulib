@@ -22,6 +22,7 @@
 
 #include <fcntl.h>
 #include <errno.h>
+#include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
@@ -33,11 +34,11 @@
   do                                                                         \
     {                                                                        \
       if (!(expr))                                                           \
-	{                                                                    \
-	  fprintf (stderr, "%s:%d: assertion failed\n", __FILE__, __LINE__);  \
-	  fflush (stderr);                                                   \
-	  abort ();                                                          \
-	}                                                                    \
+        {                                                                    \
+          fprintf (stderr, "%s:%d: assertion failed\n", __FILE__, __LINE__);  \
+          fflush (stderr);                                                   \
+          abort ();                                                          \
+        }                                                                    \
     }                                                                        \
   while (0)
 
@@ -54,7 +55,7 @@ do_stat (char const *name, struct stat *st)
 }
 
 int
-main ()
+main (void)
 {
-  return test_stat_func (do_stat);
+  return test_stat_func (do_stat, true);
 }

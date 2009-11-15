@@ -6,10 +6,13 @@ lib/getgroups.c
 m4/getgroups.m4
 
 Depends-on:
-xalloc
+malloc-posix
+stdint
+unistd
 
 configure.ac:
 gl_FUNC_GETGROUPS
+gl_UNISTD_MODULE_INDICATOR([getgroups])
 
 Makefile.am:
 
@@ -20,5 +23,4 @@ License:
 GPL
 
 Maintainer:
-Jim Meyering
-
+Jim Meyering, Eric Blake

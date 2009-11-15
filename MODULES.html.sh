@@ -2262,6 +2262,7 @@ func_all_modules ()
   func_module ftell
   func_module ftello
   func_module ftruncate
+  func_module futimens
   func_module getaddrinfo
   func_module getcwd
   func_module getgroups
@@ -2346,6 +2347,7 @@ func_all_modules ()
   func_module nanosleep
   func_module regex
   func_module rename
+  func_module renameat
   func_module rmdir
   func_module search
   func_module sigaction
@@ -2364,6 +2366,7 @@ func_all_modules ()
   func_module unistd
   func_module unlink
   func_module utime
+  func_module utimensat
   func_module vasnprintf-posix
   func_module vasprintf-posix
   func_module vfprintf-posix
@@ -2401,6 +2404,7 @@ func_all_modules ()
   func_module chdir-long
   func_module dirent-safer
   func_module dirname
+  func_module dirname-lgpl
   func_module getopt
   func_module iconv_open-utf
   func_module unistd-safer
@@ -2447,6 +2451,8 @@ func_all_modules ()
   func_module acl
   func_module areadlink
   func_module areadlink-with-size
+  func_module areadlinkat
+  func_module areadlinkat-with-size
   func_module backupfile
   func_module canonicalize
   func_module canonicalize-lgpl
@@ -2459,11 +2465,13 @@ func_all_modules ()
   func_module euidaccess
   func_module faccessat
   func_module fdopendir
+  func_module fdutimensat
   func_module file-type
   func_module fileblocks
   func_module filemode
   func_module filename
   func_module filenamecat
+  func_module filenamecat-lgpl
   func_module fts
   func_module fts-lgpl
   func_module isdir
@@ -2472,6 +2480,9 @@ func_all_modules ()
   func_module mkancesdirs
   func_module mkfifoat
   func_module mkdir-p
+  func_module mkostemp
+  func_module mkostemps
+  func_module mkstemps
   func_module modechange
   func_module mountlist
   func_module openat
@@ -2493,6 +2504,7 @@ func_all_modules ()
   func_module write-any-file
   func_module xgetcwd
   func_module xreadlink
+  func_module xreadlinkat
   func_end_table
 
   element="File system as inode set"
@@ -2546,6 +2558,7 @@ func_all_modules ()
   func_module freading
   func_module freadptr
   func_module freadseek
+  func_module freopen-safer
   func_module fwritable
   func_module fwriting
   func_module getpass
@@ -3138,6 +3151,7 @@ func_all_modules ()
   func_module quote
   func_module readutmp
   func_module random_r
+  func_module selinux-h
   func_module selinux-at
   func_module sysexits
   func_module u64
@@ -3198,8 +3212,10 @@ func_all_modules ()
   func_begin_table
   func_module announce-gen
   func_module autobuild
+  func_module do-release-commit-and-tag
   func_module git-version-gen
   func_module gitlog-to-changelog
+  func_module gnu-web-doc-update
   func_module gnumakefile
   func_module gnupload
   func_module maintainer-makefile

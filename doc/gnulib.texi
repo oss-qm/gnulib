@@ -3290,6 +3290,7 @@ This list of functions is sorted according to the header that declares them.
 * Glibc rpcsvc/ypupd.h::
 * Glibc sched.h::
 * Glibc search.h::
+* Glibc selinux/selinux.h::
 * Glibc shadow.h::
 * Glibc signal.h::
 * Glibc stdio.h::
@@ -4906,6 +4907,20 @@ This list of functions is sorted according to the header that declares them.
 @include glibc-functions/hsearch_r.texi
 @include glibc-functions/tdestroy.texi
 
+@node Glibc selinux/selinux.h
+@section Glibc Extensions to @code{<selinux/selinux.h>}
+
+@menu
+* fgetfilecon::
+* getfilecon::
+* lgetfilecon::
+@end menu
+
+@include glibc-functions/getfilecon-desc.texi
+@include glibc-functions/fgetfilecon.texi
+@include glibc-functions/getfilecon.texi
+@include glibc-functions/lgetfilecon.texi
+
 @c @node Glibc semaphore.h
 @c @section Glibc Extensions to @code{<semaphore.h>}
 
@@ -5064,7 +5079,9 @@ This list of functions is sorted according to the header that declares them.
 * lcong48_r::
 * lrand48_r::
 * mkostemp::
+* mkostemps::
 * mrand48_r::
+* mkstemps::
 * nrand48_r::
 * on_exit::
 * ptsname_r::
@@ -5105,7 +5122,9 @@ This list of functions is sorted according to the header that declares them.
 @include glibc-functions/lcong48_r.texi
 @include glibc-functions/lrand48_r.texi
 @include glibc-functions/mkostemp.texi
+@include glibc-functions/mkostemps.texi
 @include glibc-functions/mrand48_r.texi
+@include glibc-functions/mkstemps.texi
 @include glibc-functions/nrand48_r.texi
 @include glibc-functions/on_exit.texi
 @include glibc-functions/ptsname_r.texi
@@ -5467,12 +5486,14 @@ This list of functions is sorted according to the header that declares them.
 @menu
 * adjtime::
 * futimes::
+* futimesat::
 * lutimes::
 * settimeofday::
 @end menu
 
 @include glibc-functions/adjtime.texi
 @include glibc-functions/futimes.texi
+@include glibc-functions/futimesat.texi
 @include glibc-functions/lutimes.texi
 @include glibc-functions/settimeofday.texi
 
@@ -5662,6 +5683,7 @@ This list of functions is sorted according to the header that declares them.
 * dup3::
 * endusershell::
 * euidaccess::
+* execvpe::
 * get_current_dir_name::
 * getdomainname::
 * getdtablesize::
@@ -5694,6 +5716,7 @@ This list of functions is sorted according to the header that declares them.
 @include glibc-functions/dup3.texi
 @include glibc-functions/endusershell.texi
 @include glibc-functions/euidaccess.texi
+@include glibc-functions/execvpe.texi
 @include glibc-functions/get_current_dir_name.texi
 @include glibc-functions/getdomainname.texi
 @include glibc-functions/getdtablesize.texi

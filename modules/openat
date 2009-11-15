@@ -16,7 +16,7 @@ m4/openat.m4
 m4/mode_t.m4
 
 Depends-on:
-dirname
+dirname-lgpl
 errno
 extensions
 fchdir
@@ -27,6 +27,7 @@ inline
 intprops
 lchown
 lstat
+mkdir
 open
 openat-die
 rmdir

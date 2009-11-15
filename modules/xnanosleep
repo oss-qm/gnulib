@@ -20,6 +20,9 @@ Makefile.am:
 Include:
 "xnanosleep.h"
 
+Link:
+$(LIB_NANOSLEEP)
+
 License:
 GPL
 

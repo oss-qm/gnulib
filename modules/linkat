@@ -8,11 +8,12 @@ m4/linkat.m4
 
 Depends-on:
 areadlink
-dirname
+areadlinkat
+dirname-lgpl
 errno
 extensions
 fcntl-h
-filenamecat
+filenamecat-lgpl
 openat
 link
 link-follow
@@ -21,6 +22,7 @@ readlink
 same-inode
 stpcpy
 symlink
+symlinkat
 unistd
 
 configure.ac:

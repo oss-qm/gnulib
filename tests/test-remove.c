@@ -42,7 +42,7 @@
 #define BASE "test-remove.t"
 
 int
-main ()
+main (void)
 {
   /* Remove any leftovers from a previous partial run.  */
   ASSERT (system ("rm -rf " BASE "*") == 0);
@@ -83,7 +83,7 @@ main ()
 
   /* Empty directory.  */
   errno = 0;
-  ASSERT (remove (BASE "dir/./") == -1);
+  ASSERT (remove (BASE "dir/.//") == -1);
   ASSERT (errno == EINVAL || errno == EBUSY);
   ASSERT (remove (BASE "dir") == 0);
 
@@ -92,7 +92,7 @@ main ()
      symlink.  */
   if (symlink (BASE "dir", BASE "link") != 0)
     {
-      fputs ("skipping test: symlinks not supported on this filesystem\n",
+      fputs ("skipping test: symlinks not supported on this file system\n",
              stderr);
       return 77;
     }
@@ -113,6 +113,19 @@ main ()
     ASSERT (S_ISLNK (st.st_mode));
   }
   ASSERT (remove (BASE "link") == 0);
+  /* Trailing slash on symlink to non-directory is an error.  */
+  ASSERT (symlink (BASE "loop", BASE "loop") == 0);
+  errno = 0;
+  ASSERT (remove (BASE "loop/") == -1);
+  ASSERT (errno == ELOOP || errno == ENOTDIR);
+  ASSERT (remove (BASE "loop") == 0);
+  ASSERT (close (creat (BASE "file", 0600)) == 0);
+  ASSERT (symlink (BASE "file", BASE "link") == 0);
+  errno = 0;
+  ASSERT (remove (BASE "link/") == -1);
+  ASSERT (errno == ENOTDIR);
+  ASSERT (remove (BASE "link") == 0);
+  ASSERT (remove (BASE "file") == 0);
 
   return 0;
 }

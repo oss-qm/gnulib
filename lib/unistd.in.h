@@ -49,7 +49,7 @@
 #endif
 
 /* Get getopt(), optarg, optind, opterr, optopt.  */
-#if @GNULIB_UNISTD_H_GETOPT@
+#if @GNULIB_UNISTD_H_GETOPT@ && !defined _GL_SYSTEM_GETOPT
 # include <getopt.h>
 #endif
 
@@ -239,7 +239,7 @@ extern char **environ;
 
 #if @GNULIB_EUIDACCESS@
 # if !@HAVE_EUIDACCESS@
-/* Like access(), except that is uses the effective user id and group id of
+/* Like access(), except that it uses the effective user id and group id of
    the current process.  */
 extern int euidaccess (const char *filename, int mode);
 # endif
@@ -403,6 +403,28 @@ extern int getdtablesize (void);
     (GL_LINK_WARNING ("getdtablesize is unportable - " \
                       "use gnulib module getdtablesize for portability"), \
      getdtablesize ())
+#endif
+
+
+#if @GNULIB_GETGROUPS@
+# if @REPLACE_GETGROUPS@
+#  undef getgroups
+#  define getgroups rpl_getgroups
+# endif
+# if !@HAVE_GETGROUPS@ || @REPLACE_GETGROUPS@
+/* Return the supplemental groups that the current process belongs to.
+   It is unspecified whether the effective group id is in the list.
+   If N is 0, return the group count; otherwise, N describes how many
+   entries are available in GROUPS.  Return -1 and set errno if N is
+   not 0 and not large enough.  Fails with ENOSYS on some systems.  */
+int getgroups (int n, GETGROUPS_T *groups);
+# endif
+#elif defined GNULIB_POSIXCHECK
+# undef getgroups
+# define getgroups(n,g)                                                 \
+    (GL_LINK_WARNING ("getgroups is unportable - "                      \
+                      "use gnulib module getgroups for portability"),   \
+     getgroups (n, g))
 #endif
 
 
@@ -582,10 +604,14 @@ extern int link (const char *path1, const char *path2);
 #endif
 
 #if @GNULIB_LINKAT@
+# if @REPLACE_LINKAT@
+#  undef linkat
+#  define linkat rpl_linkat
+# endif
 /* Create a new hard link for an existing file, relative to two
    directories.  FLAG controls whether symlinks are followed.
    Return 0 if successful, otherwise -1 and errno set.  */
-# if !@HAVE_LINKAT@
+# if !@HAVE_LINKAT@ || @REPLACE_LINKAT@
 extern int linkat (int fd1, const char *path1, int fd2, const char *path2,
 		   int flag);
 # endif
