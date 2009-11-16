@@ -1,9 +1,11 @@
 gnulib (20091114-1) unstable; urgency=low
 
-  * New upstream version.
+  * New upstream stable snapshot.
   * Install posix-modules (Closes: #555493).
+    Also install MODULES.html.sh and the root Makefile, just in case.
+  * Install NEWS, NEWS.stable, README, users.txt to /usr/share/doc/gnulib.
 
- -- Ian Beckwith <ianb@debian.org>  Mon, 16 Nov 2009 23:01:40 +0000
+ -- Ian Beckwith <ianb@debian.org>  Mon, 16 Nov 2009 23:29:57 +0000
 
 gnulib (20090915+f32c9d0-2) unstable; urgency=low
 
