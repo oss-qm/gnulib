@@ -37,7 +37,7 @@ override_dh_auto_install:
 	cp -a check-module gnulib-tool debian/gnulib/usr/bin
 
 	mkdir -p debian/gnulib/usr/share/gnulib
-	cp -a build-aux config doc lib m4 modules top tests debian/gnulib/usr/share/gnulib
+	cp -a build-aux posix-modules config doc lib m4 modules top tests debian/gnulib/usr/share/gnulib
 
 	# Fixing permissions
 	chmod 0755 debian/gnulib/usr/share/gnulib/build-aux/config.guess
