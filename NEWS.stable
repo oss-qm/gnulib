@@ -30,4 +30,8 @@ with the following additional commits:
     * [cf0c4ab]->[2d61dc2] getgroups: avoid compiler warning
     * [ee8909a]->[28fc486] strftime.h: wrap funtion declaration in extern "C" block
     * [fb1b608]->[d837f67] gnulib-tool: correctly detect absence of m4 directories
-    * [a86ea84][e14e479] fnmatch: avoid compiler warning
+    * [a86ea84]->[e14e479] fnmatch: avoid compiler warning
+    * [24a6641]->[16685f1] lib/gc-pbkdf2-sha1.c: Remove comments from RFC 2898.
+    * [1b712ba]->[4b4b924] avoid new AC_REQUIRE expanded-before-required warnings
+    * [6963723]->[456348e] better AC_REQUIRE expanded-before-required-warning avoidance
+    * [1c32714]->[dc372f7] version-etc: relax license to LGPLv3+

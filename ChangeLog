@@ -1,3 +1,27 @@
+2009-11-16  Jim Meyering  <meyering@redhat.com>
+
+	version-etc: relax license to LGPLv3+
+	* modules/version-etc (License): Relax license.
+
+	better AC_REQUIRE expanded-before-required-warning avoidance
+	* m4/chown.m4 (gl_FUNC_CHOWN, gl_FUNC_CHOWN_FOLLOWS_SYMLINK): Define
+	with AC_DEFUN_ONCE, rather than AC_DEFUN, to avoid AC_REQUIRE warnings.
+	Suggested by Eric Blake.  This change also reverts commit 1b712ba8,
+	which is no longer needed.
+
+2009-11-16  Jim Meyering  <meyering@redhat.com>
+
+	avoid new AC_REQUIRE expanded-before-required warnings
+	* modules/chown (configure.ac): Require gl_FUNC_CHOWN, rather than
+	merely using it.
+	* modules/euidaccess (configure.ac): Likewise for gl_FUNC_EUIDACCESS.
+	* modules/faccessat (configure.ac): Likewise for gl_FUNC_FACCESSAT.
+
+2009-11-15  Simon Josefsson  <simon@josefsson.org>
+
+	* lib/gc-pbkdf2-sha1.c: Remove comments from RFC 2898.  Reported
+	by Vladimir 'phcoder' Serbinenko <phcoder@gmail.com>.
+
 2009-11-14  Eric Blake  <ebb9@byu.net>
 
 	fnmatch: avoid compiler warning
