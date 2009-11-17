@@ -4,8 +4,11 @@ gnulib (20091114-1) unstable; urgency=low
   * Install posix-modules (Closes: #555493).
     Also install MODULES.html.sh and the root Makefile, just in case.
   * Install NEWS, NEWS.stable, README, users.txt to /usr/share/doc/gnulib.
+  * Add lintian executable-not-elf-or-script overrides for scripts
+    in build-aux/ that invoke themselves with excessively magical
+    non-shebang lines.
 
- -- Ian Beckwith <ianb@debian.org>  Mon, 16 Nov 2009 23:29:57 +0000
+ -- Ian Beckwith <ianb@debian.org>  Tue, 17 Nov 2009 03:17:58 +0000
 
 gnulib (20090915+f32c9d0-2) unstable; urgency=low
 
