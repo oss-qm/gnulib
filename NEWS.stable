@@ -34,4 +34,4 @@ with the following additional commits:
     * [24a6641]->[16685f1] lib/gc-pbkdf2-sha1.c: Remove comments from RFC 2898.
     * [1b712ba]->[4b4b924] avoid new AC_REQUIRE expanded-before-required warnings
     * [6963723]->[456348e] better AC_REQUIRE expanded-before-required-warning avoidance
-__NEXTCOMMITMARKER__
+    * [1c32714]->[dc372f7] version-etc: relax license to LGPLv3+
