@@ -32,4 +32,5 @@ with the following additional commits:
     * [fb1b608]->[d837f67] gnulib-tool: correctly detect absence of m4 directories
     * [a86ea84]->[e14e479] fnmatch: avoid compiler warning
     * [24a6641]->[16685f1] lib/gc-pbkdf2-sha1.c: Remove comments from RFC 2898.
+    * [1b712ba]->[4b4b924] avoid new AC_REQUIRE expanded-before-required warnings
 __NEXTCOMMITMARKER__
