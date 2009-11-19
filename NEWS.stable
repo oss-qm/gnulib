@@ -35,3 +35,4 @@ with the following additional commits:
     * [1b712ba]->[4b4b924] avoid new AC_REQUIRE expanded-before-required warnings
     * [6963723]->[456348e] better AC_REQUIRE expanded-before-required-warning avoidance
     * [1c32714]->[dc372f7] version-etc: relax license to LGPLv3+
+__NEXTCOMMITMARKER__
