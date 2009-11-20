@@ -9,8 +9,9 @@ gnulib (20091120+stable-1) unstable; urgency=low
     in build-aux/ that invoke themselves with excessively magical
     non-shebang lines.
   * debian/clscan/clscan: allow LGPL-3+ as an override.
+  * debian/control: add Vcs-* headers.
 
- -- Ian Beckwith <ianb@debian.org>  Fri, 20 Nov 2009 01:03:25 +0000
+ -- Ian Beckwith <ianb@debian.org>  Fri, 20 Nov 2009 01:19:58 +0000
 
 gnulib (20090915+f32c9d0-2) unstable; urgency=low
 

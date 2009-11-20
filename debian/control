@@ -5,6 +5,8 @@ Maintainer: Ian Beckwith <ianb@debian.org>
 Build-Depends: debhelper (>= 7.0.50~), quilt, texinfo
 Standards-Version: 3.8.3
 Homepage: http://www.gnu.org/software/gnulib/
+Vcs-Browser: http://erislabs.net/gitweb?p=gnulib.git
+Vcs-Git: git://erislabs.net/gnulib.git
 
 Package: gnulib
 Architecture: all
