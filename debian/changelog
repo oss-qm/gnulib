@@ -1,4 +1,4 @@
-gnulib (20091116-1) unstable; urgency=low
+gnulib (20091120+stable-1) unstable; urgency=low
 
   * New upstream stable snapshot.
   * Install posix-modules (Closes: #555493).
@@ -10,7 +10,7 @@ gnulib (20091116-1) unstable; urgency=low
     non-shebang lines.
   * debian/clscan/clscan: allow LGPL-3+ as an override.
 
- -- Ian Beckwith <ianb@debian.org>  Tue, 17 Nov 2009 04:23:58 +0000
+ -- Ian Beckwith <ianb@debian.org>  Fri, 20 Nov 2009 01:03:25 +0000
 
 gnulib (20090915+f32c9d0-2) unstable; urgency=low
 
