@@ -38,4 +38,5 @@ with the following additional commits:
     * [7e52ced]->[3f0179e] version-etc-fsf: relax license to LGPLv3+
     * [b205080]->[e09f5b5] version-etc: use proper license string
     * [b9d28ec]->[f2baca9] Add `gnulib-tool --import' support for LGPLv3+.
+    * [d9d9b26]->[6d8c90b] Add.
 __NEXTCOMMITMARKER__
