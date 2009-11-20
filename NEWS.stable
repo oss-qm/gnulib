@@ -37,4 +37,5 @@ with the following additional commits:
     * [1c32714]->[dc372f7] version-etc: relax license to LGPLv3+
     * [7e52ced]->[3f0179e] version-etc-fsf: relax license to LGPLv3+
     * [b205080]->[e09f5b5] version-etc: use proper license string
+    * [b9d28ec]->[f2baca9] Add `gnulib-tool --import' support for LGPLv3+.
 __NEXTCOMMITMARKER__
