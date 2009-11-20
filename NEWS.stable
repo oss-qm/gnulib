@@ -42,4 +42,5 @@ with the following additional commits:
     * [0883405]->[72abcbb] utimens: fix regression on Solaris
     * [8cfd4a9]->[8607d21] tests: avoid false negative with --with-packager
     * [111e540]->[0028f27] build: avoid compiler warnings
+    * [841ad19]->[c6d977e] manywarnings: depend on warnings
 __NEXTCOMMITMARKER__
