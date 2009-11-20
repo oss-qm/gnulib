@@ -36,4 +36,5 @@ with the following additional commits:
     * [6963723]->[456348e] better AC_REQUIRE expanded-before-required-warning avoidance
     * [1c32714]->[dc372f7] version-etc: relax license to LGPLv3+
     * [7e52ced]->[3f0179e] version-etc-fsf: relax license to LGPLv3+
+    * [b205080]->[e09f5b5] version-etc: use proper license string
 __NEXTCOMMITMARKER__
