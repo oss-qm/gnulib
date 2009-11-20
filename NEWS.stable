@@ -1,6 +1,6 @@
 			Gnulib stable snapshot
 			----------------------
-  * 20091116-stable
+  * 20091120-stable
 
 Snapshot taken based on:
 
@@ -35,3 +35,12 @@ with the following additional commits:
     * [1b712ba]->[4b4b924] avoid new AC_REQUIRE expanded-before-required warnings
     * [6963723]->[456348e] better AC_REQUIRE expanded-before-required-warning avoidance
     * [1c32714]->[dc372f7] version-etc: relax license to LGPLv3+
+    * [7e52ced]->[3f0179e] version-etc-fsf: relax license to LGPLv3+
+    * [b205080]->[e09f5b5] version-etc: use proper license string
+    * [b9d28ec]->[f2baca9] Add `gnulib-tool --import' support for LGPLv3+.
+    * [d9d9b26]->[6d8c90b] Add.
+    * [0883405]->[72abcbb] utimens: fix regression on Solaris
+    * [8cfd4a9]->[8607d21] tests: avoid false negative with --with-packager
+    * [111e540]->[0028f27] build: avoid compiler warnings
+    * [841ad19]->[c6d977e] manywarnings: depend on warnings
+    * [758f912]->[dd21f46] autoupdate
