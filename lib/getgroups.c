@@ -52,7 +52,7 @@ getgroups (int n _UNUSED_PARAMETER_, GETGROUPS_T *groups _UNUSED_PARAMETER_)
    whether the effective group id is included in the list.  */
 
 int
-rpl_getgroups (int n, GETGROUPS_T *group)
+rpl_getgroups (int n, gid_t *group)
 {
   int n_groups;
   GETGROUPS_T *gbuf;

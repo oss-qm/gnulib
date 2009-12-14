@@ -20,38 +20,15 @@
 
 #include <sys/stat.h>
 
-#ifndef HAVE_MKFIFO
-# define HAVE_MKFIFO 0
-#endif
-#ifndef HAVE_MKNOD
-# define HAVE_MKNOD 0
-#endif
-
-/* For now, all known systems either have both mkfifo and mknod, or
-   neither.  If this is not true, we can implement the portable
-   aspects of one using the other (POSIX only requires mknod to create
-   fifos; all other uses of mknod are for root users and outside the
-   realm of POSIX).  */
-#if HAVE_MKNOD != HAVE_MKFIFO
-# error Please report this message and your system to bug-gnulib@gnu.org.
-#endif
-
 #if !HAVE_MKFIFO
-/* Mingw lacks mkfifo and mknod, so this wrapper is trivial.  */
 
 # include <errno.h>
 
-int
-mkfifoat (int fd _UNUSED_PARAMETER_, char const *path _UNUSED_PARAMETER_,
-	  mode_t mode _UNUSED_PARAMETER_)
-{
-  errno = ENOSYS;
-  return -1;
-}
+/* Mingw lacks mkfifo, so this wrapper is trivial.  */
 
 int
-mknodat (int fd _UNUSED_PARAMETER_, char const *path _UNUSED_PARAMETER_,
-	 mode_t mode _UNUSED_PARAMETER_, dev_t dev _UNUSED_PARAMETER_)
+mkfifoat (int fd _UNUSED_PARAMETER_, char const *path _UNUSED_PARAMETER_,
+          mode_t mode _UNUSED_PARAMETER_)
 {
   errno = ENOSYS;
   return -1;
@@ -69,24 +46,6 @@ mknodat (int fd _UNUSED_PARAMETER_, char const *path _UNUSED_PARAMETER_,
 # define AT_FUNC_F1 mkfifo
 # define AT_FUNC_POST_FILE_PARAM_DECLS , mode_t mode
 # define AT_FUNC_POST_FILE_ARGS        , mode
-# include "at-func.c"
-# undef AT_FUNC_NAME
-# undef AT_FUNC_F1
-# undef AT_FUNC_POST_FILE_PARAM_DECLS
-# undef AT_FUNC_POST_FILE_ARGS
-
-/* Create a file system node FILE relative to directory FD, with
-   access permissions and file type in MODE, and device type in DEV.
-   Usually, non-root applications can only create named fifos, with
-   DEV set to 0.  If possible, create the node without changing the
-   working directory.  Otherwise, resort to using save_cwd/fchdir,
-   then mknod/restore_cwd.  If either the save_cwd or the restore_cwd
-   fails, then give a diagnostic and exit nonzero.  */
-
-# define AT_FUNC_NAME mknodat
-# define AT_FUNC_F1 mknod
-# define AT_FUNC_POST_FILE_PARAM_DECLS , mode_t mode, dev_t dev
-# define AT_FUNC_POST_FILE_ARGS        , mode, dev
 # include "at-func.c"
 # undef AT_FUNC_NAME
 # undef AT_FUNC_F1

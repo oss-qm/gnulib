@@ -1345,6 +1345,7 @@ h_errno
 index
 makecontext
 mktemp
+pread
 pthread_attr_getstackaddr
 pthread_attr_setstackaddr
 rindex
@@ -2287,6 +2288,8 @@ func_all_modules ()
   func_module mbsnrtowcs
   func_module mkdir
   func_module mkdtemp
+  func_module mkfifo
+  func_module mknod
   func_module mkstemp
   func_module netdb
   func_module netinet_in
@@ -2566,6 +2569,7 @@ func_all_modules ()
   func_module popen-safer
   func_module stdlib-safer
   func_module tmpfile-safer
+  func_module xfreopen
   func_end_table
 
   element="Users and groups"
@@ -2578,6 +2582,7 @@ func_all_modules ()
   func_module getugroups
   func_module group-member
   func_module idcache
+  func_module mgetgroups
   func_module userspec
   func_end_table
 
@@ -2590,8 +2595,9 @@ func_all_modules ()
   func_begin_table
   func_module gethrxtime
   func_module gettime
-  func_module settime
   func_module posixtm
+  func_module settime
+  func_module usleep
   func_module xnanosleep
   func_end_table
 

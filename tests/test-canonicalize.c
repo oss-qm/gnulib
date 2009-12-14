@@ -31,18 +31,24 @@
 #include "same-inode.h"
 
 #define ASSERT(expr) \
-  do									     \
-    {									     \
-      if (!(expr))							     \
-        {								     \
+  do                                                                         \
+    {                                                                        \
+      if (!(expr))                                                           \
+        {                                                                    \
           fprintf (stderr, "%s:%d: assertion failed\n", __FILE__, __LINE__); \
-          fflush (stderr);						     \
-          abort ();							     \
-        }								     \
-    }									     \
+          fflush (stderr);                                                   \
+          abort ();                                                          \
+        }                                                                    \
+    }                                                                        \
   while (0)
 
 #define BASE "t-can.tmp"
+
+static void *
+null_ptr (void)
+{
+  return NULL;
+}
 
 int
 main (void)
@@ -67,7 +73,7 @@ main (void)
     ASSERT (result2 != NULL);
     ASSERT (strcmp (result1, result2) == 0);
     ASSERT (strstr (result1, "/" BASE "/tra")
-	    == result1 + strlen (result1) - strlen ("/" BASE "/tra"));
+            == result1 + strlen (result1) - strlen ("/" BASE "/tra"));
     free (result1);
     free (result2);
     errno = 0;
@@ -79,7 +85,7 @@ main (void)
     ASSERT (result2 == NULL);
     ASSERT (errno == ENOENT);
     errno = 0;
-    result1 = canonicalize_file_name (NULL);
+    result1 = canonicalize_file_name (null_ptr ());
     ASSERT (result1 == NULL);
     ASSERT (errno == EINVAL);
     errno = 0;
@@ -122,7 +128,7 @@ main (void)
       ASSERT (remove (BASE "/tra") == 0);
       ASSERT (rmdir (BASE) == 0);
       fputs ("skipping test: symlinks not supported on this file system\n",
-	     stderr);
+             stderr);
       return 77;
     }
   ASSERT (symlink ("bef", BASE "/plo") == 0);

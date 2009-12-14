@@ -22,7 +22,6 @@
 #include "unistd-safer.h"
 
 #include <errno.h>
-
 #include <unistd.h>
 
 /* Return FD, unless FD would be a copy of standard input, output, or

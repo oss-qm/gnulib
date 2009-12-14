@@ -23,7 +23,6 @@
 #include "unistd-safer.h"
 
 #include <fcntl.h>
-
 #include <unistd.h>
 
 /* Like dup, but do not return STDIN_FILENO, STDOUT_FILENO, or

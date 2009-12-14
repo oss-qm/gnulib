@@ -72,6 +72,7 @@ typedef struct sigaltstack stack_t;
 
 #include "c-stack.h"
 #include "exitfail.h"
+#include "ignore-value.h"
 
 #if defined SA_ONSTACK && defined SA_SIGINFO
 # define SIGACTION_WORKS 1
@@ -105,10 +106,10 @@ die (int signo)
   char const *message;
   segv_action (signo);
   message = signo ? program_error_message : stack_overflow_message;
-  write (STDERR_FILENO, program_name, strlen (program_name));
-  write (STDERR_FILENO, ": ", 2);
-  write (STDERR_FILENO, message, strlen (message));
-  write (STDERR_FILENO, "\n", 1);
+  ignore_value (write (STDERR_FILENO, program_name, strlen (program_name)));
+  ignore_value (write (STDERR_FILENO, ": ", 2));
+  ignore_value (write (STDERR_FILENO, message, strlen (message)));
+  ignore_value (write (STDERR_FILENO, "\n", 1));
   if (! signo)
     _exit (exit_failure);
   raise (signo);
@@ -150,7 +151,7 @@ static volatile int segv_handler_missing;
    overflow.  This function is async-signal-safe.  */
 
 static int segv_handler (void *address __attribute__ ((unused)),
-			 int serious)
+                         int serious)
 {
 # if DEBUG
   {
@@ -174,13 +175,13 @@ static void overflow_handler (int, stackoverflow_context_t)
   __attribute__ ((noreturn));
 static void
 overflow_handler (int emergency,
-		  stackoverflow_context_t context __attribute__ ((unused)))
+                  stackoverflow_context_t context __attribute__ ((unused)))
 {
 # if DEBUG
   {
     char buf[1024];
     sprintf (buf, "overflow_handler emergency=%d segv_handler_missing=%d\n",
-	     emergency, segv_handler_missing);
+             emergency, segv_handler_missing);
     write (STDERR_FILENO, buf, strlen (buf));
   }
 # endif
@@ -217,12 +218,14 @@ c_stack_action (void (*action) (int))
 # if STACK_DIRECTION
 #  define find_stack_direction(ptr) STACK_DIRECTION
 # else
+#  if ! SIGACTION_WORKS || HAVE_XSI_STACK_OVERFLOW_HEURISTIC
 static int
 find_stack_direction (char const *addr)
 {
   char dummy;
   return ! addr ? find_stack_direction (&dummy) : addr < &dummy ? 1 : -1;
 }
+#  endif
 # endif
 
 # if SIGACTION_WORKS
@@ -233,7 +236,7 @@ find_stack_direction (char const *addr)
 static void segv_handler (int, siginfo_t *, void *) __attribute__((noreturn));
 static void
 segv_handler (int signo, siginfo_t *info,
-	      void *context __attribute__ ((unused)))
+              void *context __attribute__ ((unused)))
 {
   /* Clear SIGNO if it seems to have been a stack overflow.  */
 #  if ! HAVE_XSI_STACK_OVERFLOW_HEURISTIC
@@ -252,8 +255,8 @@ segv_handler (int signo, siginfo_t *info,
   if (0 < info->si_code)
     {
       /* If the faulting address is within the stack, or within one
-	 page of the stack end, assume that it is a stack
-	 overflow.  */
+         page of the stack end, assume that it is a stack
+         overflow.  */
       ucontext_t const *user_context = context;
       char const *stack_base = user_context->uc_stack.ss_sp;
       size_t stack_size = user_context->uc_stack.ss_size;
@@ -261,18 +264,18 @@ segv_handler (int signo, siginfo_t *info,
       size_t s = faulting_address - stack_base;
       size_t page_size = sysconf (_SC_PAGESIZE);
       if (find_stack_direction (NULL) < 0)
-	s += page_size;
+        s += page_size;
       if (s < stack_size + page_size)
-	signo = 0;
+        signo = 0;
 
 #   if DEBUG
       {
-	char buf[1024];
-	sprintf (buf,
-		 "segv_handler fault=%p base=%p size=%lx page=%lx signo=%d\n",
-		 faulting_address, stack_base, (unsigned long) stack_size,
-		 (unsigned long) page_size, signo);
-	write (STDERR_FILENO, buf, strlen (buf));
+        char buf[1024];
+        sprintf (buf,
+                 "segv_handler fault=%p base=%p size=%lx page=%lx signo=%d\n",
+                 faulting_address, stack_base, (unsigned long) stack_size,
+                 (unsigned long) page_size, signo);
+        write (STDERR_FILENO, buf, strlen (buf));
       }
 #   endif
     }
@@ -327,7 +330,7 @@ c_stack_action (void (*action) (int))
 }
 
 #else /* ! ((HAVE_SIGALTSTACK && HAVE_DECL_SIGALTSTACK
-	     && HAVE_STACK_OVERFLOW_HANDLING) || HAVE_LIBSIGSEGV) */
+             && HAVE_STACK_OVERFLOW_HANDLING) || HAVE_LIBSIGSEGV) */
 
 int
 c_stack_action (void (*action) (int)  __attribute__ ((unused)))

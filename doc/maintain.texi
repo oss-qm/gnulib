@@ -5,7 +5,7 @@
 @c For double-sided printing, uncomment:
 @c @setchapternewpage odd
 @c This date is automagically updated when you save this file:
-@set lastupdate July 24, 2009
+@set lastupdate December 12, 2009
 @c %**end of header
 
 @dircategory GNU organization
@@ -83,25 +83,32 @@ maintainer of a GNU program on behalf of the GNU Project.  Everyone is
 entitled to change and redistribute GNU software; you need not pay
 attention to this file to get permission.  But if you want to maintain a
 version for widespread distribution, we suggest you follow these
-guidelines; if you would like to be a GNU maintainer, then it is
+guidelines.  If you would like to be a GNU maintainer, then it is
 essential to follow these guidelines.
 
 In addition to this document, please read and follow the GNU Coding
 Standards (@pxref{Top, , Contents, standards, GNU Coding Standards}).
 
+@cindex @code{gnustandards-commit@@gnu.org} mailing list
+If you want to receive diffs for every change to these GNU documents,
+join the mailing list @code{gnustandards-commit@@gnu.org}, via the web
+interface at
+@url{http://lists.gnu.org/mailman/listinfo/gnustandards-commit}.
+Archives are also available there.
+
 @cindex @code{maintainers@@gnu.org} email address
 Please send corrections or suggestions for this document to
-@email{maintainers@@gnu.org}.  If you make a suggestion, please include
-a suggested new wording for it, to help us consider the suggestion
-efficiently.  We prefer a context diff to the @file{maintain.texi} file,
-but if you don't have that file, you can make a context diff for some
-other version of this document, or propose it in any way that makes it
-clear.
+@email{bug-standards@@gnu.org}.  If you make a suggestion, please
+include a suggested new wording for it, to help us consider the
+suggestion efficiently.  We prefer a context diff to the
+@file{maintain.texi} file, but if you don't have that file, you can
+make a context diff for some other version of this document, or
+propose it in any way that makes it clear.
 
 @cindex @code{mentors@@gnu.org} mailing list
 If you have general questions or encounter a situation where it isn't
 clear what to do, you can ask @email{mentors@@gnu.org}, which is a
-list of a few other GNU contributor who have offered to answer
+list of a few experienced GNU contributors who have offered to answer
 questions for new maintainers.
 
 The directory @file{/gd/gnuorg} mentioned throughout this document is
@@ -1247,9 +1254,14 @@ maintain the web pages at @url{www.gnu.org} for your project
 
 @item
 In the @samp{My Account Conf} page on @code{savannah}, upload the GPG
-key you will use to sign your packages.  You can create a key with the
-command @code{gpg --gen-key}.  (For full information about GPG, see
-@url{http://www.gnu.org/software/gpg}).
+key you will use to sign your packages.
+
+You can create a key with the command @code{gpg --gen-key}.  It is
+good to also send your key to the GPG public key server: @code{gpg
+--keyserver keys.gnupg.net --send-keys @var{keyid}}, where @var{keyid}
+is the eight hex digits reported by @code{gpg --list-public-keys} on
+the @code{pub} line before the date.  For full information about GPG,
+see @url{http://www.gnu.org/software/gpg})
 
 @item
 Compose a message with the following items in some @var{msgfile}.
@@ -1299,15 +1311,19 @@ uploaded via ftp to the host @code{ftp-upload.gnu.org}.
 
 @enumerate
 @item
-The file to be distributed (for example, @file{foo.tar.gz}).
+The file to be distributed; for example, @file{foo.tar.gz}.
 
 @item
-Detached GPG binary signature for (1), made using @samp{gpg -b}
-(for example, @file{foo.tar.gz.sig}).
+Detached GPG binary signature file for (1); for example,
+@file{foo.tar.gz.sig}.  Make this with @samp{gpg -b foo.tar.gz}.
+
 
 @item
-A clearsigned @dfn{directive file}, made using @samp{gpg --clearsign}
-(for example, @file{foo.tar.gz.directive.asc}).
+A clearsigned @dfn{directive file}; for example,
+@file{foo.tar.gz.directive.asc}.  Make this by preparing the plain
+text file @file{foo.tar.gz.directive} and then run @samp{gpg
+--clearsign foo.tar.gz.directive}.  @xref{FTP Upload Directive File -
+v1.1}, for the contents of the directive file.
 @end enumerate
 
 The names of the files are important. The signature file must have the
@@ -1339,8 +1355,8 @@ are sent a message if there are any problems processing an upload for your
 package. You also receive a message when your upload has been successfully
 processed.
 
-One relatively easy way to create and transfer the necessary files is
-to use the @code{gnupload} script, which is available from the
+One automated way to create and transfer the necessary files is to use
+the @code{gnupload} script, which is available from the
 @file{build-aux/} directory of the @code{gnulib} project at
 @url{http://savannah.gnu.org/projects/gnulib}.  @code{gnupload} can
 also remove uploaded files.  Run @code{gnupload --help} for a
@@ -1349,10 +1365,10 @@ description and examples.
 @code{gnupload} uses the @code{ncftpput} program to do the actual
 transfers; if you don't happen to have the @code{ncftp} package
 installed, the @code{ncftpput-ftp} script in the @file{build-aux/}
-directory of @code{gnulib}.  serves as a replacement which uses plain
+directory of @code{gnulib} serves as a replacement which uses plain
 command line @code{ftp}.
 
-If you have difficulties processing an upload, email
+If you have difficulties with an upload, email
 @email{ftp-upload@@gnu.org}.
 
 
