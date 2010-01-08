@@ -1,5 +1,6 @@
 Files:
 tests/test-rbtreehash_list.c
+tests/macros.h
 
 Depends-on:
 array-list
@@ -10,4 +11,3 @@ configure.ac:
 Makefile.am:
 TESTS += test-rbtreehash_list
 check_PROGRAMS += test-rbtreehash_list
-test_rbtreehash_list_LDADD = $(LDADD) @LIBINTL@

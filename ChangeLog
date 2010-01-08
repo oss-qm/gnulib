@@ -1,3 +1,2996 @@
+2010-01-01  Jim Meyering  <meyering@redhat.com>
+
+	ChangeLog: tweak to eliminate unnecessary copyright line
+	* ChangeLog: Remove a copyright line that was mistakenly updated
+	by today's update-copyright run.  Reported by Eric Blake.
+
+	test-update-copyright: don't let envvar setting cause test failure
+	* tests/test-update-copyright.sh: Set UPDATE_COPYRIGHT_MAX_LINE_LENGTH.
+
+2010-01-01  Bruno Haible  <bruno@clisp.org>
+
+	localename: Avoid gcc warning.
+	* lib/localename.c (gl_locale_name_thread_unsafe): Don't define this
+	function if it is not used.
+
+2010-01-01  Jim Meyering  <meyering@redhat.com>
+
+	update nearly all FSF copyright year lists to include 2010
+	Use the same procedure as for 2009, outlined in
+	http://thread.gmane.org/gmane.comp.lib.gnulib.bugs/20081
+
+	version-etc: set COPYRIGHT_YEAR to 2010
+	* lib/version-etc.c (COPYRIGHT_YEAR): Manually update the enum.
+
+2009-12-31  Eric Blake  <ebb9@byu.net>
+
+	doc: correct availability of cygwin 1.5.x getopt
+	* doc/posix-functions/optarg.texi (optarg): Cygwin supplies getopt
+	variables.
+	* doc/posix-functions/opterr.texi (opterr): Likewise.
+	* doc/posix-functions/optind.texi (optind): Likewise.
+	* doc/posix-functions/optopt.texi (optopt): Likewise.
+	* doc/posix-functions/tzname.texi (tzname): Likewise.
+
+	openat: update maintainer
+	* modules/openat (Maintainer): Add myself.
+
+	utimens: avoid shadowing warning
+	* lib/utimens.c (fdutimens, lutimens): Consolidate separate stat
+	buffers into one, to avoid shadowing, as well as avoiding a
+	redundant stat.
+	Reported by Jim Meyering.
+
+	test-dup2: avoid compiler warning
+	* tests/test-dup2.c (is_inheritable): Only define if used.
+
+2010-01-01  Bruno Haible  <bruno@clisp.org>
+
+	vasnprintf: Avoid passing an 'rpl_mbstate_t *' to the system's wcrtomb.
+	* lib/vasnprintf.c (VASNPRINTF): If GNULIB_defined_mbstate_t is
+	defined, use wctomb instead of wcrtomb.
+
+2010-01-01  Bruno Haible  <bruno@clisp.org>
+
+	iconv: Reject native Solaris iconv.
+	* m4/iconv.m4 (AM_ICONV_LINK): Recognize native Solaris iconv() bug.
+	* doc/posix-functions/iconv.texi: Document native Solaris iconv() bug.
+
+2009-12-31  Bruno Haible  <bruno@clisp.org>
+
+	* tests/test-signal.c (main): Remove test of 'SIG'.
+
+2009-12-31  Bruno Haible  <bruno@clisp.org>
+
+	spawn: Fix incomplete fix.
+	* lib/spawn.in.h (posix_spawnattr_getflags, posix_spawnattr_setflags,
+	posix_spawnattr_getpgroup, posix_spawnattr_setpgroup): Correct the link
+	warnings for GNULIB_POSIXCHECK again.
+	Reported by Eric Blake.
+
+2009-12-31  Bruno Haible  <bruno@clisp.org>
+
+	Avoid namespace pollution on glibc systems.
+	* lib/spawn.in.h: Don't include <sched.h>, <signal.h> on glibc systems.
+	* lib/sys_times.in.h: Don't include <time.h> on glibc systems.
+	* lib/wchar.in.h: Don't include <stddef.h>, <stdio.h>, <time.h> on
+	glibc systems.
+
+2009-12-31  Bruno Haible  <bruno@clisp.org>
+
+	* m4/wchar.m4 (gl_WCHAR_H): Remove gl_STDDEF_H invocation.
+	(gl_REPLACE_WCHAR_H): Turn into a no-op.
+	* m4/arpa_inet_h.m4 (gl_REPLACE_ARPA_INET_H): Likewise.
+	* m4/dirent_h.m4 (gl_REPLACE_DIRENT_H): Likewise.
+	* m4/locale_h.m4 (gl_REPLACE_LOCALE_H): Likewise.
+	* m4/spawn_h.m4 (gl_REPLACE_SPAWN_H): Likewise.
+	* m4/sys_ioctl_h.m4 (gl_REPLACE_SYS_IOCTL_H): Likewise.
+
+2009-12-31  Bruno Haible  <bruno@clisp.org>
+
+	* m4/sys_select_h.m4 (gl_HEADER_SYS_SELECT): Invoke
+	gl_CHECK_NEXT_HEADERS before testing ac_cv_header_sys_select_h, not
+	afterwards.
+
+2009-12-31  Bruno Haible  <bruno@clisp.org>
+
+	* m4/sys_utsname_h.m4 (gl_SYS_UTSNAME_H_DEFAULTS): Don't set
+	SYS_UTSNAME_H.
+
+2009-12-31  Bruno Haible  <bruno@clisp.org>
+
+	spawn: Fix misapplied patch.
+	* lib/spawn.in.h (posix_spawnattr_getflags, posix_spawnattr_setflags,
+	posix_spawnattr_getpgroup, posix_spawnattr_setpgroup): Correct the link
+	warnings for GNULIB_POSIXCHECK.
+
+2009-12-31  Bruno Haible  <bruno@clisp.org>
+
+	times: Update after sys_times changed.
+	* m4/times.m4: New file, extracted from modules/times. Set HAVE_TIMES.
+	* modules/times (Files): Add it.
+	(configure.ac): Invoke gl_FUNC_TIMES.
+
+2009-12-31  Bruno Haible  <bruno@clisp.org>
+
+	Use AC_C_INLINE where necessary.
+	* m4/chdir-long.m4 (gl_PREREQ_CHDIR_LONG): Require AC_C_INLINE.
+	* m4/fatal-signal.m4 (gl_FATAL_SIGNAL): Likewise.
+	* m4/fts.m4 (gl_FUNC_FTS_CORE): Likewise.
+	* m4/mbchar.m4 (gl_MBCHAR): Likewise.
+	* m4/mbfile.m4 (gl_MBFILE): Likewise.
+	* m4/mbiter.m4 (gl_MBITER): Likewise.
+	* m4/regex.m4 (gl_PREREQ_REGEX): Likewise.
+	* m4/stat.m4 (gl_FUNC_STAT): Likewise.
+	* m4/wait-process.m4 (gl_WAIT_PROCESS): Likewise.
+	* modules/u64 (configure.ac): Likewise.
+
+2009-12-31  Bruno Haible  <bruno@clisp.org>
+
+	Use AC_C_INLINE instead of module 'inline' where possible.
+	* modules/inline (Description): Clarify purpose.
+	* m4/count-one-bits.m4 (gl_COUNT_ONE_BITS): Require AC_C_INLINE.
+	* modules/count-one-bits (Depends-on): Remove inline.
+	* m4/openat.m4 (gl_PREREQ_OPENAT): Require AC_C_INLINE.
+	* modules/openat (Depends-on): Remove inline.
+	* modules/fdutimensat (Depends-on, configure.ac): Require AC_C_INLINE
+	instead of depending on module 'inline'.
+	* modules/filevercmp (Depends-on, configure.ac): Likewise.
+	* modules/unicase/cased (Depends-on, configure.ac): Likewise.
+	* modules/unicase/ignorable (Depends-on, configure.ac): Likewise.
+	* modules/unictype/category-of (Depends-on, configure.ac): Likewise.
+	* modules/unictype/category-test (Depends-on, configure.ac): Likewise.
+	* modules/unictype/ctype-alnum (Depends-on, configure.ac): Likewise.
+	* modules/unictype/ctype-alpha (Depends-on, configure.ac): Likewise.
+	* modules/unictype/ctype-blank (Depends-on, configure.ac): Likewise.
+	* modules/unictype/ctype-cntrl (Depends-on, configure.ac): Likewise.
+	* modules/unictype/ctype-digit (Depends-on, configure.ac): Likewise.
+	* modules/unictype/ctype-graph (Depends-on, configure.ac): Likewise.
+	* modules/unictype/ctype-lower (Depends-on, configure.ac): Likewise.
+	* modules/unictype/ctype-print (Depends-on, configure.ac): Likewise.
+	* modules/unictype/ctype-punct (Depends-on, configure.ac): Likewise.
+	* modules/unictype/ctype-space (Depends-on, configure.ac): Likewise.
+	* modules/unictype/ctype-upper (Depends-on, configure.ac): Likewise.
+	* modules/unictype/ctype-xdigit (Depends-on, configure.ac): Likewise.
+	* modules/unictype/property-alphabetic (Depends-on, configure.ac):
+	Likewise.
+	* modules/unictype/property-ascii-hex-digit (Depends-on,
+	configure.ac): Likewise.
+	* modules/unictype/property-bidi-arabic-digit (Depends-on,
+	configure.ac): Likewise.
+	* modules/unictype/property-bidi-arabic-right-to-left (Depends-on,
+	configure.ac): Likewise.
+	* modules/unictype/property-bidi-block-separator (Depends-on,
+	configure.ac): Likewise.
+	* modules/unictype/property-bidi-boundary-neutral (Depends-on,
+	configure.ac): Likewise.
+	* modules/unictype/property-bidi-common-separator (Depends-on,
+	configure.ac): Likewise.
+	* modules/unictype/property-bidi-control (Depends-on, configure.ac):
+	Likewise.
+	* modules/unictype/property-bidi-embedding-or-override (Depends-on,
+	configure.ac): Likewise.
+	* modules/unictype/property-bidi-eur-num-separator (Depends-on,
+	configure.ac): Likewise.
+	* modules/unictype/property-bidi-eur-num-terminator (Depends-on,
+	configure.ac): Likewise.
+	* modules/unictype/property-bidi-european-digit (Depends-on,
+	configure.ac): Likewise.
+	* modules/unictype/property-bidi-hebrew-right-to-left (Depends-on,
+	configure.ac): Likewise.
+	* modules/unictype/property-bidi-left-to-right (Depends-on,
+	configure.ac): Likewise.
+	* modules/unictype/property-bidi-non-spacing-mark (Depends-on,
+	configure.ac): Likewise.
+	* modules/unictype/property-bidi-other-neutral (Depends-on,
+	configure.ac): Likewise.
+	* modules/unictype/property-bidi-pdf (Depends-on, configure.ac):
+	Likewise.
+	* modules/unictype/property-bidi-segment-separator (Depends-on,
+	configure.ac): Likewise.
+	* modules/unictype/property-bidi-whitespace (Depends-on,
+	configure.ac): Likewise.
+	* modules/unictype/property-combining (Depends-on, configure.ac):
+	Likewise.
+	* modules/unictype/property-composite (Depends-on, configure.ac):
+	Likewise.
+	* modules/unictype/property-currency-symbol (Depends-on,
+	configure.ac): Likewise.
+	* modules/unictype/property-dash (Depends-on, configure.ac): Likewise.
+	* modules/unictype/property-decimal-digit (Depends-on, configure.ac):
+	Likewise.
+	* modules/unictype/property-default-ignorable-code-point (Depends-on,
+	configure.ac): Likewise.
+	* modules/unictype/property-deprecated (Depends-on, configure.ac):
+	Likewise.
+	* modules/unictype/property-diacritic (Depends-on, configure.ac):
+	Likewise.
+	* modules/unictype/property-extender (Depends-on, configure.ac):
+	Likewise.
+	* modules/unictype/property-format-control (Depends-on, configure.ac):
+	Likewise.
+	* modules/unictype/property-grapheme-base (Depends-on, configure.ac):
+	Likewise.
+	* modules/unictype/property-grapheme-extend (Depends-on, configure.ac):
+	Likewise.
+	* modules/unictype/property-grapheme-link (Depends-on, configure.ac):
+	Likewise.
+	* modules/unictype/property-hex-digit (Depends-on, configure.ac):
+	Likewise.
+	* modules/unictype/property-hyphen (Depends-on, configure.ac):
+	Likewise.
+	* modules/unictype/property-id-continue (Depends-on, configure.ac):
+	Likewise.
+	* modules/unictype/property-id-start (Depends-on, configure.ac):
+	Likewise.
+	* modules/unictype/property-ideographic (Depends-on, configure.ac):
+	Likewise.
+	* modules/unictype/property-ids-binary-operator (Depends-on,
+	configure.ac): Likewise.
+	* modules/unictype/property-ids-trinary-operator (Depends-on,
+	configure.ac): Likewise.
+	* modules/unictype/property-ignorable-control (Depends-on,
+	configure.ac): Likewise.
+	* modules/unictype/property-iso-control (Depends-on, configure.ac):
+	Likewise.
+	* modules/unictype/property-join-control (Depends-on, configure.ac):
+	Likewise.
+	* modules/unictype/property-left-of-pair (Depends-on, configure.ac):
+	Likewise.
+	* modules/unictype/property-line-separator (Depends-on, configure.ac):
+	Likewise.
+	* modules/unictype/property-logical-order-exception (Depends-on,
+	configure.ac): Likewise.
+	* modules/unictype/property-lowercase (Depends-on, configure.ac):
+	Likewise.
+	* modules/unictype/property-math (Depends-on, configure.ac): Likewise.
+	* modules/unictype/property-non-break (Depends-on, configure.ac):
+	Likewise.
+	* modules/unictype/property-not-a-character (Depends-on, configure.ac):
+	Likewise.
+	* modules/unictype/property-numeric (Depends-on, configure.ac):
+	Likewise.
+	* modules/unictype/property-other-alphabetic (Depends-on,
+	configure.ac): Likewise.
+	* modules/unictype/property-other-default-ignorable-code-point
+	(Depends-on, configure.ac): Likewise.
+	* modules/unictype/property-other-grapheme-extend (Depends-on,
+	configure.ac): Likewise.
+	* modules/unictype/property-other-id-continue (Depends-on,
+	configure.ac): Likewise.
+	* modules/unictype/property-other-id-start (Depends-on, configure.ac):
+	Likewise.
+	* modules/unictype/property-other-lowercase (Depends-on, configure.ac):
+	Likewise.
+	* modules/unictype/property-other-math (Depends-on, configure.ac):
+	Likewise.
+	* modules/unictype/property-other-uppercase (Depends-on, configure.ac):
+	Likewise.
+	* modules/unictype/property-paired-punctuation (Depends-on,
+	configure.ac): Likewise.
+	* modules/unictype/property-paragraph-separator (Depends-on,
+	configure.ac): Likewise.
+	* modules/unictype/property-pattern-syntax (Depends-on, configure.ac):
+	Likewise.
+	* modules/unictype/property-pattern-white-space (Depends-on,
+	configure.ac): Likewise.
+	* modules/unictype/property-private-use (Depends-on, configure.ac):
+	Likewise.
+	* modules/unictype/property-punctuation (Depends-on, configure.ac):
+	Likewise.
+	* modules/unictype/property-quotation-mark (Depends-on, configure.ac):
+	Likewise.
+	* modules/unictype/property-radical (Depends-on, configure.ac):
+	Likewise.
+	* modules/unictype/property-sentence-terminal (Depends-on,
+	configure.ac): Likewise.
+	* modules/unictype/property-soft-dotted (Depends-on, configure.ac):
+	Likewise.
+	* modules/unictype/property-space (Depends-on, configure.ac): Likewise.
+	* modules/unictype/property-terminal-punctuation (Depends-on,
+	configure.ac): Likewise.
+	* modules/unictype/property-titlecase (Depends-on, configure.ac):
+	Likewise.
+	* modules/unictype/property-unassigned-code-value (Depends-on,
+	configure.ac): Likewise.
+	* modules/unictype/property-unified-ideograph (Depends-on,
+	configure.ac): Likewise.
+	* modules/unictype/property-uppercase (Depends-on, configure.ac):
+	Likewise.
+	* modules/unictype/property-variation-selector (Depends-on,
+	configure.ac): Likewise.
+	* modules/unictype/property-white-space (Depends-on, configure.ac):
+	Likewise.
+	* modules/unictype/property-xid-continue (Depends-on, configure.ac):
+	Likewise.
+	* modules/unictype/property-xid-start (Depends-on, configure.ac):
+	Likewise.
+	* modules/unictype/property-zero-width (Depends-on, configure.ac):
+	Likewise.
+	* modules/unictype/syntax-c-ident (Depends-on, configure.ac): Likewise.
+	* modules/unictype/syntax-java-ident (Depends-on, configure.ac):
+	Likewise.
+
+2009-12-31  Bruno Haible  <bruno@clisp.org>
+
+	Remove unnecessary AC_C_INLINE invocation.
+	* m4/popen.m4 (gl_PREREQ_POPEN): Don't invoke AC_C_INLINE. Not needed
+	since 2009-08-21.
+
+2009-12-31  Jim Meyering  <meyering@redhat.com>
+
+	maint.mk: don't require explicit gpg_key_ID in cfg.mk
+	* top/maint.mk (gpg_key_ID): Derive key ID from signed release tag.
+	With this change, we can all remove the gpg_key_ID = ... definition
+	from our respective cfg.mk files.
+
+	maint.mk: create announcement template in ~/, not in /tmp
+	* top/maint.mk (emit_upload_commands): Adjust.
+	(release-prep): Emit into ~/announce-..., not /tmp/announce-...
+	Remove temporary file, .ci-msg.
+
+2009-12-31  Eric Blake  <ebb9@byu.net>
+
+	link-warning: always build headers with link warnings
+	* modules/arpa_inet (Makefile.am): Always build replacement
+	header.
+	* modules/ctype (Makefile.am): Likewise.
+	* modules/dirent (Makefile.am): Likewise.
+	* modules/inttypes (Makefile.am): Likewise.
+	* modules/langinfo (Makefile.am): Likewise.
+	* modules/locale (Makefile.am): Likewise.
+	* modules/spawn (Makefile.am): Likewise.
+	* modules/sys_file (Makefile.am): Likewise.
+	* modules/sys_ioctl (Makefile.am): Likewise.
+	* modules/sys_select (Makefile.am): Likewise.
+	* modules/sys_socket (Makefile.am): Likewise.
+	* modules/sys_times (Makefile.am): Likewise.
+	* modules/sys_utsname (Makefile.am): Likewise.
+	* modules/sys_wait (Makefile.am): Likewise.
+	* modules/wchar (Makefile.am): Likewise.
+	* m4/arpa_inet_h.m4 (gl_HEADER_ARPA_INET)
+	(gl_ARPA_INET_H_DEFAULTS): Drop unneeded variable.
+	* m4/ctype.m4 (gl_CTYPE_H_DEFAULTS): Likewise.
+	* m4/isblank.m4 (gl_FUNC_ISBLANK): Likewise.
+	* m4/dirent_h.m4 (gl_REPLACE_DIRENT_H, gl_DIRENT_H_DEFAULTS):
+	Likewise.
+	* m4/inttypes.m4 (gl_INTTYPES_H): Likewise.
+	* m4/langinfo_h.m4 (gl_LANGINFO_H): Likewise.
+	* m4/locale_h.m4 (gl_REPLACE_LOCALE_H, gl_LOCALE_H_DEFAULTS):
+	Likewise.
+	* m4/spawn_h.m4 (gl_REPLACE_SPAWN_H, gl_SPAWN_H_DEFAULTS):
+	Likewise.
+	* m4/sys_file_h.m4 (gl_HEADER_SYS_FILE_H): Likewise.
+	* m4/sys_ioctl_h.m4 (gl_SYS_IOCTL_H, gl_REPLACE_SYS_IOCTL_H)
+	(gl_SYS_IOCTL_H_DEFAULTS): Likewise.
+	* m4/sys_select_h.m4 (gl_HEADER_SYS_SELECT): Likewise.
+	* m4/sys_times_h.m4 (gl_SYS_TIMES_H): Likewise.
+	* m4/sys_utsname_h.m4 (gl_SYS_UTSNAME_H)
+	(gl_SYS_UTSNAME_H_DEFAULTS): Likewise.
+	* m4/wchar.m4 (gl_WCHAR_H, gl_REPLACE_WCHAR_H)
+	(gl_WCHAR_H_DEFAULTS): Likewise.
+
+2009-12-31  Eric Blake  <ebb9@byu.net>
+
+	signal, spawn: use link warnings
+	* lib/signal.in.h (sigset_t): Make unconditional.
+	(sigismember, sigemptyset, sigaddset, sigdelset, sigfillset)
+	(sigpending, sigprocmask, sigaction): Add link warnings.
+	* lib/spawn.in.h (posix_spawn, posix_spawnp, posix_spawnattr_init)
+	(posix_spawnattr_destroy, posix_spawnattr_getsigdefault)
+	(posix_spawnattr_setsigdefault, posix_spawnattr_getsigmask)
+	(posix_spawnattr_setsigmask, posix_spawnattr_getflags)
+	(posix_spawnattr_setflags, posix_spawnattr_getpgroup)
+	(posix_spawnattr_setpgroup, posix_spawnattr_getschedpolicy)
+	(posix_spawnattr_setschedpolicy, posix_spawnattr_getschedparam)
+	(posix_spawnattr_setschedparam, posix_spawn_file_actions_init)
+	(posix_spawn_file_actions_destroy)
+	(posix_spawn_file_actions_addopen)
+	(posix_spawn_file_actions_addclose)
+	(posix_spawwn_file_actions_adddup2): Likewise.
+	* m4/signal_h.m4 (gl_SIGNAL_H): Guarantee uid_t.
+	* tests/test-signal.c (main): Enhance test.
+
+	spawn: improve wrapper support
+	* m4/spawn_h.m4 (gl_SPAWN_H): Check for type existence.
+	(gl_SPAWN_H_DEFAULTS): New defaults.
+	* modules/spawn (Makefile.am): Substitute them.
+	* lib/spawn.in.h: (posix_spawnattr_t, posix_spawn_file_actions_t):
+	Only declare if missing or broken.
+
+	sys_times, sys_utsname: use include_next
+	* m4/sys_times_h.m4 (gl_SYS_TIMES_H): Support wrapping an existing
+	header.
+	(gl_SYS_TIMES_H_DEFAULTS): Add another variable.
+	* m4/sys_utsname_h.m4 (gl_SYS_UTSNAME_H)
+	(gl_SYS_UTSNAME_H_DEFAULTS): Likewise.
+	* modules/sys_times (Depends-on): Add include_next.
+	(Makefile.am): Substitute additional values.
+	* modules/sys_utsname (Depends-on, Makefile.am): Likewise.
+	* lib/sys_times.in.h (includes): Include native header, if
+	available.
+	* lib/sys_utsname.in.h (includes): Likewise.
+	* tests/test-sys_times.c (main): Enhance test.
+
+	fdutimensat: revert prior patch
+	* modules/fdutimensat (Depends-on): Re-add inline; it is needed by
+	utimens.h.
+	Reported by Bruno Haible.
+
+2009-12-30  Eric Blake  <ebb9@byu.net>
+
+	sys_wait: drop link-warning dependency
+	* modules/sys_wait (Depends-on, Makefile.am): Drop unneeded
+	link-warning efforts.
+	* lib/sys_wait.in.h: Likewise.
+
+	fdutimensat: remove bogus dependency
+	* modules/fdutimensat (Depends-on): Drop inline.
+
+	unistd: fix typo
+	* lib/unistd.in.h (linkat) [GNULIB_POSIXCHECK]: Fix typo.
+
+2009-12-30  Bruno Haible  <bruno@clisp.org>
+
+	Fix compilation error with Solaris cc.
+	* lib/unicase/u8-is-invariant.c: Include <stdbool.h>.
+	* lib/unicase/u16-is-invariant.c: Likewise.
+	* lib/unicase/u32-is-invariant.c: Likewise.
+	Reported by Nelson H. F. Beebe <beebe@math.utah.edu>.
+
+2009-12-30  Bruno Haible  <bruno@clisp.org>
+
+	Fix test crash.
+	* tests/test-localename.c (test_locale_name_thread): Skip unavailable
+	locales.
+	Reported by Simon Josefsson <simon@josefsson.org>.
+
+2009-12-30  Bruno Haible  <bruno@clisp.org>
+
+	Fix compilation error on most platforms.
+	* tests/test-localename.c (categories): Define only if HAVE_NEWLOCALE.
+	Reported by Simon Josefsson <simon@josefsson.org>
+	and Nelson H. F. Beebe <beebe@math.utah.edu>.
+
+2009-12-30  Eric Blake  <ebb9@byu.net>
+
+	futimens, utimensat: work around ntfs-3g bug
+	* lib/utimensat.c (rpl_utimensat): Drop attempts to cache whether
+	a ctime bug is present, and expand workaround to cover ntfs-3g.
+	* lib/utimens.c (fdutimens, lutimens): Likewise.
+	(utimensat_ctime_really, detect_ctime_bug): Drop cache mechanism.
+	(validate_timespec): Adjust return value.
+	* m4/futimens.m4 (gl_FUNC_FUTIMENS): Update comment.
+	* m4/utimensat.m4 (gl_FUNC_UTIMENSAT): Likewise.
+	Reported by ctrn3e8 <ctrn3e8@gmail.com>.
+
+2009-12-29  Eric Blake  <ebb9@byu.net>
+
+	link-warning: make usage consistent
+	* modules/ctype (Depends-on): Add link-warning.
+	(Makefile.am): Update rules accordingly.
+	* modules/langinfo (Depends-on, Makefile.am): Likewise.
+	* modules/locale (Depends-on, Makefile.am): Likewise.
+	* modules/sys_file (Makefile.am): Likewise.
+	* modules/getopt-posix (Makefile.am): Delete unused link warning
+	efforts.
+	* lib/ctype.in.h (GL_LINK_WARNING): Ensure definition before use.
+	* lib/langinfo.in.h (GL_LINK_WARNING): Likewise.
+	* lib/locale.in.h (GL_LINK_WARNING): Likewise.
+	* lib/sys_file.in.h (GL_LINK_WARNING): Likewise.
+
+	stdio: remove unused variables
+	* m4/stdio_h.m4 (gl_STDIO_H_DEFAULTS): Remove unused variables.
+	* m4/fseeko.m4 (gl_FUNC_FSEEKO): Likewise.
+	* m4/ftello.m4 (gl_FUNC_FTELLO): Likewise.
+
+	tests: test more substitute headers
+	* modules/ctype-tests: New file.
+	* modules/dirent-tests: Likewise.
+	* modules/spawn-tests: Likewise.
+	* modules/sys_file-tests: Likewise.
+	* modules/sys_ioctl-tests: Likewise.
+	* modules/sys_wait-tests: Likewise.
+	* tests/test-ctype.c: Likewise.
+	* tests/test-dirent.c: Likewise.
+	* tests/test-spawn.c: Likewise.
+	* tests/test-sys_file.c: Likewise.
+	* tests/test-sys_ioctl.c: Likewise.
+	* tests/test-sys_wait.c: Likewise.
+	* m4/spawn_h.m4 (gl_SPAWN_H): Replace header if it is missing.
+	* lib/sys_file.in.h (LOCK_SH, LOCK_EX, LOCK_UN, LOCK_NB): Provide
+	whether or not flock is in use.
+
+	tests: remove License section from module
+	* modules/arpa_inet-tests: Remove unneeded section.
+	* modules/byteswap-tests: Likewise.
+	* modules/ceilf-tests: Likewise.
+	* modules/ceill-tests: Likewise.
+	* modules/crypto/des-tests: Likewise.
+	* modules/crypto/gc-arcfour-tests: Likewise.
+	* modules/crypto/gc-arctwo-tests: Likewise.
+	* modules/crypto/gc-des-tests: Likewise.
+	* modules/crypto/gc-hmac-md5-tests: Likewise.
+	* modules/crypto/gc-hmac-sha1-tests: Likewise.
+	* modules/crypto/gc-md2-tests: Likewise.
+	* modules/crypto/gc-md4-tests: Likewise.
+	* modules/crypto/gc-md5-tests: Likewise.
+	* modules/crypto/gc-pbkdf2-sha1-tests: Likewise.
+	* modules/crypto/gc-rijndael-tests: Likewise.
+	* modules/crypto/gc-sha1-tests: Likewise.
+	* modules/crypto/gc-tests: Likewise.
+	* modules/crypto/md2-tests: Likewise.
+	* modules/crypto/md4-tests: Likewise.
+	* modules/fcntl-h-tests: Likewise.
+	* modules/floorf-tests: Likewise.
+	* modules/floorl-tests: Likewise.
+	* modules/frexp-nolibm-tests: Likewise.
+	* modules/frexp-tests: Likewise.
+	* modules/frexpl-nolibm-tests: Likewise.
+	* modules/frexpl-tests: Likewise.
+	* modules/getaddrinfo-tests: Likewise.
+	* modules/inttypes-tests: Likewise.
+	* modules/isfinite-tests: Likewise.
+	* modules/isinf-tests: Likewise.
+	* modules/ldexpl-tests: Likewise.
+	* modules/locale-tests: Likewise.
+	* modules/math-tests: Likewise.
+	* modules/netdb-tests: Likewise.
+	* modules/netinet_in-tests: Likewise.
+	* modules/printf-frexp-tests: Likewise.
+	* modules/printf-frexpl-tests: Likewise.
+	* modules/priv-set-tests: Likewise.
+	* modules/random_r-tests: Likewise.
+	* modules/round-tests: Likewise.
+	* modules/roundf-tests: Likewise.
+	* modules/roundl-tests: Likewise.
+	* modules/search-tests: Likewise.
+	* modules/select-tests: Likewise.
+	* modules/signal-tests: Likewise.
+	* modules/stdbool-tests: Likewise.
+	* modules/stddef-tests: Likewise.
+	* modules/stdint-tests: Likewise.
+	* modules/stdio-tests: Likewise.
+	* modules/stdlib-tests: Likewise.
+	* modules/string-tests: Likewise.
+	* modules/strings-tests: Likewise.
+	* modules/sys_select-tests: Likewise.
+	* modules/sys_socket-tests: Likewise.
+	* modules/sys_stat-tests: Likewise.
+	* modules/sys_time-tests: Likewise.
+	* modules/sys_utsname-tests: Likewise.
+	* modules/sysexits-tests: Likewise.
+	* modules/time-tests: Likewise.
+	* modules/trunc-tests: Likewise.
+	* modules/truncf-tests: Likewise.
+	* modules/truncl-tests: Likewise.
+	* modules/tsearch-tests: Likewise.
+	* modules/unistd-tests: Likewise.
+	* modules/wchar-tests: Likewise.
+	* modules/wctype-tests: Likewise.
+
+	tests: fix license on several tests
+	* tests/test-des.c: Update to GPLv3+.
+	* tests/test-flock.c: Likewise.
+	* tests/test-fsync.c: Likewise.
+	* tests/test-futimens.h: Likewise.
+	* tests/test-gc-arcfour.c: Likewise.
+	* tests/test-gc-arctwo.c: Likewise.
+	* tests/test-gc-des.c: Likewise.
+	* tests/test-gc-hmac-md5.c: Likewise.
+	* tests/test-gc-hmac-sha1.c: Likewise.
+	* tests/test-gc-md2.c: Likewise.
+	* tests/test-gc-md4.c: Likewise.
+	* tests/test-gc-md5.c: Likewise.
+	* tests/test-gc-pbkdf2-sha1.c: Likewise.
+	* tests/test-gc-rijndael.c: Likewise.
+	* tests/test-gc-sha1.c: Likewise.
+	* tests/test-gc.c: Likewise.
+	* tests/test-getcwd.c: Likewise.
+	* tests/test-link.c: Likewise.
+	* tests/test-link.h: Likewise.
+	* tests/test-lutimens.h: Likewise.
+	* tests/test-md2.c: Likewise.
+	* tests/test-md4.c: Likewise.
+	* tests/test-mkdir.h: Likewise.
+	* tests/test-rename.c: Likewise.
+	* tests/test-rename.h: Likewise.
+	* tests/test-safe-alloc.c: Likewise.
+	* tests/test-utimens-common.h: Likewise.
+	* tests/test-utimens.h: Likewise.
+
+	maint: sync license texts
+	* config/srclist.txt: Add gpl-1.3.texi, lgpl-1.3.texi.
+	* doc/gpl-3.0.texi: Revert copyright year update.
+	* doc/lgpl-3.0.texi: Likewise.
+
+2009-12-29  Jim Meyering  <meyering@redhat.com>
+
+	update nearly all FSF copyright year lists to include 2009
+	The files named by the following are exempted:
+	    grep -v '^#' config/srclist.txt|grep -v '^$' | while read src dst; do
+	      test -f "$dst" && { echo "$dst"; continue; }
+	      test -d "$dst" || continue
+	      echo "$dst"/$(basename "$src")
+	    done > exempt
+	    git ls-files tests/unictype >> exempt
+	In the remaining files, convert to all-interval notation if
+	- there is already at least one year interval like 2000-2003
+	- the file is maintained by me
+	- the file is in lib/uni*/, where that style already prevails
+	Otherwise, use update-copyright's default.
+
+2009-12-29  Simon Josefsson  <simon@josefsson.org>
+	and Eric Blake  <ebb9@byu.net>
+
+	tests: don't require debug system() to pass
+	* tests/test-lstat.h (test_lstat_func): Move debug cleanup...
+	* tests/test-rmdir.h (test_rmdir_func): Likewise.
+	* tests/test-unlink.h (test_unlink_func): Likewise.
+	* tests/test-fstatat.c (main): ...into callers.
+	* tests/test-lstat.c (main): Likewise.
+	* tests/test-rmdir.c (main): Likewise.
+	* tests/test-unlink.c (main): Likewise.
+	* tests/test-unlinkat.c (main): Likewise.
+	* tests/test-areadlink-with-size.c (main): Don't require a
+	debug-only system call to pass, aiding cross-testing to mingw.
+	* tests/test-areadlink.c (main): Likewise.
+	* tests/test-areadlinkat-with-size.c (main): Likewise.
+	* tests/test-areadlinkat.c (main): Likewise.
+	* tests/test-canonicalize-lgpl.c (main): Likewise.
+	* tests/test-canonicalize.c (main): Likewise.
+	* tests/test-chown.c (main): Likewise.
+	* tests/test-fchownat.c (main): Likewise.
+	* tests/test-lchown.c (main): Likewise.
+	* tests/test-fdutimensat.c (main): Likewise.
+	* tests/test-futimens.c (main): Likewise.
+	* tests/test-link.c (main): Likewise.
+	* tests/test-linkat.c (main): Likewise.
+	* tests/test-mkdir.c (main): Likewise.
+	* tests/test-mkdirat.c (main): Likewise.
+	* tests/test-mkfifo.c (main): Likewise.
+	* tests/test-mkfifoat.c (main): Likewise.
+	* tests/test-mknod.c (main): Likewise.
+	* tests/test-readlink.c (main): Likewise.
+	* tests/test-remove.c (main): Likewise.
+	* tests/test-rename.c (main): Likewise.
+	* tests/test-renameat.c (main): Likewise.
+	* tests/test-symlink.c (main): Likewise.
+	* tests/test-symlinkat.c (main): Likewise.
+	* tests/test-utimens.c (main): Likewise.
+	* tests/test-utimensat.c (main): Likewise.
+
+2009-12-29  Simon Josefsson  <simon@josefsson.org>
+
+	* modules/selinux-h (selinux/selinux.h, selinux/context.h): Depend
+	on $(UNUSED_PARAMETER_H) to avoid build failure.
+
+2009-12-28  Jim Meyering  <meyering@redhat.com>
+
+	update-copyright: you may specify a max. line length other than 72
+	* build-aux/update-copyright: Honor $UPDATE_COPYRIGHT_MAX_LINE_LENGTH.
+
+	maint: use consistent FSF copyright line syntax
+	* lib/posixtm.c: Add missing comma in FSF copyright line.
+	* lib/posixtm.h: Likewise.
+	* lib/getugroups.c: Add missing ", Inc.".
+
+	pmccabe2html: emit consistent FSF copyright; remove trailing blanks
+	* build-aux/pmccabe2html: Insert comma before "Inc." in emitted
+	FSF copyright line.  Remove trailing blanks.
+
+2009-12-28  Eric Blake  <ebb9@byu.net>
+
+	test-dup2: reduce dependencies
+	* modules/cloexec (Configure.ac): Set witness.
+	* modules/dup2-tests (Depends-on): Drop cloexec.
+	* tests/test-dup2.c (main): Skip portion of test if cloexec module
+	not present.
+	Suggested by Bruno Haible.
+
+2009-12-26  Bruno Haible  <bruno@clisp.org>
+
+	Remove an unneeded dependency.
+	* modules/fseterr (Depends-on): Remove dup2.
+
+2009-12-26  Eric Blake  <ebb9@byu.net>
+
+	tests: use macros.h in more places
+	* tests/macros.h (ASSERT): Depend on ASSERT_STREAM.
+	(ASSERT_STREAM): Provide default of stderr.
+	* tests/test-dirent-safer.c: Include macros.h, using alternate
+	stream for assertions.
+	* tests/test-dup-safer.c: Likewise.
+	* tests/test-freopen-safer.c: Likewise.
+	* tests/test-getopt.c: Likewise.
+	* tests/test-openat-safer.c: Likewise.
+	* tests/test-pipe.c: Likewise.
+	* tests/test-popen-safer.c: Likewise.
+	* modules/dirent-safer-tests (Files): Include macros.h.
+	* modules/unistd-safer-tests (Files): Likewise.
+	* modules/freopen-safer-tests (Files): Likewise.
+	* modules/getopt-posix-tests (Files): Likewise.
+	* modules/openat-safer-tests (Files): Likewise.
+	* modules/pipe-tests (Files): Likewise.
+
+2009-12-26  Bruno Haible  <bruno@clisp.org>
+
+	javacomp: Portability fix.
+	* m4/javacomp.m4 (gt_JAVACOMP): Fix creation of conftestver.class so
+	that it also works on Solaris.
+
+2009-12-26  Bruno Haible  <bruno@clisp.org>
+
+	localename: Fix storage allocation of gl_locale_name_thread's result.
+	* lib/localename.c (SIZE_BITS, string_hash, struct hash_node,
+	HASH_TABLE_SIZE, struniq_hash_table, struniq_lock, struniq): Define on
+	all platforms that have 'uselocale'.
+	(gl_locale_name_thread_unsafe): New function, extracted from
+	gl_locale_name_thread.
+	(gl_locale_name_thread): Call struniq on all platforms that have
+	'uselocale'.
+	* tests/test-localename.c (test_locale_name_thread): Check that the
+	resulting strings are permanently allocated.
+	* modules/localename-tests (Depends-on): Add strdup.
+
+2009-12-26  Bruno Haible  <bruno@clisp.org>
+
+	* tests/test-localename.c (categories): Fill in the strings.
+
+2009-12-26  Jim Meyering  <meyering@redhat.com>
+
+	isdir: complete the removal of m4/isdir.m4
+	* modules/isdir (configure.ac): Remove reference to gl_ISDIR.
+
+	isdir: clean up, since at least grep still uses it
+	* lib/isdir.c: Include "isdir.h".
+	(S_ISDIR): Remove now-unneeded definition.
+	* modules/isdir (Files): Add lib/isdir.h.
+	* lib/isdir.h: New file, with declaration.
+	* m4/isdir.m4: Remove file -- unneeded.
+
+2009-12-25  Bruno Haible  <bruno@clisp.org>
+
+	selinux-h: Make generated .h files standalone.
+	* lib/se-context.in.h: Arrange to include _GL_UNUSED_PARAMETER
+	definition. Use _GL_UNUSED_PARAMETER instead of _GL_UNUSED.
+	* lib/se-selinux.in.h: Likewise.
+	* modules/selinux-h (Depends-on): Add unused-parameter.
+	(Makefile.am): Insert definition of _GL_UNUSED_PARAMETER into
+	selinux/selinux.h and selinux/context.h.
+	Suggested by Eric Blake.
+
+2009-12-25  Bruno Haible  <bruno@clisp.org>
+
+	Move gl_FCNTL_O_FLAGS to a separate .m4 file.
+	* m4/fcntl-o.m4: New file, extracted from m4/fcntl_h.m4.
+	* m4/fcntl_h.m4 (gl_FCNTL_O_FLAGS): Remove macro.
+	* modules/fcntl-h (Files): Add m4/fcntl-o.m4.
+	* modules/localcharset (Files): Likewise. Remove m4/fcntl_h.m4.
+
+2009-12-24  Bruno Haible  <bruno@clisp.org>
+
+	openat: Fix warning.
+	* lib/openat-proc.c: Include <unistd.h>.
+
+2009-12-24  Bruno Haible  <bruno@clisp.org>
+
+	New module 'unused-parameter'.
+	* build-aux/unused-parameter.h: New file, extracted from earlier
+	gnulib-common.m4.
+	* modules/unused-parameter: New file.
+	* lib/unistr.h: Include unused-parameter.h.
+	(u32_mbtouc_unsafe, u32_mbtouc): Use _GL_UNUSED_PARAMETER instead of
+	_GL_UNUSED.
+	* modules/unistr/base (Depends-on): Add unused-parameter.
+
+2009-12-24  Bruno Haible  <bruno@clisp.org>
+
+	Add missing dependencies to 'extensions' module.
+	* m4/extensions.m4: Add comment.
+	* modules/accept4 (Depends-on): Add extensions.
+	* modules/dup3 (Depends-on): Likewise.
+	* modules/fcntl (Depends-on): Likewise.
+	* modules/futimens (Depends-on): Likewise.
+	* modules/mknod (Depends-on): Likewise.
+	* modules/pipe2 (Depends-on): Likewise.
+	* modules/stat-time (Depends-on): Likewise.
+	* modules/strcasestr-simple (Depends-on): Likewise.
+	* modules/strsignal (Depends-on): Likewise.
+	* modules/utimensat (Depends-on): Likewise.
+	* modules/localcharset (Depends-on): Likewise. Needed because of
+	gl_FCNTL_O_FLAGS.
+	* modules/wcrtomb (Depends-on): Likewise. Needed because of
+	AC_TYPE_MBSTATE_T.
+	* modules/wcsnrtombs (Depends-on): Likewise.
+	* modules/wcsrtombs (Depends-on): Likewise.
+
+2009-12-24  Bruno Haible  <bruno@clisp.org>
+
+	binary-io: Avoid gcc warning due to SET_BINARY.
+	* lib/binary-io.h (SET_BINARY): Cast the result to void.
+	Reported by Jim Meyering <jim@meyering.net>. Suggestion by Eric Blake.
+
+2009-12-24  Bruno Haible  <bruno@clisp.org>
+
+	Avoid future namespace pollution on glibc systems.
+	* lib/arpa_inet.in.h: Don't include <sys/socket.h> on glibc systems.
+	* lib/sys_ioctl.in.h: Don't include <unistd.h> on glibc systems.
+	* lib/sys_select.in.h: Don't include <sys/time.h> and <string.h> on
+	glibc systems.
+
+2009-12-24  Bruno Haible  <bruno@clisp.org>
+
+	Refactor common macros used in tests.
+	* tests/macros.h: New file.
+	* tests/test-areadlink.c: Include macros.h. Don't include <stdio.h>
+	and/or <stdlib.h>, if appropriate.
+	(ASSERT, SIZEOF): Remove macros.
+	* tests/test-areadlink-with-size.c: Likewise.
+	* tests/test-areadlinkat.c: Likewise.
+	* tests/test-areadlinkat-with-size.c: Likewise.
+	* tests/test-argmatch.c: Likewise.
+	* tests/test-argv-iter.c: Likewise.
+	* tests/test-array-mergesort.c: Likewise.
+	* tests/test-array_list.c: Likewise.
+	* tests/test-array_oset.c: Likewise.
+	* tests/test-avltree_list.c: Likewise.
+	* tests/test-avltree_oset.c: Likewise.
+	* tests/test-avltreehash_list.c: Likewise.
+	* tests/test-base64.c: Likewise.
+	* tests/test-binary-io.c: Likewise.
+	* tests/test-bitrotate.c: Likewise.
+	* tests/test-btowc.c: Likewise.
+	* tests/test-byteswap.c: Likewise.
+	* tests/test-c-ctype.c: Likewise.
+	* tests/test-c-stack.c: Likewise.
+	* tests/test-c-strcasecmp.c: Likewise.
+	* tests/test-c-strcasestr.c: Likewise.
+	* tests/test-c-strncasecmp.c: Likewise.
+	* tests/test-c-strstr.c: Likewise.
+	* tests/test-canonicalize-lgpl.c: Likewise.
+	* tests/test-canonicalize.c: Likewise.
+	* tests/test-carray_list.c: Likewise.
+	* tests/test-ceilf1.c: Likewise.
+	* tests/test-ceilf2.c: Likewise.
+	* tests/test-ceill.c: Likewise.
+	* tests/test-chown.c: Likewise.
+	* tests/test-cloexec.c: Likewise.
+	* tests/test-copy-acl.c: Likewise.
+	* tests/test-copy-file.c: Likewise.
+	* tests/test-count-one-bits.c: Likewise.
+	* tests/test-dprintf-posix.c: Likewise.
+	* tests/test-dup2.c: Likewise.
+	* tests/test-dup3.c: Likewise.
+	* tests/test-duplocale.c: Likewise.
+	* tests/test-fbufmode.c: Likewise.
+	* tests/test-fchdir.c: Likewise.
+	* tests/test-fchownat.c: Likewise.
+	* tests/test-fcntl-safer.c: Likewise.
+	* tests/test-fcntl.c: Likewise.
+	* tests/test-fdopendir.c: Likewise.
+	* tests/test-fdutimensat.c: Likewise.
+	* tests/test-fflush2.c: Likewise.
+	* tests/test-file-has-acl.c: Likewise.
+	* tests/test-filevercmp.c: Likewise.
+	* tests/test-flock.c: Likewise.
+	* tests/test-floorf1.c: Likewise.
+	* tests/test-floorf2.c: Likewise.
+	* tests/test-floorl.c: Likewise.
+	* tests/test-fnmatch.c: Likewise.
+	* tests/test-fopen.h: Likewise.
+	* tests/test-fpending.c: Likewise.
+	* tests/test-fprintf-posix.c: Likewise.
+	* tests/test-fpurge.c: Likewise.
+	* tests/test-freadable.c: Likewise.
+	* tests/test-freadahead.c: Likewise.
+	* tests/test-freading.c: Likewise.
+	* tests/test-freadptr.c: Likewise.
+	* tests/test-freadptr2.c: Likewise.
+	* tests/test-freadseek.c: Likewise.
+	* tests/test-freopen.c: Likewise.
+	* tests/test-frexp.c: Likewise.
+	* tests/test-frexpl.c: Likewise.
+	* tests/test-fseek.c: Likewise.
+	* tests/test-fseeko.c: Likewise.
+	* tests/test-fstatat.c: Likewise.
+	* tests/test-fstrcmp.c: Likewise.
+	* tests/test-fsync.c: Likewise.
+	* tests/test-ftell.c: Likewise.
+	* tests/test-ftello.c: Likewise.
+	* tests/test-func.c: Likewise.
+	* tests/test-futimens.c: Likewise.
+	* tests/test-fwritable.c: Likewise.
+	* tests/test-fwriting.c: Likewise.
+	* tests/test-getcwd.c: Likewise.
+	* tests/test-getdate.c: Likewise.
+	* tests/test-getdelim.c: Likewise.
+	* tests/test-getdtablesize.c: Likewise.
+	* tests/test-getgroups.c: Likewise.
+	* tests/test-getline.c: Likewise.
+	* tests/test-getndelim2.c: Likewise.
+	* tests/test-glob.c: Likewise.
+	* tests/test-hash.c: Likewise.
+	* tests/test-i-ring.c: Likewise.
+	* tests/test-iconv-utf.c: Likewise.
+	* tests/test-iconv.c: Likewise.
+	* tests/test-idpriv-drop.c: Likewise.
+	* tests/test-idpriv-droptemp.c: Likewise.
+	* tests/test-inet_ntop.c: Likewise.
+	* tests/test-inet_pton.c: Likewise.
+	* tests/test-isblank.c: Likewise.
+	* tests/test-isfinite.c: Likewise.
+	* tests/test-isinf.c: Likewise.
+	* tests/test-isnan.c: Likewise.
+	* tests/test-isnand.h: Likewise.
+	* tests/test-isnanf.h: Likewise.
+	* tests/test-isnanl.h: Likewise.
+	* tests/test-lchown.c: Likewise.
+	* tests/test-ldexpl.c: Likewise.
+	* tests/test-link.c: Likewise.
+	* tests/test-linkat.c: Likewise.
+	* tests/test-linked_list.c: Likewise.
+	* tests/test-linkedhash_list.c: Likewise.
+	* tests/test-localename.c: Likewise.
+	* tests/test-lseek.c: Likewise.
+	* tests/test-lstat.c: Likewise.
+	* tests/test-mbmemcasecmp.c: Likewise.
+	* tests/test-mbmemcasecoll.c: Likewise.
+	* tests/test-mbrtowc.c: Likewise.
+	* tests/test-mbscasecmp.c: Likewise.
+	* tests/test-mbscasestr1.c: Likewise.
+	* tests/test-mbscasestr2.c: Likewise.
+	* tests/test-mbscasestr3.c: Likewise.
+	* tests/test-mbscasestr4.c: Likewise.
+	* tests/test-mbschr.c: Likewise.
+	* tests/test-mbscspn.c: Likewise.
+	* tests/test-mbsinit.c: Likewise.
+	* tests/test-mbsncasecmp.c: Likewise.
+	* tests/test-mbsnrtowcs.c: Likewise.
+	* tests/test-mbspbrk.c: Likewise.
+	* tests/test-mbspcasecmp.c: Likewise.
+	* tests/test-mbsrchr.c: Likewise.
+	* tests/test-mbsrtowcs.c: Likewise.
+	* tests/test-mbsspn.c: Likewise.
+	* tests/test-mbsstr1.c: Likewise.
+	* tests/test-mbsstr2.c: Likewise.
+	* tests/test-mbsstr3.c: Likewise.
+	* tests/test-memchr.c: Likewise.
+	* tests/test-memchr2.c: Likewise.
+	* tests/test-memcmp.c: Likewise.
+	* tests/test-memmem.c: Likewise.
+	* tests/test-memrchr.c: Likewise.
+	* tests/test-mkdir.c: Likewise.
+	* tests/test-mkdirat.c: Likewise.
+	* tests/test-mkfifo.c: Likewise.
+	* tests/test-mkfifoat.c: Likewise.
+	* tests/test-mknod.c: Likewise.
+	* tests/test-nanosleep.c: Likewise.
+	* tests/test-nl_langinfo.c: Likewise.
+	* tests/test-obstack-printf.c: Likewise.
+	* tests/test-open.c: Likewise.
+	* tests/test-openat.c: Likewise.
+	* tests/test-pipe-filter-gi1.c: Likewise.
+	* tests/test-pipe-filter-gi2-main.c: Likewise.
+	* tests/test-pipe-filter-ii1.c: Likewise.
+	* tests/test-pipe-filter-ii2-main.c: Likewise.
+	* tests/test-pipe2.c: Likewise.
+	* tests/test-popen.h: Likewise.
+	* tests/test-posixtm.c: Likewise.
+	* tests/test-pread.c: Likewise.
+	* tests/test-printf-frexp.c: Likewise.
+	* tests/test-printf-frexpl.c: Likewise.
+	* tests/test-printf-posix.c: Likewise.
+	* tests/test-priv-set.c: Likewise.
+	* tests/test-quotearg.c: Likewise.
+	* tests/test-random_r.c: Likewise.
+	* tests/test-rawmemchr.c: Likewise.
+	* tests/test-rbtree_list.c: Likewise.
+	* tests/test-rbtree_oset.c: Likewise.
+	* tests/test-rbtreehash_list.c: Likewise.
+	* tests/test-readlink.c: Likewise.
+	* tests/test-remove.c: Likewise.
+	* tests/test-rename.c: Likewise.
+	* tests/test-renameat.c: Likewise.
+	* tests/test-rmdir.c: Likewise.
+	* tests/test-round1.c: Likewise.
+	* tests/test-roundf1.c: Likewise.
+	* tests/test-roundl.c: Likewise.
+	* tests/test-safe-alloc.c: Likewise.
+	* tests/test-sameacls.c: Likewise.
+	* tests/test-set-mode-acl.c: Likewise.
+	* tests/test-setenv.c: Likewise.
+	* tests/test-sigaction.c: Likewise.
+	* tests/test-signbit.c: Likewise.
+	* tests/test-sleep.c: Likewise.
+	* tests/test-snprintf-posix.c: Likewise.
+	* tests/test-snprintf.c: Likewise.
+	* tests/test-sprintf-posix.c: Likewise.
+	* tests/test-stat-time.c: Likewise.
+	* tests/test-stat.c: Likewise.
+	* tests/test-strcasestr.c: Likewise.
+	* tests/test-strchrnul.c: Likewise.
+	* tests/test-strerror.c: Likewise.
+	* tests/test-striconv.c: Likewise.
+	* tests/test-striconveh.c: Likewise.
+	* tests/test-striconveha.c: Likewise.
+	* tests/test-strsignal.c: Likewise.
+	* tests/test-strstr.c: Likewise.
+	* tests/test-strtod.c: Likewise.
+	* tests/test-strverscmp.c: Likewise.
+	* tests/test-symlink.c: Likewise.
+	* tests/test-symlinkat.c: Likewise.
+	* tests/test-trunc1.c: Likewise.
+	* tests/test-trunc2.c: Likewise.
+	* tests/test-truncf1.c: Likewise.
+	* tests/test-truncf2.c: Likewise.
+	* tests/test-truncl.c: Likewise.
+	* tests/test-uname.c: Likewise.
+	* tests/test-unlink.c: Likewise.
+	* tests/test-unlinkat.c: Likewise.
+	* tests/test-unsetenv.c: Likewise.
+	* tests/test-usleep.c: Likewise.
+	* tests/test-utimens.c: Likewise.
+	* tests/test-utimensat.c: Likewise.
+	* tests/test-vasnprintf-posix.c: Likewise.
+	* tests/test-vasnprintf-posix2.c: Likewise.
+	* tests/test-vasnprintf.c: Likewise.
+	* tests/test-vasprintf-posix.c: Likewise.
+	* tests/test-vasprintf.c: Likewise.
+	* tests/test-vdprintf-posix.c: Likewise.
+	* tests/test-vfprintf-posix.c: Likewise.
+	* tests/test-vprintf-posix.c: Likewise.
+	* tests/test-vsnprintf-posix.c: Likewise.
+	* tests/test-vsnprintf.c: Likewise.
+	* tests/test-vsprintf-posix.c: Likewise.
+	* tests/test-wcrtomb.c: Likewise.
+	* tests/test-wcsnrtombs.c: Likewise.
+	* tests/test-wcsrtombs.c: Likewise.
+	* tests/test-wctype.c: Likewise.
+	* tests/test-wcwidth.c: Likewise.
+	* tests/test-xfprintf-posix.c: Likewise.
+	* tests/test-xmemdup0.c: Likewise.
+	* tests/test-xprintf-posix.c: Likewise.
+	* tests/test-xvasprintf.c: Likewise.
+	* tests/unicase/test-locale-language.c: Likewise.
+	* tests/unicase/test-mapping-part1.h: Likewise.
+	* tests/unicase/test-predicate-part1.h: Likewise.
+	* tests/unicase/test-u8-casecmp.c: Likewise.
+	* tests/unicase/test-u8-casecoll.c: Likewise.
+	* tests/unicase/test-u8-casefold.c: Likewise.
+	* tests/unicase/test-u8-is-cased.c: Likewise.
+	* tests/unicase/test-u8-is-casefolded.c: Likewise.
+	* tests/unicase/test-u8-is-lowercase.c: Likewise.
+	* tests/unicase/test-u8-is-titlecase.c: Likewise.
+	* tests/unicase/test-u8-is-uppercase.c: Likewise.
+	* tests/unicase/test-u8-tolower.c: Likewise.
+	* tests/unicase/test-u8-totitle.c: Likewise.
+	* tests/unicase/test-u8-toupper.c: Likewise.
+	* tests/unicase/test-u16-casecmp.c: Likewise.
+	* tests/unicase/test-u16-casecoll.c: Likewise.
+	* tests/unicase/test-u16-casefold.c: Likewise.
+	* tests/unicase/test-u16-is-cased.c: Likewise.
+	* tests/unicase/test-u16-is-casefolded.c: Likewise.
+	* tests/unicase/test-u16-is-lowercase.c: Likewise.
+	* tests/unicase/test-u16-is-titlecase.c: Likewise.
+	* tests/unicase/test-u16-is-uppercase.c: Likewise.
+	* tests/unicase/test-u16-tolower.c: Likewise.
+	* tests/unicase/test-u16-totitle.c: Likewise.
+	* tests/unicase/test-u16-toupper.c: Likewise.
+	* tests/unicase/test-u32-casecmp.c: Likewise.
+	* tests/unicase/test-u32-casecoll.c: Likewise.
+	* tests/unicase/test-u32-casefold.c: Likewise.
+	* tests/unicase/test-u32-is-cased.c: Likewise.
+	* tests/unicase/test-u32-is-casefolded.c: Likewise.
+	* tests/unicase/test-u32-is-lowercase.c: Likewise.
+	* tests/unicase/test-u32-is-titlecase.c: Likewise.
+	* tests/unicase/test-u32-is-uppercase.c: Likewise.
+	* tests/unicase/test-u32-tolower.c: Likewise.
+	* tests/unicase/test-u32-totitle.c: Likewise.
+	* tests/unicase/test-u32-toupper.c: Likewise.
+	* tests/unicase/test-ulc-casecmp.c: Likewise.
+	* tests/unicase/test-ulc-casecoll.c: Likewise.
+	* tests/uniconv/test-u8-conv-from-enc.c: Likewise.
+	* tests/uniconv/test-u8-conv-to-enc.c: Likewise.
+	* tests/uniconv/test-u8-strconv-from-enc.c: Likewise.
+	* tests/uniconv/test-u8-strconv-to-enc.c: Likewise.
+	* tests/uniconv/test-u16-conv-from-enc.c: Likewise.
+	* tests/uniconv/test-u16-conv-to-enc.c: Likewise.
+	* tests/uniconv/test-u16-strconv-from-enc.c: Likewise.
+	* tests/uniconv/test-u16-strconv-to-enc.c: Likewise.
+	* tests/uniconv/test-u32-conv-from-enc.c: Likewise.
+	* tests/uniconv/test-u32-conv-to-enc.c: Likewise.
+	* tests/uniconv/test-u32-strconv-from-enc.c: Likewise.
+	* tests/uniconv/test-u32-strconv-to-enc.c: Likewise.
+	* tests/unictype/test-bidi_byname.c: Likewise.
+	* tests/unictype/test-bidi_name.c: Likewise.
+	* tests/unictype/test-bidi_of.c: Likewise.
+	* tests/unictype/test-bidi_test.c: Likewise.
+	* tests/unictype/test-block_list.c: Likewise.
+	* tests/unictype/test-block_of.c: Likewise.
+	* tests/unictype/test-block_test.c: Likewise.
+	* tests/unictype/test-categ_and.c: Likewise.
+	* tests/unictype/test-categ_and_not.c: Likewise.
+	* tests/unictype/test-categ_byname.c: Likewise.
+	* tests/unictype/test-categ_name.c: Likewise.
+	* tests/unictype/test-categ_none.c: Likewise.
+	* tests/unictype/test-categ_of.c: Likewise.
+	* tests/unictype/test-categ_or.c: Likewise.
+	* tests/unictype/test-categ_test_withtable.c: Likewise.
+	* tests/unictype/test-combining.c: Likewise.
+	* tests/unictype/test-decdigit.c: Likewise.
+	* tests/unictype/test-digit.c: Likewise.
+	* tests/unictype/test-mirror.c: Likewise.
+	* tests/unictype/test-numeric.c: Likewise.
+	* tests/unictype/test-pr_byname.c: Likewise.
+	* tests/unictype/test-pr_test.c: Likewise.
+	* tests/unictype/test-predicate-part1.h: Likewise.
+	* tests/unictype/test-scripts.c: Likewise.
+	* tests/unictype/test-sy_c_ident.c: Likewise.
+	* tests/unictype/test-sy_java_ident.c: Likewise.
+	* tests/unilbrk/test-u8-possible-linebreaks.c: Likewise.
+	* tests/unilbrk/test-u8-width-linebreaks.c: Likewise.
+	* tests/unilbrk/test-u16-possible-linebreaks.c: Likewise.
+	* tests/unilbrk/test-u16-width-linebreaks.c: Likewise.
+	* tests/unilbrk/test-u32-possible-linebreaks.c: Likewise.
+	* tests/unilbrk/test-u32-width-linebreaks.c: Likewise.
+	* tests/unilbrk/test-ulc-possible-linebreaks.c: Likewise.
+	* tests/unilbrk/test-ulc-width-linebreaks.c: Likewise.
+	* tests/uninorm/test-canonical-decomposition.c: Likewise.
+	* tests/uninorm/test-compat-decomposition.c: Likewise.
+	* tests/uninorm/test-composition.c: Likewise.
+	* tests/uninorm/test-decomposing-form.c: Likewise.
+	* tests/uninorm/test-decomposition.c: Likewise.
+	* tests/uninorm/test-u8-nfc.c: Likewise.
+	* tests/uninorm/test-u8-nfd.c: Likewise.
+	* tests/uninorm/test-u8-nfkc.c: Likewise.
+	* tests/uninorm/test-u8-nfkd.c: Likewise.
+	* tests/uninorm/test-u8-normcmp.c: Likewise.
+	* tests/uninorm/test-u8-normcoll.c: Likewise.
+	* tests/uninorm/test-u16-nfc.c: Likewise.
+	* tests/uninorm/test-u16-nfd.c: Likewise.
+	* tests/uninorm/test-u16-nfkc.c: Likewise.
+	* tests/uninorm/test-u16-nfkd.c: Likewise.
+	* tests/uninorm/test-u16-normcmp.c: Likewise.
+	* tests/uninorm/test-u16-normcoll.c: Likewise.
+	* tests/uninorm/test-u32-nfc.c: Likewise.
+	* tests/uninorm/test-u32-nfd.c: Likewise.
+	* tests/uninorm/test-u32-nfkc.c: Likewise.
+	* tests/uninorm/test-u32-nfkd.c: Likewise.
+	* tests/uninorm/test-u32-normalize-big.c: Likewise.
+	* tests/uninorm/test-u32-normcmp.c: Likewise.
+	* tests/uninorm/test-u32-normcoll.c: Likewise.
+	* tests/uninorm/test-uninorm-filter-nfc.c: Likewise.
+	* tests/unistdio/test-u8-asnprintf1.c: Likewise.
+	* tests/unistdio/test-u8-vasnprintf1.c: Likewise.
+	* tests/unistdio/test-u8-vasnprintf2.c: Likewise.
+	* tests/unistdio/test-u8-vasnprintf3.c: Likewise.
+	* tests/unistdio/test-u8-vasprintf1.c: Likewise.
+	* tests/unistdio/test-u8-vsnprintf1.c: Likewise.
+	* tests/unistdio/test-u8-vsprintf1.c: Likewise.
+	* tests/unistdio/test-u16-asnprintf1.c: Likewise.
+	* tests/unistdio/test-u16-vasnprintf1.c: Likewise.
+	* tests/unistdio/test-u16-vasnprintf2.c: Likewise.
+	* tests/unistdio/test-u16-vasnprintf3.c: Likewise.
+	* tests/unistdio/test-u16-vasprintf1.c: Likewise.
+	* tests/unistdio/test-u16-vsnprintf1.c: Likewise.
+	* tests/unistdio/test-u16-vsprintf1.c: Likewise.
+	* tests/unistdio/test-u32-asnprintf1.c: Likewise.
+	* tests/unistdio/test-u32-vasnprintf1.c: Likewise.
+	* tests/unistdio/test-u32-vasnprintf2.c: Likewise.
+	* tests/unistdio/test-u32-vasnprintf3.c: Likewise.
+	* tests/unistdio/test-u32-vasprintf1.c: Likewise.
+	* tests/unistdio/test-u32-vsnprintf1.c: Likewise.
+	* tests/unistdio/test-u32-vsprintf1.c: Likewise.
+	* tests/unistdio/test-ulc-asnprintf1.c: Likewise.
+	* tests/unistdio/test-ulc-vasnprintf1.c: Likewise.
+	* tests/unistdio/test-ulc-vasnprintf2.c: Likewise.
+	* tests/unistdio/test-ulc-vasnprintf3.c: Likewise.
+	* tests/unistdio/test-ulc-vasprintf1.c: Likewise.
+	* tests/unistdio/test-ulc-vsnprintf1.c: Likewise.
+	* tests/unistdio/test-ulc-vsprintf1.c: Likewise.
+	* tests/uniwbrk/test-u8-wordbreaks.c: Likewise.
+	* tests/uniwbrk/test-u16-wordbreaks.c: Likewise.
+	* tests/uniwbrk/test-u32-wordbreaks.c: Likewise.
+	* tests/uniwbrk/test-ulc-wordbreaks.c: Likewise.
+	* tests/uniwidth/test-u8-strwidth.c: Likewise.
+	* tests/uniwidth/test-u8-width.c: Likewise.
+	* tests/uniwidth/test-u16-strwidth.c: Likewise.
+	* tests/uniwidth/test-u16-width.c: Likewise.
+	* tests/uniwidth/test-u32-strwidth.c: Likewise.
+	* tests/uniwidth/test-u32-width.c: Likewise.
+	* tests/uniwidth/test-uc_width.c: Likewise.
+	* tests/uniwidth/test-uc_width2.c: Likewise.
+	* modules/acl-tests (Files): Add tests/macros.h.
+	* modules/areadlink-tests (Files): Likewise.
+	* modules/areadlink-with-size-tests (Files): Likewise.
+	* modules/areadlinkat-tests (Files): Likewise.
+	* modules/areadlinkat-with-size-tests (Files): Likewise.
+	* modules/argmatch-tests (Files): Likewise.
+	* modules/argv-iter-tests (Files): Likewise.
+	* modules/array-list-tests (Files): Likewise.
+	* modules/array-mergesort-tests (Files): Likewise.
+	* modules/array-oset-tests (Files): Likewise.
+	* modules/avltree-list-tests (Files): Likewise.
+	* modules/avltree-oset-tests (Files): Likewise.
+	* modules/avltreehash-list-tests (Files): Likewise.
+	* modules/base64-tests (Files): Likewise.
+	* modules/binary-io-tests (Files): Likewise.
+	* modules/bitrotate-tests (Files): Likewise.
+	* modules/btowc-tests (Files): Likewise.
+	* modules/byteswap-tests (Files): Likewise.
+	* modules/c-ctype-tests (Files): Likewise.
+	* modules/c-stack-tests (Files): Likewise.
+	* modules/c-strcase-tests (Files): Likewise.
+	* modules/c-strcasestr-tests (Files): Likewise.
+	* modules/c-strstr-tests (Files): Likewise.
+	* modules/canonicalize-lgpl-tests (Files): Likewise.
+	* modules/canonicalize-tests (Files): Likewise.
+	* modules/carray-list-tests (Files): Likewise.
+	* modules/ceilf-tests (Files): Likewise.
+	* modules/ceill-tests (Files): Likewise.
+	* modules/chown-tests (Files): Likewise.
+	* modules/cloexec-tests (Files): Likewise.
+	* modules/copy-file-tests (Files): Likewise.
+	* modules/count-one-bits-tests (Files): Likewise.
+	* modules/dprintf-posix-tests (Files): Likewise.
+	* modules/dup2-tests (Files): Likewise.
+	* modules/dup3-tests (Files): Likewise.
+	* modules/duplocale-tests (Files): Likewise.
+	* modules/fbufmode-tests (Files): Likewise.
+	* modules/fchdir-tests (Files): Likewise.
+	* modules/fcntl-safer-tests (Files): Likewise.
+	* modules/fcntl-tests (Files): Likewise.
+	* modules/fdopendir-tests (Files): Likewise.
+	* modules/fdutimensat-tests (Files): Likewise.
+	* modules/fflush-tests (Files): Likewise.
+	* modules/filevercmp-tests (Files): Likewise.
+	* modules/flock-tests (Files): Likewise.
+	* modules/floorf-tests (Files): Likewise.
+	* modules/floorl-tests (Files): Likewise.
+	* modules/fnmatch-tests (Files): Likewise.
+	* modules/fopen-safer-tests (Files): Likewise.
+	* modules/fopen-tests (Files): Likewise.
+	* modules/fpending-tests (Files): Likewise.
+	* modules/fprintf-posix-tests (Files): Likewise.
+	* modules/fpurge-tests (Files): Likewise.
+	* modules/freadable-tests (Files): Likewise.
+	* modules/freadahead-tests (Files): Likewise.
+	* modules/freading-tests (Files): Likewise.
+	* modules/freadptr-tests (Files): Likewise.
+	* modules/freadseek-tests (Files): Likewise.
+	* modules/freopen-tests (Files): Likewise.
+	* modules/frexp-nolibm-tests (Files): Likewise.
+	* modules/frexp-tests (Files): Likewise.
+	* modules/frexpl-nolibm-tests (Files): Likewise.
+	* modules/frexpl-tests (Files): Likewise.
+	* modules/fseek-tests (Files): Likewise.
+	* modules/fseeko-tests (Files): Likewise.
+	* modules/fstrcmp-tests (Files): Likewise.
+	* modules/fsync-tests (Files): Likewise.
+	* modules/ftell-tests (Files): Likewise.
+	* modules/ftello-tests (Files): Likewise.
+	* modules/func-tests (Files): Likewise.
+	* modules/futimens-tests (Files): Likewise.
+	* modules/fwritable-tests (Files): Likewise.
+	* modules/fwriting-tests (Files): Likewise.
+	* modules/getcwd-tests (Files): Likewise.
+	* modules/getdate-tests (Files): Likewise.
+	* modules/getdelim-tests (Files): Likewise.
+	* modules/getdtablesize-tests (Files): Likewise.
+	* modules/getgroups-tests (Files): Likewise.
+	* modules/getline-tests (Files): Likewise.
+	* modules/getndelim2-tests (Files): Likewise.
+	* modules/glob-tests (Files): Likewise.
+	* modules/hash-tests (Files): Likewise.
+	* modules/i-ring-tests (Files): Likewise.
+	* modules/iconv-tests (Files): Likewise.
+	* modules/iconv_open-utf-tests (Files): Likewise.
+	* modules/idpriv-drop-tests (Files): Likewise.
+	* modules/idpriv-droptemp-tests (Files): Likewise.
+	* modules/inet_ntop-tests (Files): Likewise.
+	* modules/inet_pton-tests (Files): Likewise.
+	* modules/isblank-tests (Files): Likewise.
+	* modules/isfinite-tests (Files): Likewise.
+	* modules/isinf-tests (Files): Likewise.
+	* modules/isnan-tests (Files): Likewise.
+	* modules/isnand-nolibm-tests (Files): Likewise.
+	* modules/isnand-tests (Files): Likewise.
+	* modules/isnanf-nolibm-tests (Files): Likewise.
+	* modules/isnanf-tests (Files): Likewise.
+	* modules/isnanl-nolibm-tests (Files): Likewise.
+	* modules/isnanl-tests (Files): Likewise.
+	* modules/lchown-tests (Files): Likewise.
+	* modules/ldexpl-tests (Files): Likewise.
+	* modules/link-tests (Files): Likewise.
+	* modules/linkat-tests (Files): Likewise.
+	* modules/linked-list-tests (Files): Likewise.
+	* modules/linkedhash-list-tests (Files): Likewise.
+	* modules/localename-tests (Files): Likewise.
+	* modules/lseek-tests (Files): Likewise.
+	* modules/lstat-tests (Files): Likewise.
+	* modules/mbmemcasecmp-tests (Files): Likewise.
+	* modules/mbmemcasecoll-tests (Files): Likewise.
+	* modules/mbrtowc-tests (Files): Likewise.
+	* modules/mbscasecmp-tests (Files): Likewise.
+	* modules/mbscasestr-tests (Files): Likewise.
+	* modules/mbschr-tests (Files): Likewise.
+	* modules/mbscspn-tests (Files): Likewise.
+	* modules/mbsinit-tests (Files): Likewise.
+	* modules/mbsncasecmp-tests (Files): Likewise.
+	* modules/mbsnrtowcs-tests (Files): Likewise.
+	* modules/mbspbrk-tests (Files): Likewise.
+	* modules/mbspcasecmp-tests (Files): Likewise.
+	* modules/mbsrchr-tests (Files): Likewise.
+	* modules/mbsrtowcs-tests (Files): Likewise.
+	* modules/mbsspn-tests (Files): Likewise.
+	* modules/mbsstr-tests (Files): Likewise.
+	* modules/memchr-tests (Files): Likewise.
+	* modules/memchr2-tests (Files): Likewise.
+	* modules/memcmp-tests (Files): Likewise.
+	* modules/memmem-tests (Files): Likewise.
+	* modules/memrchr-tests (Files): Likewise.
+	* modules/mkdir-tests (Files): Likewise.
+	* modules/mkfifo-tests (Files): Likewise.
+	* modules/mkfifoat-tests (Files): Likewise.
+	* modules/mknod-tests (Files): Likewise.
+	* modules/nanosleep-tests (Files): Likewise.
+	* modules/nl_langinfo-tests (Files): Likewise.
+	* modules/obstack-printf-tests (Files): Likewise.
+	* modules/open-tests (Files): Likewise.
+	* modules/openat-tests (Files): Likewise.
+	* modules/pipe-filter-gi-tests (Files): Likewise.
+	* modules/pipe-filter-ii-tests (Files): Likewise.
+	* modules/pipe2-tests (Files): Likewise.
+	* modules/popen-safer-tests (Files): Likewise.
+	* modules/popen-tests (Files): Likewise.
+	* modules/posixtm-tests (Files): Likewise.
+	* modules/pread-tests (Files): Likewise.
+	* modules/printf-frexp-tests (Files): Likewise.
+	* modules/printf-frexpl-tests (Files): Likewise.
+	* modules/printf-posix-tests (Files): Likewise.
+	* modules/priv-set-tests (Files): Likewise.
+	* modules/quotearg-tests (Files): Likewise.
+	* modules/random_r-tests (Files): Likewise.
+	* modules/rawmemchr-tests (Files): Likewise.
+	* modules/rbtree-list-tests (Files): Likewise.
+	* modules/rbtree-oset-tests (Files): Likewise.
+	* modules/rbtreehash-list-tests (Files): Likewise.
+	* modules/readlink-tests (Files): Likewise.
+	* modules/remove-tests (Files): Likewise.
+	* modules/rename-tests (Files): Likewise.
+	* modules/renameat-tests (Files): Likewise.
+	* modules/rmdir-tests (Files): Likewise.
+	* modules/round-tests (Files): Likewise.
+	* modules/roundf-tests (Files): Likewise.
+	* modules/roundl-tests (Files): Likewise.
+	* modules/safe-alloc-tests (Files): Likewise.
+	* modules/setenv-tests (Files): Likewise.
+	* modules/sigaction-tests (Files): Likewise.
+	* modules/signbit-tests (Files): Likewise.
+	* modules/sleep-tests (Files): Likewise.
+	* modules/snprintf-posix-tests (Files): Likewise.
+	* modules/snprintf-tests (Files): Likewise.
+	* modules/sprintf-posix-tests (Files): Likewise.
+	* modules/stat-tests (Files): Likewise.
+	* modules/stat-time-tests (Files): Likewise.
+	* modules/strcasestr-tests (Files): Likewise.
+	* modules/strchrnul-tests (Files): Likewise.
+	* modules/strerror-tests (Files): Likewise.
+	* modules/striconv-tests (Files): Likewise.
+	* modules/striconveh-tests (Files): Likewise.
+	* modules/striconveha-tests (Files): Likewise.
+	* modules/strsignal-tests (Files): Likewise.
+	* modules/strstr-tests (Files): Likewise.
+	* modules/strtod-tests (Files): Likewise.
+	* modules/strverscmp-tests (Files): Likewise.
+	* modules/symlink-tests (Files): Likewise.
+	* modules/symlinkat-tests (Files): Likewise.
+	* modules/trunc-tests (Files): Likewise.
+	* modules/truncf-tests (Files): Likewise.
+	* modules/truncl-tests (Files): Likewise.
+	* modules/uname-tests (Files): Likewise.
+	* modules/unicase/cased-tests (Files): Likewise.
+	* modules/unicase/ignorable-tests (Files): Likewise.
+	* modules/unicase/locale-language-tests (Files): Likewise.
+	* modules/unicase/tolower-tests (Files): Likewise.
+	* modules/unicase/totitle-tests (Files): Likewise.
+	* modules/unicase/toupper-tests (Files): Likewise.
+	* modules/unicase/u8-casecmp-tests (Files): Likewise.
+	* modules/unicase/u8-casecoll-tests (Files): Likewise.
+	* modules/unicase/u8-casefold-tests (Files): Likewise.
+	* modules/unicase/u8-is-cased-tests (Files): Likewise.
+	* modules/unicase/u8-is-casefolded-tests (Files): Likewise.
+	* modules/unicase/u8-is-lowercase-tests (Files): Likewise.
+	* modules/unicase/u8-is-titlecase-tests (Files): Likewise.
+	* modules/unicase/u8-is-uppercase-tests (Files): Likewise.
+	* modules/unicase/u8-tolower-tests (Files): Likewise.
+	* modules/unicase/u8-totitle-tests (Files): Likewise.
+	* modules/unicase/u8-toupper-tests (Files): Likewise.
+	* modules/unicase/u16-casecmp-tests (Files): Likewise.
+	* modules/unicase/u16-casecoll-tests (Files): Likewise.
+	* modules/unicase/u16-casefold-tests (Files): Likewise.
+	* modules/unicase/u16-is-cased-tests (Files): Likewise.
+	* modules/unicase/u16-is-casefolded-tests (Files): Likewise.
+	* modules/unicase/u16-is-lowercase-tests (Files): Likewise.
+	* modules/unicase/u16-is-titlecase-tests (Files): Likewise.
+	* modules/unicase/u16-is-uppercase-tests (Files): Likewise.
+	* modules/unicase/u16-tolower-tests (Files): Likewise.
+	* modules/unicase/u16-totitle-tests (Files): Likewise.
+	* modules/unicase/u16-toupper-tests (Files): Likewise.
+	* modules/unicase/u32-casecmp-tests (Files): Likewise.
+	* modules/unicase/u32-casecoll-tests (Files): Likewise.
+	* modules/unicase/u32-casefold-tests (Files): Likewise.
+	* modules/unicase/u32-is-cased-tests (Files): Likewise.
+	* modules/unicase/u32-is-casefolded-tests (Files): Likewise.
+	* modules/unicase/u32-is-lowercase-tests (Files): Likewise.
+	* modules/unicase/u32-is-titlecase-tests (Files): Likewise.
+	* modules/unicase/u32-is-uppercase-tests (Files): Likewise.
+	* modules/unicase/u32-tolower-tests (Files): Likewise.
+	* modules/unicase/u32-totitle-tests (Files): Likewise.
+	* modules/unicase/u32-toupper-tests (Files): Likewise.
+	* modules/unicase/ulc-casecmp-tests (Files): Likewise.
+	* modules/unicase/ulc-casecoll-tests (Files): Likewise.
+	* modules/uniconv/u8-conv-from-enc-tests (Files): Likewise.
+	* modules/uniconv/u8-conv-to-enc-tests (Files): Likewise.
+	* modules/uniconv/u8-strconv-from-enc-tests (Files): Likewise.
+	* modules/uniconv/u8-strconv-to-enc-tests (Files): Likewise.
+	* modules/uniconv/u16-conv-from-enc-tests (Files): Likewise.
+	* modules/uniconv/u16-conv-to-enc-tests (Files): Likewise.
+	* modules/uniconv/u16-strconv-from-enc-tests (Files): Likewise.
+	* modules/uniconv/u16-strconv-to-enc-tests (Files): Likewise.
+	* modules/uniconv/u32-conv-from-enc-tests (Files): Likewise.
+	* modules/uniconv/u32-conv-to-enc-tests (Files): Likewise.
+	* modules/uniconv/u32-strconv-from-enc-tests (Files): Likewise.
+	* modules/uniconv/u32-strconv-to-enc-tests (Files): Likewise.
+	* modules/unictype/bidicategory-byname-tests (Files): Likewise.
+	* modules/unictype/bidicategory-name-tests (Files): Likewise.
+	* modules/unictype/bidicategory-of-tests (Files): Likewise.
+	* modules/unictype/bidicategory-test-tests (Files): Likewise.
+	* modules/unictype/block-list-tests (Files): Likewise.
+	* modules/unictype/block-of-tests (Files): Likewise.
+	* modules/unictype/block-test-tests (Files): Likewise.
+	* modules/unictype/category-C-tests (Files): Likewise.
+	* modules/unictype/category-Cc-tests (Files): Likewise.
+	* modules/unictype/category-Cf-tests (Files): Likewise.
+	* modules/unictype/category-Cn-tests (Files): Likewise.
+	* modules/unictype/category-Co-tests (Files): Likewise.
+	* modules/unictype/category-Cs-tests (Files): Likewise.
+	* modules/unictype/category-L-tests (Files): Likewise.
+	* modules/unictype/category-Ll-tests (Files): Likewise.
+	* modules/unictype/category-Lm-tests (Files): Likewise.
+	* modules/unictype/category-Lo-tests (Files): Likewise.
+	* modules/unictype/category-Lt-tests (Files): Likewise.
+	* modules/unictype/category-Lu-tests (Files): Likewise.
+	* modules/unictype/category-M-tests (Files): Likewise.
+	* modules/unictype/category-Mc-tests (Files): Likewise.
+	* modules/unictype/category-Me-tests (Files): Likewise.
+	* modules/unictype/category-Mn-tests (Files): Likewise.
+	* modules/unictype/category-N-tests (Files): Likewise.
+	* modules/unictype/category-Nd-tests (Files): Likewise.
+	* modules/unictype/category-Nl-tests (Files): Likewise.
+	* modules/unictype/category-No-tests (Files): Likewise.
+	* modules/unictype/category-P-tests (Files): Likewise.
+	* modules/unictype/category-Pc-tests (Files): Likewise.
+	* modules/unictype/category-Pd-tests (Files): Likewise.
+	* modules/unictype/category-Pe-tests (Files): Likewise.
+	* modules/unictype/category-Pf-tests (Files): Likewise.
+	* modules/unictype/category-Pi-tests (Files): Likewise.
+	* modules/unictype/category-Po-tests (Files): Likewise.
+	* modules/unictype/category-Ps-tests (Files): Likewise.
+	* modules/unictype/category-S-tests (Files): Likewise.
+	* modules/unictype/category-Sc-tests (Files): Likewise.
+	* modules/unictype/category-Sk-tests (Files): Likewise.
+	* modules/unictype/category-Sm-tests (Files): Likewise.
+	* modules/unictype/category-So-tests (Files): Likewise.
+	* modules/unictype/category-Z-tests (Files): Likewise.
+	* modules/unictype/category-Zl-tests (Files): Likewise.
+	* modules/unictype/category-Zp-tests (Files): Likewise.
+	* modules/unictype/category-Zs-tests (Files): Likewise.
+	* modules/unictype/category-and-not-tests (Files): Likewise.
+	* modules/unictype/category-and-tests (Files): Likewise.
+	* modules/unictype/category-byname-tests (Files): Likewise.
+	* modules/unictype/category-name-tests (Files): Likewise.
+	* modules/unictype/category-none-tests (Files): Likewise.
+	* modules/unictype/category-of-tests (Files): Likewise.
+	* modules/unictype/category-or-tests (Files): Likewise.
+	* modules/unictype/category-test-withtable-tests (Files): Likewise.
+	* modules/unictype/combining-class-tests (Files): Likewise.
+	* modules/unictype/ctype-alnum-tests (Files): Likewise.
+	* modules/unictype/ctype-alpha-tests (Files): Likewise.
+	* modules/unictype/ctype-blank-tests (Files): Likewise.
+	* modules/unictype/ctype-cntrl-tests (Files): Likewise.
+	* modules/unictype/ctype-digit-tests (Files): Likewise.
+	* modules/unictype/ctype-graph-tests (Files): Likewise.
+	* modules/unictype/ctype-lower-tests (Files): Likewise.
+	* modules/unictype/ctype-print-tests (Files): Likewise.
+	* modules/unictype/ctype-punct-tests (Files): Likewise.
+	* modules/unictype/ctype-space-tests (Files): Likewise.
+	* modules/unictype/ctype-upper-tests (Files): Likewise.
+	* modules/unictype/ctype-xdigit-tests (Files): Likewise.
+	* modules/unictype/decimal-digit-tests (Files): Likewise.
+	* modules/unictype/digit-tests (Files): Likewise.
+	* modules/unictype/mirror-tests (Files): Likewise.
+	* modules/unictype/numeric-tests (Files): Likewise.
+	* modules/unictype/property-alphabetic-tests (Files): Likewise.
+	* modules/unictype/property-ascii-hex-digit-tests (Files): Likewise.
+	* modules/unictype/property-bidi-arabic-digit-tests (Files): Likewise.
+	* modules/unictype/property-bidi-arabic-right-to-left-tests (Files):
+	Likewise.
+	* modules/unictype/property-bidi-block-separator-tests (Files):
+	Likewise.
+	* modules/unictype/property-bidi-boundary-neutral-tests (Files):
+	Likewise.
+	* modules/unictype/property-bidi-common-separator-tests (Files):
+	Likewise.
+	* modules/unictype/property-bidi-control-tests (Files): Likewise.
+	* modules/unictype/property-bidi-embedding-or-override-tests (Files):
+	Likewise.
+	* modules/unictype/property-bidi-eur-num-separator-tests (Files):
+	Likewise.
+	* modules/unictype/property-bidi-eur-num-terminator-tests (Files):
+	Likewise.
+	* modules/unictype/property-bidi-european-digit-tests (Files): Likewise.
+	* modules/unictype/property-bidi-hebrew-right-to-left-tests (Files):
+	Likewise.
+	* modules/unictype/property-bidi-left-to-right-tests (Files): Likewise.
+	* modules/unictype/property-bidi-non-spacing-mark-tests (Files):
+	Likewise.
+	* modules/unictype/property-bidi-other-neutral-tests (Files): Likewise.
+	* modules/unictype/property-bidi-pdf-tests (Files): Likewise.
+	* modules/unictype/property-bidi-segment-separator-tests (Files):
+	Likewise.
+	* modules/unictype/property-bidi-whitespace-tests (Files): Likewise.
+	* modules/unictype/property-byname-tests (Files): Likewise.
+	* modules/unictype/property-combining-tests (Files): Likewise.
+	* modules/unictype/property-composite-tests (Files): Likewise.
+	* modules/unictype/property-currency-symbol-tests (Files): Likewise.
+	* modules/unictype/property-dash-tests (Files): Likewise.
+	* modules/unictype/property-decimal-digit-tests (Files): Likewise.
+	* modules/unictype/property-default-ignorable-code-point-tests (Files):
+	Likewise.
+	* modules/unictype/property-deprecated-tests (Files): Likewise.
+	* modules/unictype/property-diacritic-tests (Files): Likewise.
+	* modules/unictype/property-extender-tests (Files): Likewise.
+	* modules/unictype/property-format-control-tests (Files): Likewise.
+	* modules/unictype/property-grapheme-base-tests (Files): Likewise.
+	* modules/unictype/property-grapheme-extend-tests (Files): Likewise.
+	* modules/unictype/property-grapheme-link-tests (Files): Likewise.
+	* modules/unictype/property-hex-digit-tests (Files): Likewise.
+	* modules/unictype/property-hyphen-tests (Files): Likewise.
+	* modules/unictype/property-id-continue-tests (Files): Likewise.
+	* modules/unictype/property-id-start-tests (Files): Likewise.
+	* modules/unictype/property-ideographic-tests (Files): Likewise.
+	* modules/unictype/property-ids-binary-operator-tests (Files): Likewise.
+	* modules/unictype/property-ids-trinary-operator-tests (Files):
+	Likewise.
+	* modules/unictype/property-ignorable-control-tests (Files): Likewise.
+	* modules/unictype/property-iso-control-tests (Files): Likewise.
+	* modules/unictype/property-join-control-tests (Files): Likewise.
+	* modules/unictype/property-left-of-pair-tests (Files): Likewise.
+	* modules/unictype/property-line-separator-tests (Files): Likewise.
+	* modules/unictype/property-logical-order-exception-tests (Files):
+	Likewise.
+	* modules/unictype/property-lowercase-tests (Files): Likewise.
+	* modules/unictype/property-math-tests (Files): Likewise.
+	* modules/unictype/property-non-break-tests (Files): Likewise.
+	* modules/unictype/property-not-a-character-tests (Files): Likewise.
+	* modules/unictype/property-numeric-tests (Files): Likewise.
+	* modules/unictype/property-other-alphabetic-tests (Files): Likewise.
+	* modules/unictype/property-other-default-ignorable-code-point-tests
+	(Files): Likewise.
+	* modules/unictype/property-other-grapheme-extend-tests (Files):
+	Likewise.
+	* modules/unictype/property-other-id-continue-tests (Files): Likewise.
+	* modules/unictype/property-other-id-start-tests (Files): Likewise.
+	* modules/unictype/property-other-lowercase-tests (Files): Likewise.
+	* modules/unictype/property-other-math-tests (Files): Likewise.
+	* modules/unictype/property-other-uppercase-tests (Files): Likewise.
+	* modules/unictype/property-paired-punctuation-tests (Files): Likewise.
+	* modules/unictype/property-paragraph-separator-tests (Files): Likewise.
+	* modules/unictype/property-pattern-syntax-tests (Files): Likewise.
+	* modules/unictype/property-pattern-white-space-tests (Files): Likewise.
+	* modules/unictype/property-private-use-tests (Files): Likewise.
+	* modules/unictype/property-punctuation-tests (Files): Likewise.
+	* modules/unictype/property-quotation-mark-tests (Files): Likewise.
+	* modules/unictype/property-radical-tests (Files): Likewise.
+	* modules/unictype/property-sentence-terminal-tests (Files): Likewise.
+	* modules/unictype/property-soft-dotted-tests (Files): Likewise.
+	* modules/unictype/property-space-tests (Files): Likewise.
+	* modules/unictype/property-terminal-punctuation-tests (Files):
+	Likewise.
+	* modules/unictype/property-test-tests (Files): Likewise.
+	* modules/unictype/property-titlecase-tests (Files): Likewise.
+	* modules/unictype/property-unassigned-code-value-tests (Files):
+	Likewise.
+	* modules/unictype/property-unified-ideograph-tests (Files): Likewise.
+	* modules/unictype/property-uppercase-tests (Files): Likewise.
+	* modules/unictype/property-variation-selector-tests (Files): Likewise.
+	* modules/unictype/property-white-space-tests (Files): Likewise.
+	* modules/unictype/property-xid-continue-tests (Files): Likewise.
+	* modules/unictype/property-xid-start-tests (Files): Likewise.
+	* modules/unictype/property-zero-width-tests (Files): Likewise.
+	* modules/unictype/scripts-tests (Files): Likewise.
+	* modules/unictype/syntax-c-ident-tests (Files): Likewise.
+	* modules/unictype/syntax-c-whitespace-tests (Files): Likewise.
+	* modules/unictype/syntax-java-ident-tests (Files): Likewise.
+	* modules/unictype/syntax-java-whitespace-tests (Files): Likewise.
+	* modules/unilbrk/u8-possible-linebreaks-tests (Files): Likewise.
+	* modules/unilbrk/u8-width-linebreaks-tests (Files): Likewise.
+	* modules/unilbrk/u16-possible-linebreaks-tests (Files): Likewise.
+	* modules/unilbrk/u16-width-linebreaks-tests (Files): Likewise.
+	* modules/unilbrk/u32-possible-linebreaks-tests (Files): Likewise.
+	* modules/unilbrk/u32-width-linebreaks-tests (Files): Likewise.
+	* modules/unilbrk/ulc-possible-linebreaks-tests (Files): Likewise.
+	* modules/unilbrk/ulc-width-linebreaks-tests (Files): Likewise.
+	* modules/uninorm/canonical-decomposition-tests (Files): Likewise.
+	* modules/uninorm/compat-decomposition-tests (Files): Likewise.
+	* modules/uninorm/composition-tests (Files): Likewise.
+	* modules/uninorm/decomposing-form-tests (Files): Likewise.
+	* modules/uninorm/decomposition-tests (Files): Likewise.
+	* modules/uninorm/filter-tests (Files): Likewise.
+	* modules/uninorm/nfc-tests (Files): Likewise.
+	* modules/uninorm/nfd-tests (Files): Likewise.
+	* modules/uninorm/nfkc-tests (Files): Likewise.
+	* modules/uninorm/nfkd-tests (Files): Likewise.
+	* modules/uninorm/u8-normcmp-tests (Files): Likewise.
+	* modules/uninorm/u8-normcoll-tests (Files): Likewise.
+	* modules/uninorm/u16-normcmp-tests (Files): Likewise.
+	* modules/uninorm/u16-normcoll-tests (Files): Likewise.
+	* modules/uninorm/u32-normcmp-tests (Files): Likewise.
+	* modules/uninorm/u32-normcoll-tests (Files): Likewise.
+	* modules/unistdio/u8-asnprintf-tests (Files): Likewise.
+	* modules/unistdio/u8-vasnprintf-tests (Files): Likewise.
+	* modules/unistdio/u8-vasprintf-tests (Files): Likewise.
+	* modules/unistdio/u8-vsnprintf-tests (Files): Likewise.
+	* modules/unistdio/u8-vsprintf-tests (Files): Likewise.
+	* modules/unistdio/u16-asnprintf-tests (Files): Likewise.
+	* modules/unistdio/u16-vasnprintf-tests (Files): Likewise.
+	* modules/unistdio/u16-vasprintf-tests (Files): Likewise.
+	* modules/unistdio/u16-vsnprintf-tests (Files): Likewise.
+	* modules/unistdio/u16-vsprintf-tests (Files): Likewise.
+	* modules/unistdio/u32-asnprintf-tests (Files): Likewise.
+	* modules/unistdio/u32-vasnprintf-tests (Files): Likewise.
+	* modules/unistdio/u32-vasprintf-tests (Files): Likewise.
+	* modules/unistdio/u32-vsnprintf-tests (Files): Likewise.
+	* modules/unistdio/u32-vsprintf-tests (Files): Likewise.
+	* modules/unistdio/ulc-asnprintf-tests (Files): Likewise.
+	* modules/unistdio/ulc-vasnprintf-tests (Files): Likewise.
+	* modules/unistdio/ulc-vasprintf-tests (Files): Likewise.
+	* modules/unistdio/ulc-vsnprintf-tests (Files): Likewise.
+	* modules/unistdio/ulc-vsprintf-tests (Files): Likewise.
+	* modules/uniwbrk/u8-wordbreaks-tests (Files): Likewise.
+	* modules/uniwbrk/u16-wordbreaks-tests (Files): Likewise.
+	* modules/uniwbrk/u32-wordbreaks-tests (Files): Likewise.
+	* modules/uniwbrk/ulc-wordbreaks-tests (Files): Likewise.
+	* modules/uniwidth/u8-strwidth-tests (Files): Likewise.
+	* modules/uniwidth/u8-width-tests (Files): Likewise.
+	* modules/uniwidth/u16-strwidth-tests (Files): Likewise.
+	* modules/uniwidth/u16-width-tests (Files): Likewise.
+	* modules/uniwidth/u32-strwidth-tests (Files): Likewise.
+	* modules/uniwidth/u32-width-tests (Files): Likewise.
+	* modules/uniwidth/width-tests (Files): Likewise.
+	* modules/unlink-tests (Files): Likewise.
+	* modules/unsetenv-tests (Files): Likewise.
+	* modules/usleep-tests (Files): Likewise.
+	* modules/utimens-tests (Files): Likewise.
+	* modules/utimensat-tests (Files): Likewise.
+	* modules/vasnprintf-posix-tests (Files): Likewise.
+	* modules/vasnprintf-tests (Files): Likewise.
+	* modules/vasprintf-posix-tests (Files): Likewise.
+	* modules/vasprintf-tests (Files): Likewise.
+	* modules/vdprintf-posix-tests (Files): Likewise.
+	* modules/vfprintf-posix-tests (Files): Likewise.
+	* modules/vprintf-posix-tests (Files): Likewise.
+	* modules/vsnprintf-posix-tests (Files): Likewise.
+	* modules/vsnprintf-tests (Files): Likewise.
+	* modules/vsprintf-posix-tests (Files): Likewise.
+	* modules/wcrtomb-tests (Files): Likewise.
+	* modules/wcsnrtombs-tests (Files): Likewise.
+	* modules/wcsrtombs-tests (Files): Likewise.
+	* modules/wctype-tests (Files): Likewise.
+	* modules/wcwidth-tests (Files): Likewise.
+	* modules/xmemdup0-tests (Files): Likewise.
+	* modules/xprintf-posix-tests (Files): Likewise.
+	* modules/xvasprintf-tests (Files): Likewise.
+
+2009-12-24  Eric Blake  <ebb9@byu.net>
+
+	test-nanosleep: fix typo
+	* tests/test-nanosleep.c (SIGNATURE_CHECK): Fix typo in previous
+	patch.
+	Reported by Bruno Haible.
+
+2009-12-24  Bruno Haible  <bruno@clisp.org>
+
+	Reduce namespace pollution on glibc systems.
+	* lib/inttypes.in.h: Don't include <stdint.h> on glibc systems.
+	* lib/stdlib.in.h: Don't include <stdint.h>, <unistd.h> on glibc
+	systems.
+	* lib/unistd.in.h: Don't include <stdio.h>, <fcntl.h>, <stdlib.h>,
+	<getopt.h> on glibc systems.
+	* lib/fcntl.in.h: Don't include <sys/stat.h>, <unistd.h> on glibc
+	systems.
+	* lib/fcntl.c: Include <unistd.h> here instead.
+
+2009-12-24  Bruno Haible  <bruno@clisp.org>
+
+	* lib/stdlib.in.h (includes): Fix typo in today's commit.
+
+2009-12-24  Eric Blake  <ebb9@byu.net>
+
+	tests: add signature checks
+	* tests/signature.h (SIGNATURE_CHECK): New file.
+	* modules/atexit-tests (Files): Use it.
+	* modules/btowc-tests (Files): Likewise.
+	* modules/canonicalize-lgpl-tests (Files): Likewise.
+	* modules/ceilf-tests (Files): Likewise.
+	* modules/ceill-tests (Files): Likewise.
+	* modules/chown-tests (Files): Likewise.
+	* modules/dprintf-posix-tests (Files): Likewise.
+	* modules/dup2-tests (Files): Likewise.
+	* modules/dup3-tests (Files): Likewise.
+	* modules/duplocale-tests (Files): Likewise.
+	* modules/fchdir-tests (Files): Likewise.
+	* modules/fcntl-tests (Files): Likewise.
+	* modules/fdopendir-tests (Files): Likewise.
+	* modules/fflush-tests (Files): Likewise.
+	* modules/flock-tests (Files): Likewise.
+	* modules/floorf-tests (Files): Likewise.
+	* modules/floorl-tests (Files): Likewise.
+	* modules/fnmatch-tests (Files): Likewise.
+	* modules/fopen-tests (Files): Likewise.
+	* modules/fprintf-posix-tests (Files): Likewise.
+	* modules/freopen-tests (Files): Likewise.
+	* modules/frexp-nolibm-tests (Files): Likewise.
+	* modules/frexp-tests (Files): Likewise.
+	* modules/frexpl-nolibm-tests (Files): Likewise.
+	* modules/frexpl-tests (Files): Likewise.
+	* modules/fseek-tests (Files): Likewise.
+	* modules/fseeko-tests (Files): Likewise.
+	* modules/fsync-tests (Files): Likewise.
+	* modules/ftell-tests (Files): Likewise.
+	* modules/ftello-tests (Files): Likewise.
+	* modules/futimens-tests (Files): Likewise.
+	* modules/getaddrinfo-tests (Files): Likewise.
+	* modules/getcwd-tests (Files): Likewise.
+	* modules/getdelim-tests (Files): Likewise.
+	* modules/getdtablesize-tests (Files): Likewise.
+	* modules/getgroups-tests (Files): Likewise.
+	* modules/gethostname-tests (Files): Likewise.
+	* modules/getline-tests (Files): Likewise.
+	* modules/getopt-posix-tests (Files): Likewise.
+	* modules/gettimeofday-tests (Files): Likewise.
+	* modules/glob-tests (Files): Likewise.
+	* modules/iconv-tests (Files): Likewise.
+	* modules/inet_ntop-tests (Files): Likewise.
+	* modules/inet_pton-tests (Files): Likewise.
+	* modules/isblank-tests (Files): Likewise.
+	* modules/lchown-tests (Files): Likewise.
+	* modules/ldexpl-tests (Files): Likewise.
+	* modules/link-tests (Files): Likewise.
+	* modules/linkat-tests (Files): Likewise.
+	* modules/lseek-tests (Files): Likewise.
+	* modules/lstat-tests (Files): Likewise.
+	* modules/mbrtowc-tests (Files): Likewise.
+	* modules/mbsinit-tests (Files): Likewise.
+	* modules/mbsnrtowcs-tests (Files): Likewise.
+	* modules/mbsrtowcs-tests (Files): Likewise.
+	* modules/memchr-tests (Files): Likewise.
+	* modules/memcmp-tests (Files): Likewise.
+	* modules/memmem-tests (Files): Likewise.
+	* modules/memrchr-tests (Files): Likewise.
+	* modules/mkdir-tests (Files): Likewise.
+	* modules/mkfifo-tests (Files): Likewise.
+	* modules/mkfifoat-tests (Files): Likewise.
+	* modules/mknod-tests (Files): Likewise.
+	* modules/nanosleep-tests (Files): Likewise.
+	* modules/nl_langinfo-tests (Files): Likewise.
+	* modules/obstack-printf-tests (Files): Likewise.
+	* modules/open-tests (Files): Likewise.
+	* modules/openat-tests (Files): Likewise.
+	* modules/perror-tests (Files): Likewise.
+	* modules/pipe2-tests (Files): Likewise.
+	* modules/poll-tests (Files): Likewise.
+	* modules/popen-tests (Files): Likewise.
+	* modules/posix_spawn-tests (Files): Likewise.
+	* modules/posix_spawnp-tests (Files): Likewise.
+	* modules/pread-tests (Files): Likewise.
+	* modules/printf-posix-tests (Files): Likewise.
+	* modules/pty-tests (Files): Likewise.
+	* modules/random_r-tests (Files): Likewise.
+	* modules/rawmemchr-tests (Files): Likewise.
+	* modules/readlink-tests (Files): Likewise.
+	* modules/remove-tests (Files): Likewise.
+	* modules/rename-tests (Files): Likewise.
+	* modules/renameat-tests (Files): Likewise.
+	* modules/rmdir-tests (Files): Likewise.
+	* modules/round-tests (Files): Likewise.
+	* modules/roundf-tests (Files): Likewise.
+	* modules/roundl-tests (Files): Likewise.
+	* modules/select-tests (Files): Likewise.
+	* modules/setenv-tests (Files): Likewise.
+	* modules/sigaction-tests (Files): Likewise.
+	* modules/sleep-tests (Files): Likewise.
+	* modules/snprintf-posix-tests (Files): Likewise.
+	* modules/snprintf-tests (Files): Likewise.
+	* modules/sprintf-posix-tests (Files): Likewise.
+	* modules/stat-tests (Files): Likewise.
+	* modules/strcasestr-tests (Files): Likewise.
+	* modules/strchrnul-tests (Files): Likewise.
+	* modules/strerror-tests (Files): Likewise.
+	* modules/strsignal-tests (Files): Likewise.
+	* modules/strstr-tests (Files): Likewise.
+	* modules/strtod-tests (Files): Likewise.
+	* modules/strverscmp-tests (Files): Likewise.
+	* modules/symlink-tests (Files): Likewise.
+	* modules/symlinkat-tests (Files): Likewise.
+	* modules/times-tests (Files): Likewise.
+	* modules/trunc-tests (Files): Likewise.
+	* modules/truncf-tests (Files): Likewise.
+	* modules/truncl-tests (Files): Likewise.
+	* modules/tsearch-tests (Files): Likewise.
+	* modules/uname-tests (Files): Likewise.
+	* modules/unlink-tests (Files): Likewise.
+	* modules/unsetenv-tests (Files): Likewise.
+	* modules/usleep-tests (Files): Likewise.
+	* modules/utimensat-tests (Files): Likewise.
+	* modules/vasprintf-tests (Files): Likewise.
+	* modules/vdprintf-posix-tests (Files): Likewise.
+	* modules/vfprintf-posix-tests (Files): Likewise.
+	* modules/vprintf-posix-tests (Files): Likewise.
+	* modules/vsnprintf-posix-tests (Files): Likewise.
+	* modules/vsnprintf-tests (Files): Likewise.
+	* modules/vsprintf-posix-tests (Files): Likewise.
+	* modules/wcrtomb-tests (Files): Likewise.
+	* modules/wcsnrtombs-tests (Files): Likewise.
+	* modules/wcsrtombs-tests (Files): Likewise.
+	* modules/wcwidth-tests (Files): Likewise.
+	* tests/test-isfinite.c (isfinite): Ensure macro declaration.
+	* tests/test-isinf.c (isinf): Likewise.
+	* tests/test-isnan.c (isnan): Likewise.
+	* tests/test-signbit.c (signbit): Likewise.
+	* tests/test-select.c (FD_CLR, FD_ISSET, FD_SET, FD_ZERO): Ensure
+	declaration, either as macro or with correct signature.
+	(select): Ensure function under test is declared with correct
+	signature in correct header.
+	* tests/test-atexit.c (atexit): Likewise.
+	* tests/test-btowc.c (btowc): Likewise.
+	* tests/test-canonicalize-lgpl.c (realpath)
+	(canonicalize_file_name): Likewise.
+	* tests/test-ceilf1.c (ceilf): Likewise.
+	* tests/test-ceill.c (ceill): Likewise.
+	* tests/test-chown.c (chown): Likewise.
+	* tests/test-dprintf-posix.c (dprintf): Likewise.
+	* tests/test-dup2.c (dup2): Likewise.
+	* tests/test-dup3.c (dup3): Likewise.
+	* tests/test-duplocale.c (duplocale): Likewise.
+	* tests/test-fchdir.c (fchdir): Likewise.
+	* tests/test-fchownat.c (fchownat): Likewise.
+	* tests/test-fcntl.c (fcntl): Likewise.
+	* tests/test-fdopendir.c (fdopendir): Likewise.
+	* tests/test-fflush.c (fflush): Likewise.
+	* tests/test-flock.c (flock): Likewise.
+	* tests/test-floorf1.c (floorf): Likewise.
+	* tests/test-floorl.c (floorl): Likewise.
+	* tests/test-fnmatch.c (fnmatch): Likewise.
+	* tests/test-fopen.c (fopen): Likewise.
+	* tests/test-fprintf-posix.c (fprintf): Likewise.
+	* tests/test-freopen.c (freopen): Likewise.
+	* tests/test-frexp.c (frexp): Likewise.
+	* tests/test-frexpl.c (frexpl): Likewise.
+	* tests/test-fseek.c (fseek): Likewise.
+	* tests/test-fseeko.c (fseeko): Likewise.
+	* tests/test-fstatat.c (fstatat): Likewise.
+	* tests/test-fsync.c (fsync): Likewise.
+	* tests/test-ftell.c (ftell): Likewise.
+	* tests/test-ftello.c (ftello): Likewise.
+	* tests/test-futimens.c (futimens): Likewise.
+	* tests/test-getaddrinfo.c (getaddrinfo, freeaddrinfo)
+	(gai_strerror): Likewise.
+	* tests/test-getcwd.c (getcwd): Likewise.
+	* tests/test-getdelim.c (getdelim): Likewise.
+	* tests/test-getdtablesize.c (getdtablesize): Likewise.
+	* tests/test-getgroups.c (getgroups): Likewise.
+	* tests/test-gethostname.c (gethostname): Likewise.
+	* tests/test-getline.c (getline): Likewise.
+	* tests/test-getopt.c (getopt, getopt_long, getopt_long_only):
+	Likewise.
+	* tests/test-gettimeofday.c (gettimeofday): Likewise.
+	* tests/test-glob.c (glob, globfree): Likewise.
+	* tests/test-iconv.c (iconv, iconv_open, iconv_close): Likewise.
+	* tests/test-inet_ntop.c (inet_ntop): Likewise.
+	* tests/test-inet_pton.c (inet_pton): Likewise.
+	* tests/test-isblank.c (isblank): Likewise.
+	* tests/test-lchown.c (lchown): Likewise.
+	* tests/test-ldexpl.c (ldexpl): Likewise.
+	* tests/test-link.c (link): Likewise.
+	* tests/test-linkat.c (linkat): Likewise.
+	* tests/test-lseek.c (lseek): Likewise.
+	* tests/test-lstat.c (lstat): Likewise.
+	* tests/test-mbrtowc.c (mbrtowc): Likewise.
+	* tests/test-mbsinit.c (mbsinit): Likewise.
+	* tests/test-mbsnrtowcs.c (mbsnrtowcs): Likewise.
+	* tests/test-mbsrtowcs.c (mbsrtowcs): Likewise.
+	* tests/test-memchr.c (memchr): Likewise.
+	* tests/test-memcmp.c (memcmp): Likewise.
+	* tests/test-memmem.c (memmem): Likewise.
+	* tests/test-memrchr.c (memrchr): Likewise.
+	* tests/test-mkdir.c (mkdir): Likewise.
+	* tests/test-mkdirat.c (mkdirat): Likewise.
+	* tests/test-mkfifo.c (mkfifo): Likewise.
+	* tests/test-mkfifoat.c (mkfifoat, mknodat): Likewise.
+	* tests/test-mknod.c (mknod): Likewise.
+	* tests/test-nanosleep.c (nanosleep): Likewise.
+	* tests/test-nl_langinfo.c (nl_langinfo): Likewise.
+	* tests/test-obstack-printf.c (obstack_printf, obstack_vprintf):
+	Likewise.
+	* tests/test-open.c (open): Likewise.
+	* tests/test-openat.c (openat): Likewise.
+	* tests/test-perror.c (perror): Likewise.
+	* tests/test-pipe2.c (pipe2): Likewise.
+	* tests/test-poll.c (poll): Likewise.
+	* tests/test-popen.c (popen, pclose): Likewise.
+	* tests/test-posix_spawn1.c (posix_spawnp, posix_spawnattr_init)
+	(posix_spawnattr_destroy, posix_spawnattr_setsigmask)
+	(posix_spawnattr_setflags, posix_spawn_file_actions_init)
+	(posix_spawn_file_actions_destroy)
+	(posix_spawn_file_actions_addclose)
+	(posix_spawn_file_actions_addopen)
+	(posix_spawn_file_actions_adddup2): Likewise.
+	* tests/test-posix_spawn3.c (posix_spawn): Likewise.
+	* tests/test-pread.c (pread): Likewise.
+	* tests/test-printf-posix.c (printf): Likewise.
+	* tests/test-pty.c (openpty, forkpty): Likewise.
+	* tests/test-random_r.c (srandom_r, initstate_r, setstate_r)
+	(random_r): Likewise.
+	* tests/test-rawmemchr.c (rawmemchr): Likewise.
+	* tests/test-readlink.c (readlink): Likewise.
+	* tests/test-remove.c (remove): Likewise.
+	* tests/test-rename.c (rename): Likewise.
+	* tests/test-renameat.c (renameat): Likewise.
+	* tests/test-rmdir.c (rmdir): Likewise.
+	* tests/test-round1.c (round): Likewise.
+	* tests/test-roundf1.c (roundf): Likewise.
+	* tests/test-roundl.c (roundl): Likewise.
+	* tests/test-setenv.c (setenv): Likewise.
+	* tests/test-sigaction.c (sigaction): Likewise.
+	* tests/test-sleep.c (sleep): Likewise.
+	* tests/test-snprintf.c (snprintf): Likewise.
+	* tests/test-sprintf-posix.c (sprintf): Likewise.
+	* tests/test-stat.c (stat): Likewise.
+	* tests/test-stpncpy.c (stpncpy): Likewise.
+	* tests/test-strcasestr.c (strcasestr): Likewise.
+	* tests/test-strchrnul.c (strchrnul): Likewise.
+	* tests/test-strerror.c (strerror): Likewise.
+	* tests/test-strsignal.c (strsignal): Likewise.
+	* tests/test-strstr.c (strstr): Likewise.
+	* tests/test-strtod.c (strtod): Likewise.
+	* tests/test-strverscmp.c (strverscmp): Likewise.
+	* tests/test-symlink.c (symlink): Likewise.
+	* tests/test-symlinkat.c (symlinkat, readlinkat): Likewise.
+	* tests/test-times.c (times): Likewise.
+	* tests/test-trunc1.c (trunc): Likewise.
+	* tests/test-truncf1.c (truncf): Likewise.
+	* tests/test-truncl.c (truncl): Likewise.
+	* tests/test-tsearch.c (tdelete, tfind, tsearch, twalk):
+	Likewise.
+	* tests/test-uname.c (uname): Likewise.
+	* tests/test-unlink.c (unlink): Likewise.
+	* tests/test-unlinkat.c (unlinkat): Likewise.
+	* tests/test-unsetenv.c (unsetenv): Likewise.
+	* tests/test-usleep.c (usleep): Likewise.
+	* tests/test-utimensat.c (utimensat): Likewise.
+	* tests/test-vasprintf.c (asprintf, vasprintf): Likewise.
+	* tests/test-vdprintf-posix.c (vdprintf): Likewise.
+	* tests/test-vfprintf-posix.c (vfprintf): Likewise.
+	* tests/test-vprintf-posix.c (vprintf): Likewise.
+	* tests/test-vsnprintf.c (vsnprintf): Likewise.
+	* tests/test-vsprintf-posix.c (vsprintf): Likewise.
+	* tests/test-wcrtomb.c (wcrtomb): Likewise.
+	* tests/test-wcsnrtombs.c (wcsnrtombs): Likewise.
+	* tests/test-wcsrtombs.c (wcsrtombs): Likewise.
+	* tests/test-wcwidth.c (wcwidth): Likewise.
+
+	build: pull in conditional headers during GNULIB_POSIXCHECK
+	* lib/stdio.in.h (includes): Using GNULIB_POSIXCHECK also requires
+	definitions from any conditionally-included headers.
+	* lib/stdlib.in.h (includes): Likewise.
+	* lib/unistd.in.h (includes): Likewise.
+
+2009-12-24  Bruno Haible  <bruno@clisp.org>
+
+	* tests/test-argv-iter.c: Include header file being tested immediately
+	after config.h.
+	* tests/test-base64.c: Likewise.
+	* tests/test-flock.c: Likewise.
+	* tests/test-fsync.c: Likewise.
+	* tests/test-getdate.c: Likewise.
+	* tests/test-getndelim2.c: Likewise.
+	* tests/test-isfinite.c: Likewise.
+	* tests/test-isinf.c: Likewise.
+	* tests/test-strerror.c: Likewise.
+	* tests/test-strsignal.c: Likewise.
+
+2009-12-23  Eric Blake  <ebb9@byu.net>
+
+	unistd: work around cygwin bug
+	* lib/unistd.in.h (includes): Pick up headers needed for cygwin.
+	* doc/posix-functions/unlinkat.texi (unlinkat): Document the bug.
+	* doc/posix-functions/symlinkat.texi (symlinkat): Likewise.
+
+2009-12-23  Bruno Haible  <bruno@clisp.org>
+
+	localename: More tests.
+	* tests/test-localename.c (SIZEOF): New macro.
+	(categories): New variable.
+	(test_locale_name, test_locale_name_posix, test_locale_name_environ,
+	test_locale_name_default): Add test w.r.t. thread locale.
+	(test_locale_name_thread): New function.
+	(main): Invoke it.
+
+	localename: Make aware of thread locale.
+	* lib/localename.h (gl_locale_name_thread): New declaration.
+	(gl_locale_name, gl_locale_name_posix, gl_locale_name_default): Clarify
+	behaviour with respect to thread locale.
+	* lib/localename.c: Include <limits.h>, <stddef.h>, <xlocale.h>,
+	<langinfo.h>, glthread/lock.h.
+	(SIZE_BITS): New macro.
+	(string_hash): New function.
+	(struct hash_node): New type.
+	(HASH_TABLE_SIZE): New macro.
+	(struniq_hash_table, struniq_lock): New variables.
+	(struniq): New function.
+	(gl_locale_name_thread): New function.
+	(gl_locale_name): Invoke it.
+	* m4/localename.m4 (gl_LOCALENAME): Test for uselocale function.
+	* modules/localename (Depends-on): Add lock.
+	Reported by Mike Gran <spk121@yahoo.com>.
+
+2009-12-23  Eric Blake  <ebb9@byu.net>
+
+	va-args: new module
+	* modules/va-args: New file.
+	* m4/va-args.m4 (gl_VA_ARGS): Likewise.
+	* MODULES.html.sh (Core language properties): Mention it.
+
+	gnulib-common: prefer _GL_UNUSED over _UNUSED_PARAMETER_
+	* m4/gnulib-common.m4 (gl_COMMON): Create a more-appropriately
+	named alias for __attribute__((__unused__)).
+	* lib/chown.c: Update client.
+	* lib/fchmodat.c: Likewise.
+	* lib/fts.c: Likewise.
+	* lib/getdate.y: Likewise.
+	* lib/getgroups.c: Likewise.
+	* lib/getopt.c: Likewise.
+	* lib/getugroups.c: Likewise.
+	* lib/mkdir.c: Likewise.
+	* lib/mkfifo.c: Likewise.
+	* lib/mkfifoat.c: Likewise.
+	* lib/mknod.c: Likewise.
+	* lib/mknodat.c: Likewise.
+	* lib/readlink.c: Likewise.
+	* lib/se-context.in.h: Likewise.
+	* lib/se-selinux.in.h: Likewise.
+	* lib/sockets.c: Likewise.
+	* lib/symlink.c: Likewise.
+	* lib/symlinkat.c: Likewise.
+	* lib/unicodeio.c: Likewise.
+	* lib/unistr.h: Likewise.
+	* tests/test-areadlink.c: Likewise.
+	* tests/test-areadlinkat.c: Likewise.
+	* tests/test-filenamecat.c: Likewise.
+	* tests/test-fseeko.c: Likewise.
+	* tests/test-ftello.c: Likewise.
+	* tests/test-getdate.c: Likewise.
+	* tests/test-getgroups.c: Likewise.
+	* tests/test-gethostname.c: Likewise.
+	* tests/test-quotearg.c: Likewise.
+	* tests/test-version-etc.c: Likewise.
+	* tests/test-xalloc-die.c: Likewise.
+	* tests/test-xfprintf-posix.c: Likewise.
+	* tests/test-xprintf-posix.c: Likewise.
+	* tests/test-xvasprintf.c: Likewise.
+
+	tests: avoid compiler warnings
+	* tests/test-fcntl.c (main): Delete unused parameters.
+	* tests/test-freopen-safer.c (main): Likewise.
+	* tests/test-xalloc-die.c (main): Mark unused parameters.
+	* tests/test-fseeko.c (main): Likewise.
+	* tests/test-ftello.c (main): Likewise.
+	* tests/test-nanosleep.c (main): Avoid declaration warning.
+	* tests/test-sleep.c (main): Likewise.
+	* tests/test-unsetenv.c (main): Silence warning about string
+	literal.
+	* m4/setenv.m4 (gl_FUNC_UNSETENV): Likewise.
+
+2009-12-23  Bruno Haible  <bruno@clisp.org>
+
+	* tests/test-localename.c (test_locale_name): New function, extracted
+	from main. Also test mixed situations.
+	(test_locale_name_posix, test_locale_name_environ,
+	test_locale_name_default): New functions.
+	(main): Invoke them all.
+	* modules/localename-tests (configure.ac): Test for newlocale.
+
+2009-12-23  Bruno Haible  <bruno@clisp.org>
+
+	unistd: Ensure getcwd gets declared before being overridden.
+	* lib/unistd.in.h: Conditionally include <io.h>.
+
+2009-12-22  Bruno Haible  <bruno@clisp.org>
+
+	wchar: Diagnose broken combination of glibc and gcc versions and flags.
+	* m4/wchar.m4 (gl_WCHAR_H_INLINE_OK): New macro.
+	(gl_WCHAR_H): Invoke it.
+	* m4/btowc.m4 (gl_FUNC_BTOWC): Require it.
+	* doc/posix-headers/wchar.texi: Mention the interoperability problem.
+	Reported by Karl Berry <karl@freefriends.org>.
+
+2009-12-22  Eric Blake  <ebb9@byu.net>
+
+	math, unistd: avoid redundant includes
+	* lib/math.in.h (isnan): No need to re-include <math.h>.
+	* lib/unistd.in.h (getcwd): Likewise, for <stdlib.h>.
+
+	getsubopt: work around cygwin bug
+	* lib/stdlib.in.h (includes): Move unistd inclusion sooner, to
+	avoid conflicting with system getsubopt.
+	* doc/posix-functions/getsubopt.texi (getsubopt): Document the
+	bug.
+
+	getopt: synchronize from glibc
+	* lib/getopt.c (_getopt_initialize, _getopt_internal_r): Swap
+	parameter order.  Adjust all callers.
+	(_getopt_internal_r, main): Adjust quoting in error messages.
+	Drop considerations for outdated POSIX 1003.2 error message.
+	* lib/getopt1.c (_getopt_long_r, _getopt_long_only_r): Adjust
+	callers.
+	* lib/getopt_int.h (_getopt_internal_r): Adjust prototype.
+
+	test-getopt: test stderr behavior
+	* modules/getopt-posix-tests (Depends-on): Add dup2.
+	* tests/test-getopt.c (ASSERT): Avoid stderr.
+	(main): Move stderr to a temporary file.
+	* tests/test-getopt.h (getopt_loop): No longer manipulate opterr.
+	Instead, add parameter to inform caller if output occurred.
+	(test_getopt): Adjust all existing tests to expect silence, and
+	add new tests of leading ":".
+	* doc/glibc-functions/getopt_long.texi (getopt_long): Document
+	glibc shortcomings with leading "-:" or "+:" in optstring.
+	* doc/glibc-functions/getopt_long_only.texi (getopt_long_only):
+	Likewise.
+	* doc/posix-functions/getopt.texi (getopt): Likewise.
+
+	test-getopt: enhance test
+	* m4/getopt.m4 (gl_GETOPT_CHECK_HEADERS): Require that getopt_long
+	supports optind=0.
+	* tests/test-getopt.c (OPTIND_MIN): Move...
+	* tests/test-getopt.h (OPTIND_MIN): ...here.
+	* tests/test-getopt_long.h (test_getopt_long): Add more coverage.
+	Require that optind=0 works, since modern BSD supports it in
+	addition to optreset, and since coreutils expects it.
+	(test_getopt_long_only): New test.
+	* doc/glibc-functions/getopt_long.texi (getopt_long): Document
+	glibc shortcomings with 'W;', and enforcement of optind=0.
+	* doc/glibc-functions/getopt_long_only.texi (getopt_long_only):
+	Likewise.
+
+2009-12-21  Bruno Haible  <bruno@clisp.org>
+
+	localename: Improvements for MacOS X and Cygwin.
+	* lib/localename.h (gl_locale_name_environ): New declaration.
+	* lib/localename.c (gl_locale_name_environ): New function, extracted from
+	gl_locale_name_posix. Ignore dummy LANG values on MacOS X and Cygwin.
+	(gl_locale_name_posix): Invoke it.
+	(gl_locale_name_default): Add comments. Use Windows native API also on
+	Cygwin.
+
+2009-12-21  Bruno Haible  <bruno@clisp.org>
+
+	Update list of Win32 locale ids.
+	* lib/localename.c (LANG_ROMANSH): Renamed from LANG_RHAETO_ROMANCE.
+	(LANG_SAMI): Renamed from LANG_SAAMI.
+	(LANG_BASHKIR, LANG_LUXEMBOURGISH, LANG_GREENLANDIC,
+	LANG_MAPUDUNGUN, LANG_MOHAWK, LANG_BRETON, LANG_OCCITAN, LANG_CORSICAN,
+	LANG_ALSATIAN, LANG_YAKUT, LANG_KICHE, LANG_KINYARWANDA, LANG_WOLOF,
+	LANG_DARI, LANG_SCOTTISH_GAELIC): New macros.
+	(SUBLANG_AFRIKAANS_SOUTH_AFRICA, SUBLANG_ALBANIAN_ALBANIA,
+	SUBLANG_ALSATIAN_FRANCE, SUBLANG_AMHARIC_ETHIOPIA,
+	SUBLANG_ARMENIAN_ARMENIA, SUBLANG_ASSAMESE_INDIA,
+	SUBLANG_BASHKIR_RUSSIA, SUBLANG_BASQUE_BASQUE,
+	SUBLANG_BELARUSIAN_BELARUS, SUBLANG_BRETON_FRANCE,
+	SUBLANG_BULGARIAN_BULGARIA, SUBLANG_CAMBODIAN_CAMBODIA,
+	SUBLANG_CATALAN_SPAIN, SUBLANG_CORSICAN_FRANCE,
+	SUBLANG_CZECH_CZECH_REPUBLIC, SUBLANG_DANISH_DENMARK,
+	SUBLANG_DARI_AFGHANISTAN, SUBLANG_DIVEHI_MALDIVES,
+	SUBLANG_DUTCH_SURINAM, SUBLANG_ESTONIAN_ESTONIA,
+	SUBLANG_FAEROESE_FAROE_ISLANDS, SUBLANG_FARSI_IRAN,
+	SUBLANG_FINNISH_FINLAND, SUBLANG_FRISIAN_NETHERLANDS,
+	SUBLANG_GALICIAN_SPAIN, SUBLANG_GEORGIAN_GEORGIA,
+	SUBLANG_GREEK_GREECE, SUBLANG_GREENLANDIC_GREENLAND,
+	SUBLANG_GUJARATI_INDIA, SUBLANG_HAUSA_NIGERIA_LATIN,
+	SUBLANG_HEBREW_ISRAEL, SUBLANG_HINDI_INDIA, SUBLANG_HUNGARIAN_HUNGARY,
+	SUBLANG_ICELANDIC_ICELAND, SUBLANG_IGBO_NIGERIA,
+	SUBLANG_INDONESIAN_INDONESIA, SUBLANG_INUKTITUT_CANADA,
+	SUBLANG_INUKTITUT_CANADA_LATIN, SUBLANG_IRISH_IRELAND,
+	SUBLANG_JAPANESE_JAPAN, SUBLANG_KANNADA_INDIA,
+	SUBLANG_KAZAK_KAZAKHSTAN, SUBLANG_KICHE_GUATEMALA,
+	SUBLANG_KINYARWANDA_RWANDA, SUBLANG_KONKANI_INDIA,
+	SUBLANG_KYRGYZ_KYRGYZSTAN, SUBLANG_LAO_LAOS, SUBLANG_LATVIAN_LATVIA,
+	SUBLANG_LITHUANIAN_LITHUANIA, SUBLANG_LOWER_SORBIAN_GERMANY,
+	SUBLANG_LUXEMBOURGISH_LUXEMBOURG, SUBLANG_MACEDONIAN_MACEDONIA,
+	SUBLANG_MALAYALAM_INDIA, SUBLANG_MALTESE_MALTA,
+	SUBLANG_MAORI_NEW_ZEALAND, SUBLANG_MAPUDUNGUN_CHILE,
+	SUBLANG_MARATHI_INDIA, SUBLANG_MOHAWK_CANADA, SUBLANG_NEPALI_NEPAL,
+	SUBLANG_OCCITAN_FRANCE, SUBLANG_ORIYA_INDIA,
+	SUBLANG_PASHTO_AFGHANISTAN, SUBLANG_POLISH_POLAND,
+	SUBLANG_ROMANSH_SWITZERLAND, SUBLANG_SAMI_NORTHERN_NORWAY,
+	SUBLANG_SAMI_NORTHERN_SWEDEN, SUBLANG_SAMI_NORTHERN_FINLAND,
+	SUBLANG_SAMI_LULE_NORWAY, SUBLANG_SAMI_LULE_SWEDEN,
+	SUBLANG_SAMI_SOUTHERN_NORWAY, SUBLANG_SAMI_SOUTHERN_SWEDEN,
+	SUBLANG_SAMI_SKOLT_FINLAND, SUBLANG_SAMI_INARI_FINLAND,
+	SUBLANG_SANSKRIT_INDIA, SUBLANG_SINHALESE_SRI_LANKA,
+	SUBLANG_SLOVAK_SLOVAKIA, SUBLANG_SLOVENIAN_SLOVENIA,
+	SUBLANG_SOTHO_SOUTH_AFRICA, SUBLANG_SWAHILI_KENYA,
+	SUBLANG_SWEDISH_SWEDEN, SUBLANG_SYRIAC_SYRIA,
+	SUBLANG_TAGALOG_PHILIPPINES, SUBLANG_TAJIK_TAJIKISTAN,
+	SUBLANG_TAMIL_INDIA, SUBLANG_TATAR_RUSSIA, SUBLANG_TELUGU_INDIA,
+	SUBLANG_THAI_THAILAND, SUBLANG_TSWANA_SOUTH_AFRICA,
+	SUBLANG_TURKISH_TURKEY, SUBLANG_TURKMEN_TURKMENISTAN,
+	SUBLANG_UKRAINIAN_UKRAINE, SUBLANG_UPPER_SORBIAN_GERMANY,
+	SUBLANG_VIETNAMESE_VIETNAM, SUBLANG_WELSH_UNITED_KINGDOM,
+	SUBLANG_WOLOF_SENEGAL, SUBLANG_XHOSA_SOUTH_AFRICA,
+	SUBLANG_YAKUT_RUSSIA, SUBLANG_YI_PRC, SUBLANG_YORUBA_NIGERIA,
+	SUBLANG_ZULU_SOUTH_AFRICA): New macros.
+	(gl_locale_name_from_win32_LANGID): Handle also the territory neutral
+	locale ids. Add support for Alsatian, Bashkir, Breton, Corsican, Dari,
+	Greenlandic, K'iche', Kinyarwanda, Luxembourgish, Mapudungun, Mohawk,
+	Occitan, Scottish Gaelic, Wolof, Yakut. Change language code for Yi.
+	Add more languages and countries for Sami, Sorbian. Add more countries
+	for Serbian, Dutch. Add more scripts for Inuktitut. Be more precise
+	for Pashto. Change country for Syriac, Tswana.
+
+2009-12-21  Eric Blake  <ebb9@byu.net>
+
+	test-utimens: avoid spurious failure
+	* tests/test-chown.h (nap): Factor...
+	* tests/nap.h: ...into new file.
+	* tests/test-lchown.h (nap): Avoid duplication.
+	* tests/test-utimens-common.h (nap): Use shared implementation,
+	necessary on file systems with 1-second resolution.
+	* modules/chown-tests (Files): Include new file.
+	* modules/fdutimensat-tests (Files): Likewise.
+	* modules/futimens-tests (Files): Likewise.
+	* modules/lchown-tests (Files): Likewise.
+	* modules/openat-tests (Files): Likewise.
+	* modules/utimens-tests (Files): Likewise.
+	* modules/utimensat-tests (Files): Likewise.
+
+2009-12-19  Eric Blake  <ebb9@byu.net>
+
+	futimens, utimensat: work around Linux bug
+	* m4/futimens.m4 (gl_FUNC_FUTIMENS): Detect ctime bug.
+	* m4/utimensat.m4 (gl_FUNC_UTIMENSAT): Likewise.
+	* lib/utimensat.c (rpl_utimensat): Work around it.
+	* lib/futimens.c (rpl_futimens): Adjust comment.
+
+	utimens: work around Linux ctime bug
+	* lib/utimens.c (detect_ctime_bug): New helper function.
+	(update_timespec): Differentiate between workaround needed for
+	this bug vs. what is needed for systems that lack utimensat.
+	(fdutimens, lutimens): Work around bug.
+
+	utimens: check for ctime update
+	* tests/test-utimens-common.h (check_ctime): Define.
+	* tests/test-utimens.h (test_utimens): Expose the Linux bug.
+	* tests/test-futimens.h (test_futimens): Likewise.
+	* tests/test-lutimens.h (test_lutimens): Likewise.
+	* doc/posix-functions/futimens.texi (futimens): Document the bug.
+	* doc/posix-functions/utimensat.texi (utimensat): Likewise.
+
+2009-12-19  Bruno Haible  <bruno@clisp.org>
+
+	dprintf-posix: Check against memory leak fixed on 2009-12-15.
+	* tests/test-dprintf-posix2.sh: New file.
+	* tests/test-dprintf-posix2.c: New file.
+	* modules/dprintf-posix-tests (Files): Add them.
+	(configure.ac): Check for getrlimit and setrlimit.
+	(Makefile.am): Augment TESTS and CHECK_PROGRAMS.
+
+2009-12-19  Bruno Haible  <bruno@clisp.org>
+
+	fprintf-posix: Check against memory leak fixed on 2009-12-15.
+	* tests/test-fprintf-posix3.sh: New file.
+	* tests/test-fprintf-posix3.c: New file.
+	* modules/fprintf-posix-tests (Files): Add them.
+	(Makefile.am): Augment TESTS and CHECK_PROGRAMS.
+
+2009-12-19  Eric Blake  <ebb9@byu.net>
+
+	dirfd: fix prototype
+	* lib/dirent.in.h (dirfd): Argument is not const, per POSIX.
+	* lib/dirfd.c (dirfd): Likewise.
+
+	canonicalize: reduce memory usage
+	* lib/canonicalize.c (canonicalize_filename_mode): Trim the
+	allocation to size.
+	Reported by Solar Designer <solar@openwall.com>.
+
+2009-12-19  Bruno Haible  <bruno@clisp.org>
+
+	New module attribute 'Applicability'.
+	* modules/TEMPLATE-EXTENDED: New field 'Applicability'.
+	* gnulib-tool: New option --extract-applicability.
+	(func_usage): Document it.
+	(sed_extract_prog): Recognize it.
+	(func_get_applicability): New function.
+	(func_import): Generalize handling of 'link-warning' module.
+	* modules/link-warning (Applicability): New section.
+	* modules/arg-nonnull (Applicability): New section.
+	Repoted by Simon Josefsson <simon@josefsson.org>.
+
+2009-12-19  Bruno Haible  <bruno@clisp.org>
+
+	fflush: tweak
+	* lib/fflush.c (update_fpos_cache): Don't use fpos_t on Cygwin.
+	* lib/fseeko.c (rpl_fseeko): Likewise.
+
+2009-12-16  José E. Marchesi  <jemarch@gnu.org>  (tiny change)
+
+	* lib/gl_list.h: Fix typo in comment.
+
+2009-12-16  Eric Blake  <ebb9@byu.net>
+
+	fcntl: use to simplify other modules
+	* modules/cloexec (Depends-on): Add fcntl.
+	* modules/fchdir (Depends-on): Likewise.
+	* modules/fd-safer-flag (Depends-on): Likewise.
+	* modules/unistd-safer (Depends-on): Likewise.
+	* modules/dup3 (configure.ac): Set module indicator.
+	* m4/fchdir.m4 (gl_FUNC_FCHDIR): Replace fcntl if fchdir is
+	missing.
+	* lib/fchdir.c (_gl_register_dup): Fix comment.
+	* lib/cloexec.c (dup_cloexec): Simplify, by relying on fcntl.
+	* lib/dup-safer.c (dup_safer): Likewise.
+	* lib/dup-safer-flag.c (dup_safer_flag): Likewise.
+	* lib/dup3.c (dup3): Likewise.
+	* tests/test-fchdir.c (main): Enhance test.
+	Fixes a dup_cloexec bug reported by Ondřej Vašík.
+
+	fcntl: port portions of fcntl to mingw
+	* m4/fcntl.m4 (gl_FUNC_FCNTL): Also build fcntl.c on mingw.
+	* lib/fcntl.c (fcntl) <F_DUPFD, F_DUPFD_CLOEXEC, F_GETFD>: Provide
+	replacement for mingw.
+	* modules/fcntl (Description): Update.
+	(Depends-on): Add dup2.
+	* m4/fcntl_h.m4 (gl_FCNTL_H_DEFAULTS): Add witness.
+	* modules/fcntl-h (Makefile.am): Substitute it.
+	* lib/fcntl.in.h (fcntl): Update declaration.
+	(F_DUPFD, F_GETFD): New macros, when needed.
+	* doc/posix-headers/fcntl.texi (fcntl.h): Update documentation.
+	* doc/posix-functions/fcntl.texi (fcntl): Likewise.
+	* tests/test-fcntl.c (check_flags, main): Enhance test for items
+	we now guarantee.
+
+	fcntl: work around cygwin bug in F_DUPFD
+	* m4/fcntl.m4 (gl_REPLACE_FCNTL): New macro.
+	(gl_FUNC_FCNTL): Use it.  Test for F_DUPFD bug.
+	* lib/fcntl.c (rpl_fcntl) <F_DUPFD>: Work around it.
+	<F_DUPFD_CLOEXEC>: Reduce calls to _gl_register_dup.
+	* doc/posix-functions/fcntl.texi (fcntl): Document it.
+
+	fcntl: support F_DUPFD_CLOEXEC on systems with fcntl
+	* modules/fcntl (Files): List new files.
+	(configure.ac): Run a test.
+	* m4/fcntl.m4 (gl_FUNC_FCNTL): New file.
+	* lib/fcntl.c (rpl_fcntl): Likewise.
+	* m4/fcntl_h.m4 (gl_FCNTL_H_DEFAULTS): Add witness defaults.
+	(gl_FCNTL_H): Always replace fcntl.h.
+	* modules/fcntl-h (Makefile.am): Substitute witnesses.
+	* lib/fcntl.in.h (fcntl): Declare replacement.
+	(F_DUPFD_CLOEXEC, GNULIB_defined_F_DUPFD_CLOEXEC): New macro when
+	needed, plus a witness.
+	* doc/posix-functions/fcntl.texi (fcntl): Document this.
+	* doc/posix-headers/fcntl.texi (fcntl.h): Likewise.
+	* tests/test-fcntl.c: New file.
+	* modules/fcntl-tests: Likewise.
+
+	binary-io: avoid potential compilation warning
+	* lib/binary-io.h [__DJGPP__]: Avoid null preprocessor
+	directives.
+
+	fflush: avoid compilation error on NetBSD
+	* lib/fflush.c (update_fpos_cache): Use a union to safely convert
+	between off_t and fpos_t, since the latter is sometimes a struct.
+	* lib/fseeko.c (rpl_fseeko): Likewise.
+	Reported by Alexander Nasonov <alnsn@yandex.ru>.
+
+2009-12-15  Eric Blake  <ebb9@byu.net>
+
+	fcntl-h, stdio, sys_ioctl: fix declarations
+	* lib/stdio.in.h (dprintf): Use of link warning on a variadic
+	function must not take arguments.
+	* lib/sys_ioctl.in.h (ioctl): Likewise.
+	* lib/fcntl.in.h (openat): Likewise.  Declare extern.
+	(open): Add a link warning.
+
+2009-12-15  Jim Meyering  <meyering@redhat.com>
+
+	areadlink, areadlink-with-size: relax license to LGPLv2+
+	* modules/areadlink (License): Relax to LGPLv2+.
+	* modules/areadlink-with-size (License): Likewise.
+
+2009-12-15  Joel E. Denny  <jdenny@clemson.edu>
+	    Bruno Haible  <bruno@clisp.org>
+
+	*printf: Fix memory leak.
+	* lib/fprintf.c (fprintf): Free memory allocated by vasnprintf.
+	* lib/vfprintf.c (vfprintf): Likewise.
+	* lib/dprintf.c (dprintf): Likewise.
+	* lib/vdprintf.c (vdprintf): Likewise.
+
+2009-12-14  Eric Blake  <ebb9@byu.net>
+
+	accept4: adjust module dependencies
+	* modules/accept4 (Depends-on): Use fcntl-h, not fcntl.
+
+	utimens: one more try at avoiding compiler warning
+	* lib/utimens.c (lutimens): Lower scope of result.
+
+2009-12-13  Bruno Haible  <bruno@clisp.org>
+
+	Move the malloc checking from module 'list' to new module 'xlist'.
+	* modules/xlist: New file.
+	* lib/gl_xlist.h: New file.
+	* lib/gl_xlist.c: New file.
+	* lib/gl_list.h (gl_list_create_empty, gl_list_create,
+	gl_list_node_set_value, gl_list_set_at, gl_list_add_first,
+	gl_list_add_last, gl_list_add_before, gl_list_add_after,
+	gl_list_nx_add_at, gl_sortedlist_add): Disable declarations.
+	(gl_list_nx_create_empty, gl_list_nx_create, gl_list_node_nx_set_value,
+	gl_list_nx_set_at, gl_list_nx_add_first, gl_list_nx_add_last,
+	gl_list_nx_add_before, gl_list_nx_add_after, gl_list_nx_add_at,
+	gl_sortedlist_nx_add): New declarations.
+	(struct gl_list_implementation): Rename and change methods accordingly.
+	(gl_list_nx_create_empty): Renamed from gl_list_create_empty.
+	(gl_list_nx_create): Renamed from gl_list_create.
+	(gl_list_node_nx_set_value): Renamed from gl_list_node_set_value.
+	(gl_list_nx_set_at): Renamed from gl_list_set_at.
+	(gl_list_nx_add_first): Renamed from gl_list_add_first.
+	(gl_list_nx_add_last): Renamed from gl_list_add_last.
+	(gl_list_nx_add_before): Renamed from gl_list_add_before.
+	(gl_list_nx_add_after): Renamed from gl_list_add_after.
+	(gl_list_nx_add_at): Renamed from gl_list_add_at.
+	(gl_sortedlist_nx_add): Renamed from gl_sortedlist_add.
+	* lib/gl_list.c (gl_list_nx_create_empty): Renamed from
+	gl_list_create_empty.
+	(gl_list_nx_create): Renamed from gl_list_create.
+	(gl_list_node_nx_set_value): Renamed from gl_list_node_set_value.
+	(gl_list_nx_set_at): Renamed from gl_list_set_at.
+	(gl_list_nx_add_first): Renamed from gl_list_add_first.
+	(gl_list_nx_add_last): Renamed from gl_list_add_last.
+	(gl_list_nx_add_before): Renamed from gl_list_add_before.
+	(gl_list_nx_add_after): Renamed from gl_list_add_after.
+	(gl_list_nx_add_at): Renamed from gl_list_add_at.
+	(gl_sortedlist_nx_add): Renamed from gl_sortedlist_add.
+	* lib/gl_array_list.c: Don't include xalloc.h.
+	(gl_array_nx_create_empty): Renamed from gl_array_create_empty. Return
+	NULL upon out-of-memory.
+	(gl_array_nx_create): Renamed from gl_array_create. Return NULL upon
+	out-of-memory.
+	(gl_array_node_nx_set_value): Renamed from gl_array_node_set_value.
+	Change return type to 'int'.
+	(gl_array_nx_set_at): Renamed from gl_array_set_at.
+	(grow): Change return type to 'int'. Return -1 upon out-of-memory.
+	(gl_array_nx_add_first): Renamed from gl_array_add_first. Return NULL
+	upon out-of-memory.
+	(gl_array_nx_add_last): Renamed from gl_array_add_last. Return NULL
+	upon out-of-memory.
+	(gl_array_nx_add_before): Renamed from gl_array_add_before. Return NULL
+	upon out-of-memory.
+	(gl_array_nx_add_after): Renamed from gl_array_add_after. Return NULL
+	upon out-of-memory.
+	(gl_array_nx_add_at): Renamed from gl_array_add_at. Return NULL upon
+	out-of-memory.
+	(gl_array_sortedlist_nx_add): Renamed from gl_array_sortedlist_add.
+	Update.
+	(gl_array_list_implementation): Update.
+	* lib/gl_carray_list.c: Don't include xalloc.h.
+	(gl_carray_nx_create_empty): Renamed from gl_carray_create_empty.
+	Return NULL upon out-of-memory.
+	(gl_carray_nx_create): Renamed from gl_carray_create. Return NULL upon
+	out-of-memory.
+	(gl_carray_node_nx_set_value): Renamed from gl_carray_node_set_value.
+	Change return type to 'int'.
+	(gl_carray_nx_set_at): Renamed from gl_carray_set_at.
+	(grow): Change return type to 'int'. Return -1 upon out-of-memory.
+	(gl_carray_nx_add_first): Renamed from gl_carray_add_first. Return NULL
+	upon out-of-memory.
+	(gl_carray_nx_add_last): Renamed from gl_carray_add_last. Return NULL
+	upon out-of-memory.
+	(gl_carray_nx_add_at): Renamed from gl_carray_add_at. Return NULL upon
+	out-of-memory.
+	(gl_carray_nx_add_before): Renamed from gl_carray_add_before. Update.
+	(gl_carray_nx_add_after): Renamed from gl_carray_add_after. Update.
+	(gl_carray_sortedlist_nx_add): Renamed from gl_carray_sortedlist_add.
+	Update.
+	(gl_carray_list_implementation): Update.
+	* lib/gl_anyhash_list2.h (hash_resize): Do nothing upon out-of-memory.
+	* lib/gl_anylinked_list2.h (gl_linked_nx_create_empty): Renamed from
+	gl_linked_create_empty. Return NULL upon out-of-memory.
+	(gl_linked_nx_create): Renamed from gl_linked_create. Return NULL upon
+	out-of-memory.
+	(gl_linked_node_nx_set_value): Renamed from gl_linked_node_set_value.
+	Change return type to 'int'. Return -1 upon out-of-memory.
+	(gl_linked_nx_set_at): Renamed from gl_linked_set_at. Return NULL upon
+	out-of-memory.
+	(gl_linked_nx_add_first): Renamed from gl_linked_add_first. Return NULL
+	upon out-of-memory.
+	(gl_linked_nx_add_last): Renamed from gl_linked_add_last. Return NULL
+	upon out-of-memory.
+	(gl_linked_nx_add_before): Renamed from gl_linked_add_before. Return
+	NULL upon out-of-memory.
+	(gl_linked_nx_add_after): Renamed from gl_linked_add_after. Return NULL
+	upon out-of-memory.
+	(gl_linked_nx_add_at): Renamed from gl_linked_add_at. Return NULL upon
+	out-of-memory.
+	(gl_linked_sortedlist_nx_add): Renamed from gl_linked_sortedlist_add.
+	Update.
+	* lib/gl_linked_list.c: Don't include xalloc.h.
+	(gl_linked_list_implementation): Update.
+	* lib/gl_linkedhash_list.c: Don't include xalloc.h.
+	(add_to_bucket): Change return type to 'int'.
+	(gl_linkedhash_list_implementation): Update.
+	* lib/gl_anytree_list1.h (free_subtree): New function.
+	* lib/gl_anytree_list2.h (gl_tree_nx_create_empty): Renamed from
+	gl_tree_create_empty. Return NULL upon out-of-memory.
+	(gl_tree_node_nx_set_value): Renamed from gl_tree_node_set_value.
+	Change return type to 'int'. Return -1 upon out-of-memory.
+	(gl_tree_nx_set_at): Renamed from gl_tree_set_at. Return NULL upon
+	out-of-memory.
+	(gl_tree_nx_add_at): Renamed from gl_tree_add_at. Update.
+	(gl_tree_remove_node): New function, moved here from
+	lib/gl_anyavltree_list2.h and lib/gl_anyrbtree_list2.h.
+	(gl_tree_sortedlist_nx_add): Renamed from gl_tree_sortedlist_add.
+	Update.
+	* lib/gl_anyavltree_list2.h (create_subtree_with_contents): Use
+	malloc, not xmalloc. Return NULL upon out-of-memory.
+	(gl_tree_nx_create): Renamed from gl_tree_create. Return NULL upon
+	out-of-memory.
+	(gl_tree_remove_node_from_tree): New function, extracted from
+	gl_tree_remove_node.
+	(gl_tree_nx_add_first): Renamed from gl_tree_add_first. Return NULL
+	upon out-of-memory.
+	(gl_tree_nx_add_last): Renamed from gl_tree_add_last. Return NULL upon
+	out-of-memory.
+	(gl_tree_nx_add_before): Renamed from gl_tree_add_before. Return NULL
+	upon out-of-memory.
+	(gl_tree_nx_add_after): Renamed from gl_tree_add_after. Return NULL
+	upon out-of-memory.
+	(gl_tree_remove_node): Remove function. Moved to gl_anytree_list2.h.
+	* lib/gl_anyrbtree_list2.h (create_subtree_with_contents): Use malloc,
+	not xmalloc. Return NULL upon out-of-memory.
+	(gl_tree_nx_create): Renamed from gl_tree_create. Return NULL upon
+	out-of-memory.
+	(gl_tree_remove_node_from_tree): New function, extracted from
+	gl_tree_remove_node.
+	(gl_tree_nx_add_first): Renamed from gl_tree_add_first. Return NULL
+	upon out-of-memory.
+	(gl_tree_nx_add_last): Renamed from gl_tree_add_last. Return NULL upon
+	out-of-memory.
+	(gl_tree_nx_add_before): Renamed from gl_tree_add_before. Return NULL
+	upon out-of-memory.
+	(gl_tree_nx_add_after): Renamed from gl_tree_add_after. Return NULL
+	upon out-of-memory.
+	(gl_tree_remove_node): Remove function. Moved to gl_anytree_list2.h.
+	* lib/gl_avltree_list.c: Don't include xalloc.h. Include
+	gl_anytree_list1.h before gl_anyavltree_list2.h.
+	(gl_avltree_list_implementation): Update.
+	* lib/gl_rbtree_list.c: Don't include xalloc.h. Include
+	gl_anytree_list1.h before gl_anyavltree_list2.h.
+	(gl_rbtree_list_implementation): Update.
+	* lib/gl_anytreehash_list1.h (add_to_bucket, add_nodes_to_buckets):
+	Change return type to 'int'. Return -1 upon out-of-memory. Use
+	__builtin_expect.
+	* lib/gl_avltreehash_list.c: Don't include xalloc.h.
+	(gl_avltreehash_list_implementation): Update.
+	* lib/gl_rbtreehash_list.c: Don't include xalloc.h.
+	(gl_rbtreehash_list_implementation): Update.
+	* modules/array-list (Depends-on): Remove xalloc.
+	* modules/carray-list (Depends-on): Likewise.
+	* modules/linked-list (Depends-on): Likewise.
+	* modules/linkedhash-list (Depends-on): Likewise.
+	* modules/avltree-list (Depends-on): Likewise.
+	* modules/rbtree-list (Depends-on): Likewise.
+	* modules/avltreehash-list (Depends-on): Likewise.
+	* modules/rbtreehash-list (Depends-on): Likewise.
+
+	* modules/xsublist: New file.
+	* lib/gl_xsublist.h: New file.
+	* lib/gl_xsublist.c: New file.
+	* lib/gl_sublist.h (gl_sublist_create): Disable declaration.
+	(gl_sublist_nx_create): New declaration.
+	* lib/gl_sublist.c: Don't include xalloc.h.
+	(gl_sublist_nx_create_empty): Renamed from gl_sublist_create_empty.
+	(gl_sublist_nx_create_fill): Renamed from gl_sublist_create_fill.
+	(gl_sublist_node_nx_set_value): Renamed from gl_sublist_node_set_value.
+	Change return type to 'int'. Return -1 upon out-of-memory.
+	(gl_sublist_nx_set_at): Renamed from gl_sublist_set_at. Return NULL
+	upon out-of-memory.
+	(gl_sublist_nx_add_first): Renamed from gl_sublist_add_first. Return
+	NULL upon out-of-memory.
+	(gl_sublist_nx_add_last): Renamed from gl_sublist_add_last. Return NULL
+	upon out-of-memory.
+	(gl_sublist_nx_add_before): Renamed from gl_sublist_add_before. Return
+	NULL upon out-of-memory.
+	(gl_sublist_nx_add_after): Renamed from gl_sublist_add_after. Return
+	NULL upon out-of-memory.
+	(gl_sublist_nx_add_at): Renamed from gl_sublist_add_at. Return NULL
+	upon out-of-memory.
+	(gl_sublist_sortedlist_nx_add): Renamed from gl_sublist_sortedlist_add.
+	(gl_sublist_list_implementation): Update.
+	(gl_sublist_nx_create): Renamed from gl_sublist_create. Return NULL
+	upon out-of-memory.
+	* modules/sublist (Depends-on): Remove xalloc.
+
+	* tests/test-array_list.c: Use gl_list_nx_* functions where possible.
+	* tests/test-carray_list.c: Likewise.
+	* tests/test-linked_list.c: Likewise.
+	* tests/test-linkedhash_list.c: Likewise.
+	* tests/test-avltree_list.c: Likewise.
+	* tests/test-rbtree_list.c: Likewise.
+	* tests/test-avltreehash_list.c: Likewise.
+	* tests/test-rbtreehash_list.c: Likewise.
+	* modules/array-list-tests (Makefile.am): Don't link with @LIBINTL@.
+	* modules/carray-list-tests (Makefile.am): Likewise.
+	* modules/linked-list-tests (Makefile.am): Likewise.
+	* modules/linkedhash-list-tests (Makefile.am): Likewise.
+	* modules/avltree-list-tests (Makefile.am): Likewise.
+	* modules/rbtree-list-tests (Makefile.am): Likewise.
+	* modules/avltreehash-list-tests (Makefile.am): Likewise.
+	* modules/rbtreehash-list-tests (Makefile.am): Likewise.
+
+	* NEWS: Mention the changes.
+
+	* lib/clean-temp.c: Include gl_xlist.h.
+	* modules/clean-temp (Depends-on): Add xlist.
+
+	* lib/git-merge-changelog.c: Include gl_xlist.h instead of gl_list.h.
+	* modules/git-merge-changelog (Depends-on): Add xlist. Remove list.
+
+	* tests/test-array_oset.c: Include gl_xlist.h.
+	* modules/array-oset-tests (Depends-on): Add xlist.
+
+	Reported by José E. Marchesi <jemarch@gnu.org>.
+
+2009-12-13  Bruno Haible  <bruno@clisp.org>
+
+	Move the malloc checking from module 'oset' to new module 'xoset'.
+	* modules/xoset: New file.
+	* lib/gl_xoset.h: New file.
+	* lib/gl_xoset.c: New file.
+	* lib/gl_oset.h (gl_oset_create_empty, gl_oset_add): Disable
+	declarations.
+	(gl_oset_nx_create_empty, gl_oset_nx_add): New declarations.
+	(struct gl_oset_implementation): Rename and change methods accordingly.
+	(gl_oset_nx_create_empty): Renamed from gl_oset_create_empty.
+	(gl_oset_nx_add): Renamed from gl_oset_add. Change return type to
+	'int'. Mark as __warn_unused_result__.
+	* lib/gl_oset.c (gl_oset_nx_create_empty): Renamed from
+	gl_oset_create_empty.
+	(gl_oset_nx_add): Renamed from gl_oset_add. Change return type to
+	'int'.
+	* lib/gl_array_oset.c: Don't include xalloc.h.
+	(gl_array_nx_create_empty): Renamed from gl_array_create_empty. Use
+	malloc, not xmalloc.
+	(grow): Change return type to 'int'. Don't call xalloc_die.
+	(gl_array_nx_add_at): Renamed from gl_array_add_at. Change return type
+	to 'int'.
+	(gl_array_nx_add): Renamed from gl_array_add. Change return type to
+	'int'.
+	(gl_array_oset_implementation): Update.
+	* lib/gl_anytree_oset.h (gl_tree_nx_create_empty): Renamed from
+	gl_tree_create_empty.
+	(gl_tree_nx_add): Renamed from gl_tree_add. Change return type to
+	'int'.
+	* lib/gl_avltree_oset.c: Don't include xalloc.h.
+	(gl_tree_nx_add_first): Renamed from gl_tree_add_first. Use malloc, not
+	xmalloc.
+	(gl_tree_nx_add_before): Renamed from gl_tree_add_before. Use malloc,
+	not xmalloc.
+	(gl_tree_nx_add_after): Renamed from gl_tree_add_after. Use malloc, not
+	xmalloc.
+	(gl_avltree_oset_implementation): Update.
+	* lib/gl_rbtree_oset.c: Don't include xalloc.h.
+	(gl_tree_nx_add_first): Renamed from gl_tree_add_first. Use malloc, not
+	xmalloc.
+	(gl_tree_nx_add_before): Renamed from gl_tree_add_before. Use malloc,
+	not xmalloc.
+	(gl_tree_nx_add_after): Renamed from gl_tree_add_after. Use malloc, not
+	xmalloc.
+	(gl_rbtree_oset_implementation): Update.
+	* modules/array-oset (Depends-on): Remove xalloc.
+	* modules/avltree-oset (Depends-on): Likewise.
+	* modules/rbtree-oset (Depends-on): Likewise.
+	* tests/test-array_oset.c: Use gl_oset_nx_* functions where possible.
+	* tests/test-avltree_oset.c: Likewise.
+	* tests/test-rbtree_oset.c: Likewise.
+	* lib/gl_anytreehash_list1.h (add_to_bucket): Likewise.
+	* modules/avltree-oset-tests (Makefile.am): Don't link with @LIBINTL@.
+	* modules/rbtree-oset-tests (Makefile.am): Likewise.
+	* NEWS: Mention the change.
+
+2009-12-05  Alfred M. Szmidt  <ams@gnu.org>
+
+	maint.mk: allow a project to override release-prep commands
+	* top/maint.mk (alpha, beta, stable): Move release-preparatory
+	commands into a new rule.
+	(release-prep): New rule.
+	(release-prep-hook): New overridable variable.
+
+2009-12-13  Bruno Haible  <bruno@clisp.org>
+
+	* lib/localcharset.c (locale_charset): Fix comment about use of GetACP.
+
+2009-12-13  Jim Meyering  <meyering@redhat.com>
+
+	maint.mk (null_AM_MAKEFLAGS, built_programs): remove unused definitions
+	* top/maint.mk (null_AM_MAKEFLAGS, built_programs): Remove definitions.
+
+2009-12-12  Bruno Haible  <bruno@clisp.org>
+
+	duplocale: Tweak.
+	* lib/duplocale.c (rpl_duplocale): Mark categories array as 'const'.
+
+2009-12-12  Karl Berry  <karl@gnu.org>
+
+	* config/srclist.txt (strtoll.c): tab changes, no more sync.
+
+2009-12-12  Bruno Haible  <bruno@clisp.org>
+
+	* m4/po.m4: Undo incorrect untabification.
+
+2009-12-12  Bruno Haible  <bruno@clisp.org>
+
+	c-strtod, c-strtold: Use multithread-safe implementation on MacOS X.
+	* modules/c-strtod (Depends-on): Add locale.
+	* modules/c-strtold (Depends-on): Likewise.
+
+2009-12-12  Bruno Haible  <bruno@clisp.org>
+
+	* lib/localcharset.c (locale_charset): Add comment about use of GetACP.
+
+2009-12-11  Eric Blake  <ebb9@byu.net>
+
+	setenv: relax requirement in light of POSIX ruling
+	* m4/setenv.m4 (gl_FUNC_SETENV_SEPARATE): Test handling of "" but
+	not NULL.
+	* tests/test-setenv.c (main): Relax test.
+	* tests/test-unsetenv.c (main): Likewise.
+	* doc/posix-functions/setenv.texi (setenv): Document this.
+	* doc/posix-functions/unsetenv.texi (unsetenv): Likewise.
+
+2009-12-11  Bruno Haible  <bruno@clisp.org>
+
+	New module 'fd-safer-flag'.
+	* lib/dup-safer-flag.c: New file, extracted from lib/dup-safer.c.
+	* lib/dup-safer.c (dup_safer_flag): Remove function.
+	* lib/fd-safer-flag.c: New file, extracted from lib/fd-safer.c.
+	* lib/fd-safer.c (fd_safer_flag): Remove function.
+	* lib/unistd-safer.h (dup_safer_flag, fd_safer_flag): Update condition.
+	* modules/cloexec (configure.ac): Drop indicator macro.
+	* modules/fd-safer-flag: New file.
+	* modules/pipe2-safer (Depends-on): Add fd-safer-flag. Remove cloexec.
+	* modules/stdlib-safer (Depends-on): Add fd-safer-flag.
+	* modules/unistd-safer-tests (Depends-on): Add fd-safer-flag.
+
+2009-12-11  Bruno Haible  <bruno@clisp.org>
+
+	Tests for module 'nl_langinfo'.
+	* modules/nl_langinfo-tests: New file.
+	* tests/test-nl_langinfo.sh: New file.
+	* tests/test-nl_langinfo.c: New file.
+
+	New module 'nl_langinfo'.
+	* lib/nl_langinfo.c: New file.
+	* m4/nl_langinfo.m4: New file.
+	* modules/nl_langinfo: New file.
+	* doc/posix-functions/nl_langinfo.texi: Mention the new module.
+
+2009-12-11  Bruno Haible  <bruno@clisp.org>
+
+	Tests for module 'langinfo'.
+	* modules/langinfo-tests: New file.
+	* tests/test-langinfo.c: New file.
+
+	New module 'langinfo'.
+	* lib/langinfo.in.h: New file.
+	* m4/langinfo_h.m4: New file.
+	* modules/langinfo: New file.
+	* doc/posix-headers/langinfo.texi: Mention the new module.
+
+2009-12-11  Bruno Haible  <bruno@clisp.org>
+
+	* lib/config.charset: Untabify.
+
+2009-12-11  Bruno Haible  <bruno@clisp.org>
+
+	* modules/unistd-safer (configure.ac): Drop indicator macro.
+
+2009-12-11  Bruno Haible  <bruno@clisp.org>
+
+	Move pipe2-safer code to its own file.
+	* lib/pipe2-safer.c: New file, extracted from lib/pipe-safer.c.
+	* lib/pipe-safer.c (pipe2_safer): Remove function.
+	* modules/pipe2-safer (Files): Add lib/pipe2-safer.c.
+	(Makefile.am): Add it to lib_SOURCES.
+
+2009-12-10  Bruno Haible  <bruno@clisp.org>
+
+	* lib/recvfrom.c (rpl_recvfrom): Allow the from argument to be NULL.
+
+2009-12-10  Bruno Haible  <bruno@clisp.org>
+
+	Declare which arguments expect non-NULL values, for GCC and clang.
+	* build-aux/arg-nonnull.h: New file.
+	* modules/arg-nonnull: New file.
+	* lib/arpa_inet.in.h (_GL_ARG_NONNULL): New placeholder.
+	(inet_ntop, inet_pton): Use it.
+	* lib/dirent.in.h (_GL_ARG_NONNULL): New placeholder.
+	(closedir, dirfd, opendir, scandir, alphasort): Use it.
+	* lib/fcntl.in.h (_GL_ARG_NONNULL): New placeholder.
+	(open, openat): Use it.
+	* lib/fnmatch.in.h (_GL_ARG_NONNULL): New placeholder.
+	(fnmatch): Use it.
+	* lib/getopt.in.h (_GL_ARG_NONNULL): New placeholder.
+	(getopt, getopt_long, getopt_long_only): Use it.
+	* lib/glob.in.h (_GL_ARG_NONNULL): New placeholder.
+	* lib/glob-libc.h (glob, globfree, glob64, globfree64, glob_pattern_p):
+	Use it.
+	* lib/iconv.in.h (_GL_ARG_NONNULL): New placeholder.
+	(iconv_open): Use it.
+	* lib/inttypes.in.h (_GL_ARG_NONNULL): New placeholder.
+	(strtoimax, strtoumax): Use it.
+	* lib/locale.in.h (_GL_ARG_NONNULL): New placeholder.
+	(duplocale): Use it.
+	* lib/math.in.h (_GL_ARG_NONNULL): New placeholder.
+	(frexp, frexpl): Use it.
+	* lib/netdb.in.h (_GL_ARG_NONNULL): New placeholder.
+	(getaddrinfo, freeaddrinfo, getnameinfo): Use it.
+	* lib/search.in.h (_GL_ARG_NONNULL): New placeholder.
+	(tsearch, tfind, tdelete, twalk): Use it.
+	* lib/signal.in.h (_GL_ARG_NONNULL): New placeholder.
+	(sigismember, sigemptyset, sigaddset, sigdelset, sigfillset,
+	sigpending): Use it.
+	* lib/spawn.in.h (_GL_ARG_NONNULL): New placeholder.
+	(posix_spawn, posix_spawnp, posix_spawnattr_init,
+	posix_spawnattr_destroy, posix_spawnattr_getsigdefault,
+	posix_spawnattr_setsigdefault, posix_spawnattr_getsigmask,
+	posix_spawnattr_setsigmask, posix_spawnattr_getflags,
+	posix_spawnattr_setflags, posix_spawnattr_getpgroup,
+	posix_spawnattr_setpgroup, posix_spawnattr_getschedpolicy,
+	posix_spawnattr_setschedpolicy, posix_spawnattr_getschedparam,
+	posix_spawnattr_setschedparam, posix_spawn_file_actions_init,
+	posix_spawn_file_actions_destroy, posix_spawn_file_actions_addopen,
+	posix_spawn_file_actions_addclose, posix_spawn_file_actions_adddup2):
+	Use it.
+	* lib/stdio.in.h (_GL_ARG_NONNULL): New placeholder.
+	(dprintf, fclose, fopen, fprintf, fpurge, fputc, fputs, freopen,
+	rpl_fseek, fseeko, rpl_ftell, ftello, fwrite, getdelim, getline,
+	obstack_printf, obstack_vprintf, popen, printf, putc, puts, remove,
+	rename, renameat, snprintf, sprintf, asprintf, vasprintf, vdprintf,
+	vfprintf, vprintf, vsnprintf, vsprintf): Use it.
+	* lib/stdlib.in.h (_GL_ARG_NONNULL): New placeholder.
+	(atoll, canonicalize_file_name, getloadavg, getsubopt, mkdtemp,
+	mkostemp, mkostemps, mkstemp, mkstemps, putenv, srandom_r, initstate_r,
+	setstate_r, random_r, realpath, rpmatch, setenv, strtod, strtoll,
+	strtoull, unsetenv): Use it.
+	* lib/string.in.h (_GL_ARG_NONNULL): New placeholder.
+	(memchr, memmem, mempcpy, memrchr, rawmemchr, stpcpy, stpncpy,
+	strchrnul, strdup, strndup, strnlen, strpbrk, strsep, strstr,
+	strcasestr, strtok_r, mbslen, mbsnlen, mbschr, mbsrchr, mbsstr,
+	mbscasecmp, mbsncasecmp, mbspcasecmp, mbscasestr, mbscspn, mbspbrk,
+	mbsspn, mbssep, mbstok_r, strverscmp): Use it.
+	* lib/strings.in.h (_GL_ARG_NONNULL): New placeholder.
+	(strcasecmp, strncasecmp): Use it.
+	* lib/sys_socket.in.h (_GL_ARG_NONNULL): New placeholder.
+	(rpl_connect, rpl_bind, rpl_getpeername, rpl_getsockname,
+	rpl_getsockopt, rpl_recv, rpl_send, rpl_recvfrom, rpl_sendto,
+	rpl_setsockopt): Use it.
+	* lib/sys_stat.in.h (_GL_ARG_NONNULL): New placeholder.
+	(fchmodat, fstat, fstatat, lchmod, rpl_lstat, mkdir, mkdirat, mkfifo,
+	mkfifoat, mknod, mknodat, stat, utimensat): Use it.
+	* lib/sys_time.in.h (_GL_ARG_NONNULL): New placeholder.
+	(gettimeofday): Use it.
+	* lib/sys_times.in.h (_GL_ARG_NONNULL): New placeholder.
+	(times): Use it.
+	* lib/sys_utsname.in.h (_GL_ARG_NONNULL): New placeholder.
+	(uname): Use it.
+	* lib/time.in.h (_GL_ARG_NONNULL): New placeholder.
+	(nanosleep, mktime, localtime_r, gmtime_r, strptime, timegm): Use it.
+	* lib/unistd.in.h (_GL_ARG_NONNULL): New placeholder.
+	(chown, euidaccess, faccessat, _gl_register_fd, fchownat,
+	getdomainname, gethostname, getlogin_r, lchown, link, linkat, pipe2,
+	pread, readlink, readlinkat, rmdir, symlink, symlinkat, unlink,
+	unlinkat, write): Use it.
+	* lib/wchar.in.h (_GL_ARG_NONNULL): New placeholder.
+	(mbsrtowcs, mbsnrtowcs, wcsrtombs, wcsnrtombs): Use it.
+	* lib/argv-iter.h: Include arg-nonnull.h.
+	(_ATTRIBUTE_NONNULL_): Remove macro.
+	(argv_iter_init_argv, argv_iter_init_stream, argv_iter,
+	argv_iter_n_args, argv_iter_free): Use _GL_ARG_NONNULL.
+	* lib/canonicalize-lgpl.c (_GL_ARG_NONNULL): Define, to defeat gcc
+	optimization.
+	* lib/getaddrinfo.c (_GL_ARG_NONNULL): Likewise.
+	* lib/getdelim.c (_GL_ARG_NONNULL): Likewise.
+	* lib/glob.c (_GL_ARG_NONNULL): Likewise.
+	* lib/random_r.c (_GL_ARG_NONNULL): Likewise.
+	* lib/setenv.c (_GL_ARG_NONNULL): Likewise.
+	* lib/strtod.c (_GL_ARG_NONNULL): Likewise.
+	* lib/tsearch.c (_GL_ARG_NONNULL): Likewise.
+	* lib/unsetenv.c (_GL_ARG_NONNULL): Likewise.
+	* modules/arpa_inet (Depends-on): Add arg-nonnull.
+	(Makefile.am): Insert arg-nonnull.h into arpa/inet.h.
+	* modules/dirent (Depends-on): Add arg-nonnull.
+	(Makefile.am): Insert arg-nonnull.h into dirent.h.
+	* modules/fcntl-h (Depends-on): Add arg-nonnull.
+	(Makefile.am): Insert arg-nonnull.h into fcntl.h.
+	* modules/fnmatch (Depends-on): Add arg-nonnull.
+	(Makefile.am): Insert arg-nonnull.h into fnmatch.h.
+	* modules/getopt-posix (Depends-on): Add arg-nonnull.
+	(Makefile.am): Insert arg-nonnull.h into getopt.h.
+	* modules/glob (Depends-on): Add arg-nonnull.
+	(Makefile.am): Insert arg-nonnull.h into glob.h.
+	* modules/iconv_open (Depends-on): Add arg-nonnull.
+	(Makefile.am): Insert arg-nonnull.h into iconv.h.
+	* modules/inttypes (Depends-on): Add arg-nonnull.
+	(Makefile.am): Insert arg-nonnull.h into inttypes.h.
+	* modules/locale (Depends-on): Add arg-nonnull.
+	(Makefile.am): Insert arg-nonnull.h into locale.h.
+	* modules/math (Depends-on): Add arg-nonnull.
+	(Makefile.am): Insert arg-nonnull.h into math.h.
+	* modules/netdb (Depends-on): Add arg-nonnull.
+	(Makefile.am): Insert arg-nonnull.h into netdb.h.
+	* modules/search (Depends-on): Add arg-nonnull.
+	(Makefile.am): Insert arg-nonnull.h into search.h.
+	* modules/signal (Depends-on): Add arg-nonnull.
+	(Makefile.am): Insert arg-nonnull.h into signal.h.
+	* modules/spawn (Depends-on): Add arg-nonnull.
+	(Makefile.am): Insert arg-nonnull.h into spawn.h.
+	* modules/stdio (Depends-on): Add arg-nonnull.
+	(Makefile.am): Insert arg-nonnull.h into stdio.h.
+	* modules/stdlib (Depends-on): Add arg-nonnull.
+	(Makefile.am): Insert arg-nonnull.h into stdlib.h.
+	* modules/string (Depends-on): Add arg-nonnull.
+	(Makefile.am): Insert arg-nonnull.h into string.h.
+	* modules/strings (Depends-on): Add arg-nonnull.
+	(Makefile.am): Insert arg-nonnull.h into strings.h.
+	* modules/sys_socket (Depends-on): Add arg-nonnull.
+	(Makefile.am): Insert arg-nonnull.h into sys/socket.h.
+	* modules/sys_stat (Depends-on): Add arg-nonnull.
+	(Makefile.am): Insert arg-nonnull.h into sys/stat.h.
+	* modules/sys_time (Depends-on): Add arg-nonnull.
+	(Makefile.am): Insert arg-nonnull.h into sys/time.h.
+	* modules/sys_times (Depends-on): Add arg-nonnull.
+	(Makefile.am): Insert arg-nonnull.h into sys/times.h.
+	* modules/sys_utsname (Depends-on): Add arg-nonnull.
+	(Makefile.am): Insert arg-nonnull.h into sys/utsname.h.
+	* modules/time (Depends-on): Add arg-nonnull.
+	(Makefile.am): Insert arg-nonnull.h into time.h.
+	* modules/unistd (Depends-on): Add arg-nonnull.
+	(Makefile.am): Insert arg-nonnull.h into unistd.h.
+	* modules/wchar (Depends-on): Add arg-nonnull.
+	(Makefile.am): Insert arg-nonnull.h into wchar.h.
+	* modules/argv-iter (Depends-on): Add arg-nonnull.
+	* tests/test-canonicalize.c (null_ptr): New function.
+	(main): Use it.
+	* tests/test-canonicalize-lgpl.c (null_ptr): New function.
+	(main): Use it.
+	* tests/test-memmem.c (null_ptr): New function.
+	(main): Use it.
+	Reported by Jim Meyering.
+
 2009-12-10  Bruno Haible  <bruno@clisp.org>
 
 	Use spaces for indentation, not tabs.
@@ -6319,10 +9312,9 @@
 	    --with-packager=Gentoo \
 	    --with-packager-bug-report=http://bugs.gentoo.org/ \
 	    --with-packager-version="patchset 1.6"
-	  $ ./src/ls --version | head -n3
+	  $ ./src/ls --version | head -n2
 	  ls (GNU coreutils) 7.1-dirty
 	  Packaged by Gentoo (patchset 1.6)
-	  Copyright (C) 2009 Free Software Foundation, Inc.
 	Note that the bug reporting info via --help doesn't show up because
 	coreutils uses its own custom emit_bug_reporting_address() implementation
 	in src/system.h.  If it didn't, it'd look like:
@@ -57933,7 +60925,7 @@
 	coding: utf-8
 	End:
 
-	Copyright (C) 1997-2009 Free Software Foundation, Inc.
+	Copyright (C) 1997-2010 Free Software Foundation, Inc.
 
 	Copying and distribution of this file, with or without
 	modification, are permitted provided the copyright notice

@@ -1,5 +1,5 @@
 /* Provide relocatable packages.
-   Copyright (C) 2003-2006, 2008-2009 Free Software Foundation, Inc.
+   Copyright (C) 2003-2006, 2008-2010 Free Software Foundation, Inc.
    Written by Bruno Haible <bruno@clisp.org>, 2003.
 
    This program is free software; you can redistribute it and/or modify it
@@ -22,7 +22,7 @@
    This must come before <config.h> because <config.h> may include
    <features.h>, and once <features.h> has been included, it's too late.  */
 #ifndef _GNU_SOURCE
-# define _GNU_SOURCE    1
+# define _GNU_SOURCE 1
 #endif
 
 #include <config.h>

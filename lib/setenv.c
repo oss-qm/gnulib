@@ -1,4 +1,4 @@
-/* Copyright (C) 1992,1995-1999,2000-2003,2005-2009 Free Software Foundation, Inc.
+/* Copyright (C) 1992, 1995-2003, 2005-2010 Free Software Foundation, Inc.
    This file is part of the GNU C Library.
 
    This program is free software: you can redistribute it and/or modify
@@ -17,6 +17,11 @@
 #if !_LIBC
 # include <config.h>
 #endif
+
+/* Don't use __attribute__ __nonnull__ in this compilation unit.  Otherwise gcc
+   optimizes away the name == NULL test below.  */
+#define _GL_ARG_NONNULL(params)
+
 #include <alloca.h>
 
 /* Specification.  */

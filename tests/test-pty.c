@@ -1,5 +1,5 @@
 /* Test of pty.h and openpty/forkpty functions.
-   Copyright (C) 2009 Free Software Foundation, Inc.
+   Copyright (C) 2009, 2010 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -19,6 +19,12 @@
 #include <config.h>
 
 #include <pty.h>
+
+#include "signature.h"
+SIGNATURE_CHECK (forkpty, int, (int *, char *, struct termios *,
+                                struct winsize *));
+SIGNATURE_CHECK (openpty, int, (int *, int *, char *, struct termios *,
+                                struct winsize *));
 
 #include <stdio.h>
 

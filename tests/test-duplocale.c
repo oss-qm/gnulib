@@ -1,5 +1,5 @@
 /* Test of duplicating a locale object.
-   Copyright (C) 2009 Free Software Foundation, Inc.
+   Copyright (C) 2009, 2010 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -22,23 +22,15 @@
 
 #if HAVE_DUPLOCALE
 
+#include "signature.h"
+SIGNATURE_CHECK (duplocale, locale_t, (locale_t));
+
 #include <langinfo.h>
 #include <monetary.h>
 #include <stdio.h>
-#include <stdlib.h>
 #include <string.h>
 
-#define ASSERT(expr) \
-  do                                                                         \
-    {                                                                        \
-      if (!(expr))                                                           \
-        {                                                                    \
-          fprintf (stderr, "%s:%d: assertion failed\n", __FILE__, __LINE__); \
-          fflush (stderr);                                                   \
-          abort ();                                                          \
-        }                                                                    \
-    }                                                                        \
-  while (0)
+#include "macros.h"
 
 struct locale_dependent_values
 {

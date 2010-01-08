@@ -1,5 +1,6 @@
 Files:
 tests/test-avltree_list.c
+tests/macros.h
 
 Depends-on:
 array-list
@@ -10,4 +11,3 @@ configure.ac:
 Makefile.am:
 TESTS += test-avltree_list
 check_PROGRAMS += test-avltree_list
-test_avltree_list_LDADD = $(LDADD) @LIBINTL@

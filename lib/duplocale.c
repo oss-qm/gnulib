@@ -1,5 +1,5 @@
 /* Duplicate a locale object.
-   Copyright (C) 2009 Free Software Foundation, Inc.
+   Copyright (C) 2009, 2010 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -37,7 +37,7 @@ rpl_duplocale (locale_t locale)
     {
       /* Create a copy of the locale by fetching the name of each locale
          category, starting with LC_CTYPE.  */
-      static struct { int cat; int mask; } categories[] =
+      static struct { int cat; int mask; } const categories[] =
         {
             { LC_NUMERIC,        LC_NUMERIC_MASK },
             { LC_TIME,           LC_TIME_MASK },

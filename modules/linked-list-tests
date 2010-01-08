@@ -1,5 +1,6 @@
 Files:
 tests/test-linked_list.c
+tests/macros.h
 
 Depends-on:
 array-list
@@ -10,4 +11,3 @@ configure.ac:
 Makefile.am:
 TESTS += test-linked_list
 check_PROGRAMS += test-linked_list
-test_linked_list_LDADD = $(LDADD) @LIBINTL@

@@ -1,6 +1,8 @@
 Files:
 tests/test-ceill.c
 tests/nan.h
+tests/signature.h
+tests/macros.h
 
 Depends-on:
 fpucw
@@ -13,6 +15,3 @@ Makefile.am:
 TESTS += test-ceill
 check_PROGRAMS += test-ceill
 test_ceill_LDADD = $(LDADD) @CEILL_LIBM@
-
-License:
-LGPL

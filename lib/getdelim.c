@@ -1,6 +1,6 @@
 /* getdelim.c --- Implementation of replacement getdelim function.
-   Copyright (C) 1994, 1996, 1997, 1998, 2001, 2003, 2005, 2006, 2007,
-   2008, 2009 Free Software Foundation, Inc.
+   Copyright (C) 1994, 1996, 1997, 1998, 2001, 2003, 2005, 2006, 2007, 2008,
+   2009, 2010 Free Software Foundation, Inc.
 
    This program is free software; you can redistribute it and/or
    modify it under the terms of the GNU General Public License as
@@ -20,6 +20,10 @@
 /* Ported from glibc by Simon Josefsson. */
 
 #include <config.h>
+
+/* Don't use __attribute__ __nonnull__ in this compilation unit.  Otherwise gcc
+   optimizes away the lineptr == NULL || n == NULL || fp == NULL tests below.  */
+#define _GL_ARG_NONNULL(params)
 
 #include <stdio.h>
 

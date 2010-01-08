@@ -1,6 +1,8 @@
 Files:
 tests/test-stat.h
 tests/test-stat.c
+tests/signature.h
+tests/macros.h
 
 Depends-on:
 pathmax

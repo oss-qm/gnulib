@@ -1,5 +1,5 @@
 /* Test of sigaction() function.
-   Copyright (C) 2008, 2009 Free Software Foundation, Inc.
+   Copyright (C) 2008, 2009, 2010 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -20,21 +20,13 @@
 
 #include <signal.h>
 
-#include <stdio.h>
-#include <stdlib.h>
+#include "signature.h"
+SIGNATURE_CHECK (sigaction, int, (int, struct sigaction const *,
+                                  struct sigaction *));
 
-#define ASSERT(expr) \
-  do                                                                         \
-    {                                                                        \
-      if (!(expr))                                                           \
-        {                                                                    \
-          fprintf (stderr, "%s:%d: assertion failed\n", __FILE__, __LINE__); \
-          fflush (stderr);                                                   \
-          signal (SIGABRT, SIG_DFL);                                         \
-          abort ();                                                          \
-        }                                                                    \
-    }                                                                        \
-  while (0)
+#include <stddef.h>
+
+#include "macros.h"
 
 #ifndef SA_NOCLDSTOP
 # define SA_NOCLDSTOP 0

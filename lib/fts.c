@@ -1,6 +1,6 @@
 /* Traverse a file hierarchy.
 
-   Copyright (C) 2004-2009 Free Software Foundation, Inc.
+   Copyright (C) 2004-2010 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -712,9 +712,9 @@ leaf_optimization_applies (int dir_fd)
 
 #else
 static bool
-dirent_inode_sort_may_be_useful (int dir_fd _UNUSED_PARAMETER_) { return true; }
+dirent_inode_sort_may_be_useful (int dir_fd _GL_UNUSED) { return true; }
 static bool
-leaf_optimization_applies (int dir_fd _UNUSED_PARAMETER_) { return false; }
+leaf_optimization_applies (int dir_fd _GL_UNUSED) { return false; }
 #endif
 
 #if GNULIB_FTS
@@ -1064,7 +1064,7 @@ check_for_dir:
  */
 /* ARGSUSED */
 int
-fts_set(FTS *sp _UNUSED_PARAMETER_, FTSENT *p, int instr)
+fts_set(FTS *sp _GL_UNUSED, FTSENT *p, int instr)
 {
         if (instr != 0 && instr != FTS_AGAIN && instr != FTS_FOLLOW &&
             instr != FTS_NOINSTR && instr != FTS_SKIP) {

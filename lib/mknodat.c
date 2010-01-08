@@ -1,5 +1,5 @@
 /* Create an inode relative to an open directory.
-   Copyright (C) 2009 Free Software Foundation, Inc.
+   Copyright (C) 2009-2010 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -27,8 +27,8 @@
 /* Mingw lacks mknod, so this wrapper is trivial.  */
 
 int
-mknodat (int fd _UNUSED_PARAMETER_, char const *path _UNUSED_PARAMETER_,
-         mode_t mode _UNUSED_PARAMETER_, dev_t dev _UNUSED_PARAMETER_)
+mknodat (int fd _GL_UNUSED, char const *path _GL_UNUSED,
+         mode_t mode _GL_UNUSED, dev_t dev _GL_UNUSED)
 {
   errno = ENOSYS;
   return -1;

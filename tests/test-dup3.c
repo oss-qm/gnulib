@@ -1,5 +1,5 @@
 /* Test duplicating file descriptors.
-   Copyright (C) 2009 Free Software Foundation, Inc.
+   Copyright (C) 2009, 2010 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -21,11 +21,12 @@
 
 #include <unistd.h>
 
+#include "signature.h"
+SIGNATURE_CHECK (dup3, int, (int, int, int));
+
 #include <errno.h>
 #include <fcntl.h>
 #include <stdbool.h>
-#include <stdio.h>
-#include <stdlib.h>
 
 #if (defined _WIN32 || defined __WIN32__) && ! defined __CYGWIN__
 /* Get declarations of the Win32 API functions.  */
@@ -34,18 +35,7 @@
 #endif
 
 #include "binary-io.h"
-
-#define ASSERT(expr) \
-  do                                                                         \
-    {                                                                        \
-      if (!(expr))                                                           \
-        {                                                                    \
-          fprintf (stderr, "%s:%d: assertion failed\n", __FILE__, __LINE__); \
-          fflush (stderr);                                                   \
-          abort ();                                                          \
-        }                                                                    \
-    }                                                                        \
-  while (0)
+#include "macros.h"
 
 /* Return true if FD is open.  */
 static bool

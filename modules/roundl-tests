@@ -1,6 +1,8 @@
 Files:
 tests/test-roundl.c
 tests/nan.h
+tests/signature.h
+tests/macros.h
 
 Depends-on:
 fpucw
@@ -13,6 +15,3 @@ Makefile.am:
 TESTS += test-roundl
 check_PROGRAMS += test-roundl
 test_roundl_LDADD = $(LDADD) @ROUNDL_LIBM@
-
-License:
-LGPL

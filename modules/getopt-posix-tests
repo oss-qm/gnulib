@@ -1,9 +1,12 @@
 Files:
+tests/macros.h
+tests/signature.h
 tests/test-getopt.c
 tests/test-getopt.h
 tests/test-getopt_long.h
 
 Depends-on:
+dup2
 setenv
 stdbool
 unistd

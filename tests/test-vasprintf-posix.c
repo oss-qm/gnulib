@@ -1,5 +1,5 @@
 /* Test of POSIX compatible vasprintf() and asprintf() functions.
-   Copyright (C) 2007-2009 Free Software Foundation, Inc.
+   Copyright (C) 2007-2010 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -27,20 +27,8 @@
 #include <stdlib.h>
 #include <string.h>
 
+#include "macros.h"
 #include "nan.h"
-
-#define SIZEOF(array) (sizeof (array) / sizeof (array[0]))
-#define ASSERT(expr) \
-  do                                                                         \
-    {                                                                        \
-      if (!(expr))                                                           \
-        {                                                                    \
-          fprintf (stderr, "%s:%d: assertion failed\n", __FILE__, __LINE__); \
-          fflush (stderr);                                                   \
-          abort ();                                                          \
-        }                                                                    \
-    }                                                                        \
-  while (0)
 
 /* The SGI MIPS floating-point format does not distinguish 0.0 and -0.0.  */
 static int

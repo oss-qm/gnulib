@@ -1,5 +1,5 @@
 /* Tests of renameat.
-   Copyright (C) 2009 Free Software Foundation, Inc.
+   Copyright (C) 2009, 2010 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -20,6 +20,9 @@
 
 #include <stdio.h>
 
+#include "signature.h"
+SIGNATURE_CHECK (renameat, int, (int, char const *, int, char const *));
+
 #include <fcntl.h>
 #include <errno.h>
 #include <stdbool.h>
@@ -29,18 +32,7 @@
 
 #include "filenamecat.h"
 #include "xgetcwd.h"
-
-#define ASSERT(expr) \
-  do                                                                         \
-    {                                                                        \
-      if (!(expr))                                                           \
-        {                                                                    \
-          fprintf (stderr, "%s:%d: assertion failed\n", __FILE__, __LINE__);  \
-          fflush (stderr);                                                   \
-          abort ();                                                          \
-        }                                                                    \
-    }                                                                        \
-  while (0)
+#include "macros.h"
 
 #define BASE "test-renameat.t"
 
@@ -65,7 +57,7 @@ main (void)
   int result;
 
   /* Clean up any trash from prior testsuite runs.  */
-  ASSERT (system ("rm -rf " BASE "*") == 0);
+  system ("rm -rf " BASE "*");
 
   /* Test basic rename functionality, using current directory.  */
   result = test_rename (do_rename, false);

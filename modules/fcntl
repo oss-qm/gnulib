@@ -1,12 +1,18 @@
 Description:
-Placeholder for eventual fcntl() replacement.
+Support for fcntl() action F_DUPFD, F_DUPFD_CLOEXEC, F_GETFD.
 
 Files:
+m4/fcntl.m4
+lib/fcntl.c
 
 Depends-on:
+dup2
 fcntl-h
+extensions
 
 configure.ac:
+gl_FUNC_FCNTL
+gl_FCNTL_MODULE_INDICATOR([fcntl])
 
 Makefile.am:
 

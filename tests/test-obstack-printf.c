@@ -1,5 +1,5 @@
 /* Test of obstack_printf() and obstack_vprintf() functions.
-   Copyright (C) 2008-2009 Free Software Foundation, Inc.
+   Copyright (C) 2008-2010 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -20,6 +20,11 @@
 
 #include <stdio.h>
 
+#include "signature.h"
+SIGNATURE_CHECK (obstack_printf, int, (struct obstack *, char const *, ...));
+SIGNATURE_CHECK (obstack_vprintf, int, (struct obstack *, char const *,
+                                        va_list));
+
 #include "obstack.h"
 #include "xalloc.h"
 
@@ -28,18 +33,7 @@
 #include <string.h>
 
 #include "progname.h"
-
-#define ASSERT(expr) \
-  do                                                                         \
-    {                                                                        \
-      if (!(expr))                                                           \
-        {                                                                    \
-          fprintf (stderr, "%s:%d: assertion failed\n", __FILE__, __LINE__); \
-          fflush (stderr);                                                   \
-          abort ();                                                          \
-        }                                                                    \
-    }                                                                        \
-  while (0)
+#include "macros.h"
 
 #define obstack_chunk_alloc xmalloc
 #define obstack_chunk_free free

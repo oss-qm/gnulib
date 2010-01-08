@@ -1,5 +1,6 @@
 Files:
 tests/test-isfinite.c
+tests/macros.h
 
 Depends-on:
 float
@@ -13,6 +14,3 @@ Makefile.am:
 TESTS += test-isfinite
 check_PROGRAMS += test-isfinite
 test_isfinite_LDADD = $(LDADD) @ISFINITE_LIBM@
-
-License:
-GPL

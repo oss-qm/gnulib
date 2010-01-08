@@ -1,6 +1,8 @@
 Files:
 tests/test-ldexpl.c
 tests/nan.h
+tests/signature.h
+tests/macros.h
 
 Depends-on:
 fpucw
@@ -13,6 +15,3 @@ configure.ac:
 Makefile.am:
 TESTS += test-ldexpl
 check_PROGRAMS += test-ldexpl
-
-License:
-LGPL

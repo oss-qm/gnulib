@@ -1,5 +1,5 @@
 /* Test of <sys/times.h> substitute.
-   Copyright (C) 2008 Free Software Foundation, Inc.
+   Copyright (C) 2008, 2009, 2010 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -20,10 +20,11 @@
 
 #include <sys/times.h>
 
-struct tms tms;
+static struct tms tms;
 
 int
 main (void)
 {
-  return 0;
+  clock_t t = tms.tms_utime + tms.tms_stime + tms.tms_cutime + tms.tms_cstime;
+  return t;
 }

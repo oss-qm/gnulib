@@ -1,7 +1,9 @@
 Files:
 tests/test-array_oset.c
+tests/macros.h
 
 Depends-on:
+xlist
 array-list
 progname
 

@@ -1,4 +1,4 @@
-/* Copyright (C) 1992,1995-1999,2000-2002,2005-2009 Free Software Foundation, Inc.
+/* Copyright (C) 1992, 1995-2002, 2005-2010 Free Software Foundation, Inc.
    This file is part of the GNU C Library.
 
    This program is free software: you can redistribute it and/or modify
@@ -15,6 +15,10 @@
    along with this program.  If not, see <http://www.gnu.org/licenses/>.  */
 
 #include <config.h>
+
+/* Don't use __attribute__ __nonnull__ in this compilation unit.  Otherwise gcc
+   optimizes away the name == NULL test below.  */
+#define _GL_ARG_NONNULL(params)
 
 /* Specification.  */
 #include <stdlib.h>

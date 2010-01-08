@@ -1,6 +1,8 @@
 Files:
 tests/test-rmdir.h
 tests/test-rmdir.c
+tests/signature.h
+tests/macros.h
 
 Depends-on:
 stdbool

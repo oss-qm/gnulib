@@ -2,6 +2,8 @@ Files:
 tests/test-vsprintf-posix.c
 tests/test-sprintf-posix.h
 tests/nan.h
+tests/signature.h
+tests/macros.h
 
 Depends-on:
 stdint

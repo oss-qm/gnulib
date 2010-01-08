@@ -1,5 +1,5 @@
 /* Test of conversion of unibyte character to wide character.
-   Copyright (C) 2008 Free Software Foundation, Inc.
+   Copyright (C) 2008, 2009, 2010 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -20,21 +20,13 @@
 
 #include <wchar.h>
 
+#include "signature.h"
+SIGNATURE_CHECK (btowc, wint_t, (int));
+
 #include <locale.h>
 #include <stdio.h>
-#include <stdlib.h>
 
-#define ASSERT(expr) \
-  do                                                                         \
-    {                                                                        \
-      if (!(expr))                                                           \
-        {                                                                    \
-          fprintf (stderr, "%s:%d: assertion failed\n", __FILE__, __LINE__); \
-          fflush (stderr);                                                   \
-          abort ();                                                          \
-        }                                                                    \
-    }                                                                        \
-  while (0)
+#include "macros.h"
 
 int
 main (int argc, char *argv[])

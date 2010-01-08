@@ -1,5 +1,5 @@
 /* Test of opening a subcommand stream.
-   Copyright (C) 2009 Free Software Foundation, Inc.
+   Copyright (C) 2009, 2010 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -20,5 +20,9 @@
 
 /* Specification.  */
 #include <stdio.h>
+
+#include "signature.h"
+SIGNATURE_CHECK (popen, FILE *, (char const *, char const *));
+SIGNATURE_CHECK (pclose, int, (FILE *));
 
 #include "test-popen.h"

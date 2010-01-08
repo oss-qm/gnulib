@@ -1,9 +1,9 @@
 /* Test of fsync() function.
-   Copyright (C) 2008, 2009 Free Software Foundation, Inc.
+   Copyright (C) 2008, 2009, 2010 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
+   the Free Software Foundation; either version 3 of the License, or
    (at your option) any later version.
 
    This program is distributed in the hope that it will be useful,
@@ -16,22 +16,15 @@
 
 #include <config.h>
 
-#include <errno.h>
-#include <stdio.h>
-#include <fcntl.h>
 #include <unistd.h>
 
-#define ASSERT(expr) \
-  do                                                                         \
-    {                                                                        \
-      if (!(expr))                                                           \
-        {                                                                    \
-          fprintf (stderr, "%s:%d: assertion failed\n", __FILE__, __LINE__); \
-          fflush (stderr);                                                   \
-          abort ();                                                          \
-        }                                                                    \
-    }                                                                        \
-  while (0)
+#include "signature.h"
+SIGNATURE_CHECK (fsync, int, (int));
+
+#include <errno.h>
+#include <fcntl.h>
+
+#include "macros.h"
 
 int
 main (void)

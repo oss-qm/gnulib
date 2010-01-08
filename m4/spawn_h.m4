@@ -1,5 +1,5 @@
-# spawn_h.m4 serial 2
-dnl Copyright (C) 2008-2009 Free Software Foundation, Inc.
+# spawn_h.m4 serial 5
+dnl Copyright (C) 2008-2010 Free Software Foundation, Inc.
 dnl This file is free software; the Free Software Foundation
 dnl gives unlimited permission to copy and/or distribute it,
 dnl with or without modifications, as long as this notice is preserved.
@@ -12,15 +12,24 @@ AC_DEFUN([gl_SPAWN_H],
   dnl once only, before all statements that occur in other macros.
   AC_REQUIRE([gl_SPAWN_H_DEFAULTS])
 
-  dnl Execute this unconditionally, because SPAWN_H may be set by other
-  dnl modules, after this code is executed.
+  dnl <spawn.h> is always overridden, because of GNULIB_POSIXCHECK.
   gl_CHECK_NEXT_HEADERS([spawn.h])
 
   AC_CHECK_HEADERS_ONCE([spawn.h])
   if test $ac_cv_header_spawn_h = yes; then
     HAVE_SPAWN_H=1
+    AC_CHECK_TYPES([posix_spawnattr_t], [], [HAVE_POSIX_SPAWNATTR_T=0], [[
+#include <spawn.h>
+      ]])
+    AC_CHECK_TYPES([posix_spawn_file_actions_t], [],
+      [HAVE_POSIX_SPAWN_FILE_ACTIONS_T=0], [[
+#include <spawn.h>
+      ]])
   else
     HAVE_SPAWN_H=0
+    HAVE_POSIX_SPAWNATTR_T=0
+    HAVE_POSIX_SPAWN_FILE_ACTIONS_T=0
+    gl_REPLACE_SPAWN_H
   fi
   AC_SUBST([HAVE_SPAWN_H])
 
@@ -30,8 +39,8 @@ AC_DEFUN([gl_SPAWN_H],
 dnl Unconditionally enables the replacement of <spawn.h>.
 AC_DEFUN([gl_REPLACE_SPAWN_H],
 [
-  AC_REQUIRE([gl_SPAWN_H_DEFAULTS])
-  SPAWN_H='spawn.h'
+  dnl This is a no-op, because <spawn.h> is always overridden.
+  :
 ])
 
 AC_DEFUN([gl_SPAWN_MODULE_INDICATOR],
@@ -65,7 +74,9 @@ AC_DEFUN([gl_SPAWN_H_DEFAULTS],
   GNULIB_POSIX_SPAWNATTR_SETSIGMASK=0;        AC_SUBST([GNULIB_POSIX_SPAWNATTR_SETSIGMASK])
   GNULIB_POSIX_SPAWNATTR_DESTROY=0;           AC_SUBST([GNULIB_POSIX_SPAWNATTR_DESTROY])
   dnl Assume proper GNU behavior unless another module says otherwise.
-  HAVE_POSIX_SPAWN=1;     AC_SUBST([HAVE_POSIX_SPAWN])
-  REPLACE_POSIX_SPAWN=0;  AC_SUBST([REPLACE_POSIX_SPAWN])
-  SPAWN_H='';             AC_SUBST([SPAWN_H])
+  HAVE_POSIX_SPAWN=1;        AC_SUBST([HAVE_POSIX_SPAWN])
+  HAVE_POSIX_SPAWNATTR_T=1;  AC_SUBST([HAVE_POSIX_SPAWNATTR_T])
+  HAVE_POSIX_SPAWN_FILE_ACTIONS_T=1;
+                             AC_SUBST([HAVE_POSIX_SPAWN_FILE_ACTIONS_T])
+  REPLACE_POSIX_SPAWN=0;     AC_SUBST([REPLACE_POSIX_SPAWN])
 ])

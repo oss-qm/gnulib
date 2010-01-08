@@ -9,8 +9,9 @@ m4/accept4.m4
 Depends-on:
 sys_socket
 accept
-fcntl
+fcntl-h
 binary-io
+extensions
 
 configure.ac:
 gl_FUNC_ACCEPT4

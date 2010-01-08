@@ -1,5 +1,4 @@
-/* Copyright (C) 1991-2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009
-   Free Software Foundation, Inc.
+/* Copyright (C) 1991-2010 Free Software Foundation, Inc.
    This file is part of the GNU C Library.
 
    This program is free software: you can redistribute it and/or modify
@@ -18,6 +17,10 @@
 #ifndef _LIBC
 # include <config.h>
 #endif
+
+/* Don't use __attribute__ __nonnull__ in this compilation unit.  Otherwise gcc
+   optimizes away the pattern == NULL || pglob == NULL tests below.  */
+#define _GL_ARG_NONNULL(params)
 
 #include <glob.h>
 

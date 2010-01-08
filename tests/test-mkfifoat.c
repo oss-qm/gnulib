@@ -1,5 +1,5 @@
 /* Tests of mkfifoat and mknodat.
-   Copyright (C) 2009 Free Software Foundation, Inc.
+   Copyright (C) 2009, 2010 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -20,6 +20,10 @@
 
 #include <sys/stat.h>
 
+#include "signature.h"
+SIGNATURE_CHECK (mkfifoat, int, (int, char const *, mode_t));
+SIGNATURE_CHECK (mknodat, int, (int, char const *, mode_t, dev_t));
+
 #include <fcntl.h>
 #include <errno.h>
 #include <stdbool.h>
@@ -28,17 +32,7 @@
 #include <string.h>
 #include <unistd.h>
 
-#define ASSERT(expr) \
-  do                                                                         \
-    {                                                                        \
-      if (!(expr))                                                           \
-        {                                                                    \
-          fprintf (stderr, "%s:%d: assertion failed\n", __FILE__, __LINE__);  \
-          fflush (stderr);                                                   \
-          abort ();                                                          \
-        }                                                                    \
-    }                                                                        \
-  while (0)
+#include "macros.h"
 
 #define BASE "test-mkfifoat.t"
 
@@ -78,7 +72,7 @@ main (void)
   int result;
 
   /* Remove any leftovers from a previous partial run.  */
-  ASSERT (system ("rm -rf " BASE "*") == 0);
+  system ("rm -rf " BASE "*");
 
   /* Basic tests.  */
   result = test_mkfifo (do_mkfifoat, true);

@@ -1,6 +1,6 @@
 /* A GNU-like <math.h>.
 
-   Copyright (C) 2002-2003, 2007-2009 Free Software Foundation, Inc.
+   Copyright (C) 2002-2003, 2007-2010 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -29,6 +29,8 @@
 
 
 /* The definition of GL_LINK_WARNING is copied here.  */
+
+/* The definition of _GL_ARG_NONNULL is copied here.  */
 
 
 #ifdef __cplusplus
@@ -74,7 +76,7 @@ _NaN ()
 #if @GNULIB_FREXP@
 # if @REPLACE_FREXP@
 #  define frexp rpl_frexp
-extern double frexp (double x, int *expptr);
+extern double frexp (double x, int *expptr) _GL_ARG_NONNULL ((2));
 # endif
 #elif defined GNULIB_POSIXCHECK
 # undef frexp
@@ -211,7 +213,7 @@ extern long double floorl (long double x);
 # define frexpl rpl_frexpl
 #endif
 #if (@GNULIB_FREXPL@ && @REPLACE_FREXPL@) || !@HAVE_DECL_FREXPL@
-extern long double frexpl (long double x, int *expptr);
+extern long double frexpl (long double x, int *expptr) _GL_ARG_NONNULL ((2));
 #endif
 #if !@GNULIB_FREXPL@ && defined GNULIB_POSIXCHECK
 # undef frexpl
@@ -409,7 +411,6 @@ extern int gl_isinfl (long double x);
 # if @HAVE_ISNANF@
 /* The original <math.h> included above provides a declaration of isnan macro
    or (older) isnanf function.  */
-#  include <math.h>
 #  if __GNUC__ >= 4
     /* GCC 4.0 and newer provides three built-ins for isnan.  */
 #   undef isnanf
@@ -432,7 +433,6 @@ extern int isnanf (float x);
    to 'double' numbers earlier but now is a type-generic macro.  */
 # if @HAVE_ISNAND@
 /* The original <math.h> included above provides a declaration of isnan macro.  */
-#  include <math.h>
 #  if __GNUC__ >= 4
     /* GCC 4.0 and newer provides three built-ins for isnan.  */
 #   undef isnand
@@ -453,7 +453,6 @@ extern int isnand (double x);
 /* Test for NaN for 'long double' numbers.  */
 # if @HAVE_ISNANL@
 /* The original <math.h> included above provides a declaration of isnan macro or (older) isnanl function.  */
-#  include <math.h>
 #  if __GNUC__ >= 4
     /* GCC 4.0 and newer provides three built-ins for isnan.  */
 #   undef isnanl

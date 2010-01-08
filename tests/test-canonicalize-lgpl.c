@@ -1,5 +1,5 @@
 /* Test of execution of program termination handlers.
-   Copyright (C) 2007-2009 Free Software Foundation, Inc.
+   Copyright (C) 2007-2010 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -20,6 +20,10 @@
 
 #include <stdlib.h>
 
+#include "signature.h"
+SIGNATURE_CHECK (realpath, char *, (const char *, char *));
+SIGNATURE_CHECK (canonicalize_file_name, char *, (const char *));
+
 #include <errno.h>
 #include <fcntl.h>
 #include <stdio.h>
@@ -28,20 +32,15 @@
 #include <unistd.h>
 
 #include "same-inode.h"
-
-#define ASSERT(expr) \
-  do                                                                         \
-    {                                                                        \
-      if (!(expr))                                                           \
-        {                                                                    \
-          fprintf (stderr, "%s:%d: assertion failed\n", __FILE__, __LINE__); \
-          fflush (stderr);                                                   \
-          abort ();                                                          \
-        }                                                                    \
-    }                                                                        \
-  while (0)
+#include "macros.h"
 
 #define BASE "t-can-lgpl.tmp"
+
+static void *
+null_ptr (void)
+{
+  return NULL;
+}
 
 int
 main (void)
@@ -56,7 +55,7 @@ main (void)
      any leftovers from a previous partial run.  */
   {
     int fd;
-    ASSERT (system ("rm -rf " BASE " ise") == 0);
+    system ("rm -rf " BASE " ise");
     ASSERT (mkdir (BASE, 0700) == 0);
     fd = creat (BASE "/tra", 0600);
     ASSERT (0 <= fd);
@@ -75,7 +74,7 @@ main (void)
     ASSERT (result == NULL);
     ASSERT (errno == ENOENT);
     errno = 0;
-    result = canonicalize_file_name (NULL);
+    result = canonicalize_file_name (null_ptr ());
     ASSERT (result == NULL);
     ASSERT (errno == EINVAL);
   }

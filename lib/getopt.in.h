@@ -1,6 +1,6 @@
 /* Declarations for getopt.
-   Copyright (C) 1989-1994,1996-1999,2001,2003,2004,2005,2006,2007,2009
-   Free Software Foundation, Inc.
+   Copyright (C) 1989-1994, 1996-1999, 2001, 2003-2007, 2009-2010 Free Software
+   Foundation, Inc.
    This file is part of the GNU C Library.
 
    This program is free software: you can redistribute it and/or modify
@@ -121,6 +121,8 @@
 # endif
 #endif
 
+/* The definition of _GL_ARG_NONNULL is copied here.  */
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -222,17 +224,17 @@ struct option
    the environment, then do not permute arguments.  */
 
 extern int getopt (int ___argc, char *const *___argv, const char *__shortopts)
-       __THROW;
+       __THROW _GL_ARG_NONNULL ((2, 3));
 
 #ifndef __need_getopt
 extern int getopt_long (int ___argc, char *__getopt_argv_const *___argv,
                         const char *__shortopts,
                         const struct option *__longopts, int *__longind)
-       __THROW;
+       __THROW _GL_ARG_NONNULL ((2, 3));
 extern int getopt_long_only (int ___argc, char *__getopt_argv_const *___argv,
                              const char *__shortopts,
                              const struct option *__longopts, int *__longind)
-       __THROW;
+       __THROW _GL_ARG_NONNULL ((2, 3));
 
 #endif
 

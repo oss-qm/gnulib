@@ -1,6 +1,8 @@
 Files:
 tests/test-link.h
 tests/test-link.c
+tests/signature.h
+tests/macros.h
 
 Depends-on:
 errno

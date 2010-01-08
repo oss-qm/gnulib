@@ -1,5 +1,5 @@
 /* Test of rounding towards zero.
-   Copyright (C) 2007-2008 Free Software Foundation, Inc.
+   Copyright (C) 2007-2010 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -20,23 +20,12 @@
 
 #include <math.h>
 
-#include <stdio.h>
-#include <stdlib.h>
+#include "signature.h"
+SIGNATURE_CHECK (truncf, float, (float));
 
 #include "isnanf-nolibm.h"
 #include "nan.h"
-
-#define ASSERT(expr) \
-  do                                                                         \
-    {                                                                        \
-      if (!(expr))                                                           \
-        {                                                                    \
-          fprintf (stderr, "%s:%d: assertion failed\n", __FILE__, __LINE__); \
-          fflush (stderr);                                                   \
-          abort ();                                                          \
-        }                                                                    \
-    }                                                                        \
-  while (0)
+#include "macros.h"
 
 /* HP cc on HP-UX 10.20 has a bug with the constant expression -0.0f.
    So we use -zero instead.  */
