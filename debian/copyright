@@ -174,7 +174,7 @@ Files: ./doc/c-strtod.texi
 Copyright: 2008-2009 Free Software Foundation, Inc.
 License: GFDL-1.3+-NIV [REF11]
 
-Files: ./build-aux/pmccabe.css, ./doc/gendocs_template, ./doc/relocatable.texi, ./lib/bcopy.c, ./lib/c-strtold.c, ./lib/cloexec.h, ./lib/close-stream.h, ./lib/dev-ino.h, ./lib/dirchownmod.h, ./lib/fchown-stub.c, ./lib/file-set.h, ./lib/fprintftime.c, ./lib/ftruncate.c, ./lib/hash-triple.h, ./lib/idcache.h, ./lib/javaversion.class, ./lib/mkancesdirs.h, ./lib/mpsort.h, ./lib/posixver.h, ./lib/stat-macros.h, ./lib/strtoumax.c, ./lib/userspec.h, ./lib/utimens.h, ./lib/write-any-file.h, ./lib/xgethostname.h, ./lib/xmemcoll.h, ./lib/xnanosleep.h, ./lib/xstrtoimax.c, ./lib/xstrtold.c, ./lib/xstrtoul.c, ./lib/xstrtoumax.c
+Files: ./build-aux/pmccabe.css, ./doc/gendocs_template, ./doc/relocatable.texi, ./lib/bcopy.c, ./lib/c-strtold.c, ./lib/close-stream.h, ./lib/dev-ino.h, ./lib/dirchownmod.h, ./lib/fchown-stub.c, ./lib/file-set.h, ./lib/fprintftime.c, ./lib/ftruncate.c, ./lib/hash-triple.h, ./lib/idcache.h, ./lib/javaversion.class, ./lib/mkancesdirs.h, ./lib/mpsort.h, ./lib/posixver.h, ./lib/stat-macros.h, ./lib/strtoumax.c, ./lib/userspec.h, ./lib/utimens.h, ./lib/write-any-file.h, ./lib/xfreopen.h, ./lib/xgethostname.h, ./lib/xmemcoll.h, ./lib/xnanosleep.h, ./lib/xstrtoimax.c, ./lib/xstrtold.c, ./lib/xstrtoul.c, ./lib/xstrtoumax.c
 License: GPL [REF12]
 
 Files: ./lib/getloadavg.c
@@ -202,7 +202,7 @@ Copyright: 1988-1989, 1992-1993, 1995, 2001-2003, 2006, 2008, Free Software Foun
 License: GPL [REF12]
 
 Files: ./lib/diffseq.h
-Copyright: 1988-1989, 1992-1995, 2001-2004, 2006-2008 Free Software Foundation, Inc.
+Copyright: 1988-1989, 1992-1995, 2001-2004, 2006-2009 Free Software Foundation, Inc.
 License: GPL [REF12]
 
 Files: ./lib/posixtm.c
@@ -222,7 +222,7 @@ Copyright: 1989, 1993 The Regents of the University of California / 2004-2009 Fr
 License: GPL [REF12]
 
 Files: ./lib/userspec.c
-Copyright: 1989-1992, 1997-1998, 2000, 2002-2007 Free Software Foundation, Inc.
+Copyright: 1989-1992, 1997-1998, 2000, 2002-2009 Free Software Foundation, Inc.
 License: GPL [REF12]
 
 Files: ./lib/diacrit.h
@@ -317,10 +317,6 @@ Files: ./lib/getusershell.c
 Copyright: 1991, 1997, 2000, 2001, 2003, 2004, 2005, 2006, 2008 Free Software Foundation, Inc.
 License: GPL [REF12]
 
-Files: ./lib/cloexec.c
-Copyright: 1991, 2004, 2005, 2006 Free Software Foundation, Inc.
-License: GPL [REF12]
-
 Files: ./lib/getcwd.c
 Copyright: 1991-1999, 2004-2009 Free Software Foundation, Inc.
 License: GPL [REF12]
@@ -350,7 +346,7 @@ Copyright: 1992, 1996, 2000-2001, 2003-2004, 2006, 2008 Free Software Foundation
 License: GPL [REF12]
 
 Files: ./lib/setenv.c
-Copyright: 1992,1995-1999,2000-2003,2005-2008 Free Software Foundation, Inc.
+Copyright: 1992,1995-1999,2000-2003,2005-2009 Free Software Foundation, Inc.
 License: GPL [REF12]
 
 Files: ./lib/readutmp.c
@@ -390,7 +386,7 @@ Copyright: 1994, 1995, 1996, 1997, 2000, 2003, 2004, 2005, 2006 Free Software Fo
 License: GPL [REF12]
 
 Files: ./lib/group-member.c
-Copyright: 1994, 1997, 1998, 2003, 2005, 2006 Free Software Foundation, Inc.
+Copyright: 1994, 1997, 1998, 2003, 2005, 2006, 2009 Free Software Foundation, Inc.
 License: GPL [REF12]
 
 Files: ./lib/group-member.h
@@ -634,7 +630,7 @@ Copyright: 1999, 2000, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009 Free Softw
 License: GPL [REF12]
 
 Files: ./lib/nanosleep.c
-Copyright: 1999, 2000, 2002, 2004, 2005, 2006, 2007, 2008 Free Software Foundation, Inc.
+Copyright: 1999, 2000, 2002, 2004, 2005, 2006, 2007, 2008, 2009 Free Software Foundation, Inc.
 License: GPL [REF12]
 
 Files: ./lib/strtoimax.c
@@ -802,7 +798,7 @@ Copyright: 2001, 2003, 2004-2009 Free Software Foundation, Inc.
 License: GPL [REF12]
 
 Files: ./lib/unistd-safer.h
-Copyright: 2001, 2003, 2005 Free Software Foundation, Inc.
+Copyright: 2001, 2003, 2005, 2009 Free Software Foundation, Inc.
 License: GPL [REF12]
 
 Files: ./lib/hash-pjw.c
@@ -909,8 +905,12 @@ Files: ./lib/pipe-filter-aux.h, ./lib/pipe-filter-gi.c, ./lib/pipe-filter-ii.c
 Copyright: 2001-2003, 2008-2009 Free Software Foundation, Inc.
 License: GPL [REF12]
 
-Files: ./lib/progname.h, ./lib/sh-quote.c, ./lib/xstriconv.c
+Files: ./lib/sh-quote.c, ./lib/xstriconv.c
 Copyright: 2001-2004, 2006 Free Software Foundation, Inc.
+License: GPL [REF12]
+
+Files: ./lib/progname.h
+Copyright: 2001-2004, 2006, 2009 Free Software Foundation, Inc.
 License: GPL [REF12]
 
 Files: ./lib/xstriconv.h
@@ -1233,10 +1233,6 @@ Files: ./lib/chdir-long.h
 Copyright: 2004, 2005 Free Software Foundation, Inc.
 License: GPL [REF12]
 
-Files: ./m4/cloexec.m4
-Copyright: 2004, 2005, 2006 Free Software Foundation, Inc.
-License: GPL [REF12]
-
 Files: ./lib/calloc.c, ./m4/chdir-long.m4, ./m4/utimecmp.m4
 Copyright: 2004, 2005, 2006, 2007 Free Software Foundation, Inc.
 License: GPL [REF12]
@@ -1273,11 +1269,11 @@ Files: ./lib/chdir-long.c, ./lib/fdopendir.c, ./lib/openat.c, ./m4/calloc.m4, ./
 Copyright: 2004-2009 Free Software Foundation, Inc.
 License: GPL [REF12]
 
-Files: ./lib/chdir-safer.h, ./lib/fprintftime.h, ./lib/gethrxtime.h, ./lib/readline.h, ./lib/unistd--.h, ./lib/unlinkdir.h
+Files: ./lib/chdir-safer.h, ./lib/fprintftime.h, ./lib/gethrxtime.h, ./lib/readline.h, ./lib/unlinkdir.h
 Copyright: 2005 Free Software Foundation, Inc.
 License: GPL [REF12]
 
-Files: ./lib/creat-safer.c, ./lib/pipe-safer.c, ./lib/xtime.h, ./m4/argmatch.m4, ./m4/fprintftime.m4, ./m4/memcasecmp.m4, ./m4/stdlib-safer.m4, ./m4/xnanosleep.m4
+Files: ./lib/creat-safer.c, ./lib/xtime.h, ./m4/argmatch.m4, ./m4/fprintftime.m4, ./m4/memcasecmp.m4, ./m4/stdlib-safer.m4, ./m4/xnanosleep.m4
 Copyright: 2005, 2006 Free Software Foundation, Inc.
 License: GPL [REF12]
 
@@ -1301,7 +1297,7 @@ Files: ./lib/open-safer.c, ./lib/openat-die.c, ./lib/openat-safer.c
 Copyright: 2005, 2006, 2008-2009 Free Software Foundation, Inc.
 License: GPL [REF12]
 
-Files: ./lib/fd-safer.c, ./lib/mkdirat.c, ./lib/openat-priv.h, ./lib/stdio--.h, ./m4/chdir-safer.m4, ./m4/readline.m4
+Files: ./lib/fd-safer.c, ./lib/mkdirat.c, ./lib/openat-priv.h, ./lib/pipe-safer.c, ./lib/stdio--.h, ./m4/chdir-safer.m4, ./m4/readline.m4
 Copyright: 2005, 2006, 2009 Free Software Foundation, Inc.
 License: GPL [REF12]
 
@@ -1317,7 +1313,7 @@ Files: ./lib/pagealign_alloc.h
 Copyright: 2005, 2008 Free Software Foundation, Inc.
 License: GPL [REF12]
 
-Files: ./lib/fcntl--.h, ./lib/fcntl-safer.h, ./lib/stdlib-safer.h
+Files: ./lib/fcntl--.h, ./lib/fcntl-safer.h, ./lib/stdlib-safer.h, ./lib/unistd--.h
 Copyright: 2005, 2009 Free Software Foundation, Inc.
 License: GPL [REF12]
 
@@ -1381,7 +1377,7 @@ Files: ./build-aux/vc-list-files, ./lib/gl_list.c, ./lib/gl_list.h, ./lib/proper
 Copyright: 2006-2009 Free Software Foundation, Inc.
 License: GPL [REF12]
 
-Files: ./lib/closein.c, ./lib/closein.h, ./lib/file-set.c, ./lib/getugroups.h, ./lib/hash-triple.c, ./lib/mpsort.c, ./lib/write-any-file.c, ./lib/xprintf.c, ./m4/check-math-lib.m4, ./m4/closein.m4, ./m4/gnu-make.m4, ./m4/mpsort.m4
+Files: ./lib/closein.c, ./lib/closein.h, ./lib/file-set.c, ./lib/hash-triple.c, ./lib/mpsort.c, ./lib/write-any-file.c, ./lib/xprintf.c, ./m4/check-math-lib.m4, ./m4/closein.m4, ./m4/gnu-make.m4, ./m4/mpsort.m4
 Copyright: 2007 Free Software Foundation, Inc.
 License: GPL [REF12]
 
@@ -1389,12 +1385,20 @@ Files: ./build-aux/pmccabe2html
 Copyright: 2007, 2008, 2009 Free Software Foundation, Inc.
 License: GPL [REF12]
 
-Files: ./lib/selinux-at.c, ./lib/selinux-at.h, ./lib/tmpfile.c, ./m4/tmpfile.m4, ./m4/write-any-file.m4
+Files: ./lib/mgetgroups.h
+Copyright: 2007, 2009 Free Software Foundation, Inc
+License: GPL [REF12]
+
+Files: ./lib/getugroups.h, ./lib/selinux-at.c, ./lib/selinux-at.h, ./lib/tmpfile.c, ./m4/tmpfile.m4, ./m4/write-any-file.m4
 Copyright: 2007, 2009 Free Software Foundation, Inc.
 License: GPL [REF12]
 
 Files: ./build-aux/mktempd, ./lib/isfinite.c, ./lib/isinf.c, ./lib/stdio-impl.h, ./lib/xprintf.h, ./m4/exponentd.m4, ./m4/exponentf.m4, ./m4/isnan.m4, ./m4/posix-shell.m4, ./tests/test-isfinite.c, ./tests/test-isinf.c
 Copyright: 2007-2008 Free Software Foundation, Inc.
+License: GPL [REF12]
+
+Files: ./lib/mgetgroups.c, ./m4/mgetgroups.m4
+Copyright: 2007-2009 Free Software Foundation, Inc
 License: GPL [REF12]
 
 Files: ./build-aux/git-version-gen, ./lib/fflush.c, ./lib/strerror.c, ./m4/exponentl.m4, ./m4/fflush.m4, ./m4/isfinite.m4, ./m4/isinf.m4
@@ -1413,11 +1417,15 @@ Files: ./lib/git-merge-changelog.c
 Copyright: 2008-2009 Bruno Haible <bruno@clisp.org>
 License: GPL [REF12]
 
+Files: ./lib/xfreopen.c
+Copyright: 2008-2009 Free Software Foundation, Inc
+License: GPL [REF12]
+
 Files: ./m4/obstack-printf-posix.m4
 Copyright: 2008-2009 Free Software Foundation, Inc.
 License: GPL [REF12]
 
-Files: ./build-aux/do-release-commit-and-tag, ./build-aux/gnu-web-doc-update, ./lib/fdutimensat.c, ./lib/freopen-safer.c, ./lib/futimens.c, ./lib/linkat.c, ./lib/mkfifoat.c, ./lib/renameat.c, ./lib/unlinkat.c, ./lib/utimensat.c, ./m4/futimens.m4, ./m4/linkat.m4, ./m4/mkfifoat.m4, ./m4/nproc.m4, ./m4/renameat.m4, ./m4/utimensat.m4
+Files: ./build-aux/do-release-commit-and-tag, ./build-aux/gnu-web-doc-update, ./lib/fdutimensat.c, ./lib/freopen-safer.c, ./lib/futimens.c, ./lib/linkat.c, ./lib/mkfifoat.c, ./lib/mknodat.c, ./lib/renameat.c, ./lib/unlinkat.c, ./lib/utimensat.c, ./m4/futimens.m4, ./m4/linkat.m4, ./m4/mkfifoat.m4, ./m4/nproc.m4, ./m4/renameat.m4, ./m4/utimensat.m4
 Copyright: 2009 Free Software Foundation, Inc
 License: GPL [REF12]
 
@@ -1617,11 +1625,11 @@ Files: ./tests/test-fflush.c
 Copyright: 2007, 2009 Free Software Foundation, Inc.
 License: GPL-3+ [REF16]
 
-Files: ./tests/test-c-strcasecmp.c, ./tests/test-c-strncasecmp.c, ./tests/test-c-strstr.c, ./tests/test-count-one-bits.c, ./tests/test-fbufmode.c, ./tests/test-fprintf-posix.c, ./tests/test-fprintf-posix.h, ./tests/test-freadahead.c, ./tests/test-freadptr.c, ./tests/test-freadptr2.c, ./tests/test-freopen.c, ./tests/test-iconv-utf.c, ./tests/test-iconv.c, ./tests/test-isnand-nolibm.c, ./tests/test-isnand.c, ./tests/test-isnand.h, ./tests/test-isnanf-nolibm.c, ./tests/test-isnanf.c, ./tests/test-isnanf.h, ./tests/test-isnanl.c, ./tests/test-lseek.c, ./tests/test-mbscasecmp.c, ./tests/test-mbscasestr1.c, ./tests/test-mbscasestr2.c, ./tests/test-mbscasestr3.c, ./tests/test-mbscasestr4.c, ./tests/test-mbschr.c, ./tests/test-mbscspn.c, ./tests/test-mbsncasecmp.c, ./tests/test-mbspbrk.c, ./tests/test-mbspcasecmp.c, ./tests/test-mbsrchr.c, ./tests/test-mbsspn.c, ./tests/test-mbsstr1.c, ./tests/test-mbsstr2.c, ./tests/test-mbsstr3.c, ./tests/test-printf-posix.c, ./tests/test-printf-posix.h, ./tests/test-sleep.c, ./tests/test-snprintf-posix.c, ./tests/test-snprintf.c, ./tests/test-sprintf-posix.c, ./tests/test-striconv.c, ./tests/test-striconveha.c, ./tests/test-vasnprintf-posix2.c, ./tests/test-vasnprintf.c, ./tests/test-vasprintf.c, ./tests/test-vfprintf-posix.c, ./tests/test-vprintf-posix.c, ./tests/test-vsnprintf-posix.c, ./tests/test-vsnprintf.c, ./tests/test-vsprintf-posix.c, ./tests/test-wcwidth.c, ./tests/test-yesno.c, ./tests/uniconv/test-u16-strconv-to-enc.c, ./tests/uniconv/test-u32-strconv-to-enc.c, ./tests/uniconv/test-u8-strconv-to-enc.c, ./tests/unictype/test-bidi_byname.c, ./tests/unictype/test-bidi_name.c, ./tests/unictype/test-bidi_of.c, ./tests/unictype/test-bidi_test.c, ./tests/unictype/test-block_list.c, ./tests/unictype/test-block_of.c, ./tests/unictype/test-block_test.c, ./tests/unictype/test-categ_and.c, ./tests/unictype/test-categ_and_not.c, ./tests/unictype/test-categ_byname.c, ./tests/unictype/test-categ_name.c, ./tests/unictype/test-categ_none.c, ./tests/unictype/test-categ_of.c, ./tests/unictype/test-categ_or.c, ./tests/unictype/test-categ_test_withtable.c, ./tests/unictype/test-combining.c, ./tests/unictype/test-decdigit.c, ./tests/unictype/test-digit.c, ./tests/unictype/test-mirror.c, ./tests/unictype/test-numeric.c, ./tests/unictype/test-pr_test.c, ./tests/unictype/test-predicate-part1.h, ./tests/unictype/test-scripts.c, ./tests/unictype/test-sy_c_ident.c, ./tests/unictype/test-sy_java_ident.c, ./tests/unistdio/test-u16-asnprintf1.c, ./tests/unistdio/test-u16-vasnprintf1.c, ./tests/unistdio/test-u16-vasnprintf2.c, ./tests/unistdio/test-u16-vasnprintf3.c, ./tests/unistdio/test-u16-vasprintf1.c, ./tests/unistdio/test-u32-asnprintf1.c, ./tests/unistdio/test-u32-vasnprintf1.c, ./tests/unistdio/test-u32-vasnprintf2.c, ./tests/unistdio/test-u32-vasnprintf3.c, ./tests/unistdio/test-u32-vasprintf1.c, ./tests/unistdio/test-u8-asnprintf1.c, ./tests/unistdio/test-u8-vasnprintf1.c, ./tests/unistdio/test-u8-vasnprintf2.c, ./tests/unistdio/test-u8-vasnprintf3.c, ./tests/unistdio/test-u8-vasprintf1.c, ./tests/unistdio/test-ulc-asnprintf1.c, ./tests/unistdio/test-ulc-vasnprintf1.c, ./tests/unistdio/test-ulc-vasnprintf2.c, ./tests/unistdio/test-ulc-vasnprintf3.c, ./tests/unistdio/test-ulc-vasprintf1.c, ./tests/uniwidth/test-u16-strwidth.c, ./tests/uniwidth/test-u16-width.c, ./tests/uniwidth/test-u32-strwidth.c, ./tests/uniwidth/test-u32-width.c, ./tests/uniwidth/test-u8-strwidth.c, ./tests/uniwidth/test-u8-width.c, ./tests/uniwidth/test-uc_width.c, ./tests/uniwidth/test-uc_width2.c
+Files: ./tests/test-c-strcasecmp.c, ./tests/test-c-strncasecmp.c, ./tests/test-c-strstr.c, ./tests/test-count-one-bits.c, ./tests/test-fbufmode.c, ./tests/test-fprintf-posix.c, ./tests/test-fprintf-posix.h, ./tests/test-freadahead.c, ./tests/test-freadptr.c, ./tests/test-freadptr2.c, ./tests/test-freopen.c, ./tests/test-iconv-utf.c, ./tests/test-iconv.c, ./tests/test-isnand-nolibm.c, ./tests/test-isnand.c, ./tests/test-isnand.h, ./tests/test-isnanf-nolibm.c, ./tests/test-isnanf.c, ./tests/test-isnanf.h, ./tests/test-isnanl.c, ./tests/test-lseek.c, ./tests/test-mbscasecmp.c, ./tests/test-mbscasestr1.c, ./tests/test-mbscasestr2.c, ./tests/test-mbscasestr3.c, ./tests/test-mbscasestr4.c, ./tests/test-mbschr.c, ./tests/test-mbscspn.c, ./tests/test-mbsncasecmp.c, ./tests/test-mbspbrk.c, ./tests/test-mbspcasecmp.c, ./tests/test-mbsrchr.c, ./tests/test-mbsspn.c, ./tests/test-mbsstr1.c, ./tests/test-mbsstr2.c, ./tests/test-mbsstr3.c, ./tests/test-printf-posix.c, ./tests/test-printf-posix.h, ./tests/test-snprintf-posix.c, ./tests/test-snprintf.c, ./tests/test-sprintf-posix.c, ./tests/test-striconv.c, ./tests/test-striconveha.c, ./tests/test-vasnprintf-posix2.c, ./tests/test-vasnprintf.c, ./tests/test-vasprintf.c, ./tests/test-vfprintf-posix.c, ./tests/test-vprintf-posix.c, ./tests/test-vsnprintf-posix.c, ./tests/test-vsnprintf.c, ./tests/test-vsprintf-posix.c, ./tests/test-wcwidth.c, ./tests/test-yesno.c, ./tests/uniconv/test-u16-strconv-to-enc.c, ./tests/uniconv/test-u32-strconv-to-enc.c, ./tests/uniconv/test-u8-strconv-to-enc.c, ./tests/unictype/test-bidi_byname.c, ./tests/unictype/test-bidi_name.c, ./tests/unictype/test-bidi_of.c, ./tests/unictype/test-bidi_test.c, ./tests/unictype/test-block_list.c, ./tests/unictype/test-block_of.c, ./tests/unictype/test-block_test.c, ./tests/unictype/test-categ_and.c, ./tests/unictype/test-categ_and_not.c, ./tests/unictype/test-categ_byname.c, ./tests/unictype/test-categ_name.c, ./tests/unictype/test-categ_none.c, ./tests/unictype/test-categ_of.c, ./tests/unictype/test-categ_or.c, ./tests/unictype/test-categ_test_withtable.c, ./tests/unictype/test-combining.c, ./tests/unictype/test-decdigit.c, ./tests/unictype/test-digit.c, ./tests/unictype/test-mirror.c, ./tests/unictype/test-numeric.c, ./tests/unictype/test-pr_test.c, ./tests/unictype/test-predicate-part1.h, ./tests/unictype/test-scripts.c, ./tests/unictype/test-sy_c_ident.c, ./tests/unictype/test-sy_java_ident.c, ./tests/unistdio/test-u16-asnprintf1.c, ./tests/unistdio/test-u16-vasnprintf1.c, ./tests/unistdio/test-u16-vasnprintf2.c, ./tests/unistdio/test-u16-vasnprintf3.c, ./tests/unistdio/test-u16-vasprintf1.c, ./tests/unistdio/test-u32-asnprintf1.c, ./tests/unistdio/test-u32-vasnprintf1.c, ./tests/unistdio/test-u32-vasnprintf2.c, ./tests/unistdio/test-u32-vasnprintf3.c, ./tests/unistdio/test-u32-vasprintf1.c, ./tests/unistdio/test-u8-asnprintf1.c, ./tests/unistdio/test-u8-vasnprintf1.c, ./tests/unistdio/test-u8-vasnprintf2.c, ./tests/unistdio/test-u8-vasnprintf3.c, ./tests/unistdio/test-u8-vasprintf1.c, ./tests/unistdio/test-ulc-asnprintf1.c, ./tests/unistdio/test-ulc-vasnprintf1.c, ./tests/unistdio/test-ulc-vasnprintf2.c, ./tests/unistdio/test-ulc-vasnprintf3.c, ./tests/unistdio/test-ulc-vasprintf1.c, ./tests/uniwidth/test-u16-strwidth.c, ./tests/uniwidth/test-u16-width.c, ./tests/uniwidth/test-u32-strwidth.c, ./tests/uniwidth/test-u32-width.c, ./tests/uniwidth/test-u8-strwidth.c, ./tests/uniwidth/test-u8-width.c, ./tests/uniwidth/test-uc_width.c, ./tests/uniwidth/test-uc_width2.c
 Copyright: 2007-2008 Free Software Foundation, Inc.
 License: GPL-3+ [REF16]
 
-Files: ./tests/test-bitrotate.c, ./tests/test-canonicalize-lgpl.c, ./tests/test-canonicalize.c, ./tests/test-dprintf-posix.c, ./tests/test-fcntl-safer.c, ./tests/test-fopen-safer.c, ./tests/test-fopen.c, ./tests/test-fopen.h, ./tests/test-fpurge.c, ./tests/test-freadable.c, ./tests/test-freading.c, ./tests/test-freadseek.c, ./tests/test-fstrcmp.c, ./tests/test-fwritable.c, ./tests/test-fwriting.c, ./tests/test-getdelim.c, ./tests/test-getline.c, ./tests/test-isnan.c, ./tests/test-isnanl.h, ./tests/test-mbmemcasecmp.c, ./tests/test-mbmemcasecmp.h, ./tests/test-mbmemcasecoll.c, ./tests/test-open.c, ./tests/test-open.h, ./tests/test-snprintf-posix.h, ./tests/test-sprintf-posix.h, ./tests/test-stat-time.c, ./tests/test-strerror.c, ./tests/test-striconveh.c, ./tests/test-vasnprintf-posix.c, ./tests/test-vasprintf-posix.c, ./tests/test-vdprintf-posix.c, ./tests/test-xfprintf-posix.c, ./tests/test-xprintf-posix.c, ./tests/test-xvasprintf.c, ./tests/unicase/test-locale-language.c, ./tests/unicase/test-mapping-part1.h, ./tests/unicase/test-mapping-part2.h, ./tests/unicase/test-predicate-part1.h, ./tests/uniconv/test-u16-conv-from-enc.c, ./tests/uniconv/test-u16-conv-to-enc.c, ./tests/uniconv/test-u16-strconv-from-enc.c, ./tests/uniconv/test-u32-conv-from-enc.c, ./tests/uniconv/test-u32-conv-to-enc.c, ./tests/uniconv/test-u32-strconv-from-enc.c, ./tests/uniconv/test-u8-conv-from-enc.c, ./tests/uniconv/test-u8-conv-to-enc.c, ./tests/uniconv/test-u8-strconv-from-enc.c, ./tests/unictype/test-pr_byname.c, ./tests/unistdio/test-u16-vsnprintf1.c, ./tests/unistdio/test-u16-vsprintf1.c, ./tests/unistdio/test-u32-vsnprintf1.c, ./tests/unistdio/test-u32-vsprintf1.c, ./tests/unistdio/test-u8-vsnprintf1.c, ./tests/unistdio/test-u8-vsprintf1.c, ./tests/unistdio/test-ulc-vsnprintf1.c, ./tests/unistdio/test-ulc-vsprintf1.c
+Files: ./tests/test-bitrotate.c, ./tests/test-canonicalize-lgpl.c, ./tests/test-canonicalize.c, ./tests/test-dprintf-posix.c, ./tests/test-fcntl-safer.c, ./tests/test-fopen-safer.c, ./tests/test-fopen.c, ./tests/test-fopen.h, ./tests/test-fpurge.c, ./tests/test-freadable.c, ./tests/test-freading.c, ./tests/test-freadseek.c, ./tests/test-fstrcmp.c, ./tests/test-fwritable.c, ./tests/test-fwriting.c, ./tests/test-getdelim.c, ./tests/test-getline.c, ./tests/test-isnan.c, ./tests/test-isnanl.h, ./tests/test-mbmemcasecmp.c, ./tests/test-mbmemcasecmp.h, ./tests/test-mbmemcasecoll.c, ./tests/test-open.c, ./tests/test-open.h, ./tests/test-sleep.c, ./tests/test-snprintf-posix.h, ./tests/test-sprintf-posix.h, ./tests/test-stat-time.c, ./tests/test-strerror.c, ./tests/test-striconveh.c, ./tests/test-vasnprintf-posix.c, ./tests/test-vasprintf-posix.c, ./tests/test-vdprintf-posix.c, ./tests/test-xfprintf-posix.c, ./tests/test-xprintf-posix.c, ./tests/test-xvasprintf.c, ./tests/unicase/test-locale-language.c, ./tests/unicase/test-mapping-part1.h, ./tests/unicase/test-mapping-part2.h, ./tests/unicase/test-predicate-part1.h, ./tests/uniconv/test-u16-conv-from-enc.c, ./tests/uniconv/test-u16-conv-to-enc.c, ./tests/uniconv/test-u16-strconv-from-enc.c, ./tests/uniconv/test-u32-conv-from-enc.c, ./tests/uniconv/test-u32-conv-to-enc.c, ./tests/uniconv/test-u32-strconv-from-enc.c, ./tests/uniconv/test-u8-conv-from-enc.c, ./tests/uniconv/test-u8-conv-to-enc.c, ./tests/uniconv/test-u8-strconv-from-enc.c, ./tests/unictype/test-pr_byname.c, ./tests/unistdio/test-u16-vsnprintf1.c, ./tests/unistdio/test-u16-vsprintf1.c, ./tests/unistdio/test-u32-vsnprintf1.c, ./tests/unistdio/test-u32-vsprintf1.c, ./tests/unistdio/test-u8-vsnprintf1.c, ./tests/unistdio/test-u8-vsprintf1.c, ./tests/unistdio/test-ulc-vsnprintf1.c, ./tests/unistdio/test-ulc-vsprintf1.c
 Copyright: 2007-2009 Free Software Foundation, Inc.
 License: GPL-3+ [REF16]
 
@@ -1645,6 +1653,10 @@ Files: ./build-aux/ncftpput-ftp
 Copyright: 2008, 2009 Free Software Foundation, Inc.
 License: GPL-3+ [REF17]
 
+Files: ./tests/init.sh, ./tests/test-chown.c, ./tests/test-chown.h, ./tests/test-cloexec.c, ./tests/test-dup-safer.c, ./tests/test-duplocale.c, ./tests/test-fchownat.c, ./tests/test-lchown.c, ./tests/test-lchown.h, ./tests/test-mkfifo.c, ./tests/test-mkfifo.h, ./tests/test-mknod.c, ./tests/test-nanosleep.c, ./tests/test-pread.c, ./tests/test-pty.c, ./tests/test-setenv.c, ./tests/test-unsetenv.c, ./tests/test-usleep.c, ./tests/test-xalloc-die.c, ./tests/test-xalloc-die.sh
+Copyright: 2009 Free Software Foundation, Inc
+License: GPL-3+ 
+
 Files: ./tests/test-lstat.h
 Copyright: 2008, 2009 Free Software Foundation, Inc
 License: GPL-3+  [REF18]
@@ -1657,7 +1669,7 @@ Files: ./tests/test-isblank.c
 Copyright: 2009 Free Software Foundation, Inc.
 License: GPL-3+  [REF18]
 
-Files: ./lib/imaxtostr.c, ./lib/isapipe.h, ./lib/offtostr.c, ./lib/uinttostr.c, ./lib/umaxtostr.c, ./lib/unicase/cased.h, ./lib/unicase/ignorable.h, ./lib/unicase/locale-languages.gperf, ./lib/unicase/special-casing-table.gperf, ./lib/unicase/tocasefold.h, ./lib/unicase/tolower.h, ./lib/unicase/totitle.h, ./lib/unicase/toupper.h, ./lib/unictype/bidi_of.h, ./lib/unictype/blocks.h, ./lib/unictype/categ_C.h, ./lib/unictype/categ_Cc.h, ./lib/unictype/categ_Cf.h, ./lib/unictype/categ_Cn.h, ./lib/unictype/categ_Co.h, ./lib/unictype/categ_Cs.h, ./lib/unictype/categ_L.h, ./lib/unictype/categ_Ll.h, ./lib/unictype/categ_Lm.h, ./lib/unictype/categ_Lo.h, ./lib/unictype/categ_Lt.h, ./lib/unictype/categ_Lu.h, ./lib/unictype/categ_M.h, ./lib/unictype/categ_Mc.h, ./lib/unictype/categ_Me.h, ./lib/unictype/categ_Mn.h, ./lib/unictype/categ_N.h, ./lib/unictype/categ_Nd.h, ./lib/unictype/categ_Nl.h, ./lib/unictype/categ_No.h, ./lib/unictype/categ_P.h, ./lib/unictype/categ_Pc.h, ./lib/unictype/categ_Pd.h, ./lib/unictype/categ_Pe.h, ./lib/unictype/categ_Pf.h, ./lib/unictype/categ_Pi.h, ./lib/unictype/categ_Po.h, ./lib/unictype/categ_Ps.h, ./lib/unictype/categ_S.h, ./lib/unictype/categ_Sc.h, ./lib/unictype/categ_Sk.h, ./lib/unictype/categ_Sm.h, ./lib/unictype/categ_So.h, ./lib/unictype/categ_Z.h, ./lib/unictype/categ_Zl.h, ./lib/unictype/categ_Zp.h, ./lib/unictype/categ_Zs.h, ./lib/unictype/categ_of.h, ./lib/unictype/combining.h, ./lib/unictype/ctype_alnum.h, ./lib/unictype/ctype_alpha.h, ./lib/unictype/ctype_blank.h, ./lib/unictype/ctype_cntrl.h, ./lib/unictype/ctype_digit.h, ./lib/unictype/ctype_graph.h, ./lib/unictype/ctype_lower.h, ./lib/unictype/ctype_print.h, ./lib/unictype/ctype_punct.h, ./lib/unictype/ctype_space.h, ./lib/unictype/ctype_upper.h, ./lib/unictype/ctype_xdigit.h, ./lib/unictype/decdigit.h, ./lib/unictype/digit.h, ./lib/unictype/mirror.h, ./lib/unictype/numeric.h, ./lib/unictype/pr_alphabetic.h, ./lib/unictype/pr_ascii_hex_digit.h, ./lib/unictype/pr_bidi_arabic_digit.h, ./lib/unictype/pr_bidi_arabic_right_to_left.h, ./lib/unictype/pr_bidi_block_separator.h, ./lib/unictype/pr_bidi_boundary_neutral.h, ./lib/unictype/pr_bidi_common_separator.h, ./lib/unictype/pr_bidi_control.h, ./lib/unictype/pr_bidi_embedding_or_override.h, ./lib/unictype/pr_bidi_eur_num_separator.h, ./lib/unictype/pr_bidi_eur_num_terminator.h, ./lib/unictype/pr_bidi_european_digit.h, ./lib/unictype/pr_bidi_hebrew_right_to_left.h, ./lib/unictype/pr_bidi_left_to_right.h, ./lib/unictype/pr_bidi_non_spacing_mark.h, ./lib/unictype/pr_bidi_other_neutral.h, ./lib/unictype/pr_bidi_pdf.h, ./lib/unictype/pr_bidi_segment_separator.h, ./lib/unictype/pr_bidi_whitespace.h, ./lib/unictype/pr_byname.gperf, ./lib/unictype/pr_combining.h, ./lib/unictype/pr_composite.h, ./lib/unictype/pr_currency_symbol.h, ./lib/unictype/pr_dash.h, ./lib/unictype/pr_decimal_digit.h, ./lib/unictype/pr_default_ignorable_code_point.h, ./lib/unictype/pr_deprecated.h, ./lib/unictype/pr_diacritic.h, ./lib/unictype/pr_extender.h, ./lib/unictype/pr_format_control.h, ./lib/unictype/pr_grapheme_base.h, ./lib/unictype/pr_grapheme_extend.h, ./lib/unictype/pr_grapheme_link.h, ./lib/unictype/pr_hex_digit.h, ./lib/unictype/pr_hyphen.h, ./lib/unictype/pr_id_continue.h, ./lib/unictype/pr_id_start.h, ./lib/unictype/pr_ideographic.h, ./lib/unictype/pr_ids_binary_operator.h, ./lib/unictype/pr_ids_trinary_operator.h, ./lib/unictype/pr_ignorable_control.h, ./lib/unictype/pr_iso_control.h, ./lib/unictype/pr_join_control.h, ./lib/unictype/pr_left_of_pair.h, ./lib/unictype/pr_line_separator.h, ./lib/unictype/pr_logical_order_exception.h, ./lib/unictype/pr_lowercase.h, ./lib/unictype/pr_math.h, ./lib/unictype/pr_non_break.h, ./lib/unictype/pr_not_a_character.h, ./lib/unictype/pr_numeric.h, ./lib/unictype/pr_other_alphabetic.h, ./lib/unictype/pr_other_default_ignorable_code_point.h, ./lib/unictype/pr_other_grapheme_extend.h, ./lib/unictype/pr_other_id_continue.h, ./lib/unictype/pr_other_id_start.h, ./lib/unictype/pr_other_lowercase.h, ./lib/unictype/pr_other_math.h, ./lib/unictype/pr_other_uppercase.h, ./lib/unictype/pr_paired_punctuation.h, ./lib/unictype/pr_paragraph_separator.h, ./lib/unictype/pr_pattern_syntax.h, ./lib/unictype/pr_pattern_white_space.h, ./lib/unictype/pr_private_use.h, ./lib/unictype/pr_punctuation.h, ./lib/unictype/pr_quotation_mark.h, ./lib/unictype/pr_radical.h, ./lib/unictype/pr_sentence_terminal.h, ./lib/unictype/pr_soft_dotted.h, ./lib/unictype/pr_space.h, ./lib/unictype/pr_terminal_punctuation.h, ./lib/unictype/pr_titlecase.h, ./lib/unictype/pr_unassigned_code_value.h, ./lib/unictype/pr_unified_ideograph.h, ./lib/unictype/pr_uppercase.h, ./lib/unictype/pr_variation_selector.h, ./lib/unictype/pr_white_space.h, ./lib/unictype/pr_xid_continue.h, ./lib/unictype/pr_xid_start.h, ./lib/unictype/pr_zero_width.h, ./lib/unictype/scripts.h, ./lib/unictype/scripts_byname.gperf, ./lib/unictype/sy_c_ident.h, ./lib/unictype/sy_java_ident.h, ./lib/uniname/gen-uninames.lisp, ./lib/uniname/uninames.h, ./lib/uninorm/decomposition-table1.h, ./lib/uninorm/decomposition-table2.h, ./tests/test-roundf2.c, ./tests/test-select-in.sh, ./tests/test-select-out.sh, ./tests/test-tsearch.sh
+Files: ./lib/cloexec.h, ./lib/imaxtostr.c, ./lib/isapipe.h, ./lib/offtostr.c, ./lib/uinttostr.c, ./lib/umaxtostr.c, ./lib/unicase/cased.h, ./lib/unicase/ignorable.h, ./lib/unicase/locale-languages.gperf, ./lib/unicase/special-casing-table.gperf, ./lib/unicase/tocasefold.h, ./lib/unicase/tolower.h, ./lib/unicase/totitle.h, ./lib/unicase/toupper.h, ./lib/unictype/bidi_of.h, ./lib/unictype/blocks.h, ./lib/unictype/categ_C.h, ./lib/unictype/categ_Cc.h, ./lib/unictype/categ_Cf.h, ./lib/unictype/categ_Cn.h, ./lib/unictype/categ_Co.h, ./lib/unictype/categ_Cs.h, ./lib/unictype/categ_L.h, ./lib/unictype/categ_Ll.h, ./lib/unictype/categ_Lm.h, ./lib/unictype/categ_Lo.h, ./lib/unictype/categ_Lt.h, ./lib/unictype/categ_Lu.h, ./lib/unictype/categ_M.h, ./lib/unictype/categ_Mc.h, ./lib/unictype/categ_Me.h, ./lib/unictype/categ_Mn.h, ./lib/unictype/categ_N.h, ./lib/unictype/categ_Nd.h, ./lib/unictype/categ_Nl.h, ./lib/unictype/categ_No.h, ./lib/unictype/categ_P.h, ./lib/unictype/categ_Pc.h, ./lib/unictype/categ_Pd.h, ./lib/unictype/categ_Pe.h, ./lib/unictype/categ_Pf.h, ./lib/unictype/categ_Pi.h, ./lib/unictype/categ_Po.h, ./lib/unictype/categ_Ps.h, ./lib/unictype/categ_S.h, ./lib/unictype/categ_Sc.h, ./lib/unictype/categ_Sk.h, ./lib/unictype/categ_Sm.h, ./lib/unictype/categ_So.h, ./lib/unictype/categ_Z.h, ./lib/unictype/categ_Zl.h, ./lib/unictype/categ_Zp.h, ./lib/unictype/categ_Zs.h, ./lib/unictype/categ_of.h, ./lib/unictype/combining.h, ./lib/unictype/ctype_alnum.h, ./lib/unictype/ctype_alpha.h, ./lib/unictype/ctype_blank.h, ./lib/unictype/ctype_cntrl.h, ./lib/unictype/ctype_digit.h, ./lib/unictype/ctype_graph.h, ./lib/unictype/ctype_lower.h, ./lib/unictype/ctype_print.h, ./lib/unictype/ctype_punct.h, ./lib/unictype/ctype_space.h, ./lib/unictype/ctype_upper.h, ./lib/unictype/ctype_xdigit.h, ./lib/unictype/decdigit.h, ./lib/unictype/digit.h, ./lib/unictype/mirror.h, ./lib/unictype/numeric.h, ./lib/unictype/pr_alphabetic.h, ./lib/unictype/pr_ascii_hex_digit.h, ./lib/unictype/pr_bidi_arabic_digit.h, ./lib/unictype/pr_bidi_arabic_right_to_left.h, ./lib/unictype/pr_bidi_block_separator.h, ./lib/unictype/pr_bidi_boundary_neutral.h, ./lib/unictype/pr_bidi_common_separator.h, ./lib/unictype/pr_bidi_control.h, ./lib/unictype/pr_bidi_embedding_or_override.h, ./lib/unictype/pr_bidi_eur_num_separator.h, ./lib/unictype/pr_bidi_eur_num_terminator.h, ./lib/unictype/pr_bidi_european_digit.h, ./lib/unictype/pr_bidi_hebrew_right_to_left.h, ./lib/unictype/pr_bidi_left_to_right.h, ./lib/unictype/pr_bidi_non_spacing_mark.h, ./lib/unictype/pr_bidi_other_neutral.h, ./lib/unictype/pr_bidi_pdf.h, ./lib/unictype/pr_bidi_segment_separator.h, ./lib/unictype/pr_bidi_whitespace.h, ./lib/unictype/pr_byname.gperf, ./lib/unictype/pr_combining.h, ./lib/unictype/pr_composite.h, ./lib/unictype/pr_currency_symbol.h, ./lib/unictype/pr_dash.h, ./lib/unictype/pr_decimal_digit.h, ./lib/unictype/pr_default_ignorable_code_point.h, ./lib/unictype/pr_deprecated.h, ./lib/unictype/pr_diacritic.h, ./lib/unictype/pr_extender.h, ./lib/unictype/pr_format_control.h, ./lib/unictype/pr_grapheme_base.h, ./lib/unictype/pr_grapheme_extend.h, ./lib/unictype/pr_grapheme_link.h, ./lib/unictype/pr_hex_digit.h, ./lib/unictype/pr_hyphen.h, ./lib/unictype/pr_id_continue.h, ./lib/unictype/pr_id_start.h, ./lib/unictype/pr_ideographic.h, ./lib/unictype/pr_ids_binary_operator.h, ./lib/unictype/pr_ids_trinary_operator.h, ./lib/unictype/pr_ignorable_control.h, ./lib/unictype/pr_iso_control.h, ./lib/unictype/pr_join_control.h, ./lib/unictype/pr_left_of_pair.h, ./lib/unictype/pr_line_separator.h, ./lib/unictype/pr_logical_order_exception.h, ./lib/unictype/pr_lowercase.h, ./lib/unictype/pr_math.h, ./lib/unictype/pr_non_break.h, ./lib/unictype/pr_not_a_character.h, ./lib/unictype/pr_numeric.h, ./lib/unictype/pr_other_alphabetic.h, ./lib/unictype/pr_other_default_ignorable_code_point.h, ./lib/unictype/pr_other_grapheme_extend.h, ./lib/unictype/pr_other_id_continue.h, ./lib/unictype/pr_other_id_start.h, ./lib/unictype/pr_other_lowercase.h, ./lib/unictype/pr_other_math.h, ./lib/unictype/pr_other_uppercase.h, ./lib/unictype/pr_paired_punctuation.h, ./lib/unictype/pr_paragraph_separator.h, ./lib/unictype/pr_pattern_syntax.h, ./lib/unictype/pr_pattern_white_space.h, ./lib/unictype/pr_private_use.h, ./lib/unictype/pr_punctuation.h, ./lib/unictype/pr_quotation_mark.h, ./lib/unictype/pr_radical.h, ./lib/unictype/pr_sentence_terminal.h, ./lib/unictype/pr_soft_dotted.h, ./lib/unictype/pr_space.h, ./lib/unictype/pr_terminal_punctuation.h, ./lib/unictype/pr_titlecase.h, ./lib/unictype/pr_unassigned_code_value.h, ./lib/unictype/pr_unified_ideograph.h, ./lib/unictype/pr_uppercase.h, ./lib/unictype/pr_variation_selector.h, ./lib/unictype/pr_white_space.h, ./lib/unictype/pr_xid_continue.h, ./lib/unictype/pr_xid_start.h, ./lib/unictype/pr_zero_width.h, ./lib/unictype/scripts.h, ./lib/unictype/scripts_byname.gperf, ./lib/unictype/sy_c_ident.h, ./lib/unictype/sy_java_ident.h, ./lib/uniname/gen-uninames.lisp, ./lib/uniname/uninames.h, ./lib/uninorm/decomposition-table1.h, ./lib/uninorm/decomposition-table2.h, ./tests/test-roundf2.c, ./tests/test-select-in.sh, ./tests/test-select-out.sh, ./tests/test-tsearch.sh
 License: LGPL [REF19]
 
 Files: ./lib/getopt.c
@@ -1724,6 +1736,10 @@ Files: ./lib/atoll.c
 Copyright: 1991, 1997, 1998, 2008 Free Software Foundation, Inc.
 License: LGPL [REF19]
 
+Files: ./lib/cloexec.c
+Copyright: 1991, 2004, 2005, 2006, 2009  Free Software Foundation, Inc.
+License: LGPL [REF19]
+
 Files: ./lib/strtok_r.c
 Copyright: 1991,1996-1999,2001,2004,2007,2009 Free Software Foundation, Inc.
 License: LGPL [REF19]
@@ -1741,7 +1757,7 @@ Copyright: 1992, 1997, 1998, 2009 Free Software Foundation, Inc.
 License: LGPL [REF19]
 
 Files: ./lib/unsetenv.c
-Copyright: 1992,1995-1999,2000-2002,2005-2008 Free Software Foundation, Inc.
+Copyright: 1992,1995-1999,2000-2002,2005-2009 Free Software Foundation, Inc.
 License: LGPL [REF19]
 
 Files: ./lib/scandir.c
@@ -1785,7 +1801,7 @@ Copyright: 1995-2005, 2007, 2009 Free Software Foundation, Inc.
 License: LGPL [REF19]
 
 Files: ./m4/error.m4
-Copyright: 1996, 1997, 1998, 2001, 2002, 2003, 2004 Free Software Foundation, Inc.
+Copyright: 1996, 1997, 1998, 2001, 2002, 2003, 2004, 2009 Free Software Foundation, Inc.
 License: LGPL [REF19]
 
 Files: ./m4/strftime.m4
@@ -2196,7 +2212,7 @@ Files: ./m4/argp.m4
 Copyright: 2003-2007, 2009 Free Software Foundation, Inc.
 License: LGPL [REF19]
 
-Files: ./m4/inttostr.m4
+Files: ./m4/cloexec.m4, ./m4/inttostr.m4
 Copyright: 2004, 2005, 2006 Free Software Foundation, Inc.
 License: LGPL [REF19]
 
@@ -2284,7 +2300,7 @@ Files: ./lib/fbufmode.c, ./lib/fpurge.c, ./lib/freadable.c, ./lib/freading.c, ./
 Copyright: 2007-2009 Free Software Foundation, Inc.
 License: LGPL [REF19]
 
-Files: ./lib/isnand.c, ./lib/mbsnrtowcs.c, ./lib/sched.in.h, ./lib/sig-handler.h, ./lib/sigaction.c, ./lib/stdarg.in.h, ./lib/wcsnrtombs.c, ./lib/wcsrtombs.c, ./lib/wctob.c, ./m4/atoll.m4, ./m4/getdtablesize.m4, ./m4/mbrlen.m4, ./m4/mbsnrtowcs.m4, ./m4/posix_spawn.m4, ./m4/sched_h.m4, ./m4/sigaction.m4, ./m4/spawn_h.m4, ./tests/test-random_r.c, ./tests/test-select-fd.c
+Files: ./lib/isnand.c, ./lib/mbsnrtowcs.c, ./lib/sched.in.h, ./lib/sig-handler.h, ./lib/sigaction.c, ./lib/stdarg.in.h, ./lib/wcsnrtombs.c, ./lib/wcsrtombs.c, ./lib/wctob.c, ./m4/atoll.m4, ./m4/getdtablesize.m4, ./m4/mbrlen.m4, ./m4/mbsnrtowcs.m4, ./m4/posix_spawn.m4, ./m4/sched_h.m4, ./m4/sigaction.m4, ./tests/test-random_r.c, ./tests/test-select-fd.c
 Copyright: 2008 Free Software Foundation, Inc.
 License: LGPL [REF19]
 
@@ -2292,7 +2308,7 @@ Files: ./m4/sigpipe.m4, ./tests/test-select-stdin.c
 Copyright: 2008, 2009 Free Software Foundation, Inc.
 License: LGPL [REF19]
 
-Files: ./lib/getdtablesize.c, ./lib/ignore-value.h, ./lib/wcsrtombs-state.c, ./m4/wcsnrtombs.m4, ./m4/wcsrtombs.m4, ./m4/wctob.m4, ./tests/test-select.c
+Files: ./lib/getdtablesize.c, ./lib/ignore-value.h, ./lib/wcsrtombs-state.c, ./m4/spawn_h.m4, ./m4/wcsnrtombs.m4, ./m4/wcsrtombs.m4, ./m4/wctob.m4, ./tests/test-select.c
 Copyright: 2008-2009 Free Software Foundation, Inc.
 License: LGPL [REF19]
 
@@ -2300,7 +2316,7 @@ Files: ./lib/filevercmp.c, ./lib/filevercmp.h
 Copyright: 2008-2009 Free Software Foundation, Inc. / 1995 Ian Jackson <iwj10@cus.cam.ac.uk> / 2001 Anthony Towns <aj@azure.humbug.org.au>
 License: LGPL [REF19]
 
-Files: ./lib/remove.c, ./lib/symlink.c, ./lib/unlink.c, ./m4/remove.m4, ./m4/symlink.m4, ./m4/unlink.m4
+Files: ./lib/duplocale.c, ./lib/mkfifo.c, ./lib/mknod.c, ./lib/remove.c, ./lib/symlink.c, ./lib/unlink.c, ./m4/duplocale.m4, ./m4/mkfifo.m4, ./m4/mknod.m4, ./m4/pty.m4, ./m4/remove.m4, ./m4/symlink.m4, ./m4/unlink.m4
 Copyright: 2009 Free Software Foundation, Inc
 License: LGPL [REF19]
 
@@ -2308,7 +2324,7 @@ Files: ./lib/accept4.c, ./lib/array-mergesort.h, ./lib/dprintf.c, ./lib/dup3.c, 
 Copyright: 2009 Free Software Foundation, Inc.
 License: LGPL [REF19]
 
-Files: ./build-aux/link-warning.h, ./lib/iconv_open-aix.gperf, ./lib/iconv_open-hpux.gperf, ./lib/iconv_open-irix.gperf, ./lib/iconv_open-osf.gperf, ./lib/iconv_open-solaris.gperf, ./lib/malloca.valgrind, ./lib/memchr.valgrind, ./lib/memchr2.valgrind, ./lib/mktime-internal.h, ./lib/rawmemchr.valgrind, ./lib/se-context.in.h, ./lib/se-selinux.in.h, ./lib/strchrnul.valgrind
+Files: ./lib/iconv_open-aix.gperf, ./lib/iconv_open-hpux.gperf, ./lib/iconv_open-irix.gperf, ./lib/iconv_open-osf.gperf, ./lib/iconv_open-solaris.gperf, ./lib/malloca.valgrind, ./lib/memchr.valgrind, ./lib/memchr2.valgrind, ./lib/mktime-internal.h, ./lib/rawmemchr.valgrind, ./lib/se-context.in.h, ./lib/se-selinux.in.h, ./lib/strchrnul.valgrind
 License: LGPL-2+ [REF20]
 
 Files: ./lib/random_r.c
@@ -2417,6 +2433,10 @@ License: LGPL-2+ [REF20]
 
 Files: ./lib/timegm.c
 Copyright: 1994, 1997, 2003, 2004, 2006, 2007, 2009 Free Software Foundation, Inc.
+License: LGPL-2+ [REF20]
+
+Files: ./build-aux/link-warning.h
+Copyright: 1995, 1997, 2000, 2002-2003, 2007, 2009 Free Software Foundation, Inc.
 License: LGPL-2+ [REF20]
 
 Files: ./lib/minmax.h
@@ -2608,7 +2628,7 @@ Copyright: 1999, 2002-2003, 2005, 2007 Free Software Foundation, Inc.
 License: LGPL-2+ [REF20]
 
 Files: ./lib/printf-args.c
-Copyright: 1999, 2002-2003, 2005-2007 Free Software Foundation, Inc.
+Copyright: 1999, 2002-2003, 2005-2007, 2009 Free Software Foundation, Inc.
 License: LGPL-2+ [REF20]
 
 Files: ./lib/printf-args.h
@@ -2700,7 +2720,7 @@ Copyright: 2000-2007, 2009 Free Software Foundation, Inc.
 License: LGPL-2+ [REF20]
 
 Files: ./lib/intprops.h
-Copyright: 2001, 2002, 2003, 2004, 2005 Free Software Foundation, Inc.
+Copyright: 2001, 2002, 2003, 2004, 2005, 2009 Free Software Foundation, Inc.
 License: LGPL-2+ [REF20]
 
 Files: ./lib/gettimeofday.c
@@ -3147,7 +3167,7 @@ Files: ./lib/dirent.in.h, ./lib/signal.in.h, ./lib/wctype.in.h, ./m4/absolute-he
 Copyright: 2006-2009 Free Software Foundation, Inc.
 License: LGPL-2+ [REF20]
 
-Files: ./lib/float+.h, ./lib/getpagesize.c, ./lib/localename.h, ./lib/lseek.c, ./lib/sleep.c, ./m4/count-one-bits.m4, ./m4/float_h.m4, ./m4/localename.m4, ./m4/lseek.m4, ./m4/strings_h.m4, ./m4/sys_time_h.m4
+Files: ./lib/float+.h, ./lib/getpagesize.c, ./lib/localename.h, ./lib/lseek.c, ./m4/count-one-bits.m4, ./m4/float_h.m4, ./m4/localename.m4, ./m4/lseek.m4, ./m4/strings_h.m4, ./m4/sys_time_h.m4
 Copyright: 2007 Free Software Foundation, Inc.
 License: LGPL-2+ [REF20]
 
@@ -3155,15 +3175,15 @@ Files: ./m4/signal_h.m4, ./m4/string_h.m4
 Copyright: 2007, 2008, 2009 Free Software Foundation, Inc.
 License: LGPL-2+ [REF20]
 
-Files: ./lib/iconv_open.c, ./m4/gc-camellia.m4, ./m4/malloc.m4, ./m4/realloc.m4, ./m4/strptime.m4
+Files: ./lib/iconv_open.c, ./lib/sleep.c, ./m4/gc-camellia.m4, ./m4/malloc.m4, ./m4/realloc.m4, ./m4/strptime.m4
 Copyright: 2007, 2009 Free Software Foundation, Inc.
 License: LGPL-2+ [REF20]
 
-Files: ./lib/count-one-bits.h, ./lib/float.in.h, ./lib/freadahead.h, ./lib/freadptr.h, ./lib/freadseek.h, ./lib/iconv.in.h, ./lib/netinet_in.in.h, ./lib/strings.in.h, ./lib/sys_file.in.h, ./lib/sys_time.in.h, ./m4/iconv_h.m4, ./m4/sleep.m4
+Files: ./lib/count-one-bits.h, ./lib/float.in.h, ./lib/freadahead.h, ./lib/freadptr.h, ./lib/freadseek.h, ./lib/iconv.in.h, ./lib/netinet_in.in.h, ./lib/strings.in.h, ./lib/sys_file.in.h, ./lib/sys_time.in.h
 Copyright: 2007-2008 Free Software Foundation, Inc.
 License: LGPL-2+ [REF20]
 
-Files: ./lib/fopen.c, ./lib/freadahead.c, ./lib/freadptr.c, ./lib/freadseek.c, ./lib/fseeko.c, ./lib/sys_select.in.h, ./lib/time.in.h, ./lib/wchar.in.h, ./m4/fopen.m4, ./m4/fseeko.m4, ./m4/iconv_open.m4, ./m4/stdio_h.m4, ./m4/stdlib_h.m4, ./m4/wchar.m4
+Files: ./lib/fopen.c, ./lib/freadahead.c, ./lib/freadptr.c, ./lib/freadseek.c, ./lib/fseeko.c, ./lib/sys_select.in.h, ./lib/time.in.h, ./lib/wchar.in.h, ./m4/fopen.m4, ./m4/fseeko.m4, ./m4/iconv_h.m4, ./m4/iconv_open.m4, ./m4/sleep.m4, ./m4/stdio_h.m4, ./m4/stdlib_h.m4, ./m4/wchar.m4
 Copyright: 2007-2009 Free Software Foundation, Inc.
 License: LGPL-2+ [REF20]
 
@@ -3179,7 +3199,7 @@ Files: ./lib/close.c, ./lib/errno.in.h, ./lib/getsockopt.c, ./lib/mbsrtowcs-stat
 Copyright: 2008-2009 Free Software Foundation, Inc.
 License: LGPL-2+ [REF20]
 
-Files: ./lib/ctype.in.h, ./lib/getfilecon.c, ./lib/isblank.c, ./lib/stat.c, ./m4/ctype.m4, ./m4/isblank.m4, ./m4/mkostemps.m4, ./m4/mkstemps.m4, ./m4/stat.m4
+Files: ./lib/ctype.in.h, ./lib/getfilecon.c, ./lib/isblank.c, ./lib/pread.c, ./lib/stat.c, ./lib/usleep.c, ./m4/ctype.m4, ./m4/isblank.m4, ./m4/mkostemps.m4, ./m4/mkstemps.m4, ./m4/pread.m4, ./m4/stat.m4, ./m4/usleep.m4
 Copyright: 2009 Free Software Foundation, Inc
 License: LGPL-2+ [REF20]
 
