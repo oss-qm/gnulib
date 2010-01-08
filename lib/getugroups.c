@@ -1,6 +1,6 @@
 /* getugroups.c -- return a list of the groups a user is in
 
-   Copyright (C) 1990, 1991, 1998-2000, 2003-2009 Free Software Foundation.
+   Copyright (C) 1990-1991, 1998-2000, 2003-2010 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -33,10 +33,10 @@
    can do is fail with ENOSYS.  */
 
 int
-getugroups (int maxcount _UNUSED_PARAMETER_,
-            gid_t *grouplist _UNUSED_PARAMETER_,
-            char const *username _UNUSED_PARAMETER_,
-            gid_t gid _UNUSED_PARAMETER_)
+getugroups (int maxcount _GL_UNUSED,
+            gid_t *grouplist _GL_UNUSED,
+            char const *username _GL_UNUSED,
+            gid_t gid _GL_UNUSED)
 {
   errno = ENOSYS;
   return -1;

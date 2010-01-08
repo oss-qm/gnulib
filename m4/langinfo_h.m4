@@ -1,5 +1,5 @@
-# langinfo_h.m4 serial 1
-dnl Copyright (C) 2009 Free Software Foundation, Inc.
+# langinfo_h.m4 serial 2
+dnl Copyright (C) 2009, 2010 Free Software Foundation, Inc.
 dnl This file is free software; the Free Software Foundation
 dnl gives unlimited permission to copy and/or distribute it,
 dnl with or without modifications, as long as this notice is preserved.
@@ -51,13 +51,6 @@ int a = ERA;
   AC_SUBST([HAVE_LANGINFO_H])
   AC_SUBST([HAVE_LANGINFO_CODESET])
   AC_SUBST([HAVE_LANGINFO_ERA])
-
-  if test $HAVE_LANGINFO_H = 1 && test $HAVE_LANGINFO_CODESET = 1 && test $HAVE_LANGINFO_ERA = 1; then
-    LANGINFO_H=
-  else
-    LANGINFO_H='langinfo.h'
-  fi
-  AC_SUBST([LANGINFO_H])
 ])
 
 AC_DEFUN([gl_LANGINFO_MODULE_INDICATOR],

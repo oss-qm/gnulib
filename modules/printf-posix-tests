@@ -5,6 +5,8 @@ tests/test-printf-posix.h
 tests/test-printf-posix.output
 tests/test-printf-posix2.sh
 tests/test-printf-posix2.c
+tests/signature.h
+tests/macros.h
 
 Depends-on:
 stdint

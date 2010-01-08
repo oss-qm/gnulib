@@ -2,6 +2,8 @@ Files:
 tests/test-pread.c
 tests/test-pread.sh
 tests/init.sh
+tests/signature.h
+tests/macros.h
 
 Depends-on:
 

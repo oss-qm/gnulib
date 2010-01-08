@@ -1,5 +1,7 @@
 Files:
 tests/test-getline.c
+tests/signature.h
+tests/macros.h
 
 Depends-on:
 

@@ -1,5 +1,5 @@
 /* Set the access and modification time of a file relative to directory fd.
-   Copyright (C) 2009 Free Software Foundation, Inc.
+   Copyright (C) 2009, 2010 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -23,6 +23,8 @@
 #include <errno.h>
 #include <fcntl.h>
 
+#include "stat-time.h"
+#include "timespec.h"
 #include "utimens.h"
 
 #if HAVE_UTIMENSAT
@@ -31,10 +33,11 @@
 
 /* If we have a native utimensat, but are compiling this file, then
    utimensat was defined to rpl_utimensat by our replacement
-   sys/stat.h.  We assume the native version might fail with ENOSYS
-   (as is the case when using newer glibc but older Linux kernel).  In
-   this scenario, rpl_utimensat checks whether the native version is
-   usable, and local_utimensat provides the fallback manipulation.  */
+   sys/stat.h.  We assume the native version might fail with ENOSYS,
+   or succeed without properly affecting ctime (as is the case when
+   using newer glibc but older Linux kernel).  In this scenario,
+   rpl_utimensat checks whether the native version is usable, and
+   local_utimensat provides the fallback manipulation.  */
 
 static int local_utimensat (int, char const *, struct timespec const[2], int);
 # define AT_FUNC_NAME local_utimensat
@@ -45,10 +48,41 @@ int
 rpl_utimensat (int fd, char const *file, struct timespec const times[2],
                int flag)
 {
+  /* See comments in utimens.c for details.  */
   static int utimensat_works_really; /* 0 = unknown, 1 = yes, -1 = no.  */
   if (0 <= utimensat_works_really)
     {
-      int result = utimensat (fd, file, times, flag);
+      int result;
+# ifdef __linux__
+      struct stat st;
+      struct timespec ts[2];
+      /* As recently as Linux kernel 2.6.32 (Dec 2009), several file
+         systems (xfs, ntfs-3g) have bugs with a single UTIME_OMIT,
+         but work if both times are either explicitly specified or
+         UTIME_NOW.  Work around it with a preparatory [l]stat prior
+         to calling utimensat; fortunately, there is not much timing
+         impact due to the extra syscall even on file systems where
+         UTIME_OMIT would have worked.  FIXME: Simplify this in 2012,
+         when file system bugs are no longer common.  */
+      if (times && (times[0].tv_nsec == UTIME_OMIT
+                    || times[1].tv_nsec == UTIME_OMIT))
+        {
+          if (fstatat (fd, file, &st, flag))
+            return -1;
+          if (times[0].tv_nsec == UTIME_OMIT && times[1].tv_nsec == UTIME_OMIT)
+            return 0;
+          if (times[0].tv_nsec == UTIME_OMIT)
+            ts[0] = get_stat_atime (&st);
+          else
+            ts[0] = times[0];
+          if (times[1].tv_nsec == UTIME_OMIT)
+            ts[1] = get_stat_mtime (&st);
+          else
+            ts[1] = times[1];
+          times = ts;
+        }
+# endif /* __linux__ */
+      result = utimensat (fd, file, times, flag);
       /* Linux kernel 2.6.25 has a bug where it returns EINVAL for
          UTIME_NOW or UTIME_OMIT with non-zero tv_sec, which
          local_utimensat works around.  Meanwhile, EINVAL for a bad

@@ -1,5 +1,5 @@
 /* Test of pipe2.
-   Copyright (C) 2009 Free Software Foundation, Inc.
+   Copyright (C) 2009, 2010 Free Software Foundation, Inc.
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -19,6 +19,9 @@
 
 #include <unistd.h>
 
+#include "signature.h"
+SIGNATURE_CHECK (pipe2, int, (int[2], int));
+
 #include <fcntl.h>
 #include <stdbool.h>
 
@@ -29,18 +32,7 @@
 #endif
 
 #include "binary-io.h"
-
-#define ASSERT(expr) \
-  do                                                                         \
-    {                                                                        \
-      if (!(expr))                                                           \
-        {                                                                    \
-          fprintf (stderr, "%s:%d: assertion failed\n", __FILE__, __LINE__); \
-          fflush (stderr);                                                   \
-          abort ();                                                          \
-        }                                                                    \
-    }                                                                        \
-  while (0)
+#include "macros.h"
 
 /* Return true if FD is open.  */
 static bool

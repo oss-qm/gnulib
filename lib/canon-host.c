@@ -1,6 +1,6 @@
 /* Host name canonicalization
 
-   Copyright (C) 2005, 2006, 2007, 2008 Free Software Foundation, Inc.
+   Copyright (C) 2005-2010 Free Software Foundation, Inc.
 
    Written by Derek Price <derek@ximbiot.com>.
 

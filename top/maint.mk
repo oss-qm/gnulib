@@ -2,7 +2,7 @@
 # This Makefile fragment tries to be general-purpose enough to be
 # used by many projects via the gnulib maintainer-makefile module.
 
-## Copyright (C) 2001-2009 Free Software Foundation, Inc.
+## Copyright (C) 2001-2010 Free Software Foundation, Inc.
 ##
 ## This program is free software: you can redistribute it and/or modify
 ## it under the terms of the GNU General Public License as published by
@@ -30,7 +30,6 @@ gzip_rsyncable := \
   $(shell gzip --help 2>/dev/null|grep rsyncable >/dev/null && echo --rsyncable)
 GZIP_ENV = '--no-name --best $(gzip_rsyncable)'
 
-# cfg.mk must define the gpg_key_ID used by this package.
 GIT = git
 VC = $(GIT)
 VC-tag = git tag -s -m '$(VERSION)' -u '$(gpg_key_ID)'
@@ -688,6 +687,13 @@ gnulib_dir ?= $(srcdir)/gnulib
 gnulib-version = $$(cd $(gnulib_dir) && git describe)
 bootstrap-tools ?= autoconf,automake,gnulib
 
+# If it's not already specified, derive the GPG key ID from
+# the signed tag we've just applied to mark this release.
+gpg_key_ID ?= \
+  $$(git cat-file tag v$(VERSION) > .ann-sig \
+     && gpgv .ann-sig - < /dev/null 2>&1 \
+	  | sed -n '/.*key ID \([0-9A-F]*\)/s//\1/p'; rm -f .ann-sig)
+
 announcement: NEWS ChangeLog $(rel-files)
 	@$(build_aux)/announce-gen					\
 	    --release-type=$(RELEASE_TYPE)				\
@@ -714,7 +720,7 @@ emit_upload_commands:
 	@echo "$(build_aux)/gnupload $(GNUPLOADFLAGS) \\"
 	@echo "    --to $(gnu_rel_host):$(PACKAGE) \\"
 	@echo "  $(rel-files)"
-	@echo '# send the /tmp/announcement e-mail'
+	@echo '# send the ~/announce-$(my_distdir) e-mail'
 	@echo =====================================
 	@echo =====================================
 
@@ -760,7 +766,7 @@ release-prep-hook ?= release-prep
 release-prep:
 	case $$RELEASE_TYPE in alpha|beta|stable) ;; \
 	  *) echo "invalid RELEASE_TYPE: $$RELEASE_TYPE" 1>&2; exit 1;; esac
-	$(MAKE) -s announcement > /tmp/announce-$(my_distdir)
+	$(MAKE) -s announcement > ~/announce-$(my_distdir)
 	if test -d $(release_archive_dir); then			\
 	  ln $(rel-files) $(release_archive_dir);		\
 	  chmod a-w $(rel-files);				\
@@ -770,6 +776,7 @@ release-prep:
 	perl -pi -e '$$. == 3 and print "$(noteworthy)\n\n\n"' NEWS
 	$(emit-commit-log) > .ci-msg
 	$(VC) commit -F .ci-msg -a
+	rm .ci-msg
 
 .PHONY: web-manual
 web-manual:

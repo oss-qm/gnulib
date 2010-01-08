@@ -1,5 +1,5 @@
 /* Test of quotearg family of functions.
-   Copyright (C) 2008-2009 Free Software Foundation, Inc.
+   Copyright (C) 2008-2010 Free Software Foundation, Inc.
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -25,24 +25,12 @@
 #include <locale.h>
 #include <stdbool.h>
 #include <stdint.h>
-#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
 #include "progname.h"
 #include "gettext.h"
-
-#define ASSERT(expr) \
-  do                                                                         \
-    {                                                                        \
-      if (!(expr))                                                           \
-        {                                                                    \
-          fprintf (stderr, "%s:%d: assertion failed\n", __FILE__, __LINE__); \
-          fflush (stderr);                                                   \
-          abort ();                                                          \
-        }                                                                    \
-    }                                                                        \
-  while (0)
+#include "macros.h"
 
 struct result_strings {
   char const *str1; /* Translation of "".  */
@@ -378,7 +366,7 @@ use_quotearg_colon (const char *str, size_t *len)
 }
 
 int
-main (int argc _UNUSED_PARAMETER_, char *argv[])
+main (int argc _GL_UNUSED, char *argv[])
 {
   int i;
   bool ascii_only = MB_CUR_MAX == 1 && !isprint ((unsigned char) LQ[0]);

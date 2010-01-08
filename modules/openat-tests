@@ -1,4 +1,5 @@
 Files:
+tests/nap.h
 tests/test-chown.h
 tests/test-lchown.h
 tests/test-lstat.h
@@ -11,6 +12,8 @@ tests/test-fstatat.c
 tests/test-mkdirat.c
 tests/test-openat.c
 tests/test-unlinkat.c
+tests/signature.h
+tests/macros.h
 
 Depends-on:
 mgetgroups

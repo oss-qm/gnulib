@@ -1,5 +1,5 @@
 /* Test of sequential list data type implementation.
-   Copyright (C) 2006-2009 Free Software Foundation, Inc.
+   Copyright (C) 2006-2010 Free Software Foundation, Inc.
    Written by Bruno Haible <bruno@clisp.org>, 2007.
 
    This program is free software: you can redistribute it and/or modify
@@ -19,28 +19,16 @@
 
 #include "gl_array_list.h"
 
-#include <stdio.h>
 #include <stdlib.h>
 
 #include "progname.h"
+#include "macros.h"
 
 static const char *objects[15] =
   {
     "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o"
   };
 
-#define SIZEOF(array) (sizeof (array) / sizeof (array[0]))
-#define ASSERT(expr) \
-  do                                                                         \
-    {                                                                        \
-      if (!(expr))                                                           \
-        {                                                                    \
-          fprintf (stderr, "%s:%d: assertion failed\n", __FILE__, __LINE__); \
-          fflush (stderr);                                                   \
-          abort ();                                                          \
-        }                                                                    \
-    }                                                                        \
-  while (0)
 #define RANDOM(n) (rand () % (n))
 #define RANDOM_OBJECT() objects[RANDOM (SIZEOF (objects))]
 

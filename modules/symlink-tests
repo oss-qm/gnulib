@@ -1,6 +1,8 @@
 Files:
 tests/test-symlink.h
 tests/test-symlink.c
+tests/signature.h
+tests/macros.h
 
 Depends-on:
 stdbool

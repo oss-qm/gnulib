@@ -1,6 +1,8 @@
 Files:
 tests/test-lstat.h
 tests/test-lstat.c
+tests/signature.h
+tests/macros.h
 
 Depends-on:
 errno

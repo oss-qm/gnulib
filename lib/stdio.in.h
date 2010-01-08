@@ -1,6 +1,6 @@
 /* A GNU-like <stdio.h>.
 
-   Copyright (C) 2004, 2007-2009 Free Software Foundation, Inc.
+   Copyright (C) 2004, 2007-2010 Free Software Foundation, Inc.
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -39,10 +39,11 @@
 #include <stdarg.h>
 #include <stddef.h>
 
-#if (@GNULIB_FSEEKO@ && @REPLACE_FSEEKO@) \
-  || (@GNULIB_FTELLO@ && @REPLACE_FTELLO@) \
-  || (@GNULIB_GETDELIM@ && !@HAVE_DECL_GETDELIM@) \
-  || (@GNULIB_GETLINE@ && (!@HAVE_DECL_GETLINE@ || @REPLACE_GETLINE@))
+#if ((@GNULIB_FSEEKO@ && @REPLACE_FSEEKO@) \
+     || (@GNULIB_FTELLO@ && @REPLACE_FTELLO@) \
+     || (@GNULIB_GETDELIM@ && !@HAVE_DECL_GETDELIM@) \
+     || (@GNULIB_GETLINE@ && (!@HAVE_DECL_GETLINE@ || @REPLACE_GETLINE@)) \
+     || defined GNULIB_POSIXCHECK)
 /* Get off_t and ssize_t.  */
 # include <sys/types.h>
 #endif
@@ -80,10 +81,10 @@ extern int dprintf (int fd, const char *format, ...)
 # endif
 #elif defined GNULIB_POSIXCHECK
 # undef dprintf
-# define dprintf(d,f,a) \
+# define dprintf \
     (GL_LINK_WARNING ("dprintf is unportable - " \
                       "use gnulib module dprintf for portability"), \
-     dprintf (d, f, a))
+     dprintf)
 #endif
 
 #if @GNULIB_FCLOSE@

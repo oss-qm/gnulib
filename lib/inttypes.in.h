@@ -1,4 +1,4 @@
-/* Copyright (C) 2006-2009 Free Software Foundation, Inc.
+/* Copyright (C) 2006-2010 Free Software Foundation, Inc.
    Written by Paul Eggert, Bruno Haible, Derek Price.
    This file is part of gnulib.
 
@@ -36,8 +36,11 @@
 #if ! defined INTTYPES_H && ! defined _GL_JUST_INCLUDE_SYSTEM_INTTYPES_H
 #define INTTYPES_H
 
-/* Include <stdint.h> or the gnulib replacement.  */
-#include <stdint.h>
+/* Include <stdint.h> or the gnulib replacement.
+   But avoid namespace pollution on glibc systems.  */
+#ifndef __GLIBC__
+# include <stdint.h>
+#endif
 /* Get CHAR_BIT.  */
 #include <limits.h>
 

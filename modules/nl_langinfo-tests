@@ -1,6 +1,8 @@
 Files:
 tests/test-nl_langinfo.sh
 tests/test-nl_langinfo.c
+tests/signature.h
+tests/macros.h
 m4/locale-fr.m4
 
 Depends-on:

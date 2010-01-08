@@ -1,6 +1,6 @@
 /* Test harness for pipe-filter-ii.
 
-   Copyright (C) 2009 Free Software Foundation, Inc.
+   Copyright (C) 2009, 2010 Free Software Foundation, Inc.
    Written by Paolo Bonzini <bonzini@gnu.org>, 2009.
 
    This program is free software: you can redistribute it and/or modify
@@ -28,18 +28,7 @@
 
 #include "full-write.h"
 #include "progname.h"
-
-#define ASSERT(expr) \
-  do                                                                         \
-    {                                                                        \
-      if (!(expr))                                                           \
-        {                                                                    \
-          fprintf (stderr, "%s:%d: assertion failed\n", __FILE__, __LINE__); \
-          fflush (stderr);                                                   \
-          abort ();                                                          \
-        }                                                                    \
-    }                                                                        \
-  while (0)
+#include "macros.h"
 
 struct locals
 {

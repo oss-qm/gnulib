@@ -1,5 +1,5 @@
 /* Substitute for and wrapper around <langinfo.h>.
-   Copyright (C) 2009 Free Software Foundation, Inc.
+   Copyright (C) 2009, 2010 Free Software Foundation, Inc.
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -123,6 +123,7 @@ typedef int nl_item;
 
 #endif
 
+/* The definition of GL_LINK_WARNING is copied here.  */
 
 /* Declare overridden functions.  */
 

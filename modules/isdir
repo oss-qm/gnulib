@@ -3,13 +3,12 @@ Determine whether a directory exists.
 
 Files:
 lib/isdir.c
-m4/isdir.m4
+lib/isdir.h
 
 Depends-on:
 stat
 
 configure.ac:
-gl_ISDIR
 
 Makefile.am:
 lib_SOURCES += isdir.c

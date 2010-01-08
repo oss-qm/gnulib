@@ -1,11 +1,13 @@
 # Configure a replacement for <sys/file.h>.
 
-# Copyright (C) 2008 Free Software Foundation, Inc.
+# Copyright (C) 2008, 2009, 2010 Free Software Foundation, Inc.
 # This file is free software; the Free Software Foundation
 # gives unlimited permission to copy and/or distribute it,
 # with or without modifications, as long as this notice is preserved.
 
 # Written by Richard W.M. Jones.
+
+# serial 2
 
 AC_DEFUN([gl_HEADER_SYS_FILE_H],
 [
@@ -16,8 +18,6 @@ AC_DEFUN([gl_HEADER_SYS_FILE_H],
   AC_CHECK_FUNCS_ONCE([flock])
 
   gl_CHECK_NEXT_HEADERS([sys/file.h])
-  SYS_FILE_H='sys/file.h'
-  AC_SUBST([SYS_FILE_H])
 
   AC_CHECK_HEADERS_ONCE([sys/file.h])
   if test $ac_cv_header_sys_file_h = yes; then

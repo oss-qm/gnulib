@@ -1,5 +1,5 @@
 /* Test of getdate() function.
-   Copyright (C) 2008, 2009 Free Software Foundation, Inc.
+   Copyright (C) 2008, 2009, 2010 Free Software Foundation, Inc.
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -19,26 +19,14 @@
 
 #include <config.h>
 
+#include "getdate.h"
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
 #include "progname.h"
-
-#include "getdate.h"
-
-#define ASSERT(expr)                                                    \
-  do                                                                    \
-    {                                                                   \
-      if (!(expr))                                                      \
-        {                                                               \
-          fprintf (stderr, "%s:%d: assertion failed\n",                 \
-                   __FILE__, __LINE__);                                 \
-          fflush (stderr);                                              \
-          abort ();                                                     \
-        }                                                               \
-    }                                                                   \
-  while (0)
+#include "macros.h"
 
 #ifdef DEBUG
 #define LOG(str, now, res)                                              \
@@ -61,7 +49,7 @@ static const char* const day_table[] =
 };
 
 int
-main (int argc _UNUSED_PARAMETER_, char **argv)
+main (int argc _GL_UNUSED, char **argv)
 {
   struct timespec result;
   struct timespec result2;

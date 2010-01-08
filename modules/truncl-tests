@@ -1,6 +1,8 @@
 Files:
 tests/test-truncl.c
 tests/nan.h
+tests/signature.h
+tests/macros.h
 
 Depends-on:
 fpucw
@@ -13,6 +15,3 @@ Makefile.am:
 TESTS += test-truncl
 check_PROGRAMS += test-truncl
 test_truncl_LDADD = $(LDADD) @TRUNCL_LIBM@
-
-License:
-LGPL

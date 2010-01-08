@@ -1,6 +1,8 @@
 Files:
 tests/test-link.h
 tests/test-linkat.c
+tests/signature.h
+tests/macros.h
 
 Depends-on:
 areadlink-with-size

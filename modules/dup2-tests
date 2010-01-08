@@ -1,9 +1,10 @@
 Files:
 tests/test-dup2.c
+tests/signature.h
+tests/macros.h
 
 Depends-on:
 binary-io
-cloexec
 open
 
 configure.ac:

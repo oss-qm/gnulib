@@ -8,10 +8,12 @@ m4/cloexec.m4
 
 Depends-on:
 dup2
+fcntl
 stdbool
 
 configure.ac:
 gl_CLOEXEC
+gl_MODULE_INDICATOR([cloexec])
 
 Makefile.am:
 

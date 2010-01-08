@@ -1,5 +1,5 @@
 /* Test of create_pipe_bidi/wait_subprocess.
-   Copyright (C) 2009 Free Software Foundation, Inc.
+   Copyright (C) 2009, 2010 Free Software Foundation, Inc.
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -33,19 +33,10 @@
    duplicate the original stderr.  */
 
 #define BACKUP_STDERR_FILENO 10
-static FILE *myerr;
+#define ASSERT_STREAM myerr
+#include "macros.h"
 
-#define ASSERT(expr) \
-  do                                                                         \
-    {                                                                        \
-      if (!(expr))                                                           \
-        {                                                                    \
-          fprintf (myerr, "%s:%d: assertion failed\n", __FILE__, __LINE__);  \
-          fflush (myerr);                                                    \
-          abort ();                                                          \
-        }                                                                    \
-    }                                                                        \
-  while (0)
+static FILE *myerr;
 
 /* Code executed by the child process.  argv[1] = "child".  */
 static int

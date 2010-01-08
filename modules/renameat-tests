@@ -1,6 +1,8 @@
 Files:
 tests/test-rename.h
 tests/test-renameat.c
+tests/signature.h
+tests/macros.h
 
 Depends-on:
 filenamecat

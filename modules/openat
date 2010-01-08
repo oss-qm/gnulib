@@ -23,7 +23,6 @@ fchdir
 fcntl-h
 fdopendir
 gettext-h
-inline
 intprops
 lchown
 lstat
@@ -53,4 +52,4 @@ License:
 GPL
 
 Maintainer:
-Jim Meyering
+Jim Meyering, Eric Blake

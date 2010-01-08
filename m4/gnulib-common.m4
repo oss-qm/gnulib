@@ -1,5 +1,5 @@
 # gnulib-common.m4 serial 11
-dnl Copyright (C) 2007-2009 Free Software Foundation, Inc.
+dnl Copyright (C) 2007-2010 Free Software Foundation, Inc.
 dnl This file is free software; the Free Software Foundation
 dnl gives unlimited permission to copy and/or distribute it,
 dnl with or without modifications, as long as this notice is preserved.
@@ -23,14 +23,17 @@ AC_DEFUN([gl_COMMON_BODY], [
 # define __GNUC_STDC_INLINE__ 1
 #endif])
   AH_VERBATIM([unused_parameter],
-[/* Define as a marker that can be attached to function parameter declarations
-   for parameters that are not used.  This helps to reduce warnings, such as
-   from GCC -Wunused-parameter.  */
+[/* Define as a marker that can be attached to declarations that might not
+    be used.  This helps to reduce warnings, such as from
+    GCC -Wunused-parameter.  */
 #if __GNUC__ >= 3 || (__GNUC__ == 2 && __GNUC_MINOR__ >= 7)
-# define _UNUSED_PARAMETER_ __attribute__ ((__unused__))
+# define _GL_UNUSED __attribute__ ((__unused__))
 #else
-# define _UNUSED_PARAMETER_
+# define _GL_UNUSED
 #endif
+/* The name _UNUSED_PARAMETER_ is an earlier spelling, although the name
+   is a misnomer outside of parameter lists.  */
+#define _UNUSED_PARAMETER_ _GL_UNUSED
 ])
 ])
 
