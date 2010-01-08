@@ -18,8 +18,17 @@ FreeBSD 7.2.
 @item
 On Ultrix 4.3, @code{getgroups (0, NULL)} always fails.  See macro
 @samp{AC_FUNC_GETGROUPS}.
+@item
+On very old systems, this function operated on an array of @samp{int},
+even though that was a different size than an array of @samp{gid_t}.
 @end itemize
 
 Portability problems not fixed by Gnulib:
 @itemize
+@item
+It is unspecified whether the effective group id will be included in
+the returned list, nor whether the list will be sorted in any
+particular order.  For that matter, some platforms include the
+effective group id twice, if it is also a member of the current
+supplemental group ids.
 @end itemize

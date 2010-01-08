@@ -7,10 +7,12 @@ lib/cloexec.h
 m4/cloexec.m4
 
 Depends-on:
+dup2
 stdbool
 
 configure.ac:
 gl_CLOEXEC
+gl_MODULE_INDICATOR([cloexec])
 
 Makefile.am:
 
@@ -18,7 +20,7 @@ Include:
 "cloexec.h"
 
 License:
-GPL
+LGPL
 
 Maintainer:
-Jim Meyering
+Jim Meyering, Eric Blake

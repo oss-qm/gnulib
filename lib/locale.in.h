@@ -29,10 +29,29 @@
 /* NetBSD 5.0 mis-defines NULL.  */
 #include <stddef.h>
 
+/* MacOS X 10.5 defines the locale_t type in <xlocale.h>.  */
+#if @HAVE_XLOCALE_H@
+# include <xlocale.h>
+#endif
+
 /* The LC_MESSAGES locale category is specified in POSIX, but not in ISO C.
    On systems that don't define it, use the same value as GNU libintl.  */
 #if !defined LC_MESSAGES
 # define LC_MESSAGES 1729
+#endif
+
+#if @GNULIB_DUPLOCALE@
+# if @REPLACE_DUPLOCALE@
+#  undef duplocale
+#  define duplocale rpl_duplocale
+extern locale_t duplocale (locale_t locale);
+# endif
+#elif defined GNULIB_POSIXCHECK
+# undef duplocale
+# define duplocale(l) \
+   (GL_LINK_WARNING ("duplocale is buggy on some glibc systems - " \
+                     "use gnulib module duplocale for portability"), \
+    duplocale (l))
 #endif
 
 #endif /* _GL_LOCALE_H */

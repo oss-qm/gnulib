@@ -72,6 +72,7 @@ typedef struct sigaltstack stack_t;
 
 #include "c-stack.h"
 #include "exitfail.h"
+#include "ignore-value.h"
 
 #if defined SA_ONSTACK && defined SA_SIGINFO
 # define SIGACTION_WORKS 1
@@ -105,10 +106,10 @@ die (int signo)
   char const *message;
   segv_action (signo);
   message = signo ? program_error_message : stack_overflow_message;
-  write (STDERR_FILENO, program_name, strlen (program_name));
-  write (STDERR_FILENO, ": ", 2);
-  write (STDERR_FILENO, message, strlen (message));
-  write (STDERR_FILENO, "\n", 1);
+  ignore_value (write (STDERR_FILENO, program_name, strlen (program_name)));
+  ignore_value (write (STDERR_FILENO, ": ", 2));
+  ignore_value (write (STDERR_FILENO, message, strlen (message)));
+  ignore_value (write (STDERR_FILENO, "\n", 1));
   if (! signo)
     _exit (exit_failure);
   raise (signo);
@@ -217,12 +218,14 @@ c_stack_action (void (*action) (int))
 # if STACK_DIRECTION
 #  define find_stack_direction(ptr) STACK_DIRECTION
 # else
+#  if ! SIGACTION_WORKS || HAVE_XSI_STACK_OVERFLOW_HEURISTIC
 static int
 find_stack_direction (char const *addr)
 {
   char dummy;
   return ! addr ? find_stack_direction (&dummy) : addr < &dummy ? 1 : -1;
 }
+#  endif
 # endif
 
 # if SIGACTION_WORKS

@@ -1,3 +1,706 @@
+2009-12-10  Bruno Haible  <bruno@clisp.org>
+
+	pty test: Fix link error.
+	* modules/pty-tests (Makefile.am): Add the default LDADD value to
+	test_pty_LDADD.
+
+2009-12-07  Simon Josefsson  <simon@josefsson.org>
+
+	* modules/pty: New file.
+	* modules/pty-tests: New file.
+	* m4/pty.m4: New file.
+	* tests/test-pty.c: New file.
+	* doc/glibc-headers/pty.texi: Modified.
+	* doc/glibc-functions/forkpty.texi: Modified.
+	* doc/glibc-functions/openpty.texi: Modified.
+
+2009-12-10  Bruno Haible  <bruno@clisp.org>
+
+	Avoid syntax error in C++ mode.
+	* lib/stdio.in.h (rename): Don't use parameter name 'new'.
+
+2009-12-10  Bruno Haible  <bruno@clisp.org>
+
+	Use sed with option -e.
+	* gnulib-tool (func_version, func_emit_copyright_notice,
+	func_emit_initmacro_end, func_import, func_create_testdir): Pass
+	option -e to sed.
+	* modules/link-warning (Makefile.am): Likewise.
+
+2009-12-10  Jim Meyering  <meyering@redhat.com>
+
+	mgetgroups: do not write bytes beyond end of malloc'd buffer
+	* lib/mgetgroups.c: Fix an off-by-one error.  When we have no
+	username, we call getgroups with a one-element-shorter buffer,
+	but still told it the length was original, max_n_groups.
+
+2009-12-09  Eric Blake  <ebb9@byu.net>
+
+	cloexec: relax license
+	* modules/cloexec (Maintainer): Add myself.
+	(License): Use LGPL, not GPL.
+
+	link-warning: optimize generation
+	* modules/link-warning (Makefile.am): Reduce process usage.
+
+2009-12-09  Bruno Haible  <bruno@clisp.org>
+
+	* doc/posix-functions/unsetenv.texi: Mention Solaris 10 bug for which a
+	workaround was added on 2009-11-17.
+
+2009-12-09  Jim Meyering  <meyering@redhat.com>
+	    Bruno Haible  <bruno@clisp.org>
+
+	link-warning: Allow extra lines at the top of build-aux/link-warning.h.
+	* modules/link-warning (Makefile.am): Make the comment-removing sed
+	command more robust in the face of bootstrap-prepended comment lines.
+
+2009-12-09  Bruno Haible  <bruno@clisp.org>
+
+	* lib/mgetgroups.c (mgetgroups): Don't remove duplicates if there is at
+	most one group.
+
+2009-12-09  Simon Josefsson <simon@josefsson.org>
+	    Bruno Haible  <bruno@clisp.org>
+
+	* build-aux/link-warning.h: Add copyright notice.
+	* modules/link-warning (Makefile.am): Generate link-warning.h from
+	build-aux/link-warning.h. Update LINK_WARNING_H accordingly.
+	* NEWS: Mention change in link-warning module.
+	* modules/arpa_inet (Makefile.am): Add dependency to arpa/inet.h.
+	* modules/dirent (Makefile.am): Add dependency to dirent.h.
+	* modules/fcntl-h (Makefile.am): Add dependency to fcntl.h.
+	* modules/getopt-posix (Makefile.am): Add dependency to getopt.h.
+	* modules/inttypes (Makefile.am): Add dependency to inttypes.h.
+	* modules/math (Makefile.am): Add dependency to math.h.
+	* modules/search (Makefile.am): Add dependency to search.h.
+	* modules/signal (Makefile.am): Add dependency to signal.h.
+	* modules/spawn (Makefile.am): Add dependency to spawn.h.
+	* modules/stdio (Makefile.am): Add dependency to stdio.h.
+	* modules/stdlib (Makefile.am): Add dependency to stdlib.h.
+	* modules/string (Makefile.am): Add dependency to string.h.
+	* modules/strings (Makefile.am): Add dependency to strings.h.
+	* modules/sys_ioctl (Makefile.am): Add dependency to sys/ioctl.h.
+	* modules/sys_select (Makefile.am): Add dependency to sys/select.h.
+	* modules/sys_socket (Makefile.am): Add dependency to sys/socket.h.
+	* modules/sys_stat (Makefile.am): Add dependency to sys/stat.h.
+	* modules/sys_times (Makefile.am): Add dependency to sys/times.h.
+	* modules/sys_utsname (Makefile.am): Add dependency to sys/utsname.h.
+	* modules/sys_wait (Makefile.am): Add dependency to sys/wait.h.
+	* modules/unistd (Makefile.am): Add dependency to unistd.h.
+	* modules/wchar (Makefile.am): Add dependency to wchar.h.
+
+2009-12-09  Bruno Haible  <bruno@clisp.org>
+
+	fchdir: Optimize away rpl_fstat when possible.
+	* m4/fchdir.m4 (gl_FUNC_FCHDIR): Set REPLACE_FSTAT only together with
+	REPLACE_OPEN_DIRECTORY.
+	* lib/fchdir.c (rpl_fstat): Define only when REPLACE_OPEN_DIRECTORY.
+
+2009-12-09  Bruno Haible  <bruno@clisp.org>
+
+	* lib/fchdir.c: Update comment.
+
+2009-12-09  Bruno Haible  <bruno@clisp.org>
+
+	* lib/cloexec.c (set_cloexec_flag): Clarify intent of dup2 call.
+
+2009-12-08  Eric Blake  <ebb9@byu.net>
+
+	fchdir: avoid memory leak on re-registration.
+	* lib/fchdir.c (ensure_dirs_slot): Avoid memory leak.
+
+2009-12-08  Jim Meyering  <meyering@redhat.com>
+
+	init.sh: avoid Solaris 10 /bin/sh portability problem
+	Solaris 10's /bin/sh does not pass '.' arguments 2.. to the
+	sourced script:
+	  $ printf 'echo "$@"\n' > f; /bin/sh -c '. ./f bar'
+	  $ printf 'echo "$@"\n' > f; /bin/bash -c '. ./f bar'
+	  bar
+	tests/init.sh relied on that, accepting a --set-path=DIR argument,
+	and two tests used that idiom.
+	* tests/init.sh: Update suggested usage comments.
+	(path_prepend_): New function, to be used in place
+	of the --src-path=DIR option.
+	(setup_): Move PATH-prepending code into path_prepend_.
+	* tests/test-pread.sh: Adapt to new usage.
+	* tests/test-xalloc-die.sh: Likewise.
+
+2009-12-08  Simon Josefsson  <simon@josefsson.org>
+
+	* doc/gnulib.texi (Glibc pty.h): Add.
+	* doc/glibc-functions/forkpty.texi: Add.
+	* doc/glibc-functions/openpty.texi: Add.
+	Suggested by Bruno Haible.
+
+2009-12-08  Eric Blake  <ebb9@byu.net>
+
+	fchdir: fix logic bugs
+	* m4/fchdir.m4 (gl_FUNC_FCHDIR): Fix logic bug.
+	* tests/test-fchdir.c (main): Enhance test.
+	* lib/fchdir.c (rpl_fstat): Always provide if fchdir replacement
+	is in use.
+
+	dup2: fix logic bugs
+	* lib/dup2.c (dup2): Fix logic bugs.  Use HAVE_DUP2 rather than
+	REPLACE_DUP2 to decide when rpl_dup2 is needed.
+	* m4/dup2.m4 (gl_REPLACE_DUP2): Only define REPLACE_DUP2 when dup2
+	exists.
+	(gl_FUNC_DUP2): Drop unneeded AC_DEFINE.
+
+2009-12-07  Eric Blake  <ebb9@byu.net>
+
+	unlink: fix m4 detection
+	* m4/unlink.m4 (gl_FUNC_UNLINK): Include correct header.
+
+	unistd-safer: add unit test
+	* modules/unistd-safer-tests: New file.
+	* tests/test-dup-safer.c: Likewise.
+	* tests/test-cloexec.c (setmode): Avoid compiler warning.
+	* tests/test-dup2.c (setmode): Likewise.
+	* lib/cloexec.c (dup_cloexec): Fix mingw compile error.
+
+	cloexec: preserve text vs. binary across dup_cloexec
+	* lib/cloexec.c (dup_cloexec) [W32]: Query and use translation
+	mode.
+	* modules/dup2-tests (Depends-on): Add binary-io.
+	* modules/cloexec-tests (Depends-on): Likewise.
+	* tests/test-dup2.c (setmode, is_mode): New helpers.
+	(main): Add tests that translation mode is preserved.
+	* tests/test-cloexec.c (setmode, is_mode, main): Likewise.
+	Reported by Bruno Haible.
+
+	mgetgroups: reduce duplicate listings
+	* lib/mgetgroups.c (mgetgroups): Reduce duplicates from the
+	resulting array.
+	* tests/test-chown.h (test_chown): Simplify client.
+	* tests/test-lchown.h (test_lchown): Likewise.
+
+2009-12-06  Bruno Haible  <bruno@clisp.org>
+
+	* lib/cloexec.c (dup_cloexec): Fix handling of _gl_register_dup return
+	value.
+
+2009-12-06  Bruno Haible  <bruno@clisp.org>
+
+	* lib/progname.c: Include stdio.h, stdlib.h.
+	(set_program_name): Reject a NULL argument.
+
+2009-12-05  Eric Blake  <ebb9@byu.net>
+
+	pipe2-safer: new module
+	* modules/pipe2-safer: New file.
+	* lib/unistd-safer.h (pipe2_safer): New prototype.
+	* lib/unistd--.h (pipe2): New wrapper.
+	* lib/pipe-safer.c (pipe2_safer): New function.
+	* modules/pipe (Depends-on): Add pipe2-safer.
+	* lib/pipe.c (create_pipe) [WIN32]: Let pipe2_safer do the work.
+
+	stdlib-safer: preserve cloexec flag for mkostemp[s]
+	* lib/mkstemp-safer.c (mkostemp_safer, mkostemps_safer): Use new
+	fd_safer_flag.
+
+	unistd-safer: allow preservation of cloexec status via flag
+	* lib/unistd-safer.h (dup_safer_flag, fd_safer_flag): New
+	prototypes.
+	* lib/dup-safer.c (dup_safer_flag): New function.
+	* lib/fd-safer.c (fd_safer_flag): Likewise.
+	* modules/cloexec (configure.ac): Set witness.
+
+	test-dup2: enhance test
+	* modules/dup2-tests (Depends-on): Add cloexec.
+	* tests/test-dup2.c (main): Enhance test.
+
+	cloexec: add dup_cloexec
+	* lib/cloexec.h (dup_cloexec): New prototype.  Add copyright
+	header and comments.
+	* lib/cloexec.c (set_cloexec_flag): Add comments.
+	(dup_cloexec): New function, with mingw implementation borrowed
+	from...
+	* lib/w32spawn.h (dup_noinherit): ...here.
+	* modules/execute (Depends-on): Add cloexec.
+	* modules/pipe (Depends-on): Likewise.
+	* modules/cloexec (Depends-on): Add dup2.
+	* modules/cloexec-tests (Files): New file.
+	* tests/test-cloexec.c: Likewise.
+
+	test-xalloc-die: fix test for mingw
+	* modules/xalloc-die-tests (Files): Add tests/init.sh.
+	* tests/test-xalloc-die.sh: Rewrite to use init.sh.  Strip
+	directory and .exe suffix off argv[0] output.
+
+	test-fseeko: fix test for mingw
+	* tests/test-fseeko.c (fseek): Redefine GL_LINK_WARNING, rather
+	than undefining fseek, so test will pass on mingw.
+
+2009-12-05  Bruno Haible  <bruno@clisp.org>
+
+	* lib/progname.h (set_program_name): Clarify specification.
+	* lib/progname.c (set_program_name): Likewise.
+	Reported by Jim Meyering.
+
+2009-12-05  Jim Meyering  <meyering@redhat.com>
+
+	maint.mk: backslash-escape parens in default regexp
+	* top/maint.mk (news-check-regexp): Now that we're using grep -E,
+	backslash-escape the literal parentheses.
+
+	maint.mk: news-date-check: use grep -E
+	* top/maint.mk (today): Define a Make variable, not a...
+	(news-date-check): ...shell variable.
+	(news-date-regexp): Use the Make variable.
+	Use grep's -E option.  Change the failing diagnostic to mention
+	the variable, $(news-date-regexp).
+
+2009-12-04  Alfred M. Szmidt  <ams@gnu.org>
+
+	maintainer-makefile: allow customization of NEWS entry format
+	* top/maint.mk (news-date-regexp): New overridable variable.
+	(news-date-check): Use it.
+
+2009-12-04  Eric Blake  <ebb9@byu.net>
+
+	mgetgroups: add xgetgroups, and avoid ENOSYS failures
+	* lib/mgetgroups.h (xgetgroups): New prototype.
+	* lib/mgetgroups.c (xgetgroups): New wrapper.
+	(mgetgroups): Handle ENOSYS.
+	* modules/mgetgroups (Depends-on): Add realloc.
+	Reported by Scott Harrison <scott.gnu.2009@scottrix.co.uk>.
+
+	mgetgroups: avoid argument promotion issues with -1
+	* lib/mgetgroups.c (mgetgroups): A cast is required when checking
+	for invalid gid_t.
+	* tests/test-chown.h (getegid, test_chown): Likewise.
+	* tests/test-lchown.h (getegid, test_lchown): Likewise.
+
+2009-12-03  Paolo Bonzini  <bonzini@gnu.org>
+
+	exclude: Fix header file problems.
+	* lib/exclude.h: Add multiple inclusion guards and include stdbool.h.
+
+2009-12-01  Jim Meyering  <meyering@redhat.com>
+
+	fts: fts_open: do not let an empty string cause immediate failure
+	This is required in support of GNU rm, for which the command
+	"rm A '' B" must process and remove both A and B, in spite of
+	the empty string argument.
+	* lib/fts.c (fts_open): Do not let the presence of an empty string
+	cause fts_open to fail immediately.  Most fts-using tools must be
+	able to process all arguments, in order, and can be expected to
+	diagnose such arguments themselves.
+
+2009-11-30  Eric Blake  <ebb9@byu.net>
+
+	utimens: fix compilation error
+	* lib/utimens.c (lutimens) [!HAVE_UTIMENSAT && HAVE_LUTIMES]:
+	Declare variable at right scope.
+
+2009-11-29  Jim Meyering  <meyering@redhat.com>
+
+	bootstrap: handle perl-5.11's changed --version output
+	* build-aux/bootstrap (get_version): Handle perl separately,
+	since perl-5.11's --version output is different.
+
+2009-11-28  Jim Meyering  <meyering@redhat.com>
+
+	userspec: depend on the inttostr module, too
+	* modules/userspec (Depends-on): Add inttostr.
+
+	userspec: disallow an ID that maps to (uid_t)-1 or (gid_t)-1
+	* lib/userspec.c (parse_with_separator): Do not accept a user ID
+	number of MAXUID when it evaluates to (uid_t) -1.
+	Likewise for group ID.  Reported by Matt McCutchen in
+	<http://savannah.gnu.org/bugs/?28113>
+
+	userspec: reformat to use spaces, not TABs
+	* lib/userspec.c: Expand TABs to spaces.
+	Add Emacs' "indent-tabs-mode: nil" hint.
+
+2009-11-27  Eric Blake  <ebb9@byu.net>
+
+	getopt-gnu: flush out another BSD bug
+	* m4/getopt.m4 (gl_GETOPT_CHECK_HEADERS): Test for the bug.
+	* tests/test-getopt.c (main): Check POSIXLY_CORRECT first, to
+	flush out BSD bug.
+	* tests/test-getopt.h (test_getopt): End lists with NULL.
+	* tests/test-getopt_long.h (test_getopt_long): Likewise.
+	(test_getopt_long_posix): Enhance test.
+	* modules/getopt-posix-tests (Depends-on): Add stdbool.
+	* doc/glibc-functions/getopt_long.texi (getopt_long): Mention
+	getopt-gnu.
+	* doc/glibc-functions/getopt_long_only.texi (getopt_long_only):
+	Likewise.
+
+2009-11-27  Simon Josefsson  <simon@josefsson.org>
+
+	* modules/idpriv-droptemp-tests (Notice): Fix text.
+
+2009-11-27  Jim Meyering  <meyering@redhat.com>
+
+	test-xalloc-die: avoid spurious failure due to libtool argv difference
+	In a libtool-enabled project, this test would fail due to a difference
+	in the emitted program name, e.g.,
+	-test-xalloc-die: memory exhausted
+	+/tmp/.../tests/.libs/lt-test-xalloc-die: memory exhausted
+	Use program to avoid that.
+	* modules/xalloc-die-tests (Depends-on): Add progname.
+	* tests/test-xalloc-die.c: Include progname.h".
+	(program_name): Remove decl.
+	(main): Call set_program_name.
+	* tests/test-xalloc-die.sh (compare): Remove unnecessary ${EXE}.
+
+2009-11-26  Richard Jones  <rjones@redhat.com>
+
+	w32sock: leave win32 error in place.
+	* lib/w32sock.h (set_winsock_errno): Do not call WSASetLastError.
+
+2009-11-26  Eric Blake  <ebb9@byu.net>
+
+	init.sh: suggest to use skip_ and fail_ functions in comments
+	* tests/init.sh: Add a sentence.
+
+2009-11-25  Bruno Haible  <bruno@clisp.org>
+
+	init.sh: add documentation in comments
+	* tests/init.sh: Add some developer and user documentation.
+
+2009-11-26  Jim Meyering  <meyering@redhat.com>
+
+	init.sh: accommodate even those who specify bogus srcdir manually
+	* tests/init.sh: Normally, srcdir is guaranteed by automake and
+	configure-time tests to be sanitized, so that there is no need to
+	use "$srcdir" in Makefile rules and shell scripts.  Using $srcdir
+	(with no double quotes) suffices.  However, since tests may be
+	invoked manually, and since you may explicitly set srcdir to the
+	name of a directory containing spaces, do quote its uses here.
+	* tests/test-pread.sh: Likewise.
+	Suggested by Bruno Haible.
+
+	test-pread.sh: avoid diagnostics for those who ignore SIGPIPE
+	* tests/test-pread.sh: Write no data into the pipe, because
+	test-pread actually reads none.  This avoids a diagnostic,
+	"bash: echo: write error: Broken pipe", that arises in the unusual
+	event something is ignoring SIGPIPE, and might be interpreted
+	as some sort of failure.  Reported by Bruno Haible.
+
+2009-11-25  Jim Meyering  <meyering@redhat.com>
+
+	test-pread: cover failure with ESPIPE and EINVAL
+	* tests/test-pread.c (main): Test for failure, too.
+	* tests/test-pread.sh: Invoke with stdin on a pipe.
+	Suggested by Eric Blake.
+
+	pread: improvement and fix
+	* modules/pread (Depends-on): Depend on lseek, for portability to
+	e.g., mingw.  Suggested by Eric Blake.
+	* lib/pread.c (__libc_read): Define.  Reported by Richard W.M. Jones.
+
+	unistd.in.h: correct declaration of pread
+	* lib/unistd.in.h: Correct type of "buf" parameter: void*, not char*
+	Reported by Richard W.M. Jones.
+
+	test-pread.sh: distribute the test script
+	* modules/pread-tests (Files): Include test-pread.sh.
+
+	test-pread.sh: clean up
+	* tests/test-pread.sh: Don't refer to $builddir. Just use equivalent ".".
+	* modules/pread-tests (TESTS_ENVIRONMENT): Don't export builddir.
+	That is unnecessary, since it's always ".".
+	Suggestion from Eric Blake.
+
+	test-pread.sh: make executable
+	* tests/test-pread.sh: Set executable bit.
+	Reported by Eric Blake.
+
+	correct typo in test-pread.sh
+	* tests/test-pread.sh: Add #! line.
+
+	test pread
+	* tests/test-pread.c: New file.
+	* tests/test-pread.sh: Likewise.
+	* modules/pread-tests: Likewise.
+
+	pread: new module
+	* modules/pread: New file.
+	* lib/unistd.in.h (pread): Define/declare.
+	* lib/pread.c (pread): New file.
+	* m4/unistd_h.m4 (gl_UNISTD_H_DEFAULTS): Define defaults.
+	* modules/unistd (Makefile.am): Substitute witnesses.
+	* doc/posix-functions/pread.texi (pread): Update.
+	* MODULES.html.sh: Add pread.
+
+2009-11-25  Jim Meyering  <meyering@redhat.com>
+
+	tests/init.sh: new file to be used via most *.sh tests
+	* tests/init.sh: New file.
+
+2009-11-25  Eric Blake  <ebb9@byu.net>
+
+	utimens: work around older Linux failure with symlinks
+	* lib/utimens.c (lutimensat_works_really): New variable.
+	(fdutimens, lutimens): Use it to manage kernels that support
+	nanosecond times on files, but not on symlinks.
+	Reported by Ondřej Vašík.
+
+	utimes: fix configure grammar
+	* m4/utimes.m4 (gl_FUNC_UTIMES): Delete spurious word.
+
+2009-11-25  Paolo Bonzini  <bonzini@gnu.org>
+
+	regex: Fix fastmap for multibyte character ranges.
+	* lib/regcomp.c (re_compute_fastmap_iter): Add all multibyte lead
+	characters when a multibyte character range is included.
+
+2009-11-22  Andy Wingo  <wingo@pobox.com>
+
+	version-etc: work also with AM_INIT_AUTOMAKE's no-define option
+	* lib/version-etc.c [!defined PACKAGE]: Define to PACKAGE_TARNAME.
+
+2009-11-24  Bruno Haible  <bruno@clisp.org>
+
+	doc: Most *_l functions exist in MacOS X 10.5.
+	* doc/posix-functions/duplocale.texi: Update platforms list.
+	* doc/posix-functions/freelocale.texi: Likewise.
+	* doc/posix-functions/newlocale.texi: Likewise.
+	* doc/posix-functions/uselocale.texi: Likewise.
+	* doc/posix-functions/isalnum_l.texi: Likewise.
+	* doc/posix-functions/isalpha_l.texi: Likewise.
+	* doc/posix-functions/isblank_l.texi: Likewise.
+	* doc/posix-functions/iscntrl_l.texi: Likewise.
+	* doc/posix-functions/isdigit_l.texi: Likewise.
+	* doc/posix-functions/isgraph_l.texi: Likewise.
+	* doc/posix-functions/islower_l.texi: Likewise.
+	* doc/posix-functions/isprint_l.texi: Likewise.
+	* doc/posix-functions/ispunct_l.texi: Likewise.
+	* doc/posix-functions/isspace_l.texi: Likewise.
+	* doc/posix-functions/isupper_l.texi: Likewise.
+	* doc/posix-functions/iswalnum_l.texi: Likewise.
+	* doc/posix-functions/iswalpha_l.texi: Likewise.
+	* doc/posix-functions/iswblank_l.texi: Likewise.
+	* doc/posix-functions/iswcntrl_l.texi: Likewise.
+	* doc/posix-functions/iswctype_l.texi: Likewise.
+	* doc/posix-functions/iswdigit_l.texi: Likewise.
+	* doc/posix-functions/iswgraph_l.texi: Likewise.
+	* doc/posix-functions/iswlower_l.texi: Likewise.
+	* doc/posix-functions/iswprint_l.texi: Likewise.
+	* doc/posix-functions/iswpunct_l.texi: Likewise.
+	* doc/posix-functions/iswspace_l.texi: Likewise.
+	* doc/posix-functions/iswupper_l.texi: Likewise.
+	* doc/posix-functions/iswxdigit_l.texi: Likewise.
+	* doc/posix-functions/isxdigit_l.texi: Likewise.
+	* doc/posix-functions/nl_langinfo_l.texi: Likewise.
+	* doc/posix-functions/strcasecmp_l.texi: Likewise.
+	* doc/posix-functions/strcoll_l.texi: Likewise.
+	* doc/posix-functions/strfmon_l.texi: Likewise.
+	* doc/posix-functions/strftime_l.texi: Likewise.
+	* doc/posix-functions/strncasecmp_l.texi: Likewise.
+	* doc/posix-functions/strxfrm_l.texi: Likewise.
+	* doc/posix-functions/tolower_l.texi: Likewise.
+	* doc/posix-functions/toupper_l.texi: Likewise.
+	* doc/posix-functions/towctrans_l.texi: Likewise.
+	* doc/posix-functions/towlower_l.texi: Likewise.
+	* doc/posix-functions/towupper_l.texi: Likewise.
+	* doc/posix-functions/wcscoll_l.texi: Likewise.
+	* doc/posix-functions/wcsxfrm_l.texi: Likewise.
+	* doc/posix-functions/wctrans_l.texi: Likewise.
+	* doc/posix-functions/wctype_l.texi: Likewise.
+	* doc/glibc-functions/strptime_l.texi: Likewise.
+	* doc/glibc-functions/strtod_l.texi: Likewise.
+	* doc/glibc-functions/strtof_l.texi: Likewise.
+	* doc/glibc-functions/strtol_l.texi: Likewise.
+	* doc/glibc-functions/strtold_l.texi: Likewise.
+	* doc/glibc-functions/strtoll_l.texi: Likewise.
+	* doc/glibc-functions/strtoul_l.texi: Likewise.
+	* doc/glibc-functions/strtoull_l.texi: Likewise.
+	* doc/glibc-functions/wcsftime_l.texi: Likewise.
+	* doc/glibc-functions/wcstod_l.texi: Likewise.
+	* doc/glibc-functions/wcstof_l.texi: Likewise.
+	* doc/glibc-functions/wcstol_l.texi: Likewise.
+	* doc/glibc-functions/wcstold_l.texi: Likewise.
+	* doc/glibc-functions/wcstoll_l.texi: Likewise.
+	* doc/glibc-functions/wcstoul_l.texi: Likewise.
+	* doc/glibc-functions/wcstoull_l.texi: Likewise.
+
+2009-11-24  Bruno Haible  <bruno@clisp.org>
+
+	duplocale: Fix logic bug.
+	* lib/duplocale.c: Don't include <langinfo.h>.
+	(_NL_LOCALE_NAME): Remove macro.
+	(rpl_duplocale): Use setlocale instead of nl_langinfo.
+	* tests/test-duplocale.c (main): Also test duplocale after uselocale.
+
+2009-11-23  Jim Meyering  <meyering@redhat.com>
+
+	test-update-copyright: don't hard-code /usr/bin/perl
+	* tests/test-update-copyright.sh (YEAR): Use date +%Y, rather than
+	perl to print the current year.  Gilles Espinasse reported that
+	the replaced use of perl was hard-coded as /usr/bin/perl.
+
+2009-11-23  Bruno Haible  <bruno@clisp.org>
+
+	duplocale: Add support for glibc 2.3.x.
+	* lib/duplocale.c (rpl_duplocale): Add fallback code for glibc 2.3.x.
+
+2009-11-22  Bruno Haible  <bruno@clisp.org>
+
+	vasnprintf: Tiny optimization.
+	* lib/vasnprintf.c (decimal_point_char): Choose the fast path also on
+	MacOS X.
+
+2009-11-22  Bruno Haible  <bruno@clisp.org>
+
+	Tests for module 'duplocale'.
+	* modules/duplocale-tests: New file.
+	* tests/test-duplocale.c: New file.
+
+	New module 'duplocale'.
+	* m4/duplocale.m4: New file.
+	* lib/locale.in.h (duplocale): New declaration.
+	* lib/duplocale.c: New file.
+	* m4/locale_h.m4 (gl_REPLACE_LOCALE_H, gl_LOCALE_MODULE_INDICATOR,
+	gl_LOCALE_H_DEFAULTS): New macros.
+	(gl_LOCALE_H): Require gl_LOCALE_H_DEFAULTS. Invoke
+	gl_CHECK_NEXT_HEADERS unconditionally. Invoke gl_REPLACE_LOCALE_H.
+	* modules/locale (Makefile.am): Substitute also GNULIB_DUPLOCALE,
+	REPLACE_DUPLOCALE.
+	* modules/duplocale: New file.
+	* doc/posix-functions/duplocale.texi: Mention the glibc bug.
+
+2009-11-22  Bruno Haible  <bruno@clisp.org>
+
+	* modules/locale-tests (configure.ac): Test for newlocale function.
+	* tests/test-locale.c: When the system has extended locale functions,
+	verify that <locale.h> defines locale_t and LC_GLOBAL_LOCALE.
+
+	locale: Make locale_t available when possible.
+	* lib/locale.in.h: Include <xlocale.h> when it exists.
+	* m4/locale_h.m4 (gl_LOCALE_H): Check for <xlocale.h> and arrange to
+	replace <locale.h> if it does not define locale_t but <xlocale.h> does.
+	* modules/locale (Depends-on): Add extensions.
+	(Makefile.am): Also substitute HAVE_XLOCALE_H.
+	* doc/posix-headers/locale.texi: Document the problem with locale_t.
+
+2009-11-22  Bruno Haible  <bruno@clisp.org>
+
+	Add comments.
+	* m4/dirent_h.m4 (gl_DIRENT_H): Add comment about gl_CHECK_NEXT_HEADERS
+	invocation.
+	* m4/iconv_h.m4 (gl_ICONV_H): Likewise.
+	* m4/spawn_h.m4 (gl_SPAWN_H): Likewise.
+	* m4/wchar.m4 (gl_WCHAR_H): Likewise.
+
+2009-11-22  Bruno Haible  <bruno@clisp.org>
+
+	error: account for the possibility of freopen (stdout).
+	* lib/error.c: Include <unistd.h>.
+	(flush_stdout): New function, extracted from error and error_at_line.
+	Determine stdout's fd dynamically.
+	(error, error_at_line): Invoke flush_stdout.
+	* m4/error.m4 (gl_PREREQ_ERROR): Require AC_C_INLINE.
+	* modules/error (Depends-on): Add unistd.
+
+2009-11-22  Bruno Haible  <bruno@clisp.org>
+
+	diffseq: Add comment.
+	* lib/diffseq.h (IF_LINT): Add comment about pitfall.
+
+2009-11-22  Jim Meyering  <meyering@redhat.com>
+
+	c-stack: avoid defining an unused static function
+	* lib/c-stack.c (find_stack_direction): Do not define this function
+	when it will not be used.
+
+	diffseq: avoid spurious gcc warnings
+	* lib/diffseq.h (IF_LINT2): Define.
+	(compareseq): Use it to initialize two members of "part".
+	This avoids two used-uninitialized warnings.
+
+2009-11-21  Jim Meyering  <meyering@redhat.com>
+
+	c-stack: avoid "ignoring return value of `write'" warning
+	* lib/c-stack.c: Include "ignore-value.h".
+	(die): Explicitly ignore each write return value.
+	* modules/c-stack (Depends-on): Add ignore-value.
+
+2009-11-21  Bruno Haible  <bruno@clisp.org>
+
+	diffseq: reduce scope of variable 'best'.
+	* lib/diffseq.h (diag) [USE_HEURISTIC]: Reduce scope of 'best'
+	variable, earlier used for two different purposes.
+
+2009-11-21  Jim Meyering  <meyering@redhat.com>
+
+	diffseq: remove useless assignment to "best"
+	* lib/diffseq.h (diag) [USE_HEURISTIC]: Remove useless "best = 0"
+	assignment.  At that point "best" is already guaranteed to be zero.
+
+2009-11-20  Eric Blake  <ebb9@byu.net>
+
+	build: mention ftp redirector in release announcements
+	* top/maint.mk (gnu_rel_host, url_dir_list): Provide defaults for
+	values that used to come from cfg.mk; mention FTP redirect URL.
+	* build-aux/announce-gen: Mention the mirror list.
+	Suggested by Karl Berry.
+
+	nanosleep: improve port to mingw
+	* lib/nanosleep.c (rpl_nanosleep): Reject invalid arguments.
+	* m4/nanosleep.m4 (gl_FUNC_NANOSLEEP): Incorporate LIBSOCKET into
+	LIB_NANOSLEEP, but only when needed.
+	* modules/select (Link): Document LIBSOCKET.
+	* m4/select.m4 (gl_FUNC_SELECT): Ensure LIBSOCKET is defined early
+	enough.
+
+	nanosleep: work around cygwin bug
+	* lib/nanosleep.c (rpl_nanosleep) [HAVE_BUG_BIG_NANOSLEEP]:
+	Fix logic bug when nanosleep fails.  Work around cygwin 1.5.x
+	bug.
+	(getnow): Delete, not needed.
+	* m4/nanosleep.m4 (gl_FUNC_NANOSLEEP): No longer require
+	LIB_CLOCK_GETTIME.
+	* modules/nanosleep (Depends-on): Add intprops and verify.  Drop
+	clock-time, gettime.
+	* doc/posix-functions/nanosleep.texi (nanosleep): Document the
+	bug.
+	* modules/nanosleep-tests: New test.
+	* tests/test-nanosleep.c: New file.
+
+	sleep: work around cygwin bug
+	* lib/sleep.c (rpl_sleep): Work around the bug.
+	* m4/sleep.m4 (gl_FUNC_SLEEP): Detect the bug.
+	(gl_PREREQ_SLEEP): Delete unused macro.
+	* modules/sleep (Depends-on): Add verify.
+	* m4/unistd_h.m4 (gl_UNISTD_H_DEFAULTS): Add default.
+	* modules/unistd (Makefile.am): Substitute witness.
+	* lib/unistd.in.h (sleep): Update prototype.
+	* doc/posix-functions/sleep.texi (sleep): Document the bug.
+	* tests/test-sleep.c (main) [HAVE_DECL_ALARM]: Test it.
+	* modules/sleep-tests (Depends-on): Check for alarm.
+
+2009-11-20  Jim Meyering  <meyering@redhat.com>
+
+	maint.mk: improve sc_prohibit_magic_number_exit
+	* top/maint.mk (sc_prohibit_magic_number_exit): Tighten regexp
+	so it does not match uses like System.exit(1).
+	Add comments showing how to correct all offenders.
+
+2009-11-19  Eric Blake  <ebb9@byu.net>
+
+	xalloc-die-tests: add missing library
+	* modules/xalloc-die-tests (Makefile.am): Add LDADD line.
+
+	test-xvasprintf: silence compiler warnings
+	* tests/test-xvasprintf.c (test_xvasprintf, test_xasprintf): Mask
+	empty string from gcc.
+
+2009-11-19  Jim Meyering  <meyering@redhat.com>
+
+	xfreopen: new module, from coreutils
+	* modules/xfreopen: New module.
+	* lib/xfreopen.c: New file.
+	* lib/xfreopen.h: New file.
+	* MODULES.html.sh (File stream based Input/Output"): Add it.
+
 2009-11-19  Eric Blake  <ebb9@byu.net>
 
 	manywarnings: depend on warnings
@@ -21,6 +724,59 @@
 	additional witness macro to avoid BSD bug.
 	Reported by Jim Meyering.
 
+2009-11-17  Eric Blake  <ebb9@byu.net>
+
+	usleep: use it to simplify tests
+	* modules/stat-time-tests (Depends-on): Add usleep.
+	(configure.ac): Drop usleep check.
+	* modules/chown-tests (Depends-on, configure.ac): Likewise.
+	* modules/lchown-tests (Depends-on, configure.ac): Likewise.
+	* modules/fdutimensat-tests (Depends-on, configure.ac): Likewise.
+	* modules/futimens-tests (Depends-on, configure.ac): Likewise.
+	* modules/openat-tests (Depends-on, configure.ac): Likewise.
+	* modules/utimens-tests (Depends-on, configure.ac): Likewise.
+	* modules/utimensat-tests (Depends-on, configure.ac): Likewise.
+	* modules/pipe-filter-gi-tests (Depends-on, configure.ac):
+	Likewise.
+	* tests/test-chown.h (nap): Rely on nicer usleep semantics.
+	* tests/test-lchown.h (nap): Likewise.
+	* tests/test-pipe-filter-gi2-main.c (small_nap): Likewise.
+	* tests/test-stat-time.c (nap): Likewise.
+	* tests/test-utimens-common.h (nap): Update comments.
+
+	usleep: new module
+	* modules/usleep: New file.
+	* m4/usleep.m4 (gl_FUNC_USLEEP): Likewise.
+	* lib/usleep.c (usleep): Likewise.
+	* m4/unistd_h.m4 (gl_UNISTD_H_DEFAULTS): Add defaults.
+	* modules/unistd (Makefile.am): Substitute witnesses.
+	* lib/unistd.in.h (usleep): Add declaration.
+	* doc/pastposix-functions/usleep.texi (usleep): Document this.
+	* MODULES.html.sh (Date and time): Likewise.
+	* modules/usleep-tests (Depends-on): New test.
+	* tests/test-usleep.c: New file.
+
+	chown: work around OpenBSD bug
+	* lib/chown.c (rpl_chown): Work around the bug.
+	* lib/lchown.c (rpl_lchown): Attempt to do likewise.
+	* m4/chown.m4 (gl_FUNC_CHOWN): Test for ctime bug.
+	* m4/lchown.m4 (gl_FUNC_LCHOWN): Check for lchmod.
+	* modules/chown (Depends-on): Add stdbool.
+	* modules/lchown (Depends-on): Likewise.
+	* doc/posix-functions/chown.texi (chown): Document the bug.
+	* doc/posix-functions/lchown.texi (lchown): Likewise.
+	* tests/test-lchown.h (test_chown): Relax test.
+
+	mkstemp: avoid conflict with C++ keyword template
+	* lib/mkdtemp.c (mkdtemp): Change spelling of template.
+	* lib/mkostemp.c (mkostemp): Likewise.
+	* lib/mkostemps.c (mkostemps): Likewise.
+	* lib/mkstemp.c (mkstemp): Likewise.
+	* lib/mkstemps.c (mkstemps): Likewise.
+
+	xalloc-die-tests: optimize
+	* tests/test-xalloc-die.sh: Reduce number of processes.
+
 2009-11-17  Simon Josefsson  <simon@josefsson.org>
 
 	* gnulib-tool: Support LGPLv3+ licenses in module files.  Tiny
@@ -32,10 +788,70 @@
 	* modules/version-etc (License): Use LGPL, not LGPLv3+.
 	* modules/version-etc-fsf: Likewise.
 
+2009-11-17  Simon Josefsson  <simon@josefsson.org>
+
+	* tests/test-xalloc-die.sh: Add license.  Check that nothing is
+	printed to stdout.  Deal with EOL differences.
+
+2009-11-17  Eric Blake  <ebb9@byu.net>
+
+	unsetenv: work around Solaris bug
+	* m4/setenv.m4 (gl_FUNC_UNSETENV): Check for bug.
+	* lib/unsetenv.c (rpl_unsetenv): Work around it.
+	Reported by Jim Meyering.
+
+	vasnprintf: avoid compiler warnings
+	* lib/vasnprintf.c (VASNPRINTF): Avoid shadowing our own local
+	variables.
+	* lib/printf-args.c (PRINTF_FETCHARGS): Avoid type mismatch.
+
+2009-11-17  Simon Josefsson  <simon@josefsson.org>
+
+	* modules/xalloc-die-tests (Makefile.am): Drop XFAIL_TESTS
+	settings since xalloc-die is no longer the self test,
+	xalloc-die.sh is.
+
 2009-11-17  Jim Meyering  <meyering@redhat.com>
+
+	test-xalloc-die.sh: make the code agree with the commit log
+	* tests/test-xalloc-die.sh: Put "." at the front of $PATH, not
+	at the end, just in case you happen to have a test-xalloc-die
+	program in some other PATH directory.
+
+	test-xalloc-die.sh: fix a portability bug
+	* tests/test-xalloc-die.sh: Do not invoke via ./test-xalloc-die.
+	Instead, set PATH to start with "." and invoke via "test-xalloc-die".
+	Otherwise, argv[0] (as often seen in diagnostics) would be too
+	system-dependent, sometimes with, and sometimes without the leading "./".
 
 	version-etc-fsf: relax license to LGPLv3+
 	* modules/version-etc-fsf (License): Relax license.
+
+2009-11-16  Eric Blake  <ebb9@byu.net>
+
+	xalloc-die-tests: avoid printing null pointer
+	* modules/xalloc-die-tests (Files, Makefile.am): Wrap execution in
+	shell script.
+	* tests/test-xalloc-die.c (program_name): Declare.
+	* tests/test-xalloc-die.sh (tmpfiles): New file.
+
+	setenv, unsetenv: work around various bugs
+	* lib/setenv.c (setenv) [!HAVE_SETENV]: Resync from glibc.
+	(setenv) [HAVE_SETENV]: Work around bugs.
+	* lib/unsetenv.c (unsetenv) [HAVE_UNSETENV]: Work around bugs.
+	* m4/setenv.m4 (gl_FUNC_SETENV_SEPARATE, gl_FUNC_UNSETENV): Check
+	for bugs.
+	(gl_FUNC_SETENV): Write in terms of gl_FUNC_SETENV_SEPARATE.
+	* m4/environ.m4 (gl_ENVIRON): Avoid expand-before-require.
+	* m4/stdlib_h.m4 (gl_STDLIB_H_DEFAULTS): Update defaults.
+	* modules/stdlib (Makefile.am): Update substitutions.
+	* lib/stdlib.in.h (setenv, unsetenv): Update prototypes.
+	* doc/posix-functions/setenv.texi (setenv): Document the bugs.
+	* doc/posix-functions/unsetenv.texi (unsetenv): Likewise.
+	* modules/setenv-tests: New test.
+	* modules/unsetenv-tests: Likewise.
+	* tests/test-setenv.c: New file.
+	* tests/test-unsetenv.c: Likewise.
 
 2009-11-16  Jim Meyering  <meyering@redhat.com>
 
@@ -48,6 +864,13 @@
 	Suggested by Eric Blake.  This change also reverts commit 1b712ba8,
 	which is no longer needed.
 
+2009-11-16  Eric Blake  <ebb9@byu.net>
+
+	test-freading: clean up temporary file
+	* tests/test-freading.c (main): Remove file on success, and use
+	ASSERT more liberally.
+	Reported by Jim Meyering.
+
 2009-11-16  Jim Meyering  <meyering@redhat.com>
 
 	avoid new AC_REQUIRE expanded-before-required warnings
@@ -55,6 +878,13 @@
 	merely using it.
 	* modules/euidaccess (configure.ac): Likewise for gl_FUNC_EUIDACCESS.
 	* modules/faccessat (configure.ac): Likewise for gl_FUNC_FACCESSAT.
+
+2009-11-15  Simon Josefsson  <simon@josefsson.org>
+
+	* tests/test-xalloc-die.c: New file.
+	* modules/xalloc-die-tests: New file.
+	* gnulib-tool (func_emit_tests_Makefile_am): Also initialize
+	XFAIL_TESTS so it can be appended by modules.
 
 2009-11-15  Simon Josefsson  <simon@josefsson.org>
 
@@ -68,10 +898,58 @@
 	to silence compiler warning about mismatch signedness in ?:.
 	Reported by Robert Millan.
 
+	intprops: add double-inclusion guard
+	* lib/intprops.h: Allow idempotent includes.
+	Suggested by Bruce Korb.
+
+	openat: detect Solaris fchownat bug
+	* lib/fchownat.c (rpl_fchownat): Work around Solaris bug.  Avoid
+	penalizing glibc chownat when only lchownat is broken.
+	* m4/openat.m4 (gl_FUNC_FCHOWNAT): Replace fchownat if there are
+	trailing slash bugs.
+	* doc/posix-functions/fchownat.texi (fchownat): Document the bug.
+	* modules/openat-tests (Files): Include more files.
+	(Depends-on): Add mgetgroups, sleep, stat-time.
+	(configure.ac): Add additional checks.
+	(Makefile.am): Build new test.
+	* tests/test-fchownat.c: New file.
+
+	lchown: detect Solaris and FreeBSD bug
+	* lib/lchown.c (rpl_lchown): Work around bug.
+	* m4/lchown.m4 (gl_FUNC_LCHOWN): Check for trailing slash bugs.
+	* m4/unistd_h.m4 (gl_UNISTD_H_DEFAULTS): Add witness.
+	* modules/unistd (Makefile.am): Populate it.
+	* lib/unistd.in.h (lchown): Update declaration.
+	* doc/posix-functions/lchown.texi (lchown): Document the bug.
+	* modules/lchown-tests: New file.
+	* tests/test-lchown.h (test_lchown): Likewise.
+	* tests/test-lchown.c (main): Likewise.
+
+	chown: detect Solaris and FreeBSD bug
+	* lib/chown.c (rpl_chown): Work around bug.
+	* m4/chown.m4 (gl_FUNC_CHOWN): Check for trailing slash bugs.
+	(gl_PREREQ_CHOWN): Delete.
+	* m4/unistd_h.m4 (gl_UNISTD_H_DEFAULTS): Add witness.
+	* modules/unistd (Makefile.am): Populate it.
+	* lib/unistd.in.h (chown): Update declaration.
+	* lib/lchown.c (chown): Update client.
+	* modules/lchown (Depends-on): Add lstat.
+	* doc/posix-functions/chown.texi (chown): Document the bug.
+	* doc/posix-functions/getgroups.texi (getgroups): Document
+	getgroups pitfall.
+	* modules/chown-tests: New file.
+	* tests/test-chown.h (test_chown): Likewise.
+	* tests/test-chown.c (main): Likewise.
+
 2009-11-14  Robert Millan  <rmh.grub@aybabtu.com>  (tiny change)
 
 	gnulib-tool: correctly detect absence of m4 directories
 	* gnulib-tool: Avoid extra newline on data passed to wc -l.
+
+2009-11-14  Jim Meyering  <meyering@redhat.com>
+
+	maint.mk: Prohibit inclusion of "xalloc.h" without use.
+	* top/maint.mk (sc_prohibit_close_stream_without_use): New rule.
 
 2009-11-14  John W. Eaton  <jwe@gnu.org>
 
@@ -100,6 +978,33 @@
 
 2009-11-13  Eric Blake  <ebb9@byu.net>
 
+	mgetgroups: new module, taken from coreutils
+	* modules/mgetgroups: New file.
+	* lib/mgetgroups.h: Likewise.
+	* lib/mgetgroups.c (mgetgroups): Likewise.
+	* m4/mgetgroups.m4 (gl_MGETGROUPS): Likewise.
+	* MODULES.html.sh (Users and groups): Mention it.
+
+	getgroups: don't expose GETGROUPS_T to user
+	* lib/getgroups.c (rpl_getgroups): Change signature.  Copy array
+	an element at a time if GETGROUPS_T is wrong size.
+	* lib/getugroups.h (getugroups): Change signature.
+	* lib/unistd.in.h (getgroups): Likewise.
+	* m4/getgroups.m4 (gl_FUNC_GETGROUPS): Use replacement if
+	signature needs fixing.
+	* m4/getugroups.m4 (gl_GETUGROUPS): No longer need
+	AC_TYPE_GETGROUPS.
+	* modules/group-member (Depends-on): Add getgroups.
+	* lib/group-member.c (group_info, get_group_info): Use gid_t.
+	(group_member): Rely on getgroups replacement.
+	* lib/getugroups.c (getugroups): Use gid_t.
+	* tests/test-getgroups.c (main): Likewise.
+	* NEWS: Mention the signature change.
+	* doc/posix-functions/getgroups.texi (getgroups): Mention the
+	problem with signature.
+	* doc/glibc-functions/setgroups.texi (setgroups): Mention that
+	GETGROUPS_T is still useful for setgroups.
+
 	getgroups, getugroups: provide stubs for mingw
 	* lib/getgroups.c (getgroups): Provide ENOSYS stub for mingw.
 	* lib/getugroups.c (getugroups): Likewise.
@@ -126,6 +1031,25 @@
 	* modules/getgroups-tests: New test.
 	* tests/test-getgroups.c: New file.
 
+2009-11-13  Simon Josefsson  <simon@josefsson.org>
+
+	* tests/test-base64.c: Improve.
+
+2009-11-13  Simon Josefsson  <simon@josefsson.org>
+
+	* tests/test-xvasprintf.c: Fix memory leak, suggested by Eric
+	Blake <ebb9@byu.net>.
+
+2009-11-13  Simon Josefsson  <simon@josefsson.org>
+
+	* tests/test-xvasprintf.c: Add %s%s related checks.
+
+2009-11-12  Eric Blake  <ebb9@byu.net>
+
+	version-etc: match standards.texi style
+	* lib/version-etc.c (emit_bug_reporting_address): Drop periods,
+	and use <> only for URLs.
+
 2009-11-10  Kamil Dudka  <kdudka@redhat.com>
 
 	fts: do not fail on a submount during traversal
@@ -135,11 +1059,58 @@
 
 2009-11-12  Jim Meyering  <meyering@redhat.com>
 
+	bootstrap: sync from coreutils
+	* build-aux/bootstrap (bootstrap_epilogue): New function.
+	Use git_modules_config in one more place.  This make bootstrap's
+	--gnulib-srcdir option more useful for testing.
+
 	bootstrap: generalize autoheader check
 	* build-aux/bootstrap: Look for AC_CONFIG_HEADER as well as
 	AC_CONFIG_HEADERS.
 
 2009-11-11  Eric Blake  <ebb9@byu.net>
+
+	mkfifoat: use new modules for Solaris and BSD bugs
+	* m4/mkfifoat.m4 (gl_FUNC_MKFIFOAT): Simplify.
+	* lib/mkfifoat.c (mknodat): Split...
+	* lib/mknodat.c (mknodat): ...into new file.
+	* modules/mkfifoat (Files): Ship new file.
+	(Depends-on): Add mkfifo, mknod.
+	* modules/mkfifoat-tests (Files): Reuse mkfifo tests.
+	(Depends-on): Add symlink.
+	* tests/test-mkfifoat.c (main): Enhance test.  Drop portions now
+	redundant with test_mkfifo.h.
+	(do_mkfifoat, do_mknodat): New helpers.
+
+	mknod: new module
+	* modules/mknod: New file.
+	* m4/mknod.m4 (gl_FUNC_MKNOD): Likewise.
+	* lib/mknod.c (mknod): Likewise.
+	* m4/sys_stat_h.m4 (gl_SYS_STAT_H_DEFAULTS): Set witness
+	defaults.
+	* modules/sys_stat (Makefile.am): Substitute them.
+	* lib/sys_stat.in.h (mknod): Declare replacement.
+	* MODULES.html.sh (Support for systems lacking POSIX:2008):
+	Document it.
+	* doc/posix-functions/mknod.texi (mknod): Likewise.
+	* modules/mknod-tests: New test.
+	* tests/test-mknod.c: Likewise.
+
+	mkfifo: new module
+	* modules/mkfifo: New file.
+	* m4/mkfifo.m4 (gl_FUNC_MKFIFO): Likewise.
+	* lib/mkfifo.c (mkfifo): Likewise.
+	* m4/sys_stat_h.m4 (gl_SYS_STAT_H_DEFAULTS): Set witness
+	defaults.
+	* modules/sys_stat (Makefile.am): Substitute them.
+	* lib/sys_stat.in.h (mkfifo): Declare replacement.
+	* MODULES.html.sh (Support for systems lacking POSIX:2008):
+	Document it.
+	* doc/posix-functions/mkfifo.texi (mkfifo): Likewise.
+	* modules/mkfifo-tests: New test.
+	* tests/test-mkfifo.h (test_mkfifo): New file, borrowed in part
+	from test-mkfifoat.c.
+	* tests/test-mkfifo.c: New file.
 
 	readlink: detect FreeBSD bug
 	* m4/readlink.m4 (gl_FUNC_READLINK): Also detect FreeBSD bug with

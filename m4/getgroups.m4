@@ -17,7 +17,8 @@ AC_DEFUN([gl_FUNC_GETGROUPS],
   if test "$ac_cv_func_getgroups" != yes; then
     AC_LIBOBJ([getgroups])
     HAVE_GETGROUPS=0
-  elif test "$ac_cv_func_getgroups_works" != yes; then
+  elif test "$ac_cv_func_getgroups_works.$ac_cv_type_getgroups" != yes.gid_t
+  then
     AC_LIBOBJ([getgroups])
     REPLACE_GETGROUPS=1
     AC_DEFINE([GETGROUPS_ZERO_BUG], [1], [Define this to 1 if
