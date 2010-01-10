@@ -1,3 +1,10 @@
+gnulib (20100109+stable-1) unstable; urgency=low
+
+  * New upstream stable snapshot.
+  * debian/rules: make lib/config.charset executable.
+
+ -- Ian Beckwith <ianb@debian.org>  Sun, 10 Jan 2010 01:23:22 +0000
+
 gnulib (20091120+stable-1) unstable; urgency=low
 
   * New upstream stable snapshot.
