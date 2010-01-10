@@ -1,3 +1,299 @@
+2010-01-09  Bruno Haible  <bruno@clisp.org>
+
+	unistr/u16-to-u32: Reject invalid input.
+	* lib/unistr/u16-to-u32.c (u16_to_u32): Call u16_mbtoucr instead of
+	u16_mbtouc.
+	* modules/unistr/u16-to-u32 (Depends-on): Add unistr/u16-mbtoucr.
+	Remove unistr/u16-mbtouc.
+
+	unistr/u16-to-u8: Reject invalid input.
+	* lib/unistr/u16-to-u8.c (u16_to_u8): Call u16_mbtoucr instead of
+	u16_mbtouc.
+	* modules/unistr/u16-to-u8 (Depends-on): Add unistr/u16-mbtoucr.
+	Remove unistr/u16-mbtouc.
+
+	unistr/u8-to-u32: Reject invalid input.
+	* lib/unistr/u8-to-u32.c (u8_to_u32): Call u8_mbtoucr instead of
+	u8_mbtouc.
+	* modules/unistr/u8-to-u32 (Depends-on): Add unistr/u8-mbtoucr.
+	Remove unistr/u8-mbtouc.
+
+	unistr/u8-to-u16: Reject invalid input.
+	* lib/unistr/u8-to-u16.c (u8_to_u16): Call u8_mbtoucr instead of
+	u8_mbtouc.
+	* modules/unistr/u8-to-u16 (Depends-on): Add unistr/u8-mbtoucr.
+	Remove unistr/u8-mbtouc.
+
+2010-01-09  Bruno Haible  <bruno@clisp.org>
+
+	getlogin_r: Support for native Windows.
+	* lib/getlogin_r.c: Include <windows.h>
+	(getlogin_r): Implement for native Windows.
+	* tests/test-getlogin_r.c (main): Also test with a huge buffer.
+	Reported by <tmacchant5@yahoo.co.jp> via John W. Eaton <jwe@gnu.org>.
+
+2010-01-09  Bruno Haible  <bruno@clisp.org>
+
+	getlogin_r: Small fixes.
+	* lib/getlogin_r.c (getlogin_r): Don't set errno if the function
+	succeeds.
+	* m4/getlogin_r.m4 (gl_GETLOGIN_R): Require gl_USE_SYSTEM_EXTENSIONS
+	before testing whether getlogin_r is declared. No need to set
+	HAVE_DECL_GETLOGIN_R to 1.
+	(gl_PREREQ_GETLOGIN_R): Don't check for the getlogin_r declaration.
+
+2010-01-09  Bruno Haible  <bruno@clisp.org>
+
+	* lib/unistd.in.h (getlogin_r): Add comment.
+
+2010-01-09  Bruno Haible  <bruno@clisp.org>
+
+	Tests for module 'getlogin_r'.
+	* modules/getlogin_r-tests: New file.
+	* tests/test-getlogin_r.c: New file.
+
+2010-01-08  Simon Josefsson  <simon@josefsson.org>
+
+	* lib/dup2.c (rpl_dup2): Improve comment.
+
+2010-01-08  Eric Blake  <ebb9@byu.net>
+
+	dup2: work around mingw bug
+	* lib/dup2.c (rpl_dup2): Sanitize return value on mingw.
+	Reported by Simon Josefsson.
+
+2010-01-07  John W. Eaton  <jwe@octave.org>  (tiny change)
+
+	glob: Fix C++ compilation.
+	* lib/glob.in.h [__cplusplus]: Define __BEGIN_DECLS and __END_DECLS for
+	C++.
+
+2010-01-07  Bruno Haible  <bruno@clisp.org>
+
+	Fix indentation of wctype.in.h, broken since 2007-01-06.
+	* lib/wctype.in.h: Fix indentation of preprocessor directives.
+
+2010-01-07  Bruno Haible  <bruno@clisp.org>
+
+	mbslen: Avoid collision with system function.
+	* lib/string.in.h [MirBSD]: Include <wchar.h>.
+	(mbslen): Undefine first. Alias mbslen to rpl_mbslen.
+	* m4/mbslen.m4: New file.
+	* modules/mbslen (Files): Add it.
+	(configure.ac): Invoke gl_MBSLEN.
+	* m4/string_h.m4 (gl_HEADER_STRING_H_DEFAULTS): Initialize HAVE_MBSLEN.
+	* modules/string (Makefile.am): Substitute HAVE_MBSLEN.
+	Reported by Nelson H. F. Beebe <beebe@math.utah.edu>
+	via Ian Beckwith <ianb@erislabs.net>.
+
+2010-01-07  Bruno Haible  <bruno@clisp.org>
+
+	dirent: Document the last fix.
+	* doc/posix-headers/dirent.texi: Document the bug of missing 'ino_t'.
+
+2010-01-07  Bruno Haible  <bruno@clisp.org>
+
+	stdio: Ensure <stdio.h> defines off_t, ssize_t, va_list.
+	* lib/stdio.in.h: Include <sys/types.h> unconditionally.
+	* tests/test-stdio.c: Verify that fpos_t, off_t, size_t, ssize_t,
+	va_list are defined.
+	* doc/posix-headers/stdio.texi: Document the bug of missing types.
+	Reported by Eric Blake.
+
+2010-01-07  Bruno Haible  <bruno@clisp.org>
+
+	xlist, xoset: Fix missing dependency bug, introduced on 2009-12-13.
+	* modules/xlist (Depends-on): Add 'list',
+	* modules/xoset (Depends-on): Add 'oset'.
+	Reported by Ralf Wildenhues <Ralf.Wildenhues@gmx.de>.
+
+2010-01-07  Bruno Haible  <bruno@clisp.org>
+
+	* doc/posix-functions/strcasecmp.texi: Clarify the platforms.
+	* doc/posix-functions/strncasecmp.texi: Likewise.
+
+2010-01-07  Bruno Haible  <bruno@clisp.org>
+
+	* m4/nl_langinfo.m4 (gl_FUNC_NL_LANGINFO): Simplify logic.
+
+2010-01-07  John W. Eaton  <jwe@octave.org>
+
+	wctype: allow C++ use
+	* lib/wctype.in.h: Add extern "C" block for C++.
+
+2010-01-06  Eric Blake  <ebb9@byu.net>
+
+	maint.mk: detect incorrect GFDL usage
+	* top/maint.mk (_GFDL_regexp, sc_GFDL_version): New rule.
+
+2010-01-06  Jim Meyering  <meyering@redhat.com>
+	and Eric Blake  <ebb9@byu.net>
+
+	maint.mk: ignore multi-line copyright in NEWS
+	* top/maint.mk (NEWS_hash): Add immunity to multi-line copyright.
+
+2010-01-06  Eric Blake  <ebb9@byu.net>
+
+	select: add missing dependency
+	* modules/select-tests (Depends-on): Move sockets dependency...
+	* modules/select (Depends-on): ...here.
+	Reported by Ian Beckwith.
+
+	doc: regenerate INSTALL
+	* doc/INSTALL: Reflect recent autoconf update.
+	* doc/INSTALL.ISO: Likewise.
+	* doc/INSTALL.UTF-8: Likewise.
+
+	pread: fix compilation on glibc
+	* m4/pread.m4 (gl_FUNC_PREAD): Request all interfaces.
+	Reported by Ralf Wildenhues.
+
+	dirent: fix test failure
+	* lib/dirent.in.h (includes): Guarantee ino_t.
+	Reported by Ralf Wildenhues.
+
+2010-01-06  Petr Salinger  <Petr.Salinger@seznam.cz>  (tiny change)
+
+	linkat, renameat: avoid bad free
+	* lib/at-func2.c (at_func2): Fix typo.
+	Reported via Ian Beckwith, from http://bugs.debian.org/561117.
+
+2010-01-06  Ralf Wildenhues  <Ralf.Wildenhues@gmx.de>
+
+	cleanup after gl_FUNC_READLINK, for gl_FUNC_SYMLINK test
+	* m4/readlink.m4 (gl_FUNC_READLINK): Remove conftest.lnk2,
+	to avoid failure of symlink test later.
+
+2010-01-06  Eric Blake  <ebb9@byu.net>
+
+	stdio, unistd: guarantee ssize_t
+	* lib/unistd.in.h (includes): Ensure that types required by POSIX
+	2008 are exposed when needed.
+	* lib/stdio.in.h (includes): Likewise.
+	Reported by Ralf Wildenhues.
+
+2010-01-06  Paolo Bonzini  <bonzini@gnu.org>
+
+	nl_langinfo: do not call AC_CHECK_FUNC_ONCE inside if.
+	* m4/nl_langinfo.m4 (gl_FUNC_NL_LANGINFO): Do not call
+	AC_CHECK_FUNC_ONCE inside if, do not adjust ac_cv_func_nl_langinfo.
+
+2010-01-06  Jim Meyering  <meyering@redhat.com>
+
+	readtokens: this module *does* require xalloc.h
+	It uses only functions that were omitted by the old syntax-check rule.
+	* lib/readtokens.c: Include "xalloc.h" once again.
+	* modules/readtokens (Depends-on): Add xalloc.
+	This reverts part of 0e0f8f12ec241c0f1c1f21f960bb5cf908a0fa3c.
+
+2010-01-05  Eric Blake  <ebb9@byu.net>
+
+	maint: support 'make announcement' from a VPATH build
+	* top/maint.mk (announcement): Look for correct NEWS file.
+
+2010-01-05  Aurelien Jarno  <aurelien@aurel32.net>  (tiny change)
+
+	utimens (fdutimens): ignore a negative FD, per contract
+	* lib/utimens.c (fdutimens) [HAVE_FUTIMENS]: Call futimens only
+	when we have a valid file descriptor.  Otherwise, using a brand
+	new glibc (with just-patched futimens that now fails with EBADF)
+	would cause this function to fail with ENOSYS.
+	Reported by Guillaume Ayoub in http://bugs.debian.org/563726.
+	See also http://bugzilla.redhat.com/552320.
+
+2010-01-05  Eric Blake  <ebb9@byu.net>
+
+	strcase: document what it provides
+	* doc/posix-functions/strcasecmp.texi (strcasecmp): Mention the
+	gnulib module.
+	* doc/posix-functions/strncasecmp.texi (strncasecmp): Likewise.
+	Reported by Dilyan Palauzov <Dilyan.Palauzov@aegee.org>.
+
+2010-01-05  Jim Meyering  <meyering@redhat.com>
+
+	maint: remove useless inclusions of "xalloc.h"
+	* lib/getloadavg.c: Remove useless inclusion of "xalloc.h".
+	* lib/readtokens.c: Likewise.
+	* lib/same.c: Likewise.
+	* modules/getloadavg (Depends-on): Remove xalloc.
+	* modules/readtokens: Likewise.
+	* modules/same: Likewise.
+
+	maint.mk: include 4 more function names in alloca.h-checking regexp
+	* top/maint.mk (sc_prohibit_xalloc_without_use): Use more complete
+	regexp.  Before, we would give a false-positive (saying alloca.h
+	is included unnecessarily) when the only uses involved omitted symbols.
+
+	xalloc.h: use consistent formatting
+	* lib/xalloc.h: Move declarations to start in the first column.
+
+2010-01-05  Eric Blake  <ebb9@byu.net>
+
+	mkdir: avoid xalloc
+	* lib/mkdir.c (includes): Drop unused header.
+	Reported by John W. Eaton.
+
+2010-01-04  Jim Meyering  <meyering@redhat.com>
+
+	nl_langinfo: avoid configure-time syntax error
+	* m4/nl_langinfo.m4 (gl_FUNC_NL_LANGINFO): When we've already tested
+	for nl_langinfo.h, AC_CHECK_FUNCS_ONCE([nl_langinfo]) expands to
+	the empty string.  Don't let that provoke a shell syntax error.
+
+	regcomp, regexec, fnmatch: avoid array bounds read error
+	* lib/regcomp.c (build_equiv_class): From glibc:
+	Use only the low 24 bits of a findidx return value as an index
+	into the weights array.  Patch by Ulrich Drepper:
+	http://sourceware.org/git/gitweb.cgi?p=glibc.git;a=commit;h=b7d1c5fa30
+	* lib/regexec.c (check_node_accept_bytes): Likewise.
+	* lib/fnmatch_loop.c (FCT): Likewise.
+
+	regcomp: skip collseq lookup when there are no rules
+	* lib/regcomp.c (lookup_collation_sequence_value): From glibc:
+	http://sourceware.org/git/gitweb.cgi?p=glibc.git;a=commitdiff;h=a532a41df58
+
+	regcomp: recognize ill-formed { } expressions
+	* lib/regcomp.c (parse_dup_op): From glibc:
+	http://sourceware.org/git/gitweb.cgi?p=glibc.git;a=commitdiff;h=a87cd2894cb
+
+	regcomp: fix typo in comment
+	* lib/regcomp.c (duplicate_node_closure): Sync from glibc.
+	s/satisfy/satisfies/.
+
+	regcomp: sync from glibc: remove dead store
+	* lib/regcomp.c (duplicate_node_closure): Remove useless
+	search_duplicated_node call and dead store.
+
+	regcomp: sync from glibc; always use nl_langinfo
+	* lib/regcomp.c (init_dfa) [!LIBC]: Always use nl_langinfo (CODESET),
+	now that gnulib provides it.  Recognize UTF8 as well as UTF-8.
+	* modules/regex (Depends-on): Add nl_langinfo.
+
+2010-01-04  Eric Blake  <ebb9@byu.net>
+
+	fdopendir: fix configure test
+	* m4/fdopendir.m4 (gl_FUNC_FDOPENDIR): Check for existing file.
+
+2010-01-01  Bruno Haible  <bruno@clisp.org>
+
+	wchar: Remove unused configure check.
+	* m4/wchar.m4 (gl_WCHAR_H): Don't test whether <wchar.h> is standalone.
+
+2010-01-01  Eric Blake  <ebb9@byu.net>
+
+	headers: make check of system header explicit
+	* m4/netdb_h.m4 (gl_HEADER_NETDB): Don't exploit knowledge of
+	gl_CHECK_NEXT_HEADER internals, but call AC_CHECK_HEADERS_ONCE
+	ourselves.
+	* m4/search_h.m4 (gl_SEARCH_H): Likewise.
+	* m4/sys_select_h.m4 (gl_HEADER_SYS_SELECT): Likewise.
+	* m4/sys_time_h.m4 (gl_HEADER_SYS_TIME_H_BODY): Likewise.
+	* m4/inttypes.m4 (gl_INTTYPES_H): Likewise, for gt_INTTYPES_PRI
+	internals.
+	* m4/wchar.m4 (gl_WCHAR_H): Skip followup test if header is
+	missing.
+	Suggested by Bruno Haible.
+
 2010-01-01  Jim Meyering  <meyering@redhat.com>
 
 	ChangeLog: tweak to eliminate unnecessary copyright line

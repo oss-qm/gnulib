@@ -61,10 +61,8 @@
 # include <io.h>
 #endif
 
-#if ((@GNULIB_WRITE@ && @REPLACE_WRITE@ && @GNULIB_UNISTD_H_SIGPIPE@)   \
-     || (@GNULIB_READLINK@ && (!@HAVE_READLINK@ || @REPLACE_READLINK@)) \
-     || (@GNULIB_READLINKAT@ && !@HAVE_READLINKAT@) \
-     || defined GNULIB_POSIXCHECK)
+#if (@GNULIB_WRITE@ || @GNULIB_READLINK@ || @GNULIB_READLINKAT@ \
+     || @GNULIB_PREAD@ || defined GNULIB_POSIXCHECK)
 /* Get ssize_t.  */
 # include <sys/types.h>
 #endif
@@ -487,6 +485,11 @@ extern int gethostname(char *name, size_t len) _GL_ARG_NONNULL ((1));
    provided (this case is hopefully rare but is left open by the POSIX spec).
 
    See <http://www.opengroup.org/susv3xsh/getlogin.html>.
+
+   Most programs don't need to use this function, because the information is
+   available through environment variables:
+     ${LOGNAME-$USER}        on Unix platforms,
+     $USERNAME               on native Windows platforms.
  */
 # if !@HAVE_DECL_GETLOGIN_R@
 extern int getlogin_r (char *name, size_t size) _GL_ARG_NONNULL ((1));

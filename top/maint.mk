@@ -324,9 +324,15 @@ sc_prohibit_error_without_use:
 # | sort | perl -MRegexp::Assemble -le \
 #  'print Regexp::Assemble->new(file => "/dev/stdin")->as_string'|sed 's/\?://g'
 # Note this was produced by the above:
-# _xa1 = x(alloc_(oversized|die)|([cz]|2?re)alloc|m(alloc|emdup)|strdup)
-# But we can do better:
-_xa1 = x(alloc_(oversized|die)|([cmz]|2?re)alloc|(mem|str)dup)
+# _xa1 = \
+#x(((2n?)?re|c(har)?|n(re|m)|z)alloc|alloc_(oversized|die)|m(alloc|emdup)|strdup)
+# But we can do better, in at least two ways:
+# 1) take advantage of two "dup"-suffixed strings:
+# x(((2n?)?re|c(har)?|n(re|m)|[mz])alloc|alloc_(oversized|die)|(mem|str)dup)
+# 2) notice that "c(har)?|[mz]" is equivalent to the shorter and more readable
+# "char|[cmz]"
+# x(((2n?)?re|char|n(re|m)|[cmz])alloc|alloc_(oversized|die)|(mem|str)dup)
+_xa1 = x(((2n?)?re|char|n(re|m)|[cmz])alloc|alloc_(oversized|die)|(mem|str)dup)
 _xa2 = X([CZ]|N?M)ALLOC
 sc_prohibit_xalloc_without_use:
 	@h='"xalloc.h"' \
@@ -489,6 +495,13 @@ sc_GPL_version:
 	@re='either ''version [^3]' msg='GPL vN, N!=3'			\
 	  $(_prohibit_regexp)
 
+# Require the latest GFDL.  Two regexp, since some .texi files end up
+# line wrapping between 'Free Documentation License,' and 'Version'.
+_GFDL_regexp = (Free ''Documentation.*Version 1\.[^3]|Version 1\.[^3] or any)
+sc_GFDL_version:
+	@re='$(_GFDL_regexp)' msg='GFDL vN, N!=3'			\
+	  $(_prohibit_regexp)
+
 cvs_keywords = \
   Author|Date|Header|Id|Name|Locker|Log|RCSfile|Revision|Source|State
 
@@ -544,7 +557,8 @@ sc_const_long_option:
 NEWS_hash =								\
   $$(sed -n '/^\*.* $(PREV_VERSION_REGEXP) ([0-9-]*)/,$$p'		\
        $(srcdir)/NEWS							\
-     | grep -v '^Copyright .*Free Software'				\
+     | perl -0777 -pe							\
+	's/^Copyright.+?Free\sSoftware\sFoundation,\sInc\.\n//ms'	\
      | md5sum -								\
      | sed 's/ .*//')
 
@@ -701,7 +715,7 @@ announcement: NEWS ChangeLog $(rel-files)
 	    --prev=$(PREV_VERSION)					\
 	    --curr=$(VERSION)						\
 	    --gpg-key-id=$(gpg_key_ID)					\
-	    --news=NEWS							\
+	    --news=$(srcdir)/NEWS					\
 	    --bootstrap-tools=$(bootstrap-tools)			\
 	    --gnulib-version=$(gnulib-version)				\
 	    --no-print-checksums					\
