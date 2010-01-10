@@ -1,3 +1,9 @@
+2010-01-09  Bruno Haible  <bruno@clisp.org>
+
+	Tests for module 'getlogin_r'.
+	* modules/getlogin_r-tests: New file.
+	* tests/test-getlogin_r.c: New file.
+
 2010-01-08  Simon Josefsson  <simon@josefsson.org>
 
 	* lib/dup2.c (rpl_dup2): Improve comment.
