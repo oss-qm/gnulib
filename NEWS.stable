@@ -10,6 +10,7 @@ Date:   Fri Jan 1 16:00:07 2010 +0100
 with the following additional commits:
 
     * [e7100ae]->[60a41fa] headers: make check of system header explicit
+    * [1bf02c3]->[2e79dd2] wchar: Remove unused configure check.
 __NEXTCOMMITMARKER__
 
 ----------------------------------------------------------------------
