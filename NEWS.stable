@@ -47,7 +47,7 @@ with the following additional commits:
     * [0906b5f]->[6b40a56] glob: Fix C++ compilation.
     * [2cf2e37]->[0b0ac4a] dup2: work around mingw bug
     * [581419c]->[fad0fe1] lib/dup2.c (rpl_dup2): Improve comment.
-    * [dd5823d]->[] Tests for module 'getlogin_r'.
+    * [dd5823d]->[465b4d1] Tests for module 'getlogin_r'.
 __NEXTCOMMITMARKER__
 
 ----------------------------------------------------------------------
