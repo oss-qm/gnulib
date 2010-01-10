@@ -14,6 +14,37 @@ with the following additional commits:
     * [8f3aa1f]->[ab43907] autoupdate
     * [e138cd8]->[18a2e77] fdopendir: fix configure test
     * [7a29e00]->[11639c6] nl_langinfo: avoid configure-time syntax error
+    * [51983dc]->[fab630e] mkdir: avoid xalloc
+    * [28e6fc0]->[b8025c4] xalloc.h: use consistent formatting
+    * [0c2fded]->[41d7de2] maint.mk: include 4 more function names in alloca.h-checking regexp
+    * [0e0f8f1]->[2d44e17] maint: remove useless inclusions of "alloca.h"
+    * [c1b6197]->[9e93370] ChangeLog: correct last entry: s/alloca.h/xalloc.h/
+    * [f8b8f4f]->[bfdc843] strcase: document what it provides
+    * [41c44a6]->[88de58a] utimens (fdutimens): ignore a negative FD, per contract
+    * [735d9d0]->[8a69e5c] maint: support 'make announcement' from a VPATH build
+    * [816a1ec]->[0d57ec9] readtokens: this module *does* require xalloc.h
+    * [f9eed4b]->[58b5448] nl_langinfo: do not call AC_CHECK_FUNC_ONCE inside if.
+    * [60ad192]->[932e55d] stdio, unistd: guarantee ssize_t
+    * [ae0044c]->[78c1179] autoupdate
+    * [eb9c0c2]->[d0f97a4] cleanup after gl_FUNC_READLINK, for gl_FUNC_SYMLINK test
+    * [e5697c6]->[b4e7212] linkat, renameat: avoid bad free
+    * [010ecd2]->[65e8854] dirent: fix test failure
+    * [978114f]->[eb65fea] pread: fix compilation on glibc
+    * [2f0e0a8]->[c93838e] doc: regenerate INSTALL
+    * [654c876]->[4b8c490] select: add missing dependency
+    * [c4b4563]->[9ebfb66] maint.mk: ignore multi-line copyright in NEWS
+    * [cb361c9]->[d9d722c] maint.mk: detect incorrect GFDL usage
+    * [c1a179c]->[abd3f20] wctype: allow C++ use
+    * [6751651]->[1c3411f] autoupdate
+    * [5cd308a]->[d1ecc61] ChangeLog: Correct a recent entry.
+    * [7f01cc5]->[77f03a3] nl_langinfo: Simplify logic.
+    * [cc6a687]->[efba37d] doc: Clarify the platforms.
+    * [64cbadd]->[a75ac7f] xlist, xoset: Fix missing dependency bug, introduced on 2009-12-13.
+    * [f1195cc]->[877b01f] stdio: Ensure <stdio.h> defines off_t, ssize_t, va_list.
+    * [027bd46]->[53c2db0] dirent: Document the last fix.
+    * [969fe75]->[085b493] mbslen: Avoid collision with system function.
+    * [ccc06b2]->[3437136] Fix indentation of wctype.in.h, broken since 2007-01-06.
+    * [0906b5f]->[6b40a56] glob: Fix C++ compilation.
 __NEXTCOMMITMARKER__
 
 ----------------------------------------------------------------------
