@@ -13,7 +13,7 @@ with the following additional commits:
     * [1bf02c3]->[2e79dd2] wchar: Remove unused configure check.
     * [8f3aa1f]->[ab43907] autoupdate
     * [e138cd8]->[18a2e77] fdopendir: fix configure test
-    * [7a29e00]->[] nl_langinfo: avoid configure-time syntax error
+    * [7a29e00]->[11639c6] nl_langinfo: avoid configure-time syntax error
 __NEXTCOMMITMARKER__
 
 ----------------------------------------------------------------------
