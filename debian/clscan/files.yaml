@@ -6,7 +6,7 @@
   license_text: ''
 ./ChangeLog: 
   copyright: ''
-  hash: a89315ce215b0677bcf6241fd0120dd8a76a427c14e4208bf4138564059a7c3b
+  hash: d256f6e7ab3754f2ceb6bcd48ef442c8d12c1b9b7c20e83c89b06576aa6317ef
   license: ''
   license_text: ''
 ./DEPENDENCIES: 
@@ -31,7 +31,7 @@
   license_text: ''
 ./NEWS.stable: 
   copyright: ''
-  hash: b55e9c49cf91516d6c7ec0ec46dc7c79fc69a9fdce296690930ae76ee80e0459
+  hash: fbde4d95092504159bd69d9550e01266c01d663858e5923cedac7dab102e675e
   license: ''
   license_text: ''
 ./README: 
@@ -126,8 +126,8 @@
   license_text: "This program is free software; you can redistribute it and/or modify\nit under the terms of the GNU General Public License as published by\nthe Free Software Foundation; either version 2 of the License, or\n(at your option) any later version.\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\nGNU General Public License for more details.\n\nYou should have received a copy of the GNU General Public License\nalong with this program; if not, write to the Free Software Foundation,\nInc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.  */\n"
   license_text_override: "This program is free software: you can redistribute it and/or modify\nit under the terms of the GNU General Public License as published by\nthe Free Software Foundation; either version 3 of the License, or\n(at your option) any later version.\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\nGNU General Public License for more details.\n\nYou should have received a copy of the GNU General Public License\nalong with this program.  If not, see <http://www.gnu.org/licenses/>.\n"
 ./build-aux/gendocs.sh: 
-  copyright: 2003, 2004, 2005, 2006, 2007, 2008, 2009 Free Software Foundation, Inc.
-  hash: d644a9f8afb358feacb6277afc5f9a189781c36746c9d44a9637ee137f846f00
+  copyright: 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010 Free Software Foundation, Inc.
+  hash: d6823ac42e641c0e0eda1f21d5dfe4eabda17f3296146559daf6b4aa3bd6db65
   license: GPL-3+
   license_override: GPL
   license_text: "This program is free software: you can redistribute it and/or modify\nit under the terms of the GNU General Public License as published by\nthe Free Software Foundation; either version 3 of the License, or\n(at your option) any later version.\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\nGNU General Public License for more details.\nYou should have received a copy of the GNU General Public License\nalong with this program.  If not, see <http://www.gnu.org/licenses/>.\n"
@@ -414,18 +414,18 @@
   license: ''
   license_text: ''
 ./doc/INSTALL: 
-  copyright: 1994, 1995, 1996, 1999, 2000, 2001, 2002, 2004, 2005, 2006, 2007, 2008, 2009 Free Software Foundation, Inc.
-  hash: 71a35b239f3b448ef8b27fd63a6722f5cbec0a5bc5f700deb5038afa3caa84ba
+  copyright: 1994, 1995, 1996, 1999, 2000, 2001, 2002, 2004, 2005, 2006, 2007, 2008, 2009, 2010 Free Software Foundation, Inc.
+  hash: 15cb7ae9625796712985699d10d417922e3dd5b255ff535b44a8e89eecb3a31e
   license: ''
   license_text: "Copying and distribution of this file, with or without modification,\nare permitted in any medium without royalty provided the copyright\nnotice and this notice are preserved.  This file is offered as-is,\nwithout warranty of any kind.\n"
 ./doc/INSTALL.ISO: 
-  copyright: 1994, 1995, 1996, 1999, 2000, 2001, 2002, 2004, 2005, 2006, 2007, 2008, 2009 Free Software Foundation, Inc.
-  hash: 6e5a01010be07ff0d4d534b3b790b151a8e39cbc596c45033bf1d82ec269eed6
+  copyright: 1994, 1995, 1996, 1999, 2000, 2001, 2002, 2004, 2005, 2006, 2007, 2008, 2009, 2010 Free Software Foundation, Inc.
+  hash: 8791ed4a83a905391b1e4955ea04e4f0643e439de36d9b73c5f0160712ebbbe5
   license: ''
   license_text: "Copying and distribution of this file, with or without modification,\nare permitted in any medium without royalty provided the copyright\nnotice and this notice are preserved.  This file is offered as-is,\nwithout warranty of any kind.\n"
 ./doc/INSTALL.UTF-8: 
-  copyright: 1994, 1995, 1996, 1999, 2000, 2001, 2002, 2004, 2005, 2006, 2007, 2008, 2009 Free Software Foundation, Inc.
-  hash: 0b6f2758c270e39f2120bc2beb256a3dcdd878e3ab6f36c81cfe1110d4a65fbb
+  copyright: 1994, 1995, 1996, 1999, 2000, 2001, 2002, 2004, 2005, 2006, 2007, 2008, 2009, 2010 Free Software Foundation, Inc.
+  hash: 9bbfa015695067f0eb514efaae281ce8b0b6392a18b3c39e07eb00b154db0218
   license: ''
   license_text: "Copying and distribution of this file, with or without modification,\nare permitted in any medium without royalty provided the copyright\nnotice and this notice are preserved.  This file is offered as-is,\nwithout warranty of any kind.\n"
 ./doc/Makefile: 
@@ -4673,8 +4673,8 @@
   license: GFDL-1.3+-NIV
   license_text: "Permission is granted to copy, distribute and/or modify this document\nunder the terms of the GNU Free Documentation License, Version 1.3 or\nany later version published by the Free Software Foundation; with no\nInvariant Sections, with no Front-Cover Texts, and with no Back-Cover\nTexts.  A copy of the license is included in the ``GNU Free\nDocumentation License'' file as part of this distribution.\n"
 ./doc/install.texi: 
-  copyright: 1994, 1995, 1996, 1999, 2000, 2001, 2002, 2004, 2005, 2006, 2007, 2008, 2009 Free Software Foundation, Inc.
-  hash: 3579aa06fdcde2788de2bdb2ac9e3f7dddaaf305033e3819b0bd5e8bcd321ad5
+  copyright: 1994, 1995, 1996, 1999, 2000, 2001, 2002, 2004, 2005, 2006, 2007, 2008, 2009, 2010 Free Software Foundation, Inc.
+  hash: 3b15bfd1d83b14456fde32cadd9b723323d9f4da41e14019b10a26037aa7204e
   license: ''
   license_text: "Copying and distribution of this file, with or without modification,\nare permitted in any medium without royalty provided the copyright\nnotice and this notice are preserved.  This file is offered as-is,\nwithout warranty of any kind.\n"
 ./doc/ld-output-def.texi: 
@@ -9801,7 +9801,7 @@
   license_text: ''
 ./doc/posix-functions/strcasecmp.texi: 
   copyright: ''
-  hash: 7f49d3eceda3f51eb6ede418807164200915a15c26aabee9e3c678f79455ccfc
+  hash: 9ea04e9aa53ebc2202ac2ba5d40cc1bbf4038ed1c42d81e6b4dd56c78fb41478
   license: ''
   license_text: ''
 ./doc/posix-functions/strcasecmp_l.texi: 
@@ -9891,7 +9891,7 @@
   license_text: ''
 ./doc/posix-functions/strncasecmp.texi: 
   copyright: ''
-  hash: e5148eae134f9d79ab3966b17c5120ad16132967ed193205abdc9f704ab59d6c
+  hash: cba7a0a7818155d3bb0f93584f73ff24b7fb5c0060548adffdde6a41245eff37
   license: ''
   license_text: ''
 ./doc/posix-functions/strncasecmp_l.texi: 
@@ -10841,7 +10841,7 @@
   license_text: ''
 ./doc/posix-headers/dirent.texi: 
   copyright: ''
-  hash: ae0c082fd86691f88441a0e699f09ecd8d56497a9d00c095f604702f69dd38b1
+  hash: 5ae0cb0011409263e09d26ee562c02ac2e86310d2e70ced4a1f282978596ae57
   license: ''
   license_text: ''
 ./doc/posix-headers/dlfcn.texi: 
@@ -11051,7 +11051,7 @@
   license_text: ''
 ./doc/posix-headers/stdio.texi: 
   copyright: ''
-  hash: 0a4463d4d6a612e66896c384608312ebda0d44e646b2a9130cd7e17fc222c313
+  hash: a8615ae16245f971bcc26789e703dc9ea735ab0ac53b4274a6401523e6fa6fc2
   license: ''
   license_text: ''
 ./doc/posix-headers/stdlib.texi: 
@@ -13320,8 +13320,8 @@
   license_text: "This program is free software: you can redistribute it and/or modify\nit under the terms of the GNU General Public License as published by\nthe Free Software Foundation; either version 3 of the License, or\n(at your option) any later version.\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\nGNU General Public License for more details.\n\nYou should have received a copy of the GNU General Public License\nalong with this program.  If not, see <http://www.gnu.org/licenses/>.\n"
   license_text_override: "This program is free software: you can redistribute it and/or modify\nit under the terms of the GNU General Public License as published by\nthe Free Software Foundation; either version 3 of the License, or\n(at your option) any later version.\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\nGNU General Public License for more details.\n\nYou should have received a copy of the GNU General Public License\nalong with this program.  If not, see <http://www.gnu.org/licenses/>.\n"
 ./lib/getlogin_r.c: 
-  copyright: 2005, 2006, 2007, 2009, 2010 Free Software Foundation, Inc.
-  hash: bbb6421282896aae304283c9b8614a0a64bfa610238e7282def46565dcc95ba9
+  copyright: 2005-2007, 2009-2010 Free Software Foundation, Inc.
+  hash: b23829ef391482c0ed34d8ce1b5f1777cbcf53b3cc086f66688fea1efe3a21eb
   license: GPL-2+
   license_override: LGPL-2+
   license_text: "This program is free software; you can redistribute it and/or modify\nit under the terms of the GNU General Public License as published by\nthe Free Software Foundation; either version 2 of the License, or\n(at your option) any later version.\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\nGNU General Public License for more details.\n\nYou should have received a copy of the GNU General Public License\nalong with this program; if not, write to the Free Software Foundation,\nInc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.  */\n"
@@ -23759,7 +23759,7 @@
   license_text_override: "This program is free software: you can redistribute it and/or modify\nit under the terms of the GNU Lesser General Public License as published by\nthe Free Software Foundation; either version 3 of the License, or\n(at your option) any later version.\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\nGNU General Public License for more details.\n\nYou should have received a copy of the GNU General Public License\nalong with this program.  If not, see <http://www.gnu.org/licenses/>.\n"
 ./m4/fdopendir.m4: 
   copyright: 2009-2010 Free Software Foundation, Inc.
-  hash: 1b1d5164dd237f39bea340441ac544d7c58e88d1a4ddadce3880ecb47e2c5e03
+  hash: 482239b6579ee398f0615c6aa936d7c6234c71f7990dd0d94434fd34004a5588
   license: ''
   license_override: GPL
   license_text: "This file is free software; the Free Software Foundation\ngives unlimited permission to copy and/or distribute it,\nwith or without modifications, as long as this notice is preserved.\n"
@@ -24220,8 +24220,8 @@
   license_text: "This file is free software; the Free Software Foundation\ngives unlimited permission to copy and/or distribute it,\nwith or without modifications, as long as this notice is preserved.\n"
   license_text_override: "This program is free software: you can redistribute it and/or modify\nit under the terms of the GNU General Public License as published by\nthe Free Software Foundation; either version 3 of the License, or\n(at your option) any later version.\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\nGNU General Public License for more details.\n\nYou should have received a copy of the GNU General Public License\nalong with this program.  If not, see <http://www.gnu.org/licenses/>.\n"
 ./m4/getlogin_r.m4: 
-  copyright: 2005, 2006, 2007, 2009, 2010 Free Software Foundation, Inc.
-  hash: 8be983795eae86c9ab260d70a25afd74daa93ae70bc4e5696ab8bad5c038c2f0
+  copyright: 2005-2007, 2009-2010 Free Software Foundation, Inc.
+  hash: 70f1389a7b1c2b7bec545f591651c4d94b6dc36450162e7ec113ab033de3509d
   license: ''
   license_override: LGPL-2+
   license_text: "This file is free software; the Free Software Foundation\ngives unlimited permission to copy and/or distribute it,\nwith or without modifications, as long as this notice is preserved.\n"
@@ -24546,7 +24546,7 @@
   license_text_override: "This program is free software; you can redistribute it and/or modify it\nunder the terms of the GNU Library General Public License as published\nby the Free Software Foundation; either version 2, or (at your option)\nany later version.\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU\nLibrary General Public License for more details.\n\nYou should have received a copy of the GNU Library General Public\nLicense along with this program; if not, write to the Free Software\nFoundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301,\nUSA.\n"
 ./m4/inttypes.m4: 
   copyright: 2006-2010 Free Software Foundation, Inc.
-  hash: f5a8caff98c3b1d6021cdee6deecc7d7213c2eb534e90c6ee4e7c9ccaf720a1a
+  hash: 052489b5cc028b4d730a4d3d2f3fc47e7c3edd998859aa42f5d9fbef65f7741a
   license: ''
   license_override: LGPL
   license_text: "This file is free software; the Free Software Foundation\ngives unlimited permission to copy and/or distribute it,\nwith or without modifications, as long as this notice is preserved.\n"
@@ -24927,6 +24927,13 @@
   license_override: LGPL-2+
   license_text: "This file is free software; the Free Software Foundation\ngives unlimited permission to copy and/or distribute it,\nwith or without modifications, as long as this notice is preserved.\n"
   license_text_override: "This program is free software; you can redistribute it and/or modify it\nunder the terms of the GNU Library General Public License as published\nby the Free Software Foundation; either version 2, or (at your option)\nany later version.\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU\nLibrary General Public License for more details.\n\nYou should have received a copy of the GNU Library General Public\nLicense along with this program; if not, write to the Free Software\nFoundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301,\nUSA.\n"
+./m4/mbslen.m4: 
+  copyright: 2010 Free Software Foundation, Inc
+  hash: bf7f9a7e524b735daaaf9fc6634d1f5b02409012a973aae3d3493e96bab25363
+  license: ''
+  license_override: LGPL
+  license_text: "This file is free software; the Free Software Foundation\ngives unlimited permission to copy and/or distribute it,\nwith or without modifications, as long as this notice is preserved.\n"
+  license_text_override: "This program is free software: you can redistribute it and/or modify\nit under the terms of the GNU Lesser General Public License as published by\nthe Free Software Foundation; either version 3 of the License, or\n(at your option) any later version.\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\nGNU General Public License for more details.\n\nYou should have received a copy of the GNU General Public License\nalong with this program.  If not, see <http://www.gnu.org/licenses/>.\n"
 ./m4/mbsnrtowcs.m4: 
   copyright: 2008, 2009, 2010 Free Software Foundation, Inc.
   hash: b53736d17ed17085f2a4b15ae3acb9a6204ce3788da8383d48c2778345956764
@@ -25201,7 +25208,7 @@
   license_text_override: "This program is free software: you can redistribute it and/or modify\nit under the terms of the GNU General Public License as published by\nthe Free Software Foundation; either version 3 of the License, or\n(at your option) any later version.\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\nGNU General Public License for more details.\n\nYou should have received a copy of the GNU General Public License\nalong with this program.  If not, see <http://www.gnu.org/licenses/>.\n"
 ./m4/netdb_h.m4: 
   copyright: 2008, 2009, 2010 Free Software Foundation, Inc.
-  hash: 2c26e1a486a6bba16682075a98b33e535a14063f450187823d15c6b88dbb63ef
+  hash: 1e6617920d9bf61d09e63534e4391cd969ae6f6039966df9a55eb2ab2c835519
   license: ''
   license_override: LGPL-2+
   license_text: "This file is free software; the Free Software Foundation\ngives unlimited permission to copy and/or distribute it,\nwith or without modifications, as long as this notice is preserved.\n"
@@ -25215,7 +25222,7 @@
   license_text_override: "This program is free software; you can redistribute it and/or modify it\nunder the terms of the GNU Library General Public License as published\nby the Free Software Foundation; either version 2, or (at your option)\nany later version.\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU\nLibrary General Public License for more details.\n\nYou should have received a copy of the GNU Library General Public\nLicense along with this program; if not, write to the Free Software\nFoundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301,\nUSA.\n"
 ./m4/nl_langinfo.m4: 
   copyright: 2009, 2010 Free Software Foundation, Inc.
-  hash: 2f96287aff94ab46c604e84379a43513afc6e0f9de4a07c806272aebf845e732
+  hash: 8d1c8d21051284af36601f1649ad93f1d49835be03776816e34f3dcda9e8fe0b
   license: ''
   license_override: LGPL
   license_text: "This file is free software; the Free Software Foundation\ngives unlimited permission to copy and/or distribute it,\nwith or without modifications, as long as this notice is preserved.\n"
@@ -25388,7 +25395,7 @@
   license_text_override: "This program is free software: you can redistribute it and/or modify\nit under the terms of the GNU General Public License as published by\nthe Free Software Foundation; either version 3 of the License, or\n(at your option) any later version.\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\nGNU General Public License for more details.\n\nYou should have received a copy of the GNU General Public License\nalong with this program.  If not, see <http://www.gnu.org/licenses/>.\n"
 ./m4/pread.m4: 
   copyright: 2009-2010 Free Software Foundation, Inc.
-  hash: 02a43e621d6e33b1bcab490d5aa1957a477e8ffc5ca29bc2c61be652e18a2681
+  hash: 9886299d62d24bd2e2bc48075eb00eb41270ccaafd53044ac7aa6cd849f0edcf
   license: ''
   license_override: LGPL-2+
   license_text: "This file is free software; the Free Software Foundation\ngives unlimited permission to copy and/or distribute it,\nwith or without modifications, as long as this notice is preserved.\n"
@@ -25507,7 +25514,7 @@
   license_text_override: "This program is free software: you can redistribute it and/or modify\nit under the terms of the GNU General Public License as published by\nthe Free Software Foundation; either version 3 of the License, or\n(at your option) any later version.\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\nGNU General Public License for more details.\n\nYou should have received a copy of the GNU General Public License\nalong with this program.  If not, see <http://www.gnu.org/licenses/>.\n"
 ./m4/readlink.m4: 
   copyright: 2003, 2007, 2009, 2010 Free Software Foundation, Inc.
-  hash: 7a0b7f3e4d53e9ca58597785595b70f7f63d3ca696da9c77bb75d77b92589952
+  hash: 101ad9785c79e71f269dad5700e1ddb9707f1ac7bb91020ebd4037f9abcaf0c9
   license: ''
   license_override: GPL
   license_text: "This file is free software; the Free Software Foundation\ngives unlimited permission to copy and/or distribute it,\nwith or without modifications, as long as this notice is preserved.\n"
@@ -25689,7 +25696,7 @@
   license_text_override: "This program is free software: you can redistribute it and/or modify\nit under the terms of the GNU Lesser General Public License as published by\nthe Free Software Foundation; either version 3 of the License, or\n(at your option) any later version.\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\nGNU General Public License for more details.\n\nYou should have received a copy of the GNU General Public License\nalong with this program.  If not, see <http://www.gnu.org/licenses/>.\n"
 ./m4/search_h.m4: 
   copyright: 2007-2010 Free Software Foundation, Inc.
-  hash: 1cd256179554a4a131960c7d527b4a5dc1cda6ee976eeecadb7b4ed7182c4560
+  hash: 97f211cb9072cbf7c924f29f1836af716b0c23c3f7b5fe372b28c4791708f9c8
   license: ''
   license_override: LGPL
   license_text: "This file is free software; the Free Software Foundation\ngives unlimited permission to copy and/or distribute it,\nwith or without modifications, as long as this notice is preserved.\n"
@@ -26029,8 +26036,8 @@
   license_text: "This file is free software; the Free Software Foundation\ngives unlimited permission to copy and/or distribute it,\nwith or without modifications, as long as this notice is preserved.\n"
   license_text_override: "This program is free software: you can redistribute it and/or modify\nit under the terms of the GNU Lesser General Public License as published by\nthe Free Software Foundation; either version 3 of the License, or\n(at your option) any later version.\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\nGNU General Public License for more details.\n\nYou should have received a copy of the GNU General Public License\nalong with this program.  If not, see <http://www.gnu.org/licenses/>.\n"
 ./m4/string_h.m4: 
-  copyright: 2007, 2008, 2009, 2010 Free Software Foundation, Inc.
-  hash: cd5b832c8f3d66eabccd0a8a55e998f56c34b6f85d89ed4055f314115af6f9a1
+  copyright: 2007-2010 Free Software Foundation, Inc.
+  hash: 75c52646fc63c981eee7b6ce0c0a2f7bc4ebf85f5f42f8a82ed5638d2a6669c3
   license: ''
   license_override: LGPL-2+
   license_text: "This file is free software; the Free Software Foundation\ngives unlimited permission to copy and/or distribute it,\nwith or without modifications, as long as this notice is preserved.\n"
@@ -26184,7 +26191,7 @@
   license_text_override: "This program is free software; you can redistribute it and/or modify it\nunder the terms of the GNU Library General Public License as published\nby the Free Software Foundation; either version 2, or (at your option)\nany later version.\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU\nLibrary General Public License for more details.\n\nYou should have received a copy of the GNU Library General Public\nLicense along with this program; if not, write to the Free Software\nFoundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301,\nUSA.\n"
 ./m4/sys_select_h.m4: 
   copyright: 2006-2010 Free Software Foundation, Inc.
-  hash: 8ce7aee2bb1fe0baa9a828c0404b563aa2e67276deca8a0a7d5e2139a4086e1f
+  hash: 9c6036f65ef193c4091d5e29979bf19916d4d5a5da3ad45c2df8d9154db27141
   license: ''
   license_override: LGPL-2+
   license_text: "This file is free software; the Free Software Foundation\ngives unlimited permission to copy and/or distribute it,\nwith or without modifications, as long as this notice is preserved.\n"
@@ -26205,7 +26212,7 @@
   license_text_override: "This program is free software; you can redistribute it and/or modify it\nunder the terms of the GNU Library General Public License as published\nby the Free Software Foundation; either version 2, or (at your option)\nany later version.\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU\nLibrary General Public License for more details.\n\nYou should have received a copy of the GNU Library General Public\nLicense along with this program; if not, write to the Free Software\nFoundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301,\nUSA.\n"
 ./m4/sys_time_h.m4: 
   copyright: 2007, 2009, 2010 Free Software Foundation, Inc.
-  hash: 9ea5ad2eaab2a40243f741865a4b66b4f935ea88a387a638ef142e066f4db593
+  hash: 78475262a43b368fb07c87dd59eb8b556f7fddbb3933d2c028108194a518aad4
   license: ''
   license_override: LGPL-2+
   license_text: "This file is free software; the Free Software Foundation\ngives unlimited permission to copy and/or distribute it,\nwith or without modifications, as long as this notice is preserved.\n"
@@ -26621,7 +26628,7 @@
   license_text_override: "This file is free software; the Free Software Foundation\ngives unlimited permission to copy and/or distribute it,\nwith or without modifications, as long as this notice is preserved.\n"
 ./m4/wchar.m4: 
   copyright: 2007-2010 Free Software Foundation, Inc.
-  hash: 6de5da80ceb84d0ca4139fe5b06dad0cb7e53f14c6c5e69c1507a0363aa1186b
+  hash: 205a0464cddeaac6b2a63a65ba233a037e1a46052a6f220ca16ecf344df84aa6
   license: ''
   license_override: LGPL-2+
   license_text: "This file is free software; the Free Software Foundation\ngives unlimited permission to copy and/or distribute it,\nwith or without modifications, as long as this notice is preserved.\n"
@@ -27661,6 +27668,11 @@
   hash: 7ae535f69fb10eb4c1fa6e32187d742f5b2a350538db8fa5b417802ccfd2558d
   license: GPL-3+
   license_text: "This program is free software: you can redistribute it and/or modify\nit under the terms of the GNU General Public License as published by\nthe Free Software Foundation; either version 3 of the License, or\n(at your option) any later version.\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\nGNU General Public License for more details.\n\nYou should have received a copy of the GNU General Public License\nalong with this program.  If not, see <http://www.gnu.org/licenses/>.\n"
+./tests/test-getlogin_r.c: 
+  copyright: 2010 Free Software Foundation, Inc
+  hash: e5f7a4e9a904785484f05d2c40c2cb95cbf04bfc603a9d661e943b846e1c7b8f
+  license: "GPL-3+ "
+  license_text: ''
 ./tests/test-getndelim2.c: 
   copyright: 2008, 2009, 2010 Free Software Foundation, Inc.
   hash: 9aa1bac1e2e045d6d8da947815896eb996c5c87e6a0decd575374526a8763189
@@ -28808,8 +28820,8 @@
   license: GPL-3+
   license_text: "This program is free software: you can redistribute it and/or modify\nit under the terms of the GNU General Public License as published by\nthe Free Software Foundation; either version 3 of the License, or\n(at your option) any later version.\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\nGNU General Public License for more details.\n\nYou should have received a copy of the GNU General Public License\nalong with this program.  If not, see <http://www.gnu.org/licenses/>.\n"
 ./tests/test-stdio.c: 
-  copyright: 2007, 2009, 2010 Free Software Foundation, Inc.
-  hash: bdb9455f91cf586e4dcf2fe82e68deaa56bb473b6c419ca7d0cd730ce154a8ba
+  copyright: 2007, 2009-2010 Free Software Foundation, Inc.
+  hash: 10bd12022a90e4413f556ca09fef7a3519ef1d2bd34a2ae359562e3a626ad99d
   license: GPL-3+
   license_text: "This program is free software: you can redistribute it and/or modify\nit under the terms of the GNU General Public License as published by\nthe Free Software Foundation; either version 3 of the License, or\n(at your option) any later version.\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\nGNU General Public License for more details.\n\nYou should have received a copy of the GNU General Public License\nalong with this program.  If not, see <http://www.gnu.org/licenses/>.\n"
 ./tests/test-stdlib.c: 
