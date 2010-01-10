@@ -48,6 +48,10 @@ with the following additional commits:
     * [2cf2e37]->[0b0ac4a] dup2: work around mingw bug
     * [581419c]->[fad0fe1] lib/dup2.c (rpl_dup2): Improve comment.
     * [dd5823d]->[465b4d1] Tests for module 'getlogin_r'.
+    * [3361cfa]->[5bfd3af] getlogin_r: Add comment.
+    * [89b39ef]->[88bc1a6] getlogin_r: Small fixes.
+    * [570a589]->[d6b7bf8] getlogin_r: Support for native Windows.
+    * [630a387]->[] unistr/u8-to-u16: Reject invalid input.
 __NEXTCOMMITMARKER__
 
 ----------------------------------------------------------------------
