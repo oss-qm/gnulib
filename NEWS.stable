@@ -52,7 +52,9 @@ with the following additional commits:
     * [89b39ef]->[88bc1a6] getlogin_r: Small fixes.
     * [570a589]->[d6b7bf8] getlogin_r: Support for native Windows.
     * [630a387]->[b2c3f71] unistr/u8-to-u16: Reject invalid input.
-__NEXTCOMMITMARKER__
+    * [95a86a9]->[f3af270] unistr/u8-to-u32: Reject invalid input.
+    * [f03c8d5]->[987b3c4] unistr/u16-to-u8: Reject invalid input.
+    * [19aa55e]->[b4ee15b] unistr/u16-to-u32: Reject invalid input.
 
 ----------------------------------------------------------------------
 
