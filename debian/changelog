@@ -1,9 +1,10 @@
 gnulib (20100109+stable-1) unstable; urgency=low
 
-  * New upstream stable snapshot.
+  * New upstream stable snapshot
+    + at_func2.c: fix free. Thanks to Petr Salinger (Closes: #561117).
   * debian/rules: make lib/config.charset executable.
 
- -- Ian Beckwith <ianb@debian.org>  Sun, 10 Jan 2010 01:23:22 +0000
+ -- Ian Beckwith <ianb@debian.org>  Sun, 17 Jan 2010 07:26:49 +0000
 
 gnulib (20091120+stable-1) unstable; urgency=low
 
