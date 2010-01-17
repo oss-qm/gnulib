@@ -11351,22 +11351,12 @@
   license_override: LGPL-2+
   license_text: "This program is free software; you can redistribute it and/or modify\nit under the terms of the GNU General Public License as published by\nthe Free Software Foundation; either version 2 of the License, or\n(at your option) any later version.\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\nGNU General Public License for more details.\n\nYou should have received a copy of the GNU General Public License\nalong with this program; if not, write to the Free Software Foundation,\nInc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.  */\n"
   license_text_override: "This program is free software; you can redistribute it and/or modify it\nunder the terms of the GNU Library General Public License as published\nby the Free Software Foundation; either version 2, or (at your option)\nany later version.\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU\nLibrary General Public License for more details.\n\nYou should have received a copy of the GNU Library General Public\nLicense along with this program; if not, write to the Free Software\nFoundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301,\nUSA.\n"
-./lib/alignof.h~: 
-  copyright: ''
-  hash: 3462758dafa0cfd9ac5dbecc7fdd45d21f7b7f2a8e87ee35a5b37b251a4b1dca
-  license: ''
-  license_text: ''
 ./lib/alloca.c: 
   copyright: ''
   hash: 431aec7ca1324fce73e1038b2634ad070f21bb7fee11867cc153c883cbc9e178
   license: ''
   license_override: PD
   license_text: "(Mostly) portable public-domain implementation -- D A Gwyn\n"
-./lib/alloca.c~: 
-  copyright: ''
-  hash: 431aec7ca1324fce73e1038b2634ad070f21bb7fee11867cc153c883cbc9e178
-  license: ''
-  license_text: ''
 ./lib/alloca.in.h: 
   copyright: 1995, 1999, 2001-2004, 2006-2010 Free Software Foundation, Inc.
   hash: bf6ca71e710c811f1311d6880d1a63d81328e4aca6d49c2ba0e0bde4443eb996
@@ -11374,11 +11364,6 @@
   license_override: LGPL-2+
   license_text: "This program is free software; you can redistribute it and/or modify\nit under the terms of the GNU General Public License as published by\nthe Free Software Foundation; either version 2 of the License, or\n(at your option) any later version.\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\nGNU General Public License for more details.\n\nYou should have received a copy of the GNU General Public License\nalong with this program; if not, write to the Free Software Foundation,\nInc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.  */\n"
   license_text_override: "This program is free software; you can redistribute it and/or modify it\nunder the terms of the GNU Library General Public License as published\nby the Free Software Foundation; either version 2, or (at your option)\nany later version.\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU\nLibrary General Public License for more details.\n\nYou should have received a copy of the GNU Library General Public\nLicense along with this program; if not, write to the Free Software\nFoundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301,\nUSA.\n"
-./lib/alloca.in.h~: 
-  copyright: ''
-  hash: b7dcd93bf4979e9478ae25207f011254c3ac6fa5173505035f727801905dc65d
-  license: ''
-  license_text: ''
 ./lib/alphasort.c: 
   copyright: 1992, 1997, 1998, 2009, 2010 Free Software Foundation, Inc.
   hash: 0800e4f0144d59332b90e7915a8897aebb7698804b34dc7056a393f334deaba4
@@ -11620,11 +11605,6 @@
   license_override: LGPL-2+
   license_text: "This program is free software; you can redistribute it and/or modify\nit under the terms of the GNU General Public License as published by\nthe Free Software Foundation; either version 2 of the License, or\n(at your option) any later version.\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\nGNU General Public License for more details.\n\nYou should have received a copy of the GNU General Public License\nalong with this program; if not, write to the Free Software Foundation,\nInc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.  */\n"
   license_text_override: "This program is free software; you can redistribute it and/or modify it\nunder the terms of the GNU Library General Public License as published\nby the Free Software Foundation; either version 2, or (at your option)\nany later version.\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU\nLibrary General Public License for more details.\n\nYou should have received a copy of the GNU Library General Public\nLicense along with this program; if not, write to the Free Software\nFoundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301,\nUSA.\n"
-./lib/asnprintf.c~: 
-  copyright: ''
-  hash: 8e81f2c3c535f505added072b5281fa5c590144c3aa3e083dad0c3ed52b45aa0
-  license: ''
-  license_text: ''
 ./lib/asprintf.c: 
   copyright: 1999, 2002, 2006-2010 Free Software Foundation, Inc.
   hash: d4ad8b92cacde00fcdfc36c90e8dd2d01274a33485374dfbb9dfdc595ed8ce05
@@ -12016,11 +11996,6 @@
   license_override: LGPL-2+
   license_text: "This program is free software: you can redistribute it and/or modify it\nunder the terms of the GNU Lesser General Public License as published\nby the Free Software Foundation; either version 3 of the License, or\n(at your option) any later version.\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU\nLesser General Public License for more details.\n\nYou should have received a copy of the GNU Lesser General Public License\nalong with this program.  If not, see <http://www.gnu.org/licenses/>.\n"
   license_text_override: "This program is free software; you can redistribute it and/or modify it\nunder the terms of the GNU Library General Public License as published\nby the Free Software Foundation; either version 2, or (at your option)\nany later version.\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU\nLibrary General Public License for more details.\n\nYou should have received a copy of the GNU Library General Public\nLicense along with this program; if not, write to the Free Software\nFoundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301,\nUSA.\n"
-./lib/close-hook.c~: 
-  copyright: ''
-  hash: ec1354c985be7435887fe9b514e9777b573cf13b674dc55eeffbbf2b6f738034
-  license: ''
-  license_text: ''
 ./lib/close-hook.h: 
   copyright: 2009, 2010 Free Software Foundation, Inc.
   hash: f5332869e554cf0ead5d9af7fe124bcccef396f7365e434b1de85ae9f3198a8c
@@ -12028,11 +12003,6 @@
   license_override: LGPL-2+
   license_text: "This program is free software: you can redistribute it and/or modify it\nunder the terms of the GNU Lesser General Public License as published\nby the Free Software Foundation; either version 3 of the License, or\n(at your option) any later version.\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU\nLesser General Public License for more details.\n\nYou should have received a copy of the GNU Lesser General Public License\nalong with this program.  If not, see <http://www.gnu.org/licenses/>.\n"
   license_text_override: "This program is free software; you can redistribute it and/or modify it\nunder the terms of the GNU Library General Public License as published\nby the Free Software Foundation; either version 2, or (at your option)\nany later version.\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU\nLibrary General Public License for more details.\n\nYou should have received a copy of the GNU Library General Public\nLicense along with this program; if not, write to the Free Software\nFoundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301,\nUSA.\n"
-./lib/close-hook.h~: 
-  copyright: ''
-  hash: 0bd92bcbb0e461e75824497facbf3a66e7ae7d8eaf7cc4b91fa7dcb0b827b504
-  license: ''
-  license_text: ''
 ./lib/close-stream.c: 
   copyright: 1998, 1999, 2000, 2001, 2002, 2004, 2006-2010 Free Software Foundation, Inc.
   hash: 296226c99c7093cd7c5257164f87d6f59637bb2b4c0b92745c948f40339499e7
@@ -12103,11 +12073,6 @@
   license_override: LGPL-2+
   license_text: "This program is free software; you can redistribute it and/or modify\nit under the terms of the GNU General Public License as published by\nthe Free Software Foundation; either version 2 of the License, or\n(at your option) any later version.\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\nGNU General Public License for more details.\n\nYou should have received a copy of the GNU General Public License\nalong with this program; if not, write to the Free Software Foundation,\nInc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.  */\n"
   license_text_override: "This program is free software; you can redistribute it and/or modify it\nunder the terms of the GNU Library General Public License as published\nby the Free Software Foundation; either version 2, or (at your option)\nany later version.\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU\nLibrary General Public License for more details.\n\nYou should have received a copy of the GNU Library General Public\nLicense along with this program; if not, write to the Free Software\nFoundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301,\nUSA.\n"
-./lib/config.charset~: 
-  copyright: ''
-  hash: 6f0998e29a63e3fcb8c4e044840a073a733d777ab343c1a3f045ce6ab2e9ecf9
-  license: ''
-  license_text: ''
 ./lib/connect.c: 
   copyright: 2008, 2009, 2010 Free Software Foundation, Inc.
   hash: 55fe8f869deb14f51187512c6a4b4891165b782ebcd3f0a22fcdf2a6d10d2df9
@@ -12206,11 +12171,6 @@
   license_override: LGPL-2+
   license_text: ''
   license_text_override: "This program is free software; you can redistribute it and/or modify it\nunder the terms of the GNU Library General Public License as published\nby the Free Software Foundation; either version 2, or (at your option)\nany later version.\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU\nLibrary General Public License for more details.\n\nYou should have received a copy of the GNU Library General Public\nLicense along with this program; if not, write to the Free Software\nFoundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301,\nUSA.\n"
-./lib/ctype.in.h~: 
-  copyright: ''
-  hash: 9bcb0d6135aa11a6e71b016f91ab5aa5ff97b7264f25d77c512e57761eecae2f
-  license: ''
-  license_text: ''
 ./lib/cycle-check.c: 
   copyright: 2003-2006, 2009-2010 Free Software Foundation, Inc.
   hash: 12530ff16194bed504bd253ca8e36227c5cf16bae326b83ca27d2d03b3b91018
@@ -12393,11 +12353,6 @@
   license_override: LGPL-2+
   license_text: "This program is free software; you can redistribute it and/or modify\nit under the terms of the GNU General Public License as published by\nthe Free Software Foundation; either version 2 of the License, or\n(at your option) any later version.\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\nGNU General Public License for more details.\n\nYou should have received a copy of the GNU General Public License\nalong with this program; if not, write to the Free Software Foundation,\nInc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.  */\n"
   license_text_override: "This program is free software; you can redistribute it and/or modify it\nunder the terms of the GNU Library General Public License as published\nby the Free Software Foundation; either version 2, or (at your option)\nany later version.\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU\nLibrary General Public License for more details.\n\nYou should have received a copy of the GNU Library General Public\nLicense along with this program; if not, write to the Free Software\nFoundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301,\nUSA.\n"
-./lib/errno.in.h~: 
-  copyright: ''
-  hash: fe88fbd6fac6eb6acc5b84e204ef7b20b5968de6725682e3694d1f027bcf3b32
-  license: ''
-  license_text: ''
 ./lib/error.c: 
   copyright: 1990-1998, 2000-2007, 2009-2010 Free Software Foundation, Inc.
   hash: 8322dfb4149335ad85dc076ec59b92d49be45b4e4a3a620e54bb4095afe4b137
@@ -12727,11 +12682,6 @@
   license_override: LGPL-2+
   license_text: "This program is free software; you can redistribute it and/or modify\nit under the terms of the GNU General Public License as published by\nthe Free Software Foundation; either version 2 of the License, or\n(at your option) any later version.\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\nGNU General Public License for more details.\n\nYou should have received a copy of the GNU General Public License\nalong with this program; if not, write to the Free Software Foundation,\nInc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.  */\n"
   license_text_override: "This program is free software; you can redistribute it and/or modify it\nunder the terms of the GNU Library General Public License as published\nby the Free Software Foundation; either version 2, or (at your option)\nany later version.\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU\nLibrary General Public License for more details.\n\nYou should have received a copy of the GNU Library General Public\nLicense along with this program; if not, write to the Free Software\nFoundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301,\nUSA.\n"
-./lib/float+.h~: 
-  copyright: ''
-  hash: e0f837de3dc39e0b747f0927653fa501e3e873bdfe1c26b0961519fd8dd897b4
-  license: ''
-  license_text: ''
 ./lib/float.in.h: 
   copyright: 2007-2010 Free Software Foundation, Inc.
   hash: d063080759bb5fbe188ef9e7c95f6610da8d940010d6cf7bb4cecad9d310ca9b
@@ -12774,11 +12724,6 @@
   license_override: LGPL-2+
   license_text: "This program is free software; you can redistribute it and/or modify\nit under the terms of the GNU General Public License as published by\nthe Free Software Foundation; either version 2 of the License, or\n(at your option) any later version.\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\nGNU General Public License for more details.\n\nYou should have received a copy of the GNU General Public License\nalong with this program; if not, write to the Free Software Foundation,\nInc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.  */\n"
   license_text_override: "This program is free software; you can redistribute it and/or modify it\nunder the terms of the GNU Library General Public License as published\nby the Free Software Foundation; either version 2, or (at your option)\nany later version.\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU\nLibrary General Public License for more details.\n\nYou should have received a copy of the GNU Library General Public\nLicense along with this program; if not, write to the Free Software\nFoundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301,\nUSA.\n"
-./lib/fnmatch.c~: 
-  copyright: ''
-  hash: a1023b214fa5f3433ca30359a6857be416dc1dade27370bdbd7100857341f56c
-  license: ''
-  license_text: ''
 ./lib/fnmatch.in.h: 
   copyright: 1991, 1992, 1993, 1996, 1997, 1998, 1999, 2001, 2002, 2003, 2005, 2007, 2009, 2010 Free Software Foundation, Inc.
   hash: f3bd6ce10953eabad7ee28058174f6dacf52c1d5af286d99322b9787ed931857
@@ -12786,11 +12731,6 @@
   license_override: LGPL-2+
   license_text: "This program is free software; you can redistribute it and/or modify\nit under the terms of the GNU General Public License as published by\nthe Free Software Foundation; either version 2 of the License, or\n(at your option) any later version.\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\nGNU General Public License for more details.\n\nYou should have received a copy of the GNU General Public License\nalong with this program; if not, write to the Free Software Foundation,\nInc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.  */\n"
   license_text_override: "This program is free software; you can redistribute it and/or modify it\nunder the terms of the GNU Library General Public License as published\nby the Free Software Foundation; either version 2, or (at your option)\nany later version.\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU\nLibrary General Public License for more details.\n\nYou should have received a copy of the GNU Library General Public\nLicense along with this program; if not, write to the Free Software\nFoundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301,\nUSA.\n"
-./lib/fnmatch.in.h~: 
-  copyright: ''
-  hash: a5c8c5adbf49f1404d18740af34363323265ef6c7588387425b5797518dd9317
-  license: ''
-  license_text: ''
 ./lib/fnmatch_loop.c: 
   copyright: 1991,1992,1993,1996,1997,1998,1999,2000,2001,2002,2003,2004,2005,2006,2009,2010 Free Software Foundation, Inc.
   hash: 6e01e0008ffa9f16ce30ec7bd22f7e644879d5054be5a5969d46e0ac3997049c
@@ -12798,11 +12738,6 @@
   license_override: LGPL-2+
   license_text: "This program is free software; you can redistribute it and/or modify\nit under the terms of the GNU General Public License as published by\nthe Free Software Foundation; either version 2 of the License, or\n(at your option) any later version.\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\nGNU General Public License for more details.\n\nYou should have received a copy of the GNU General Public License\nalong with this program; if not, write to the Free Software Foundation,\nInc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.  */\n"
   license_text_override: "This program is free software; you can redistribute it and/or modify it\nunder the terms of the GNU Library General Public License as published\nby the Free Software Foundation; either version 2, or (at your option)\nany later version.\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU\nLibrary General Public License for more details.\n\nYou should have received a copy of the GNU Library General Public\nLicense along with this program; if not, write to the Free Software\nFoundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301,\nUSA.\n"
-./lib/fnmatch_loop.c~: 
-  copyright: ''
-  hash: 32fc3ebfd149fc6a68a6034b2e75249418a5180a833254bdaecd76f93f2c6f62
-  license: ''
-  license_text: ''
 ./lib/fopen-safer.c: 
   copyright: 2001, 2004, 2005, 2006, 2009-2010 Free Software Foundation, Inc.
   hash: e4d02b55a495d061d0133917dbc020b9e3d0a6a0acef954ceb093572e7c3bb74
@@ -12985,11 +12920,6 @@
   license_override: LGPL-2+
   license_text: "This program is free software; you can redistribute it and/or modify\nit under the terms of the GNU General Public License as published by\nthe Free Software Foundation; either version 2 of the License, or\n(at your option) any later version.\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\nGNU General Public License for more details.\n\nYou should have received a copy of the GNU General Public License\nalong with this program; if not, write to the Free Software Foundation,\nInc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.  */\n"
   license_text_override: "This program is free software; you can redistribute it and/or modify it\nunder the terms of the GNU Library General Public License as published\nby the Free Software Foundation; either version 2, or (at your option)\nany later version.\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU\nLibrary General Public License for more details.\n\nYou should have received a copy of the GNU Library General Public\nLicense along with this program; if not, write to the Free Software\nFoundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301,\nUSA.\n"
-./lib/fseeko.c~: 
-  copyright: ''
-  hash: 7b2541be24bdcf54f417ab2189fb821a645f6a4f06a21adaff8f058594862194
-  license: ''
-  license_text: ''
 ./lib/fseterr.c: 
   copyright: 2007-2010 Free Software Foundation, Inc.
   hash: 7414e321ec3a801fbffeab97b7d102d2b367ec8cfce3fbccc14e41fa6ab0f9dd
@@ -13438,11 +13368,6 @@
   license_override: LGPL-2+
   license_text: "This program is free software; you can redistribute it and/or modify\nit under the terms of the GNU General Public License as published by\nthe Free Software Foundation; either version 2 of the License, or\n(at your option) any later version.\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\nGNU General Public License for more details.\n\nYou should have received a copy of the GNU General Public License\nalong with this program; if not, write to the Free Software Foundation,\nInc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.  */\n"
   license_text_override: "This program is free software; you can redistribute it and/or modify it\nunder the terms of the GNU Library General Public License as published\nby the Free Software Foundation; either version 2, or (at your option)\nany later version.\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU\nLibrary General Public License for more details.\n\nYou should have received a copy of the GNU Library General Public\nLicense along with this program; if not, write to the Free Software\nFoundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301,\nUSA.\n"
-./lib/gettext.h~: 
-  copyright: ''
-  hash: 136f1ff682700ad9f5fb60428eeada20f160e6ed38a19ad78bd1dc4e440f55f0
-  license: ''
-  license_text: ''
 ./lib/gettime.c: 
   copyright: 2002, 2004-2007, 2009-2010 Free Software Foundation, Inc.
   hash: 3a2b028ea013a1481fa265ff399f7c52cc09859cc8977f0368795cc007f2fd1d
@@ -13457,11 +13382,6 @@
   license_override: LGPL-2+
   license_text: "This program is free software; you can redistribute it and/or modify\nit under the terms of the GNU General Public License as published by\nthe Free Software Foundation; either version 2 of the License, or\n(at your option) any later version.\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\nGNU General Public License for more details.\n\nYou should have received a copy of the GNU General Public License\nalong with this program; if not, write to the Free Software Foundation,\nInc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.  */\n"
   license_text_override: "This program is free software; you can redistribute it and/or modify it\nunder the terms of the GNU Library General Public License as published\nby the Free Software Foundation; either version 2, or (at your option)\nany later version.\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU\nLibrary General Public License for more details.\n\nYou should have received a copy of the GNU Library General Public\nLicense along with this program; if not, write to the Free Software\nFoundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301,\nUSA.\n"
-./lib/gettimeofday.c~: 
-  copyright: ''
-  hash: cde7080c035c43c360bf0a39981d8e1f56a5745a9f0857f3fab617c0414c9aa6
-  license: ''
-  license_text: ''
 ./lib/getugroups.c: 
   copyright: 1990-1991, 1998-2000, 2003-2010 Free Software Foundation, Inc.
   hash: 2b3877b6a8342f7ad8ad6f4f285cc46f3ad0b18690d2638a7b7fb623b660a749
@@ -14407,11 +14327,6 @@
   license_override: LGPL-2+
   license_text: "This program is free software; you can redistribute it and/or modify\nit under the terms of the GNU General Public License as published by\nthe Free Software Foundation; either version 2 of the License, or\n(at your option) any later version.\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\nGNU General Public License for more details.\n\nYou should have received a copy of the GNU General Public License\nalong with this program; if not, write to the Free Software Foundation,\nInc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.  */\n"
   license_text_override: "This program is free software; you can redistribute it and/or modify it\nunder the terms of the GNU Library General Public License as published\nby the Free Software Foundation; either version 2, or (at your option)\nany later version.\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU\nLibrary General Public License for more details.\n\nYou should have received a copy of the GNU Library General Public\nLicense along with this program; if not, write to the Free Software\nFoundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301,\nUSA.\n"
-./lib/link.c~: 
-  copyright: ''
-  hash: c0b30ef6d1e001b2928d2bb394b5762a98b6b6ede802eaa83c1319c2e03dce1e
-  license: ''
-  license_text: ''
 ./lib/linkat.c: 
   copyright: 2009-2010 Free Software Foundation, Inc.
   hash: a8801b68213575f68fe70d09b9f7ec9e0e7054688f4b635af00b20b0d8cf6fa0
@@ -14433,11 +14348,6 @@
   license_override: LGPL-2+
   license_text: "This program is free software; you can redistribute it and/or modify\nit under the terms of the GNU General Public License as published by\nthe Free Software Foundation; either version 2 of the License, or\n(at your option) any later version.\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\nGNU General Public License for more details.\n\nYou should have received a copy of the GNU General Public License\nalong with this program; if not, write to the Free Software Foundation,\nInc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.  */\n"
   license_text_override: "This program is free software; you can redistribute it and/or modify it\nunder the terms of the GNU Library General Public License as published\nby the Free Software Foundation; either version 2, or (at your option)\nany later version.\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU\nLibrary General Public License for more details.\n\nYou should have received a copy of the GNU Library General Public\nLicense along with this program; if not, write to the Free Software\nFoundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301,\nUSA.\n"
-./lib/localcharset.c~: 
-  copyright: ''
-  hash: 1548af2400728ae263f6a2bb0118e7778437b3639878649dc0257a527e4e0629
-  license: ''
-  license_text: ''
 ./lib/localcharset.h: 
   copyright: 2000-2003, 2009-2010 Free Software Foundation, Inc.
   hash: e68b2f6be8bfc6f576b54afe6a823a7199060aaf1f2256c2a9183854e478e1d0
@@ -14445,11 +14355,6 @@
   license_override: LGPL-2+
   license_text: "This program is free software; you can redistribute it and/or modify\nit under the terms of the GNU General Public License as published by\nthe Free Software Foundation; either version 2 of the License, or\n(at your option) any later version.\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\nGNU General Public License for more details.\n\nYou should have received a copy of the GNU General Public License\nalong with this program; if not, write to the Free Software Foundation,\nInc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.  */\n"
   license_text_override: "This program is free software; you can redistribute it and/or modify it\nunder the terms of the GNU Library General Public License as published\nby the Free Software Foundation; either version 2, or (at your option)\nany later version.\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU\nLibrary General Public License for more details.\n\nYou should have received a copy of the GNU Library General Public\nLicense along with this program; if not, write to the Free Software\nFoundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301,\nUSA.\n"
-./lib/localcharset.h~: 
-  copyright: ''
-  hash: 119c2de543436735fe784154d840a118ae31756c5fbbbb7f30b1cd3e2b54616a
-  license: ''
-  license_text: ''
 ./lib/locale.in.h: 
   copyright: 2007-2010 Free Software Foundation, Inc.
   hash: 9a5d109a3159452c00da25e5edcc7c603c20278c4c4447f54df3be5959583251
@@ -14499,11 +14404,6 @@
   license_override: LGPL-2+
   license_text: "This program is free software; you can redistribute it and/or modify\nit under the terms of the GNU General Public License as published by\nthe Free Software Foundation; either version 2 of the License, or\n(at your option) any later version.\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\nGNU General Public License for more details.\n\nYou should have received a copy of the GNU General Public License\nalong with this program; if not, write to the Free Software Foundation,\nInc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.  */\n"
   license_text_override: "This program is free software; you can redistribute it and/or modify it\nunder the terms of the GNU Library General Public License as published\nby the Free Software Foundation; either version 2, or (at your option)\nany later version.\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU\nLibrary General Public License for more details.\n\nYou should have received a copy of the GNU Library General Public\nLicense along with this program; if not, write to the Free Software\nFoundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301,\nUSA.\n"
-./lib/lseek.c~: 
-  copyright: ''
-  hash: 02f75754750c8263d25c4282d7b6167a2d40d0c8f8cf8a952486fc65dc812321
-  license: ''
-  license_text: ''
 ./lib/lstat.c: 
   copyright: 1997--2006, 2008-2010 Free Software Foundation, Inc.
   hash: 0d60993d777939d6a9945b91fa28395d37bac89b98b56edc8a19bdcf09cf5172
@@ -14518,11 +14418,6 @@
   license_override: LGPL-2+
   license_text: "This program is free software; you can redistribute it and/or modify\nit under the terms of the GNU General Public License as published by\nthe Free Software Foundation; either version 2 of the License, or\n(at your option) any later version.\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\nGNU General Public License for more details.\n\nYou should have received a copy of the GNU General Public License\nalong with this program; if not, write to the Free Software Foundation,\nInc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.  */\n"
   license_text_override: "This program is free software; you can redistribute it and/or modify it\nunder the terms of the GNU Library General Public License as published\nby the Free Software Foundation; either version 2, or (at your option)\nany later version.\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU\nLibrary General Public License for more details.\n\nYou should have received a copy of the GNU Library General Public\nLicense along with this program; if not, write to the Free Software\nFoundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301,\nUSA.\n"
-./lib/malloc.c~: 
-  copyright: ''
-  hash: 7754ece2820e7ddc5a364b370c2560187d53c00f4695409abd04ecedeff2aa94
-  license: ''
-  license_text: ''
 ./lib/malloca.c: 
   copyright: 2003, 2006-2007, 2009-2010 Free Software Foundation, Inc.
   hash: 4bb64b3e11e598b922bd38abd075d101267ff0c9035206e374d2ad4885545d39
@@ -14530,11 +14425,6 @@
   license_override: GPL
   license_text: "This program is free software; you can redistribute it and/or modify\nit under the terms of the GNU General Public License as published by\nthe Free Software Foundation; either version 2 of the License, or\n(at your option) any later version.\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\nGNU General Public License for more details.\n\nYou should have received a copy of the GNU General Public License\nalong with this program; if not, write to the Free Software Foundation,\nInc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.  */\n"
   license_text_override: "This program is free software: you can redistribute it and/or modify\nit under the terms of the GNU General Public License as published by\nthe Free Software Foundation; either version 3 of the License, or\n(at your option) any later version.\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\nGNU General Public License for more details.\n\nYou should have received a copy of the GNU General Public License\nalong with this program.  If not, see <http://www.gnu.org/licenses/>.\n"
-./lib/malloca.c~: 
-  copyright: ''
-  hash: e0f9431b8801560a2ec9fecb1893f9c1443bd37ac24a4785196d0c03321f52da
-  license: ''
-  license_text: ''
 ./lib/malloca.h: 
   copyright: 2003-2007, 2009-2010 Free Software Foundation, Inc.
   hash: 44593a000430981bf2dae6a98df963bdb8a7b7c4f290fc5cc6f87b57b9cee3c8
@@ -14542,11 +14432,6 @@
   license_override: GPL
   license_text: "This program is free software; you can redistribute it and/or modify\nit under the terms of the GNU General Public License as published by\nthe Free Software Foundation; either version 2 of the License, or\n(at your option) any later version.\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\nGNU General Public License for more details.\n\nYou should have received a copy of the GNU General Public License\nalong with this program; if not, write to the Free Software Foundation,\nInc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.  */\n"
   license_text_override: "This program is free software: you can redistribute it and/or modify\nit under the terms of the GNU General Public License as published by\nthe Free Software Foundation; either version 3 of the License, or\n(at your option) any later version.\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\nGNU General Public License for more details.\n\nYou should have received a copy of the GNU General Public License\nalong with this program.  If not, see <http://www.gnu.org/licenses/>.\n"
-./lib/malloca.h~: 
-  copyright: ''
-  hash: 56c3717d1d0f5f3cbdf6f2b581ad097dd47935c459a239db9ca84db9fd339f1c
-  license: ''
-  license_text: ''
 ./lib/malloca.valgrind: 
   copyright: ''
   hash: 93322a37edfb58a01aa98fa0cc0c4887861c816c873681286b20873bee36e170
@@ -14931,11 +14816,6 @@
   license_override: LGPL-2+
   license_text: "This program is free software; you can redistribute it and/or modify\nit under the terms of the GNU General Public License as published by\nthe Free Software Foundation; either version 2 of the License, or\n(at your option) any later version.\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\nGNU General Public License for more details.\n\nYou should have received a copy of the GNU General Public License\nalong with this program; if not, write to the Free Software Foundation,\nInc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.  */\n"
   license_text_override: "This program is free software; you can redistribute it and/or modify it\nunder the terms of the GNU Library General Public License as published\nby the Free Software Foundation; either version 2, or (at your option)\nany later version.\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU\nLibrary General Public License for more details.\n\nYou should have received a copy of the GNU Library General Public\nLicense along with this program; if not, write to the Free Software\nFoundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301,\nUSA.\n"
-./lib/mempcpy.c~: 
-  copyright: ''
-  hash: 162deb5da2eb01183cd1ea3c6c29887ff8f634735322780be17607aa892ec4a5
-  license: ''
-  license_text: ''
 ./lib/memrchr.c: 
   copyright: 1991, 1993, 1996-1997, 1999-2000, 2003-2010 Free Software Foundation, Inc.
   hash: 9f19ebbfee35c6144b257a5081e8634dce034d0600f0bca643ee78c12d63fed0
@@ -15335,11 +15215,6 @@
   license_override: LGPL-2+
   license_text: "This program is free software; you can redistribute it and/or modify\nit under the terms of the GNU General Public License as published by\nthe Free Software Foundation; either version 2 of the License, or\n(at your option) any later version.\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\nGNU General Public License for more details.\n\nYou should have received a copy of the GNU General Public License\nalong with this program; if not, write to the Free Software Foundation,\nInc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.  */\n"
   license_text_override: "This program is free software; you can redistribute it and/or modify it\nunder the terms of the GNU Library General Public License as published\nby the Free Software Foundation; either version 2, or (at your option)\nany later version.\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU\nLibrary General Public License for more details.\n\nYou should have received a copy of the GNU Library General Public\nLicense along with this program; if not, write to the Free Software\nFoundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301,\nUSA.\n"
-./lib/pathmax.h~: 
-  copyright: ''
-  hash: c643310e04770fbcc160973a5552561f7c122f2a5e6a61adba5b1f6f6073596d
-  license: ''
-  license_text: ''
 ./lib/perror.c: 
   copyright: 2008, 2009, 2010 Free Software Foundation, Inc.
   hash: f1fe333a93a591b1ce82c2d5bea7a8e3e7f437d24d56d6f5b67afe4e02ca2059
@@ -15494,11 +15369,6 @@
   license_override: LGPL-2+
   license_text: "This program is free software; you can redistribute it and/or modify\nit under the terms of the GNU General Public License as published by\nthe Free Software Foundation; either version 2 of the License, or\n(at your option) any later version.\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\nGNU General Public License for more details.\n\nYou should have received a copy of the GNU General Public License\nalong with this program; if not, write to the Free Software Foundation,\nInc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.  */\n"
   license_text_override: "This program is free software; you can redistribute it and/or modify it\nunder the terms of the GNU Library General Public License as published\nby the Free Software Foundation; either version 2, or (at your option)\nany later version.\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU\nLibrary General Public License for more details.\n\nYou should have received a copy of the GNU Library General Public\nLicense along with this program; if not, write to the Free Software\nFoundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301,\nUSA.\n"
-./lib/printf-args.c~: 
-  copyright: ''
-  hash: 6a93880b4e3d2612915862e48d5b11b32a64e24b70e9a8bb5f2dda7a4d2ea0cc
-  license: ''
-  license_text: ''
 ./lib/printf-args.h: 
   copyright: 1999, 2002-2003, 2006-2007, 2009-2010 Free Software Foundation, Inc.
   hash: aa0cb32704873e4abd86332cd4d950a1921bae851bf7e0c966510da81aef24ca
@@ -15506,11 +15376,6 @@
   license_override: LGPL-2+
   license_text: "This program is free software; you can redistribute it and/or modify\nit under the terms of the GNU General Public License as published by\nthe Free Software Foundation; either version 2 of the License, or\n(at your option) any later version.\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\nGNU General Public License for more details.\n\nYou should have received a copy of the GNU General Public License\nalong with this program; if not, write to the Free Software Foundation,\nInc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.  */\n"
   license_text_override: "This program is free software; you can redistribute it and/or modify it\nunder the terms of the GNU Library General Public License as published\nby the Free Software Foundation; either version 2, or (at your option)\nany later version.\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU\nLibrary General Public License for more details.\n\nYou should have received a copy of the GNU Library General Public\nLicense along with this program; if not, write to the Free Software\nFoundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301,\nUSA.\n"
-./lib/printf-args.h~: 
-  copyright: ''
-  hash: cf140b5cb22fa0718dbc5a41c94ab6327a7a447612d93e4b6c51016418701bc8
-  license: ''
-  license_text: ''
 ./lib/printf-frexp.c: 
   copyright: 2007, 2009, 2010 Free Software Foundation, Inc.
   hash: 09ba3d024236048272836f82c73cd7ef825c803275059843f01838a3f0a97adc
@@ -15546,11 +15411,6 @@
   license_override: LGPL-2+
   license_text: "This program is free software; you can redistribute it and/or modify\nit under the terms of the GNU General Public License as published by\nthe Free Software Foundation; either version 2 of the License, or\n(at your option) any later version.\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\nGNU General Public License for more details.\n\nYou should have received a copy of the GNU General Public License\nalong with this program; if not, write to the Free Software Foundation,\nInc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.  */\n"
   license_text_override: "This program is free software; you can redistribute it and/or modify it\nunder the terms of the GNU Library General Public License as published\nby the Free Software Foundation; either version 2, or (at your option)\nany later version.\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU\nLibrary General Public License for more details.\n\nYou should have received a copy of the GNU Library General Public\nLicense along with this program; if not, write to the Free Software\nFoundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301,\nUSA.\n"
-./lib/printf-parse.c~: 
-  copyright: ''
-  hash: e87d67950b9b8fd0411ed7bd3201b3ae9eb97549cf5d6255c2f6065e46d1aff1
-  license: ''
-  license_text: ''
 ./lib/printf-parse.h: 
   copyright: 1999, 2002-2003, 2005, 2007, 2009-2010 Free Software Foundation, Inc.
   hash: e54d37953e883c3edeb0d6109c47c1f2c058e63e9b3cf28c52c62266dc3359e6
@@ -15558,11 +15418,6 @@
   license_override: LGPL-2+
   license_text: "This program is free software; you can redistribute it and/or modify\nit under the terms of the GNU General Public License as published by\nthe Free Software Foundation; either version 2 of the License, or\n(at your option) any later version.\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\nGNU General Public License for more details.\n\nYou should have received a copy of the GNU General Public License\nalong with this program; if not, write to the Free Software Foundation,\nInc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.  */\n"
   license_text_override: "This program is free software; you can redistribute it and/or modify it\nunder the terms of the GNU Library General Public License as published\nby the Free Software Foundation; either version 2, or (at your option)\nany later version.\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU\nLibrary General Public License for more details.\n\nYou should have received a copy of the GNU Library General Public\nLicense along with this program; if not, write to the Free Software\nFoundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301,\nUSA.\n"
-./lib/printf-parse.h~: 
-  copyright: ''
-  hash: 1cbba74b564ba38b983e35311a8dcb098229112ee464a2940dae6abba3a12247
-  license: ''
-  license_text: ''
 ./lib/printf.c: 
   copyright: 2007, 2009, 2010 Free Software Foundation, Inc.
   hash: d743d09f7d4a6deee6ca51a271c623eeb43fb556661c6a74a38cc83b8b2cbf76
@@ -15794,11 +15649,6 @@
   license_override: LGPL-2+
   license_text: "This program is free software; you can redistribute it and/or modify\nit under the terms of the GNU General Public License as published by\nthe Free Software Foundation; either version 2 of the License, or\n(at your option) any later version.\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\nGNU General Public License for more details.\n\nYou should have received a copy of the GNU General Public License\nalong with this program; if not, write to the Free Software Foundation,\nInc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.  */\n"
   license_text_override: "This program is free software; you can redistribute it and/or modify it\nunder the terms of the GNU Library General Public License as published\nby the Free Software Foundation; either version 2, or (at your option)\nany later version.\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU\nLibrary General Public License for more details.\n\nYou should have received a copy of the GNU Library General Public\nLicense along with this program; if not, write to the Free Software\nFoundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301,\nUSA.\n"
-./lib/ref-add.sin~: 
-  copyright: ''
-  hash: 384e11c05bb265e3613f6e8b6c445f77d0cecc679e59cddac3c606015c6f5fc3
-  license: ''
-  license_text: ''
 ./lib/ref-del.sin: 
   copyright: 2000, 2009, 2010 Free Software Foundation, Inc.
   hash: 1d7b9fd82d0b44dc1d90e7b18da3941d0a425b295fa0666c294b6e5fc64a70f1
@@ -15806,11 +15656,6 @@
   license_override: LGPL-2+
   license_text: "This program is free software; you can redistribute it and/or modify\nit under the terms of the GNU General Public License as published by\nthe Free Software Foundation; either version 2 of the License, or\n(at your option) any later version.\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\nGNU General Public License for more details.\n\nYou should have received a copy of the GNU General Public License\nalong with this program; if not, write to the Free Software Foundation,\nInc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.  */\n"
   license_text_override: "This program is free software; you can redistribute it and/or modify it\nunder the terms of the GNU Library General Public License as published\nby the Free Software Foundation; either version 2, or (at your option)\nany later version.\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU\nLibrary General Public License for more details.\n\nYou should have received a copy of the GNU Library General Public\nLicense along with this program; if not, write to the Free Software\nFoundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301,\nUSA.\n"
-./lib/ref-del.sin~: 
-  copyright: ''
-  hash: 55d01b01839af2472b2f966cda363787756440f9ac8024938ea8dfa8b2323862
-  license: ''
-  license_text: ''
 ./lib/regcomp.c: 
   copyright: 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010 Free Software Foundation, Inc.
   hash: 184878807229de7e7b8a484336b354988b7065bce7be7d166fb8e65a45533f64
@@ -16105,11 +15950,6 @@
   license_override: LGPL-2+
   license_text: "This program is free software; you can redistribute it and/or modify\nit under the terms of the GNU General Public License as published by\nthe Free Software Foundation; either version 2 of the License, or\n(at your option) any later version.\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\nGNU General Public License for more details.\n\nYou should have received a copy of the GNU General Public License\nalong with this program; if not, write to the Free Software Foundation,\nInc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.  */\n"
   license_text_override: "This program is free software; you can redistribute it and/or modify it\nunder the terms of the GNU Library General Public License as published\nby the Free Software Foundation; either version 2, or (at your option)\nany later version.\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU\nLibrary General Public License for more details.\n\nYou should have received a copy of the GNU Library General Public\nLicense along with this program; if not, write to the Free Software\nFoundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301,\nUSA.\n"
-./lib/select.c~: 
-  copyright: ''
-  hash: db938a6d1b5d591ba63dd3673bb2ccd0ecd9f8b9fcaad86d3c607368122268a8
-  license: ''
-  license_text: ''
 ./lib/selinux-at.c: 
   copyright: 2007, 2009-2010 Free Software Foundation, Inc.
   hash: ffec9143962f4ea31d2ee5b32d816299d5a3db7b1ae4ed9c62da66c681199106
@@ -16334,11 +16174,6 @@
   license_override: LGPL-2+
   license_text: "This program is free software; you can redistribute it and/or modify\nit under the terms of the GNU General Public License as published by\nthe Free Software Foundation; either version 2 of the License, or\n(at your option) any later version.\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\nGNU General Public License for more details.\n\nYou should have received a copy of the GNU General Public License\nalong with this program; if not, write to the Free Software Foundation,\nInc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.  */\n"
   license_text_override: "This program is free software; you can redistribute it and/or modify it\nunder the terms of the GNU Library General Public License as published\nby the Free Software Foundation; either version 2, or (at your option)\nany later version.\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU\nLibrary General Public License for more details.\n\nYou should have received a copy of the GNU Library General Public\nLicense along with this program; if not, write to the Free Software\nFoundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301,\nUSA.\n"
-./lib/size_max.h~: 
-  copyright: ''
-  hash: 26c9e27b3895dc767fb1cd998cd3d2039f08bc4eb973ca8344a2957a21ea8d3f
-  license: ''
-  license_text: ''
 ./lib/sleep.c: 
   copyright: 2007, 2009, 2010 Free Software Foundation, Inc.
   hash: c07ff9408db1988c5370080a117472e04358b1c84a50f40bf78c9e897556b811
@@ -16591,11 +16426,6 @@
   license_override: LGPL-2+
   license_text: "This program is free software; you can redistribute it and/or modify\nit under the terms of the GNU General Public License as published by\nthe Free Software Foundation; either version 2 of the License, or\n(at your option) any later version.\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\nGNU General Public License for more details.\n\nYou should have received a copy of the GNU General Public License\nalong with this program; if not, write to the Free Software Foundation,\nInc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.  */\n"
   license_text_override: "This program is free software; you can redistribute it and/or modify it\nunder the terms of the GNU Library General Public License as published\nby the Free Software Foundation; either version 2, or (at your option)\nany later version.\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU\nLibrary General Public License for more details.\n\nYou should have received a copy of the GNU Library General Public\nLicense along with this program; if not, write to the Free Software\nFoundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301,\nUSA.\n"
-./lib/stdbool.in.h~: 
-  copyright: ''
-  hash: e8683e07480c37941452e3970f57d5f5bbcd0d742248766ea32158872b843013
-  license: ''
-  license_text: ''
 ./lib/stddef.in.h: 
   copyright: 2009, 2010 Free Software Foundation, Inc.
   hash: 3ba11fb098c68d05d8474fdd6ba59b25fbf7a77c2436dc87b9b83c83434717e9
@@ -16603,11 +16433,6 @@
   license_override: LGPL-2+
   license_text: "This program is free software; you can redistribute it and/or modify\nit under the terms of the GNU General Public License as published by\nthe Free Software Foundation; either version 2 of the License, or\n(at your option) any later version.\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\nGNU General Public License for more details.\n\nYou should have received a copy of the GNU General Public License\nalong with this program; if not, write to the Free Software Foundation,\nInc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.  */\n"
   license_text_override: "This program is free software; you can redistribute it and/or modify it\nunder the terms of the GNU Library General Public License as published\nby the Free Software Foundation; either version 2, or (at your option)\nany later version.\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU\nLibrary General Public License for more details.\n\nYou should have received a copy of the GNU Library General Public\nLicense along with this program; if not, write to the Free Software\nFoundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301,\nUSA.\n"
-./lib/stddef.in.h~: 
-  copyright: ''
-  hash: f3ff9d2469e9e018bbfe1a8d85d2454f7a54673420acdb29aa429cd583e45834
-  license: ''
-  license_text: ''
 ./lib/stdint.in.h: 
   copyright: 2001-2002, 2004-2010 Free Software Foundation, Inc.
   hash: d387f022b2b2d3d3eae3972a17a6ac574b48ec1d62cd91a1f634c0e52de413cb
@@ -16615,11 +16440,6 @@
   license_override: LGPL-2+
   license_text: "This program is free software; you can redistribute it and/or modify\nit under the terms of the GNU General Public License as published by\nthe Free Software Foundation; either version 2 of the License, or\n(at your option) any later version.\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\nGNU General Public License for more details.\n\nYou should have received a copy of the GNU General Public License\nalong with this program; if not, write to the Free Software Foundation,\nInc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.  */\n"
   license_text_override: "This program is free software; you can redistribute it and/or modify it\nunder the terms of the GNU Library General Public License as published\nby the Free Software Foundation; either version 2, or (at your option)\nany later version.\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU\nLibrary General Public License for more details.\n\nYou should have received a copy of the GNU Library General Public\nLicense along with this program; if not, write to the Free Software\nFoundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301,\nUSA.\n"
-./lib/stdint.in.h~: 
-  copyright: ''
-  hash: 31871000acd29901edf1cd726ea2f32b9837e497b9e19a49c00374e0291c1997
-  license: ''
-  license_text: ''
 ./lib/stdio--.h: 
   copyright: 2005-2006, 2009-2010 Free Software Foundation, Inc.
   hash: 441f2ffcab4525aecf638bc103cf67bb84255af19f18abe7918304cabbc3e54a
@@ -16655,11 +16475,6 @@
   license_override: LGPL-2+
   license_text: "This program is free software; you can redistribute it and/or modify\nit under the terms of the GNU General Public License as published by\nthe Free Software Foundation; either version 2 of the License, or\n(at your option) any later version.\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\nGNU General Public License for more details.\n\nYou should have received a copy of the GNU General Public License\nalong with this program; if not, write to the Free Software Foundation,\nInc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.  */\n"
   license_text_override: "This program is free software; you can redistribute it and/or modify it\nunder the terms of the GNU Library General Public License as published\nby the Free Software Foundation; either version 2, or (at your option)\nany later version.\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU\nLibrary General Public License for more details.\n\nYou should have received a copy of the GNU Library General Public\nLicense along with this program; if not, write to the Free Software\nFoundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301,\nUSA.\n"
-./lib/stdio.in.h~: 
-  copyright: ''
-  hash: 90996147d8e36f5883486d804050c8256ebd75940339821fbe964fc12816a9db
-  license: ''
-  license_text: ''
 ./lib/stdlib--.h: 
   copyright: 2005-2007, 2009-2010 Free Software Foundation, Inc.
   hash: c8fa2b246541e6d719bd4f27e7e162912888fb8262c595b0a597e07494e6f476
@@ -16702,11 +16517,6 @@
   license_override: LGPL
   license_text: "This program is free software; you can redistribute it and/or modify\nit under the terms of the GNU General Public License as published by\nthe Free Software Foundation; either version 2 of the License, or\n(at your option) any later version.\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\nGNU General Public License for more details.\n\nYou should have received a copy of the GNU General Public License\nalong with this program; if not, write to the Free Software Foundation,\nInc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.  */\n"
   license_text_override: "This program is free software: you can redistribute it and/or modify\nit under the terms of the GNU Lesser General Public License as published by\nthe Free Software Foundation; either version 3 of the License, or\n(at your option) any later version.\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\nGNU General Public License for more details.\n\nYou should have received a copy of the GNU General Public License\nalong with this program.  If not, see <http://www.gnu.org/licenses/>.\n"
-./lib/str-kmp.h~: 
-  copyright: ''
-  hash: 6ebb0ef34e3af533dd72b1cac88faebfab78edf50fcbe16d66a8f53ad4da159a
-  license: ''
-  license_text: ''
 ./lib/str-two-way.h: 
   copyright: 2008, 2009, 2010 Free Software Foundation, Inc.
   hash: 65fe10472bee88e7311f692cbefd9f777349f2fdfd478f2cff14e238caf5a6d5
@@ -16714,11 +16524,6 @@
   license_override: LGPL-2+
   license_text: "This program is free software; you can redistribute it and/or modify\nit under the terms of the GNU General Public License as published by\nthe Free Software Foundation; either version 2 of the License, or\n(at your option) any later version.\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\nGNU General Public License for more details.\n\nYou should have received a copy of the GNU General Public License\nalong with this program; if not, write to the Free Software Foundation,\nInc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.  */\n"
   license_text_override: "This program is free software; you can redistribute it and/or modify it\nunder the terms of the GNU Library General Public License as published\nby the Free Software Foundation; either version 2, or (at your option)\nany later version.\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU\nLibrary General Public License for more details.\n\nYou should have received a copy of the GNU Library General Public\nLicense along with this program; if not, write to the Free Software\nFoundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301,\nUSA.\n"
-./lib/str-two-way.h~: 
-  copyright: ''
-  hash: 333e7d492bb7a06bd7eceb738c5bbfaa45fd376cd1fa873159ae6c102fb5abe8
-  license: ''
-  license_text: ''
 ./lib/strcasecmp.c: 
   copyright: 1998-1999, 2005-2007, 2009-2010 Free Software Foundation, Inc.
   hash: 632a0f647fae643aa25b1cd89789e5a8e8f64c4b16bf30917732b59b334b17d1
@@ -16726,11 +16531,6 @@
   license_override: LGPL-2+
   license_text: "This program is free software; you can redistribute it and/or modify\nit under the terms of the GNU General Public License as published by\nthe Free Software Foundation; either version 2 of the License, or\n(at your option) any later version.\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\nGNU General Public License for more details.\n\nYou should have received a copy of the GNU General Public License\nalong with this program; if not, write to the Free Software Foundation,\nInc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.  */\n"
   license_text_override: "This program is free software; you can redistribute it and/or modify it\nunder the terms of the GNU Library General Public License as published\nby the Free Software Foundation; either version 2, or (at your option)\nany later version.\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU\nLibrary General Public License for more details.\n\nYou should have received a copy of the GNU Library General Public\nLicense along with this program; if not, write to the Free Software\nFoundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301,\nUSA.\n"
-./lib/strcasecmp.c~: 
-  copyright: ''
-  hash: 9fac5af7b69ba93dda82ad7e40d81dce148b1b3805ad1f85e96ed8f361e75307
-  license: ''
-  license_text: ''
 ./lib/strcasestr.c: 
   copyright: 2005-2010 Free Software Foundation, Inc.
   hash: 0a3e5df279ccc8f3624182818cd9c292079af06fb5a33a4019221aea70420b66
@@ -16738,11 +16538,6 @@
   license_override: LGPL-2+
   license_text: "This program is free software; you can redistribute it and/or modify\nit under the terms of the GNU General Public License as published by\nthe Free Software Foundation; either version 2 of the License, or\n(at your option) any later version.\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\nGNU General Public License for more details.\n\nYou should have received a copy of the GNU General Public License\nalong with this program; if not, write to the Free Software Foundation,\nInc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.  */\n"
   license_text_override: "This program is free software; you can redistribute it and/or modify it\nunder the terms of the GNU Library General Public License as published\nby the Free Software Foundation; either version 2, or (at your option)\nany later version.\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU\nLibrary General Public License for more details.\n\nYou should have received a copy of the GNU Library General Public\nLicense along with this program; if not, write to the Free Software\nFoundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301,\nUSA.\n"
-./lib/strcasestr.c~: 
-  copyright: ''
-  hash: df44f98303720564f510cd6080f83b2479ba81a607e0ff35a70065d332775e9d
-  license: ''
-  license_text: ''
 ./lib/strchrnul.c: 
   copyright: 2003, 2007, 2008, 2009, 2010 Free Software Foundation, Inc.
   hash: 4ca5abd1b8f32cc43d86349b6017b9a6b721d88284e731ba2703c204b40d11b8
@@ -16771,11 +16566,6 @@
   license_override: LGPL-2+
   license_text: "This program is free software; you can redistribute it and/or modify\nit under the terms of the GNU General Public License as published by\nthe Free Software Foundation; either version 2 of the License, or\n(at your option) any later version.\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\nGNU General Public License for more details.\n\nYou should have received a copy of the GNU General Public License\nalong with this program; if not, write to the Free Software Foundation,\nInc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.  */\n"
   license_text_override: "This program is free software; you can redistribute it and/or modify it\nunder the terms of the GNU Library General Public License as published\nby the Free Software Foundation; either version 2, or (at your option)\nany later version.\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU\nLibrary General Public License for more details.\n\nYou should have received a copy of the GNU Library General Public\nLicense along with this program; if not, write to the Free Software\nFoundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301,\nUSA.\n"
-./lib/strdup.c~: 
-  copyright: ''
-  hash: 12e93fe471e7edcd885e207e311df99c6d850b7b9ca5c3b28e39e316c66fb2ab
-  license: ''
-  license_text: ''
 ./lib/streq.h: 
   copyright: 2001-2002, 2007, 2009-2010 Free Software Foundation, Inc.
   hash: 0479627d8214a58e641ee2b6e89fa513f91395e83665cef37a112056845ca23b
@@ -16783,11 +16573,6 @@
   license_override: LGPL-2+
   license_text: "This program is free software: you can redistribute it and/or modify it\nunder the terms of the GNU Lesser General Public License as published\nby the Free Software Foundation; either version 3 of the License, or\n(at your option) any later version.\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU\nLesser General Public License for more details.\n\nYou should have received a copy of the GNU Lesser General Public License\nalong with this program.  If not, see <http://www.gnu.org/licenses/>.\n"
   license_text_override: "This program is free software; you can redistribute it and/or modify it\nunder the terms of the GNU Library General Public License as published\nby the Free Software Foundation; either version 2, or (at your option)\nany later version.\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU\nLibrary General Public License for more details.\n\nYou should have received a copy of the GNU Library General Public\nLicense along with this program; if not, write to the Free Software\nFoundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301,\nUSA.\n"
-./lib/streq.h~: 
-  copyright: ''
-  hash: 9830f7c0042519dd01e35295d2e694c760b032cd222a31f3855f44b1a526e12c
-  license: ''
-  license_text: ''
 ./lib/strerror.c: 
   copyright: 2007-2010 Free Software Foundation, Inc.
   hash: c18af63b64cc141e3b1046ddb3a866a17227e8d3a07fda738ccb6a41efe2c100
@@ -16858,11 +16643,6 @@
   license_override: LGPL-2+
   license_text: "This program is free software; you can redistribute it and/or modify\nit under the terms of the GNU General Public License as published by\nthe Free Software Foundation; either version 2 of the License, or\n(at your option) any later version.\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\nGNU General Public License for more details.\n\nYou should have received a copy of the GNU General Public License\nalong with this program; if not, write to the Free Software Foundation,\nInc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.  */\n"
   license_text_override: "This program is free software; you can redistribute it and/or modify it\nunder the terms of the GNU Library General Public License as published\nby the Free Software Foundation; either version 2, or (at your option)\nany later version.\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU\nLibrary General Public License for more details.\n\nYou should have received a copy of the GNU Library General Public\nLicense along with this program; if not, write to the Free Software\nFoundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301,\nUSA.\n"
-./lib/string.in.h~: 
-  copyright: ''
-  hash: 1136d0b98b57be6dd7253ef5cacf9f4da5f028f2d885723c8bbc35a3ab13745b
-  license: ''
-  license_text: ''
 ./lib/strings.in.h: 
   copyright: 2007-2010 Free Software Foundation, Inc.
   hash: 972f546620b95ca2e97985288f33feae0cce537432532ab9259d313fbfc09ae1
@@ -16870,11 +16650,6 @@
   license_override: LGPL-2+
   license_text: "This program is free software; you can redistribute it and/or modify\nit under the terms of the GNU General Public License as published by\nthe Free Software Foundation; either version 2 of the License, or\n(at your option) any later version.\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\nGNU General Public License for more details.\n\nYou should have received a copy of the GNU General Public License\nalong with this program; if not, write to the Free Software Foundation,\nInc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.  */\n"
   license_text_override: "This program is free software; you can redistribute it and/or modify it\nunder the terms of the GNU Library General Public License as published\nby the Free Software Foundation; either version 2, or (at your option)\nany later version.\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU\nLibrary General Public License for more details.\n\nYou should have received a copy of the GNU Library General Public\nLicense along with this program; if not, write to the Free Software\nFoundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301,\nUSA.\n"
-./lib/strings.in.h~: 
-  copyright: ''
-  hash: 10e5bc3121d2994aa8fc0890d99464664f2b9d6f3e67177e371d1f4c072bc250
-  license: ''
-  license_text: ''
 ./lib/stripslash.c: 
   copyright: 1990, 2001, 2003-2006, 2009-2010 Free Software Foundation, Inc.
   hash: 5e85118da8385d7ab41424c222f6ddf4caec241e1df8da63ae757be1c63fd3fc
@@ -16889,11 +16664,6 @@
   license_override: LGPL-2+
   license_text: "This program is free software; you can redistribute it and/or modify\nit under the terms of the GNU General Public License as published by\nthe Free Software Foundation; either version 2 of the License, or\n(at your option) any later version.\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\nGNU General Public License for more details.\n\nYou should have received a copy of the GNU General Public License\nalong with this program; if not, write to the Free Software Foundation,\nInc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.  */\n"
   license_text_override: "This program is free software; you can redistribute it and/or modify it\nunder the terms of the GNU Library General Public License as published\nby the Free Software Foundation; either version 2, or (at your option)\nany later version.\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU\nLibrary General Public License for more details.\n\nYou should have received a copy of the GNU Library General Public\nLicense along with this program; if not, write to the Free Software\nFoundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301,\nUSA.\n"
-./lib/strncasecmp.c~: 
-  copyright: ''
-  hash: 815116d5f75c679aca0d1bb421a8370e66e40168c384ed9dd6a98d3f5ca83391
-  license: ''
-  license_text: ''
 ./lib/strndup.c: 
   copyright: 1996, 1997, 1998, 2001, 2002, 2003, 2005, 2006, 2007, 2009, 2010 Free Software Foundation, Inc.
   hash: 6e8f2df9d7a826aa9a90427651ec2df8e2475c7e34c6da3746f4b8404e6f6c12
@@ -16908,11 +16678,6 @@
   license_override: LGPL-2+
   license_text: "This program is free software; you can redistribute it and/or modify\nit under the terms of the GNU General Public License as published by\nthe Free Software Foundation; either version 2 of the License, or\n(at your option) any later version.\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\nGNU General Public License for more details.\n\nYou should have received a copy of the GNU General Public License\nalong with this program; if not, write to the Free Software Foundation,\nInc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.  */\n"
   license_text_override: "This program is free software; you can redistribute it and/or modify it\nunder the terms of the GNU Library General Public License as published\nby the Free Software Foundation; either version 2, or (at your option)\nany later version.\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU\nLibrary General Public License for more details.\n\nYou should have received a copy of the GNU Library General Public\nLicense along with this program; if not, write to the Free Software\nFoundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301,\nUSA.\n"
-./lib/strnlen.c~: 
-  copyright: ''
-  hash: 90b853a0e4af9628fcd17de3f30a70c1a406d6517e1d18a5f5b9413c856b1c10
-  license: ''
-  license_text: ''
 ./lib/strnlen1.c: 
   copyright: 2005-2006, 2009-2010 Free Software Foundation, Inc.
   hash: bbadf0e5e4614f102c672384aee301bd720cac4151a5dd3c3336ad97f6ede81c
@@ -17053,11 +16818,6 @@
   license_override: LGPL-2+
   license_text: "This program is free software; you can redistribute it and/or modify\nit under the terms of the GNU General Public License as published by\nthe Free Software Foundation; either version 2 of the License, or\n(at your option) any later version.\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\nGNU General Public License for more details.\n\nYou should have received a copy of the GNU General Public License\nalong with this program; if not, write to the Free Software Foundation,\nInc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.  */\n"
   license_text_override: "This program is free software; you can redistribute it and/or modify it\nunder the terms of the GNU Library General Public License as published\nby the Free Software Foundation; either version 2, or (at your option)\nany later version.\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU\nLibrary General Public License for more details.\n\nYou should have received a copy of the GNU Library General Public\nLicense along with this program; if not, write to the Free Software\nFoundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301,\nUSA.\n"
-./lib/sys_ioctl.in.h~: 
-  copyright: ''
-  hash: 5a85be194ab973fc6eee2464d2f6043be6ca5a0e0ca50c24c8e1947d3ba9c366
-  license: ''
-  license_text: ''
 ./lib/sys_select.in.h: 
   copyright: 2007-2010 Free Software Foundation, Inc.
   hash: 34c29454a129d825b1df5e1d5751c4a8b20312440c68bc0c5bf091d230ecf06a
@@ -17065,11 +16825,6 @@
   license_override: LGPL-2+
   license_text: "This program is free software; you can redistribute it and/or modify\nit under the terms of the GNU General Public License as published by\nthe Free Software Foundation; either version 2 of the License, or\n(at your option) any later version.\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\nGNU General Public License for more details.\n\nYou should have received a copy of the GNU General Public License\nalong with this program; if not, write to the Free Software Foundation,\nInc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.  */\n"
   license_text_override: "This program is free software; you can redistribute it and/or modify it\nunder the terms of the GNU Library General Public License as published\nby the Free Software Foundation; either version 2, or (at your option)\nany later version.\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU\nLibrary General Public License for more details.\n\nYou should have received a copy of the GNU Library General Public\nLicense along with this program; if not, write to the Free Software\nFoundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301,\nUSA.\n"
-./lib/sys_select.in.h~: 
-  copyright: ''
-  hash: 6385d79cdb0b4995cd2158dcdc2df844a99ee46a25909c5c4f1227065077e6a8
-  license: ''
-  license_text: ''
 ./lib/sys_socket.in.h: 
   copyright: 2005-2010 Free Software Foundation, Inc.
   hash: 5ff00056dafe994e51085e11827bc2d46282d1530aca63dfc11fd1917beb65e7
@@ -17077,11 +16832,6 @@
   license_override: LGPL-2+
   license_text: "This program is free software; you can redistribute it and/or modify\nit under the terms of the GNU General Public License as published by\nthe Free Software Foundation; either version 2 of the License, or\n(at your option) any later version.\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\nGNU General Public License for more details.\n\nYou should have received a copy of the GNU General Public License\nalong with this program; if not, write to the Free Software Foundation,\nInc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.  */\n"
   license_text_override: "This program is free software; you can redistribute it and/or modify it\nunder the terms of the GNU Library General Public License as published\nby the Free Software Foundation; either version 2, or (at your option)\nany later version.\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU\nLibrary General Public License for more details.\n\nYou should have received a copy of the GNU Library General Public\nLicense along with this program; if not, write to the Free Software\nFoundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301,\nUSA.\n"
-./lib/sys_socket.in.h~: 
-  copyright: ''
-  hash: 362d22c2394c4e40e8e2f5184c97bbd879f5b56d4ee18b4d91e7c6e29b7deaf9
-  license: ''
-  license_text: ''
 ./lib/sys_stat.in.h: 
   copyright: 2005-2010 Free Software Foundation, Inc.
   hash: 7192db5a7841cf1d22997aa22af242e9bc73235ccb333638a769bee2d65075fb
@@ -17089,11 +16839,6 @@
   license_override: LGPL-2+
   license_text: "This program is free software; you can redistribute it and/or modify\nit under the terms of the GNU General Public License as published by\nthe Free Software Foundation; either version 2 of the License, or\n(at your option) any later version.\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\nGNU General Public License for more details.\n\nYou should have received a copy of the GNU General Public License\nalong with this program; if not, write to the Free Software Foundation,\nInc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.  */\n"
   license_text_override: "This program is free software; you can redistribute it and/or modify it\nunder the terms of the GNU Library General Public License as published\nby the Free Software Foundation; either version 2, or (at your option)\nany later version.\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU\nLibrary General Public License for more details.\n\nYou should have received a copy of the GNU Library General Public\nLicense along with this program; if not, write to the Free Software\nFoundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301,\nUSA.\n"
-./lib/sys_stat.in.h~: 
-  copyright: ''
-  hash: e70e9a10084c5f7be3fb6d2aa62228b6f5ded082be4afadd19c01d119c502415
-  license: ''
-  license_text: ''
 ./lib/sys_time.in.h: 
   copyright: 2007-2010 Free Software Foundation, Inc.
   hash: c3d0fa2b66973edaaf49e9e91203a9e45e05b898d154e810f44d6babf675b35d
@@ -17101,11 +16846,6 @@
   license_override: LGPL-2+
   license_text: "This program is free software; you can redistribute it and/or modify\nit under the terms of the GNU General Public License as published by\nthe Free Software Foundation; either version 2 of the License, or\n(at your option) any later version.\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\nGNU General Public License for more details.\n\nYou should have received a copy of the GNU General Public License\nalong with this program; if not, write to the Free Software Foundation,\nInc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.  */\n"
   license_text_override: "This program is free software; you can redistribute it and/or modify it\nunder the terms of the GNU Library General Public License as published\nby the Free Software Foundation; either version 2, or (at your option)\nany later version.\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU\nLibrary General Public License for more details.\n\nYou should have received a copy of the GNU Library General Public\nLicense along with this program; if not, write to the Free Software\nFoundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301,\nUSA.\n"
-./lib/sys_time.in.h~: 
-  copyright: ''
-  hash: 808d4417fc9f057d4ad55b6add3f133d03a5322fabe3dcfe925bd47d14616a66
-  license: ''
-  license_text: ''
 ./lib/sys_times.in.h: 
   copyright: 2008-2010 Free Software Foundation, Inc.
   hash: 0395d80d1ee533c0c9ed7c8ec05e6cfb64684200a52ee3cd5015e26b10c4723e
@@ -17120,11 +16860,6 @@
   license_override: LGPL-2+
   license_text: "This program is free software; you can redistribute it and/or modify\nit under the terms of the GNU General Public License as published by\nthe Free Software Foundation; either version 2 of the License, or\n(at your option) any later version.\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\nGNU General Public License for more details.\n\nYou should have received a copy of the GNU General Public License\nalong with this program; if not, write to the Free Software Foundation,\nInc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.  */\n"
   license_text_override: "This program is free software; you can redistribute it and/or modify it\nunder the terms of the GNU Library General Public License as published\nby the Free Software Foundation; either version 2, or (at your option)\nany later version.\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU\nLibrary General Public License for more details.\n\nYou should have received a copy of the GNU Library General Public\nLicense along with this program; if not, write to the Free Software\nFoundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301,\nUSA.\n"
-./lib/sys_utsname.in.h~: 
-  copyright: ''
-  hash: fae5021bf23d69bd35dc0d59126fd5506a194d7b57a8c0ffca7d480f8843b12f
-  license: ''
-  license_text: ''
 ./lib/sys_wait.in.h: 
   copyright: 2001-2003, 2005-2010 Free Software Foundation, Inc.
   hash: 0de078f224d2d5d8f7a84725b18628e82a8062b8d07c672ccdbbd34c4b1838cc
@@ -17132,11 +16867,6 @@
   license_override: LGPL-2+
   license_text: "This program is free software; you can redistribute it and/or modify\nit under the terms of the GNU General Public License as published by\nthe Free Software Foundation; either version 2 of the License, or\n(at your option) any later version.\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\nGNU General Public License for more details.\n\nYou should have received a copy of the GNU General Public License\nalong with this program; if not, write to the Free Software Foundation,\nInc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.  */\n"
   license_text_override: "This program is free software; you can redistribute it and/or modify it\nunder the terms of the GNU Library General Public License as published\nby the Free Software Foundation; either version 2, or (at your option)\nany later version.\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU\nLibrary General Public License for more details.\n\nYou should have received a copy of the GNU Library General Public\nLicense along with this program; if not, write to the Free Software\nFoundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301,\nUSA.\n"
-./lib/sys_wait.in.h~: 
-  copyright: ''
-  hash: 3c64ce849ea907e265c1bb91f56556fa9f828395cf62f5192851eda0f62cf63e
-  license: ''
-  license_text: ''
 ./lib/sysexits.in.h: 
   copyright: 2003, 2006-2010 Free Software Foundation, Inc.
   hash: a2dabad929b43b8b3bc3b7cd94a03e51edfeafe3b0c760cc2f871477c3f44ff0
@@ -17177,11 +16907,6 @@
   license_override: LGPL-2+
   license_text: "This program is free software; you can redistribute it and/or modify\nit under the terms of the GNU General Public License as published by\nthe Free Software Foundation; either version 2 of the License, or\n(at your option) any later version.\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\nGNU General Public License for more details.\n\nYou should have received a copy of the GNU General Public License\nalong with this program; if not, write to the Free Software Foundation,\nInc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.  */\n"
   license_text_override: "This program is free software; you can redistribute it and/or modify it\nunder the terms of the GNU Library General Public License as published\nby the Free Software Foundation; either version 2, or (at your option)\nany later version.\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU\nLibrary General Public License for more details.\n\nYou should have received a copy of the GNU Library General Public\nLicense along with this program; if not, write to the Free Software\nFoundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301,\nUSA.\n"
-./lib/time.in.h~: 
-  copyright: ''
-  hash: 41f65ec87233a41b8ccfe9364732c124a99001f260b8ac3570402b0a1628a4e1
-  license: ''
-  license_text: ''
 ./lib/time_r.c: 
   copyright: 2003, 2006, 2007, 2009, 2010 Free Software Foundation, Inc.
   hash: 593fafb9bb628c791ff75659a384e848a17f3d9e3134cab37c8b0219c3845481
@@ -20718,11 +20443,6 @@
   license_override: LGPL-2+
   license_text: "This program is free software; you can redistribute it and/or modify\nit under the terms of the GNU General Public License as published by\nthe Free Software Foundation; either version 2 of the License, or\n(at your option) any later version.\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\nGNU General Public License for more details.\n\nYou should have received a copy of the GNU General Public License\nalong with this program; if not, write to the Free Software Foundation,\nInc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.  */\n"
   license_text_override: "This program is free software; you can redistribute it and/or modify it\nunder the terms of the GNU Library General Public License as published\nby the Free Software Foundation; either version 2, or (at your option)\nany later version.\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU\nLibrary General Public License for more details.\n\nYou should have received a copy of the GNU Library General Public\nLicense along with this program; if not, write to the Free Software\nFoundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301,\nUSA.\n"
-./lib/unistd.in.h~: 
-  copyright: ''
-  hash: a6926ba851d67cbfe9bc3f8f5c0a100992084e9d90ff1e51b25bd373b976d588
-  license: ''
-  license_text: ''
 ./lib/unistdio.h: 
   copyright: 2002, 2005-2007, 2009-2010 Free Software Foundation, Inc.
   hash: b1d0f276a022f325c15dc403c443fe4abdf4f6c5a98d06ea2aac499e2ed2b839
@@ -22305,11 +22025,6 @@
   license_override: LGPL
   license_text: "This program is free software: you can redistribute it and/or modify it\nunder the terms of the GNU Lesser General Public License as published\nby the Free Software Foundation; either version 3 of the License, or\n(at your option) any later version.\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU\nLesser General Public License for more details.\n\nYou should have received a copy of the GNU Lesser General Public License\nalong with this program.  If not, see <http://www.gnu.org/licenses/>.\n"
   license_text_override: "This program is free software: you can redistribute it and/or modify\nit under the terms of the GNU Lesser General Public License as published by\nthe Free Software Foundation; either version 3 of the License, or\n(at your option) any later version.\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\nGNU General Public License for more details.\n\nYou should have received a copy of the GNU General Public License\nalong with this program.  If not, see <http://www.gnu.org/licenses/>.\n"
-./lib/unitypes.h~: 
-  copyright: ''
-  hash: 0eaaeed4ca0138967cd6fe4e6956edef837fa8461248425e893e1fc2fa0cbfee
-  license: ''
-  license_text: ''
 ./lib/uniwbrk.h: 
   copyright: 2001-2003, 2005-2010 Free Software Foundation, Inc.
   hash: 2fe7e1311de271abcc1870f70894b37f90b4b67705f562dbaaa2f6b5a6319465
@@ -22387,11 +22102,6 @@
   license_override: LGPL
   license_text: "This program is free software: you can redistribute it and/or modify it\nunder the terms of the GNU Lesser General Public License as published\nby the Free Software Foundation; either version 3 of the License, or\n(at your option) any later version.\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU\nLesser General Public License for more details.\n\nYou should have received a copy of the GNU Lesser General Public License\nalong with this program.  If not, see <http://www.gnu.org/licenses/>.\n"
   license_text_override: "This program is free software: you can redistribute it and/or modify\nit under the terms of the GNU Lesser General Public License as published by\nthe Free Software Foundation; either version 3 of the License, or\n(at your option) any later version.\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\nGNU General Public License for more details.\n\nYou should have received a copy of the GNU General Public License\nalong with this program.  If not, see <http://www.gnu.org/licenses/>.\n"
-./lib/uniwidth.h~: 
-  copyright: ''
-  hash: e4c6ff2cb013a8b2de23e758533e34077d64fd62e6c4098af88169ecd9ca1425
-  license: ''
-  license_text: ''
 ./lib/uniwidth/cjk.h: 
   copyright: 2001-2002, 2005-2007, 2009-2010 Free Software Foundation, Inc.
   hash: bd2e43a4ddea5bdca5bb9801961edecef7e4088cc1166498230c993b27522e1a
@@ -22399,11 +22109,6 @@
   license_override: LGPL
   license_text: "This program is free software: you can redistribute it and/or modify it\nunder the terms of the GNU Lesser General Public License as published\nby the Free Software Foundation; either version 3 of the License, or\n(at your option) any later version.\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU\nLesser General Public License for more details.\n\nYou should have received a copy of the GNU Lesser General Public License\nalong with this program.  If not, see <http://www.gnu.org/licenses/>.\n"
   license_text_override: "This program is free software: you can redistribute it and/or modify\nit under the terms of the GNU Lesser General Public License as published by\nthe Free Software Foundation; either version 3 of the License, or\n(at your option) any later version.\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\nGNU General Public License for more details.\n\nYou should have received a copy of the GNU General Public License\nalong with this program.  If not, see <http://www.gnu.org/licenses/>.\n"
-./lib/uniwidth/cjk.h~: 
-  copyright: ''
-  hash: 6d886d39c5a9bed7c747138b4025cd035c6b59163b1632e3eff5be730f9db943
-  license: ''
-  license_text: ''
 ./lib/uniwidth/u16-strwidth.c: 
   copyright: 2001-2002, 2006, 2009-2010 Free Software Foundation, Inc.
   hash: 0b3f8a8c22579bd30b495d8cfcd508877d8c6502c21c78232c4bb2e66f137c19
@@ -22453,11 +22158,6 @@
   license_override: LGPL
   license_text: "This program is free software: you can redistribute it and/or modify it\nunder the terms of the GNU Lesser General Public License as published\nby the Free Software Foundation; either version 3 of the License, or\n(at your option) any later version.\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU\nLesser General Public License for more details.\n\nYou should have received a copy of the GNU Lesser General Public License\nalong with this program.  If not, see <http://www.gnu.org/licenses/>.\n"
   license_text_override: "This program is free software: you can redistribute it and/or modify\nit under the terms of the GNU Lesser General Public License as published by\nthe Free Software Foundation; either version 3 of the License, or\n(at your option) any later version.\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\nGNU General Public License for more details.\n\nYou should have received a copy of the GNU General Public License\nalong with this program.  If not, see <http://www.gnu.org/licenses/>.\n"
-./lib/uniwidth/width.c~: 
-  copyright: ''
-  hash: 8f8187cd1a09e3412e237881244e68c314bcfb39c5c851ec7f251e17742ab6ab
-  license: ''
-  license_text: ''
 ./lib/unlink.c: 
   copyright: 2009-2010 Free Software Foundation, Inc.
   hash: df3c50305697efbeba6d319e0337ef962b7241224cfa0eee9d48fb7f5a275459
@@ -22570,11 +22270,6 @@
   license_override: LGPL-2+
   license_text: "This program is free software; you can redistribute it and/or modify\nit under the terms of the GNU General Public License as published by\nthe Free Software Foundation; either version 2 of the License, or\n(at your option) any later version.\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\nGNU General Public License for more details.\n\nYou should have received a copy of the GNU General Public License\nalong with this program; if not, write to the Free Software Foundation,\nInc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.  */\n"
   license_text_override: "This program is free software; you can redistribute it and/or modify it\nunder the terms of the GNU Library General Public License as published\nby the Free Software Foundation; either version 2, or (at your option)\nany later version.\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU\nLibrary General Public License for more details.\n\nYou should have received a copy of the GNU Library General Public\nLicense along with this program; if not, write to the Free Software\nFoundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301,\nUSA.\n"
-./lib/vasnprintf.c~: 
-  copyright: ''
-  hash: f826f12032ff66714226a5c720dd2dbd1d645ba0536b39dfbea651b792404c5d
-  license: ''
-  license_text: ''
 ./lib/vasnprintf.h: 
   copyright: 2002-2004, 2007-2010 Free Software Foundation, Inc.
   hash: def8bbf01951876eebd7f7158877288be42a1ee229ac466acbf2f7d0666450cd
@@ -22582,11 +22277,6 @@
   license_override: LGPL-2+
   license_text: "This program is free software; you can redistribute it and/or modify\nit under the terms of the GNU General Public License as published by\nthe Free Software Foundation; either version 2 of the License, or\n(at your option) any later version.\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\nGNU General Public License for more details.\n\nYou should have received a copy of the GNU General Public License\nalong with this program; if not, write to the Free Software Foundation,\nInc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.  */\n"
   license_text_override: "This program is free software; you can redistribute it and/or modify it\nunder the terms of the GNU Library General Public License as published\nby the Free Software Foundation; either version 2, or (at your option)\nany later version.\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU\nLibrary General Public License for more details.\n\nYou should have received a copy of the GNU Library General Public\nLicense along with this program; if not, write to the Free Software\nFoundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301,\nUSA.\n"
-./lib/vasnprintf.h~: 
-  copyright: ''
-  hash: 2bf66b7f11449085cc6395a5d6d60496f6f13b08aa0187a5f52e9252e6cab2fa
-  license: ''
-  license_text: ''
 ./lib/vasprintf.c: 
   copyright: 1999, 2002, 2006-2010 Free Software Foundation, Inc.
   hash: 7feeecced63aebc772d165493748773629306f708941bf45c6c2725b0609e156
@@ -22706,11 +22396,6 @@
   license_override: LGPL-2+
   license_text: "This program is free software; you can redistribute it and/or modify\nit under the terms of the GNU General Public License as published by\nthe Free Software Foundation; either version 2 of the License, or\n(at your option) any later version.\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\nGNU General Public License for more details.\n\nYou should have received a copy of the GNU General Public License\nalong with this program; if not, write to the Free Software Foundation,\nInc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.  */\n"
   license_text_override: "This program is free software; you can redistribute it and/or modify it\nunder the terms of the GNU Library General Public License as published\nby the Free Software Foundation; either version 2, or (at your option)\nany later version.\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU\nLibrary General Public License for more details.\n\nYou should have received a copy of the GNU Library General Public\nLicense along with this program; if not, write to the Free Software\nFoundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301,\nUSA.\n"
-./lib/wchar.in.h~: 
-  copyright: ''
-  hash: e2b50e5f1a1293246463b729146da631d3afced4d48e395e00d38ccef20ea230
-  license: ''
-  license_text: ''
 ./lib/wcrtomb.c: 
   copyright: 2008, 2009, 2010 Free Software Foundation, Inc.
   hash: def7c252566874469c513fc29d0563723b636089e19210b7468ad4352f8857a4
@@ -22753,11 +22438,6 @@
   license_override: LGPL-2+
   license_text: "This program is free software; you can redistribute it and/or modify\nit under the terms of the GNU General Public License as published by\nthe Free Software Foundation; either version 2 of the License, or\n(at your option) any later version.\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\nGNU General Public License for more details.\n\nYou should have received a copy of the GNU General Public License\nalong with this program; if not, write to the Free Software Foundation,\nInc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.  */\n"
   license_text_override: "This program is free software; you can redistribute it and/or modify it\nunder the terms of the GNU Library General Public License as published\nby the Free Software Foundation; either version 2, or (at your option)\nany later version.\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU\nLibrary General Public License for more details.\n\nYou should have received a copy of the GNU Library General Public\nLicense along with this program; if not, write to the Free Software\nFoundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301,\nUSA.\n"
-./lib/wctype.in.h~: 
-  copyright: ''
-  hash: af0dc33178ed26851e8f3cb509f0acd760c6d25a876e8dc19ddb362d74ea46cf
-  license: ''
-  license_text: ''
 ./lib/wcwidth.c: 
   copyright: 2006, 2007, 2009, 2010 Free Software Foundation, Inc.
   hash: 201c36ed529e3f8c605632de3e36f525aa4399f8e7f0219552e1758734ca52dd
@@ -22989,11 +22669,6 @@
   license_override: LGPL-2+
   license_text: "This program is free software; you can redistribute it and/or modify\nit under the terms of the GNU General Public License as published by\nthe Free Software Foundation; either version 2 of the License, or\n(at your option) any later version.\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\nGNU General Public License for more details.\n\nYou should have received a copy of the GNU General Public License\nalong with this program; if not, write to the Free Software Foundation,\nInc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.  */\n"
   license_text_override: "This program is free software; you can redistribute it and/or modify it\nunder the terms of the GNU Library General Public License as published\nby the Free Software Foundation; either version 2, or (at your option)\nany later version.\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU\nLibrary General Public License for more details.\n\nYou should have received a copy of the GNU Library General Public\nLicense along with this program; if not, write to the Free Software\nFoundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301,\nUSA.\n"
-./lib/xsize.h~: 
-  copyright: ''
-  hash: af3fdcacfe8f3dbae26f9d806b0a9b2274f86ea7daed7117f09e29858b85d38f
-  license: ''
-  license_text: ''
 ./lib/xstriconv.c: 
   copyright: 2001-2004, 2006, 2009-2010 Free Software Foundation, Inc.
   hash: 009a99deca4bced3ec81a6b4ce3f1e9b6564c7731c510f8159d0fa9e0bfc1d76
