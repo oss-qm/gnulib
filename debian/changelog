@@ -2,8 +2,9 @@ gnulib (20100308+stable-1) unstable; urgency=low
 
   * New upstream stable snapshot.
   * Standards-Version: 3.8.4 (no changes).
+  * Refresh 01-gnulib-directory.patch.
 
- -- Ian Beckwith <ianb@debian.org>  Mon, 08 Mar 2010 06:45:16 +0000
+ -- Ian Beckwith <ianb@debian.org>  Mon, 08 Mar 2010 06:51:23 +0000
 
 gnulib (20100109+stable-1) unstable; urgency=low
 
