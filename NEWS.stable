@@ -20,6 +20,7 @@ with the following additional commits:
     * [798f5bd]->[661fa69] Fix link error on platforms with GNU libiconv.
     * [94a90dc]->[a62a0db] Exclude lib-ignore module.
     * [fc980d5]->[9f46144] Fix test-dirent link error.
+    * [f19a2e5]->[2e4b5be] Fix test-dirent-safer link error. Correct last commit.
 __NEXTCOMMITMARKER__
 
   * 20100109-stable
