@@ -1,5 +1,16 @@
 			Gnulib stable snapshot
 			----------------------
+  * 20100308-stable
+
+Snapshot taken based on:
+
+commit  4fc10daa05477586fea99b6b3ca02a87d1102fa1
+Date:   Mon Mar 1 22:09:44 2010 +0100
+
+with the following additional commits:
+
+__NEXTCOMMITMARKER__
+
   * 20100109-stable
 
 Snapshot taken based on:
