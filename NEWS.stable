@@ -17,6 +17,7 @@ with the following additional commits:
     * [032088a]->[99e99ca] euidaccess: relax license to LGPLv2+
     * [3753983]->[51c9c87] Fix incorrect Makefile.am generation in German locale.
     * [89e5b6b]->[6fde090] Clarify access, euidaccess, faccessat.
+    * [798f5bd]->[661fa69] Fix link error on platforms with GNU libiconv.
 __NEXTCOMMITMARKER__
 
   * 20100109-stable
