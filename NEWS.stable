@@ -11,6 +11,7 @@ with the following additional commits:
 
     * [88baa1e]->[6681664] spawn: Don't override the system defined values on FreeBSD 8.
     * [ca156dd]->[12e638f] copy-acl: enhance Solaris ACL error handling
+    * [fa93cea]->[fbe6ced] exit: Obsolete module, use stdlib instead.
 __NEXTCOMMITMARKER__
 
   * 20100109-stable
