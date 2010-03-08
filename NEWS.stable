@@ -21,6 +21,7 @@ with the following additional commits:
     * [94a90dc]->[a62a0db] Exclude lib-ignore module.
     * [fc980d5]->[9f46144] Fix test-dirent link error.
     * [f19a2e5]->[2e4b5be] Fix test-dirent-safer link error. Correct last commit.
+    * [7d09cc8]->[c896764] Fix test-cond link error.
 __NEXTCOMMITMARKER__
 
   * 20100109-stable
