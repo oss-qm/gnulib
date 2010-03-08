@@ -10,6 +10,7 @@ Date:   Mon Mar 1 22:09:44 2010 +0100
 with the following additional commits:
 
     * [88baa1e]->[6681664] spawn: Don't override the system defined values on FreeBSD 8.
+    * [ca156dd]->[12e638f] copy-acl: enhance Solaris ACL error handling
 __NEXTCOMMITMARKER__
 
   * 20100109-stable
