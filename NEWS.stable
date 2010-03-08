@@ -1,5 +1,30 @@
 			Gnulib stable snapshot
 			----------------------
+  * 20100308-stable
+
+Snapshot taken based on:
+
+commit  4fc10daa05477586fea99b6b3ca02a87d1102fa1
+Date:   Mon Mar 1 22:09:44 2010 +0100
+
+with the following additional commits:
+
+    * [88baa1e]->[6681664] spawn: Don't override the system defined values on FreeBSD 8.
+    * [ca156dd]->[12e638f] copy-acl: enhance Solaris ACL error handling
+    * [fa93cea]->[fbe6ced] exit: Obsolete module, use stdlib instead.
+    * [eb6dce1]->[529ebff] exitfail: Relax license to LGPLv2.1+.  Drop exitfail.m4.
+    * [434627d]->[3dfb904] Prefer lib_SOURCES over unconditional AC_LIBOBJ.
+    * [032088a]->[99e99ca] euidaccess: relax license to LGPLv2+
+    * [3753983]->[51c9c87] Fix incorrect Makefile.am generation in German locale.
+    * [89e5b6b]->[6fde090] Clarify access, euidaccess, faccessat.
+    * [798f5bd]->[661fa69] Fix link error on platforms with GNU libiconv.
+    * [94a90dc]->[a62a0db] Exclude lib-ignore module.
+    * [fc980d5]->[9f46144] Fix test-dirent link error.
+    * [f19a2e5]->[2e4b5be] Fix test-dirent-safer link error. Correct last commit.
+    * [7d09cc8]->[c896764] Fix test-cond link error.
+
+----------------------------------------------------------------------
+
   * 20100109-stable
 
 Snapshot taken based on:

@@ -6,10 +6,10 @@ m4/unistd_h.m4
 lib/unistd.in.h
 
 Depends-on:
-include_next
-link-warning
 arg-nonnull
+include_next
 stddef
+warn-on-use
 
 configure.ac:
 gl_UNISTD_H
@@ -19,7 +19,7 @@ BUILT_SOURCES += unistd.h
 
 # We need the following in order to create an empty placeholder for
 # <unistd.h> when the system doesn't have one.
-unistd.h: unistd.in.h $(LINK_WARNING_H) $(ARG_NONNULL_H)
+unistd.h: unistd.in.h $(WARN_ON_USE_H) $(ARG_NONNULL_H)
 	$(AM_V_GEN)rm -f $@-t $@ && \
 	{ echo '/* DO NOT EDIT! GENERATED AUTOMATICALLY! */'; \
 	  sed -e 's|@''HAVE_UNISTD_H''@|$(HAVE_UNISTD_H)|g' \
@@ -42,6 +42,7 @@ unistd.h: unistd.in.h $(LINK_WARNING_H) $(ARG_NONNULL_H)
 	      -e 's|@''GNULIB_GETDTABLESIZE''@|$(GNULIB_GETDTABLESIZE)|g' \
 	      -e 's|@''GNULIB_GETGROUPS''@|$(GNULIB_GETGROUPS)|g' \
 	      -e 's|@''GNULIB_GETHOSTNAME''@|$(GNULIB_GETHOSTNAME)|g' \
+	      -e 's|@''GNULIB_GETLOGIN''@|$(GNULIB_GETLOGIN)|g' \
 	      -e 's|@''GNULIB_GETLOGIN_R''@|$(GNULIB_GETLOGIN_R)|g' \
 	      -e 's|@''GNULIB_GETPAGESIZE''@|$(GNULIB_GETPAGESIZE)|g' \
 	      -e 's|@''GNULIB_GETUSERSHELL''@|$(GNULIB_GETUSERSHELL)|g' \
@@ -63,7 +64,8 @@ unistd.h: unistd.in.h $(LINK_WARNING_H) $(ARG_NONNULL_H)
 	      -e 's|@''GNULIB_UNLINKAT''@|$(GNULIB_UNLINKAT)|g' \
 	      -e 's|@''GNULIB_USLEEP''@|$(GNULIB_USLEEP)|g' \
 	      -e 's|@''GNULIB_WRITE''@|$(GNULIB_WRITE)|g' \
-	      -e 's|@''HAVE_CHOWN''@|$(HAVE_CHOWN)|g' \
+	      < $(srcdir)/unistd.in.h | \
+	  sed -e 's|@''HAVE_CHOWN''@|$(HAVE_CHOWN)|g' \
 	      -e 's|@''HAVE_DUP2''@|$(HAVE_DUP2)|g' \
 	      -e 's|@''HAVE_DUP3''@|$(HAVE_DUP3)|g' \
 	      -e 's|@''HAVE_EUIDACCESS''@|$(HAVE_EUIDACCESS)|g' \
@@ -75,6 +77,7 @@ unistd.h: unistd.in.h $(LINK_WARNING_H) $(ARG_NONNULL_H)
 	      -e 's|@''HAVE_GETDTABLESIZE''@|$(HAVE_GETDTABLESIZE)|g' \
 	      -e 's|@''HAVE_GETGROUPS''@|$(HAVE_GETGROUPS)|g' \
 	      -e 's|@''HAVE_GETHOSTNAME''@|$(HAVE_GETHOSTNAME)|g' \
+	      -e 's|@''HAVE_GETLOGIN''@|$(HAVE_GETLOGIN)|g' \
 	      -e 's|@''HAVE_GETPAGESIZE''@|$(HAVE_GETPAGESIZE)|g' \
 	      -e 's|@''HAVE_GETUSERSHELL''@|$(HAVE_GETUSERSHELL)|g' \
 	      -e 's|@''HAVE_LCHOWN''@|$(HAVE_LCHOWN)|g' \
@@ -117,9 +120,8 @@ unistd.h: unistd.in.h $(LINK_WARNING_H) $(ARG_NONNULL_H)
 	      -e 's|@''REPLACE_WRITE''@|$(REPLACE_WRITE)|g' \
 	      -e 's|@''UNISTD_H_HAVE_WINSOCK2_H''@|$(UNISTD_H_HAVE_WINSOCK2_H)|g' \
 	      -e 's|@''UNISTD_H_HAVE_WINSOCK2_H_AND_USE_SOCKETS''@|$(UNISTD_H_HAVE_WINSOCK2_H_AND_USE_SOCKETS)|g' \
-	      -e '/definition of GL_LINK_WARNING/r $(LINK_WARNING_H)' \
 	      -e '/definition of _GL_ARG_NONNULL/r $(ARG_NONNULL_H)' \
-	      < $(srcdir)/unistd.in.h; \
+	      -e '/definition of _GL_WARN_ON_USE/r $(WARN_ON_USE_H)'; \
 	} > $@-t && \
 	mv $@-t $@
 MOSTLYCLEANFILES += unistd.h unistd.h-t

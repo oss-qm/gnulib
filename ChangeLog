@@ -1,3 +1,1999 @@
+2010-03-07  Bruno Haible  <bruno@clisp.org>
+
+	Fix test-cond link error.
+	* tests/test-cond.c: Include <stdio.h>.
+
+2010-03-07  Bruno Haible  <bruno@clisp.org>
+
+	Fix test-dirent-safer link error.
+	* modules/dirent-safer-tests (Makefile.am): Define
+	test_dirent_safer_LDADD.
+
+2010-03-07  Bruno Haible  <bruno@clisp.org>
+
+	* gnulib-tool (func_create_testdir): Don't use 'lib-ignore' module
+	among default module list.
+
+2010-03-07  Bruno Haible  <bruno@clisp.org>
+
+	Fix link error on platforms with GNU libiconv.
+	* modules/unistr/u8-strcoll-tests (Makefile): Define
+	test_u8_strcoll_LDADD.
+	* modules/unistr/u16-strcoll-tests (Makefile): Define
+	test_u16_strcoll_LDADD.
+	* modules/unistr/u32-strcoll-tests (Makefile): Define
+	test_u32_strcoll_LDADD.
+
+2010-03-06  Bruno Haible  <bruno@clisp.org>
+
+	Clarify access, euidaccess, faccessat.
+	* doc/posix-functions/faccessat.texi: Mention security problem under
+	"Other problems", not "Portability problems".
+	* doc/posix-functions/access.texi: Likewise. Mention a related security
+	problem.
+	* doc/glibc-functions/euidaccess.texi: Mention security problems.
+	* lib/euidaccess.c: Add comments about platforms.
+	* lib/unistd.in.h (access, euidaccess): Add warnings.
+
+2010-03-07  Bruno Haible  <bruno@clisp.org>
+
+	Fix incorrect Makefile.am generation in German locale.
+	* gnulib-tool (func_emit_lib_Makefile_am, func_emit_tests_Makefile_am):
+	Execute sed command with character range in C locale.
+
+2010-03-06  Jim Meyering  <meyering@redhat.com>
+
+	euidaccess: relax license to LGPLv2+
+	* modules/euidaccess (License): Relax to LGPLv2+.
+
+2010-03-06  Bruno Haible  <bruno@clisp.org>
+
+	Prefer lib_SOURCES over unconditional AC_LIBOBJ.
+	* modules/exitfail (configure.ac): Remove AC_LIBOBJ invocation.
+	(Makefile.am): Augment lib_SOURCES instead.
+
+2010-03-05  Simon Josefsson  <simon@josefsson.org>
+
+	* modules/exit (License): Relax license to LGPLv2+.
+	(Status): Mark as obsolete.
+	* NEWS: Mention deprecated 'exit' module.
+	* doc/posix-functions/exit.texi: Recommend 'stdlib' module instead
+	of now obsolete 'exit'.
+
+2010-03-02  Ben Walton  <bwalton@artsci.utoronto.ca>  (tiny change)
+
+	copy-acl: enhance Solaris ACL error handling
+	* lib/copy-acl.c (qcopy_acl): Also ignore EOPNOTSUPP.
+	* lib/set-mode-acl.c (qset_acl): Likewise.
+
+2010-03-02  Bruno Haible  <bruno@clisp.org>
+
+	spawn: Don't override the system defined values on FreeBSD 8.
+	* lib/spawn.in.h (POSIX_SPAWN_RESETIDS, POSIX_SPAWN_SETPGROUP,
+	POSIX_SPAWN_SETSIGDEF, POSIX_SPAWN_SETSIGMASK,
+	POSIX_SPAWN_SETSCHEDPARAM, POSIX_SPAWN_SETSCHEDULER): Don't redefine
+	if HAVE_POSIX_SPAWN is 1.
+	Reported by Johan van Selst <johans@stack.nl> via Eric Blake.
+
+2010-03-01  Bruno Haible  <bruno@clisp.org>
+
+	* doc/gnulib-tool.texi (Initial import): Clarify the requirements
+	regarding Automake.
+
+2010-02-25  Bruno Haible  <bruno@clisp.org>
+
+	Fix breakage of gnulib-tool with ksh, introduced on 2010-02-21.
+	* gnulib-tool: Define 'echo' as a function only before the ksh alias
+	setting, not afterwards.
+	Reported by Ben Walton <bwalton@artsci.utoronto.ca>.
+
+2010-02-24  Eric Blake  <eblake@redhat.com>
+
+	bootstrap, git-version-gen: use timestamp
+	* build-aux/git-version-gen (scriptversion): Force UTC.
+	* build-aux/bootstrap (scriptversion): New variable.
+
+	bootstrap: allow older git
+	* build-aux/bootstrap (GNULIB_SRCDIR): Add fallback if git is
+	older than 1.6.4.  Requested by the libvirt project.
+
+2010-02-23  Eric Blake  <eblake@redhat.com>
+
+	warn-on-use: work with old autoconf
+	* m4/warn-on-use.m4 (gl_WARN_ON_USE_PREPARE): Accomodate older
+	AS_VAR semantics of autoconf 2.60.
+	Reported by Bruno Haible.
+
+	bootstrap: improve some comments
+	* build-aux/bootstrap: Drop unneeded emacs hint.  Add some
+	clarification comments.
+
+	gettimeofday: provide correct function
+	* lib/gettimeofday.c (gettimeofday): Provide rpl_gettimeofday only
+	when replacement is declared, otherwise provide gettimeofday.
+	Reported by Michael Goffioul.
+
+2010-02-23  Jim Meyering  <meyering@redhat.com>
+
+	lib-ignore: relax license to "unlimited", not LGPLv2+
+	* modules/lib-ignore (License): Relax to "unlimited".
+
+2010-02-23  Jim Meyering  <meyering@redhat.com>
+
+	lib-ignore: relax license to LGPLv2+
+	* modules/lib-ignore (License): Relax to LGPLv2+.
+
+2010-02-22  Eric Blake  <eblake@redhat.com>
+
+	lseek: avoid bash 3.2 broken pipe bug
+	* m4/lseek.m4 (gl_FUNC_LSEEK): Drain pipe, to avoid spurious
+	warning from bash 3.2.
+	Reported by Ben Pfaff, with analysis from Bruno Haible.
+
+	bootstrap: support non-FSF copyright holder
+	* build-aux/bootstrap (COPYRIGHT_HOLDER, with_gettext): Allow
+	bootstrap.conf override of COPYRIGHT_HOLDER.
+	(MSGID_BUGS_ADDRESS): Allow URL rather than email.
+
+	bootstrap: interoperate with gettext 0.14.1
+	* build-aux/bootstrap (slurp): Fix typo when using older gettext.
+
+	bootstrap: allow for alternate submodule location
+	* build-aux/bootstrap (gnulib_path): New variable; use instead of
+	hardcoding submodule location.
+	(gnulib_mk): Allow direct use of Makefile.am.
+
+	bootstrap: use GNULIB_SRCDIR to reduce disk usage
+	* build-aux/bootstrap (GNULIB_SRCDIR): If set, use as a reference,
+	rather than reconfiguring where the submodule points.
+
+	gettimeofday: restore support for platforms that lack function
+	* m4/gettimeofday.m4 (gl_FUNC_GETTIMEOFDAY): Also compile
+	replacement if function is missing.
+	* m4/sys_time_h.m4 (gl_HEADER_SYS_TIME_H_DEFAULTS): New witness.
+	* modules/sys_time (Makefile.am): Substitute it.
+	* lib/sys_time.in.h (gettimeofday): Check it.
+	Reported by Michael Goffioul.
+
+2010-02-21  Bruno Haible  <bruno@clisp.org>
+
+	* lib/stdio.in.h (obstack_printf): Fix typo.
+
+2010-02-21  Jose E. Marchesi  <jemarch@gnu.org>
+
+	vc-list-files: use bzr ls's -R option
+	* build-aux/vc-list-files: Invoke bazaar to generate a recursive
+	list of versioned files based on 'dir' (usage of -R in 'bzr ls').
+
+2010-02-21  Jim Meyering  <meyering@redhat.com>
+
+	init.sh: fix EXEEXT shims to work also for names like test-prog
+	* tests/init.sh: Re-exec a better shell, when needed.
+	If the current shell lacks support for posix $(...), an init.sh-using
+	test will now try to find a shell that supports that.  If EXEEXT is
+	nonempty, we also require support for hyphen-in-alias-name and shell
+	substitutions like ${var#glob}.  Failure to find such a shell results
+	in a skipped test.
+
+2010-02-21  Bruno Haible  <bruno@clisp.org>
+
+	Really work around around "broken pipe" error message from bash 3.2.
+	* gnulib-tool (func_reset_sigpipe): Remove function.
+	(echo): In bash 3.2, define to a function that uses printf.
+	Analyzed by Ralf Wildenhues, Chet Ramey, Ben Pfaff.
+
+2010-02-20  Bruno Haible  <bruno@clisp.org>
+
+	Restore support for automake 1.9.6 with autoconf 2.61.
+	* m4/gnulib-common.m4 (AC_PROG_MKDIR_P): Ensure MKDIR_P is AC_SUBSTed.
+	Reported by James Youngman <jay@gnu.org>.
+
+2010-02-20  Bruno Haible  <bruno@clisp.org>
+
+	Improve *printf warning condition.
+	* lib/stdio.in.h (fprintf, printf, vfprintf, vprintf): Emit warning
+	also if GNULIB_POSIXCHECK is defined, the *-posix module is not used,
+	and the function is overridden due to SIGPIPE emulation.
+
+2010-02-20  Bruno Haible  <bruno@clisp.org>
+
+	* lib/stdio.in.h: Tweak comments.
+
+2010-02-19  Bruno Haible  <bruno@clisp.org>
+
+	Make it easier to find modules. New gnulib-tool option '--find'.
+	* gnulib-tool: New option --find.
+	(func_usage): Document it.
+	(func_sanitize_modulelist): New function, extracted from
+	func_all_modules.
+	(func_all_modules): Invoke it.
+	* doc/gnulib-tool.texi (Which modules?): New node.
+
+2010-02-18  Markus Duft <mduft@gentoo.org>  (tiny change)
+
+	* lib/sys_select.in.h: Provide select replacement even if
+	sys/select.h exists on a system, for Interix.
+
+2010-02-18  Jim Meyering  <meyering@redhat.com>
+
+	init.sh: don't use $(...) just yet
+	* tests/init.sh (create_exe_shim_functions_): Use `...`, not $(...),
+	to accommodate e.g., Solaris' /bin/sh.
+
+2010-02-17  Bruno Haible  <bruno@clisp.org>
+
+	* doc/posix-headers/netdb.texi: Mention NetBSD 5.0 problem.
+	Reported by Ludovic Courtès <ludo@gnu.org>.
+
+2010-02-16  Simon Josefsson  <simon@josefsson.org>
+
+	* modules/userspec-tests (test_userspec_LDADD): Add variable, for
+	linking with -lintl.
+
+2010-02-17  Simon Josefsson  <simon@josefsson.org>
+
+	* lib/netdb.in.h (AI_V4MAPPED, AI_ALL, AI_ADDRCONFIG): Define to 0
+	if not provided by the system's netdb.h.  Reported by
+	ludo@gnu.org (Ludovic Courtès).
+
+2010-02-15  Jim Meyering  <meyering@redhat.com>
+
+	init.sh: improve portability and efficiency
+	* tests/init.sh (find_exe_basenames_): Remove unnecessary use of
+	"dummy" in a for loop.
+	Use '!', not '^' to select the complement of a character set used
+	in a "case" statement.
+	Use shell variable manipulation, a la ${...%.exe}, rather than sed.
+	Suggestions from Eric Blake.
+
+	init.sh: automatically accommodate programs with the .exe suffix
+	Automatically arrange for an invocation of "prog" to execute the
+	program named "prog$EXEEXT" (usually prog.exe).  Thus, all invocations
+	may use the simpler "prog", yet still work when built on a system
+	that requires specifying the added suffix.
+	Do this by constructing a function named "prog" that invokes
+	"prog.exe" for each .exe file in selected directories.
+	* tests/init.sh (find_exe_basenames_): New function.
+	(create_exe_shim_functions_): New function.
+	(path_prepend_): Use it.
+
+	maint.mk: mark syntax-check sc_*.m rules as .PHONY
+	* top/maint.mk ($(syntax-check-rules)): Add .PHONY, so that
+	"make -t syntax-check" doesn't create a ton of sc_*.m files.
+
+2010-02-14  Jim Meyering  <meyering@redhat.com>
+
+	maint.mk: prohibit inclusion of "hash-pjw.h" without_use
+	* top/maint.mk (sc_prohibit_hash_without_use): Re-add "@".
+	(sc_prohibit_hash_pjw_without_use): New rule.
+
+	maint.mk: allow the default upload destination dir to be overridden
+	* top/maint.mk (upload_dest_dir_): Define with a default that
+	preserves the status quo.
+	(emit_upload_commands): Use it, rather than hard-coding $(PACKAGE).
+	Reported by Peter Simons.
+
+	maint.mk: prohibit inclusion of "hash.h" without_use
+	* top/maint.mk (sc_prohibit_hash_without_use): New rule.
+
+2010-02-10  Jim Meyering  <meyering@redhat.com>
+
+	maint.mk: prohibit inclusion of "ignore-value.h" without_use
+	* top/maint.mk (sc_prohibit_ignore_value_without_use): New rule.
+
+2010-02-09  Eric Blake  <ebb9@byu.net>
+	and Bruno Haible  <bruno@clisp.org>
+
+	obstack-printf-posix: ensure declaration
+	* m4/obstack-printf.m4 (gl_DECL_OBSTACK_PRINTF): New macro,
+	extracted from gl_FUNC_OBSTACK_PRINTF.
+	(gl_FUNC_OBSTACK_PRINTF): Invoke it.
+	* m4/obstack-printf-posix.m4 (gl_FUNC_OBSTACK_PRINTF_POSIX):
+	Likewise.
+	* lib/stdio.in.h (obstack_printf, obstack_vprintf): Declare also
+	if GNULIB_OBSTACK_PRINTF_POSIX is 1 and GNULIB_OBSTACK_PRINTF is
+	0.
+
+2010-02-08  Bruno Haible  <bruno@clisp.org>
+
+	gnulib-tool: Fix typo in 2010-02-07 commit.
+	* gnulib-tool (func_get_dependencies): Fix typo in last commit.
+	Reported by Eric Blake.
+
+2010-02-07  Bruno Haible  <bruno@clisp.org>
+
+	gnulib-tool: Fix up caching patches.
+	* gnulib-tool: New options --cache-modules, --no-cache-modules. Remove
+	option --no-cache. Use associative arrays when supported by the shell.
+	(sed_comments): New variable.
+	(modcache): Renamed from do_cache.
+	(sed_extract_field_header): Renamed from sed_extract_cache_prog. Don't
+	abbreviate unnecessarily.
+	(have_associative): New variable.
+	(func_cache_var): Define correctly for bash 1.x. Define in an optimized
+	way also for ksh and zsh.
+	(func_init_sed_convert_to_cache_statements): New function, extracted
+	from func_cache_lookup_module. Add support for associative arrays.
+	Don't set the c_MODULE_cached variable here. Ignore all lines before
+	the first field header. Remove only the final newline, not all trailing
+	newlines. Support empty fields correctly. Limit the use of 'eval' to
+	assignments.
+	(func_get_description, func_get_status, func_get_notice,
+	func_get_applicability, func_get_filelist, func_get_dependencies,
+	func_get_autoconf_early_snippet, func_get_autoconf_snippet,
+	func_get_automake_snippet, func_get_include_directive,
+	func_get_link_directive, func_get_license, func_get_maintainer):
+	Update documentation. List the unoptimized code first. Add support for
+	associative arrays. Limit the use of 'eval' to assignments.
+	(func_get_applicability): Undo stylistic pessimisations.
+	(func_get_automake_snippet, func_get_include_directive): Reduce code
+	duplication.
+	(func_modules_transitive_closure, func_modules_add_dummy,
+	func_modules_notice, func_modules_to_filelist, func_add_file,
+	func_update_file, func_emit_lib_Makefile_am, func_emit_po_Makevars,
+	func_emit_po_POTFILES_in, func_emit_tests_Makefile_am, func_import,
+	func_create_testdir, func_create_megatestdir): Update documentation.
+
+2010-01-18  Ralf Wildenhues  <Ralf.Wildenhues@gmx.de>
+
+	* gnulib-tool (func_cache_lookup_module): Store the module name
+	belonging to the cache variable; error out if two different
+	module names map to the same cache variable name.
+
+2010-01-18  Ralf Wildenhues  <Ralf.Wildenhues@gmx.de>
+
+	gnulib-tool: Make caching optional.
+	* gnulib-tool: Accept option --no-cache, turning off $do_cache.
+	Update matching short versions of --no-changelog.
+	(func_usage): Update.
+	(sed_extract_cache_prog): Renamed from ...
+	(sed_extract_prog): ... this; revert to old extraction script.
+	(func_get_description, func_get_status)
+	(func_get_notice, func_get_applicability, func_get_filelist)
+	(func_get_dependencies, func_get_autoconf_early_snippet)
+	(func_get_autoconf_snippet, func_get_automake_snippet)
+	(func_get_include_directive, func_get_link_directive)
+	(func_get_license, func_get_maintainer): If $do_cache is false,
+	use old, non-caching extraction scripts.
+	Suggestion by Bruno Haible.
+
+2010-01-17  Ralf Wildenhues  <Ralf.Wildenhues@gmx.de>
+
+	gnulib-tool: cache module metainformation.
+	* gnulib-tool (sed_extract_prog): Match newline before each
+	header, and rewrite header to a shell variable suffix.
+	(func_cache_var, func_cache_lookup_module): New functions,
+	to turn a module name into a cache variable prefix, and to
+	look up and cache module metainformation.
+	(func_get_description, func_get_status)
+	(func_get_notice, func_get_applicability, func_get_filelist)
+	(func_get_dependencies, func_get_autoconf_early_snippet)
+	(func_get_autoconf_snippet, func_get_automake_snippet)
+	(func_get_include_directive, func_get_link_directive)
+	(func_get_license, func_get_maintainer): Use
+	func_cache_lookup_module.
+
+2010-02-07  Bruno Haible  <bruno@clisp.org>
+
+	fnctl: Fix missing dependency.
+	* modules/fcntl (Depends-on): Add getdtablesize.
+	Reported by John W. Eaton <jwe@gnu.org>.
+
+2010-02-05  Sergey Poznyakoff  <gray@gnu.org.ua>
+
+	Argp: fix recognition of short alias options.
+
+	* lib/argp-parse.c (convert_options): Fix improper use of
+	`|' between character values.
+	* tests/test-argp.c (group1_option): New alias option
+	--read (-r).
+	(group1_parser): Special handling for 'r'.
+	(test15): New test case.
+	(test_fun): Add test15.
+	* tests/test-argp-2.sh: Update expected --help and --usage
+	outputs.
+
+2010-02-05  Sergey Poznyakoff  <gray@gnu.org.ua>
+
+	* tests/test-argp.c: Fix indentation.
+
+2010-02-04  Eric Blake  <ebb9@byu.net>
+
+	gettimeofday: expose type of second argument
+	* m4/gettimeofday.m4 (gl_FUNC_GETTIMEOFDAY): Do better detection
+	of glibc extension signature, and define GETTIMEOFDAY_TIMEZONE.
+	* tests/test-gettimeofday.c: Use it to silence warning.
+	* doc/posix-functions/gettimeofday.texi (gettimeofday): Document
+	the issue.
+
+2010-02-03  Jim Meyering  <meyering@redhat.com>
+
+	regcomp.c: avoid the sole warning from gcc's -Wtype-limits
+	* lib/regcomp.c (TYPE_SIGNED): Define.
+	(parse_dup_op): Use it to avoid the sole warning from -Wtype-limits.
+
+	regcomp.c: avoid a new -Wshadow warning
+	* lib/regcomp.c (create_initial_state): Do not shadow local "err".
+
+2010-02-01  Jim Meyering  <meyering@redhat.com>
+
+	removing useless parentheses in cpp #define directives
+	For motivation, see commit c0221df4, "define STREQ(a,b)
+	consistently, removing useless parentheses"
+	* lib/memcmp.c (CMP_LT_OR_GT): Remove useless parentheses.
+	* lib/mountlist.c (MNT_IGNORE): Likewise.
+	* lib/trim.h (trim, trim_trailing, trim_leading): Likewise.
+
+2010-02-01  Eric Blake  <ebb9@byu.net>
+
+	sys_time: use link-warning
+	* m4/sys_time_h.m4 (gl_HEADER_SYS_TIME_H_BODY): Split defaults...
+	(gl_HEADER_SYS_TIME_H_DEFAULTS): ...into new macro.
+	(gl_SYS_TIME_MODULE_INDICATOR): New macro.
+	* modules/sys_time (Depends-on): Add warn-on-use.
+	(Makefile.am): Always build replacement.
+	(configure.ac): Update substitutions.
+	* m4/gettimeofday.m4 (gl_FUNC_GETTIMEOFDAY)
+	(gl_FUNC_GETTIMEOFDAY_CLOBBER): Include defaults, and no longer
+	bother with SYS_TIME_H.
+	* modules/gettimeofday (configure.ac): Declare indicator.
+	* lib/sys_time.in.h (gettimeofday): Warn if gnulib module is not
+	in use.
+
+	closein-tests: silence compiler warning
+	* tests/test-closein.c (main): Ignore fread result.
+	* modules/closein-tests (Depends-on): Add ignore-value.
+
+	tests: silence warning about system return
+	* tests/test-areadlink-with-size.c (main): Ignore system result.
+	* tests/test-areadlink.c (main): Likewise.
+	* tests/test-areadlinkat-with-size.c (main): Likewise.
+	* tests/test-areadlinkat.c (main): Likewise.
+	* tests/test-canonicalize-lgpl.c (main): Likewise.
+	* tests/test-canonicalize.c (main): Likewise.
+	* tests/test-chown.c (main): Likewise.
+	* tests/test-fchownat.c (main): Likewise.
+	* tests/test-fdutimensat.c (main): Likewise.
+	* tests/test-fstatat.c (main): Likewise.
+	* tests/test-futimens.c (main): Likewise.
+	* tests/test-lchown.c (main): Likewise.
+	* tests/test-link.c (main): Likewise.
+	* tests/test-linkat.c (main): Likewise.
+	* tests/test-lstat.c (main): Likewise.
+	* tests/test-mkdir.c (main): Likewise.
+	* tests/test-mkdirat.c (main): Likewise.
+	* tests/test-mkfifo.c (main): Likewise.
+	* tests/test-mkfifoat.c (main): Likewise.
+	* tests/test-mknod.c (main): Likewise.
+	* tests/test-readlink.c (main): Likewise.
+	* tests/test-remove.c (main): Likewise.
+	* tests/test-rename.c (main): Likewise.
+	* tests/test-renameat.c (main): Likewise.
+	* tests/test-rmdir.c (main): Likewise.
+	* tests/test-symlink.c (main): Likewise.
+	* tests/test-symlinkat.c (main): Likewise.
+	* tests/test-unlink.c (main): Likewise.
+	* tests/test-unlinkat.c (main): Likewise.
+	* tests/test-utimens.c (main): Likewise.
+	* tests/test-utimensat.c (main): Likewise.
+	* modules/areadlink-tests (Depends-on): Add ignore-value.
+	* modules/areadlink-with-size-tests (Depends-on): Likewise.
+	* modules/areadlinkat-tests (Depends-on): Likewise.
+	* modules/areadlinkat-with-size-tests (Depends-on): Likewise.
+	* modules/canonicalize-lgpl-tests (Depends-on): Likewise.
+	* modules/canonicalize-tests (Depends-on): Likewise.
+	* modules/chown-tests (Depends-on): Likewise.
+	* modules/fdutimensat-tests (Depends-on): Likewise.
+	* modules/futimens-tests (Depends-on): Likewise.
+	* modules/lchown-tests (Depends-on): Likewise.
+	* modules/link-tests (Depends-on): Likewise.
+	* modules/linkat-tests (Depends-on): Likewise.
+	* modules/lstat-tests (Depends-on): Likewise.
+	* modules/mkdir-tests (Depends-on): Likewise.
+	* modules/mkfifo-tests (Depends-on): Likewise.
+	* modules/mkfifoat-tests (Depends-on): Likewise.
+	* modules/mknod-tests (Depends-on): Likewise.
+	* modules/openat-tests (Depends-on): Likewise.
+	* modules/readlink-tests (Depends-on): Likewise.
+	* modules/remove-tests (Depends-on): Likewise.
+	* modules/rename-tests (Depends-on): Likewise.
+	* modules/renameat-tests (Depends-on): Likewise.
+	* modules/rmdir-tests (Depends-on): Likewise.
+	* modules/symlink-tests (Depends-on): Likewise.
+	* modules/symlinkat-tests (Depends-on): Likewise.
+	* modules/unlink-tests (Depends-on): Likewise.
+	* modules/utimens-tests (Depends-on): Likewise.
+	* modules/utimensat-tests (Depends-on): Likewise.
+
+2010-01-31  Bruno Haible  <bruno@clisp.org>
+
+	Perform the same test for many <math.h> functions.
+	* m4/mathfunc.m4 (gl_COMMON_DOUBLE_MATHFUNC,
+	gl_COMMON_DOUBLE_MATHFUNC_TEST): New macros.
+	* m4/sqrt.m4 (gl_FUNC_SQRT): Invoke gl_COMMON_DOUBLE_MATHFUNC instead
+	of gl_MATHFUNC.
+	* modules/acos (configure.ac): Likewise.
+	* modules/asin (configure.ac): Likewise.
+	* modules/atan (configure.ac): Likewise.
+	* modules/atan2 (configure.ac): Likewise.
+	* modules/cbrt (configure.ac): Likewise.
+	* modules/copysign (configure.ac): Likewise.
+	* modules/cos (configure.ac): Likewise.
+	* modules/cosh (configure.ac): Likewise.
+	* modules/erf (configure.ac): Likewise.
+	* modules/erfc (configure.ac): Likewise.
+	* modules/exp (configure.ac): Likewise.
+	* modules/fmod (configure.ac): Likewise.
+	* modules/hypot (configure.ac): Likewise.
+	* modules/j0 (configure.ac): Likewise.
+	* modules/j1 (configure.ac): Likewise.
+	* modules/jn (configure.ac): Likewise.
+	* modules/lgamma (configure.ac): Likewise.
+	* modules/log (configure.ac): Likewise.
+	* modules/log10 (configure.ac): Likewise.
+	* modules/log1p (configure.ac): Likewise.
+	* modules/pow (configure.ac): Likewise.
+	* modules/remainder (configure.ac): Likewise.
+	* modules/sin (configure.ac): Likewise.
+	* modules/sinh (configure.ac): Likewise.
+	* modules/tan (configure.ac): Likewise.
+	* modules/tanh (configure.ac): Likewise.
+	* modules/y0 (configure.ac): Likewise.
+	* modules/y1 (configure.ac): Likewise.
+	* modules/yn (configure.ac): Likewise.
+	Suggested by Paolo Bonzini.
+
+2010-01-31  Bruno Haible  <bruno@clisp.org>
+
+	* m4/getline.m4 (gl_FUNC_GETLINE): Add comment about REPLACE_GETLINE.
+
+2010-01-31  Bruno Haible  <bruno@clisp.org>
+
+	Work around getdelim() bug on FreeBSD 8.0.
+	* m4/getdelim.m4 (gl_FUNC_GETDELIM): Test whether getdelim supports an
+	initially NULL line. Set REPLACE_GETDELIM if getdelim exists but does
+	not work.
+	* lib/stdio.in.h (getdelim): Define as an alias if REPLACE_GETDELIM
+	is 1.
+	* m4/stdio_h.m4 (gl_STDIO_H_DEFAULTS): Initialize REPLACE_GETDELIM.
+	* modules/stdio (Makefile.am): Also substitute REPLACE_GETDELIM.
+	* tests/test-getdelim.c (main): Also test result for a NULL buffer and
+	a non-zero size.
+	* doc/posix-functions/getdelim.texi: Mention the FreeBSD bug.
+
+2010-01-31  Bruno Haible  <bruno@clisp.org>
+
+	Work around getline() bug on FreeBSD 8.0.
+	* m4/getline.m4 (gl_FUNC_GETLINE): Also test result for a NULL buffer
+	and a non-zero size.
+	* tests/test-getline.c (main): Likewise.
+	* doc/posix-functions/getline.texi: Mention the FreeBSD bug.
+	Reported by Dennis <noordsij@cs.helsinki.fi> via Eric Blake.
+
+2010-01-28  Eric Blake  <ebb9@byu.net>
+
+	regex: fix build failure
+	* lib/regex_internal.h (__GNUC_PREREQ): Define for non-glibc
+	platforms.
+
+2010-01-28  Jim Meyering  <meyering@redhat.com>
+
+	regex: do not ignore memory allocation failure
+	* lib/regex_internal.c (create_cd_newstate): Detect
+	re_node_set_init_copy failure.   Extracted from glibc commit
+	2da42bc06566bc89785e580fa1ac89b4c9f2a63c.
+
+	regex: sync more white-space changes from libc
+	* lib/regex_internal.c: White-space only changes.
+	* lib/regexec.c: Likewise.
+
+	regex: add many uses of __attribute_warn_unused_result__
+	* lib/regex_internal.c: Use __attribute_warn_unused_result__.
+	* lib/regexec.c: Likewise.
+	Extracted from a messy glibc commit.
+
+	regcomp.c: spelling and merge-artifact from glibc
+	* lib/regcomp.c: Merge remainder of glibc's
+	2da42bc06566bc89785e580fa1ac89b4c9f2a63c.
+
+	regcomp.c: sync white-space changes from glibc
+	* lib/regcomp.c: Merge to accommodate white space
+	changes from glibc's 2da42bc06566bc89785e580fa1ac89b4c9f2a63c.
+
+	regcomp.c: do not ignore internal return values
+	* lib/regcomp.c: Do not ignore internal return values.
+	This is from glibc's 2da42bc06566bc89785e580fa1ac89b4c9f2a63c,
+	but without its white-space changes and spelling fixes.
+
+	regex_internal.h: define __attribute_warn_unused_result__
+	* lib/regex_internal.h (__attribute_warn_unused_result__): Define.
+
+	maint: add a syntax-check rule to check for vulnerable Makefile.in
+	* top/maint.mk (sc_vulnerable_makefile_CVE-2009-4029): New rule.
+
+2010-01-27  Jim Meyering  <meyering@redhat.com>
+
+	ncftpput-ftp: clean up spaces
+	* build-aux/ncftpput-ftp: Make Copyright line consistent.
+	Remove trailing blanks.
+
+2010-01-27  Simon Josefsson  <simon@josefsson.org>
+
+	* build-aux/git-version-gen: Fix copyright statement.
+	* build-aux/gnupload: Likewise.
+	* tests/test-arcfour.c: Likewise.
+	* tests/test-arctwo.c: Likewise.
+	* tests/test-count-one-bits.c: Likewise.
+	* tests/test-crc.c: Likewise.
+	* tests/test-des.c: Likewise.
+	* tests/test-gc-arcfour.c: Likewise.
+	* tests/test-gc-arctwo.c: Likewise.
+	* tests/test-gc-des.c: Likewise.
+	* tests/test-gc-hmac-md5.c: Likewise.
+	* tests/test-gc-hmac-sha1.c: Likewise.
+	* tests/test-gc-md2.c: Likewise.
+	* tests/test-gc-md4.c: Likewise.
+	* tests/test-gc-md5.c: Likewise.
+	* tests/test-gc-pbkdf2-sha1.c: Likewise.
+	* tests/test-gc-rijndael.c: Likewise.
+	* tests/test-gc-sha1.c: Likewise.
+	* tests/test-gc.c: Likewise.
+	* tests/test-gethostname.c: Likewise.
+	* tests/test-gettimeofday.c: Likewise.
+	* tests/test-hash.c: Likewise.
+	* tests/test-hmac-md5.c: Likewise.
+	* tests/test-hmac-sha1.c: Likewise.
+	* tests/test-md2.c: Likewise.
+	* tests/test-md4.c: Likewise.
+	* tests/test-md5.c: Likewise.
+	* tests/test-memchr.c: Likewise.
+	* tests/test-memchr2.c: Likewise.
+	* tests/test-memcmp.c: Likewise.
+	* tests/test-memmem.c: Likewise.
+	* tests/test-memrchr.c: Likewise.
+	* tests/test-rawmemchr.c: Likewise.
+	* tests/test-read-file.c: Likewise.
+	* tests/test-rijndael.c: Likewise.
+	* tests/test-sockets.c: Likewise.
+	* tests/test-strchrnul.c: Likewise.
+	* tests/test-strstr.c: Likewise.
+	* tests/test-strtod.c: Likewise.
+	* build-aux/ncftpput-ftp: Likewise.
+
+2010-01-26  Eric Blake  <ebb9@byu.net>
+
+	ignore-value: update recommended header name
+	* modules/ignore-value (Include): Only use <> for headers that
+	exist in glibc.
+
+2010-01-26  Jim Meyering  <meyering@redhat.com>
+
+	test-userspec.c: avoid compiler warnings
+	* tests/test-userspec.c (main): Avoid shadowing ("uid"),
+	and "initialization discards qualifiers..." warnings.
+	Put the first "uid" in its own scope, and make char* members "const".
+
+2010-01-25  Bruno Haible  <bruno@clisp.org>
+
+	gnulib-tool: Make warning diagnostics consistent.
+	* gnulib-tool (func_warning): New function.
+	Use it everywhere where gnulib-tool produces output to stderr and it is
+	not a fatal error.
+
+2010-01-25  Bruno Haible  <bruno@clisp.org>
+
+	Fix test dependencies.
+	* modules/xstrtol-tests (Depends-on): Add inttypes.
+	* modules/xstrtoll-tests (Depends-on): Likewise. Remove xstrtoll.
+
+2010-01-25 Pádraig Brady <P@draigBrady.com>
+
+	syntax-check: detect incorrect boolean macro values in config.h
+	* modules/maintainer-makefile (configure.ac): Parameterize the location
+	of config.h which will be available to makefiles as $(CONFIG_INCLUDE).
+	The logic is from Eric Blake and the location indicated by Jim Meyering.
+	Note the more natural CONFIG_HEADER name is prohibited by automake
+	for backwards compatibility reasons.
+	* top/maint.mk (sc_Wundef_boolean): New rule.
+
+2010-01-25  Jim Meyering  <meyering@redhat.com>
+
+	bootstrap: detect MacOS 10.6's shasum, too
+	* build-aux/bootstrap: Also recognize MacOS 10.6's shasum.
+	Suggested by Thomas Treichl <Thomas.Treichl@gmx.net>.
+
+2010-01-23  Jim Meyering  <meyering@redhat.com>
+
+	xstrtoll: new module
+	* modules/xstrtoll: New file.
+	* MODULES.html.sh (Numeric conversion functions): Add xstrtoll.
+	* lib/xstrtol.h [HAVE_LONG_LONG_INT]: Declare xstrtoll and xstrtoull.
+	* lib/xstrtoll.c, lib/xstrtoull.c: New files.
+	./configure fails if you use this module and lack "long long".
+	* modules/xstrtoll-tests: New module.
+	* tests/test-xstrtoll.c, tests/test-xstrtoull.c: New files.
+	* tests/test-xstrtoll.sh: Like test-xstrtol.c, but use the
+	new init.sh-based test framework.
+
+2010-01-24  Bruno Haible  <bruno@clisp.org>
+
+	Tests for module 'yn'.
+	* modules/yn-tests: New file.
+	* tests/test-yn.c: New file.
+
+	Tests for module 'y1'.
+	* modules/y1-tests: New file.
+	* tests/test-y1.c: New file.
+
+	Tests for module 'y0'.
+	* modules/y0-tests: New file.
+	* tests/test-y0.c: New file.
+
+	Tests for module 'tanh'.
+	* modules/tanh-tests: New file.
+	* tests/test-tanh.c: New file.
+
+	Tests for module 'tan'.
+	* modules/tan-tests: New file.
+	* tests/test-tan.c: New file.
+
+	Tests for module 'sqrt'.
+	* modules/sqrt-tests: New file.
+	* tests/test-sqrt.c: New file.
+
+	Tests for module 'sinh'.
+	* modules/sinh-tests: New file.
+	* tests/test-sinh.c: New file.
+
+	Tests for module 'sin'.
+	* modules/sin-tests: New file.
+	* tests/test-sin.c: New file.
+
+	Tests for module 'rint'.
+	* modules/rint-tests: New file.
+	* tests/test-rint.c: New file.
+
+	Tests for module 'remainder'.
+	* modules/remainder-tests: New file.
+	* tests/test-remainder.c: New file.
+
+	Tests for module 'pow'.
+	* modules/pow-tests: New file.
+	* tests/test-pow.c: New file.
+
+	Tests for module 'nextafter'.
+	* modules/nextafter-tests: New file.
+	* tests/test-nextafter.c: New file.
+
+	Tests for module 'modf'.
+	* modules/modf-tests: New file.
+	* tests/test-modf.c: New file.
+
+	Tests for module 'logb'.
+	* modules/logb-tests: New file.
+	* tests/test-logb.c: New file.
+
+	Tests for module 'log1p'.
+	* modules/log1p-tests: New file.
+	* tests/test-log1p.c: New file.
+
+	Tests for module 'log10'.
+	* modules/log10-tests: New file.
+	* tests/test-log10.c: New file.
+
+	Tests for module 'log'.
+	* modules/log-tests: New file.
+	* tests/test-log.c: New file.
+
+	Tests for module 'lgamma'.
+	* modules/lgamma-tests: New file.
+	* tests/test-lgamma.c: New file.
+
+	Tests for module 'ldexp'.
+	* modules/ldexp-tests: New file.
+	* tests/test-ldexp.c: New file.
+
+	Tests for module 'jn'.
+	* modules/jn-tests: New file.
+	* tests/test-jn.c: New file.
+
+	Tests for module 'j1'.
+	* modules/j1-tests: New file.
+	* tests/test-j1.c: New file.
+
+	Tests for module 'j0'.
+	* modules/j0-tests: New file.
+	* tests/test-j0.c: New file.
+
+	Tests for module 'hypot'.
+	* modules/hypot-tests: New file.
+	* tests/test-hypot.c: New file.
+
+	Tests for module 'fmod'.
+	* modules/fmod-tests: New file.
+	* tests/test-fmod.c: New file.
+
+	Tests for module 'fabs'.
+	* modules/fabs-tests: New file.
+	* tests/test-fabs.c: New file.
+
+	Tests for module 'exp'.
+	* modules/exp-tests: New file.
+	* tests/test-exp.c: New file.
+
+	Tests for module 'erfc'.
+	* modules/erfc-tests: New file.
+	* tests/test-erfc.c: New file.
+
+	Tests for module 'erf'.
+	* modules/erf-tests: New file.
+	* tests/test-erf.c: New file.
+
+	Tests for module 'cosh'.
+	* modules/cosh-tests: New file.
+	* tests/test-cosh.c: New file.
+
+	Tests for module 'cos'.
+	* modules/cos-tests: New file.
+	* tests/test-cos.c: New file.
+
+	Tests for module 'copysign'.
+	* modules/copysign-tests: New file.
+	* tests/test-copysign.c: New file.
+
+	Tests for module 'cbrt'.
+	* modules/cbrt-tests: New file.
+	* tests/test-cbrt.c: New file.
+
+	Tests for module 'atan2'.
+	* modules/atan2-tests: New file.
+	* tests/test-atan2.c: New file.
+
+	Tests for module 'atan'.
+	* modules/atan-tests: New file.
+	* tests/test-atan.c: New file.
+
+	Tests for module 'asin'.
+	* modules/asin-tests: New file.
+	* tests/test-asin.c: New file.
+
+	Tests for module 'acos'.
+	* modules/acos-tests: New file.
+	* tests/test-acos.c: New file.
+
+2010-01-24  Bruno Haible  <bruno@clisp.org>
+
+	Fix tests for common <math.h> functions.
+	* m4/mathfunc.m4 (gl_MATHFUNC): Take two additional parameters. Use a
+	code snippet that references the function pointer, rather than merely
+	calling the function. Substitute the FUNC_LIBM variable.
+	* m4/sqrt.m4 (gl_FUNC_SQRT): Update gl_MATHFUNC invocation.
+	* modules/acos (configure.ac): Likewise.
+	* modules/asin (configure.ac): Likewise.
+	* modules/atan (configure.ac): Likewise.
+	* modules/atan2 (configure.ac): Likewise.
+	* modules/cbrt (configure.ac): Likewise.
+	* modules/copysign (configure.ac): Likewise.
+	* modules/cos (configure.ac): Likewise.
+	* modules/cosh (configure.ac): Likewise.
+	* modules/erf (configure.ac): Likewise.
+	* modules/erfc (configure.ac): Likewise.
+	* modules/exp (configure.ac): Likewise.
+	* modules/fabs (configure.ac): Likewise.
+	* modules/fmod (configure.ac): Likewise.
+	* modules/hypot (configure.ac): Likewise.
+	* modules/j0 (configure.ac): Likewise.
+	* modules/j1 (configure.ac): Likewise.
+	* modules/jn (configure.ac): Likewise.
+	* modules/ldexp (configure.ac): Likewise.
+	* modules/lgamma (configure.ac): Likewise.
+	* modules/log (configure.ac): Likewise.
+	* modules/log10 (configure.ac): Likewise.
+	* modules/log1p (configure.ac): Likewise.
+	* modules/logb (configure.ac): Likewise.
+	* modules/modf (configure.ac): Likewise.
+	* modules/nextafter (configure.ac): Likewise.
+	* modules/pow (configure.ac): Likewise.
+	* modules/remainder (configure.ac): Likewise.
+	* modules/rint (configure.ac): Likewise.
+	* modules/sin (configure.ac): Likewise.
+	* modules/sinh (configure.ac): Likewise.
+	* modules/tan (configure.ac): Likewise.
+	* modules/tanh (configure.ac): Likewise.
+	* modules/y0 (configure.ac): Likewise.
+	* modules/y1 (configure.ac): Likewise.
+	* modules/yn (configure.ac): Likewise.
+
+2010-01-24  Bruno Haible  <bruno@clisp.org>
+
+	Tests: Defeat inlining of math functions by GCC >= 4.3.0.
+	* tests/test-acosl.c (x): New variable.
+	(main): Store argument in x and fetch it from x.
+	* tests/test-asinl.c (x): New variable.
+	(main): Store argument in x and fetch it from x.
+	* tests/test-atanl.c (x): New variable.
+	(main): Store argument in x and fetch it from x.
+	* tests/test-cosl.c (x): New variable.
+	(main): Store argument in x and fetch it from x.
+	* tests/test-expl.c (x): New variable.
+	(main): Store argument in x and fetch it from x.
+	* tests/test-logl.c (x): New variable.
+	(main): Store argument in x and fetch it from x.
+	* tests/test-sinl.c (x): New variable.
+	(main): Store argument in x and fetch it from x.
+	* tests/test-sqrtl.c (x): New variable.
+	(main): Store argument in x and fetch it from x.
+	* tests/test-tanl.c (x): New variable.
+	(main): Store argument in x and fetch it from x.
+
+2010-01-24  Bruno Haible  <bruno@clisp.org>
+
+	Provide EXEEXT and srcdir in TESTS_ENVIRONMENT by default.
+	* gnulib-tool (func_emit_tests_Makefile_am): Add EXEEXT and srcdir
+	assignments to the initial TESTS_ENVIRONMENT.
+	* doc/gnulib.texi (Unit test modules): Document it.
+	* modules/acl-tests (Makefile.am): Drop EXEEXT assignment from
+	TESTS_ENVIRONMENT.
+	* modules/btowc-tests (Makefile.am): Likewise.
+	* modules/c-stack-tests (Makefile.am): Likewise.
+	* modules/c-strcase-tests (Makefile.am): Likewise.
+	* modules/copy-file-tests (Makefile.am): Likewise.
+	* modules/mbmemcasecmp-tests (Makefile.am): Likewise.
+	* modules/mbmemcasecoll-tests (Makefile.am): Likewise.
+	* modules/mbrtowc-tests (Makefile.am): Likewise.
+	* modules/mbscasecmp-tests (Makefile.am): Likewise.
+	* modules/mbscasestr-tests (Makefile.am): Likewise.
+	* modules/mbschr-tests (Makefile.am): Likewise.
+	* modules/mbscspn-tests (Makefile.am): Likewise.
+	* modules/mbsinit-tests (Makefile.am): Likewise.
+	* modules/mbsncasecmp-tests (Makefile.am): Likewise.
+	* modules/mbsnrtowcs-tests (Makefile.am): Likewise.
+	* modules/mbspbrk-tests (Makefile.am): Likewise.
+	* modules/mbspcasecmp-tests (Makefile.am): Likewise.
+	* modules/mbsrchr-tests (Makefile.am): Likewise.
+	* modules/mbsrtowcs-tests (Makefile.am): Likewise.
+	* modules/mbsspn-tests (Makefile.am): Likewise.
+	* modules/mbsstr-tests (Makefile.am): Likewise.
+	* modules/nl_langinfo-tests (Makefile.am): Likewise.
+	* modules/unicase/locale-language-tests (Makefile.am): Likewise.
+	* modules/unistdio/u16-vasnprintf-tests (Makefile.am): Likewise.
+	* modules/unistdio/u32-vasnprintf-tests (Makefile.am): Likewise.
+	* modules/unistdio/u8-vasnprintf-tests (Makefile.am): Likewise.
+	* modules/unistdio/ulc-vasnprintf-tests (Makefile.am): Likewise.
+	* modules/uniwbrk/ulc-wordbreaks-tests (Makefile.am): Likewise.
+	* modules/vasnprintf-posix-tests (Makefile.am): Likewise.
+	* modules/wcrtomb-tests (Makefile.am): Likewise.
+	* modules/wcsnrtombs-tests (Makefile.am): Likewise.
+	* modules/wcsrtombs-tests (Makefile.am): Likewise.
+	* modules/quotearg-tests (Makefile.am): Drop EXEEXT and srcdir
+	assignments from TESTS_ENVIRONMENT.
+	* modules/argp-tests (Makefile.am): Drop TESTS_ENVIRONMENT
+	augmentation.
+	* modules/argp-version-etc-tests (Makefile.am): Likewise.
+	* modules/atexit-tests (Makefile.am): Likewise.
+	* modules/binary-io-tests (Makefile.am): Likewise.
+	* modules/closein-tests (Makefile.am): Likewise.
+	* modules/dprintf-posix-tests (Makefile.am): Likewise.
+	* modules/exclude-tests (Makefile.am): Likewise.
+	* modules/fflush-tests (Makefile.am): Likewise.
+	* modules/fpending-tests (Makefile.am): Likewise.
+	* modules/fprintf-posix-tests (Makefile.am): Likewise.
+	* modules/freadahead-tests (Makefile.am): Likewise.
+	* modules/freadptr-tests (Makefile.am): Likewise.
+	* modules/freadseek-tests (Makefile.am): Likewise.
+	* modules/fseek-tests (Makefile.am): Likewise.
+	* modules/fseeko-tests (Makefile.am): Likewise.
+	* modules/ftell-tests (Makefile.am): Likewise.
+	* modules/ftello-tests (Makefile.am): Likewise.
+	* modules/idpriv-drop-tests (Makefile.am): Likewise.
+	* modules/idpriv-droptemp-tests (Makefile.am): Likewise.
+	* modules/lseek-tests (Makefile.am): Likewise.
+	* modules/parse-duration-tests (Makefile.am): Likewise.
+	* modules/perror-tests (Makefile.am): Likewise.
+	* modules/pipe-filter-gi-tests (Makefile.am): Likewise.
+	* modules/pipe-filter-ii-tests (Makefile.am): Likewise.
+	* modules/pipe-tests (Makefile.am): Likewise.
+	* modules/pread-tests (Makefile.am): Likewise.
+	* modules/printf-posix-tests (Makefile.am): Likewise.
+	* modules/select-tests (Makefile.am): Likewise.
+	* modules/sigpipe-tests (Makefile.am): Likewise.
+	* modules/tsearch-tests (Makefile.am): Likewise.
+	* modules/unicase/ulc-casecmp-tests (Makefile.am): Likewise.
+	* modules/unicase/ulc-casecoll-tests (Makefile.am): Likewise.
+	* modules/uniname/uniname-tests (Makefile.am): Likewise.
+	* modules/uniwidth/width-tests (Makefile.am): Likewise.
+	* modules/vdprintf-posix-tests (Makefile.am): Likewise.
+	* modules/version-etc-tests (Makefile.am): Likewise.
+	* modules/vfprintf-posix-tests (Makefile.am): Likewise.
+	* modules/vprintf-posix-tests (Makefile.am): Likewise.
+	* modules/xalloc-die-tests (Makefile.am): Likewise.
+	* modules/xprintf-posix-tests (Makefile.am): Likewise.
+	* modules/xstrtoimax-tests (Makefile.am): Likewise.
+	* modules/xstrtol-tests (Makefile.am): Likewise.
+	* modules/xstrtoumax-tests (Makefile.am): Likewise.
+	* modules/yesno-tests (Makefile.am): Likewise.
+	Suggested by Jim Meyering.
+
+2010-01-24  Bruno Haible  <bruno@clisp.org>
+
+	More documentation.
+	* doc/gnulib.texi (Writing modules): New chapter.
+	(Miscellaneous Notes): Move sections "Comments" and "Header files" to
+	the new chapter.
+
+2010-01-24  Jim Meyering  <meyering@redhat.com>
+
+	maint.mk: do not prepend "./" after filtering
+	* top/maint.mk (_prepend_srcdir_prefix): New variable
+	(VC_LIST_EXCEPT): Use it to avoid prepending (post-filter)
+	"./" when $(srcdir) is ".".
+
+	define STREQ(a,b) consistently, removing useless parentheses
+	#define STREQ(a, b) (strcmp ((a), (b)) == 0) is over-parenthesized,
+	since the only risk is that "a" or "b" contains an unparenthesized
+	comma, but if either did that, STREQ would have 3 or more arguments.
+	Hence, #define STREQ(a, b) (strcmp (a, b) == 0) is better.
+	* lib/fts.c (STREQ): Remove unnecessary parentheses.
+	* lib/hash-triple.c (STREQ): Likewise.
+	* tests/test-argv-iter.c (STREQ): Use a and b, not s1 and s2.
+	* lib/getugroups.c (STREQ): Likewise.
+
+2010-01-23  Jim Meyering  <meyering@redhat.com>
+
+	maint.mk: fix syntax-check in a non-srcdir build directory
+	* top/maint.mk (_dot_escaped_srcdir): Remove erroneous backslash,
+	introduced in my 2010-01-21 commit, a6da6c45.  Reported by Eric Blake.
+
+2010-01-22  Jim Meyering  <meyering@redhat.com>
+
+	userspec: add unit tests
+	* tests/test-userspec.c: New file.
+	* modules/userspec-tests: Likewise.
+
+2010-01-21  Jim Meyering  <meyering@redhat.com>
+
+	maint.mk: handle source file names containing "." robustly
+	* top/maint.mk (_dot_escaped_srcdir): Define.
+	(VC_LIST): Use it in LHS of sed substitution.
+
+2010-01-21  Jiri Denemark  <jdenemar@redhat.com>
+
+	maint.mk: fix VC_LIST_EXCEPT for srcdir != builddir
+	* top/maint.mk (VC_LIST_EXCEPT): Preprocess the output of
+	$(VC_LIST) to remove a prefix of '$(srcdir)/', so that it works
+	from a non-srcdir build.
+
+2010-01-20  Eric Blake  <ebb9@byu.net>
+
+	warn-on-use: use instead of link-warning
+	* modules/stdio (Depends-on, Makefile.am): Drop link-warning.
+	* modules/unistd (Depends-on, Makefile.am): Likewise.
+	* modules/arpa_inet (Depends-on): Replace link-warning with
+	warn-on-use.
+	(Makefile.am): Update rules accordingly.
+	* modules/ctype (Depends-on, Makefile.am): Likewise.
+	* modules/dirent (Depends-on, Makefile.am): Likewise.
+	* modules/fcntl-h (Depends-on, Makefile.am): Likewise.
+	* modules/inttypes (Depends-on, Makefile.am): Likewise.
+	* modules/langinfo (Depends-on, Makefile.am): Likewise.
+	* modules/locale (Depends-on, Makefile.am): Likewise.
+	* modules/math (Depends-on, Makefile.am): Likewise.
+	* modules/search (Depends-on, Makefile.am): Likewise.
+	* modules/signal (Depends-on, Makefile.am): Likewise.
+	* modules/spawn (Depends-on, Makefile.am): Likewise.
+	* modules/stdlib (Depends-on, Makefile.am): Likewise.
+	* modules/string (Depends-on, Makefile.am): Likewise.
+	* modules/strings (Depends-on, Makefile.am): Likewise.
+	* modules/sys_file (Depends-on, Makefile.am): Likewise.
+	* modules/sys_ioctl (Depends-on, Makefile.am): Likewise.
+	* modules/sys_select (Depends-on, Makefile.am): Likewise.
+	* modules/sys_socket (Depends-on, Makefile.am): Likewise.
+	* modules/sys_stat (Depends-on, Makefile.am): Likewise.
+	* modules/sys_times (Depends-on, Makefile.am): Likewise.
+	* modules/sys_utsname (Depends-on, Makefile.am): Likewise.
+	* modules/wchar (Depends-on, Makefile.am): Likewise.
+	* m4/arpa_inet_h.m4 (gl_HEADER_ARPA_INET): Check which functions
+	should be poisoned.
+	* m4/ctype.m4 (gl_CTYPE_H): Likewise.
+	* m4/dirent_h.m4 (gl_DIRENT_H): Likewise.
+	* m4/fcntl_h.m4 (gl_FCNTL_H): Likewise.
+	* m4/inttypes.m4 (gl_INTTYPES_H): Likewise.
+	* m4/langinfo_h.m4 (gl_LANGINFO_H): Likewise.
+	* m4/locale_h.m4 (gl_LOCALE_H): Likewise.
+	* m4/math_h.m4 (gl_MATH_H): Likewise.
+	* m4/search_h.m4 (gl_SEARCH_H): Likewise.
+	* m4/signal_h.m4 (gl_SIGNAL_H): Likewise.
+	* m4/spawn_h.m4 (gl_SPAWN_H): Likewise.
+	* m4/stdio_h.m4 (gl_STDIO_H): Likewise.
+	* m4/stdlib_h.m4 (gl_STDLIB_H): Likewise.
+	* m4/string_h.m4 (gl_HEADER_STRING_H_BODY): Likewise.
+	* m4/strings_h.m4 (gl_HEADER_STRINGS_H_BODY): Likewise.
+	* m4/sys_file_h.m4 (gl_HEADER_SYS_FILE_H_DEFAULTS): Likewise.
+	* m4/sys_ioctl_h.m4 (gl_SYS_IOCTL_H): Likewise.
+	* m4/sys_select_h.m4 (gl_HEADER_SYS_SELECT): Likewise.
+	* m4/sys_socket_h.m4 (gl_HEADER_SYS_SOCKET): Likewise.
+	* m4/sys_stat_h.m4 (gl_HEADER_SYS_STAT_H): Likewise.
+	* m4/sys_times_h.m4 (gl_SYS_TIMES_H): Likewise.
+	* m4/sys_utsname_h.m4 (gl_SYS_UTSNAME_H): Likewise.
+	* m4/unistd_h.m4 (gl_UNISTD_H): Likewise.
+	* m4/wchar.m4 (gl_WCHAR_H): Likewise.
+	* lib/arpa_inet.in.h: Use _GL_WARN_ON_USE instead of
+	GL_LINK_WARNING.
+	* lib/ctype.in.h: Likewise.
+	* lib/dirent.in.h: Likewise.
+	* lib/fcntl.in.h: Likewise.
+	* lib/inttypes.in.h: Likewise.
+	* lib/langinfo.in.h: Likewise.
+	* lib/locale.in.h: Likewise.
+	* lib/math.in.h: Likewise.
+	* lib/search.in.h: Likewise.
+	* lib/signal.in.h: Likewise.
+	* lib/spawn.in.h: Likewise.
+	* lib/stdio.in.h: Likewise.
+	* lib/stdlib.in.h: Likewise.
+	* lib/string.in.h: Likewise.
+	* lib/strings.in.h: Likewise.
+	* lib/sys_file.in.h: Likewise.
+	* lib/sys_ioctl.in.h: Likewise.
+	* lib/sys_select.in.h: Likewise.
+	* lib/sys_socket.in.h: Likewise.
+	* lib/sys_stat.in.h: Likewise.
+	* lib/sys_times.in.h: Likewise.
+	* lib/sys_utsname.in.h: Likewise.
+	* lib/unistd.in.h: Likewise.
+	* lib/wchar.in.h: Likewise.
+
+2010-01-20  Bruno Haible  <bruno@clisp.org>
+
+	Avoid duplicate -lm.
+	* m4/isnan.m4 (gl_ISNAN): Avoid duplicate -lm in $ISNAN_LIBM.
+	* m4/round.m4 (gl_FUNC_ROUND): Avoid duplicate -lm in $ROUND_LIBM.
+	* m4/roundf.m4 (gl_FUNC_ROUNDF): Avoid duplicate -lm in $ROUNDF_LIBM.
+	* m4/roundl.m4 (gl_FUNC_ROUNDL): Avoid duplicate -lm in $ROUNDL_LIBM.
+	* m4/acosl.m4 (gl_FUNC_ACOSL): Avoid duplicate -lm in $ACOSL_LIBM.
+	* m4/cosl.m4 (gl_FUNC_COSL): Avoid duplicate -lm in $COSL_LIBM.
+	* m4/logl.m4 (gl_FUNC_LOGL): Avoid duplicate -lm in $LOGL_LIBM.
+	* m4/sinl.m4 (gl_FUNC_SINL): Avoid duplicate -lm in $SINL_LIBM.
+	* m4/sqrtl.m4 (gl_FUNC_SQRTL): Avoid duplicate -lm in $SQRTL_LIBM.
+	* m4/tanl.m4 (gl_FUNC_TANL): Avoid duplicate -lm in $TANL_LIBM.
+	* m4/asinl.m4 (gl_FUNC_ASINL): Same change, for consistency.
+	* m4/atanl.m4 (gl_FUNC_ATANL): Likewise.
+	Reported by Paolo Bonzini.
+
+2010-01-19  Bruno Haible  <bruno@clisp.org>
+
+	langinfo, nl_langinfo: Relicense under LGPLv2+.
+	* modules/langinfo (License): Change to LGPLv2+.
+	* modules/nl_langinfo (License): Likewise.
+	Patch by David Lutterkort <lutter@redhat.com>.
+
+2010-01-19  Bruno Haible  <bruno@clisp.org>
+
+	Avoid compilation error with cc on OSF/1 5.1.
+	* lib/fcntl.in.h: Include <unistd.h> after the #include_next <fcntl.h>
+	statement, not before.
+	Reported by Ralf Wildenhues <Ralf.Wildenhues@gmx.de>.
+
+2010-01-18  Bruno Haible  <bruno@clisp.org>
+
+	Avoid a link error due to the __printf__ symbol.
+	* lib/stdio.in.h (__attribute__): Define to empty also for gcc 2.5.x
+	and 2.6.x.
+	(__format__, __printf__): Remove definitions.
+	* lib/argp-fmtstream.h: Likewise.
+	* lib/argp.h: Likewise.
+	* lib/error.h: Likewise.
+	* lib/vasnprintf.h: Likewise.
+	* lib/xprintf.h: Likewise.
+	* lib/xvasprintf.h: Likewise.
+	Reported by Ralf Wildenhues <Ralf.Wildenhues@gmx.de>.
+
+2010-01-18  Bruno Haible  <bruno@clisp.org>
+
+	Tests for module 'tanl'.
+	* modules/tanl-tests: New file.
+	* tests/test-tanl.c: New file.
+
+	Tests for module 'sqrtl'.
+	* modules/sqrtl-tests: New file.
+	* tests/test-sqrtl.c: New file.
+
+	Tests for module 'sinl'.
+	* modules/sinl-tests: New file.
+	* tests/test-sinl.c: New file.
+
+	Tests for module 'logl'.
+	* modules/logl-tests: New file.
+	* tests/test-logl.c: New file.
+
+	Tests for module 'expl'.
+	* modules/expl-tests: New file.
+	* tests/test-expl.c: New file.
+
+	Tests for module 'cosl'.
+	* modules/cosl-tests: New file.
+	* tests/test-cosl.c: New file.
+
+	Tests for module 'atanl'.
+	* modules/atanl-tests: New file.
+	* tests/test-atanl.c: New file.
+
+	Tests for module 'asinl'.
+	* modules/asinl-tests: New file.
+	* tests/test-asinl.c: New file.
+
+	Tests for module 'acosl'.
+	* modules/acosl-tests: New file.
+	* tests/test-acosl.c: New file.
+
+	New modules acosl, asinl, atanl, cosl, expl, logl, sinl, sqrtl, tanl.
+	* lib/math.in.h (acosl, asinl, atanl, cosl, expl, logl, sinl, sqrtl,
+	tanl): Use the standard gnulib idiom.
+	* lib/cosl.c: Don't include trigl.c and sincosl.c.
+	* lib/sinl.c: Likewise.
+	* lib/tanl.c: Don't include trigl.c.
+	(kernel_tanl): Make static.
+	* lib/sincosl.c: Include trigl.h first.
+	* lib/trigl.c: Likewise.
+	* m4/acosl.m4: New file.
+	* m4/asinl.m4: New file.
+	* m4/atanl.m4: New file.
+	* m4/cosl.m4: New file.
+	* m4/expl.m4: New file.
+	* m4/logl.m4: New file.
+	* m4/sinl.m4: New file.
+	* m4/sqrtl.m4: New file.
+	* m4/tanl.m4: New file.
+	* m4/mathl.m4: Remove file.
+	* m4/math_h.m4 (gl_MATH_H_DEFAULTS): Initialize GNULIB_* and HAVE_*
+	variables for acosl, asinl, atanl, cosl, expl, logl, sinl, sqrtl, tanl.
+	Don't initialize GNULIB_MATHL.
+	* modules/acosl: New file.
+	* modules/asinl: New file.
+	* modules/atanl: New file.
+	* modules/cosl: New file.
+	* modules/expl: New file.
+	* modules/logl: New file.
+	* modules/sinl: New file.
+	* modules/sqrtl: New file.
+	* modules/tanl: New file.
+	* modules/math (Makefile.am): Substitute GNULIB_* and HAVE_* variables
+	for acosl, asinl, atanl, cosl, expl, logl, sinl, sqrtl, tanl. Don't
+	substitute GNULIB_MATHL.
+	* modules/mathl: Rewritten.
+	* doc/posix-functions/acosl.texi: Mention the 'acosl' module.
+	* doc/posix-functions/asinl.texi: Mention the 'asinl' module.
+	* doc/posix-functions/atanl.texi: Mention the 'atanl' module.
+	* doc/posix-functions/cosl.texi: Mention the 'cosl' module.
+	* doc/posix-functions/expl.texi: Mention the 'expl' module.
+	* doc/posix-functions/logl.texi: Mention the 'logl' module.
+	* doc/posix-functions/sinl.texi: Mention the 'sinl' module.
+	* doc/posix-functions/sqrtl.texi: Mention the 'sqrtl' module.
+	* doc/posix-functions/tanl.texi: Mention the 'tanl' module.
+
+2010-01-18  Bruno Haible  <bruno@clisp.org>
+
+	sqrt: Make gl_FUNC_SQRT requirable.
+	* m4/sqrt.m4: New file.
+	* modules/sqrt (Files): Add it.
+	(configure.ac): Invoke gl_FUNC_SQRT.
+
+2010-01-18  Bruno Haible  <bruno@clisp.org>
+
+	New modules for common <math.h> functions.
+	* m4/mathfunc.m4: New file.
+	* modules/acos: New file.
+	* modules/asin: New file.
+	* modules/atan: New file.
+	* modules/atan2: New file.
+	* modules/cbrt: New file.
+	* modules/copysign: New file.
+	* modules/cos: New file.
+	* modules/cosh: New file.
+	* modules/erf: New file.
+	* modules/erfc: New file.
+	* modules/exp: New file.
+	* modules/fabs: New file.
+	* modules/fmod: New file.
+	* modules/hypot: New file.
+	* modules/j0: New file.
+	* modules/j1: New file.
+	* modules/jn: New file.
+	* modules/ldexp: New file.
+	* modules/lgamma: New file.
+	* modules/log: New file.
+	* modules/log10: New file.
+	* modules/log1p: New file.
+	* modules/logb: New file.
+	* modules/modf: New file.
+	* modules/nextafter: New file.
+	* modules/pow: New file.
+	* modules/remainder: New file.
+	* modules/rint: New file.
+	* modules/sin: New file.
+	* modules/sinh: New file.
+	* modules/sqrt: New file.
+	* modules/tan: New file.
+	* modules/tanh: New file.
+	* modules/y0: New file.
+	* modules/y1: New file.
+	* modules/yn: New file.
+	* doc/posix-functions/acos.texi: Mention the 'acos' module.
+	* doc/posix-functions/asin.texi: Mention the 'asin' module.
+	* doc/posix-functions/atan.texi: Mention the 'atan' module.
+	* doc/posix-functions/atan2.texi: Mention the 'atan2' module.
+	* doc/posix-functions/cbrt.texi: Mention the 'cbrt' module.
+	* doc/posix-functions/copysign.texi: Mention the 'copysign' module.
+	* doc/posix-functions/cos.texi: Mention the 'cos' module.
+	* doc/posix-functions/cosh.texi: Mention the 'cosh' module.
+	* doc/posix-functions/erf.texi: Mention the 'erf' module.
+	* doc/posix-functions/erfc.texi: Mention the 'erfc' module.
+	* doc/posix-functions/exp.texi: Mention the 'exp' module.
+	* doc/posix-functions/fabs.texi: Mention the 'fabs' module.
+	* doc/posix-functions/fmod.texi: Mention the 'fmod' module.
+	* doc/posix-functions/hypot.texi: Mention the 'hypot' module.
+	* doc/posix-functions/j0.texi: Mention the 'j0' module.
+	* doc/posix-functions/j1.texi: Mention the 'j1' module.
+	* doc/posix-functions/jn.texi: Mention the 'jn' module.
+	* doc/posix-functions/ldexp.texi: Mention the 'ldexp' module.
+	* doc/posix-functions/lgamma.texi: Mention the 'lgamma' module.
+	* doc/posix-functions/log.texi: Mention the 'log' module.
+	* doc/posix-functions/log10.texi: Mention the 'log10' module.
+	* doc/posix-functions/log1p.texi: Mention the 'log1p' module.
+	* doc/posix-functions/logb.texi: Mention the 'logb' module.
+	* doc/posix-functions/modf.texi: Mention the 'modf' module.
+	* doc/posix-functions/nextafter.texi: Mention the 'nextafter' module.
+	* doc/posix-functions/pow.texi: Mention the 'pow' module.
+	* doc/posix-functions/remainder.texi: Mention the 'remainder' module.
+	* doc/posix-functions/rint.texi: Mention the 'rint' module.
+	* doc/posix-functions/sin.texi: Mention the 'sin' module.
+	* doc/posix-functions/sinh.texi: Mention the 'sinh' module.
+	* doc/posix-functions/sqrt.texi: Mention the 'sqrt' module.
+	* doc/posix-functions/tan.texi: Mention the 'tan' module.
+	* doc/posix-functions/tanh.texi: Mention the 'tanh' module.
+	* doc/posix-functions/y0.texi: Mention the 'y0' module.
+	* doc/posix-functions/y1.texi: Mention the 'y1' module.
+	* doc/posix-functions/yn.texi: Mention the 'yn' module.
+
+2010-01-18  Jim Meyering  <meyering@redhat.com>
+
+	ignore-value: relax license to LGPLv2+
+	* modules/ignore-value (License): Relax to LGPLv2+.
+
+	getdate: don't leak when TZ contains two or more '"'s
+	* lib/getdate.y (get_date): Don't leak a copy of TZ for each
+	double quote in TZ after the first one.
+
+	readtokens: do not leak internal token_lengths buffer
+	* lib/readtokens.c (readtokens): Free the local, lengths,
+	when the supplied "token_lengths" parameter is NULL.
+
+2010-01-17  Ralf Wildenhues  <Ralf.Wildenhues@gmx.de>
+
+	Fix a couple of missing LIBTHREAD link failures on AIX.
+	* modules/git-merge-changelog (git_merge_changelog_LDADD): Add
+	$(LIBTHREAD).
+	* modules/strsignal-tests (test_strsignal_LDADD): Likewise.
+
+	Link test-poll against INET_PTON_LIB.
+	* modules/poll-tests (test_poll_LDADD): Add $(INET_PTON_LIB),
+	for inet_pton on Solaris 10.
+
+2010-01-17  Bruno Haible  <bruno@clisp.org>
+
+	unistdio/*-sprintf: Fix typo in module description.
+	* modules/unistdio/u8-sprintf (Depends-on): Fix typo.
+	* modules/unistdio/u8-u8-sprintf (Depends-on): Likewise.
+	* modules/unistdio/u16-sprintf (Depends-on): Likewise.
+	* modules/unistdio/u16-u16-sprintf (Depends-on): Likewise.
+	* modules/unistdio/u32-sprintf (Depends-on): Likewise.
+	* modules/unistdio/u32-u32-sprintf (Depends-on): Likewise.
+	* modules/unistdio/ulc-sprintf (Depends-on): Likewise.
+	Reported by Ralf Wildenhues <Ralf.Wildenhues@gmx.de>.
+
+2010-01-17  Ralf Wildenhues  <Ralf.Wildenhues@gmx.de>
+
+	gnulib-tool: fix filelist for AIX, HP-UX ksh.
+	* gnulib-tool (func_filter_filelist): Do not quote possibly-empty
+	variables in shell case patterns, for AIX and HP-UX ksh.
+
+	Split large sed scripts, for HP-UX sed.
+	* modules/stdio: Split sed scripts around 50 sed commands,
+	to avoid HP-UX limit of 99 commands, in the near future.
+	* modules/string: Likewise.
+	* modules/unistd: Likewise.
+
+	gnulib-tool: avoid writing in the current directory.
+	* gnulib-tool (func_emit_lib_Makefile_am)
+	(func_emit_tests_Makefile_am): Put temporary files in $tmp,
+	not in the current directory, so concurrent gnulib-tool
+	instances do not interfere.
+
+2010-01-16  Jim Meyering  <meyering@redhat.com>
+
+	doc: update users.txt
+	* users.txt: Add grep.
+	(diffutils, gzip): Update URLs.
+
+2010-01-12  Bruno Haible  <bruno@clisp.org>
+
+	posix_spawn: Avoid test failure on Cygwin.
+	* tests/test-posix_spawn3.c (DATA_FILENAME) [CYGWIN]: Use less risky
+	characters.
+	Reported by Simon Josefsson.
+
+2010-01-12  Bruno Haible  <bruno@clisp.org>
+
+	* tests/test-cond.c (main): When skipping the test, show the reason.
+
+2010-01-12  Simon Josefsson  <simon@josefsson.org>
+
+	* lib/striconv.c (str_cd_iconv): Avoid if before free.
+
+2010-01-12  Simon Josefsson  <simon@josefsson.org>
+
+	* top/maint.mk (VC_LIST_EXCEPT): Filter list through
+	VC_LIST_ALWAYS_EXCLUDE_REGEX.
+
+2010-01-12  Eric Blake  <ebb9@byu.net>
+
+	build: guarantee AS_VAR_IF
+	* m4/warnings.m4 (gl_WARN_ADD): Use autoconf name.
+	(gl_AS_VAR_IF): Move...
+	* m4/gnulib-common.m4 (AS_VAR_IF): ...here.
+	Reported by Simon Josefsson.
+
+2010-01-12  Simon Josefsson  <simon@josefsson.org>
+
+	* lib/stdio.in.h: Fix typo.
+
+2010-01-12  Simon Josefsson  <simon@josefsson.org>
+
+	* m4/gc.m4: Check if linking to libgcrypt also needs linking to
+	libgpg-error.
+
+2010-01-12  Simon Josefsson  <simon@josefsson.org>
+
+	* tests/test-xalloc-die.sh: Use $EXEEXT.
+
+2010-01-12  Simon Josefsson  <simon@josefsson.org>
+	    Bruno Haible  <bruno@clisp.org>
+
+	getlogin, getlogin_r: Avoid test failure.
+	* tests/test-getlogin.c: Include <stdio.h>.
+	(main): Skip the test when the function fails because stdin is not a
+	tty.
+	* tests/test-getlogin_r.c: Include <stdio.h>.
+	(main): Skip the test when the function fails because stdin is not a
+	tty.
+
+2010-01-11  Eric Blake  <ebb9@byu.net>
+
+	tests: avoid more large file warnings
+	* tests/test-fflush.c: Avoid warning about ftell use.
+	* tests/test-fseek.c: Avoid warning about fseek use.
+
+2010-01-10  Bruno Haible  <bruno@clisp.org>
+
+	nproc: Work better on Linux when /proc and /sys are not mounted.
+	* lib/nproc.c (num_processors): Use num_processors_via_affinity_mask ()
+	as lower bound when, on glibc/Linux systems,
+	sysconf (_SC_NPROCESSORS_CONF) returns 1.
+	Suggested by Pádraig Brady <P@draigbrady.com>.
+	Reported by Dmitry V. Levin <ldv@altlinux.org>.
+
+	nproc: Refactor.
+	* lib/nproc.c (num_processors_via_affinity_mask): New function,
+	extracted from num_processors.
+	(num_processors): Call it.
+
+2010-01-11  Jim Meyering  <meyering@redhat.com>
+
+	utimecmp: avoid new warning from upcoming gcc-4.5.0
+	* lib/utimecmp.c (BILLION): Define using #define rather than an
+	anonymous enum, to placate upcoming gcc-4.5.0's -Wenum-compare.
+
+2010-01-11  Eric Blake  <ebb9@byu.net>
+
+	math: add portability warnings for classification macros
+	* modules/math (Depends-on): Add warn-on-use.
+	(Makefile.am): Provide new substitutions.
+	* m4/math_h.m4 (gl_MATH_H): Require inline.
+	* lib/math.in.h (_GL_WARN_REAL_FLOATING_DECL)
+	(_GL_WARN_REAL_FLOATING_IMPL): New helper macros.
+	(isfinite, isinf, isnan, signbit) [GNULIB_POSIXCHECK]: Use them to
+	implement warnings.
+
+	unistd: warn on use of environ without module
+	* modules/unistd (Depends-on): Add warn-on-use.
+	(Makefile.am): Provide new substitutions.
+	* m4/unistd_h.m4 (gl_UNISTD_H): Check for inline and environ.
+	* lib/unistd.in.h (environ): Wrap with a warning helper function.
+
+	stdio: warn on suspicious uses
+	* modules/stdio (Depends-on): Add warn-on-use.
+	(Makefile.am): Provide new substitutions.
+	* m4/stdio_h.m4 (gl_STDIO_H): Check for inline, ftello, and
+	fseeko.
+	* lib/stdio.in.h (gets): Always warn on use.
+	(fseek, ftell): Adjust when warnings are issued, and honor
+	_GL_NO_LARGE_FILES as a way to silence the warning.
+	* tests/test-fpurge.c [!GNULIB_FSEEK]: Use new means to squelch
+	any warning about large file offsets.
+	* tests/test-freadable.c [!GNULIB_FSEEK]: Likewise.
+	* tests/test-freading.c [!GNULIB_FSEEK]: Likewise.
+	* tests/test-fseeko.c [!GNULIB_FSEEK]: Likewise.
+	* tests/test-ftell.c [!GNULIB_FSEEK]: Likewise.
+	* tests/test-ftello.c [!GNULIB_FSEEK]: Likewise.
+	* tests/test-fwritable.c [!GNULIB_FSEEK]: Likewise.
+	* tests/test-fwriting.c [!GNULIB_FSEEK]: Likewise.
+	* tests/test-getopt.c [!GNULIB_FTELL]: Likewise.
+
+	warn-on-use: new module
+	* modules/warn-on-use: New file.
+	* build-aux/warn-on-use.h: Likewise.
+	* m4/warn-on-use.m4: Likewise.
+	* MODULES.html.sh (Support for building): Mention it.
+
+2010-01-10  Bruno Haible  <bruno@clisp.org>
+
+	Tests for module 'unistr/u32-strdup'.
+	* modules/unistr/u32-strdup-tests: New file.
+	* tests/unistr/test-u32-strdup.c: New file.
+
+	Tests for module 'unistr/u16-strdup'.
+	* modules/unistr/u16-strdup-tests: New file.
+	* tests/unistr/test-u16-strdup.c: New file.
+
+	Tests for module 'unistr/u8-strdup'.
+	* modules/unistr/u8-strdup-tests: New file.
+	* tests/unistr/test-u8-strdup.c: New file.
+	* tests/unistr/test-strdup.h: New file.
+
+	Tests for module 'unistr/u32-strncmp'.
+	* modules/unistr/u32-strncmp-tests: New file.
+	* tests/unistr/test-u32-strncmp.c: New file.
+
+	Tests for module 'unistr/u16-strncmp'.
+	* modules/unistr/u16-strncmp-tests: New file.
+	* tests/unistr/test-u16-strncmp.c: New file.
+
+	Tests for module 'unistr/u8-strncmp'.
+	* modules/unistr/u8-strncmp-tests: New file.
+	* tests/unistr/test-u8-strncmp.c: New file.
+	* tests/unistr/test-strncmp.h: New file.
+
+	Tests for module 'unistr/u32-strcoll'.
+	* modules/unistr/u32-strcoll-tests: New file.
+	* tests/unistr/test-u32-strcoll.c: New file.
+
+	Tests for module 'unistr/u16-strcoll'.
+	* modules/unistr/u16-strcoll-tests: New file.
+	* tests/unistr/test-u16-strcoll.c: New file.
+
+	Tests for module 'unistr/u8-strcoll'.
+	* modules/unistr/u8-strcoll-tests: New file.
+	* tests/unistr/test-u8-strcoll.c: New file.
+
+	Tests for module 'unistr/u32-strcmp'.
+	* modules/unistr/u32-strcmp-tests: New file.
+	* tests/unistr/test-u32-strcmp.c: New file.
+	* tests/unistr/test-u32-strcmp.h: New file.
+
+	Tests for module 'unistr/u16-strcmp'.
+	* modules/unistr/u16-strcmp-tests: New file.
+	* tests/unistr/test-u16-strcmp.c: New file.
+	* tests/unistr/test-u16-strcmp.h: New file.
+
+	Tests for module 'unistr/u8-strcmp'.
+	* modules/unistr/u8-strcmp-tests: New file.
+	* tests/unistr/test-u8-strcmp.c: New file.
+	* tests/unistr/test-u8-strcmp.h: New file.
+	* tests/unistr/test-strcmp.h: New file.
+
+	Tests for module 'unistr/u32-strncat'.
+	* modules/unistr/u32-strncat-tests: New file.
+	* tests/unistr/test-u32-strncat.c: New file.
+
+	Tests for module 'unistr/u16-strncat'.
+	* modules/unistr/u16-strncat-tests: New file.
+	* tests/unistr/test-u16-strncat.c: New file.
+
+	Tests for module 'unistr/u8-strncat'.
+	* modules/unistr/u8-strncat-tests: New file.
+	* tests/unistr/test-u8-strncat.c: New file.
+	* tests/unistr/test-strncat.h: New file.
+
+	Tests for module 'unistr/u32-strcat'.
+	* modules/unistr/u32-strcat-tests: New file.
+	* tests/unistr/test-u32-strcat.c: New file.
+
+	Tests for module 'unistr/u16-strcat'.
+	* modules/unistr/u16-strcat-tests: New file.
+	* tests/unistr/test-u16-strcat.c: New file.
+
+	Tests for module 'unistr/u8-strcat'.
+	* modules/unistr/u8-strcat-tests: New file.
+	* tests/unistr/test-u8-strcat.c: New file.
+	* tests/unistr/test-strcat.h: New file.
+
+	Tests for module 'unistr/u32-stpncpy'.
+	* modules/unistr/u32-stpncpy-tests: New file.
+	* tests/unistr/test-u32-stpncpy.c: New file.
+
+	Tests for module 'unistr/u16-stpncpy'.
+	* modules/unistr/u16-stpncpy-tests: New file.
+	* tests/unistr/test-u16-stpncpy.c: New file.
+
+	Tests for module 'unistr/u8-stpncpy'.
+	* modules/unistr/u8-stpncpy-tests: New file.
+	* tests/unistr/test-u8-stpncpy.c: New file.
+	* tests/unistr/test-stpncpy.h: New file.
+
+	Tests for module 'unistr/u32-strncpy'.
+	* modules/unistr/u32-strncpy-tests: New file.
+	* tests/unistr/test-u32-strncpy.c: New file.
+
+	Tests for module 'unistr/u16-strncpy'.
+	* modules/unistr/u16-strncpy-tests: New file.
+	* tests/unistr/test-u16-strncpy.c: New file.
+
+	Tests for module 'unistr/u8-strncpy'.
+	* modules/unistr/u8-strncpy-tests: New file.
+	* tests/unistr/test-u8-strncpy.c: New file.
+	* tests/unistr/test-strncpy.h: New file.
+
+	Tests for module 'unistr/u32-stpcpy'.
+	* modules/unistr/u32-stpcpy-tests: New file.
+	* tests/unistr/test-u32-stpcpy.c: New file.
+
+	Tests for module 'unistr/u16-stpcpy'.
+	* modules/unistr/u16-stpcpy-tests: New file.
+	* tests/unistr/test-u16-stpcpy.c: New file.
+
+	Tests for module 'unistr/u8-stpcpy'.
+	* modules/unistr/u8-stpcpy-tests: New file.
+	* tests/unistr/test-u8-stpcpy.c: New file.
+	* tests/unistr/test-stpcpy.h: New file.
+
+	Tests for module 'unistr/u32-strcpy'.
+	* modules/unistr/u32-strcpy-tests: New file.
+	* tests/unistr/test-u32-strcpy.c: New file.
+
+	Tests for module 'unistr/u16-strcpy'.
+	* modules/unistr/u16-strcpy-tests: New file.
+	* tests/unistr/test-u16-strcpy.c: New file.
+
+	Tests for module 'unistr/u8-strcpy'.
+	* modules/unistr/u8-strcpy-tests: New file.
+	* tests/unistr/test-u8-strcpy.c: New file.
+	* tests/unistr/test-strcpy.h: New file.
+
+	Tests for module 'unistr/u32-strnlen'.
+	* modules/unistr/u32-strnlen-tests: New file.
+	* tests/unistr/test-u32-strnlen.c: New file.
+
+	Tests for module 'unistr/u16-strnlen'.
+	* modules/unistr/u16-strnlen-tests: New file.
+	* tests/unistr/test-u16-strnlen.c: New file.
+
+	Tests for module 'unistr/u8-strnlen'.
+	* modules/unistr/u8-strnlen-tests: New file.
+	* tests/unistr/test-u8-strnlen.c: New file.
+	* tests/unistr/test-strnlen.h: New file.
+
+	Tests for module 'unistr/u32-strlen'.
+	* modules/unistr/u32-strlen-tests: New file.
+	* tests/unistr/test-u32-strlen.c: New file.
+
+	Tests for module 'unistr/u16-strlen'.
+	* modules/unistr/u16-strlen-tests: New file.
+	* tests/unistr/test-u16-strlen.c: New file.
+
+	Tests for module 'unistr/u8-strlen'.
+	* modules/unistr/u8-strlen-tests: New file.
+	* tests/unistr/test-u8-strlen.c: New file.
+
+	Tests for module 'unistr/u32-prev'.
+	* modules/unistr/u32-prev-tests: New file.
+	* tests/unistr/test-u32-prev.c: New file.
+
+	Tests for module 'unistr/u16-prev'.
+	* modules/unistr/u16-prev-tests: New file.
+	* tests/unistr/test-u16-prev.c: New file.
+
+	Tests for module 'unistr/u8-prev'.
+	* modules/unistr/u8-prev-tests: New file.
+	* tests/unistr/test-u8-prev.c: New file.
+
+	Tests for module 'unistr/u32-next'.
+	* modules/unistr/u32-next-tests: New file.
+	* tests/unistr/test-u32-next.c: New file.
+
+	Tests for module 'unistr/u16-next'.
+	* modules/unistr/u16-next-tests: New file.
+	* tests/unistr/test-u16-next.c: New file.
+
+	Tests for module 'unistr/u8-next'.
+	* modules/unistr/u8-next-tests: New file.
+	* tests/unistr/test-u8-next.c: New file.
+
+	Tests for module 'unistr/u32-strmbtouc'.
+	* modules/unistr/u32-strmbtouc-tests: New file.
+	* tests/unistr/test-u32-strmbtouc.c: New file.
+
+	Tests for module 'unistr/u16-strmbtouc'.
+	* modules/unistr/u16-strmbtouc-tests: New file.
+	* tests/unistr/test-u16-strmbtouc.c: New file.
+
+	Tests for module 'unistr/u8-strmbtouc'.
+	* modules/unistr/u8-strmbtouc-tests: New file.
+	* tests/unistr/test-u8-strmbtouc.c: New file.
+
+	Tests for module 'unistr/u32-strmblen'.
+	* modules/unistr/u32-strmblen-tests: New file.
+	* tests/unistr/test-u32-strmblen.c: New file.
+
+	Tests for module 'unistr/u16-strmblen'.
+	* modules/unistr/u16-strmblen-tests: New file.
+	* tests/unistr/test-u16-strmblen.c: New file.
+
+	Tests for module 'unistr/u8-strmblen'.
+	* modules/unistr/u8-strmblen-tests: New file.
+	* tests/unistr/test-u8-strmblen.c: New file.
+
+	Tests for module 'unistr/u32-cpy-alloc'.
+	* modules/unistr/u32-cpy-alloc-tests: New file.
+	* tests/unistr/test-u32-cpy-alloc.c: New file.
+
+	Tests for module 'unistr/u16-cpy-alloc'.
+	* modules/unistr/u16-cpy-alloc-tests: New file.
+	* tests/unistr/test-u16-cpy-alloc.c: New file.
+
+	Tests for module 'unistr/u8-cpy-alloc'.
+	* modules/unistr/u8-cpy-alloc-tests: New file.
+	* tests/unistr/test-u8-cpy-alloc.c: New file.
+	* tests/unistr/test-cpy-alloc.h: New file.
+
+	Tests for module 'unistr/u32-mbsnlen'.
+	* modules/unistr/u32-mbsnlen-tests: New file.
+	* tests/unistr/test-u32-mbsnlen.c: New file.
+
+	Tests for module 'unistr/u16-mbsnlen'.
+	* modules/unistr/u16-mbsnlen-tests: New file.
+	* tests/unistr/test-u16-mbsnlen.c: New file.
+
+	Tests for module 'unistr/u8-mbsnlen'.
+	* modules/unistr/u8-mbsnlen-tests: New file.
+	* tests/unistr/test-u8-mbsnlen.c: New file.
+
+	Tests for module 'unistr/u32-chr'.
+	* modules/unistr/u32-chr-tests: New file.
+	* tests/unistr/test-u32-chr.c: New file.
+
+	Tests for module 'unistr/u16-chr'.
+	* modules/unistr/u16-chr-tests: New file.
+	* tests/unistr/test-u16-chr.c: New file.
+
+	Tests for module 'unistr/u8-chr'.
+	* modules/unistr/u8-chr-tests: New file.
+	* tests/unistr/test-u8-chr.c: New file.
+	* tests/unistr/test-chr.h: New file, based on tests/test-memchr.c.
+
+	Tests for module 'unistr/u32-cmp2'.
+	* modules/unistr/u32-cmp2-tests: New file.
+	* tests/unistr/test-u32-cmp2.c: New file.
+
+	Tests for module 'unistr/u16-cmp2'.
+	* modules/unistr/u16-cmp2-tests: New file.
+	* tests/unistr/test-u16-cmp2.c: New file.
+
+	Tests for module 'unistr/u8-cmp2'.
+	* modules/unistr/u8-cmp2-tests: New file.
+	* tests/unistr/test-u8-cmp2.c: New file.
+	* tests/unistr/test-cmp2.h: New file, based on tests/unistr/test-cmp.h.
+
+	Tests for module 'unistr/u32-cmp'.
+	* modules/unistr/u32-cmp-tests: New file.
+	* tests/unistr/test-u32-cmp.c: New file.
+
+	Tests for module 'unistr/u16-cmp'.
+	* modules/unistr/u16-cmp-tests: New file.
+	* tests/unistr/test-u16-cmp.c: New file.
+
+	Tests for module 'unistr/u8-cmp'.
+	* modules/unistr/u8-cmp-tests: New file.
+	* tests/unistr/test-u8-cmp.c: New file.
+	* tests/unistr/test-cmp.h: New file, based on tests/test-memcmp.c.
+
+	Tests for module 'unistr/u32-set'.
+	* modules/unistr/u32-set-tests: New file.
+	* tests/unistr/test-u32-set.c: New file.
+
+	Tests for module 'unistr/u16-set'.
+	* modules/unistr/u16-set-tests: New file.
+	* tests/unistr/test-u16-set.c: New file.
+
+	Tests for module 'unistr/u8-set'.
+	* modules/unistr/u8-set-tests: New file.
+	* tests/unistr/test-u8-set.c: New file.
+	* tests/unistr/test-set.h: New file.
+
+	Tests for module 'unistr/u32-move'.
+	* modules/unistr/u32-move-tests: New file.
+	* tests/unistr/test-u32-move.c: New file.
+
+	Tests for module 'unistr/u16-move'.
+	* modules/unistr/u16-move-tests: New file.
+	* tests/unistr/test-u16-move.c: New file.
+
+	Tests for module 'unistr/u8-move'.
+	* modules/unistr/u8-move-tests: New file.
+	* tests/unistr/test-u8-move.c: New file.
+	* tests/unistr/test-move.h: New file.
+
+	Tests for module 'unistr/u32-cpy'.
+	* modules/unistr/u32-cpy-tests: New file.
+	* tests/unistr/test-u32-cpy.c: New file.
+
+	Tests for module 'unistr/u16-cpy'.
+	* modules/unistr/u16-cpy-tests: New file.
+	* tests/unistr/test-u16-cpy.c: New file.
+
+	Tests for module 'unistr/u8-cpy'.
+	* modules/unistr/u8-cpy-tests: New file.
+	* tests/unistr/test-u8-cpy.c: New file.
+	* tests/unistr/test-cpy.h: New file.
+
+2010-01-09  Bruno Haible  <bruno@clisp.org>
+
+	Tests for module 'unistr/u32-uctomb'.
+	* modules/unistr/u32-uctomb-tests: New file.
+	* tests/unistr/test-u32-uctomb.c: New file.
+
+	Tests for module 'unistr/u16-uctomb'.
+	* modules/unistr/u16-uctomb-tests: New file.
+	* tests/unistr/test-u16-uctomb.c: New file.
+
+	Tests for module 'unistr/u8-uctomb'.
+	* modules/unistr/u8-uctomb-tests: New file.
+	* tests/unistr/test-u8-uctomb.c: New file.
+
+	Tests for module 'unistr/u32-mbtoucr'.
+	* modules/unistr/u32-mbtoucr-tests: New file.
+	* tests/unistr/test-u32-mbtoucr.c: New file.
+
+	Tests for module 'unistr/u16-mbtoucr'.
+	* modules/unistr/u16-mbtoucr-tests: New file.
+	* tests/unistr/test-u16-mbtoucr.c: New file.
+
+	Tests for module 'unistr/u8-mbtoucr'.
+	* modules/unistr/u8-mbtoucr-tests: New file.
+	* tests/unistr/test-u8-mbtoucr.c: New file.
+
+	Tests for module 'unistr/u32-mbtouc'.
+	* modules/unistr/u32-mbtouc-tests: New file.
+	* tests/unistr/test-u32-mbtouc.c: New file.
+
+	Tests for module 'unistr/u16-mbtouc'.
+	* modules/unistr/u16-mbtouc-tests: New file.
+	* tests/unistr/test-u16-mbtouc.c: New file.
+
+	Tests for module 'unistr/u8-mbtouc'.
+	* modules/unistr/u8-mbtouc-tests: New file.
+	* tests/unistr/test-u8-mbtouc.c: New file.
+
+	Tests for module 'unistr/u32-mbtouc-unsafe'.
+	* modules/unistr/u32-mbtouc-unsafe-tests: New file.
+	* tests/unistr/test-u32-mbtouc-unsafe.c: New file.
+	* tests/unistr/test-u32-mbtouc.h: New file.
+
+	Tests for module 'unistr/u16-mbtouc-unsafe'.
+	* modules/unistr/u16-mbtouc-unsafe-tests: New file.
+	* tests/unistr/test-u16-mbtouc-unsafe.c: New file.
+	* tests/unistr/test-u16-mbtouc.h: New file.
+
+	Tests for module 'unistr/u8-mbtouc-unsafe'.
+	* modules/unistr/u8-mbtouc-unsafe-tests: New file.
+	* tests/unistr/test-u8-mbtouc-unsafe.c: New file.
+	* tests/unistr/test-u8-mbtouc.h: New file.
+
+	Tests for module 'unistr/u32-mblen'.
+	* modules/unistr/u32-mblen-tests: New file.
+	* tests/unistr/test-u32-mblen.c: New file.
+
+	Tests for module 'unistr/u16-mblen'.
+	* modules/unistr/u16-mblen-tests: New file.
+	* tests/unistr/test-u16-mblen.c: New file.
+
+	Tests for module 'unistr/u8-mblen'.
+	* modules/unistr/u8-mblen-tests: New file.
+	* tests/unistr/test-u8-mblen.c: New file.
+
+	Tests for module 'unistr/u32-to-u16'.
+	* modules/unistr/u32-to-u16-tests: New file.
+	* tests/unistr/test-u32-to-u16.c: New file.
+
+	Tests for module 'unistr/u32-to-u8'.
+	* modules/unistr/u32-to-u8-tests: New file.
+	* tests/unistr/test-u32-to-u8.c: New file.
+
+	Tests for module 'unistr/u16-to-u32'.
+	* modules/unistr/u16-to-u32-tests: New file.
+	* tests/unistr/test-u16-to-u32.c: New file.
+
+	Tests for module 'unistr/u16-to-u8'.
+	* modules/unistr/u16-to-u8-tests: New file.
+	* tests/unistr/test-u16-to-u8.c: New file.
+
+	Tests for module 'unistr/u8-to-u32'.
+	* modules/unistr/u8-to-u32-tests: New file.
+	* tests/unistr/test-u8-to-u32.c: New file.
+
+	Tests for module 'unistr/u8-to-u16'.
+	* modules/unistr/u8-to-u16-tests: New file.
+	* tests/unistr/test-u8-to-u16.c: New file.
+
+	Tests for module 'unistr/u32-check'.
+	* modules/unistr/u32-check-tests: New file.
+	* tests/unistr/test-u32-check.c: New file.
+
+	Tests for module 'unistr/u16-check'.
+	* modules/unistr/u16-check-tests: New file.
+	* tests/unistr/test-u16-check.c: New file.
+
+	Tests for module 'unistr/u8-check'.
+	* modules/unistr/u8-check-tests: New file.
+	* tests/unistr/test-u8-check.c: New file.
+
+	* tests/unictype/test-categ_byname.c: Include <stdbool.h>.
+	(category_equals): New function.
+	(main): Add more tests.
+	* modules/unictype/category-byname-tests (Depends-on): Add stdbool.
+
+	* tests/unictype/test-bidi_byname.c (main): Add more tests.
+
+2010-01-10  Bruno Haible  <bruno@clisp.org>
+
+	unistr/u*-strcoll: Try harder to distinguish different strings.
+	* lib/unistr/u-strcoll.h (FUNC): When sl1 and sl2 are the same,
+	compare s1 and s2 to see if they are different.
+
+2010-01-10  Bruno Haible  <bruno@clisp.org>
+
+	unistr/u*-stpncpy: Fix the return value.
+	* lib/unistr.h (u8_stpncpy, u16_stpncpy, u32_stpncpy): Make the
+	description of the return value consistent with stpncpy in glibc.
+	* lib/unistr/u-stpncpy.h (FUNC): Return the pointer past the last
+	written non-NUL unit.
+
+2010-01-10  Bruno Haible  <bruno@clisp.org>
+
+	unistr/u*-next: Add missing dependencies.
+	* modules/unistr/u8-next (Depends-on): Add unistr/u8-strmbtouc.
+	* modules/unistr/u16-next (Depends-on): Add unistr/u16-strmbtouc.
+	* modules/unistr/u32-next (Depends-on): Add unistr/u32-strmbtouc.
+
+2010-01-10  Bruno Haible  <bruno@clisp.org>
+
+	unistr/u8-mbsnlen: Fix return value for incomplete character.
+	* lib/unistr/u8-mbsnlen.c (u8_mbsnlen): Use u8_mbtoucr instead of
+	u8_mblen.
+	* modules/unistr/u8-mbsnlen (Depends-on): Add unistr/u8-mbtoucr.
+	Remove unistr/u8-mblen.
+	* lib/unistr/u16-mbsnlen.c (u16_mbsnlen): Use u16_mbtoucr instead of
+	u16_mblen.
+	* modules/unistr/u16-mbsnlen (Depends-on): Add unistr/u16-mbtoucr.
+	Remove unistr/u16-mblen.
+
+2010-01-10  Bruno Haible  <bruno@clisp.org>
+
+	wchar: Fix compilation error when <wchar.h> is used from coreutils.
+	* lib/wchar.in.h: Treat __need_wint_t like __need_mbstate_t.
+	Reported by Brian Gough <bjg@gnu.org> and
+	Chris Clayton <chris2553@googlemail.com> via
+	Mike Frysinger <vapier@gentoo.org> and Jim Meyering <jim@meyering.net>.
+
 2010-01-09  Bruno Haible  <bruno@clisp.org>
 
 	unistr/u16-to-u32: Reject invalid input.
@@ -26,11 +2022,30 @@
 
 2010-01-09  Bruno Haible  <bruno@clisp.org>
 
+	Tests for module 'getlogin'.
+	* modules/getlogin-tests: New file.
+	* tests/test-getlogin.c: New file.
+
+	New module 'getlogin'.
+	* lib/unistd.in.h (getlogin): New declaration.
+	* lib/getlogin.c: New file.
+	* m4/getlogin.m4: New file.
+	* m4/unistd_h.m4 (gl_UNISTD_H_DEFAULTS): Initialize GNULIB_GETLOGIN,
+	HAVE_GETLOGIN.
+	* modules/unistd (Makefile.am): Substitute GNULIB_GETLOGIN,
+	HAVE_GETLOGIN.
+	* modules/getlogin: New file.
+	* doc/posix-functions/getlogin.texi: Mention the new module.
+	Reported by John W. Eaton <jwe@gnu.org>.
+
+2010-01-09  Bruno Haible  <bruno@clisp.org>
+
 	getlogin_r: Support for native Windows.
 	* lib/getlogin_r.c: Include <windows.h>
 	(getlogin_r): Implement for native Windows.
 	* tests/test-getlogin_r.c (main): Also test with a huge buffer.
-	Reported by <tmacchant5@yahoo.co.jp> via John W. Eaton <jwe@gnu.org>.
+	Reported by Tatsuro MATSUOKA <tmacchant5@yahoo.co.jp>
+	via John W. Eaton <jwe@gnu.org>.
 
 2010-01-09  Bruno Haible  <bruno@clisp.org>
 
@@ -52,11 +2067,22 @@
 	* modules/getlogin_r-tests: New file.
 	* tests/test-getlogin_r.c: New file.
 
+2010-01-09  Jim Meyering  <meyering@redhat.com>
+
+	maint.mk: extend proper_name_utf8-vs-LIBICONV-checking rule
+	* top/maint.mk (sc_proper_name_utf8_requires_ICONV): Adapt to work
+	also when $(LIBICONV) is part of LDADD, rather than ${prog}_LDADD.
+
 2010-01-08  Simon Josefsson  <simon@josefsson.org>
 
 	* lib/dup2.c (rpl_dup2): Improve comment.
 
 2010-01-08  Eric Blake  <ebb9@byu.net>
+
+	maint.mk: allow packages to add makefile @@ exceptions
+	* top/maint.mk (_makefile_at_at_check_exceptions): New hook.
+	(sc_makefile_check): Rename...
+	(sc_makefile_at_at_check): ...to this, and use hook.
 
 	dup2: work around mingw bug
 	* lib/dup2.c (rpl_dup2): Sanitize return value on mingw.

@@ -100,12 +100,24 @@ fi
 # An empty expression does not work with the native 'sed' on AIX 6.1.
 sed_noop='s,x,x,'
 
+# sed_comments is true or false, depending whether 'sed' supports comments.
+# (The GNU autoconf doc says that sed comments are not portable, but does
+# not say which 'sed' versions are affected.)
+if echo fo | sed -e 's/f/g/
+# s/o/u/
+s/o/e/' 2>/dev/null | grep ge > /dev/null; then
+  sed_comments=true
+else
+  sed_comments=false
+fi
+
 # func_usage
 # outputs to stdout the --help usage message.
 func_usage ()
 {
   echo "\
 Usage: gnulib-tool --list
+       gnulib-tool --find filename
        gnulib-tool --import [module1 ... moduleN]
        gnulib-tool --update
        gnulib-tool --create-testdir --dir=directory [module1 ... moduleN]
@@ -129,6 +141,7 @@ Usage: gnulib-tool --list
 
 Operation modes:
       --list                print the available module names
+      --find                find the modules which contain the specified file
       --import              import the given modules into the current package;
                             if no modules are specified, update the current
                             package from the current gnulib
@@ -163,6 +176,8 @@ General options:
                             directory.
       --local-dir=DIRECTORY  Specify a local override directory where to look
                             up files before looking in gnulib's directory.
+      --cache-modules       Enable module caching optimization.
+      --no-cache-modules    Disable module caching optimization.
       --verbose             Increase verbosity. May be repeated.
       --quiet               Decrease verbosity. May be repeated.
 
@@ -490,6 +505,13 @@ func_fatal_error ()
   func_exit 1
 }
 
+# func_warning message
+# Outputs to stderr a warning message,
+func_warning ()
+{
+  echo "gnulib-tool: warning: $1" 1>&2
+}
+
 # func_readlink SYMLINK
 # outputs the target of the given symlink.
 if (type -p readlink) > /dev/null 2>&1; then
@@ -639,39 +661,20 @@ func_ln_if_changed ()
   fi
 }
 
-# func_reset_sigpipe
-# Resets SIGPIPE to its default behaviour. SIGPIPE is signalled when a process
-# writes into a pipe with no readers, i.e. a pipe where all readers have
-# already closed their file descriptor that read from it or exited entirely.
-# The default behaviour is to terminate the current process without an error
-# message.
-# When "trap '' SIGPIPE" is in effect, the behaviour (at least with bash) is to
-# terminate the current process with an error message.
-# This function should be called at the beginning of a command that only
-# produces output to stdout (i.e. no side effects!), when the command that
-# will read from this pipe might prematurely exit or close its standard input
-# descriptor.
-if test -n "$BASH_VERSION"; then
-  # The problem has only been reported with bash. Probably it occurs only with
-  # bash-3.2. For the reasons, see
-  # <http://lists.gnu.org/archive/html/bug-bash/2008-12/msg00050.html>.
-  # Note that Solaris sh does not understand "trap - SIGPIPE".
-  func_reset_sigpipe ()
-  {
-    trap - SIGPIPE
-  }
-else
-  func_reset_sigpipe ()
-  {
-    :
-  }
-fi
-
-# Ensure an 'echo' command that does not interpret backslashes.
-# Test cases:
+# Ensure an 'echo' command that
+#   1. does not interpret backslashes and
+#   2. does not print an error message "broken pipe" when writing into a pipe
+#      with no writers.
+#
+# Test cases for problem 1:
 #   echo '\n' | wc -l                 prints 1 when OK, 2 when KO
 #   echo '\t' | grep t > /dev/null    has return code 0 when OK, 1 when KO
-# This problem is a weird heritage from SVR4. BSD got it right (except that
+# Test cases for problem 2:
+#   echo hi | true                    frequently prints
+#                                     "bash: echo: write error: Broken pipe"
+#                                     to standard error in bash 3.2.
+#
+# Problem 1 is a weird heritage from SVR4. BSD got it right (except that
 # BSD echo interprets '-n' as an option, which is also not desirable).
 # Nowadays the problem occurs in 4 situations:
 # - in bash, when the shell option xpg_echo is set (bash >= 2.04)
@@ -694,6 +697,12 @@ fi
 # - otherwise: respawn using /bin/sh and rely on the workarounds.
 # When respawning, we pass --no-reexec as first argument, so as to avoid
 # turning this script into a fork bomb in unlucky situations.
+#
+# Problem 2 is specific to bash 3.2 and affects the 'echo' built-in, but not
+# the 'printf' built-in. See
+#   <http://lists.gnu.org/archive/html/bug-bash/2008-12/msg00050.html>
+#   <http://lists.gnu.org/archive/html/bug-gnulib/2010-02/msg00154.html>
+# The workaround is: define echo to a function that uses the printf built-in.
 have_echo=
 if echo '\t' | grep t > /dev/null; then
   have_echo=yes # Lucky!
@@ -718,7 +727,10 @@ fi
 # For bash >= 2.0: define echo to a function that uses the printf built-in.
 # For bash < 2.0: define echo to a function that uses cat of a here document.
 # (There is no win in using 'printf' over 'cat' if it is not a shell built-in.)
-if test -z "$have_echo" \
+# Also handle problem 2, specific to bash 3.2, here.
+if { test -z "$have_echo" \
+     || case "$BASH_VERSION" in 3.2*) true;; *) false;; esac; \
+   } \
    && test -n "$BASH_VERSION"; then \
   if type printf 2>/dev/null | grep / > /dev/null; then
     # 'printf' is not a shell built-in.
@@ -818,6 +830,7 @@ fi
 # - mode            list or import or create-testdir or create-megatestdir
 # - destdir         from --dir
 # - local_gnulib_dir  from --local-dir
+# - modcache        true or false, from --cache-modules/--no-cache-modules
 # - verbose         integer, default 0, inc/decremented by --verbose/--quiet
 # - libname, supplied_libname  from --lib
 # - sourcebase      from --source-base
@@ -848,6 +861,7 @@ fi
   mode=
   destdir=
   local_gnulib_dir=
+  modcache=true
   verbose=0
   libname=libgnu
   supplied_libname=
@@ -878,6 +892,9 @@ fi
     case "$1" in
       --list | --lis )
         mode=list
+        shift ;;
+      --find | --fin | --fi | --f )
+        mode=find
         shift ;;
       --import | --impor | --impo | --imp | --im | --i )
         mode=import
@@ -922,6 +939,12 @@ fi
         shift ;;
       --local-dir=* )
         local_gnulib_dir=`echo "X$1" | sed -e 's/^X--local-dir=//'`
+        shift ;;
+      --cache-modules | --cache-module | --cache-modul | --cache-modu | --cache-mod | --cache-mo | --cache-m | --cache- | --cache | --cach | --cac | --ca )
+        modcache=true
+        shift ;;
+      --no-cache-modules | --no-cache-module | --no-cache-modul | --no-cache-modu | --no-cache-mod | --no-cache-mo | --no-cache-m | --no-cache- | --no-cache | --no-cach | --no-cac | --no-ca )
+        modcache=false
         shift ;;
       --verbose | --verbos | --verbo | --verb )
         verbose=`expr $verbose + 1`
@@ -1071,7 +1094,7 @@ fi
       --no-vc-files )
         vc_files=false
         shift ;;
-      --no-changelog | --no-changelo | --no-changel | --no-change | --no-chang | --no-chan | --no-cha | --no-ch | --no-c )
+      --no-changelog | --no-changelo | --no-changel | --no-change | --no-chang | --no-chan | --no-cha | --no-ch )
         do_changelog=false
         shift ;;
       --dry-run )
@@ -1135,7 +1158,7 @@ fi
     func_exit 1
   fi
   if test -z "$pobase" && test -n "$po_domain"; then
-    echo "gnulib-tool: warning: --po-domain has no effect without a --po-base option" 1>&2
+    func_warning "--po-domain has no effect without a --po-base option"
   fi
 
   # Determine the minimum supported autoconf version from the project's
@@ -1263,6 +1286,23 @@ func_lookup_file ()
   fi
 }
 
+# func_sanitize_modulelist
+# receives a list of possible module names on standard input, one per line.
+# It removes those which are just file names unrelated to modules, and outputs
+# the resulting list to standard output, one per line.
+func_sanitize_modulelist ()
+{
+  sed -e '/^CVS\//d' -e '/\/CVS\//d' \
+      -e '/^ChangeLog$/d' -e '/\/ChangeLog$/d' \
+      -e '/^COPYING$/d' -e '/\/COPYING$/d' \
+      -e '/^README$/d' -e '/\/README$/d' \
+      -e '/^TEMPLATE$/d' \
+      -e '/^TEMPLATE-EXTENDED$/d' \
+      -e '/^TEMPLATE-TESTS$/d' \
+      -e '/^\..*/d' \
+      -e '/~$/d'
+}
+
 # func_all_modules
 # Input:
 # - local_gnulib_dir  from --local-dir
@@ -1277,15 +1317,7 @@ func_all_modules ()
       (cd "$local_gnulib_dir" && find modules -type f -print | sed -e 's,^modules/,,' -e 's,\.diff$,,')
     fi
   } \
-      | sed -e '/^CVS\//d' -e '/\/CVS\//d' \
-            -e '/^ChangeLog$/d' -e '/\/ChangeLog$/d' \
-            -e '/^COPYING$/d' -e '/\/COPYING$/d' \
-            -e '/^README$/d' -e '/\/README$/d' \
-            -e '/^TEMPLATE$/d' \
-            -e '/^TEMPLATE-EXTENDED$/d' \
-            -e '/^TEMPLATE-TESTS$/d' \
-            -e '/^\..*/d' \
-            -e '/~$/d' \
+      | func_sanitize_modulelist \
       | sed -e '/-tests$/d' \
       | LC_ALL=C sort -u
 }
@@ -1311,7 +1343,7 @@ func_verify_module ()
     # Verify that building the module description with 'patch' succeeds.
     func_lookup_file "modules/$module"
   else
-    echo "gnulib-tool: module $module doesn't exist" 1>&2
+    func_warning "module $module doesn't exist"
     module=
   fi
 }
@@ -1342,6 +1374,14 @@ func_verify_tests_module ()
   esac
 }
 
+# Suffix of a sed expression that extracts a particular field from a
+# module description.
+# A field starts with a line that contains a keyword, such as 'Description',
+# followed by a colon and optional whitespace. All following lines, up to
+# the next field (or end of file if there is none) form the contents of the
+# field.
+# An absent field is equivalent to a field with empty contents.
+# NOTE: Keep this in sync with sed_extract_cache_prog below!
 sed_extract_prog=':[	 ]*$/ {
   :a
     n
@@ -1364,56 +1404,409 @@ sed_extract_prog=':[	 ]*$/ {
   :b
 }'
 
+# Piece of a sed expression that converts a field header line to a shell
+# variable name,
+# NOTE: Keep this in sync with sed_extract_prog above!
+sed_extract_field_header='
+  s/^Description:[	 ]*$/description/
+  s/^Status:[	 ]*$/status/
+  s/^Notice:[	 ]*$/notice/
+  s/^Applicability:[	 ]*$/applicability/
+  s/^Files:[	 ]*$/files/
+  s/^Depends-on:[	 ]*$/dependson/
+  s/^configure\.ac-early:[	 ]*$/configureac_early/
+  s/^configure\.ac:[	 ]*$/configureac/
+  s/^Makefile\.am:[	 ]*$/makefile/
+  s/^Include:[	 ]*$/include/
+  s/^Link:[	 ]*$/link/
+  s/^License:[	 ]*$/license/
+  s/^Maintainer:[	 ]*$/maintainer/'
+
+if $modcache; then
+
+  # Note: The 'eval' silences stderr output in dash.
+  if declare -A x 2>/dev/null && { x[f/2]='foo'; x[f/3]='bar'; eval test '${x[f/2]}' = foo; }; then
+    # Zsh 4 and Bash 4 have associative arrays.
+    have_associative=true
+  else
+    # For other shells, use 'eval' with computed shell variable names.
+    have_associative=false
+  fi
+
+  if $have_associative; then
+
+    # Declare the associative arrays.
+    declare -A modcache_cached
+    sed_to_declare_statement='s|^.*/\([a-zA-Z0-9_]*\)/$|declare -A modcache_\1|p'
+    declare_script=`echo "$sed_extract_field_header" | sed -n -e "$sed_to_declare_statement"`
+    eval "$declare_script"
+
+  else
+
+    # func_cache_var module
+    # computes the cache variable name corresponding to $module.
+    # Note: This computation can map different module names to the same
+    # cachevar (such as 'foo-bar', 'foo_bar', or 'foo/bar'); the caller has
+    # to protect against this case.
+    # Output:
+    # - cachevar               a shell variable name
+    if (f=foo; eval echo '${f//o/e}') < /dev/null 2>/dev/null | grep fee >/dev/null; then
+      # Bash 2.0 and newer, ksh, and zsh support the syntax
+      #   ${param//pattern/replacement}
+      # as a shorthand for
+      #   `echo "$param" | sed -e "s/pattern/replacement/g"`.
+      # Note: The 'eval' above silences stderr output in dash.
+      func_cache_var ()
+      {
+        cachevar=c_${1//[!a-zA-Z0-9_]/_}
+      }
+    else
+      func_cache_var ()
+      {
+        case $1 in
+          *[!a-zA-Z0-9_]*)
+            cachevar=c_`echo "$1" | LC_ALL=C sed -e 's/[^a-zA-Z0-9_]/_/g'` ;;
+          *)
+            cachevar=c_$1 ;;
+        esac
+      }
+    fi
+
+  fi
+
+  # func_init_sed_convert_to_cache_statements
+  # Input:
+  # - modcachevar_assignment
+  # Output:
+  # - sed_convert_to_cache_statements
+  func_init_sed_convert_to_cache_statements ()
+  {
+    # 'sed' script that turns a module description into shell script
+    # assignments, suitable to be eval'ed.  All active characters are escaped.
+    # This script turns
+    #   Description:
+    #   Some module's description
+    #
+    #   Files:
+    #   lib/file.h
+    # into:
+    #   modcache_description[$1]=\
+    #   'Some module'"'"'s description
+    #   '
+    #   modcache_files[$1]=\
+    #   'lib/file.h'
+    # or:
+    #   c_MODULE_description_set=set; c_MODULE_description=\
+    #   'Some module'"'"'s description
+    #   '
+    #   c_MODULE_files_set=set; c_MODULE_files=\
+    #   'lib/file.h'
+    # The script consists of two parts:
+    # 1) Ignore the lines before the first field header.
+    # 2) A loop, treating non-field-header lines by escaping single quotes
+    #    and adding a closing quote in the last line,
+    sed_convert_to_cache_statements="
+      :llla
+        # Here we have not yet seen a field header.
+
+        # See if the current line contains a field header.
+        t llla1
+        :llla1
+        ${sed_extract_field_header}
+        t lllb
+
+        # No field header. Ignore the line.
+
+        # Read the next line. Upon EOF, just exit.
+        n
+      b llla
+
+      :lllb
+        # The current line contains a field header.
+
+        # Turn it into the beginning of an assignment.
+        s/^\\(.*\\)\$/${modcachevar_assignment}\\\\/
+
+        # Move it to the hold space. Don't print it yet,
+        # because we want no assignment if the field is empty.
+        h
+
+        # Read the next line.
+        # Upon EOF, the field was empty. Print no assignment. Just exit.
+        n
+
+        # See if the current line contains a field header.
+        t lllb1
+        :lllb1
+        ${sed_extract_field_header}
+        # If it is, the previous field was empty. Print no assignment.
+        t lllb
+
+        # Not a field header.
+
+        # Print the previous line, held in the hold space.
+        x
+        p
+        x
+
+        # Transform single quotes.
+        s/'/'\"'\"'/g
+
+        # Prepend a single quote.
+        s/^/'/
+
+        :lllc
+
+          # Move it to the hold space.
+          h
+
+          # Read the next line.
+          # Upon EOF, branch.
+          \${
+            b llle
+          }
+          n
+
+          # See if the current line contains a field header.
+          t lllc1
+          :lllc1
+          ${sed_extract_field_header}
+          t llld
+
+          # Print the previous line, held in the hold space.
+          x
+          p
+          x
+
+          # Transform single quotes.
+          s/'/'\"'\"'/g
+
+        b lllc
+
+        :llld
+        # A field header.
+        # Print the previous line, held in the hold space, with a single quote
+        # to end the assignment.
+        x
+        s/\$/'/
+        p
+        x
+
+      b lllb
+
+      :llle
+      # EOF seen.
+      # Print the previous line, held in the hold space, with a single quote
+      # to end the assignment.
+      x
+      s/\$/'/
+      p
+      # Exit.
+      n
+      "
+    if ! $sed_comments; then
+      # Remove comments.
+      sed_convert_to_cache_statements=`echo "$sed_convert_to_cache_statements" \
+                                       | sed -e 's/^ *//' -e 's/^#.*//'`
+    fi
+  }
+
+  if $have_associative; then
+    # sed_convert_to_cache_statements does not depend on the module.
+    modcachevar_assignment='modcache_\1[$1]='
+    func_init_sed_convert_to_cache_statements
+  fi
+
+  # func_cache_lookup_module module
+  #
+  # looks up a module, like 'func_lookup_file modules/$module', and stores all
+  # of its relevant data in a cache in the memory of the processing shell.  If
+  # already cached, it does not look it up again, thus saving file access time.
+  # Parameters:
+  # - module                             non-empty string
+  # Output if $have_associative:
+  # - modcache_cached[$module]           set to yes
+  # - modcache_description[$module] ==
+  # - modcache_status[$module]        \  set to the field's value, minus the
+  # - ...                             /  final newline,
+  # - modcache_maintainer[$module]  ==   or unset if the field's value is empty
+  # Output if ! $have_associative:
+  # - cachevar                           a shell variable name
+  # - ${cachevar}_cached                 set to $module
+  # - ${cachevar}_description       ==
+  # - ${cachevar}_status              \  set to the field's value, minus the
+  # - ...                             /  final newline,
+  # - ${cachevar}_maintainer        ==   or unset if the field's value is empty
+  # - ${cachevar}_description_set   ==
+  # - ${cachevar}_status_set          \  set to non-empty if the field's value
+  # - ...                             /  is non-empty,
+  # - ${cachevar}_maintainer_set    ==   or unset if the field's value is empty
+  func_cache_lookup_module ()
+  {
+    if $have_associative; then
+      cached=${modcache_cached[$1]}
+    else
+      func_cache_var "$1"
+      eval "cached=\"\$${cachevar}_cached\""
+    fi
+    if test -z "$cached"; then
+      # Not found in cache. Look it up on the file system.
+      func_lookup_file "modules/$1"
+      if $have_associative; then
+        modcache_cached[$1]=yes
+      else
+        eval "${cachevar}_cached=\"\$1\""
+      fi
+      if ! $have_associative; then
+        # sed_convert_to_cache_statements depends on the module.
+        modcachevar_assignment="${cachevar}"'_\1_set=set; '"${cachevar}"'_\1='
+        func_init_sed_convert_to_cache_statements
+      fi
+      cache_statements=`LC_ALL=C sed -n -e "$sed_convert_to_cache_statements" < "$lookedup_file"`
+      eval "$cache_statements"
+    else
+      if ! $have_associative; then
+        if test "$1" != "$cached"; then
+          func_fatal_error "cache variable collision between $1 and $cached"
+        fi
+      fi
+    fi
+  }
+
+fi
+
 # func_get_description module
 # Input:
 # - local_gnulib_dir  from --local-dir
+# - modcache          true or false, from --cache-modules/--no-cache-modules
 func_get_description ()
 {
-  func_lookup_file "modules/$1"
-  sed -n -e "/^Description$sed_extract_prog" < "$lookedup_file"
+  if ! $modcache; then
+    func_lookup_file "modules/$1"
+    sed -n -e "/^Description$sed_extract_prog" < "$lookedup_file"
+  else
+    func_cache_lookup_module "$1"
+    # Output the field's value, including the final newline (if any).
+    if $have_associative; then
+      if test -n "${modcache_description[$1]+set}"; then
+        echo "${modcache_description[$1]}"
+      fi
+    else
+      eval "field_set=\"\$${cachevar}_description_set\""
+      if test -n "$field_set"; then
+        eval "field_value=\"\$${cachevar}_description\""
+        echo "${field_value}"
+      fi
+    fi
+  fi
 }
 
 # func_get_status module
 # Input:
 # - local_gnulib_dir  from --local-dir
+# - modcache          true or false, from --cache-modules/--no-cache-modules
 func_get_status ()
 {
-  func_lookup_file "modules/$1"
-  sed -n -e "/^Status$sed_extract_prog" < "$lookedup_file"
+  if ! $modcache; then
+    func_lookup_file "modules/$1"
+    sed -n -e "/^Status$sed_extract_prog" < "$lookedup_file"
+  else
+    func_cache_lookup_module "$1"
+    # Output the field's value, including the final newline (if any).
+    if $have_associative; then
+      if test -n "${modcache_status[$1]+set}"; then
+        echo "${modcache_status[$1]}"
+      fi
+    else
+      eval "field_set=\"\$${cachevar}_status_set\""
+      if test -n "$field_set"; then
+        eval "field_value=\"\$${cachevar}_status\""
+        echo "${field_value}"
+      fi
+    fi
+  fi
 }
 
 # func_get_notice module
 # Input:
 # - local_gnulib_dir  from --local-dir
+# - modcache          true or false, from --cache-modules/--no-cache-modules
 func_get_notice ()
 {
-  func_lookup_file "modules/$1"
-  sed -n -e "/^Notice$sed_extract_prog" < "$lookedup_file"
+  if ! $modcache; then
+    func_lookup_file "modules/$1"
+    sed -n -e "/^Notice$sed_extract_prog" < "$lookedup_file"
+  else
+    func_cache_lookup_module "$1"
+    # Output the field's value, including the final newline (if any).
+    if $have_associative; then
+      if test -n "${modcache_notice[$1]+set}"; then
+        echo "${modcache_notice[$1]}"
+      fi
+    else
+      eval "field_set=\"\$${cachevar}_notice_set\""
+      if test -n "$field_set"; then
+        eval "field_value=\"\$${cachevar}_notice\""
+        echo "${field_value}"
+      fi
+    fi
+  fi
 }
 
 # func_get_applicability module
 # Input:
 # - local_gnulib_dir  from --local-dir
+# - modcache          true or false, from --cache-modules/--no-cache-modules
 # The expected result (on stdout) is either 'main', or 'tests', or 'all'.
 func_get_applicability ()
 {
-  func_lookup_file "modules/$1"
-  { sed -n -e "/^Applicability$sed_extract_prog" < "$lookedup_file"
+  if ! $modcache; then
+    func_lookup_file "modules/$1"
+    my_applicability=`sed -n -e "/^Applicability$sed_extract_prog" < "$lookedup_file"`
+  else
+    func_cache_lookup_module "$1"
+    # Get the field's value, without the final newline.
+    if $have_associative; then
+      my_applicability="${modcache_applicability[$1]}"
+    else
+      eval "my_applicability=\"\$${cachevar}_applicability\""
+    fi
+  fi
+  if test -n "$my_applicability"; then
+    echo $my_applicability
+  else
     # The default is 'main' or 'tests', depending on the module's name.
-    case "$1" in
+    case $1 in
       *-tests) echo "tests";;
       *)       echo "main";;
     esac
-  } | sed -e 's,^ *$,,' | sed -e 1q
+  fi
 }
 
 # func_get_filelist module
 # Input:
 # - local_gnulib_dir  from --local-dir
+# - modcache          true or false, from --cache-modules/--no-cache-modules
 func_get_filelist ()
 {
-  func_lookup_file "modules/$1"
-  sed -n -e "/^Files$sed_extract_prog" < "$lookedup_file"
+  if ! $modcache; then
+    func_lookup_file "modules/$1"
+    sed -n -e "/^Files$sed_extract_prog" < "$lookedup_file"
+  else
+    func_cache_lookup_module "$1"
+    # Output the field's value, including the final newline (if any).
+    if $have_associative; then
+      if test -n "${modcache_files[$1]+set}"; then
+        echo "${modcache_files[$1]}"
+      fi
+    else
+      eval "field_set=\"\$${cachevar}_files_set\""
+      if test -n "$field_set"; then
+        eval "field_value=\"\$${cachevar}_files\""
+        echo "${field_value}"
+      fi
+    fi
+  fi
   echo m4/00gnulib.m4
   echo m4/gnulib-common.m4
   case "$autoconf_minversion" in
@@ -1428,6 +1821,7 @@ func_get_filelist ()
 # elements starting with prefix and ending with suffix are considered.
 # Processing: removed_prefix and removed_suffix are removed from each element,
 # added_prefix and added_suffix are added to each element.
+# prefix, suffix should not contain shell-special characters.
 # removed_prefix, removed_suffix should not contain the characters "$`\{}[]^|.
 # added_prefix, added_suffix should not contain the characters \|&.
 func_filter_filelist ()
@@ -1439,8 +1833,10 @@ func_filter_filelist ()
         }; then
     ffflist=
     for fff in $3; do
+      # Do not quote possibly-empty parameters in case patterns,
+      # AIX and HP-UX ksh won't match them if they are empty.
       case "$fff" in
-        "$4"*"$5")
+        $4*$5)
           if test -n "$6"; then
             func_remove_prefix fff "$6"
           fi
@@ -1460,7 +1856,7 @@ func_filter_filelist ()
     sed_fff_filter="s|^$6\(.*\)$7\$|$8\\1$9|"
     ffflist=`for fff in $3; do
                case "$fff" in
-                 "$4"*"$5") echo "$fff" ;;
+                 $4*$5) echo "$fff" ;;
                esac
              done | sed -e "$sed_fff_filter"`
   fi
@@ -1470,6 +1866,7 @@ func_filter_filelist ()
 # func_get_dependencies module
 # Input:
 # - local_gnulib_dir  from --local-dir
+# - modcache          true or false, from --cache-modules/--no-cache-modules
 func_get_dependencies ()
 {
   # ${module}-tests always implicitly depends on ${module}.
@@ -1481,35 +1878,102 @@ func_get_dependencies ()
       ;;
   esac
   # Then the explicit dependencies listed in the module description.
-  func_lookup_file "modules/$1"
-  sed -n -e "/^Depends-on$sed_extract_prog" < "$lookedup_file"
+  if ! $modcache; then
+    func_lookup_file "modules/$1"
+    sed -n -e "/^Depends-on$sed_extract_prog" < "$lookedup_file"
+  else
+    func_cache_lookup_module "$1"
+    # Output the field's value, including the final newline (if any).
+    if $have_associative; then
+      if test -n "${modcache_dependson[$1]+set}"; then
+        echo "${modcache_dependson[$1]}"
+      fi
+    else
+      eval "field_set=\"\$${cachevar}_dependson_set\""
+      if test -n "$field_set"; then
+        eval "field_value=\"\$${cachevar}_dependson\""
+        echo "${field_value}"
+      fi
+    fi
+  fi
 }
 
 # func_get_autoconf_early_snippet module
 # Input:
 # - local_gnulib_dir  from --local-dir
+# - modcache          true or false, from --cache-modules/--no-cache-modules
 func_get_autoconf_early_snippet ()
 {
-  func_lookup_file "modules/$1"
-  sed -n -e "/^configure\.ac-early$sed_extract_prog" < "$lookedup_file"
+  if ! $modcache; then
+    func_lookup_file "modules/$1"
+    sed -n -e "/^configure\.ac-early$sed_extract_prog" < "$lookedup_file"
+  else
+    func_cache_lookup_module "$1"
+    # Output the field's value, including the final newline (if any).
+    if $have_associative; then
+      if test -n "${modcache_configureac_early[$1]+set}"; then
+        echo "${modcache_configureac_early[$1]}"
+      fi
+    else
+      eval "field_set=\"\$${cachevar}_configureac_early_set\""
+      if test -n "$field_set"; then
+        eval "field_value=\"\$${cachevar}_configureac_early\""
+        echo "${field_value}"
+      fi
+    fi
+  fi
 }
 
 # func_get_autoconf_snippet module
 # Input:
 # - local_gnulib_dir  from --local-dir
+# - modcache          true or false, from --cache-modules/--no-cache-modules
 func_get_autoconf_snippet ()
 {
-  func_lookup_file "modules/$1"
-  sed -n -e "/^configure\.ac$sed_extract_prog" < "$lookedup_file"
+  if ! $modcache; then
+    func_lookup_file "modules/$1"
+    sed -n -e "/^configure\.ac$sed_extract_prog" < "$lookedup_file"
+  else
+    func_cache_lookup_module "$1"
+    # Output the field's value, including the final newline (if any).
+    if $have_associative; then
+      if test -n "${modcache_configureac[$1]+set}"; then
+        echo "${modcache_configureac[$1]}"
+      fi
+    else
+      eval "field_set=\"\$${cachevar}_configureac_set\""
+      if test -n "$field_set"; then
+        eval "field_value=\"\$${cachevar}_configureac\""
+        echo "${field_value}"
+      fi
+    fi
+  fi
 }
 
 # func_get_automake_snippet module
 # Input:
 # - local_gnulib_dir  from --local-dir
+# - modcache          true or false, from --cache-modules/--no-cache-modules
 func_get_automake_snippet ()
 {
-  func_lookup_file "modules/$1"
-  sed -n -e "/^Makefile\.am$sed_extract_prog" < "$lookedup_file"
+  if ! $modcache; then
+    func_lookup_file "modules/$1"
+    sed -n -e "/^Makefile\.am$sed_extract_prog" < "$lookedup_file"
+  else
+    func_cache_lookup_module "$1"
+    # Output the field's value, including the final newline (if any).
+    if $have_associative; then
+      if test -n "${modcache_makefile[$1]+set}"; then
+        echo "${modcache_makefile[$1]}"
+      fi
+    else
+      eval "field_set=\"\$${cachevar}_makefile_set\""
+      if test -n "$field_set"; then
+        eval "field_value=\"\$${cachevar}_makefile\""
+        echo "${field_value}"
+      fi
+    fi
+  fi
   case "$1" in
     *-tests)
       # *-tests module live in tests/, not lib/.
@@ -1533,15 +1997,29 @@ func_get_automake_snippet ()
       }'
       sed_extract_mentioned_files='s/^lib_SOURCES[	 ]*+=[	 ]*//p'
       already_mentioned_files=` \
-        sed -n -e "/^Makefile\.am$sed_extract_prog" < "$lookedup_file" \
+        { if ! $modcache; then
+            sed -n -e "/^Makefile\.am$sed_extract_prog" < "$lookedup_file"
+          else
+            if $have_associative; then
+              if test -n "${modcache_makefile[$1]+set}"; then
+                echo "${modcache_makefile[$1]}"
+              fi
+            else
+              eval 'field_set="$'"${cachevar}"'_makefile_set"'
+              if test -n "$field_set"; then
+                eval 'field_value="$'"${cachevar}"'_makefile"'
+                echo "${field_value}"
+              fi
+            fi
+          fi
+        } \
         | sed -e "$sed_combine_lines" \
         | sed -n -e "$sed_extract_mentioned_files" | sed -e 's/#.*//'`
       all_files=`func_get_filelist $1`
       func_filter_filelist lib_files "$nl" "$all_files" 'lib/' '' 'lib/' ''
       # Remove $already_mentioned_files from $lib_files.
       echo "$lib_files" | LC_ALL=C sort -u > "$tmp"/lib-files
-      extra_files=`func_reset_sigpipe; \
-                   for f in $already_mentioned_files; do echo $f; done \
+      extra_files=`for f in $already_mentioned_files; do echo $f; done \
                    | LC_ALL=C sort -u | LC_ALL=C join -v 2 - "$tmp"/lib-files`
       if test -n "$extra_files"; then
         echo "EXTRA_DIST +=" $extra_files
@@ -1589,29 +2067,82 @@ func_get_automake_snippet ()
 # func_get_include_directive module
 # Input:
 # - local_gnulib_dir  from --local-dir
+# - modcache          true or false, from --cache-modules/--no-cache-modules
 func_get_include_directive ()
 {
-  func_lookup_file "modules/$1"
-  sed -n -e "/^Include$sed_extract_prog" < "$lookedup_file" | \
-  sed -e 's/^\(["<]\)/#include \1/'
+  {
+    if ! $modcache; then
+      func_lookup_file "modules/$1"
+      sed -n -e "/^Include$sed_extract_prog" < "$lookedup_file"
+    else
+      func_cache_lookup_module "$1"
+      # Output the field's value, including the final newline (if any).
+      if $have_associative; then
+        if test -n "${modcache_include[$1]+set}"; then
+          echo "${modcache_include[$1]}"
+        fi
+      else
+        eval "field_set=\"\$${cachevar}_include_set\""
+        if test -n "$field_set"; then
+          eval "field_value=\"\$${cachevar}_include\""
+          echo "${field_value}"
+        fi
+      fi
+    fi
+  } | sed -e 's/^\(["<]\)/#include \1/'
 }
 
 # func_get_link_directive module
 # Input:
 # - local_gnulib_dir  from --local-dir
+# - modcache          true or false, from --cache-modules/--no-cache-modules
 func_get_link_directive ()
 {
-  func_lookup_file "modules/$1"
-  sed -n -e "/^Link$sed_extract_prog" < "$lookedup_file"
+  if ! $modcache; then
+    func_lookup_file "modules/$1"
+    sed -n -e "/^Link$sed_extract_prog" < "$lookedup_file"
+  else
+    func_cache_lookup_module "$1"
+    # Output the field's value, including the final newline (if any).
+    if $have_associative; then
+      if test -n "${modcache_link[$1]+set}"; then
+        echo "${modcache_link[$1]}"
+      fi
+    else
+      eval "field_set=\"\$${cachevar}_link_set\""
+      if test -n "$field_set"; then
+        eval "field_value=\"\$${cachevar}_link\""
+        echo "${field_value}"
+      fi
+    fi
+  fi
 }
 
 # func_get_license module
 # Input:
 # - local_gnulib_dir  from --local-dir
+# - modcache          true or false, from --cache-modules/--no-cache-modules
 func_get_license ()
 {
-  func_lookup_file "modules/$1"
-  { sed -n -e "/^License$sed_extract_prog" < "$lookedup_file"
+  {
+    if ! $modcache; then
+      func_lookup_file "modules/$1"
+      sed -n -e "/^License$sed_extract_prog" < "$lookedup_file"
+    else
+      func_cache_lookup_module "$1"
+      # Output the field's value, including the final newline (if any).
+      if $have_associative; then
+        if test -n "${modcache_license[$1]+set}"; then
+          echo "${modcache_license[$1]}"
+        fi
+      else
+        eval "field_set=\"\$${cachevar}_license_set\""
+        if test -n "$field_set"; then
+          eval "field_value=\"\$${cachevar}_license\""
+          echo "${field_value}"
+        fi
+      fi
+    fi
     # The default is GPL.
     echo "GPL"
   } | sed -e 's,^ *$,,' | sed -e 1q
@@ -1620,10 +2151,27 @@ func_get_license ()
 # func_get_maintainer module
 # Input:
 # - local_gnulib_dir  from --local-dir
+# - modcache          true or false, from --cache-modules/--no-cache-modules
 func_get_maintainer ()
 {
-  func_lookup_file "modules/$1"
-  sed -n -e "/^Maintainer$sed_extract_prog" < "$lookedup_file"
+  if ! $modcache; then
+    func_lookup_file "modules/$1"
+    sed -n -e "/^Maintainer$sed_extract_prog" < "$lookedup_file"
+  else
+    func_cache_lookup_module "$1"
+    # Output the field's value, including the final newline (if any).
+    if $have_associative; then
+      if test -n "${modcache_maintainer[$1]+set}"; then
+        echo "${modcache_maintainer[$1]}"
+      fi
+    else
+      eval "field_set=\"\$${cachevar}_maintainer_set\""
+      if test -n "$field_set"; then
+        eval "field_value=\"\$${cachevar}_maintainer\""
+        echo "${field_value}"
+      fi
+    fi
+  fi
 }
 
 # func_get_tests_module module
@@ -1656,6 +2204,7 @@ func_acceptable ()
 # func_modules_transitive_closure
 # Input:
 # - local_gnulib_dir  from --local-dir
+# - modcache        true or false, from --cache-modules/--no-cache-modules
 # - modules         list of specified modules
 # - inctests        true if tests should be included, blank otherwise
 # - incobsolete     true if obsolete modules among dependencies should be
@@ -1686,7 +2235,7 @@ func_modules_transitive_closure ()
           # Duplicate dependencies are harmless, but Jim wants a warning.
           duplicated_deps=`echo "$deps" | LC_ALL=C sort | LC_ALL=C uniq -d`
           if test -n "$duplicated_deps"; then
-            echo "warning: module $module has duplicated dependencies: "`echo $duplicated_deps` 1>&2
+            func_warning "module $module has duplicated dependencies: "`echo $duplicated_deps`
           fi
           for dep in $deps; do
             if test -n "$incobsolete" \
@@ -1706,7 +2255,7 @@ func_modules_transitive_closure ()
     handledmodules=`for m in $handledmodules $inmodules_this_round; do echo $m; done | LC_ALL=C sort -u`
     # Remove $handledmodules from $inmodules.
     for m in $inmodules; do echo $m; done | LC_ALL=C sort -u > "$tmp"/queued-modules
-    inmodules=`func_reset_sigpipe; echo "$handledmodules" | LC_ALL=C join -v 2 - "$tmp"/queued-modules`
+    inmodules=`echo "$handledmodules" | LC_ALL=C join -v 2 - "$tmp"/queued-modules`
   done
   modules=`for m in $outmodules; do echo $m; done | LC_ALL=C sort -u`
   rm -f "$tmp"/queued-modules
@@ -1715,6 +2264,7 @@ func_modules_transitive_closure ()
 # func_modules_add_dummy
 # Input:
 # - local_gnulib_dir  from --local-dir
+# - modcache        true or false, from --cache-modules/--no-cache-modules
 # - modules         list of modules, including dependencies
 # Output:
 # - modules         list of modules, including 'dummy' if needed
@@ -1756,6 +2306,7 @@ ba
 # func_modules_notice
 # Input:
 # - local_gnulib_dir  from --local-dir
+# - modcache        true or false, from --cache-modules/--no-cache-modules
 # - verbose         integer, default 0, inc/decremented by --verbose/--quiet
 # - modules         list of modules, including dependencies
 func_modules_notice ()
@@ -1777,6 +2328,7 @@ func_modules_notice ()
 # func_modules_to_filelist
 # Input:
 # - local_gnulib_dir  from --local-dir
+# - modcache        true or false, from --cache-modules/--no-cache-modules
 # - modules         list of modules, including dependencies
 # Output:
 # - files           list of files
@@ -1845,6 +2397,7 @@ func_dest_tmpfilename ()
 # Input:
 # - destdir         target directory
 # - local_gnulib_dir  from --local-dir
+# - modcache        true or false, from --cache-modules/--no-cache-modules
 # - f               the original file name
 # - lookedup_file   name of the merged (combined) file
 # - lookedup_tmp    true if it is located in the tmp directory, blank otherwise
@@ -1878,6 +2431,7 @@ func_add_file ()
 # Input:
 # - destdir         target directory
 # - local_gnulib_dir  from --local-dir
+# - modcache        true or false, from --cache-modules/--no-cache-modules
 # - f               the original file name
 # - lookedup_file   name of the merged (combined) file
 # - lookedup_tmp    true if it is located in the tmp directory, blank otherwise
@@ -1924,6 +2478,7 @@ func_update_file ()
 # emits the contents of library makefile to standard output.
 # Input:
 # - local_gnulib_dir  from --local-dir
+# - modcache        true or false, from --cache-modules/--no-cache-modules
 # - modules         list of modules, including dependencies
 # - libname         library name
 # - pobase          directory relative to destdir where to place *.po files
@@ -1988,6 +2543,7 @@ func_emit_lib_Makefile_am ()
       if test -n "$module"; then
         {
           func_get_automake_snippet "$module" |
+            LC_ALL=C \
             sed -e 's,lib_LIBRARIES,lib%_LIBRARIES,g' \
                 -e 's,lib_LTLIBRARIES,lib%_LTLIBRARIES,g' \
                 -e "$sed_eliminate_LDFLAGS" \
@@ -1999,16 +2555,16 @@ func_emit_lib_Makefile_am ()
             echo "${libname}_${libext}_LIBADD += @${perhapsLT}ALLOCA@"
             echo "${libname}_${libext}_DEPENDENCIES += @${perhapsLT}ALLOCA@"
           fi
-        } > amsnippet.tmp
+        } > "$tmp"/amsnippet
         # Skip the contents if it's entirely empty.
-        if grep '[^	 ]' amsnippet.tmp > /dev/null ; then
+        if grep '[^	 ]' "$tmp"/amsnippet > /dev/null ; then
           echo "## begin gnulib module $module"
           echo
-          cat amsnippet.tmp
+          cat "$tmp"/amsnippet
           echo "## end   gnulib module $module"
           echo
         fi
-        rm -f amsnippet.tmp
+        rm -f "$tmp"/amsnippet
         # Test whether there are some source files in subdirectories.
         for f in `func_get_filelist "$module"`; do
           case $f in
@@ -2020,7 +2576,7 @@ func_emit_lib_Makefile_am ()
         done
       fi
     done
-  } > allsnippets.tmp
+  } > "$tmp"/allsnippets
   if test -z "$makefile_name"; then
     # If there are source files in subdirectories, prevent collision of the
     # object files (example: hash.c and libxml/hash.c).
@@ -2038,7 +2594,7 @@ func_emit_lib_Makefile_am ()
     echo "noinst_LTLIBRARIES ="
     # Automake versions < 1.9b create an empty pkgdatadir at installation time
     # if you specify pkgdata_DATA to empty. This is a workaround.
-    if grep '^pkgdata_DATA *+=' allsnippets.tmp > /dev/null; then
+    if grep '^pkgdata_DATA *+=' "$tmp"/allsnippets > /dev/null; then
       echo "pkgdata_DATA ="
     fi
     echo "EXTRA_DIST ="
@@ -2072,7 +2628,7 @@ func_emit_lib_Makefile_am ()
     echo "AM_CFLAGS ="
   fi
   echo
-  if LC_ALL=C grep "^[a-zA-Z0-9_]*_${perhapsLT}LIBRARIES *+\{0,1\}= *$libname\\.$libext\$" allsnippets.tmp > /dev/null \
+  if LC_ALL=C grep "^[a-zA-Z0-9_]*_${perhapsLT}LIBRARIES *+\{0,1\}= *$libname\\.$libext\$" "$tmp"/allsnippets > /dev/null \
      || { test -n "$makefile_name" \
           && test -f "$sourcebase/Makefile.am" \
           && LC_ALL=C grep "^[a-zA-Z0-9_]*_${perhapsLT}LIBRARIES *+\{0,1\}= *$libname\\.$libext\$" "$sourcebase/Makefile.am" > /dev/null; \
@@ -2100,7 +2656,7 @@ func_emit_lib_Makefile_am ()
     echo "AM_CPPFLAGS += -DDEFAULT_TEXT_DOMAIN=\\\"${po_domain}-gnulib\\\""
     echo
   fi
-  cat allsnippets.tmp \
+  cat "$tmp"/allsnippets \
     | sed -e 's|\$(top_srcdir)/build-aux/|$(top_srcdir)/'"$auxdir"'/|g'
   echo
   echo "mostlyclean-local: mostlyclean-generic"
@@ -2110,13 +2666,14 @@ func_emit_lib_Makefile_am ()
   echo "	  fi; \\"
   echo "	done; \\"
   echo "	:"
-  rm -f allsnippets.tmp
+  rm -f "$tmp"/allsnippets
 }
 
 # func_emit_po_Makevars
 # emits the contents of po/ makefile parameterization to standard output.
 # Input:
 # - local_gnulib_dir  from --local-dir
+# - modcache        true or false, from --cache-modules/--no-cache-modules
 # - sourcebase      directory relative to destdir where to place source code
 # - pobase          directory relative to destdir where to place *.po files
 # - po_domain       prefix of i18n domain to use (without -gnulib suffix)
@@ -2178,6 +2735,7 @@ EOF
 # emits the file list to be passed to xgettext to standard output.
 # Input:
 # - local_gnulib_dir  from --local-dir
+# - modcache        true or false, from --cache-modules/--no-cache-modules
 # - sourcebase      directory relative to destdir where to place source code
 # - files           list of new files
 func_emit_po_POTFILES_in ()
@@ -2193,6 +2751,7 @@ func_emit_po_POTFILES_in ()
 # emits the contents of tests makefile to standard output.
 # Input:
 # - local_gnulib_dir  from --local-dir
+# - modcache        true or false, from --cache-modules/--no-cache-modules
 # - modules         list of modules, including dependencies
 # - libname         library name
 # - auxdir          directory relative to destdir where to place build aux files
@@ -2244,6 +2803,7 @@ func_emit_tests_Makefile_am ()
       if test -n "$module"; then
         {
           func_get_automake_snippet "$module" |
+            LC_ALL=C \
             sed -e 's,lib_LIBRARIES,lib%_LIBRARIES,g' \
                 -e 's,lib_LTLIBRARIES,lib%_LTLIBRARIES,g' \
                 -e "$sed_eliminate_LDFLAGS" \
@@ -2255,16 +2815,16 @@ func_emit_tests_Makefile_am ()
             echo "libtests_a_LIBADD += @${perhapsLT}ALLOCA@"
             echo "libtests_a_DEPENDENCIES += @${perhapsLT}ALLOCA@"
           fi
-        } > amsnippet.tmp
+        } > "$tmp"/amsnippet
         # Skip the contents if it's entirely empty.
-        if grep '[^	 ]' amsnippet.tmp > /dev/null ; then
+        if grep '[^	 ]' "$tmp"/amsnippet > /dev/null ; then
           echo "## begin gnulib module $module"
           echo
-          cat amsnippet.tmp
+          cat "$tmp"/amsnippet
           echo "## end   gnulib module $module"
           echo
         fi
-        rm -f amsnippet.tmp
+        rm -f "$tmp"/amsnippet
         # Test whether there are some source files in subdirectories.
         for f in `func_get_filelist "$module"`; do
           case $f in
@@ -2276,7 +2836,7 @@ func_emit_tests_Makefile_am ()
         done
       fi
     done
-  } > allsnippets.tmp
+  } > "$tmp"/allsnippets
   # Generate dependencies here, since it eases the debugging of test failures.
   # If there are source files in subdirectories, prevent collision of the
   # object files (example: hash.c and libxml/hash.c).
@@ -2312,7 +2872,7 @@ func_emit_tests_Makefile_am ()
   fi
   # Automake versions < 1.9b create an empty pkgdatadir at installation time
   # if you specify pkgdata_DATA to empty. This is a workaround.
-  if grep '^pkgdata_DATA *+=' allsnippets.tmp > /dev/null; then
+  if grep '^pkgdata_DATA *+=' "$tmp"/allsnippets > /dev/null; then
     echo "pkgdata_DATA ="
   fi
   echo "EXTRA_DIST ="
@@ -2370,7 +2930,12 @@ func_emit_tests_Makefile_am ()
     echo "AM_LIBTOOLFLAGS = --preserve-dup-deps"
     echo
   fi
-  cat allsnippets.tmp \
+  # Many test scripts use ${EXEEXT} or ${srcdir}.
+  # EXEEXT is defined by AC_PROG_CC through autoconf.
+  # srcdir is defined by autoconf and automake.
+  echo "TESTS_ENVIRONMENT += EXEEXT='@EXEEXT@' srcdir='\$(srcdir)'"
+  echo
+  cat "$tmp"/allsnippets \
     | sed -e 's|\$(top_srcdir)/build-aux/|$(top_srcdir)/'"$auxdir"'/|g'
   echo "# Clean up after Solaris cc."
   echo "clean-local:"
@@ -2383,7 +2948,7 @@ func_emit_tests_Makefile_am ()
   echo "	  fi; \\"
   echo "	done; \\"
   echo "	:"
-  rm -f allsnippets.tmp
+  rm -f "$tmp"/allsnippets
 }
 
 # func_emit_initmacro_start macro_prefix
@@ -2502,6 +3067,7 @@ func_emit_initmacro_done ()
 # Uses also the variables
 # - destdir         target directory
 # - local_gnulib_dir  from --local-dir
+# - modcache        true or false, from --cache-modules/--no-cache-modules
 # - verbose         integer, default 0, inc/decremented by --verbose/--quiet
 # - libname         library name
 # - sourcebase      directory relative to destdir where to place source code
@@ -2779,8 +3345,7 @@ func_import ()
   fi
   # Determine tests-related module list.
   echo "$final_modules" | LC_ALL=C sort -u > "$tmp"/final-modules
-  testsrelated_modules=`func_reset_sigpipe
-                        for module in $main_modules; do
+  testsrelated_modules=`for module in $main_modules; do
                           if test \`func_get_applicability $module\` = main; then
                             echo $module
                           fi
@@ -3681,8 +4246,7 @@ s,//*$,/,'
         if test -f "$destdir/$dir$ignore"; then
           if test -n "$dir_added" || test -n "$dir_removed"; then
             sed -e "s|^$anchor||" < "$destdir/$dir$ignore" | LC_ALL=C sort > "$tmp"/ignore
-            (func_reset_sigpipe
-             echo "$dir_added" | sed -e '/^$/d' | LC_ALL=C sort -u \
+            (echo "$dir_added" | sed -e '/^$/d' | LC_ALL=C sort -u \
                | LC_ALL=C join -v 1 - "$tmp"/ignore > "$tmp"/ignore-added
              echo "$dir_removed" | sed -e '/^$/d' | LC_ALL=C sort -u \
                | LC_ALL=C join -v 1 - "$tmp"/ignore > "$tmp"/ignore-removed
@@ -3836,6 +4400,7 @@ s,//*$,/,'
 # func_create_testdir testdir modules
 # Input:
 # - local_gnulib_dir  from --local-dir
+# - modcache        true or false, from --cache-modules/--no-cache-modules
 # - auxdir          directory relative to destdir where to place build aux files
 func_create_testdir ()
 {
@@ -3845,8 +4410,9 @@ func_create_testdir ()
     # All modules together.
     # Except config-h, which breaks all modules which use HAVE_CONFIG_H.
     # Except ftruncate, mountlist, which abort the configuration on mingw. FIXME.
+    # Except lib-ignore, which leads to link errors when Sun C++ is used. FIXME.
     modules=`func_all_modules`
-    modules=`for m in $modules; do case $m in config-h | ftruncate | mountlist) ;; *) echo $m;; esac; done`
+    modules=`for m in $modules; do case $m in config-h | ftruncate | mountlist | lib-ignore) ;; *) echo $m;; esac; done`
   fi
   modules=`for m in $modules; do echo $m; done | LC_ALL=C sort -u`
 
@@ -3877,19 +4443,19 @@ func_create_testdir ()
               GPLv2+)
                 case "$license" in
                   GPLv2+ | LGPLv2+) ;;
-                  *) echo "warning: module $requested_module depends on a module with an incompatible license: $module" 1>&2 ;;
+                  *) func_warning "module $requested_module depends on a module with an incompatible license: $module" ;;
                 esac
                 ;;
               LGPL)
                 case "$license" in
                   LGPL | LGPLv2+) ;;
-                  *) echo "warning: module $requested_module depends on a module with an incompatible license: $module" 1>&2 ;;
+                  *) func_warning "module $requested_module depends on a module with an incompatible license: $module" ;;
                 esac
                 ;;
               LGPLv2+)
                 case "$license" in
                   LGPLv2+) ;;
-                  *) echo "warning: module $requested_module depends on a module with an incompatible license: $module" 1>&2 ;;
+                  *) func_warning "module $requested_module depends on a module with an incompatible license: $module" ;;
                 esac
                 ;;
             esac
@@ -4326,6 +4892,7 @@ func_create_testdir ()
 # func_create_megatestdir megatestdir allmodules
 # Input:
 # - local_gnulib_dir  from --local-dir
+# - modcache        true or false, from --cache-modules/--no-cache-modules
 # - auxdir          directory relative to destdir where to place build aux files
 func_create_megatestdir ()
 {
@@ -4432,6 +4999,40 @@ case $mode in
 
   list )
     func_all_modules
+    ;;
+
+  find )
+    # sed expression that converts a literal to a basic regular expression.
+    # Needs to handle . [ \ * ^ $.
+    sed_literal_to_basic_regex='s/\\/\\\\/g
+s/\[/\\[/g
+s/\^/\\^/g
+s/\([.*$]\)/[\1]/g'
+    for filename
+    do
+      if test -f "$gnulib_dir/$filename" \
+         || { test -n "$local_gnulib_dir" && test -f "$local_gnulib_dir/$filename"; }; then
+        filename_anywhere_regex=`echo "$filename" | sed -e "$sed_literal_to_basic_regex"`
+        filename_line_regex='^'"$filename_anywhere_regex"'$'
+        module_candidates=`
+          {
+            (cd "$gnulib_dir" && find modules -type f -print | xargs -n 100 grep -l "$filename_line_regex" /dev/null | sed -e 's,^modules/,,')
+            if test -n "$local_gnulib_dir" && test -d "$local_gnulib_dir/modules"; then
+              (cd "$local_gnulib_dir" && find modules -type f -print | xargs -n 100 grep -l "$filename_anywhere_regex" /dev/null | sed -e 's,^modules/,,' -e 's,\.diff$,,')
+            fi
+          } \
+            | func_sanitize_modulelist \
+            | LC_ALL=C sort -u
+          `
+        for module in $module_candidates; do
+          if func_get_filelist $module | grep "$filename_line_regex" > /dev/null; then
+            echo $module
+          fi
+        done
+      else
+        func_warning "file $filename does not exist"
+      fi
+    done
     ;;
 
   import | update )
