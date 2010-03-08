@@ -18,6 +18,7 @@ with the following additional commits:
     * [3753983]->[51c9c87] Fix incorrect Makefile.am generation in German locale.
     * [89e5b6b]->[6fde090] Clarify access, euidaccess, faccessat.
     * [798f5bd]->[661fa69] Fix link error on platforms with GNU libiconv.
+    * [94a90dc]->[a62a0db] Exclude lib-ignore module.
 __NEXTCOMMITMARKER__
 
   * 20100109-stable
