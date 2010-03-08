@@ -15,6 +15,7 @@ with the following additional commits:
     * [eb6dce1]->[529ebff] exitfail: Relax license to LGPLv2.1+.  Drop exitfail.m4.
     * [434627d]->[3dfb904] Prefer lib_SOURCES over unconditional AC_LIBOBJ.
     * [032088a]->[99e99ca] euidaccess: relax license to LGPLv2+
+    * [3753983]->[51c9c87] Fix incorrect Makefile.am generation in German locale.
 __NEXTCOMMITMARKER__
 
   * 20100109-stable
