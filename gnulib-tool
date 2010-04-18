@@ -40,6 +40,9 @@ AUTOMAKEPATH=
 # You can set GETTEXTPATH to empty if autopoint 0.15 is already in your PATH.
 GETTEXTPATH=
 
+# You can set LIBTOOLPATH to empty if libtoolize 2.x is already in your PATH.
+LIBTOOLPATH=
+
 # If you didn't set AUTOCONFPATH and AUTOMAKEPATH, you can also set the
 # variables AUTOCONF, AUTOHEADER, ACLOCAL, AUTOMAKE, AUTORECONF individually.
 if test -z "${AUTOCONF}" || test -n "${AUTOCONFPATH}"; then
@@ -61,6 +64,11 @@ fi
 # If you didn't set GETTEXTPATH, you can also set the variable AUTOPOINT.
 if test -z "${AUTOPOINT}" || test -n "${GETTEXTPATH}"; then
   AUTOPOINT="${GETTEXTPATH}autopoint"
+fi
+
+# If you didn't set LIBTOOLPATH, you can also set the variable LIBTOOLIZE.
+if test -z "${LIBTOOLIZE}" || test -n "${LIBTOOLPATH}"; then
+  LIBTOOLIZE="${LIBTOOLPATH}libtoolize"
 fi
 
 # You can set MAKE.
@@ -125,6 +133,7 @@ Usage: gnulib-tool --list
        gnulib-tool --test --dir=directory module1 ... moduleN
        gnulib-tool --megatest --dir=directory [module1 ... moduleN]
        gnulib-tool --extract-description module
+       gnulib-tool --extract-comment module
        gnulib-tool --extract-status module
        gnulib-tool --extract-notice module
        gnulib-tool --extract-applicability module
@@ -155,8 +164,10 @@ Operation modes:
       --megatest            test the given modules one by one and all together
                             (recommended to use CC=\"gcc -Wall\" here)
       --extract-description        extract the description
-      --extract-status             extract the status (obsolete or not)
+      --extract-comment            extract the comment
+      --extract-status             extract the status (obsolete etc.)
       --extract-notice             extract the notice or banner
+      --extract-applicability      extract the applicability
       --extract-filelist           extract the list of files
       --extract-dependencies       extract the dependencies
       --extract-autoconf-snippet   extract the snippet for configure.ac
@@ -181,6 +192,20 @@ General options:
       --verbose             Increase verbosity. May be repeated.
       --quiet               Decrease verbosity. May be repeated.
 
+Options for --import, --update:
+      --dry-run             Only print what would have been done.
+
+Options for --import, --create-[mega]testdir, --[mega]test:
+      --with-tests          Include unit tests for the included modules.
+      --with-obsolete       Include obsolete modules when they occur among the
+                            dependencies. By default, dependencies to obsolete
+                            modules are ignored.
+      --avoid=MODULE        Avoid including the given MODULE. Useful if you
+                            have code that provides equivalent functionality.
+                            This option can be repeated.
+      --libtool             Use libtool rules.
+      --no-libtool          Don't use libtool rules.
+
 Options for --import:
       --lib=LIBRARY         Specify the library name.  Defaults to 'libgnu'.
       --source-base=DIRECTORY
@@ -197,13 +222,6 @@ Options for --import:
                             placed (default \"tests\").
       --aux-dir=DIRECTORY   Directory relative to --dir where auxiliary build
                             tools are placed (default \"build-aux\").
-      --with-tests          Include unit tests for the included modules.
-      --with-obsolete       Include obsolete modules when they occur among the
-                            dependencies. By default, dependencies to obsolete
-                            modules are ignored.
-      --avoid=MODULE        Avoid including the given MODULE. Useful if you
-                            have code that provides equivalent functionality.
-                            This option can be repeated.
       --lgpl[=2|=3]         Abort if modules aren't available under the LGPL.
                             Also modify license template from GPL to LGPL.
                             The version number of the LGPL can be specified;
@@ -211,22 +229,30 @@ Options for --import:
       --makefile-name=NAME  Name of makefile in automake syntax in the
                             source-base and tests-base directories
                             (default \"Makefile.am\").
-      --libtool             Use libtool rules.
-      --no-libtool          Don't use libtool rules.
       --macro-prefix=PREFIX  Specify the prefix of the macros 'gl_EARLY' and
                             'gl_INIT'. Default is 'gl'.
       --po-domain=NAME      Specify the prefix of the i18n domain. Usually use
                             the package name. A suffix '-gnulib' is appended.
+      --with-c++-tests      Include even unit tests for C++ interoperability.
+      --with-longrunning-tests
+                            Include even unit tests that are long-runners.
+      --with-privileged-tests
+                            Include even unit tests that require root
+                            privileges.
+      --with-unportable-tests
+                            Include even unit tests that fail on some platforms.
+      --with-all-tests      Include all kinds of problematic unit tests.
       --vc-files            Update version control related files.
       --no-vc-files         Don't update version control related files
                             (.gitignore and/or .cvsignore).
       --no-changelog        Don't update or create ChangeLog files.
 
-Options for --import and --update:
-      --dry-run             For --import, only print what would have been done.
+Options for --import, --update, --create-[mega]testdir, --[mega]test:
   -s, --symbolic, --symlink Make symbolic links instead of copying files.
       --local-symlink       Make symbolic links instead of copying files, only
                             for files from the local override directory.
+
+Options for --import, --update:
   -S, --more-symlinks       Make symbolic links instead of copying files, and
                             don't replace copyright notices.
 
@@ -841,6 +867,14 @@ fi
 # - auxdir          from --aux-dir
 # - inctests        true if --with-tests was given, blank otherwise
 # - incobsolete     true if --with-obsolete was given, blank otherwise
+# - inc_cxx_tests   true if --with-c++-tests was given, blank otherwise
+# - inc_longrunning_tests  true if --with-longrunning-tests was given, blank
+#                          otherwise
+# - inc_privileged_tests  true if --with-privileged-tests was given, blank
+#                         otherwise
+# - inc_unportable_tests  true if --with-unportable-tests was given, blank
+#                         otherwise
+# - inc_all_tests   true if --with-all-tests was given, blank otherwise
 # - avoidlist       list of modules to avoid, from --avoid
 # - lgpl            yes or a number if --lgpl was given, blank otherwise
 # - makefile_name   from --makefile-name
@@ -873,6 +907,11 @@ fi
   auxdir=
   inctests=
   incobsolete=
+  inc_cxx_tests=
+  inc_longrunning_tests=
+  inc_privileged_tests=
+  inc_unportable_tests=
+  inc_all_tests=
   avoidlist=
   lgpl=
   makefile_name=
@@ -1024,11 +1063,26 @@ fi
       --aux-dir=* )
         auxdir=`echo "X$1" | sed -e 's/^X--aux-dir=//'`
         shift ;;
-      --with-tests )
+      --with-tests | --with-test | --with-tes | --with-te | --with-t)
         inctests=true
         shift ;;
-      --with-obsolete )
+      --with-obsolete | --with-obsolet | --with-obsole | --with-obsol | --with-obso | --with-obs | --with-ob | --with-o)
         incobsolete=true
+        shift ;;
+      --with-c++-tests | --with-c++-test | --with-c++-tes | --with-c++-te | --with-c++-t | --with-c++- | --with-c++ | --with-c+ | --with-c)
+        inc_cxx_tests=true
+        shift ;;
+      --with-longrunning-tests | --with-longrunning-test | --with-longrunning-tes | --with-longrunning-te | --with-longrunning-t | --with-longrunning- | --with-longrunning | --with-longrunnin | --with-longrunni | --with-longrunn | --with-longrun | --with-longru | --with-longr | --with-long | --with-lon | --with-lo | --with-l)
+        inc_longrunning_tests=true
+        shift ;;
+      --with-privileged-tests | --with-privileged-test | --with-privileged-tes | --with-privileged-te | --with-privileged-t | --with-privileged- | --with-privileged | --with-privilege | --with-privileg | --with-privile | --with-privil | --with-privi | --with-priv | --with-pri | --with-pr | --with-p)
+        inc_privileged_tests=true
+        shift ;;
+      --with-unportable-tests | --with-unportable-test | --with-unportable-tes | --with-unportable-te | --with-unportable-t | --with-unportable- | --with-unportable | --with-unportabl | --with-unportab | --with-unporta | --with-unport | --with-unpor | --with-unpo | --with-unp | --with-un | --with-u)
+        inc_unportable_tests=true
+        shift ;;
+      --with-all-tests | --with-all-test | --with-all-tes | --with-all-te | --with-all-t | --with-all- | --with-all | --with-al | --with-a)
+        inc_all_tests=true
         shift ;;
       --avoid )
         shift
@@ -1141,6 +1195,9 @@ fi
        || test -n "$sourcebase" || test -n "$m4base" || test -n "$pobase" \
        || test -n "$docbase" || test -n "$testsbase" || test -n "$auxdir" \
        || test -n "$inctests" || test -n "$incobsolete" \
+       || test -n "$inc_cxx_tests" || test -n "$inc_longrunning_tests" \
+       || test -n "$inc_privileged_tests" || test -n "$inc_unportable_tests" \
+       || test -n "$inc_all_tests" \
        || test -n "$avoidlist" || test -n "$lgpl" || test -n "$makefile_name" \
        || test -n "$macro_prefix" || test -n "$po_domain" \
        || test -n "$vc_files"; then
@@ -1322,6 +1379,24 @@ func_all_modules ()
       | LC_ALL=C sort -u
 }
 
+# func_exists_module module
+# tests whether a module, given by name, exists
+# Input:
+# - local_gnulib_dir  from --local-dir
+func_exists_module ()
+{
+  { test -f "$gnulib_dir/modules/$1" \
+    || { test -n "$local_gnulib_dir" && test -d "$local_gnulib_dir/modules" \
+         && test -f "$local_gnulib_dir/modules/$1"; }; } \
+  && test "CVS" != "$1" \
+  && test "ChangeLog" != "$1" \
+  && test "COPYING" != "$1" \
+  && test "README" != "$1" \
+  && test "TEMPLATE" != "$1" \
+  && test "TEMPLATE-EXTENDED" != "$1" \
+  && test "TEMPLATE-TESTS" != "$1"
+}
+
 # func_verify_module
 # verifies a module name
 # Input:
@@ -1329,16 +1404,7 @@ func_all_modules ()
 # - module          module name argument
 func_verify_module ()
 {
-  if { test -f "$gnulib_dir/modules/$module" \
-       || { test -n "$local_gnulib_dir" && test -d "$local_gnulib_dir/modules" \
-            && test -f "$local_gnulib_dir/modules/$module"; }; } \
-     && test "CVS" != "$module" \
-     && test "ChangeLog" != "$module" \
-     && test "COPYING" != "$module" \
-     && test "README" != "$module" \
-     && test "TEMPLATE" != "$module" \
-     && test "TEMPLATE-EXTENDED" != "$module" \
-     && test "TEMPLATE-TESTS" != "$module"; then
+  if func_exists_module "$module"; then
     # OK, $module is a correct module name.
     # Verify that building the module description with 'patch' succeeds.
     func_lookup_file "modules/$module"
@@ -1386,6 +1452,7 @@ sed_extract_prog=':[	 ]*$/ {
   :a
     n
     s/^Description:[	 ]*$//
+    s/^Comment:[	 ]*$//
     s/^Status:[	 ]*$//
     s/^Notice:[	 ]*$//
     s/^Applicability:[	 ]*$//
@@ -1409,6 +1476,7 @@ sed_extract_prog=':[	 ]*$/ {
 # NOTE: Keep this in sync with sed_extract_prog above!
 sed_extract_field_header='
   s/^Description:[	 ]*$/description/
+  s/^Comment:[	 ]*$/comment/
   s/^Status:[	 ]*$/status/
   s/^Notice:[	 ]*$/notice/
   s/^Applicability:[	 ]*$/applicability/
@@ -1701,6 +1769,32 @@ func_get_description ()
   fi
 }
 
+# func_get_comment module
+# Input:
+# - local_gnulib_dir  from --local-dir
+# - modcache          true or false, from --cache-modules/--no-cache-modules
+func_get_comment ()
+{
+  if ! $modcache; then
+    func_lookup_file "modules/$1"
+    sed -n -e "/^Comment$sed_extract_prog" < "$lookedup_file"
+  else
+    func_cache_lookup_module "$1"
+    # Output the field's value, including the final newline (if any).
+    if $have_associative; then
+      if test -n "${modcache_comment[$1]+set}"; then
+        echo "${modcache_comment[$1]}"
+      fi
+    else
+      eval "field_set=\"\$${cachevar}_comment_set\""
+      if test -n "$field_set"; then
+        eval "field_value=\"\$${cachevar}_comment\""
+        echo "${field_value}"
+      fi
+    fi
+  fi
+}
+
 # func_get_status module
 # Input:
 # - local_gnulib_dir  from --local-dir
@@ -1869,12 +1963,14 @@ func_filter_filelist ()
 # - modcache          true or false, from --cache-modules/--no-cache-modules
 func_get_dependencies ()
 {
-  # ${module}-tests always implicitly depends on ${module}.
+  # ${module}-tests implicitly depends on ${module}, if that module exists.
   case "$1" in
     *-tests)
       fgd1="$1"
       func_remove_suffix fgd1 '-tests'
-      echo "$fgd1"
+      if func_exists_module "$fgd1"; then
+        echo "$fgd1"
+      fi
       ;;
   esac
   # Then the explicit dependencies listed in the module description.
@@ -2190,6 +2286,16 @@ func_get_tests_module ()
 # func_acceptable module
 # tests whether a module is acceptable.
 # Input:
+# - inc_cxx_tests   true if C++ interoperability tests should be included,
+#                   blank otherwise
+# - inc_longrunning_tests  true if long-runnings tests should be included,
+#                          blank otherwise
+# - inc_privileged_tests  true if tests that require root privileges should be
+#                         included, blank otherwise
+# - inc_unportable_tests  true if tests that fail on some platforms should be
+#                         included, blank otherwise
+# - inc_all_tests   true if all kinds of problematic unit tests should be
+#                   included, blank otherwise
 # - avoidlist       list of modules to avoid
 func_acceptable ()
 {
@@ -2198,6 +2304,38 @@ func_acceptable ()
       return 1
     fi
   done
+  case "$1" in
+    *-tests)
+      inc=true
+      for word in `func_get_status "$1"`; do
+        case "$word" in
+          c++-test)
+            test -n "$inc_all_tests" || test -n "$inc_cxx_tests" \
+              || inc=false
+            ;;
+          longrunning-test)
+            test -n "$inc_all_tests" || test -n "$inc_longrunning_tests" \
+              || inc=false
+            ;;
+          privileged-test)
+            test -n "$inc_all_tests" || test -n "$inc_privileged_tests" \
+              || inc=false
+            ;;
+          unportable-test)
+            test -n "$inc_all_tests" || test -n "$inc_unportable_tests" \
+              || inc=false
+            ;;
+          *-test)
+            test -n "$inc_all_tests" \
+              || inc=false
+            ;;
+        esac
+      done
+      if ! $inc; then
+        return 1
+      fi
+      ;;
+  esac
   return 0
 }
 
@@ -2208,6 +2346,16 @@ func_acceptable ()
 # - modules         list of specified modules
 # - inctests        true if tests should be included, blank otherwise
 # - incobsolete     true if obsolete modules among dependencies should be
+#                   included, blank otherwise
+# - inc_cxx_tests   true if C++ interoperability tests should be included,
+#                   blank otherwise
+# - inc_longrunning_tests  true if long-runnings tests should be included,
+#                          blank otherwise
+# - inc_privileged_tests  true if tests that require root privileges should be
+#                         included, blank otherwise
+# - inc_unportable_tests  true if tests that fail on some platforms should be
+#                         included, blank otherwise
+# - inc_all_tests   true if all kinds of problematic unit tests should be
 #                   included, blank otherwise
 # - avoidlist       list of modules to avoid
 # - tmp             pathname of a temporary directory
@@ -2239,7 +2387,16 @@ func_modules_transitive_closure ()
           fi
           for dep in $deps; do
             if test -n "$incobsolete" \
-               || { status=`func_get_status $dep`; test "$status" != obsolete; }; then
+               || { inc=true
+                    for word in `func_get_status $dep`; do
+                      case "$word" in
+                        obsolete)
+                          inc=false
+                          ;;
+                      esac
+                    done
+                    $inc
+                  }; then
               func_append inmodules " $dep"
             fi
           done
@@ -2747,7 +2904,7 @@ func_emit_po_POTFILES_in ()
   echo "$files" | sed -n -e "s,^lib/,$sourcebase/,p"
 }
 
-# func_emit_tests_Makefile_am
+# func_emit_tests_Makefile_am witness_macro
 # emits the contents of tests makefile to standard output.
 # Input:
 # - local_gnulib_dir  from --local-dir
@@ -2771,6 +2928,7 @@ func_emit_po_POTFILES_in ()
 # - uses_subdirs    nonempty if object files in subdirs exist
 func_emit_tests_Makefile_am ()
 {
+  witness_macro="$1"
   if test "$libtool" = true; then
     libext=la
     sed_eliminate_LDFLAGS="$sed_noop"
@@ -2818,11 +2976,20 @@ func_emit_tests_Makefile_am ()
         } > "$tmp"/amsnippet
         # Skip the contents if it's entirely empty.
         if grep '[^	 ]' "$tmp"/amsnippet > /dev/null ; then
-          echo "## begin gnulib module $module"
-          echo
-          cat "$tmp"/amsnippet
-          echo "## end   gnulib module $module"
-          echo
+          # Mention long-running tests at the end.
+          ofd=3
+          for word in `func_get_status "$module"`; do
+            if test "$word" = 'longrunning-test'; then
+              ofd=4
+              break
+            fi
+          done
+          { echo "## begin gnulib module $module"
+            echo
+            cat "$tmp"/amsnippet
+            echo "## end   gnulib module $module"
+            echo
+          } >&$ofd
         fi
         rm -f "$tmp"/amsnippet
         # Test whether there are some source files in subdirectories.
@@ -2836,7 +3003,7 @@ func_emit_tests_Makefile_am ()
         done
       fi
     done
-  } > "$tmp"/allsnippets
+  } 3> "$tmp"/main_snippets 4> "$tmp"/longrunning_snippets
   # Generate dependencies here, since it eases the debugging of test failures.
   # If there are source files in subdirectories, prevent collision of the
   # object files (example: hash.c and libxml/hash.c).
@@ -2853,7 +3020,7 @@ func_emit_tests_Makefile_am ()
   # Nothing is being added to SUBDIRS; nevertheless the existence of this
   # variable is needed to avoid an error from automake:
   #   "AM_GNU_GETTEXT used but SUBDIRS not defined"
-  echo "SUBDIRS ="
+  echo "SUBDIRS = ."
   echo "TESTS ="
   echo "XFAIL_TESTS ="
   echo "TESTS_ENVIRONMENT ="
@@ -2872,7 +3039,7 @@ func_emit_tests_Makefile_am ()
   fi
   # Automake versions < 1.9b create an empty pkgdatadir at installation time
   # if you specify pkgdata_DATA to empty. This is a workaround.
-  if grep '^pkgdata_DATA *+=' "$tmp"/allsnippets > /dev/null; then
+  if grep '^pkgdata_DATA *+=' "$tmp"/main_snippets "$tmp"/longrunning_snippets > /dev/null; then
     echo "pkgdata_DATA ="
   fi
   echo "EXTRA_DIST ="
@@ -2899,6 +3066,9 @@ func_emit_tests_Makefile_am ()
   done
   echo
   echo "AM_CPPFLAGS = \\"
+  if test -n "${witness_macro}"; then
+    echo "  -D@${witness_macro}@=1 \\"
+  fi
   echo "  -I. -I\$(srcdir) \\"
   echo "  -I${testsbase_inverse} -I\$(srcdir)/${testsbase_inverse} \\"
   echo "  -I${testsbase_inverse}/${sourcebase-lib} -I\$(srcdir)/${testsbase_inverse}/${sourcebase-lib}"
@@ -2935,7 +3105,7 @@ func_emit_tests_Makefile_am ()
   # srcdir is defined by autoconf and automake.
   echo "TESTS_ENVIRONMENT += EXEEXT='@EXEEXT@' srcdir='\$(srcdir)'"
   echo
-  cat "$tmp"/allsnippets \
+  cat "$tmp"/main_snippets "$tmp"/longrunning_snippets \
     | sed -e 's|\$(top_srcdir)/build-aux/|$(top_srcdir)/'"$auxdir"'/|g'
   echo "# Clean up after Solaris cc."
   echo "clean-local:"
@@ -2948,7 +3118,7 @@ func_emit_tests_Makefile_am ()
   echo "	  fi; \\"
   echo "	done; \\"
   echo "	:"
-  rm -f "$tmp"/allsnippets
+  rm -f "$tmp"/main_snippets "$tmp"/longrunning_snippets
 }
 
 # func_emit_initmacro_start macro_prefix
@@ -3078,6 +3248,14 @@ func_emit_initmacro_done ()
 # - auxdir          directory relative to destdir where to place build aux files
 # - inctests        true if --with-tests was given, blank otherwise
 # - incobsolete     true if --with-obsolete was given, blank otherwise
+# - inc_cxx_tests   true if --with-c++-tests was given, blank otherwise
+# - inc_longrunning_tests  true if --with-longrunning-tests was given, blank
+#                          otherwise
+# - inc_privileged_tests  true if --with-privileged-tests was given, blank
+#                         otherwise
+# - inc_unportable_tests  true if --with-unportable-tests was given, blank
+#                         otherwise
+# - inc_all_tests   true if --with-all-tests was given, blank otherwise
 # - avoidlist       list of modules to avoid, from --avoid
 # - lgpl            yes or a number if library's license shall be LGPL,
 #                   blank otherwise
@@ -3102,6 +3280,11 @@ func_import ()
   cached_local_gnulib_dir=
   cached_specified_modules=
   cached_incobsolete=
+  cached_inc_cxx_tests=
+  cached_inc_longrunning_tests=
+  cached_inc_privileged_tests=
+  cached_inc_unportable_tests=
+  cached_inc_all_tests=
   cached_avoidlist=
   cached_sourcebase=
   cached_m4base=
@@ -3138,6 +3321,21 @@ func_import ()
       }
       /gl_WITH_OBSOLETE/ {
         s,^.*$,cached_incobsolete=true,p
+      }
+      /gl_WITH_CXX_TESTS/ {
+        s,^.*$,cached_inc_cxx_tests=true,p
+      }
+      /gl_WITH_LONGRUNNING_TESTS/ {
+        s,^.*$,cached_inc_longrunning_tests=true,p
+      }
+      /gl_WITH_PRIVILEGED_TESTS/ {
+        s,^.*$,cached_inc_privileged_tests=true,p
+      }
+      /gl_WITH_UNPORTABLE_TESTS/ {
+        s,^.*$,cached_inc_unportable_tests=true,p
+      }
+      /gl_WITH_ALL_TESTS/ {
+        s,^.*$,cached_inc_all_tests=true,p
       }
       /gl_AVOID(/ {
         s,^.*gl_AVOID([[ ]*\([^]"$`\\)]*\).*$,cached_avoidlist="\1",p
@@ -3237,6 +3435,23 @@ func_import ()
   # Included obsolete modules among the dependencies if specified either way.
   if test -z "$incobsolete"; then
     incobsolete="$cached_incobsolete"
+  fi
+  # Included special kinds of tests modules among the dependencies if specified
+  # either way.
+  if test -z "$inc_cxx_tests"; then
+    inc_cxx_tests="$cached_inc_cxx_tests"
+  fi
+  if test -z "$inc_longrunning_tests"; then
+    inc_longrunning_tests="$cached_inc_longrunning_tests"
+  fi
+  if test -z "$inc_privileged_tests"; then
+    inc_privileged_tests="$cached_inc_privileged_tests"
+  fi
+  if test -z "$inc_unportable_tests"; then
+    inc_unportable_tests="$cached_inc_unportable_tests"
+  fi
+  if test -z "$inc_all_tests"; then
+    inc_all_tests="$cached_inc_all_tests"
   fi
   # Append the cached and the specified avoidlist. This is probably better
   # than dropping the cached one when --avoid is specified at least once.
@@ -3704,6 +3919,21 @@ s,^\(.................................................[^ ]*\) *,                
   if test -n "$incobsolete"; then
     func_append actioncmd " --with-obsolete"
   fi
+  if test -n "$inc_cxx_tests"; then
+    func_append actioncmd " --with-c++-tests"
+  fi
+  if test -n "$inc_longrunning_tests"; then
+    func_append actioncmd " --with-longrunning-tests"
+  fi
+  if test -n "$inc_privileged_tests"; then
+    func_append actioncmd " --with-privileged-tests"
+  fi
+  if test -n "$inc_unportable_tests"; then
+    func_append actioncmd " --with-unportable-tests"
+  fi
+  if test -n "$inc_all_tests"; then
+    func_append actioncmd " --with-all-tests"
+  fi
   for module in $avoidlist; do
     func_append actioncmd " --avoid=$module"
   done
@@ -3990,6 +4220,11 @@ s,//*$,/,'
     echo "$specified_modules" | sed -e 's/^/  /g'
     echo "])"
     test -z "$incobsolete" || echo "gl_WITH_OBSOLETE"
+    test -z "$inc_cxx_tests" || echo "gl_WITH_CXX_TESTS"
+    test -z "$inc_longrunning_tests" || echo "gl_WITH_LONGRUNNING_TESTS"
+    test -z "$inc_privileged_tests" || echo "gl_WITH_PRIVILEGED_TESTS"
+    test -z "$inc_unportable_tests" || echo "gl_WITH_UNPORTABLE_TESTS"
+    test -z "$inc_all_tests" || echo "gl_WITH_ALL_TESTS"
     echo "gl_AVOID([$avoidlist])"
     echo "gl_SOURCE_BASE([$sourcebase])"
     echo "gl_M4_BASE([$m4base])"
@@ -4072,6 +4307,7 @@ s,//*$,/,'
     for module in $final_modules; do
       func_verify_module
       if test -n "$module"; then
+        echo "# Code from module $module:"
         func_get_autoconf_early_snippet "$module"
       fi
     done \
@@ -4101,11 +4337,13 @@ s,//*$,/,'
     else
       sed_replace_build_aux="$sed_noop"
     fi
+    echo "  gl_m4_base='$m4base'"
     func_emit_initmacro_start $macro_prefix
     echo "  gl_source_base='$sourcebase'"
     for module in $main_modules; do
       func_verify_module
       if test -n "$module"; then
+        echo "  # Code from module $module:"
         func_get_autoconf_snippet "$module" \
           | sed -e '/^$/d;' -e 's/^/  /' \
                 -e 's/AM_GNU_GETTEXT(\[external\])/dnl you must add AM_GNU_GETTEXT([external]) or similar to configure.ac./' \
@@ -4118,11 +4356,21 @@ s,//*$,/,'
         fi
       fi
     done
+    echo "  # End of code from modules"
     func_emit_initmacro_end $macro_prefix
     echo "  gltests_libdeps="
     echo "  gltests_ltlibdeps="
     func_emit_initmacro_start ${macro_prefix}tests
     echo "  gl_source_base='$testsbase'"
+    # Define a tests witness macro that depends on the package.
+    # PACKAGE is defined by AM_INIT_AUTOMAKE, PACKAGE_TARNAME is defined by AC_INIT.
+    # See <http://lists.gnu.org/archive/html/automake/2009-05/msg00145.html>.
+    echo "changequote(,)dnl"
+    echo "  ${macro_prefix}tests_WITNESS=IN_\`echo \"\${PACKAGE-\$PACKAGE_TARNAME}\" | LC_ALL=C tr abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ | LC_ALL=C sed -e 's/[^A-Z0-9_]/_/g'\`_GNULIB_TESTS"
+    echo "changequote([, ])dnl"
+    echo "  AC_SUBST([${macro_prefix}tests_WITNESS])"
+    echo "  gl_module_indicator_condition=\$${macro_prefix}tests_WITNESS"
+    echo "  m4_pushdef([gl_MODULE_INDICATOR_CONDITION], [\$gl_module_indicator_condition])"
     for module in $testsrelated_modules; do
       func_verify_module
       if test -n "$module"; then
@@ -4135,6 +4383,7 @@ s,//*$,/,'
                 -e 's/gl_ltlibdeps/gltests_ltlibdeps/g'
       fi
     done
+    echo "  m4_popdef([gl_MODULE_INDICATOR_CONDITION])"
     func_emit_initmacro_end ${macro_prefix}tests
     # _LIBDEPS and _LTLIBDEPS variables are not needed if this library is
     # created using libtool, because libtool already handles the dependencies.
@@ -4193,7 +4442,7 @@ s,//*$,/,'
     func_dest_tmpfilename $testsbase/$makefile_am
     destfile="$testsbase/$makefile_am"
     modules="$testsrelated_modules"
-    func_emit_tests_Makefile_am > "$tmpfile"
+    func_emit_tests_Makefile_am "${macro_prefix}tests_WITNESS" > "$tmpfile"
     if test -f "$destdir"/$testsbase/$makefile_am; then
       if cmp "$destdir"/$testsbase/$makefile_am "$tmpfile" > /dev/null; then
         rm -f "$tmpfile"
@@ -4402,6 +4651,15 @@ s,//*$,/,'
 # - local_gnulib_dir  from --local-dir
 # - modcache        true or false, from --cache-modules/--no-cache-modules
 # - auxdir          directory relative to destdir where to place build aux files
+# - inctests        true if tests should be included, blank otherwise
+# - incobsolete     true if obsolete modules among dependencies should be
+#                   included, blank otherwise
+# - avoidlist       list of modules to avoid
+# - libtool         true if --libtool was given, false if --no-libtool was
+#                   given, blank otherwise
+# - symbolic        true if files should be symlinked, copied otherwise
+# - lsymbolic       true if files from local_gnulib_dir should be symlinked,
+#                   copied otherwise
 func_create_testdir ()
 {
   testdir="$1"
@@ -4415,6 +4673,9 @@ func_create_testdir ()
     modules=`for m in $modules; do case $m in config-h | ftruncate | mountlist | lib-ignore) ;; *) echo $m;; esac; done`
   fi
   modules=`for m in $modules; do echo $m; done | LC_ALL=C sort -u`
+
+  # Unlike in func_import, here we want to include all kinds of tests.
+  inc_all_tests=true
 
   # Check that the license of every module is consistent with the license of
   # its dependencies.
@@ -4594,7 +4855,7 @@ func_create_testdir ()
     # Create $testsbase/Makefile.am.
     use_libtests=false
     destfile="$testsbase/Makefile.am"
-    func_emit_tests_Makefile_am > "$testdir/$testsbase/Makefile.am"
+    func_emit_tests_Makefile_am "" > "$testdir/$testsbase/Makefile.am"
     any_uses_subdirs="$any_uses_subdirs$uses_subdirs"
     # Create $testsbase/configure.ac.
     (echo "# Process this file with autoconf to produce a configure script."
@@ -4628,6 +4889,8 @@ func_create_testdir ()
      done \
        | sed -e '/^$/d;' -e 's/AC_REQUIRE(\[\([^()]*\)\])/\1/'
      if test "$libtool" = true; then
+       echo "LT_INIT([win32-dll])"
+       echo "LT_LANG([C++])"
        echo "AM_CONDITIONAL([GL_COND_LIBTOOL], [true])"
        echo "gl_cond_libtool=true"
      else
@@ -4650,6 +4913,7 @@ func_create_testdir ()
          s|AC_CONFIG_FILES(\(.*\):build-aux/\(.*\))|AC_CONFIG_FILES(\1:'"$auxdir"'/\2)|
          ba
        }'
+     echo "gl_m4_base='../$m4base'"
      func_emit_initmacro_start $macro_prefix
      # We don't have explicit ordering constraints between the various
      # autoconf snippets. It's cleanest to put those of the library before
@@ -4751,6 +5015,8 @@ func_create_testdir ()
    done \
      | sed -e '/^$/d;' -e 's/AC_REQUIRE(\[\([^()]*\)\])/\1/'
    if test "$libtool" = true; then
+     echo "LT_INIT([win32-dll])"
+     echo "LT_LANG([C++])"
      echo "AM_CONDITIONAL([GL_COND_LIBTOOL], [true])"
      echo "gl_cond_libtool=true"
    else
@@ -4777,6 +5043,7 @@ func_create_testdir ()
    else
      sed_replace_build_aux="$sed_noop"
    fi
+   echo "gl_m4_base='$m4base'"
    func_emit_initmacro_start $macro_prefix
    echo "gl_source_base='$sourcebase'"
    for module in $modules; do
@@ -4829,6 +5096,9 @@ func_create_testdir ()
        fi
      done
    fi
+   if test "$libtool" = true; then
+     func_execute_command ${LIBTOOLIZE} --copy || func_exit 1
+   fi
    func_execute_command ${ACLOCAL} -I $m4base || func_exit 1
    if ! test -d build-aux; then
      func_execute_command mkdir build-aux || func_exit 1
@@ -4861,13 +5131,13 @@ func_create_testdir ()
   fi
   # Need to run configure and make once, to create built files that are to be
   # distributed (such as getdate.c).
+  sed_remove_make_variables='s,[$]([A-Za-z0-9_]*),,g'
   # Extract the value of "CLEANFILES += ..." and "MOSTLYCLEANFILES += ...".
   cleaned_files=`sed -e "$sed_remove_backslash_newline" < "$testdir/$sourcebase/Makefile.am" \
                  | sed -n -e 's,^CLEANFILES[	 ]*+=\([^#]*\).*$,\1,p' -e 's,^MOSTLYCLEANFILES[	 ]*+=\([^#]*\).*$,\1,p'`
   cleaned_files=`for file in $cleaned_files; do echo " $file "; done`
   # Extract the value of "BUILT_SOURCES += ...". Remove variable references
   # such $(FOO_H) because they don't refer to distributed files.
-  sed_remove_make_variables='s,[$]([A-Za-z0-9_]*),,g'
   built_sources=`sed -e "$sed_remove_backslash_newline" < "$testdir/$sourcebase/Makefile.am" \
                  | sed -n -e 's,^BUILT_SOURCES[	 ]*+=\([^#]*\).*$,\1,p' \
                  | sed -e "$sed_remove_make_variables"`
@@ -4877,14 +5147,44 @@ func_create_testdir ()
                                  *) echo $file ;;
                                esac;
                              done`
-  if test -n "$distributed_built_sources"; then
+  tests_distributed_built_sources=
+  if test -n "$inctests"; then
+    # Likewise for built files in the $testsbase directory.
+    tests_cleaned_files=`sed -e "$sed_remove_backslash_newline" < "$testdir/$testsbase/Makefile.am" \
+                         | sed -n -e 's,^CLEANFILES[	 ]*+=\([^#]*\).*$,\1,p' -e 's,^MOSTLYCLEANFILES[	 ]*+=\([^#]*\).*$,\1,p'`
+    tests_cleaned_files=`for file in $tests_cleaned_files; do echo " $file "; done`
+    tests_built_sources=`sed -e "$sed_remove_backslash_newline" < "$testdir/$testsbase/Makefile.am" \
+                         | sed -n -e 's,^BUILT_SOURCES[	 ]*+=\([^#]*\).*$,\1,p' \
+                         | sed -e "$sed_remove_make_variables"`
+    tests_distributed_built_sources=`for file in $tests_built_sources; do
+                                       case "$tests_cleaned_files" in
+                                         *" "$file" "*) ;;
+                                         *) echo $file ;;
+                                       esac;
+                                     done`
+  fi
+  if test -n "$distributed_built_sources" || test -n "$tests_distributed_built_sources"; then
     (cd "$testdir"
      ./configure || func_exit 1
-       cd "$sourcebase"
-       echo 'built_sources: $(BUILT_SOURCES)' >> Makefile
-       $MAKE built_sources || func_exit 1
-       cd ..
-     $MAKE distclean || func_exit 1
+       if test -n "$distributed_built_sources"; then
+         cd "$sourcebase"
+         echo 'built_sources: $(BUILT_SOURCES)' >> Makefile
+         $MAKE AUTOCONF="${AUTOCONF}" AUTOHEADER="${AUTOHEADER}" ACLOCAL="${ACLOCAL}" AUTOMAKE="${AUTOMAKE}" AUTORECONF="${AUTORECONF}" AUTOPOINT="${AUTOPOINT}" LIBTOOLIZE="${LIBTOOLIZE}" \
+               built_sources \
+           || func_exit 1
+         cd ..
+       fi
+       if test -n "$tests_distributed_built_sources"; then
+         cd "$testsbase"
+         echo 'built_sources: $(BUILT_SOURCES)' >> Makefile
+         $MAKE AUTOCONF="${AUTOCONF}" AUTOHEADER="${AUTOHEADER}" ACLOCAL="${ACLOCAL}" AUTOMAKE="${AUTOMAKE}" AUTORECONF="${AUTORECONF}" AUTOPOINT="${AUTOPOINT}" LIBTOOLIZE="${LIBTOOLIZE}" \
+               built_sources \
+           || func_exit 1
+         cd ..
+       fi
+     $MAKE AUTOCONF="${AUTOCONF}" AUTOHEADER="${AUTOHEADER}" ACLOCAL="${ACLOCAL}" AUTOMAKE="${AUTOMAKE}" AUTORECONF="${AUTORECONF}" AUTOPOINT="${AUTOPOINT}" LIBTOOLIZE="${LIBTOOLIZE}" \
+           distclean \
+       || func_exit 1
     ) || func_exit 1
   fi
 }
@@ -5152,8 +5452,10 @@ s/\([.*$]\)/[\1]/g'
             for m4base in $m4dirs; do
               # Perform func_import in a subshell, so that variable values
               # such as
-              #   local_gnulib_dir, incobsolete, avoidlist, sourcebase, m4base,
-              #   pobase, docbase, testsbase, inctests, libname, lgpl,
+              #   local_gnulib_dir, incobsolete, inc_cxx_tests,
+              #   inc_longrunning_tests, inc_privileged_tests,
+              #   inc_unportable_tests, inc_all_tests, avoidlist, sourcebase,
+              #   m4base, pobase, docbase, testsbase, inctests, libname, lgpl,
               #   makefile_name, libtool, macro_prefix, po_domain, vc_files
               # don't propagate from one directory to another.
               (func_import) || func_exit 1
@@ -5239,6 +5541,16 @@ s/\([.*$]\)/[\1]/g'
       func_verify_module
       if test -n "$module"; then
         func_get_description "$module"
+      fi
+    done
+    ;;
+
+  extract-comment )
+    for module
+    do
+      func_verify_module
+      if test -n "$module"; then
+        func_get_comment "$module"
       fi
     done
     ;;
