@@ -1,3 +1,9 @@
+2010-04-10  Bruno Haible  <bruno@clisp.org>
+
+	mkdir: Make it work on mingw64.
+	* lib/sys_stat.in.h: Include <direct.h> together with <io.h>.
+	Reported by Roman Donchenko (Роман Донченко) <dxdragon@yandex.ru>.
+
 2010-04-10  Jim Meyering  <meyering@redhat.com>
 
 	maint.mk: correct a diagnostic
