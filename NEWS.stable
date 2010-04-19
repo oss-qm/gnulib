@@ -29,6 +29,7 @@ with the following additional commits:
     * [82b0be3]->[6f6d4bf] havelib: Add static libraries to LIBS in the right order.
     * [e330e06]->[1d3b6f0] libunistring: Correct value of $LTLIBUNISTRING.
     * [c9f911d]->[86cda03] autoupdate
+    * [197b47e]->[5510d3d] git-version-gen: use "git update-index..." rather than "git status"
 __NEXTCOMMITMARKER__
 
 ----------------------------------------------------------------------
