@@ -17,6 +17,7 @@ with the following additional commits:
     * [3213c10]->[102392e] vasnprintf test: Reduce code duplication.
     * [3c65a68]->[4b43aec] write: Fix a C++ test error on mingw.
     * [067d1f1]->[cc75f4b] vasnprintf: Fix multiple test failures on mingw.
+    * [32d1664]->[e651e75] vasnprintf: Fix crash in %ls directive.
 __NEXTCOMMITMARKER__
 
 ----------------------------------------------------------------------
