@@ -21,6 +21,7 @@ with the following additional commits:
     * [0167c19]->[8bd3d4c] vasnprintf: Correct handling of unconvertible wide string arguments.
     * [de9f4b1]->[c886605] vasnprintf: Add more tests.
     * [15a0c62]->[849156a] fchownat: Fix a C++ test error on Solaris 8.
+    * [67c7b8e]->[42d09c4] maint.mk: correct a diagnostic
 __NEXTCOMMITMARKER__
 
 ----------------------------------------------------------------------
