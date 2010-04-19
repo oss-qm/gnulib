@@ -19,6 +19,7 @@ with the following additional commits:
     * [067d1f1]->[cc75f4b] vasnprintf: Fix multiple test failures on mingw.
     * [32d1664]->[e651e75] vasnprintf: Fix crash in %ls directive.
     * [0167c19]->[8bd3d4c] vasnprintf: Correct handling of unconvertible wide string arguments.
+    * [de9f4b1]->[c886605] vasnprintf: Add more tests.
 __NEXTCOMMITMARKER__
 
 ----------------------------------------------------------------------
