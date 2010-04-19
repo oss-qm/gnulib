@@ -16,6 +16,7 @@ with the following additional commits:
     * [85f6993]->[bcd59b9] Add missing parenthesis in manywarnings example
     * [3213c10]->[102392e] vasnprintf test: Reduce code duplication.
     * [3c65a68]->[4b43aec] write: Fix a C++ test error on mingw.
+    * [067d1f1]->[cc75f4b] vasnprintf: Fix multiple test failures on mingw.
 __NEXTCOMMITMARKER__
 
 ----------------------------------------------------------------------
