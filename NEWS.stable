@@ -25,6 +25,7 @@ with the following additional commits:
     * [b969309]->[70b21bf] mkdir: Make it work on mingw64.
     * [3c79d51]->[9f9fbf6] Update comment.
     * [03271c7]->[f5544ce] Fix typo in comment.
+    * [1820b30]->[3e18c19] libunistring: Detect libunistring also when it depends on libiconv.
 __NEXTCOMMITMARKER__
 
 ----------------------------------------------------------------------
