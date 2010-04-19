@@ -33,6 +33,7 @@ with the following additional commits:
     * [5fbd6e3]->[5fbd6e3] doc: users.txt: GNU patch now uses gnulib
     * [2abb98c]->[f07545c] getopt-posix: avoid spurious failure on FreeBSD
     * [3108b95]->[1454b1f] getopt-posix: avoid spurious failure on Solaris
+    * [5cc0bcf]->[d711c30] getopt-posix: detect MacOS bug
 __NEXTCOMMITMARKER__
 
 ----------------------------------------------------------------------
