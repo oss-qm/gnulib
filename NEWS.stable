@@ -14,6 +14,7 @@ with the following additional commits:
     * [38e3c69]->[a11321f] ftruncate: add two years to projected module removal date: 2012
     * [6b8b58b]->[1ce7c50] init.sh: run tr in the "C" locale to avoid multibyte interpretation
     * [85f6993]->[bcd59b9] Add missing parenthesis in manywarnings example
+    * [3213c10]->[102392e] vasnprintf test: Reduce code duplication.
 __NEXTCOMMITMARKER__
 
 ----------------------------------------------------------------------
