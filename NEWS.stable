@@ -37,6 +37,7 @@ with the following additional commits:
     * [db3e280]->[cc1fb6a] getopt: merge bug fixes from glibc
     * [61c96af]->[6229a28] getopt-gnu: match recent glibc fixes and posix ruling
     * [d39bc2c]->[588d54b] autoupdate
+    * [7c1b995]->[a251be0] strtok_r: relax license to LGPLv2+
 __NEXTCOMMITMARKER__
 
 ----------------------------------------------------------------------
