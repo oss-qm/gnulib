@@ -1,8 +1,9 @@
 gnulib (20100419+stable-1) unstable; urgency=low
 
   * New upstream stable snapshot.
+  * Refresh 01-gnulib-directory.patch.
 
- -- Ian Beckwith <ianb@debian.org>  Mon, 19 Apr 2010 18:28:25 +0100
+ -- Ian Beckwith <ianb@debian.org>  Mon, 19 Apr 2010 18:33:57 +0100
 
 gnulib (20100308+stable-1) unstable; urgency=low
 
