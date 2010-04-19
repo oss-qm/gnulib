@@ -1,7 +1,7 @@
 #!/usr/bin/make -f
 
 %:
-	dh ${@} --with quilt
+	dh ${@}
 
 # skip tests until 'make check' is fixed
 override_dh_auto_test:

@@ -2,6 +2,7 @@ gnulib (20100419+stable-1) unstable; urgency=low
 
   * New upstream stable snapshot.
   * Refresh 01-gnulib-directory.patch.
+  * Switch to source format 3.0 (quilt).
   * debian/rules:
     + Remove 'upstream' target - not needed now we use stable snapshot tarballs.
     + Temporarily override dh_auto_test, until 'make check' is fixed

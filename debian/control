@@ -2,7 +2,7 @@ Source: gnulib
 Section: devel
 Priority: optional
 Maintainer: Ian Beckwith <ianb@debian.org>
-Build-Depends: debhelper (>= 7.0.50~), quilt, texinfo
+Build-Depends: debhelper (>= 7.0.50~), texinfo
 Standards-Version: 3.8.4
 Homepage: http://www.gnu.org/software/gnulib/
 Vcs-Browser: http://erislabs.net/gitweb?p=gnulib.git
