@@ -34,6 +34,7 @@ with the following additional commits:
     * [2abb98c]->[f07545c] getopt-posix: avoid spurious failure on FreeBSD
     * [3108b95]->[1454b1f] getopt-posix: avoid spurious failure on Solaris
     * [5cc0bcf]->[d711c30] getopt-posix: detect MacOS bug
+    * [db3e280]->[cc1fb6a] getopt: merge bug fixes from glibc
 __NEXTCOMMITMARKER__
 
 ----------------------------------------------------------------------
