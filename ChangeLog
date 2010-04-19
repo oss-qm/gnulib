@@ -1,5 +1,11 @@
 2010-04-11  Bruno Haible  <bruno@clisp.org>
 
+	libunistring: Detect libunistring also when it depends on libiconv.
+	* m4/libunistring.m4 (gl_LIBUNISTRING): Unset the cached result before
+	the second AC_LIB_HAVE_LINKFLAGS invocation.
+
+2010-04-11  Bruno Haible  <bruno@clisp.org>
+
 	* m4/libunistring.m4 (gl_LIBUNISTRING): Fix typo in comment.
 
 2010-04-10  Bruno Haible  <bruno@clisp.org>
