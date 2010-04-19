@@ -31,6 +31,7 @@ with the following additional commits:
     * [c9f911d]->[86cda03] autoupdate
     * [197b47e]->[5510d3d] git-version-gen: use "git update-index..." rather than "git status"
     * [5fbd6e3]->[5fbd6e3] doc: users.txt: GNU patch now uses gnulib
+    * [2abb98c]->[f07545c] getopt-posix: avoid spurious failure on FreeBSD
 __NEXTCOMMITMARKER__
 
 ----------------------------------------------------------------------
