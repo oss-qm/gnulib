@@ -1,6 +1,6 @@
 			Gnulib stable snapshot
 			----------------------
-  * 20100418-stable
+  * 20100419-stable
 
 Snapshot taken based on:
 
@@ -41,7 +41,6 @@ with the following additional commits:
     * [56d363d]->[57a3236] test-forkpty: fix expected signature
     * [e764ea2]->[0dc1446] openpty: Fix mistake from 2010-03-21.
     * [ae75893]->[854fe4e] Override netdb.h always.
-__NEXTCOMMITMARKER__
 
 ----------------------------------------------------------------------
 
