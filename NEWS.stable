@@ -30,6 +30,7 @@ with the following additional commits:
     * [e330e06]->[1d3b6f0] libunistring: Correct value of $LTLIBUNISTRING.
     * [c9f911d]->[86cda03] autoupdate
     * [197b47e]->[5510d3d] git-version-gen: use "git update-index..." rather than "git status"
+    * [5fbd6e3]->[5fbd6e3] doc: users.txt: GNU patch now uses gnulib
 __NEXTCOMMITMARKER__
 
 ----------------------------------------------------------------------
