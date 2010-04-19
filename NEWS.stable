@@ -1,5 +1,49 @@
 			Gnulib stable snapshot
 			----------------------
+  * 20100419-stable
+
+Snapshot taken based on:
+
+commit  ba564f2164f381af846d9695e6465cffe7ec918c
+Date:   Fri Apr 9 02:02:15 2010 +0200
+
+with the following additional commits:
+
+    * [950f346]->[99a272b] ftruncate: mark module as obsolete; even MinGW provides it, now
+    * [2d4d227]->[358e18f] Add attribution to a ChangeLog entry.
+    * [38e3c69]->[a11321f] ftruncate: add two years to projected module removal date: 2012
+    * [6b8b58b]->[1ce7c50] init.sh: run tr in the "C" locale to avoid multibyte interpretation
+    * [85f6993]->[bcd59b9] Add missing parenthesis in manywarnings example
+    * [3213c10]->[102392e] vasnprintf test: Reduce code duplication.
+    * [3c65a68]->[4b43aec] write: Fix a C++ test error on mingw.
+    * [067d1f1]->[cc75f4b] vasnprintf: Fix multiple test failures on mingw.
+    * [32d1664]->[e651e75] vasnprintf: Fix crash in %ls directive.
+    * [0167c19]->[8bd3d4c] vasnprintf: Correct handling of unconvertible wide string arguments.
+    * [de9f4b1]->[c886605] vasnprintf: Add more tests.
+    * [15a0c62]->[849156a] fchownat: Fix a C++ test error on Solaris 8.
+    * [67c7b8e]->[42d09c4] maint.mk: correct a diagnostic
+    * [b969309]->[70b21bf] mkdir: Make it work on mingw64.
+    * [3c79d51]->[9f9fbf6] Update comment.
+    * [03271c7]->[f5544ce] Fix typo in comment.
+    * [1820b30]->[3e18c19] libunistring: Detect libunistring also when it depends on libiconv.
+    * [82b0be3]->[6f6d4bf] havelib: Add static libraries to LIBS in the right order.
+    * [e330e06]->[1d3b6f0] libunistring: Correct value of $LTLIBUNISTRING.
+    * [c9f911d]->[86cda03] autoupdate
+    * [197b47e]->[5510d3d] git-version-gen: use "git update-index..." rather than "git status"
+    * [5fbd6e3]->[5fbd6e3] doc: users.txt: GNU patch now uses gnulib
+    * [2abb98c]->[f07545c] getopt-posix: avoid spurious failure on FreeBSD
+    * [3108b95]->[1454b1f] getopt-posix: avoid spurious failure on Solaris
+    * [5cc0bcf]->[d711c30] getopt-posix: detect MacOS bug
+    * [db3e280]->[cc1fb6a] getopt: merge bug fixes from glibc
+    * [61c96af]->[6229a28] getopt-gnu: match recent glibc fixes and posix ruling
+    * [d39bc2c]->[588d54b] autoupdate
+    * [7c1b995]->[a251be0] strtok_r: relax license to LGPLv2+
+    * [56d363d]->[57a3236] test-forkpty: fix expected signature
+    * [e764ea2]->[0dc1446] openpty: Fix mistake from 2010-03-21.
+    * [ae75893]->[854fe4e] Override netdb.h always.
+
+----------------------------------------------------------------------
+
   * 20100308-stable
 
 Snapshot taken based on:
