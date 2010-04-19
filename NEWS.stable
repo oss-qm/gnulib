@@ -10,6 +10,7 @@ Date:   Fri Apr 9 02:02:15 2010 +0200
 with the following additional commits:
 
     * [950f346]->[99a272b] ftruncate: mark module as obsolete; even MinGW provides it, now
+    * [2d4d227]->[358e18f] Add attribution to a ChangeLog entry.
 __NEXTCOMMITMARKER__
 
 ----------------------------------------------------------------------
