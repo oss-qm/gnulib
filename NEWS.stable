@@ -12,6 +12,7 @@ with the following additional commits:
     * [950f346]->[99a272b] ftruncate: mark module as obsolete; even MinGW provides it, now
     * [2d4d227]->[358e18f] Add attribution to a ChangeLog entry.
     * [38e3c69]->[a11321f] ftruncate: add two years to projected module removal date: 2012
+    * [6b8b58b]->[1ce7c50] init.sh: run tr in the "C" locale to avoid multibyte interpretation
 __NEXTCOMMITMARKER__
 
 ----------------------------------------------------------------------
