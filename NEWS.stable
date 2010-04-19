@@ -35,6 +35,7 @@ with the following additional commits:
     * [3108b95]->[1454b1f] getopt-posix: avoid spurious failure on Solaris
     * [5cc0bcf]->[d711c30] getopt-posix: detect MacOS bug
     * [db3e280]->[cc1fb6a] getopt: merge bug fixes from glibc
+    * [61c96af]->[6229a28] getopt-gnu: match recent glibc fixes and posix ruling
 __NEXTCOMMITMARKER__
 
 ----------------------------------------------------------------------
