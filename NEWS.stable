@@ -27,6 +27,7 @@ with the following additional commits:
     * [03271c7]->[f5544ce] Fix typo in comment.
     * [1820b30]->[3e18c19] libunistring: Detect libunistring also when it depends on libiconv.
     * [82b0be3]->[6f6d4bf] havelib: Add static libraries to LIBS in the right order.
+    * [e330e06]->[1d3b6f0] libunistring: Correct value of $LTLIBUNISTRING.
 __NEXTCOMMITMARKER__
 
 ----------------------------------------------------------------------
