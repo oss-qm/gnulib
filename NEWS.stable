@@ -38,6 +38,7 @@ with the following additional commits:
     * [61c96af]->[6229a28] getopt-gnu: match recent glibc fixes and posix ruling
     * [d39bc2c]->[588d54b] autoupdate
     * [7c1b995]->[a251be0] strtok_r: relax license to LGPLv2+
+    * [56d363d]->[57a3236] test-forkpty: fix expected signature
 __NEXTCOMMITMARKER__
 
 ----------------------------------------------------------------------
