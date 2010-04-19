@@ -39,6 +39,7 @@ with the following additional commits:
     * [d39bc2c]->[588d54b] autoupdate
     * [7c1b995]->[a251be0] strtok_r: relax license to LGPLv2+
     * [56d363d]->[57a3236] test-forkpty: fix expected signature
+    * [e764ea2]->[0dc1446] openpty: Fix mistake from 2010-03-21.
 __NEXTCOMMITMARKER__
 
 ----------------------------------------------------------------------
