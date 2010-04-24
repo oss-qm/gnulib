@@ -1,4 +1,4 @@
-gnulib (20100419+stable-1) unstable; urgency=low
+gnulib (20100424+stable-1) unstable; urgency=low
 
   * New upstream stable snapshot.
   * Refresh 01-gnulib-directory.patch.
@@ -8,7 +8,7 @@ gnulib (20100419+stable-1) unstable; urgency=low
     + Temporarily override dh_auto_test, until 'make check' is fixed
       (reported upstream).
 
- -- Ian Beckwith <ianb@debian.org>  Mon, 19 Apr 2010 20:50:29 +0100
+ -- Ian Beckwith <ianb@debian.org>  Sat, 24 Apr 2010 20:00:26 +0100
 
 gnulib (20100308+stable-1) unstable; urgency=low
 
