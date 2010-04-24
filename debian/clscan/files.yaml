@@ -1,4 +1,44 @@
 --- 
+./.pc/.quilt_patches: 
+  copyright: ''
+  hash: 0623de532bc23399e87e6c1914e8e90e999efbfd26b6b956666a493893739f0d
+  license: ''
+  license_text: ''
+./.pc/.quilt_series: 
+  copyright: ''
+  hash: 9afbb183d1b683d2770aecb9b379093804ccc56027f07ecf7fc252d5b93a8df2
+  license: ''
+  license_text: ''
+./.pc/.version: 
+  copyright: ''
+  hash: 53c234e5e8472b6ac51c1ae1cab3fe06fad053beb8ebfd8977b010655bfdd3c3
+  license: ''
+  license_text: ''
+./.pc/01-gnulib-directory.patch/.timestamp: 
+  copyright: ''
+  hash: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+  license: ''
+  license_text: ''
+./.pc/01-gnulib-directory.patch/gnulib-tool: 
+  copyright: 2002-2010 Free Software Foundation, Inc
+  hash: a16383d4b038220ad4593ca8619e489165bd93f4ff9936abd18000127a8f3313
+  license: "GPL-3+ "
+  license_text: ''
+./.pc/02-shebang.patch/.timestamp: 
+  copyright: ''
+  hash: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+  license: ''
+  license_text: ''
+./.pc/02-shebang.patch/lib/uniname/gen-uninames.lisp: 
+  copyright: ''
+  hash: d28d41fa6a3eef2669af73aaeb8ce7e2479501eff9b820f3649344dceec287b2
+  license: ''
+  license_text: ''
+./.pc/applied-patches: 
+  copyright: ''
+  hash: 2a958e9a14a908eeb8356ed2a4bbe3e5fa7081690c2f3fab99217ccdb7c5c06e
+  license: ''
+  license_text: ''
 ./COPYING: 
   copyright: ''
   hash: 60c25a32bddb8e12cdd819cc29ec9a6d941431c6a013a71e2878536fa16d4dd7
@@ -6,7 +46,7 @@
   license_text: ''
 ./ChangeLog: 
   copyright: ''
-  hash: 465cce5db2de610b08693cd254e99ea017ddca4bfe601b18b7a7d8617d249ff5
+  hash: 1aff803c86538a2946a891703365cb3d4db9182d95a1e14270d22130e9740cc8
   license: ''
   license_text: ''
 ./DEPENDENCIES: 
@@ -31,7 +71,7 @@
   license_text: ''
 ./NEWS.stable: 
   copyright: ''
-  hash: 7427fa03e3a59cc84bd72778b093e53824ec813da55480e7ef992fdb5d13c566
+  hash: 5a711bf4a41532ebb3b5e6d7af56e393ba9aa24c62babc99023370adb93ad7c2
   license: ''
   license_text: ''
 ./README: 
@@ -20254,7 +20294,7 @@
   license_text_override: "This program is free software: you can redistribute it and/or modify\nit under the terms of the GNU Lesser General Public License as published by\nthe Free Software Foundation; either version 3 of the License, or\n(at your option) any later version.\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\nGNU General Public License for more details.\n\nYou should have received a copy of the GNU General Public License\nalong with this program.  If not, see <http://www.gnu.org/licenses/>.\n"
 ./lib/uniname/gen-uninames.lisp: 
   copyright: ''
-  hash: d28d41fa6a3eef2669af73aaeb8ce7e2479501eff9b820f3649344dceec287b2
+  hash: 59ffabd22b10b436b57c204d416a974b6daa05d1776b59b48ba0f520a1728426
   license: ''
   license_override: LGPL
   license_text: ''
@@ -24392,6 +24432,13 @@
   license_override: LGPL-2+
   license_text: "This file is free software; the Free Software Foundation\ngives unlimited permission to copy and/or distribute it,\nwith or without modifications, as long as this notice is preserved.\n"
   license_text_override: "This program is free software; you can redistribute it and/or modify it\nunder the terms of the GNU Library General Public License as published\nby the Free Software Foundation; either version 2, or (at your option)\nany later version.\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU\nLibrary General Public License for more details.\n\nYou should have received a copy of the GNU Library General Public\nLicense along with this program; if not, write to the Free Software\nFoundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301,\nUSA.\n"
+./m4/ioctl.m4: 
+  copyright: 2008-2010 Free Software Foundation, Inc
+  hash: 4c3d41a48aceec1d7c7d66fb3a1cb53a883af6be9587dfd2256e2f7dfed9d67b
+  license: ''
+  license_override: LGPL-2+
+  license_text: "This file is free software; the Free Software Foundation\ngives unlimited permission to copy and/or distribute it,\nwith or without modifications, as long as this notice is preserved.\n"
+  license_text_override: "This program is free software; you can redistribute it and/or modify it\nunder the terms of the GNU Library General Public License as published\nby the Free Software Foundation; either version 2, or (at your option)\nany later version.\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU\nLibrary General Public License for more details.\n\nYou should have received a copy of the GNU Library General Public\nLicense along with this program; if not, write to the Free Software\nFoundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301,\nUSA.\n"
 ./m4/isapipe.m4: 
   copyright: 2006, 2009-2010 Free Software Foundation, Inc.
   hash: 11efa859425348e40fa924377fb7875882488d78fe2cdcbcb73365de7944a644
@@ -25418,7 +25465,7 @@
   license_text_override: "This program is free software: you can redistribute it and/or modify\nit under the terms of the GNU General Public License as published by\nthe Free Software Foundation; either version 3 of the License, or\n(at your option) any later version.\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\nGNU General Public License for more details.\n\nYou should have received a copy of the GNU General Public License\nalong with this program.  If not, see <http://www.gnu.org/licenses/>.\n"
 ./m4/relocatable.m4: 
   copyright: 2003, 2005-2007, 2009-2010 Free Software Foundation, Inc.
-  hash: 909f48ca25532686d8f0b18eb99e218ced9e24cf2c0616f974448d67ff7a528d
+  hash: 651001f5b0b638277eff09388ddc8bc0356e5e4796c349e172ef5e0a6237b2cc
   license: ''
   license_override: GPL
   license_text: "This file is free software; the Free Software Foundation\ngives unlimited permission to copy and/or distribute it,\nwith or without modifications, as long as this notice is preserved.\n"

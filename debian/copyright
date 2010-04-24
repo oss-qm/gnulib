@@ -1525,6 +1525,10 @@ Files: ./tests/havelib/Makefile.am
 Copyright: 1995-1997, 2001-2003, 2006, 2009-2010 Free Software Foundation, Inc.
 License: GPL-3+ 
 
+Files: ./.pc/01-gnulib-directory.patch/gnulib-tool
+Copyright: 2002-2010 Free Software Foundation, Inc
+License: GPL-3+ 
+
 Files: ./tests/macros.h
 Copyright: 2006-2010 Free Software Foundation, Inc.
 License: GPL-3+ 
@@ -3025,6 +3029,10 @@ License: LGPL-2+ [REF19]
 
 Files: ./lib/btowc.c, ./m4/mbsinit.m4
 Copyright: 2008, 2010 Free Software Foundation, Inc.
+License: LGPL-2+ [REF19]
+
+Files: ./m4/ioctl.m4
+Copyright: 2008-2010 Free Software Foundation, Inc
 License: LGPL-2+ [REF19]
 
 Files: ./build-aux/unused-parameter.h, ./lib/accept.c, ./lib/bind.c, ./lib/close.c, ./lib/connect.c, ./lib/errno.in.h, ./lib/flock.c, ./lib/fsync.c, ./lib/getpeername.c, ./lib/getsockname.c, ./lib/getsockopt.c, ./lib/ignore-value.h, ./lib/mbsrtowcs-state.c, ./lib/netdb.in.h, ./lib/recv.c, ./lib/recvfrom.c, ./lib/se-selinux.in.h, ./lib/select.c, ./lib/send.c, ./lib/sendto.c, ./lib/setsockopt.c, ./lib/socket.c, ./lib/sockets.c, ./lib/stdio-write.c, ./lib/sys_ioctl.in.h, ./lib/sys_times.in.h, ./lib/write.c, ./m4/btowc.m4, ./m4/close.m4, ./m4/dirent_h.m4, ./m4/fclose.m4, ./m4/flock.m4, ./m4/fsync.m4, ./m4/mbsrtowcs.m4, ./m4/random_r.m4, ./m4/sys_file_h.m4, ./m4/sys_ioctl_h.m4, ./m4/sys_wait_h.m4, ./m4/wcrtomb.m4
