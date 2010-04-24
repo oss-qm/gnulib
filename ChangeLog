@@ -1,5 +1,11 @@
 2010-04-19  Bruno Haible  <bruno@clisp.org>
 
+	relocatable: Drop the need to define RELOCATABLE_STRIP in Makefile.am.
+	* m4/relocatable.m4 (gl_RELOCATABLE_BODY): Set RELOCATABLE_STRIP.
+	Reported by Sylvain Beucler <beuc@beuc.net>.
+
+2010-04-19  Bruno Haible  <bruno@clisp.org>
+
 	ioctl: Move autoconf macro to a .m4 file.
 	* m4/ioctl.m4: New file, extracted from modules/ioctl.
 	* modules/ioctl (Files): Add it.
