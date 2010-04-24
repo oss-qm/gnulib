@@ -1,3 +1,33 @@
+2010-04-24  Bruno Haible  <bruno@clisp.org>
+
+	vasnprintf: Correct errno value in case of out-of-memory.
+	* lib/vasnprintf.c (VASNPRINTF): Set errno to 0 before calling SNPRINTF
+	or sprintf. Use the errno value from SNPRINTF or sprintf.
+	Reported by Ian Beckwith <ianb@erislabs.net>.
+
+2010-04-20  Andreas Gruenbacher  <agruen@suse.de>
+
+	* build-aux/bootstrap: Use "git -h" for testing for supported options
+	instead of "git --help".  The short-form option only shows a summary,
+	and doesn't layout the full man page.  Grep for the full option name
+	in the summary, too.
+
+2010-04-19  Bruno Haible  <bruno@clisp.org>
+
+	relocatable: Drop the need to define RELOCATABLE_STRIP in Makefile.am.
+	* m4/relocatable.m4 (gl_RELOCATABLE_BODY): Set RELOCATABLE_STRIP.
+	* doc/relocatable-maint.texi (Supporting Relocation): Remove the
+	mention of RELOCATABLE_STRIP.
+	Reported by Sylvain Beucler <beuc@beuc.net>.
+
+2010-04-19  Bruno Haible  <bruno@clisp.org>
+
+	ioctl: Move autoconf macro to a .m4 file.
+	* m4/ioctl.m4: New file, extracted from modules/ioctl.
+	* modules/ioctl (Files): Add it.
+	(configure.ac): Simply invoke gl_FUNC_IOCTL.
+	Reported by Ian Beckwith <ianb@erislabs.net>.
+
 2010-04-16  Bruno Haible  <bruno@clisp.org>
 
 	Override netdb.h always.

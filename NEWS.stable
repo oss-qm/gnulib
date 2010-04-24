@@ -1,6 +1,6 @@
 			Gnulib stable snapshot
 			----------------------
-  * 20100419-stable
+  * 20100424-stable
 
 Snapshot taken based on:
 
@@ -41,6 +41,11 @@ with the following additional commits:
     * [56d363d]->[57a3236] test-forkpty: fix expected signature
     * [e764ea2]->[0dc1446] openpty: Fix mistake from 2010-03-21.
     * [ae75893]->[854fe4e] Override netdb.h always.
+    * [93b28fe]->[e7f1d9f] ioctl: Move autoconf macro to a .m4 file.
+    * [710c8d3]->[8cf9b2c] relocatable: Drop the need to define RELOCATABLE_STRIP in Makefile.am.
+    * [2f31750]->[2676677] relocatable: Simplify doc.
+    * [cea53ef]->[5428678] bootstrap: use "git -h" instead of "git --help"
+    * [e51d12c]->[528ab01] vasnprintf: Correct errno value in case of out-of-memory.
 
 ----------------------------------------------------------------------
 
