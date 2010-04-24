@@ -1,6 +1,6 @@
 			Gnulib stable snapshot
 			----------------------
-  * 20100419-stable
+  * 20100424-stable
 
 Snapshot taken based on:
 
@@ -46,7 +46,6 @@ with the following additional commits:
     * [2f31750]->[2676677] relocatable: Simplify doc.
     * [cea53ef]->[5428678] bootstrap: use "git -h" instead of "git --help"
     * [e51d12c]->[528ab01] vasnprintf: Correct errno value in case of out-of-memory.
-__NEXTCOMMITMARKER__
 
 ----------------------------------------------------------------------
 
