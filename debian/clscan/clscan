@@ -366,7 +366,7 @@ sub get_filenames
 
 sub wanted_files
 {
-    if(/^\.git/ || /^\.cvs/ || /^debian/ || /^modules$/)
+    if(/^\.git/ || /^\.cvs/ || /^debian/ || /^modules$/ || /^\.pc/)
     {
 	$File::Find::prune=1;
     }

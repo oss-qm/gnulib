@@ -1525,10 +1525,6 @@ Files: ./tests/havelib/Makefile.am
 Copyright: 1995-1997, 2001-2003, 2006, 2009-2010 Free Software Foundation, Inc.
 License: GPL-3+ 
 
-Files: ./.pc/01-gnulib-directory.patch/gnulib-tool
-Copyright: 2002-2010 Free Software Foundation, Inc
-License: GPL-3+ 
-
 Files: ./tests/macros.h
 Copyright: 2006-2010 Free Software Foundation, Inc.
 License: GPL-3+ 
