@@ -3,9 +3,6 @@
 %:
 	dh ${@}
 
-# skip tests until 'make check' is fixed
-override_dh_auto_test:
-
 override_dh_auto_clean:
 	$(MAKE) -C doc clean
 
