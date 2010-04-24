@@ -16,6 +16,7 @@ info html dvi pdf:
 check: sc_prefer_ac_check_funcs_once
 
 sc_prefer_ac_check_funcs_once:
+	[ -d .git ] && \
 	git grep -w -l AC_CHECK_FUNCS modules && \
 	  { echo use AC_CHECK_FUNCS_ONCE, not AC_CHECK_FUNCS in modules/ 1>&2; \
 	    exit 1; } || :
