@@ -42,6 +42,8 @@ with the following additional commits:
     * [e764ea2]->[0dc1446] openpty: Fix mistake from 2010-03-21.
     * [ae75893]->[854fe4e] Override netdb.h always.
     * [93b28fe]->[e7f1d9f] ioctl: Move autoconf macro to a .m4 file.
+    * [710c8d3]->[] relocatable: Drop the need to define RELOCATABLE_STRIP in Makefile.am.
+    * [2f31750]->[2676677] relocatable: Simplify doc.
 __NEXTCOMMITMARKER__
 
 ----------------------------------------------------------------------
