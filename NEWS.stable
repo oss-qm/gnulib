@@ -14,6 +14,7 @@ with the following additional commits:
     * [386abcb]->[a155c56] autoupdate
     * [599af40]->[170554f] unitypes: Fix bug introduced on 2010-05-18.
     * [7740412]->[331fd48] string: Fix syntax error with g++ 2.96.
+    * [5616180]->[ce5a4ac] idpriv-drop: Fix tests.
 __NEXTCOMMITMARKER__
 
 ----------------------------------------------------------------------
