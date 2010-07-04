@@ -1,5 +1,25 @@
 			Gnulib stable snapshot
 			----------------------
+
+  * 20100604-stable
+
+Snapshot taken based on:
+
+commit 86ba51d2c17219b82b977da0a912e05a3d9bf858
+Date:   Sun Jun 20 13:31:40 2010 +0200
+
+with the following additional commits:
+
+    * [d0ed135]->[8626eaa] autoupdates
+    * [386abcb]->[a155c56] autoupdate
+    * [599af40]->[170554f] unitypes: Fix bug introduced on 2010-05-18.
+    * [7740412]->[331fd48] string: Fix syntax error with g++ 2.96.
+    * [5616180]->[ce5a4ac] idpriv-drop: Fix tests.
+    * [6e9c624]->[cbec1d8] gettext: Use AC_GNU_SOURCE as a fallback for AC_USE_SYSTEM_EXTENSIONS.
+    * [7773f84]->[a01b938] stdbool: Update doc.
+
+----------------------------------------------------------------------
+
   * 20100424-stable
 
 Snapshot taken based on:

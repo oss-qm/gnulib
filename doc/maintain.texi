@@ -5,7 +5,7 @@
 @c For double-sided printing, uncomment:
 @c @setchapternewpage odd
 @c This date is automagically updated when you save this file:
-@set lastupdate April 14, 2010
+@set lastupdate June 21, 2010
 @c %**end of header
 
 @dircategory GNU organization
@@ -57,6 +57,7 @@ Texts.  A copy of the license is included in the section entitled
 @menu
 * Preface::
 * Getting Help::
+* Getting a GNU Account::
 * Stepping Down::
 * Recruiting Developers::
 * Legal Matters::
@@ -76,27 +77,16 @@ Texts.  A copy of the license is included in the section entitled
 @end menu
 
 
-@macro gdgnuorgtext
-The directory @file{/gd/gnuorg} mentioned throughout this document is
-available on the general GNU server, currently
-@code{fencepost.gnu.org}.  If you are the maintainer of a GNU package,
-you should have an account there.  If you don't have one already,
-@url{http://www.gnu.org/software/README.accounts.html}.  You can also
-ask for accounts for people who significantly help you in working on
-the package.
-@end macro
-
-
 @node Preface
 @chapter About This Document
 
 This file contains guidelines and advice for someone who is the
 maintainer of a GNU program on behalf of the GNU Project.  Everyone is
 entitled to change and redistribute GNU software; you need not pay
-attention to this file to get permission.  But if you want to maintain a
-version for widespread distribution, we suggest you follow these
-guidelines.  If you would like to be a GNU maintainer, then it is
-essential to follow these guidelines.
+attention to this file to get permission.  But if you want to maintain
+a version for widespread distribution, we suggest you follow these
+guidelines.  If you are or would like to be a GNU maintainer, then it
+is essential to follow these guidelines.
 
 In addition to this document, please read and follow the GNU Coding
 Standards (@pxref{Top, , Contents, standards, GNU Coding Standards}).
@@ -108,9 +98,9 @@ Please send corrections or suggestions for this document to
 @email{bug-standards@@gnu.org}.  If you make a suggestion, please
 include suggested new wording if you can.  We prefer a context diff to
 the Texinfo source, but if that's difficult for you, you can make a
-context diff for some other version of this document, or propose it in
-any way that makes it clear.  The source repository for this document
-can be found at @url{http://savannah.gnu.org/projects/gnustandards}.
+diff for some other version of this document, or propose it in any way
+that makes it clear.  The source repository for this document can be
+found at @url{http://savannah.gnu.org/projects/gnustandards}.
 
 @cindex @code{gnustandards-commit@@gnu.org} mailing list
 If you want to receive diffs for every change to these GNU documents,
@@ -118,14 +108,6 @@ join the mailing list @code{gnustandards-commit@@gnu.org}, for
 instance via the web interface at
 @url{http://lists.gnu.org/mailman/listinfo/gnustandards-commit}.
 Archives are also available there.
-
-@gdgnuorgtext
-
-If you find that any GNU computer systems (@code{fencepost.gnu.org},
-@code{ftp.gnu.org}, @code{www.gnu.org}, @code{savannah.gnu.org},
-@dots{}) seem to be down, you can check the current status at
-@url{http://identi.ca/group/fsfstatus}.  Most likely the problem, if
-it is at the FSF end, is already being worked on.
 
 @cindex Piercy, Marge
 This document uses the gender-neutral third-person pronouns ``person'',
@@ -151,15 +133,43 @@ list of a few experienced GNU contributors who have offered to answer
 questions for new maintainers.
 
 @cindex advisory committee
-Finally, the GNU Advisory Committee helps to coordinate activities in
-the GNU project on behalf of RMS.  If you have any organizational
-questions or concerns you can contact the committee members directly
-at @email{gnu-advisory@@gnu.org}.  The committee holds a regular
-monthly meeting to discuss any issues that have been raised.  The
-minutes of the meeting are sent to the @email{gnu-prog} list, and can
-also be found, along with additional information, in
+The GNU Advisory Committee helps to coordinate activities in the GNU
+project on behalf of RMS.  If you have any organizational questions or
+concerns you can contact the committee at
+@email{gnu-advisory@@gnu.org}.  The committee holds a regular monthly
+meeting to discuss any issues that have been raised.  The minutes of
+the meeting are sent to the @code{gnu-prog} list, and can also be
+found, along with additional information, in
 @file{/gd/gnuorg/advisory}.
 
+
+
+@node Getting a GNU Account
+@chapter Getting a GNU Account
+@cindex shell account, on fencepost
+@cindex @code{fencepost.gnu.org} GNU machine
+
+@c We want to repeat this text later, so define a macro.
+@macro gdgnuorgtext
+The directory @file{/gd/gnuorg} mentioned throughout this document is
+available on the general GNU server, currently
+@code{fencepost.gnu.org}.  If you are the maintainer of a GNU package,
+you should have an account there.  If you don't have one already,
+@url{http://www.gnu.org/software/README.accounts.html}.  You can also
+ask for accounts for people who significantly help you in working on
+the package.
+@end macro
+
+@gdgnuorgtext{}
+
+@cindex down, when GNU machines are
+@cindex outage, of GNU machines
+@cindex @url{http://identi.ca/group/fsfstatus}
+If you find that any GNU computer systems (@code{fencepost.gnu.org},
+@code{ftp.gnu.org}, @code{www.gnu.org}, @code{savannah.gnu.org},
+@dots{}) seem to be down, you can check the current status at
+@url{http://identi.ca/group/fsfstatus}.  Most likely the problem, if
+it can be alleviated at the FSF end, is already being worked on.
 
 
 @node Stepping Down
@@ -268,7 +278,7 @@ expected papers arrive.
 @cindex @file{/gd/gnuorg} directory
 @c This paragraph intentionally duplicates information given
 @c near the beginning of the file--to make sure people don't miss it.
-@gdgnuorgtext
+@gdgnuorgtext{}
 
 In order for the contributor to know person should sign papers, you need
 to ask per for the necessary papers.  If you don't know per well, and you
@@ -948,44 +958,73 @@ NetBSD, and non-free platforms such as Windows.
 
 @node Mail
 @chapter Dealing With Mail
-@cindex bug reports
+@cindex email
 
-@cindex email, for receiving bug reports
+This chapter describes setting up mailing lists for your package, and
+gives advice on how to handle bug reports and random requests once you
+have them.
+
+@menu
+* Standard Mailing Lists::  @samp{bug-pkg@@gnu.org} and other standard names.
+* Creating Mailing Lists::  The best way is to use Savannah.
+* Replying to Mail::        Advice on replying to incoming mail.
+@end menu
+
+
+@node Standard Mailing Lists
+@section Standard Mailing Lists
+
+@cindex standard mailing lists
+@cindex mailing lists, standard names of
+
 @cindex mailing list for bug reports
 Once a program is in use, you will get bug reports for it.  Most GNU
 programs have their own special lists for sending bug reports.  The
 advertised bug-reporting email address should always be
 @samp{bug-@var{program}@@gnu.org}, to help show users that the program
 is a GNU package, but it is ok to set up that list to forward to another
-site for further forwarding.  The package distribution should state the
+site if you prefer.  The package distribution should state the
 name of the bug-reporting list in a prominent place, and ask users to
 help us by reporting bugs there.
 
+@cindex @email{bug-gnu-utils@@gnu.org}
 We also have a catch-all list, @email{bug-gnu-utils@@gnu.org}, which is
 used for all GNU programs that don't have their own specific lists.  But
 nowadays we want to give each program its own bug-reporting list and
 move away from using @email{bug-gnu-utils}.
 
-If you wish, you can also have mailing lists such as
+@cindex help for users, mailing list for
+Some GNU programs with many users have another mailing list,
+@samp{help-@var{program}.org}, for people to ask other users for help.
+If your program has many users, you should create such a list for it.
+For a fairly new program, which doesn't have a large user base yet, it
+is better not to bother with this.
+
+@cindex announcements, mailing list for
+If you wish, you can also have a mailing list
 @samp{info-@var{program}} for announcements (@pxref{Announcements}),
-@samp{help-@var{program}} for general help and discussion (see below),
-or any others you find useful.
+and any others you find useful.
 
-By far the easiest way to create mailing lists is through
-@code{savannah.gnu.org}.  Once you register your program, you can do
-this yourself through the `Mailing Lists' menu, without needing
-intervention by anyone else.  Furthermore, lists created through
-Savannah will have a reasonable default configuration for antispam
-purposes (see below).
 
-If you are the maintainer of a GNU package, you should have an account
-on the GNU servers; contact
-@url{http://www.gnu.org/software/README.accounts.html} if you don't
-have one.  (You can also ask for accounts for people who help you a
-large amount in working on the package.)  With this account, you can
-edit @file{/com/mailer/aliases} to create a new unmanaged list or add
-yourself to an existing unmanaged list.  A comment near the beginning
-of that file explains how to create a Mailman-managed mailing list.
+@node Creating Mailing Lists
+@section Creating Mailing Lists
+
+@cindex creating mailing lists
+@cindex mailing lists, creating
+
+Using the web interface on @code{savannah.gnu.org} is by far the
+easiest way to create normal mailing lists, managed through Mailman on
+the GNU mail server.  Once you register your package on Savannah, you
+can create (and remove) lists yourself through the `Mailing Lists'
+menu, without needing to wait for intervention by anyone else.
+Furthermore, lists created through Savannah will have a reasonable
+default configuration for antispam purposes (see below).
+
+To create and maintain simple aliases and unmanaged lists, you can
+edit @file{/com/mailer/aliases} on the main GNU server.  If you don't
+have an account there,
+@url{http://www.gnu.org/software/README.accounts.html} (@pxref{Getting
+a GNU Account}).
 
 But if you don't want to learn how to do those things, you can
 alternatively ask @email{alias-file@@gnu.org} to add you to the
@@ -993,6 +1032,7 @@ bug-reporting list for your program.  To set up a new list, contact
 @email{new-mailing-list@@gnu.org}.  You can subscribe to a list managed
 by Mailman by sending mail to the corresponding @samp{-request} address.
 
+@cindex spam prevention
 You should moderate postings from non-subscribed addresses on your
 mailing lists, to prevent propagation of unwanted messages (``spam'')
 to subscribers and to the list archives.  For lists controlled by
@@ -1001,7 +1041,20 @@ Filter - generic_nonmember_action} to @code{Hold}, and then
 periodically (daily is best) reviewing the held messages, accepting
 the real ones and discarding the junk.
 
+Lists created through Savannah will have this setting, and a number of
+others, such that spam will be automatically deleted (after a short
+delay).  The Savannah mailing list page describes all the details.
+You should still review the held messages in order to approve any that
+are real.
+
+
+@node Replying to Mail
+@section Replying to Mail
+
 @cindex responding to bug reports
+@cindex bug reports, handling
+@cindex help requests, handling
+
 When you receive bug reports, keep in mind that bug reports are crucial
 for your work.  If you don't know about problems, you cannot fix them.
 So always thank each person who sends a bug report.
@@ -1033,9 +1086,9 @@ maintain the program!  Know how to say no; when you are pressed for
 time, just ``thanks for the bug report---I will fix it'' is enough
 response.
 
-Some GNU packages, such as Emacs and GCC, come with advice about how to
-make bug reports useful.  If you want to copy and adapt that, it could
-be a very useful thing to do.
+Some GNU packages, such as Emacs and GCC, come with advice about how
+to make bug reports useful.  Copying and adapting that could be very
+useful for your package.
 
 
 @node Old Versions
@@ -1180,12 +1233,12 @@ version, and checking that the result exactly matches the new version.
 @node Distribution on ftp.gnu.org
 @section Distribution on @code{ftp.gnu.org}
 @cindex GNU ftp site
-@cindex @code{ftp.gnu.org}, the GNU ftp site
+@cindex @code{ftp.gnu.org}, the GNU release site
 
-GNU packages are distributed through directory @file{/gnu} on
-@code{ftp.gnu.org}.  Each package should have a subdirectory
-named after the package, and all the distribution files for the package
-should go in that subdirectory.
+GNU packages are distributed through the directory @file{/gnu} on
+@code{ftp.gnu.org}, via both HTTP and FTP.  Each package should have a
+subdirectory named after the package, and all the distribution files
+for the package should go in that subdirectory.
 
 @c If you have an interest in seeing the monthly download logs from the FTP
 @c site at @code{ftp.gnu.org} for your program, that is something that
@@ -1201,13 +1254,13 @@ versions on @code{ftp.gnu.org}.
 @cindex beta releases
 @cindex pretest releases
 
-@cindex @code{alpha.gnu.org}, ftp site for test releases
+@cindex @code{alpha.gnu.org}, test release site
 When you release a greatly changed new major version of a program, you
 might want to do so as a pretest.  This means that you make a tar file,
 but send it only to a group of volunteers that you have recruited.  (Use
 a suitable GNU mailing list/newsgroup to recruit them.)
 
-We normally use the FTP server @code{alpha.gnu.org} for pretests and
+We normally use the server @code{alpha.gnu.org} for pretests and
 prerelease versions.  @xref{Automated FTP Uploads}, for procedural details
 of putting new versions on @code{alpha.gnu.org}.
 
@@ -1277,7 +1330,7 @@ for your GNU package:
 @item
 Create an account for yourself at @url{http://savannah.gnu.org}, if
 you don't already have one.  By the way, this is also needed to
-maintain the web pages at @url{www.gnu.org} for your project
+maintain the web pages at @url{http://www.gnu.org} for your project
 (@pxref{Web Pages}).
 
 @item
@@ -1563,19 +1616,19 @@ highly unusual situation.
 @cindex @url{http://planet.gnu.org}
 @cindex Savannah, news area
 Please also post release announcements in the news section of your
-Savannah project site.  It is fine to also write news entries for test
-releases and any other newsworthy events.  The news feeds from all GNU
-projects at savannah are aggregated at @url{http://planet.gnu.org}
-(GNU Planet).  You can also post items directly, or arrange for feeds
-from other locations; see contact information on the GNU Planet web
-page.
+Savannah project site.  Here, it is fine to also write news entries
+for test releases and any other newsworthy events.  The news feeds
+from all GNU projects at savannah are aggregated at
+@url{http://planet.gnu.org} (GNU Planet).  You can also post items
+directly, or arrange for feeds from other locations; see information
+on the GNU Planet web page.
 
 @cindex announcement mailing list, project-specific
 You can maintain your own mailing list (typically
 @email{info-@var{program}@@gnu.org}) for announcements as well if you
 like.  For your own list, of course you decide as you see fit what
-events are worth announcing.  (@xref{Mail}, for more suggestions on
-handling mail for your package.)
+events are worth announcing.  (@xref{Mail}, for setting this up, and
+more suggestions on handling mail for your package.)
 
 @cindex contents of announcements
 When writing an announcement, please include the following:
@@ -1592,7 +1645,7 @@ Your package's web page (normally
 @item
 Your package's download location (normally
 @indicateurl{http://ftp.gnu.org/gnu/@var{package}/}).  It is also
-useful to mention the FTP mirror list at
+useful to mention the mirror list at
 @url{http://www.gnu.org/order/ftp.html}, and that
 @url{http://ftpmirror.gnu.org/@var{package/}} will automatically
 redirect to a nearby mirror.
@@ -1614,12 +1667,16 @@ The overall goals are to support a wide variety of browsers, to focus
 on information rather than flashy eye candy, and to keep the site
 simple and uniform.
 
+We encourage you to use the standard @code{www.gnu.org} template as
+the basis for your pages:
+@url{http://www.gnu.org/server/@/standards/@/boilerplate-source.html}.
+
 Some GNU packages have just simple web pages, but the more information
 you provide, the better.  So please write as much as you usefully can,
 and put all of it on @code{www.gnu.org}.  However, pages that access
-databases (including mail logs and bug tracking) are an exception; set
-them up on whatever site is convenient for you, and make the pages on
-@code{www.gnu.org} link to that site.
+databases (including mail archives and bug tracking) are an exception;
+set them up on whatever site is convenient for you, and make the pages
+on @code{www.gnu.org} link to that site.
 
 @menu
 * Hosting for Web Pages::
@@ -1627,6 +1684,7 @@ them up on whatever site is convenient for you, and make the pages on
 * Manuals on Web Pages::
 * CVS Keywords in Web Pages::
 @end menu
+
 
 @node Hosting for Web Pages
 @section Hosting for Web Pages
@@ -1826,7 +1884,10 @@ For new files:
 cvs add -ko @var{file1} @var{file2} ...
 @end example
 
-@xref{Keyword substitution,,,cvs,Version Management with CVS}.
+@c The CVS manual is now built with numeric references and no nonsplit
+@c form, so it's not worth trying to give a direct link.
+See the ``Keyword Substitution'' section in the CVS manual, available
+at @url{http://ximbiot.com/cvs/manual}.
 
 In Texinfo source, the recommended way to literally specify a
 ``dollar'' keyword is:
@@ -1977,19 +2038,23 @@ Note that this uses a space, not a slash.
 @cindex source repository
 @cindex version control system
 @cindex FTP site
+@cindex release site
 @cindex hosting
 
 We recommend using @code{savannah.gnu.org} for the source code
-repository for your package, and, even more so, using
-@code{ftp.gnu.org} as the standard distribution site.  Doing so makes
-it easier for developers and users to find the latest GNU releases.
-@xref{Old Versions}, for more information about Savannah.
+repository for your package, but that's not required.  @xref{Old
+Versions}, for more information about Savannah.
 
-However, it is ok to use other machines if you wish.  If you use a
-company's machine to hold the repository for your program, or as its
-ftp site, please put this statement in a prominent place on the site,
-so as to prevent people from getting the wrong idea about the
-relationship between the package and the company:
+We strongly urge you to use @code{ftp.gnu.org} as the standard
+distribution site.  Doing so makes it easier for developers and users
+to find the latest GNU releases.  However, it is ok to use another
+server if you wish, provided it allows access from the general public
+without limitation (for instance, without excluding any country).
+
+If you use a company's machine to hold the repository for your
+program, or as its ftp site, please put this statement in a prominent
+place on the site, so as to prevent people from getting the wrong idea
+about the relationship between the package and the company:
 
 @smallexample
 The programs <list of them> hosted here are free software packages
