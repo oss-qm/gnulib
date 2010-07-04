@@ -16,7 +16,7 @@ with the following additional commits:
     * [7740412]->[331fd48] string: Fix syntax error with g++ 2.96.
     * [5616180]->[ce5a4ac] idpriv-drop: Fix tests.
     * [6e9c624]->[cbec1d8] gettext: Use AC_GNU_SOURCE as a fallback for AC_USE_SYSTEM_EXTENSIONS.
-__NEXTCOMMITMARKER__
+    * [7773f84]->[a01b938] stdbool: Update doc.
 
 ----------------------------------------------------------------------
 
