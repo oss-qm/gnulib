@@ -15,6 +15,7 @@ with the following additional commits:
     * [599af40]->[170554f] unitypes: Fix bug introduced on 2010-05-18.
     * [7740412]->[331fd48] string: Fix syntax error with g++ 2.96.
     * [5616180]->[ce5a4ac] idpriv-drop: Fix tests.
+    * [6e9c624]->[cbec1d8] gettext: Use AC_GNU_SOURCE as a fallback for AC_USE_SYSTEM_EXTENSIONS.
 __NEXTCOMMITMARKER__
 
 ----------------------------------------------------------------------
