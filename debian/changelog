@@ -2,8 +2,9 @@ gnulib (20100704+stable-1) unstable; urgency=low
 
   * New upstream stable snapshot.
   * Depends: gettext (>= 0.18.1), autopoint.
+  * Standards-Version: 3.9.0 (no changes).
 
- -- Ian Beckwith <ianb@debian.org>  Sun, 04 Jul 2010 03:03:16 +0100
+ -- Ian Beckwith <ianb@debian.org>  Sun, 04 Jul 2010 03:05:46 +0100
 
 gnulib (20100424+stable-1) unstable; urgency=low
 
