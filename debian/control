@@ -10,7 +10,7 @@ Vcs-Git: git://erislabs.net/gnulib.git
 
 Package: gnulib
 Architecture: all
-Depends: ${misc:Depends}, build-essential, m4, autoconf, automake, gettext, bison, gperf, texinfo, libtool
+Depends: ${misc:Depends}, build-essential, m4, autoconf, automake, gettext (>= 0.18.1), autopoint, bison, gperf, texinfo, libtool
 Suggests: perl, clisp
 Description: GNU Portability Library
  The GNU portability library is a macro system and C declarations and
