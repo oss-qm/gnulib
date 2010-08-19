@@ -9,6 +9,7 @@ Depends-on:
 unistr/base
 unistr/u8-strchr
 unistr/u8-strmbtouc
+unistr/u32-to-u8
 
 configure.ac:
 gl_LIBUNISTRING_MODULE([0.9], [unistr/u8-strstr])

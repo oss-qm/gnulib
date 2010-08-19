@@ -11,6 +11,7 @@ unistr/u16-strlen
 unistr/u16-strmbtouc
 unistr/u16-cmp
 unistr/u16-strchr
+unistr/u32-to-u16
 
 configure.ac:
 gl_LIBUNISTRING_MODULE([0.9], [unistr/u16-strspn])
