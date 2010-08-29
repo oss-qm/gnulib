@@ -25,6 +25,7 @@ with the following additional commits:
     * [0a05120]->[a83a25f] poll: return immediately on POLLHUP.
     * [fc9e09a]->[63b29c2] autoupdate
     * [20e165d]->[6a0e461] stat-time: relax license LGPL
+    * [2901094]->[] acl: fix compilation test
 __NEXTCOMMITMARKER__
 
 ----------------------------------------------------------------------

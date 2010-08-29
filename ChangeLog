@@ -1,3 +1,9 @@
+2010-08-26  Eric Blake  <eblake@redhat.com>
+
+	acl: fix compilation test
+	* m4/acl.m4 (gl_FUNC_ALL): Use correct format for
+	AC_COMPILE_IFELSE.
+
 2010-08-26  Jim Meyering  <meyering@redhat.com>
 
 	stat-time: relax license LGPL
