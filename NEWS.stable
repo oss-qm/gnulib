@@ -31,6 +31,7 @@ with the following additional commits:
     * [78ea303]->[0e59cb6] glob: fix compile test
     * [06e1426]->[7434863] lib-symbol-versions: fix m4 quoting
     * [6530a2c]->[d45eaf1] login_tty: add missing dependeny
+    * [f99e41e]->[176c42a] * ChangeLog: fix typo
 __NEXTCOMMITMARKER__
 
 ----------------------------------------------------------------------
