@@ -30,6 +30,7 @@ with the following additional commits:
     * [14b6d70]->[3056d82] btowc: fix missing file
     * [78ea303]->[0e59cb6] glob: fix compile test
     * [06e1426]->[7434863] lib-symbol-versions: fix m4 quoting
+    * [6530a2c]->[d45eaf1] login_tty: add missing dependeny
 __NEXTCOMMITMARKER__
 
 ----------------------------------------------------------------------
