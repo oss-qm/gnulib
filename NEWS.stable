@@ -12,6 +12,7 @@ with the following additional commits:
 
     * [6333e13]->[a2ae92e] Fix gnulib-tool sed script de-commentation for AIX sed.
     * [350aad7]->[9e05eaf] autoupdate
+    * [06728e0]->[c94cede] fts: allow compilation with C++
 __NEXTCOMMITMARKER__
 
 ----------------------------------------------------------------------
