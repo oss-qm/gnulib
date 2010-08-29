@@ -23,6 +23,7 @@ with the following additional commits:
     * [cab03f4]->[6acb78a] stdbool: avoid spurious failure with modern xlc
     * [8951e0e]->[2981537] Fix test-unlinkat, test-rmdir failure on AIX 5.3.
     * [0a05120]->[a83a25f] poll: return immediately on POLLHUP.
+    * [fc9e09a]->[63b29c2] autoupdate
 __NEXTCOMMITMARKER__
 
 ----------------------------------------------------------------------
