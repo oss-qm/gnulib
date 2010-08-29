@@ -14,6 +14,7 @@ with the following additional commits:
     * [350aad7]->[9e05eaf] autoupdate
     * [06728e0]->[c94cede] fts: allow compilation with C++
     * [51c2a23]->[880d107] poll, select: handle ERROR_BROKEN_PIPE.
+    * [0c37a90]->[0b22530] argz: fix shell quoting issue
 __NEXTCOMMITMARKER__
 
 ----------------------------------------------------------------------
