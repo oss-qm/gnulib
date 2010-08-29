@@ -10,6 +10,7 @@ Date:   Tue Aug 17 07:18:27 2010 -0700
 
 with the following additional commits:
 
+    * [6333e13]->[a2ae92e] Fix gnulib-tool sed script de-commentation for AIX sed.
 __NEXTCOMMITMARKER__
 
 ----------------------------------------------------------------------
