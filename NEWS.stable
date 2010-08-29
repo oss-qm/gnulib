@@ -19,6 +19,7 @@ with the following additional commits:
     * [5a2d7e1]->[21182ba] priv-set: fix comments
     * [a9ec89b]->[325e969] priv-set: fix comment
     * [667277d]->[d74874d] getloadavg: don't define SVR4 on cygwin
+    * [8c8ee4b]->[24ad42e] getloadavg: simplify code
 __NEXTCOMMITMARKER__
 
 ----------------------------------------------------------------------
