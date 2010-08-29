@@ -31,6 +31,19 @@
 #include "quotearg.h"
 #include "xmemcoll.h"
 
+static void
+collate_error (int collation_errno,
+               char const *s1, size_t s1len,
+               char const *s2, size_t s2len)
+{
+  error (0, collation_errno, _("string comparison failed"));
+  error (0, 0, _("Set LC_ALL='C' to work around the problem."));
+  error (exit_failure, 0,
+         _("The strings compared were %s and %s."),
+         quotearg_n_style_mem (0, locale_quoting_style, s1, s1len),
+         quotearg_n_style_mem (1, locale_quoting_style, s2, s2len));
+}
+
 /* Compare S1 (with length S1LEN) and S2 (with length S2LEN) according
    to the LC_COLLATE locale.  S1 and S2 do not overlap, and are not
    adjacent.  Temporarily modify the bytes after S1 and S2, but
@@ -42,16 +55,22 @@ xmemcoll (char *s1, size_t s1len, char *s2, size_t s2len)
 {
   int diff = memcoll (s1, s1len, s2, s2len);
   int collation_errno = errno;
-
   if (collation_errno)
-    {
-      error (0, collation_errno, _("string comparison failed"));
-      error (0, 0, _("Set LC_ALL='C' to work around the problem."));
-      error (exit_failure, 0,
-             _("The strings compared were %s and %s."),
-             quotearg_n_style_mem (0, locale_quoting_style, s1, s1len),
-             quotearg_n_style_mem (1, locale_quoting_style, s2, s2len));
-    }
+    collate_error (collation_errno, s1, s1len, s2, s2len);
+  return diff;
+}
 
+/* Compare S1 (with size S1SIZE) and S2 (with length S2SIZE) according
+   to the LC_COLLATE locale.  S1 and S2 are both blocks of memory with
+   nonzero sizes, and the last byte in each block must be a null byte.
+   Report an error and exit if there is an error.  */
+
+int
+xmemcoll0 (char const *s1, size_t s1len, char const *s2, size_t s2len)
+{
+  int diff = memcoll0 (s1, s1len, s2, s2len);
+  int collation_errno = errno;
+  if (collation_errno)
+    collate_error (collation_errno, s1, s1len, s2, s2len);
   return diff;
 }
