@@ -26,7 +26,7 @@ with the following additional commits:
     * [fc9e09a]->[63b29c2] autoupdate
     * [20e165d]->[6a0e461] stat-time: relax license LGPL
     * [2901094]->[90aa7a1] acl: fix compilation test
-    * [a228f53]->[] lseek: fix link test
+    * [a228f53]->[0b86eb2] lseek: fix link test
 __NEXTCOMMITMARKER__
 
 ----------------------------------------------------------------------
