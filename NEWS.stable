@@ -16,6 +16,7 @@ with the following additional commits:
     * [51c2a23]->[880d107] poll, select: handle ERROR_BROKEN_PIPE.
     * [0c37a90]->[0b22530] argz: fix shell quoting issue
     * [204e903]->[99d6cd5] stdbool: avoid rejecting clang
+    * [5a2d7e1]->[21182ba] priv-set: fix comments
 __NEXTCOMMITMARKER__
 
 ----------------------------------------------------------------------
