@@ -2,8 +2,9 @@ gnulib (20100829+stable-1) experimental; urgency=low
 
   * New upstream stable snapshot.
   * upload to experimental as squeeze is frozen.
+  * Standards-Version: 3.9.1 (no changes).
 
- -- Ian Beckwith <ianb@debian.org>  Mon, 30 Aug 2010 21:18:30 +0100
+ -- Ian Beckwith <ianb@debian.org>  Mon, 30 Aug 2010 21:56:08 +0100
 
 gnulib (20100704+stable-1) unstable; urgency=low
 
