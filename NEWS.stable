@@ -33,6 +33,7 @@ with the following additional commits:
     * [6530a2c]->[d45eaf1] login_tty: add missing dependeny
     * [f99e41e]->[176c42a] * ChangeLog: fix typo
     * [ebf441c]->[2a3686a] sys_socket, netdb: Ensure socklen_t gets defined.
+    * [63d392e]->[cb49949] Avoid relocwrapper link errors due to gnulib replacement functions.
 __NEXTCOMMITMARKER__
 
 ----------------------------------------------------------------------
