@@ -1,4 +1,4 @@
-#!/usr/local/bin/clisp -C
+#!/usr/bin/clisp -C
 
 ;;; Creation of gnulib's uninames.h from the UnicodeData.txt table.
 ;;; Bruno Haible 2000-12-28
