@@ -5,6 +5,8 @@ dnl This file is free software; the Free Software Foundation
 dnl gives unlimited permission to copy and/or distribute it,
 dnl with or without modifications, as long as this notice is preserved.
 
+#serial 2
+
 # Prepare for substituting <stdbool.h> if it is not supported.
 
 AC_DEFUN([AM_STDBOOL_H],
@@ -31,8 +33,9 @@ AC_DEFUN([AM_STDBOOL_H],
 # AM_STDBOOL_H will be renamed to gl_STDBOOL_H in the future.
 AC_DEFUN([gl_STDBOOL_H], [AM_STDBOOL_H])
 
-# This macro is only needed in autoconf <= 2.59.  Newer versions of autoconf
-# have this macro built-in.
+# This version of the macro is needed in autoconf <= 2.67.  Autoconf has
+# it built in since 2.60, but we want the tweaks from the 2.68 version
+# to avoid rejecting xlc and clang due to relying on extensions.
 
 AC_DEFUN([AC_HEADER_STDBOOL],
   [AC_CACHE_CHECK([for stdbool.h that conforms to C99],
@@ -65,34 +68,17 @@ AC_DEFUN([AC_HEADER_STDBOOL],
           char b[false == 0 ? 1 : -1];
           char c[__bool_true_false_are_defined == 1 ? 1 : -1];
           char d[(bool) 0.5 == true ? 1 : -1];
-          bool e = &s;
+          /* See body of main program for 'e'.  */
           char f[(_Bool) 0.0 == false ? 1 : -1];
           char g[true];
           char h[sizeof (_Bool)];
           char i[sizeof s.t];
           enum { j = false, k = true, l = false * true, m = true * 256 };
+          /* The following fails for
+             HP aC++/ANSI C B3910B A.05.55 [Dec 04 2003]. */
           _Bool n[m];
           char o[sizeof n == m * sizeof n[0] ? 1 : -1];
           char p[-1 - (_Bool) 0 < 0 && -1 - (bool) 0 < 0 ? 1 : -1];
-          #if defined __xlc__ || defined __GNUC__
-           /* Catch a bug in IBM AIX xlc compiler version 6.0.0.0
-              reported by James Lemley on 2005-10-05; see
-              http://lists.gnu.org/archive/html/bug-coreutils/2005-10/msg00086.html
-              This test is not quite right, since xlc is allowed to
-              reject this program, as the initializer for xlcbug is
-              not one of the forms that C requires support for.
-              However, doing the test right would require a run-time
-              test, and that would make cross-compilation harder.
-              Let us hope that IBM fixes the xlc bug, and also adds
-              support for this kind of constant expression.  In the
-              meantime, this test will reject xlc, which is OK, since
-              our stdbool.h substitute should suffice.  We also test
-              this with GCC, where it should work, to detect more
-              quickly whether someone messes up the test in the
-              future.  */
-           char digs[] = "0123456789";
-           int xlcbug = 1 / (&(digs + 5)[-2 + (bool) 1] == &digs[4] ? 1 : -1);
-          #endif
           /* Catch a bug in an HP-UX C compiler.  See
              http://gcc.gnu.org/ml/gcc-patches/2003-12/msg02303.html
              http://lists.gnu.org/archive/html/bug-coreutils/2005-11/msg00161.html
@@ -101,6 +87,7 @@ AC_DEFUN([AC_HEADER_STDBOOL],
           _Bool *pq = &q;
         ],
         [
+          bool e = &s;
           *pq |= q;
           *pq |= ! q;
           /* Refer to every declared value, to avoid compiler optimizations.  */

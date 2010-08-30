@@ -1,6 +1,46 @@
 			Gnulib stable snapshot
 			----------------------
 
+  * 20100829-stable
+
+Snapshot taken based on:
+
+commit 3f08220c1a263dfc45f6e0ce6dcee97631dd5e56
+Date:   Tue Aug 17 07:18:27 2010 -0700
+
+with the following additional commits:
+
+    * [6333e13]->[a2ae92e] Fix gnulib-tool sed script de-commentation for AIX sed.
+    * [350aad7]->[9e05eaf] autoupdate
+    * [06728e0]->[c94cede] fts: allow compilation with C++
+    * [51c2a23]->[880d107] poll, select: handle ERROR_BROKEN_PIPE.
+    * [0c37a90]->[0b22530] argz: fix shell quoting issue
+    * [204e903]->[99d6cd5] stdbool: avoid rejecting clang
+    * [5a2d7e1]->[21182ba] priv-set: fix comments
+    * [a9ec89b]->[325e969] priv-set: fix comment
+    * [667277d]->[d74874d] getloadavg: don't define SVR4 on cygwin
+    * [8c8ee4b]->[24ad42e] getloadavg: simplify code
+    * [cab03f4]->[6acb78a] stdbool: avoid spurious failure with modern xlc
+    * [8951e0e]->[2981537] Fix test-unlinkat, test-rmdir failure on AIX 5.3.
+    * [0a05120]->[a83a25f] poll: return immediately on POLLHUP.
+    * [fc9e09a]->[63b29c2] autoupdate
+    * [20e165d]->[6a0e461] stat-time: relax license LGPL
+    * [2901094]->[90aa7a1] acl: fix compilation test
+    * [a228f53]->[0b86eb2] lseek: fix link test
+    * [14b6d70]->[3056d82] btowc: fix missing file
+    * [78ea303]->[0e59cb6] glob: fix compile test
+    * [06e1426]->[7434863] lib-symbol-versions: fix m4 quoting
+    * [6530a2c]->[d45eaf1] login_tty: add missing dependeny
+    * [f99e41e]->[176c42a] * ChangeLog: fix typo
+    * [ebf441c]->[2a3686a] sys_socket, netdb: Ensure socklen_t gets defined.
+    * [63d392e]->[cb49949] Avoid relocwrapper link errors due to gnulib replacement functions.
+    * [7a6e9cf]->[da66e7e] ftello: Relax license.
+    * [5712b08]->[02df495] autoupdate
+    * [6c345f6]->[9a348fb] unistr/u*-strchr: Fix tests dependencies.
+    * [c4bc551]->[2b958de] pread, pwrite: add missing dependency
+
+----------------------------------------------------------------------
+
   * 20100704-stable
 
 Snapshot taken based on:
