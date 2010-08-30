@@ -38,7 +38,6 @@ with the following additional commits:
     * [5712b08]->[02df495] autoupdate
     * [6c345f6]->[9a348fb] unistr/u*-strchr: Fix tests dependencies.
     * [c4bc551]->[2b958de] pread, pwrite: add missing dependency
-__NEXTCOMMITMARKER__
 
 ----------------------------------------------------------------------
 
