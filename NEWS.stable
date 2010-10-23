@@ -16,6 +16,7 @@ with the following additional commits:
     * [fdaeccf]->[66e670a] GNUmakefile: handle "stable" target, not "major"
     * [cac3889]->[7661272] ignore-value: make header idempotent
     * [61241ea]->[25d72f8] termios: Update documentation.
+    * [94617c2]->[] Fix date in ChangeLog.
 __NEXTCOMMITMARKER__
 
 ----------------------------------------------------------------------
