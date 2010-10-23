@@ -13,7 +13,7 @@ with the following additional commits:
     * [b6d1430]->[fef7abe] termios: fix compilation on mingw
     * [74b1e48]->[7bf74f7] socketlib: Fix.
     * [d239853]->[ced7fa1] vasnprintf: Don't set errno to 0.
-    * [fdaeccf]->[] GNUmakefile: handle "stable" target, not "major"
+    * [fdaeccf]->[66e670a] GNUmakefile: handle "stable" target, not "major"
 __NEXTCOMMITMARKER__
 
 ----------------------------------------------------------------------
