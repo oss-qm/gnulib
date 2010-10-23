@@ -10,6 +10,7 @@ Date:   Wed Oct 13 10:15:38 2010 +0200
 
 with the following additional commits:
 
+    * [b6d1430]->[fef7abe] termios: fix compilation on mingw
 __NEXTCOMMITMARKER__
 
 ----------------------------------------------------------------------
