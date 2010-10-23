@@ -1,6 +1,19 @@
 			Gnulib stable snapshot
 			----------------------
 
+  * 20101024-stable
+
+Snapshot taken based on:
+
+commit ba523890aa7bae76e3ac6b3ce68f22a79d25ce2c
+Date:   Wed Oct 13 10:15:38 2010 +0200
+
+with the following additional commits:
+
+__NEXTCOMMITMARKER__
+
+----------------------------------------------------------------------
+
   * 20100829-stable
 
 Snapshot taken based on:
