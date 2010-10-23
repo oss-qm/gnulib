@@ -1,4 +1,4 @@
-# frexp.m4 serial 8
+# frexp.m4 serial 9
 dnl Copyright (C) 2007-2010 Free Software Foundation, Inc.
 dnl This file is free software; the Free Software Foundation
 dnl gives unlimited permission to copy and/or distribute it,
@@ -15,9 +15,11 @@ AC_DEFUN([gl_FUNC_FREXP],
       [
         save_LIBS="$LIBS"
         LIBS="$LIBS -lm"
-        AC_TRY_LINK([#include <math.h>
-                     double x;],
-                    [int e; return frexp (x, &e) > 0;],
+        AC_LINK_IFELSE(
+          [AC_LANG_PROGRAM(
+             [[#include <math.h>
+               double x;]],
+             [[int e; return frexp (x, &e) > 0;]])],
           [gl_cv_func_frexp_in_libm=yes],
           [gl_cv_func_frexp_in_libm=no])
         LIBS="$save_LIBS"
@@ -78,9 +80,11 @@ AC_DEFUN([gl_CHECK_FREXP_NO_LIBM],
   AC_CACHE_CHECK([whether frexp() can be used without linking with libm],
     [gl_cv_func_frexp_no_libm],
     [
-      AC_TRY_LINK([#include <math.h>
-                   double x;],
-                  [int e; return frexp (x, &e) > 0;],
+      AC_LINK_IFELSE(
+        [AC_LANG_PROGRAM(
+           [[#include <math.h>
+             double x;]],
+           [[int e; return frexp (x, &e) > 0;]])],
         [gl_cv_func_frexp_no_libm=yes],
         [gl_cv_func_frexp_no_libm=no])
     ])
@@ -95,7 +99,8 @@ AC_DEFUN([gl_FUNC_FREXP_WORKS],
   AC_REQUIRE([AC_CANONICAL_HOST]) dnl for cross-compiles
   AC_CACHE_CHECK([whether frexp works], [gl_cv_func_frexp_works],
     [
-      AC_TRY_RUN([
+      AC_RUN_IFELSE(
+        [AC_LANG_SOURCE([[
 #include <float.h>
 #include <math.h>
 #include <string.h>
@@ -135,11 +140,13 @@ int main()
       return 1;
   }
   return 0;
-}], [gl_cv_func_frexp_works=yes], [gl_cv_func_frexp_works=no],
-      [case "$host_os" in
-         netbsd* | irix* | mingw*) gl_cv_func_frexp_works="guessing no";;
-         *)                        gl_cv_func_frexp_works="guessing yes";;
-       esac
-      ])
+}]])],
+        [gl_cv_func_frexp_works=yes],
+        [gl_cv_func_frexp_works=no],
+        [case "$host_os" in
+           netbsd* | irix* | mingw*) gl_cv_func_frexp_works="guessing no";;
+           *)                        gl_cv_func_frexp_works="guessing yes";;
+         esac
+        ])
     ])
 ])
