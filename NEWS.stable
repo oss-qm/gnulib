@@ -21,6 +21,7 @@ with the following additional commits:
     * [b86f488]->[ddc319e] c-stack: work around libsigsegv 2.8 bug
     * [a0598ff]->[69c6204] nl_langinfo test: Avoid test failure on NetBSD 5.
     * [f8dd25c]->[9116c10] Tests: Fix LOCALE_JA on MirBSD 10.
+    * [9645318]->[87dea4e] nl_langinfo: Mention problem with CRNCYSTR on NetBSD 5.0.
 __NEXTCOMMITMARKER__
 
 ----------------------------------------------------------------------
