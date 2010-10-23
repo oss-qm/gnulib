@@ -19,6 +19,7 @@
 #if __GNUC__ >= 3
 @PRAGMA_SYSTEM_HEADER@
 #endif
+@PRAGMA_COLUMNS@
 
 /* The include_next requires a split double-inclusion guard.  */
 #@INCLUDE_NEXT@ @NEXT_DIRENT_H@
@@ -60,6 +61,12 @@ _GL_CXXALIASWARN (closedir);
 _GL_FUNCDECL_RPL (dirfd, int, (DIR *) _GL_ARG_NONNULL ((1)));
 _GL_CXXALIAS_RPL (dirfd, int, (DIR *));
 # else
+#  if defined __cplusplus && defined GNULIB_NAMESPACE && defined dirfd
+    /* dirfd is defined as a macro and not as a function.
+       Turn it into a function and get rid of the macro.  */
+static inline int (dirfd) (DIR *dp) { return dirfd (dp); }
+#   undef dirfd
+#  endif
 #  if !(@HAVE_DECL_DIRFD@ || defined dirfd)
 _GL_FUNCDECL_SYS (dirfd, int, (DIR *) _GL_ARG_NONNULL ((1)));
 #  endif
