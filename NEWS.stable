@@ -15,7 +15,7 @@ with the following additional commits:
     * [d239853]->[ced7fa1] vasnprintf: Don't set errno to 0.
     * [fdaeccf]->[66e670a] GNUmakefile: handle "stable" target, not "major"
     * [cac3889]->[7661272] ignore-value: make header idempotent
-    * [61241ea]->[] termios: Update documentation.
+    * [61241ea]->[25d72f8] termios: Update documentation.
 __NEXTCOMMITMARKER__
 
 ----------------------------------------------------------------------
