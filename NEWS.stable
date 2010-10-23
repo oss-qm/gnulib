@@ -14,6 +14,7 @@ with the following additional commits:
     * [74b1e48]->[7bf74f7] socketlib: Fix.
     * [d239853]->[ced7fa1] vasnprintf: Don't set errno to 0.
     * [fdaeccf]->[66e670a] GNUmakefile: handle "stable" target, not "major"
+    * [cac3889]->[7661272] ignore-value: make header idempotent
 __NEXTCOMMITMARKER__
 
 ----------------------------------------------------------------------
