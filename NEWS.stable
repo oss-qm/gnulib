@@ -17,6 +17,7 @@ with the following additional commits:
     * [cac3889]->[7661272] ignore-value: make header idempotent
     * [61241ea]->[25d72f8] termios: Update documentation.
     * [94617c2]->[a964f9e] Fix date in ChangeLog.
+    * [3f75f63]->[7966020] nextafter: Fix configure check.
 __NEXTCOMMITMARKER__
 
 ----------------------------------------------------------------------
