@@ -19,6 +19,7 @@ with the following additional commits:
     * [94617c2]->[a964f9e] Fix date in ChangeLog.
     * [3f75f63]->[7966020] nextafter: Fix configure check.
     * [b86f488]->[ddc319e] c-stack: work around libsigsegv 2.8 bug
+    * [a0598ff]->[69c6204] nl_langinfo test: Avoid test failure on NetBSD 5.
 __NEXTCOMMITMARKER__
 
 ----------------------------------------------------------------------
