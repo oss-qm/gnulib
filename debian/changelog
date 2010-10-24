@@ -1,3 +1,10 @@
+gnulib (20101024+stable-1) experimental; urgency=low
+
+  * New upstream stable snapshot.
+  * Upload to experimental as squeeze is frozen.
+
+ -- Ian Beckwith <ianb@debian.org>  Sun, 24 Oct 2010 01:04:55 +0100
+
 gnulib (20100829+stable-1) experimental; urgency=low
 
   * New upstream stable snapshot.
