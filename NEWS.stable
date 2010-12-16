@@ -13,6 +13,7 @@ with the following additional commits:
     * [8029e49]->[6f83d07] autoupdate
     * [0de2016]->[c94504d] * build-aux/gendocs.sh: restore x bit
     * [82afcdd]->[e631098] autoupdate
+    * [980f9d2]->[] cloexec, fcntl: relax license
 __NEXTCOMMITMARKER__
 
 ----------------------------------------------------------------------

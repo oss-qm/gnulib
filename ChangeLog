@@ -1,3 +1,10 @@
+2010-12-13  Eric Blake  <eblake@redhat.com>
+
+	cloexec, fcntl: relax license
+	* modules/cloexec (License): Change from LGPLv3+ to LGPLv2+, with
+	consent from all contributors.
+	* modules/fcntl (License): Likewise.
+
 2010-12-07  Bruno Haible  <bruno@clisp.org>
 
 	unistr/u8-strcmp: Avoid collision with libc function on Solaris 11.
