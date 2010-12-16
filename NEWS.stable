@@ -1,6 +1,22 @@
 			Gnulib stable snapshot
 			----------------------
 
+  * 20101216-stable
+
+Snapshot taken based on:
+
+commit 64911207854610668b480939469282fdaeb96f74
+Date:   Tue Dec 7 03:32:46 2010 +0100
+
+with the following additional commits:
+
+    * [8029e49]->[6f83d07] autoupdate
+    * [0de2016]->[c94504d] * build-aux/gendocs.sh: restore x bit
+    * [82afcdd]->[e631098] autoupdate
+    * [980f9d2]->[20c5bd5] cloexec, fcntl: relax license
+
+----------------------------------------------------------------------
+
   * 20101024-stable
 
 Snapshot taken based on:
