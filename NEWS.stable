@@ -11,6 +11,7 @@ Date:   Tue Dec 7 03:32:46 2010 +0100
 with the following additional commits:
 
     * [8029e49]->[6f83d07] autoupdate
+    * [0de2016]->[c94504d] * build-aux/gendocs.sh: restore x bit
 __NEXTCOMMITMARKER__
 
 ----------------------------------------------------------------------
