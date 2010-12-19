@@ -14,6 +14,7 @@ with the following additional commits:
     * [0de2016]->[c94504d] * build-aux/gendocs.sh: restore x bit
     * [82afcdd]->[e631098] autoupdate
     * [980f9d2]->[20c5bd5] cloexec, fcntl: relax license
+__NEXTCOMMITMARKER__
 
 ----------------------------------------------------------------------
 
