@@ -1,8 +1,8 @@
-gnulib (20101216+stable-1) experimental; urgency=low
+gnulib (20101220+stable-1) experimental; urgency=low
 
   * New upstream stable snapshot.
 
- -- Ian Beckwith <ianb@debian.org>  Fri, 17 Dec 2010 00:28:22 +0000
+ -- Ian Beckwith <ianb@debian.org>  Mon, 20 Dec 2010 21:01:23 +0000
 
 gnulib (20101024+stable-1) experimental; urgency=low
 
