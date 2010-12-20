@@ -6,7 +6,7 @@
   license_text: ''
 ./ChangeLog: 
   copyright: ''
-  hash: 31064b6601366c5b65954f136f9b1f55ace704889258a78c93d8de09ef5eca23
+  hash: 699dc522d2a2876d9b34d5f10dd181bdb8215fba613fbd444c8a17d781b441b3
   license: ''
   license_text: ''
 ./DEPENDENCIES: 
@@ -31,7 +31,7 @@
   license_text: ''
 ./NEWS.stable: 
   copyright: ''
-  hash: 83bb9375aaa49d8d4c05cc8e1a6d32e0905a5715f724b2755ff5a1992fbaa5bb
+  hash: 3e1c1778b3aecc0f37e169b65e779f4a88b5b88c71457429da82a17e13b4b78f
   license: ''
   license_text: ''
 ./README: 
@@ -729,7 +729,7 @@
   license_text: ''
 ./doc/glibc-functions/asprintf.texi: 
   copyright: ''
-  hash: 75b504b03180583335bd07f99d377d9d43dcba4f067ec5e87d5a94374861162c
+  hash: d542174a4d563c919058718218c4c6f7861081d19cf8cc69b181e2bf74d01ea8
   license: ''
   license_text: ''
 ./doc/glibc-functions/authdes_create.texi: 
@@ -3779,7 +3779,7 @@
   license_text: ''
 ./doc/glibc-functions/vasprintf.texi: 
   copyright: ''
-  hash: 01dc69843bb08b39bbef53771785a3f74e86491f2d1dddc8739d898d2a8bdf9a
+  hash: c80fa303bfe3ea8a702329323ff0b9c598c3122f3766f33a70a0421060e36639
   license: ''
   license_text: ''
 ./doc/glibc-functions/verr.texi: 
