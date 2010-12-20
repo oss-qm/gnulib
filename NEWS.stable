@@ -20,6 +20,7 @@ with the following additional commits:
     * [7b4e992]->[3eb5095] unistr/u8-mbsnlen: Add missing dependency.
     * [cc0adb3]->[e65c7e5] relocatable-prog-wrapper: Separate from relocatable-prog.
     * [423d3ca]->[6f9e924] doc: Mention vasprintf-posix module.
+    * [224a907]->[7131d7e] Document some different function declarations on OSF/1 5.1.
 __NEXTCOMMITMARKER__
 
 ----------------------------------------------------------------------
