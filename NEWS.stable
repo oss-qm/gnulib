@@ -1,7 +1,7 @@
 			Gnulib stable snapshot
 			----------------------
 
-  * 20101216-stable
+  * 20101220-stable
 
 Snapshot taken based on:
 
@@ -14,6 +14,13 @@ with the following additional commits:
     * [0de2016]->[c94504d] * build-aux/gendocs.sh: restore x bit
     * [82afcdd]->[e631098] autoupdate
     * [980f9d2]->[20c5bd5] cloexec, fcntl: relax license
+    * [15a8eaf]->[68e0cfc] tests: set fail=0 at start
+    * [ef6309e]->[d157341] acl: port to Solaris 8 when copying from tmpfs to ufs
+    * [585734b]->[fb7d1d8] iconv: Make it possible again to use this module without 'iconv-h'.
+    * [7b4e992]->[3eb5095] unistr/u8-mbsnlen: Add missing dependency.
+    * [cc0adb3]->[e65c7e5] relocatable-prog-wrapper: Separate from relocatable-prog.
+    * [423d3ca]->[6f9e924] doc: Mention vasprintf-posix module.
+    * [224a907]->[7131d7e] Document some different function declarations on OSF/1 5.1.
 
 ----------------------------------------------------------------------
 

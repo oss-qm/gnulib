@@ -1,3 +1,54 @@
+2010-12-19  Bruno Haible  <bruno@clisp.org>
+
+	Document some different function declarations on OSF/1 5.1.
+	* doc/posix-functions/gai_strerror.texi: Mention different declaration.
+	* doc/posix-functions/inet_ntop.texi: Likewise.
+	* doc/posix-functions/gethostname.texi: Likewise.
+	* lib/unistd.in.h (gethostname): Update comment.
+
+2010-12-19  Bruno Haible  <bruno@clisp.org>
+
+	doc: Mention vasprintf-posix module.
+	* doc/glibc-functions/asprintf.texi: Mention the workarounds present in
+	the 'vasprintf-posix' module.
+	* doc/glibc-functions/vasprintf.texi: Likewise.
+
+2010-12-19  Bruno Haible  <bruno@clisp.org>
+
+	relocatable-prog-wrapper: Separate from relocatable-prog.
+	* modules/relocatable-prog (Makefile.am): Define uninstall-hook and
+	uninstall-relocwrapper rule here.
+	* modules/relocatable-prog-wrapper (Makefile.am): ... not here.
+	Reported by Ian Beckwith <ianb@erislabs.net>.
+
+2010-12-19  Bruno Haible  <bruno@clisp.org>
+
+	unistr/u8-mbsnlen: Add missing dependency.
+	* modules/unistr/u8-mbsnlen (Depends-on): Add unistr/u8-mbtouc.
+	Reported by Ian Beckwith <ianb@erislabs.net>.
+
+2010-12-19  Bruno Haible  <bruno@clisp.org>
+
+	iconv: Make it possible again to use this module without 'iconv-h'.
+	* modules/iconv (configure.ac): Don't invoke gl_ICONV_MODULE_INDICATOR
+	if it is not defined.
+	Reported by Ian Beckwith <ianb@erislabs.net>.
+
+2010-12-18  Paul Eggert  <eggert@cs.ucla.edu>
+
+	acl: port to Solaris 8 when copying from tmpfs to ufs
+	* lib/copy-acl.c (qcopy_acl): Also allow EINVAL as an ignorable
+	error number.  Problem observed on Solaris 8 with latest
+	coreutils, with "mv A B", where A is on a tmpfs file system and B
+	is on a ufs file system.  This caused coreutils' mv/part-symlink
+	test to fail.
+
+	tests: set fail=0 at start
+	* tests/init.sh (setup_): Move fail=0 initialization here ...
+	(mktempd_): ... from here, so that tests can rely on fail being
+	set to 0 initially.  This fixes a problem in coreutils; see:
+	http://lists.gnu.org/archive/html/coreutils/2010-12/msg00083.html
+
 2010-12-13  Eric Blake  <eblake@redhat.com>
 
 	cloexec, fcntl: relax license
