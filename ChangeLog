@@ -1,5 +1,12 @@
 2010-12-19  Bruno Haible  <bruno@clisp.org>
 
+	doc: Mention vasprintf-posix module.
+	* doc/glibc-functions/asprintf.texi: Mention the workarounds present in
+	the 'vasprintf-posix' module.
+	* doc/glibc-functions/vasprintf.texi: Likewise.
+
+2010-12-19  Bruno Haible  <bruno@clisp.org>
+
 	relocatable-prog-wrapper: Separate from relocatable-prog.
 	* modules/relocatable-prog (Makefile.am): Define uninstall-hook and
 	uninstall-relocwrapper rule here.
