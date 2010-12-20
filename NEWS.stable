@@ -17,6 +17,7 @@ with the following additional commits:
     * [15a8eaf]->[68e0cfc] tests: set fail=0 at start
     * [ef6309e]->[d157341] acl: port to Solaris 8 when copying from tmpfs to ufs
     * [585734b]->[fb7d1d8] iconv: Make it possible again to use this module without 'iconv-h'.
+    * [7b4e992]->[3eb5095] unistr/u8-mbsnlen: Add missing dependency.
 __NEXTCOMMITMARKER__
 
 ----------------------------------------------------------------------
