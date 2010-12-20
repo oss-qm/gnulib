@@ -18,6 +18,7 @@ with the following additional commits:
     * [ef6309e]->[d157341] acl: port to Solaris 8 when copying from tmpfs to ufs
     * [585734b]->[fb7d1d8] iconv: Make it possible again to use this module without 'iconv-h'.
     * [7b4e992]->[3eb5095] unistr/u8-mbsnlen: Add missing dependency.
+    * [cc0adb3]->[e65c7e5] relocatable-prog-wrapper: Separate from relocatable-prog.
 __NEXTCOMMITMARKER__
 
 ----------------------------------------------------------------------
