@@ -1,3 +1,11 @@
+gnulib (20101221+stable-1) experimental; urgency=low
+
+  * New upstream stable snapshot, identical to the
+    previous 20101220+stable-1 but with:
+    [d534aa8]->[385ec31] iconv_open: Fix regression from 2010-12-04.
+
+ -- Ian Beckwith <ianb@debian.org>  Wed, 22 Dec 2010 23:17:09 +0000
+
 gnulib (20101220+stable-1) experimental; urgency=low
 
   * New upstream stable snapshot.
