@@ -5,7 +5,7 @@
 This snapshot is identical to the previous 20101220-stable snapshot,
 with the addition of one fix:
 
-__NEXTCOMMITMARKER__
+    * [d534aa8]->[385ec31] iconv_open: Fix regression from 2010-12-04.
 
 ----------------------------------------------------------------------
 
