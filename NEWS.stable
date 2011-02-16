@@ -27,7 +27,6 @@ with the following additional commits:
     * [59b191e]->[5f5a2a4] Consistent macro naming for macros that use GCC __attribute__.
     * [bf2664d]->[25ab657] doc: update users.txt
     * [665d45c]->[321331f] autoupdate
-__NEXTCOMMITMARKER__
 
 ----------------------------------------------------------------------
 
