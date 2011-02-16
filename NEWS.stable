@@ -24,6 +24,7 @@ with the following additional commits:
     * [cca34e7]->[1b94e03] mbsinit: Work around mingw bug.
     * [a035a8d]->[2bbd452] mbrtowc: Work around native Windows bug.
     * [f6a5a12]->[c7a1790] Don't interfere with a program's definition of __attribute__.
+    * [59b191e]->[5f5a2a4] Consistent macro naming for macros that use GCC __attribute__.
 __NEXTCOMMITMARKER__
 
 ----------------------------------------------------------------------
