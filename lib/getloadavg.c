@@ -108,8 +108,6 @@
 #  include <sys/param.h>
 # endif
 
-# include "c-strtod.h"
-# include "cloexec.h"
 # include "intprops.h"
 
 /* The existing Emacs configuration files define a macro called
@@ -372,7 +370,6 @@
 #    endif /* NLIST_STRUCT */
 
 #    ifdef SUNOS_5
-#     include <fcntl.h>
 #     include <kvm.h>
 #     include <kstat.h>
 #    endif
@@ -461,7 +458,10 @@
 #  include <sys/dg_sys_info.h>
 # endif
 
-# include "fcntl--.h"
+# if (defined __linux__ || defined __CYGWIN__ || defined SUNOS_5        \
+      || (defined LOAD_AVE_TYPE && ! defined __VMS))
+#  include <fcntl.h>
+# endif
 
 /* Avoid static vars inside a function since in HPUX they dump as pure.  */
 
@@ -482,13 +482,13 @@ static struct dg_sys_info_load_info load_info;  /* what-a-mouthful! */
 # if !defined (HAVE_LIBKSTAT) && defined (LOAD_AVE_TYPE)
 /* File descriptor open to /dev/kmem or VMS load ave driver.  */
 static int channel;
-/* True iff channel is valid.  */
+/* True if channel is valid.  */
 static bool getloadavg_initialized;
 /* Offset in kmem to seek to read load average, or 0 means invalid.  */
 static long offset;
 
 #  if ! defined __VMS && ! defined sgi && ! defined __linux__
-static struct nlist nl[2];
+static struct nlist name_list[2];
 #  endif
 
 #  ifdef SUNOS_5
@@ -618,19 +618,30 @@ getloadavg (double loadavg[], int nelem)
 
   for (elem = 0; elem < nelem; elem++)
     {
-      char *endptr;
-      double d;
+      double numerator = 0;
+      double denominator = 1;
+      bool have_digit = false;
 
-      errno = 0;
-      d = c_strtod (ptr, &endptr);
-      if (ptr == endptr || (d == 0 && errno != 0))
+      while (*ptr == ' ')
+        ptr++;
+
+      /* Finish if this number is missing, and report an error if all
+         were missing.  */
+      if (! ('0' <= *ptr && *ptr <= '9'))
         {
           if (elem == 0)
             return -1;
           break;
         }
-      loadavg[elem] = d;
-      ptr = endptr;
+
+      while ('0' <= *ptr && *ptr <= '9')
+        numerator = 10 * numerator + (*ptr++ - '0');
+
+      if (*ptr == '.')
+        for (ptr++; '0' <= *ptr && *ptr <= '9'; ptr++)
+          numerator = 10 * numerator + (*ptr - '0'), denominator *= 10;
+
+      loadavg[elem++] = numerator / denominator;
     }
 
   return elem;
@@ -732,7 +743,7 @@ getloadavg (double loadavg[], int nelem)
       for (i = 0; i < conf.config_maxclass; ++i)
         {
           struct class_stats stats;
-          bzero ((char *) &stats, sizeof stats);
+          memset (&stats, 0, sizeof stats);
 
           desc.sd_type = CPUTYPE_CLASS;
           desc.sd_objid = i;
@@ -899,32 +910,32 @@ getloadavg (double loadavg[], int nelem)
     {
 #  ifndef sgi
 #   if ! defined NLIST_STRUCT || ! defined N_NAME_POINTER
-      strcpy (nl[0].n_name, LDAV_SYMBOL);
-      strcpy (nl[1].n_name, "");
+      strcpy (name_list[0].n_name, LDAV_SYMBOL);
+      strcpy (name_list[1].n_name, "");
 #   else /* NLIST_STRUCT */
 #    ifdef HAVE_STRUCT_NLIST_N_UN_N_NAME
-      nl[0].n_un.n_name = LDAV_SYMBOL;
-      nl[1].n_un.n_name = 0;
+      name_list[0].n_un.n_name = LDAV_SYMBOL;
+      name_list[1].n_un.n_name = 0;
 #    else /* not HAVE_STRUCT_NLIST_N_UN_N_NAME */
-      nl[0].n_name = LDAV_SYMBOL;
-      nl[1].n_name = 0;
+      name_list[0].n_name = LDAV_SYMBOL;
+      name_list[1].n_name = 0;
 #    endif /* not HAVE_STRUCT_NLIST_N_UN_N_NAME */
 #   endif /* NLIST_STRUCT */
 
 #   ifndef SUNOS_5
       if (
 #    if !(defined (_AIX) && !defined (ps2))
-          nlist (KERNEL_FILE, nl)
+          nlist (KERNEL_FILE, name_list)
 #    else  /* _AIX */
-          knlist (nl, 1, sizeof (nl[0]))
+          knlist (name_list, 1, sizeof (name_list[0]))
 #    endif
           >= 0)
-          /* Omit "&& nl[0].n_type != 0 " -- it breaks on Sun386i.  */
+          /* Omit "&& name_list[0].n_type != 0 " -- it breaks on Sun386i.  */
           {
 #    ifdef FIXUP_KERNEL_SYMBOL_ADDR
-            FIXUP_KERNEL_SYMBOL_ADDR (nl);
+            FIXUP_KERNEL_SYMBOL_ADDR (name_list);
 #    endif
-            offset = nl[0].n_value;
+            offset = name_list[0].n_value;
           }
 #   endif /* !SUNOS_5 */
 #  else  /* sgi */
@@ -940,13 +951,27 @@ getloadavg (double loadavg[], int nelem)
   if (!getloadavg_initialized)
     {
 #  ifndef SUNOS_5
-      channel = open ("/dev/kmem", O_RDONLY);
-      if (channel >= 0)
+      /* Set the channel to close on exec, so it does not
+         litter any child's descriptor table.  */
+#   ifndef O_CLOEXEC
+#    define O_CLOEXEC 0
+#   endif
+      int fd = open ("/dev/kmem", O_RDONLY | O_CLOEXEC);
+      if (0 <= fd)
         {
-          /* Set the channel to close on exec, so it does not
-             litter any child's descriptor table.  */
-          set_cloexec_flag (channel, true);
-          getloadavg_initialized = true;
+#   if F_DUPFD_CLOEXEC
+          if (fd <= STDERR_FILENO)
+            {
+              int fd1 = fcntl (fd, F_DUPFD_CLOEXEC, STDERR_FILENO + 1);
+              close (fd);
+              fd = fd1;
+            }
+#   endif
+          if (0 <= fd)
+            {
+              channel = fd;
+              getloadavg_initialized = true;
+            }
         }
 #  else /* SUNOS_5 */
       /* We pass 0 for the kernel, corefile, and swapfile names
@@ -955,8 +980,8 @@ getloadavg (double loadavg[], int nelem)
       if (kd != 0)
         {
           /* nlist the currently running kernel.  */
-          kvm_nlist (kd, nl);
-          offset = nl[0].n_value;
+          kvm_nlist (kd, name_list);
+          offset = name_list[0].n_value;
           getloadavg_initialized = true;
         }
 #  endif /* SUNOS_5 */
