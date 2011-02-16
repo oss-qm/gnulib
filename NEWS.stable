@@ -14,6 +14,7 @@ with the following additional commits:
     * [a54ee6e]->[a1245ce] doc: update users.txt
     * [4cce65c]->[b9f1203] doc: update users.txt
     * [aa887f8]->[ce38c27] mbsrtowcs: Work around bug on native Windows.
+    * [c9dc6ff]->[461ace8] wcsrtombs: Work around bug on native Windows.
 __NEXTCOMMITMARKER__
 
 ----------------------------------------------------------------------
