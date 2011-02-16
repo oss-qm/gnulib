@@ -1,5 +1,19 @@
 			Gnulib stable snapshot
 			----------------------
+
+  * 20110216-stable
+
+Snapshot taken based on:
+
+commit f9289f00be9b70c0cb469faee8a40a768d7c6d43
+Date:   Wed Feb 9 20:55:19 2011 +0100
+
+with the following additional commits:
+
+__NEXTCOMMITMARKER__
+
+----------------------------------------------------------------------
+
   * 20101221-stable
 
 This snapshot is identical to the previous 20101220-stable snapshot,
