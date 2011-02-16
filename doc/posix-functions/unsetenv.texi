@@ -12,6 +12,9 @@ Portability problems fixed by Gnulib:
 This function is missing on some platforms:
 AIX 5.1, HP-UX 11.23, IRIX 6.5, Solaris 9, mingw, BeOS.
 @item
+This function is not declared on some platforms:
+OSF/1 5.1.
+@item
 This function has the return type @samp{void} instead of @samp{int} on some
 platforms:
 MacOS X 10.3, FreeBSD 6.0, NetBSD 1.6, OpenBSD 3.8, OSF/1 5.1.
@@ -22,7 +25,7 @@ FreeBSD 6.0, NetBSD 1.6, OpenBSD 4.7.
 @item
 This function removes only the first value association for the given
 environment variable, not all of them, on some platforms:
-Solaris 11 2010-11.
+Solaris 11 2010-11, Haiku.
 @end itemize
 
 Portability problems not fixed by Gnulib:

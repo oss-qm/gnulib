@@ -1,5 +1,5 @@
 /* Test suite for exclude.
-   Copyright (C) 2009, 2010 Free Software Foundation, Inc.
+   Copyright (C) 2009-2011 Free Software Foundation, Inc.
    This file is part of the GNUlib Library.
 
    This program is free software: you can redistribute it and/or modify
@@ -63,17 +63,14 @@ ARGMATCH_VERIFY (exclude_keywords, exclude_flags);
 /* Some packages define ARGMATCH_DIE and ARGMATCH_DIE_DECL in <config.h>, and
    thus must link with a definition of that function.  Provide it here.  */
 #ifdef ARGMATCH_DIE_DECL
-#ifndef __attribute__
-# if __GNUC__ < 2 || (__GNUC__ == 2 && __GNUC_MINOR__ < 8)
-#  define __attribute__(x) /* empty */
+# if __GNUC__ > 2 || (__GNUC__ == 2 && __GNUC_MINOR__ >= 8)
+#  define _GL_ATTRIBUTE_NORETURN __attribute__ ((__noreturn__))
+# else
+#  define _GL_ATTRIBUTE_NORETURN /* empty */
 # endif
 #endif
 
-#ifndef ATTRIBUTE_NORETURN
-# define ATTRIBUTE_NORETURN __attribute__ ((__noreturn__))
-#endif
-
-ARGMATCH_DIE_DECL ATTRIBUTE_NORETURN;
+ARGMATCH_DIE_DECL _GL_ATTRIBUTE_NORETURN;
 ARGMATCH_DIE_DECL { exit (1); }
 #endif
 

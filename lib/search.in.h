@@ -1,6 +1,6 @@
 /* A GNU-like <search.h>.
 
-   Copyright (C) 2007-2010 Free Software Foundation, Inc.
+   Copyright (C) 2007-2011 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -53,6 +53,7 @@
    for details.  */
 
 # if !@HAVE_TSEARCH@
+#  if !GNULIB_defined_search_types
 typedef enum
 {
   preorder,
@@ -61,13 +62,18 @@ typedef enum
   leaf
 }
 VISIT;
+#   define GNULIB_defined_search_types 1
+#  endif
 # endif
 
 # ifdef __cplusplus
 extern "C" {
 # endif
+# if !GNULIB_defined_search_fn_types
 typedef int (*_gl_search_compar_fn) (const void *, const void *);
 typedef void (*_gl_search_action_fn) (const void *, VISIT, int);
+#  define GNULIB_defined_search_fn_types 1
+# endif
 # ifdef __cplusplus
 }
 # endif

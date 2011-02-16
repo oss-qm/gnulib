@@ -1,5 +1,5 @@
-# wcsrtombs.m4 serial 6
-dnl Copyright (C) 2008-2010 Free Software Foundation, Inc.
+# wcsrtombs.m4 serial 8
+dnl Copyright (C) 2008-2011 Free Software Foundation, Inc.
 dnl This file is free software; the Free Software Foundation
 dnl gives unlimited permission to copy and/or distribute it,
 dnl with or without modifications, as long as this notice is preserved.
@@ -72,6 +72,13 @@ changequote([,])dnl
           [AC_LANG_SOURCE([[
 #include <locale.h>
 #include <stdlib.h>
+/* Tru64 with Desktop Toolkit C has a bug: <stdio.h> must be included before
+   <wchar.h>.
+   BSD/OS 4.0.1 has a bug: <stddef.h>, <stdio.h> and <time.h> must be
+   included before <wchar.h>.  */
+#include <stddef.h>
+#include <stdio.h>
+#include <time.h>
 #include <wchar.h>
 int main ()
 {
@@ -116,10 +123,10 @@ AC_DEFUN([gl_WCSRTOMBS_NULL],
       dnl is present.
 changequote(,)dnl
       case "$host_os" in
-                      # Guess no on HP-UX and OSF/1.
-        hpux* | osf*) gl_cv_func_wcsrtombs_null="guessing no" ;;
-                      # Guess yes otherwise.
-        *)            gl_cv_func_wcsrtombs_null="guessing yes" ;;
+                               # Guess no on HP-UX, OSF/1, mingw.
+        hpux* | osf* | mingw*) gl_cv_func_wcsrtombs_null="guessing no" ;;
+                               # Guess yes otherwise.
+        *)                     gl_cv_func_wcsrtombs_null="guessing yes" ;;
       esac
 changequote([,])dnl
       if test $LOCALE_FR != none; then
@@ -127,9 +134,17 @@ changequote([,])dnl
           [AC_LANG_SOURCE([[
 #include <locale.h>
 #include <stdlib.h>
+/* Tru64 with Desktop Toolkit C has a bug: <stdio.h> must be included before
+   <wchar.h>.
+   BSD/OS 4.0.1 has a bug: <stddef.h>, <stdio.h> and <time.h> must be
+   included before <wchar.h>.  */
+#include <stddef.h>
+#include <stdio.h>
+#include <time.h>
 #include <wchar.h>
 int main ()
 {
+  int result = 0;
   if (setlocale (LC_ALL, "$LOCALE_FR") != NULL)
     {
       const char original[] = "B\374\337er";
@@ -138,12 +153,14 @@ int main ()
       if (mbstowcs (input, original, 10) == 5)
         {
           const wchar_t *src = input;
-          wcsrtombs (NULL, &src, 10, NULL);
+          size_t ret = wcsrtombs (NULL, &src, 3, NULL);
+          if (ret != 5)
+            result |= 1;
           if (src != input)
-            return 1;
+            result |= 2;
         }
     }
-  return 0;
+  return result;
 }]])],
           [gl_cv_func_wcsrtombs_null=yes],
           [gl_cv_func_wcsrtombs_null=no],

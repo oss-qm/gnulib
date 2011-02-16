@@ -1,5 +1,5 @@
 /* Provide a sys/times.h header file.
-   Copyright (C) 2008-2010 Free Software Foundation, Inc.
+   Copyright (C) 2008-2011 Free Software Foundation, Inc.
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -48,6 +48,7 @@ extern "C" {
 # endif
 
 # if !@HAVE_STRUCT_TMS@
+#  if !GNULIB_defined_struct_tms
   /* Structure describing CPU time used by a process and its children.  */
   struct tms
   {
@@ -57,6 +58,8 @@ extern "C" {
     clock_t tms_cutime;         /* User CPU time of dead children.  */
     clock_t tms_cstime;         /* System CPU time of dead children.  */
   };
+#   define GNULIB_defined_struct_tms 1
+#  endif
 # endif
 
 # if @GNULIB_TIMES@
