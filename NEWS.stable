@@ -22,6 +22,7 @@ with the following additional commits:
     * [e680a55]->[2d86779] Don't interfere with a program's definition of __attribute__.
     * [a38e4bb]->[6f5e418] mbsinit: Don't crash for a NULL argument.
     * [cca34e7]->[1b94e03] mbsinit: Work around mingw bug.
+    * [a035a8d]->[2bbd452] mbrtowc: Work around native Windows bug.
 __NEXTCOMMITMARKER__
 
 ----------------------------------------------------------------------
