@@ -19,6 +19,7 @@ with the following additional commits:
     * [4baa767]->[1dfaba6] quotearg test: Avoid test failure on mingw.
     * [b45dc21]->[d19a89f] stdlib: don't get in the way of non-GCC __attribute__
     * [9fbdea6]->[860215e] Fix last ChangeLog entry.
+    * [e680a55]->[2d86779] Don't interfere with a program's definition of __attribute__.
 __NEXTCOMMITMARKER__
 
 ----------------------------------------------------------------------
