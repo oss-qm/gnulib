@@ -25,6 +25,7 @@ with the following additional commits:
     * [a035a8d]->[2bbd452] mbrtowc: Work around native Windows bug.
     * [f6a5a12]->[c7a1790] Don't interfere with a program's definition of __attribute__.
     * [59b191e]->[5f5a2a4] Consistent macro naming for macros that use GCC __attribute__.
+    * [bf2664d]->[25ab657] doc: update users.txt
 __NEXTCOMMITMARKER__
 
 ----------------------------------------------------------------------
