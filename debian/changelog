@@ -1,3 +1,11 @@
+gnulib (20110216+stable-1) unstable; urgency=low
+
+  * New upstream stable snapshot.
+  * Resume uploading to unstable.
+  * Refreshed patches.
+
+ -- Ian Beckwith <ianb@debian.org>  Thu, 17 Feb 2011 00:04:04 +0000
+
 gnulib (20101221+stable-1) experimental; urgency=low
 
   * New upstream stable snapshot, identical to the
