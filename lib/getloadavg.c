@@ -94,11 +94,6 @@
 #include <errno.h>
 #include <stdio.h>
 
-/* Exclude all the code except the test program at the end
-   if the system has its own `getloadavg' function.  */
-
-#ifndef HAVE_GETLOADAVG
-
 # include <sys/types.h>
 
 /* Both the Emacs and non-Emacs sections want this.  Some
@@ -500,7 +495,7 @@ static kvm_t *kd;
 /* Put the 1 minute, 5 minute and 15 minute load averages
    into the first NELEM elements of LOADAVG.
    Return the number written (never more than 3, but may be less than NELEM),
-   or -1 if an error occurred.  */
+   or -1 (setting errno) if an error occurred.  */
 
 int
 getloadavg (double loadavg[], int nelem)
@@ -509,18 +504,17 @@ getloadavg (double loadavg[], int nelem)
 
 # ifdef NO_GET_LOAD_AVG
 #  define LDAV_DONE
-  /* Set errno to zero to indicate that there was no particular error;
-     this function just can't work at all on this system.  */
-  errno = 0;
+  errno = ENOSYS;
   elem = -1;
 # endif
 
-# if !defined (LDAV_DONE) && defined (HAVE_LIBKSTAT)
+# if !defined (LDAV_DONE) && defined (HAVE_LIBKSTAT)       /* Solaris <= 2.6 */
 /* Use libkstat because we don't have to be root.  */
 #  define LDAV_DONE
   kstat_ctl_t *kc;
   kstat_t *ksp;
   kstat_named_t *kn;
+  int saved_errno;
 
   kc = kstat_open ();
   if (kc == 0)
@@ -559,10 +553,13 @@ getloadavg (double loadavg[], int nelem)
         }
     }
 
+  saved_errno = errno;
   kstat_close (kc);
+  errno = saved_errno;
 # endif /* HAVE_LIBKSTAT */
 
 # if !defined (LDAV_DONE) && defined (hpux) && defined (HAVE_PSTAT_GETDYNAMIC)
+                                                           /* HP-UX */
 /* Use pstat_getdynamic() because we don't have to be root.  */
 #  define LDAV_DONE
 #  undef LOAD_AVE_TYPE
@@ -579,7 +576,7 @@ getloadavg (double loadavg[], int nelem)
 
 # endif /* hpux && HAVE_PSTAT_GETDYNAMIC */
 
-# if ! defined LDAV_DONE && defined HAVE_LIBPERFSTAT
+# if ! defined LDAV_DONE && defined HAVE_LIBPERFSTAT       /* AIX */
 #  define LDAV_DONE
 #  undef LOAD_AVE_TYPE
 /* Use perfstat_cpu_total because we don't have to be root. */
@@ -596,6 +593,7 @@ getloadavg (double loadavg[], int nelem)
 # endif
 
 # if !defined (LDAV_DONE) && (defined (__linux__) || defined (__CYGWIN__))
+                                              /* Linux without glibc, Cygwin */
 #  define LDAV_DONE
 #  undef LOAD_AVE_TYPE
 
@@ -605,13 +603,15 @@ getloadavg (double loadavg[], int nelem)
 
   char ldavgbuf[3 * (INT_STRLEN_BOUND (int) + sizeof ".00 ")];
   char const *ptr = ldavgbuf;
-  int fd, count;
+  int fd, count, saved_errno;
 
   fd = open (LINUX_LDAV_FILE, O_RDONLY);
   if (fd == -1)
     return -1;
   count = read (fd, ldavgbuf, sizeof ldavgbuf - 1);
+  saved_errno = errno;
   (void) close (fd);
+  errno = saved_errno;
   if (count <= 0)
     return -1;
   ldavgbuf[count] = '\0';
@@ -620,7 +620,6 @@ getloadavg (double loadavg[], int nelem)
     {
       double numerator = 0;
       double denominator = 1;
-      bool have_digit = false;
 
       while (*ptr == ' ')
         ptr++;
@@ -630,7 +629,10 @@ getloadavg (double loadavg[], int nelem)
       if (! ('0' <= *ptr && *ptr <= '9'))
         {
           if (elem == 0)
-            return -1;
+            {
+              errno = ENOTSUP;
+              return -1;
+            }
           break;
         }
 
@@ -648,7 +650,7 @@ getloadavg (double loadavg[], int nelem)
 
 # endif /* __linux__ || __CYGWIN__ */
 
-# if !defined (LDAV_DONE) && defined (__NetBSD__)
+# if !defined (LDAV_DONE) && defined (__NetBSD__)          /* NetBSD < 0.9 */
 #  define LDAV_DONE
 #  undef LOAD_AVE_TYPE
 
@@ -668,7 +670,10 @@ getloadavg (double loadavg[], int nelem)
                   &scale);
   (void) fclose (fp);
   if (count != 4)
-    return -1;
+    {
+      errno = ENOTSUP;
+      return -1;
+    }
 
   for (elem = 0; elem < nelem; elem++)
     loadavg[elem] = (double) load_ave[elem] / (double) scale;
@@ -677,7 +682,7 @@ getloadavg (double loadavg[], int nelem)
 
 # endif /* __NetBSD__ */
 
-# if !defined (LDAV_DONE) && defined (NeXT)
+# if !defined (LDAV_DONE) && defined (NeXT)                /* NeXTStep */
 #  define LDAV_DONE
   /* The NeXT code was adapted from iscreen 3.2.  */
 
@@ -709,7 +714,10 @@ getloadavg (double loadavg[], int nelem)
     }
 
   if (!getloadavg_initialized)
-    return -1;
+    {
+      errno = ENOTSUP;
+      return -1;
+    }
 # endif /* NeXT */
 
 # if !defined (LDAV_DONE) && defined (UMAX)
@@ -836,6 +844,7 @@ getloadavg (double loadavg[], int nelem)
 # endif /* OSF_MIPS */
 
 # if !defined (LDAV_DONE) && (defined (__MSDOS__) || defined (WINDOWS32))
+                                                           /* DJGPP */
 #  define LDAV_DONE
 
   /* A faithful emulation is going to have to be saved for a rainy day.  */
@@ -845,7 +854,7 @@ getloadavg (double loadavg[], int nelem)
     }
 # endif  /* __MSDOS__ || WINDOWS32 */
 
-# if !defined (LDAV_DONE) && defined (OSF_ALPHA)
+# if !defined (LDAV_DONE) && defined (OSF_ALPHA)           /* OSF/1 */
 #  define LDAV_DONE
 
   struct tbl_loadavg load_ave;
@@ -857,7 +866,7 @@ getloadavg (double loadavg[], int nelem)
          : (load_ave.tl_avenrun.l[elem] / (double) load_ave.tl_lscale));
 # endif /* OSF_ALPHA */
 
-# if ! defined LDAV_DONE && defined __VMS
+# if ! defined LDAV_DONE && defined __VMS                  /* VMS */
   /* VMS specific code -- read from the Load Ave driver.  */
 
   LOAD_AVE_TYPE load_ave[3];
@@ -894,10 +903,14 @@ getloadavg (double loadavg[], int nelem)
     }
 
   if (!getloadavg_initialized)
-    return -1;
+    {
+      errno = ENOTSUP;
+      return -1;
+    }
 # endif /* ! defined LDAV_DONE && defined __VMS */
 
 # if ! defined LDAV_DONE && defined LOAD_AVE_TYPE && ! defined __VMS
+                                                  /* IRIX, other old systems */
 
   /* UNIX-specific code -- read the average from /dev/kmem.  */
 
@@ -939,9 +952,7 @@ getloadavg (double loadavg[], int nelem)
           }
 #   endif /* !SUNOS_5 */
 #  else  /* sgi */
-      int ldav_off;
-
-      ldav_off = sysmp (MP_KERNADDR, MPKA_AVENRUN);
+      ptrdiff_t ldav_off = sysmp (MP_KERNADDR, MPKA_AVENRUN);
       if (ldav_off != -1)
         offset = (long int) ldav_off & 0x7fffffff;
 #  endif /* sgi */
@@ -1010,7 +1021,10 @@ getloadavg (double loadavg[], int nelem)
     }
 
   if (offset == 0 || !getloadavg_initialized)
-    return -1;
+    {
+      errno = ENOTSUP;
+      return -1;
+    }
 # endif /* ! defined LDAV_DONE && defined LOAD_AVE_TYPE && ! defined __VMS */
 
 # if !defined (LDAV_DONE) && defined (LOAD_AVE_TYPE) /* Including VMS.  */
@@ -1025,51 +1039,8 @@ getloadavg (double loadavg[], int nelem)
 # endif /* !LDAV_DONE && LOAD_AVE_TYPE */
 
 # if !defined LDAV_DONE
-  /* Set errno to zero to indicate that there was no particular error;
-     this function just can't work at all on this system.  */
-  errno = 0;
+  errno = ENOSYS;
   elem = -1;
 # endif
   return elem;
 }
-
-#endif /* ! HAVE_GETLOADAVG */
-
-#ifdef TEST
-int
-main (int argc, char **argv)
-{
-  int naptime = 0;
-
-  if (argc > 1)
-    naptime = atoi (argv[1]);
-
-  while (1)
-    {
-      double avg[3];
-      int loads;
-
-      errno = 0;                /* Don't be misled if it doesn't set errno.  */
-      loads = getloadavg (avg, 3);
-      if (loads == -1)
-        {
-          perror ("Error getting load average");
-          return EXIT_FAILURE;
-        }
-      if (loads > 0)
-        printf ("1-minute: %f  ", avg[0]);
-      if (loads > 1)
-        printf ("5-minute: %f  ", avg[1]);
-      if (loads > 2)
-        printf ("15-minute: %f  ", avg[2]);
-      if (loads > 0)
-        putchar ('\n');
-
-      if (naptime == 0)
-        break;
-      sleep (naptime);
-    }
-
-  return EXIT_SUCCESS;
-}
-#endif /* TEST */
