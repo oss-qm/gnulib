@@ -11,6 +11,7 @@ Date:  Thu Mar 31 15:28:37 2011 -0600
 with the following additional commits:
 
     * [b64c50c]->[c8bdb92] wcpcpy, wcpncpy: Ensure declaration on glibc >= 2.13 systems.
+    * [25d7f3a]->[6c630cd] wmemchr, wcschr, wcsrchr, wcspbrk, wcsstr: Avoid errors in C++ mode.
 __NEXTCOMMITMARKER__
 
 ----------------------------------------------------------------------
