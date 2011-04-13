@@ -22,7 +22,7 @@ with the following additional commits:
     * [5e29a7a]->[9bb2e6b] test-chown.h: correct a cast
     * [eff4c03]->[7f3fdea] stdint test: Fix compilation failure on OSF/1 with DTK compiler.
     * [ca6143b]->[8571b74] autoupdate
-__NEXTCOMMITMARKER__
+    * [fb79969]->[fa84676] autoupdate
 
 ----------------------------------------------------------------------
 
