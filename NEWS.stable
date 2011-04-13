@@ -18,6 +18,7 @@ with the following additional commits:
     * [bd5d1e6]->[2db494c] binary-io: relicense under LGPLv2+
     * [b277764]->[a7091b5] fcntl-h: fix O_ACCMODE on cygwin
     * [306bd09]->[6870aba] autoupdate
+    * [62f3b86]->[90309e4] getaddrinfo: Fix test for sa_len member.
 __NEXTCOMMITMARKER__
 
 ----------------------------------------------------------------------
