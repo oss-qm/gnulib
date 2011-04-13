@@ -1,6 +1,30 @@
 			Gnulib stable snapshot
 			----------------------
 
+  * 20110412-stable
+
+Snapshot taken based on:
+
+commit dec3475763be252103922a887920012eeb32dc26
+Date:  Thu Mar 31 15:28:37 2011 -0600
+
+with the following additional commits:
+
+    * [b64c50c]->[c8bdb92] wcpcpy, wcpncpy: Ensure declaration on glibc >= 2.13 systems.
+    * [25d7f3a]->[6c630cd] wmemchr, wcschr, wcsrchr, wcspbrk, wcsstr: Avoid errors in C++ mode.
+    * [eccf108]->[de98845] autoupdate
+    * [a2c7be5]->[d6acfb1] maint.mk: Don't trigger sc_space_tab check.
+    * [31c3890]->[eb1217e] pipe2: Relicense under LGPLv2+.
+    * [bd5d1e6]->[2db494c] binary-io: relicense under LGPLv2+
+    * [b277764]->[a7091b5] fcntl-h: fix O_ACCMODE on cygwin
+    * [306bd09]->[6870aba] autoupdate
+    * [62f3b86]->[90309e4] getaddrinfo: Fix test for sa_len member.
+    * [5e29a7a]->[9bb2e6b] test-chown.h: correct a cast
+    * [eff4c03]->[7f3fdea] stdint test: Fix compilation failure on OSF/1 with DTK compiler.
+    * [ca6143b]->[8571b74] autoupdate
+
+----------------------------------------------------------------------
+
   * 20110216-stable
 
 Snapshot taken based on:
