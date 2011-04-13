@@ -170,7 +170,7 @@ gcc)
 ## to the object.  Take care to not repeat it in the output.
 ## Some versions of the HPUX 10.20 sed can't process this invocation
 ## correctly.  Breaking it into two sed invocations is a workaround.
-    sed -e 's/^\\$//' -e '/^$/d' -e -e "s|.*$object$||" '/:$/d' \
+    sed -e 's/^\\$//' -e '/^$/d' -e "s|.*$object$||" '/:$/d' \
       | sed -e 's/$/ :/' >> "$depfile"
   rm -f "$tmpdepfile"
   ;;
