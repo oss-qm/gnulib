@@ -20,6 +20,7 @@ with the following additional commits:
     * [306bd09]->[6870aba] autoupdate
     * [62f3b86]->[90309e4] getaddrinfo: Fix test for sa_len member.
     * [5e29a7a]->[9bb2e6b] test-chown.h: correct a cast
+    * [eff4c03]->[7f3fdea] stdint test: Fix compilation failure on OSF/1 with DTK compiler.
 __NEXTCOMMITMARKER__
 
 ----------------------------------------------------------------------
