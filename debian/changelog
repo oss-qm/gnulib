@@ -3,8 +3,9 @@ gnulib (20110412+stable-1) unstable; urgency=low
   * New upstream stable snapshot.
   * Refresh 01-gnulib-directory.patch.
   * Disable test suite - now requires cppi which is not in Debian.
+  * Fix lintian override path syntax.
 
- -- Ian Beckwith <ianb@debian.org>  Thu, 14 Apr 2011 17:16:56 +0100
+ -- Ian Beckwith <ianb@debian.org>  Thu, 14 Apr 2011 17:58:14 +0100
 
 gnulib (20110216+stable-1) unstable; urgency=low
 
