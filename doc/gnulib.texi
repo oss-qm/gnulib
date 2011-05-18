@@ -108,6 +108,7 @@ Resources:
 * Benefits::
 * Library vs Reusable Code::
 * Portability and Application Code::
+* Target Platforms::
 * Modules::
 * Various Kinds of Modules::
 * Collaborative Development::
@@ -395,6 +396,15 @@ latter exists and if the option @code{--with-tests} has been given.
 Tests modules can depend on non-tests modules.  Non-tests modules should not
 depend on tests modules. (Recall that tests modules are built in a separate
 directory.)
+
+Each listed required module may be declared a conditional dependency.  This
+is indicated by placing the condition for the dependency on the same line,
+enclosed in brackets, after the name of the required module.  The condition
+is a shell expression that is run after the module's @code{configure.ac}
+statements.  For example:
+@smallexample
+strtoull   [test $ac_cv_func_strtoumax = no]
+@end smallexample
 
 @item configure.ac-early
 This field contains @file{configure.ac} stuff (Autoconf macro invocations and
@@ -6486,6 +6496,8 @@ This list of functions is sorted according to the header that declares them.
 * alloca::
 * alloca-opt::
 * Safe Allocation Macros::
+* Compile-time Assertions::
+* Integer Properties::
 * String Functions in C Locale::
 * Quoting::
 * error and progname::
@@ -6513,6 +6525,10 @@ This list of functions is sorted according to the header that declares them.
 @include alloca-opt.texi
 
 @include safe-alloc.texi
+
+@include verify.texi
+
+@include intprops.texi
 
 @node String Functions in C Locale
 @section Character and String Functions in C Locale
