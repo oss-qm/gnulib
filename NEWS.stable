@@ -1,6 +1,20 @@
 			Gnulib stable snapshot
 			----------------------
 
+  * 20110609-stable
+
+Snapshot taken based on:
+
+commit 0c4be75eb0966bde4533bc111778e0ab494a93be
+Date:   Wed May 18 13:13:03 2011 -0600
+
+with the following additional commits:
+
+    * [48cc748]->[] intprops: TYPE_IS_INTEGER, TYPE_SIGNED not integer constant exprs
+__NEXTCOMMITMARKER__
+
+----------------------------------------------------------------------
+
   * 20110412-stable
 
 Snapshot taken based on:
