@@ -1,4 +1,9 @@
 2011-05-23  Bruno Haible  <bruno@clisp.org>
+
+	getugroups: Fix module description.
+	* modules/getugroups (Include): Set to "getugroups.h".
+
+2011-05-23  Bruno Haible  <bruno@clisp.org>
 	    Eric Blake  <eblake@redhat.com>
 
 	linkat, renameat: Update dependencies.
