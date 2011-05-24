@@ -1,5 +1,11 @@
 2011-05-24  Eric Blake  <eblake@redhat.com>
 
+	atexit-tests: ensure reliable exit status
+	* tests/test-atexit.sh: Prefer 'Exit' over 'exit'.
+	Reported by Bruno Haible.
+
+2011-05-24  Eric Blake  <eblake@redhat.com>
+
 	tests: fix logic bug in init.sh
 	* tests/init.sh: (gl_set_x_corrupts_stderr_): Clear for successful
 	shell.
