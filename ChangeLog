@@ -1,3 +1,11 @@
+2011-06-04  Bruno Haible  <bruno@clisp.org>
+
+	setlocale: Enable replacement on Cygwin 1.5.
+	* m4/setlocale.m4 (gl_FUNC_SETLOCALE): Set REPLACE_SETLOCALE also on
+	Cygwin 1.5.x.
+	* doc/posix-functions/setlocale.texi: Mention that the problem with the
+	LC_CTYPE category also exists on Cygwin 1.5.x.
+
 2011-06-03  Bruno Haible  <bruno@clisp.org>
 
 	Copyright: Use LGPL 2.1 instead of LGPL 2.0.
