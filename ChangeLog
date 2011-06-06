@@ -1,3 +1,9 @@
+2011-06-06  Bruno Haible  <bruno@clisp.org>
+
+	careadlinkat: Avoid mismatch between ssize_t and int.
+	* lib/careadlinkat.h (careadlinkatcwd): Declare as a function always.
+	* lib/careadlinkat.c (careadlinkatcwd): Define always.
+
 2011-06-05  Bruno Haible  <bruno@clisp.org>
 
 	ansi-c++-opt: Interoperability with libtool.
