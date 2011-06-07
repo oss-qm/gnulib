@@ -403,7 +403,7 @@ mktempd_ ()
 {
   case $# in
   2);;
-  *) fail_ "Usage: $ME DIR TEMPLATE";;
+  *) fail_ "Usage: mktempd_ DIR TEMPLATE";;
   esac
 
   destdir_=$1

@@ -1,3 +1,10 @@
+2011-06-07  Stefano Lattarini  <stefano.lattarini@gmail.com>
+
+	tests: fix usage message in 'mktempd_'
+	* tests/init.sh (mktempd_): In the usage message, use literal
+	'mktempd_', not '$ME' (which is even undefined), as the name of
+	the subroutine.
+
 2011-06-06  Eric Blake  <eblake@redhat.com>
 
 	canonicalize-lgpl: use common idiom
