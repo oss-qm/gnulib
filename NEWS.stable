@@ -29,6 +29,7 @@ with the following additional commits:
     * [866bbae]->[b9bb8b9] tests: fix logic bug in init.sh
     * [fc9b0f6]->[cca883f] atexit-tests: ensure reliable exit status
     * [f4c4af0]->[61c4bf6] docs: document recently fixed glibc printf bug
+    * [9d196fa]->[a3a87d2] test-intprops: disable -Wtype-limits diagnostics
 __NEXTCOMMITMARKER__
 
 ----------------------------------------------------------------------
