@@ -19,6 +19,7 @@ with the following additional commits:
     * [21eb071]->[8694861] clock-time: change to LGPLv2+.
     * [6c8bcfc]->[617bbef] * doc/intprops.texi: fix typo in copyright date
     * [99b3138]->[9279f19] verify: fix bug when gnulib <assert.h> is also included
+    * [64c6332]->[98ce667] linkat, renameat: Update dependencies.
 __NEXTCOMMITMARKER__
 
 ----------------------------------------------------------------------
