@@ -34,6 +34,7 @@ with the following additional commits:
     * [4ed9779]->[d1c9bfc] mbsrchr: Avoid collision with system function on Interix.
     * [03f358b]->[1ad6403] gen-uni-tables: Say "gen-uni-tables.c" consistently.
     * [8d8a973]->[cb6151a] getloadavg: Remove an unreliable safety check.
+    * [fdc9e6c]->[264ebf0] Status of work-in-progress around libposix.
 __NEXTCOMMITMARKER__
 
 ----------------------------------------------------------------------
