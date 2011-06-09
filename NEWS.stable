@@ -32,6 +32,7 @@ with the following additional commits:
     * [9d196fa]->[a3a87d2] test-intprops: disable -Wtype-limits diagnostics
     * [1622b36]->[527d6c4] getcwd: work around mingw bug
     * [4ed9779]->[d1c9bfc] mbsrchr: Avoid collision with system function on Interix.
+    * [03f358b]->[1ad6403] gen-uni-tables: Say "gen-uni-tables.c" consistently.
 __NEXTCOMMITMARKER__
 
 ----------------------------------------------------------------------
