@@ -51,6 +51,7 @@ with the following additional commits:
     * [1866b23]->[0560196] localename: Fix link dependencies.
     * [bf7690a]->[54731c1] pipe-filter-ii: Fix test failure on AIX and IRIX.
     * [e7754b0]->[52062c8] acl: Fix test failure on AIX 7.
+    * [c914617]->[34d3cce] ansi-c++-opt: Interoperability with libtool.
 __NEXTCOMMITMARKER__
 
 ----------------------------------------------------------------------
