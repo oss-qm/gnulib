@@ -23,6 +23,7 @@ with the following additional commits:
     * [fbd3cc5]->[be2aacf] getugroups: Fix module description.
     * [ddd54c7]->[cd78e73] gnulib-tool: fix portability problem with MacOS sed
     * [59ed6e8]->[1166200] idcache: Fix module description.
+    * [1e8752a]->[4831e70] Fix recent ChangeLog entry.
 __NEXTCOMMITMARKER__
 
 ----------------------------------------------------------------------
