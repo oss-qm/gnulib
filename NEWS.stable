@@ -24,6 +24,7 @@ with the following additional commits:
     * [ddd54c7]->[cd78e73] gnulib-tool: fix portability problem with MacOS sed
     * [59ed6e8]->[1166200] idcache: Fix module description.
     * [1e8752a]->[4831e70] Fix recent ChangeLog entry.
+    * [d94bbd1]->[4af1887] opendir-safer.c: don't clobber errno; don't close negative FD
 __NEXTCOMMITMARKER__
 
 ----------------------------------------------------------------------
