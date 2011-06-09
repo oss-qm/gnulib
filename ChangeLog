@@ -1,5 +1,11 @@
 2011-06-09  Bruno Haible  <bruno@clisp.org>
 
+	thread: Fix confusion between NULL and 0.
+	* lib/glthread/thread.h (gl_thread_self): Use NULL and 0 appropriately.
+	Reported by Paul Eggert.
+
+2011-06-09  Bruno Haible  <bruno@clisp.org>
+
 	acl tests: Fix compilation error on HP-UX 11.
 	* tests/test-sameacls.c: Include <sys/acl.h> also on HP-UX.
 
