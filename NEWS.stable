@@ -44,6 +44,7 @@ with the following additional commits:
     * [64e3383]->[e54b616] pipe2: Remove dependency on 'nonblocking' module.
     * [27edfbd]->[4ba5a2c] doc: Fix a module name.
     * [872f360]->[8248d1a] Copyright: Use LGPL 2.1 instead of LGPL 2.0.
+    * [0605107]->[d9883ac] setlocale: Enable replacement on Cygwin 1.5.
 __NEXTCOMMITMARKER__
 
 ----------------------------------------------------------------------
