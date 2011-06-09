@@ -18,6 +18,7 @@ with the following additional commits:
     * [325f131]->[f00bf3d] relocatable-prog-wrapper: Fix possible link error.
     * [21eb071]->[8694861] clock-time: change to LGPLv2+.
     * [6c8bcfc]->[617bbef] * doc/intprops.texi: fix typo in copyright date
+    * [99b3138]->[9279f19] verify: fix bug when gnulib <assert.h> is also included
 __NEXTCOMMITMARKER__
 
 ----------------------------------------------------------------------
