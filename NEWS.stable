@@ -45,9 +45,10 @@ with the following additional commits:
     * [27edfbd]->[4ba5a2c] doc: Fix a module name.
     * [872f360]->[8248d1a] Copyright: Use LGPL 2.1 instead of LGPL 2.0.
     * [0605107]->[d9883ac] setlocale: Enable replacement on Cygwin 1.5.
-    * [d3e6271]->[] sys_select: Ensure memset is declared also on AIX 7.
+    * [d3e6271]->[1a2b0e6] sys_select: Ensure memset is declared also on AIX 7.
     * [c00787b]->[11da7a4] setenv: Avoid gcc warning.
     * [6f88ff3]->[4c509f3] unsetenv: Avoid gcc warning.
+    * [1866b23]->[0560196] localename: Fix link dependencies.
 __NEXTCOMMITMARKER__
 
 ----------------------------------------------------------------------
