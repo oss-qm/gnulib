@@ -42,6 +42,7 @@ with the following additional commits:
     * [9c3746f]->[7f56311] build-aux/config.sub
     * [7c886ca]->[802ee67] Fix link errors in tests: openat-die uses gettext-h.
     * [64e3383]->[e54b616] pipe2: Remove dependency on 'nonblocking' module.
+    * [27edfbd]->[4ba5a2c] doc: Fix a module name.
 __NEXTCOMMITMARKER__
 
 ----------------------------------------------------------------------
