@@ -33,6 +33,7 @@ with the following additional commits:
     * [1622b36]->[527d6c4] getcwd: work around mingw bug
     * [4ed9779]->[d1c9bfc] mbsrchr: Avoid collision with system function on Interix.
     * [03f358b]->[1ad6403] gen-uni-tables: Say "gen-uni-tables.c" consistently.
+    * [8d8a973]->[cb6151a] getloadavg: Remove an unreliable safety check.
 __NEXTCOMMITMARKER__
 
 ----------------------------------------------------------------------
