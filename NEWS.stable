@@ -12,6 +12,7 @@ with the following additional commits:
 
     * [48cc748]->[a5f8483] intprops: TYPE_IS_INTEGER, TYPE_SIGNED not integer constant exprs
     * [8cc0fee]->[8c5e817] intprops: work around C compiler bugs
+    * [92c71a1]->[2dd0ce3] intprops: work around IRIX 6.5 cc bug with 0u - 0u + -1
 __NEXTCOMMITMARKER__
 
 ----------------------------------------------------------------------
