@@ -28,6 +28,7 @@ with the following additional commits:
     * [6dc42e2]->[d0fe920] utimensat: do not reference an out-of-scope buffer
     * [866bbae]->[b9bb8b9] tests: fix logic bug in init.sh
     * [fc9b0f6]->[cca883f] atexit-tests: ensure reliable exit status
+    * [f4c4af0]->[61c4bf6] docs: document recently fixed glibc printf bug
 __NEXTCOMMITMARKER__
 
 ----------------------------------------------------------------------
