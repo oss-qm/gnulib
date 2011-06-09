@@ -16,6 +16,7 @@ with the following additional commits:
     * [c9ff025]->[056b00f] maint: correct misuse of "a" and "an"
     * [93d7550]->[0cc5541] maint: replace misused "a" with "an"
     * [325f131]->[f00bf3d] relocatable-prog-wrapper: Fix possible link error.
+    * [21eb071]->[8694861] clock-time: change to LGPLv2+.
 __NEXTCOMMITMARKER__
 
 ----------------------------------------------------------------------
