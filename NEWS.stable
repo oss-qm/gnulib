@@ -37,6 +37,7 @@ with the following additional commits:
     * [fdc9e6c]->[264ebf0] Status of work-in-progress around libposix.
     * [2449068]->[cfd76ac] trim: avoid a warning from -O2 -Wstrict-overflow
     * [a8ff65c]->[264aa35] parse-datetime.y: accommodate -Wstrict-overflow
+    * [05f391a]->[ca57003] wctype-h: Avoid namespace pollution on Solaris 2.6.
 __NEXTCOMMITMARKER__
 
 ----------------------------------------------------------------------
