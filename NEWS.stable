@@ -10,7 +10,7 @@ Date:   Wed May 18 13:13:03 2011 -0600
 
 with the following additional commits:
 
-    * [48cc748]->[] intprops: TYPE_IS_INTEGER, TYPE_SIGNED not integer constant exprs
+    * [48cc748]->[a5f8483] intprops: TYPE_IS_INTEGER, TYPE_SIGNED not integer constant exprs
 __NEXTCOMMITMARKER__
 
 ----------------------------------------------------------------------
