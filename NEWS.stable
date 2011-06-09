@@ -21,6 +21,7 @@ with the following additional commits:
     * [99b3138]->[9279f19] verify: fix bug when gnulib <assert.h> is also included
     * [64c6332]->[98ce667] linkat, renameat: Update dependencies.
     * [fbd3cc5]->[be2aacf] getugroups: Fix module description.
+    * [ddd54c7]->[cd78e73] gnulib-tool: fix portability problem with MacOS sed
 __NEXTCOMMITMARKER__
 
 ----------------------------------------------------------------------
