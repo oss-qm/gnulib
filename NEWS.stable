@@ -47,6 +47,7 @@ with the following additional commits:
     * [0605107]->[d9883ac] setlocale: Enable replacement on Cygwin 1.5.
     * [d3e6271]->[] sys_select: Ensure memset is declared also on AIX 7.
     * [c00787b]->[11da7a4] setenv: Avoid gcc warning.
+    * [6f88ff3]->[4c509f3] unsetenv: Avoid gcc warning.
 __NEXTCOMMITMARKER__
 
 ----------------------------------------------------------------------
