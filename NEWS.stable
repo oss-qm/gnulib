@@ -22,6 +22,7 @@ with the following additional commits:
     * [64c6332]->[98ce667] linkat, renameat: Update dependencies.
     * [fbd3cc5]->[be2aacf] getugroups: Fix module description.
     * [ddd54c7]->[cd78e73] gnulib-tool: fix portability problem with MacOS sed
+    * [59ed6e8]->[1166200] idcache: Fix module description.
 __NEXTCOMMITMARKER__
 
 ----------------------------------------------------------------------
