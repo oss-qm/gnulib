@@ -52,6 +52,7 @@ with the following additional commits:
     * [bf7690a]->[54731c1] pipe-filter-ii: Fix test failure on AIX and IRIX.
     * [e7754b0]->[52062c8] acl: Fix test failure on AIX 7.
     * [c914617]->[34d3cce] ansi-c++-opt: Interoperability with libtool.
+    * [3f9fff2]->[0bd455a] careadlinkat: Avoid mismatch between ssize_t and int.
 __NEXTCOMMITMARKER__
 
 ----------------------------------------------------------------------
