@@ -38,6 +38,7 @@ with the following additional commits:
     * [2449068]->[cfd76ac] trim: avoid a warning from -O2 -Wstrict-overflow
     * [a8ff65c]->[264aa35] parse-datetime.y: accommodate -Wstrict-overflow
     * [05f391a]->[ca57003] wctype-h: Avoid namespace pollution on Solaris 2.6.
+    * [224c034]->[225c8ef] Fix link errors in tests: wait-process uses gettext-h.
 __NEXTCOMMITMARKER__
 
 ----------------------------------------------------------------------
