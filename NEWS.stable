@@ -31,6 +31,7 @@ with the following additional commits:
     * [f4c4af0]->[61c4bf6] docs: document recently fixed glibc printf bug
     * [9d196fa]->[a3a87d2] test-intprops: disable -Wtype-limits diagnostics
     * [1622b36]->[527d6c4] getcwd: work around mingw bug
+    * [4ed9779]->[d1c9bfc] mbsrchr: Avoid collision with system function on Interix.
 __NEXTCOMMITMARKER__
 
 ----------------------------------------------------------------------
