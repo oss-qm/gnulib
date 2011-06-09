@@ -35,6 +35,8 @@ with the following additional commits:
     * [03f358b]->[1ad6403] gen-uni-tables: Say "gen-uni-tables.c" consistently.
     * [8d8a973]->[cb6151a] getloadavg: Remove an unreliable safety check.
     * [fdc9e6c]->[264ebf0] Status of work-in-progress around libposix.
+    * [2449068]->[cfd76ac] trim: avoid a warning from -O2 -Wstrict-overflow
+    * [a8ff65c]->[264aa35] parse-datetime.y: accommodate -Wstrict-overflow
 __NEXTCOMMITMARKER__
 
 ----------------------------------------------------------------------
