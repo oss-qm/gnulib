@@ -41,6 +41,7 @@ with the following additional commits:
     * [224c034]->[225c8ef] Fix link errors in tests: wait-process uses gettext-h.
     * [9c3746f]->[7f56311] build-aux/config.sub
     * [7c886ca]->[802ee67] Fix link errors in tests: openat-die uses gettext-h.
+    * [64e3383]->[e54b616] pipe2: Remove dependency on 'nonblocking' module.
 __NEXTCOMMITMARKER__
 
 ----------------------------------------------------------------------
