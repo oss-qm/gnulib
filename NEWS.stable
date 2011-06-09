@@ -14,6 +14,7 @@ with the following additional commits:
     * [8cc0fee]->[8c5e817] intprops: work around C compiler bugs
     * [92c71a1]->[2dd0ce3] intprops: work around IRIX 6.5 cc bug with 0u - 0u + -1
     * [c9ff025]->[056b00f] maint: correct misuse of "a" and "an"
+    * [93d7550]->[0cc5541] maint: replace misused "a" with "an"
 __NEXTCOMMITMARKER__
 
 ----------------------------------------------------------------------
