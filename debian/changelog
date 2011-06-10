@@ -2,8 +2,9 @@ gnulib (20110609+stable-1) unstable; urgency=low
 
   * New upstream stable snapshot.
   * Refresh patches.
+  * Standards-Version: 3.9.2 (no changes).
 
- -- Ian Beckwith <ianb@debian.org>  Fri, 10 Jun 2011 02:21:04 +0100
+ -- Ian Beckwith <ianb@debian.org>  Fri, 10 Jun 2011 03:38:41 +0100
 
 gnulib (20110412+stable-1) unstable; urgency=low
 
