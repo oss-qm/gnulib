@@ -56,6 +56,7 @@ with the following additional commits:
     * [c224523]->[5c698ae] canonicalize-lgpl: work around AIX realpath bug
     * [79aac72]->[cc1a9b7] canonicalize-lgpl: use common idiom
     * [3180807]->[768eb31] doc/lgpl-2.1.texi
+    * [fba3245]->[a96c4d5] tests: fix usage message in 'mktempd_'
 __NEXTCOMMITMARKER__
 
 ----------------------------------------------------------------------
