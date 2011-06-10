@@ -58,6 +58,7 @@ with the following additional commits:
     * [3180807]->[768eb31] doc/lgpl-2.1.texi
     * [fba3245]->[a96c4d5] tests: fix usage message in 'mktempd_'
     * [7b2b693]->[a43f6fd] autoupdate
+    * [3639716]->[74c0798] rmdir: Avoid test failure on HP-UX 10.20.
 __NEXTCOMMITMARKER__
 
 ----------------------------------------------------------------------
