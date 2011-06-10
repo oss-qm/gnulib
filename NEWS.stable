@@ -55,6 +55,7 @@ with the following additional commits:
     * [3f9fff2]->[0bd455a] careadlinkat: Avoid mismatch between ssize_t and int.
     * [c224523]->[5c698ae] canonicalize-lgpl: work around AIX realpath bug
     * [79aac72]->[cc1a9b7] canonicalize-lgpl: use common idiom
+    * [3180807]->[768eb31] doc/lgpl-2.1.texi
 __NEXTCOMMITMARKER__
 
 ----------------------------------------------------------------------
