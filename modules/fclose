@@ -7,7 +7,10 @@ m4/fclose.m4
 
 Depends-on:
 stdio
-close
+close           [test $REPLACE_FCLOSE = 1]
+fflush          [test $REPLACE_FCLOSE = 1]
+freading        [test $REPLACE_FCLOSE = 1]
+lseek           [test $REPLACE_FCLOSE = 1]
 
 configure.ac:
 gl_FUNC_FCLOSE
@@ -23,4 +26,3 @@ LGPLv2+
 
 Maintainer:
 Bruno Haible
-

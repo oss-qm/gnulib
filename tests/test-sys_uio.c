@@ -1,6 +1,5 @@
-/* Determine whether group id is in calling user's group list.
-
-   Copyright (C) 1994, 1997, 2003, 2009-2011 Free Software Foundation, Inc.
+/* Test of <sys/uio.h> substitute.
+   Copyright (C) 2011 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -15,11 +14,19 @@
    You should have received a copy of the GNU General Public License
    along with this program.  If not, see <http://www.gnu.org/licenses/>.  */
 
-#ifndef GROUP_MEMBER_H_
-# define GROUP_MEMBER_H_ 1
+/* Written by Eric Blake <eblake@redhat.com>, 2011.  */
 
-# include <sys/types.h>
+#include <config.h>
 
-int group_member (gid_t);
+#include <sys/uio.h>
 
-#endif /* GROUP_MEMBER_H_ */
+/* Check that necessary types are defined.  */
+size_t a;
+ssize_t b;
+struct iovec c;
+
+int
+main (void)
+{
+  return a + b + !!c.iov_base + c.iov_len;
+}
