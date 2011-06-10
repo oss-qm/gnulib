@@ -60,7 +60,7 @@ with the following additional commits:
     * [7b2b693]->[a43f6fd] autoupdate
     * [3639716]->[74c0798] rmdir: Avoid test failure on HP-UX 10.20.
     * [9776680]->[6ddae30] acl tests: Fix compilation error on HP-UX 11.
-__NEXTCOMMITMARKER__
+    * [5f0441a]->[c1bf224] thread: Fix confusion between NULL and 0.
 
 ----------------------------------------------------------------------
 
