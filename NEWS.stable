@@ -14,6 +14,7 @@ with the following additional commits:
     * [a5a35f0]->[c4596b1] freopen: Documentation.
     * [9926b90]->[395f9e6]] tests: avoid spurious assertion failure in test-float.c on ppc64
     * [8b18afa]->[c948e19] sys_select: Avoid a syntax error regarding timespec_t on IRIX 6.5.
+    * [de1fa2a]->[17f0ec6] openat: work around AIX 7.1 fstatat issue
 __NEXTCOMMITMARKER__
 
 ----------------------------------------------------------------------
