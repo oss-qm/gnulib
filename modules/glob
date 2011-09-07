@@ -9,10 +9,11 @@ lib/glob.c
 m4/glob.m4
 
 Depends-on:
-arg-nonnull
-c++defs
 extensions
-warn-on-use
+largefile
+snippet/arg-nonnull
+snippet/c++defs
+snippet/warn-on-use
 alloca          [test -n "$GLOB_H"]
 d-type          [test -n "$GLOB_H"]
 dirfd           [test -n "$GLOB_H"]
@@ -28,6 +29,10 @@ malloc-posix    [test -n "$GLOB_H"]
 
 configure.ac:
 gl_GLOB
+if test -n "$GLOB_H"; then
+  AC_LIBOBJ([glob])
+  gl_PREREQ_GLOB
+fi
 
 Makefile.am:
 BUILT_SOURCES += $(GLOB_H)

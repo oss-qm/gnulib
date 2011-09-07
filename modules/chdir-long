@@ -8,6 +8,7 @@ m4/chdir-long.m4
 
 Depends-on:
 unistd
+pathmax
 atexit          [test $gl_cv_have_arbitrary_file_name_length_limit = yes]
 fchdir          [test $gl_cv_have_arbitrary_file_name_length_limit = yes]
 fcntl-h         [test $gl_cv_have_arbitrary_file_name_length_limit = yes]
@@ -20,6 +21,10 @@ stdlib          [test $gl_cv_have_arbitrary_file_name_length_limit = yes]
 
 configure.ac:
 gl_FUNC_CHDIR_LONG
+if test $gl_cv_have_arbitrary_file_name_length_limit = yes; then
+  AC_LIBOBJ([chdir-long])
+  gl_PREREQ_CHDIR_LONG
+fi
 
 Makefile.am:
 
