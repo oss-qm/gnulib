@@ -12,6 +12,7 @@ with the following additional commits:
 
     * [a0d9972]->[21d1619] freopen: Don't crash if the filename argument is NULL.
     * [a5a35f0]->[c4596b1] freopen: Documentation.
+    * [9926b90]->[395f9e6]] tests: avoid spurious assertion failure in test-float.c on ppc64
 __NEXTCOMMITMARKER__
 
 ----------------------------------------------------------------------
