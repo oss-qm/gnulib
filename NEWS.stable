@@ -16,6 +16,7 @@ with the following additional commits:
     * [8b18afa]->[c948e19] sys_select: Avoid a syntax error regarding timespec_t on IRIX 6.5.
     * [de1fa2a]->[17f0ec6] openat: work around AIX 7.1 fstatat issue
     * [6cf1a95]->[338ebcb] * lib/fstatat.c: Include <sys/types.h> before <sys/stat.h>.
+    * [d21602d]->[aa4ddc3] pthread: Determine $(LIB_PTHREAD) correctly on IRIX 6.5.
 __NEXTCOMMITMARKER__
 
 ----------------------------------------------------------------------
