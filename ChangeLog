@@ -1,3 +1,8 @@
+2011-09-07  Bruno Haible  <bruno@clisp.org>
+
+	openat: Work around compilation error with OSF/1 5.1 DTK cc.
+	* lib/openat.h: Use different syntax for include of <fcntl.h>.
+
 2011-09-05  Paul Eggert  <eggert@cs.ucla.edu>
 
 	openat: port to AIX 7.1 with large files
