@@ -12,19 +12,20 @@ with the following additional commits:
 
     * [a0d9972]->[21d1619] freopen: Don't crash if the filename argument is NULL.
     * [a5a35f0]->[c4596b1] freopen: Documentation.
-    * [9926b90]->[395f9e6]] tests: avoid spurious assertion failure in test-float.c on ppc64
+    * [9926b90]->[395f9e6] tests: avoid spurious assertion failure in test-float.c on ppc64
     * [8b18afa]->[c948e19] sys_select: Avoid a syntax error regarding timespec_t on IRIX 6.5.
     * [de1fa2a]->[17f0ec6] openat: work around AIX 7.1 fstatat issue
-    * [6cf1a95]->[338ebcb] * lib/fstatat.c: Include <sys/types.h> before <sys/stat.h>.
+    * [6cf1a95]->[338ebcb] lib/fstatat.c: Include <sys/types.h> before <sys/stat.h>.
     * [d21602d]->[aa4ddc3] pthread: Determine $(LIB_PTHREAD) correctly on IRIX 6.5.
     * [7c712d9]->[b34698e] imaxabs: Avoid link error on OSF/1 with DTK cc.
     * [d828cda]->[6add58a] imaxdiv: Avoid link error on OSF/1 with DTK cc.
     * [ae006b4]->[4a9738e] strtoimax: Avoid link error on OSF/1 with DTK cc.
     * [24bfc89]->[1d71dc7] strtoumax: Avoid link error on OSF/1 with DTK cc.
     * [d1fa59e]->[e238a25] strtoimax, strtoumax: Document problem on HP-UX 11.
-    * [e4078c6]->[] avoid literal : in index entries
+    * [e4078c6]->[b26a79b] avoid literal : in index entries
     * [e91216b]->[946c971] openat: test for fstatat (AT_FDCWD, ..., 0) bug
     * [204072b]->[9f60473] openat: test for fstatat (..., 0) bug
+    * [a05ce27]->[f4293d3] openat: port to AIX 7.1 with large files
 __NEXTCOMMITMARKER__
 
 ----------------------------------------------------------------------
