@@ -24,6 +24,7 @@ with the following additional commits:
     * [d1fa59e]->[e238a25] strtoimax, strtoumax: Document problem on HP-UX 11.
     * [e4078c6]->[] avoid literal : in index entries
     * [e91216b]->[946c971] openat: test for fstatat (AT_FDCWD, ..., 0) bug
+    * [204072b]->[9f60473] openat: test for fstatat (..., 0) bug
 __NEXTCOMMITMARKER__
 
 ----------------------------------------------------------------------
