@@ -27,7 +27,7 @@ with the following additional commits:
     * [204072b]->[9f60473] openat: test for fstatat (..., 0) bug
     * [a05ce27]->[f4293d3] openat: port to AIX 7.1 with large files
     * [90a660c]->[e916d00] autoupdate
-__NEXTCOMMITMARKER__
+    * [76074e9]->[a5e4927] openat: Work around compilation error with OSF/1 5.1 DTK cc.
 
 ----------------------------------------------------------------------
 
