@@ -21,6 +21,7 @@ with the following additional commits:
     * [d828cda]->[6add58a] imaxdiv: Avoid link error on OSF/1 with DTK cc.
     * [ae006b4]->[4a9738e] strtoimax: Avoid link error on OSF/1 with DTK cc.
     * [24bfc89]->[1d71dc7] strtoumax: Avoid link error on OSF/1 with DTK cc.
+    * [d1fa59e]->[e238a25] strtoimax, strtoumax: Document problem on HP-UX 11.
 __NEXTCOMMITMARKER__
 
 ----------------------------------------------------------------------
