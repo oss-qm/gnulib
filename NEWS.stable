@@ -17,6 +17,7 @@ with the following additional commits:
     * [de1fa2a]->[17f0ec6] openat: work around AIX 7.1 fstatat issue
     * [6cf1a95]->[338ebcb] * lib/fstatat.c: Include <sys/types.h> before <sys/stat.h>.
     * [d21602d]->[aa4ddc3] pthread: Determine $(LIB_PTHREAD) correctly on IRIX 6.5.
+    * [7c712d9]->[b34698e] imaxabs: Avoid link error on OSF/1 with DTK cc.
 __NEXTCOMMITMARKER__
 
 ----------------------------------------------------------------------
