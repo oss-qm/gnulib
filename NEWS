@@ -12,6 +12,26 @@ User visible incompatible changes
 
 Date        Modules         Changes
 
+2011-08-04  pathmax         The header file "pathmax.h" no longer defines
+                            PATH_MAX on GNU/Hurd. Please use one of the methods
+                            listed in pathmax.h to ensure your package is
+                            portable to GNU/Hurd.
+
+2011-07-24  close           This module no longer pulls in the 'fclose' module.
+                            If your code creates a socket descriptor using
+                            socket() or accept(), then a FILE stream referring
+                            to it using fdopen(), then in order to close this
+                            stream, you need the 'fclose' module.
+
+2011-07-12  arg-nonnull     Renamed to snippet/arg-nonnull.
+            c++defs         Renamed to snippet/c++defs.
+            link-warning    Renamed to snippet/link-warning.
+            unused-parameter Renamed to snippet/unused-parameter.
+            warn-on-use     Renamed to snippet/warn-on-use.
+
+2011-06-15  verify          verify_true (V) is deprecated; please use
+                            verify_expr (V, 1) instead.
+
 2011-06-05  ansi-c++-opt    When a C++ compiler is not found, the variable CXX
                             is now set to "no", not to ":".
 

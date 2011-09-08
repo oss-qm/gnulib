@@ -6,11 +6,11 @@ lib/inttypes.in.h
 m4/inttypes.m4
 
 Depends-on:
-arg-nonnull
 include_next
 multiarch
+snippet/arg-nonnull
+snippet/warn-on-use
 stdint
-warn-on-use
 
 configure.ac:
 gl_INTTYPES_INCOMPLETE

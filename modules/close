@@ -8,10 +8,12 @@ m4/close.m4
 Depends-on:
 unistd
 fd-hook         [test $REPLACE_CLOSE = 1]
-fclose
 
 configure.ac:
 gl_FUNC_CLOSE
+if test $REPLACE_CLOSE = 1; then
+  AC_LIBOBJ([close])
+fi
 gl_UNISTD_MODULE_INDICATOR([close])
 
 Makefile.am:
