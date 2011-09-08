@@ -216,6 +216,10 @@ Files: ./lib/diffseq.h
 Copyright: 1988-1989, 1992-1995, 2001-2004, 2006-2011 Free Software Foundation, Inc.
 License: GPL [REF14]
 
+Files: ./lib/stat-size.h
+Copyright: 1989, 1991-2011 Free Software Foundation, Inc.
+License: GPL [REF14]
+
 Files: ./lib/fts_.h
 Copyright: 1989, 1993 The Regents of the University of California / 2004-2011 Free Software Foundation, Inc.
 License: GPL [REF14]
@@ -852,16 +856,8 @@ Files: ./lib/sig2str.h, ./m4/bison.m4
 Copyright: 2002, 2005, 2009-2011 Free Software Foundation, Inc.
 License: GPL [REF14]
 
-Files: ./m4/file-type.m4, ./m4/fileblocks.m4, ./m4/filemode.m4, ./m4/sig2str.m4, ./m4/unistd-safer.m4
+Files: ./m4/fileblocks.m4, ./m4/filemode.m4, ./m4/sig2str.m4, ./m4/unistd-safer.m4
 Copyright: 2002, 2005-2006, 2009-2011 Free Software Foundation, Inc.
-License: GPL [REF14]
-
-Files: ./m4/stdio-safer.m4
-Copyright: 2002, 2005-2007, 2009-2011 Free Software Foundation, Inc.
-License: GPL [REF14]
-
-Files: ./m4/strerror.m4
-Copyright: 2002, 2007-2011 Free Software Foundation, Inc.
 License: GPL [REF14]
 
 Files: ./lib/acl.h
@@ -872,7 +868,7 @@ Files: ./m4/memcpy.m4, ./m4/tm_gmtoff.m4
 Copyright: 2002, 2009-2011 Free Software Foundation, Inc.
 License: GPL [REF14]
 
-Files: ./m4/closeout.m4, ./m4/exclude.m4, ./m4/getugroups.m4, ./m4/hash.m4, ./m4/idcache.m4, ./m4/long-options.m4, ./m4/memcoll.m4, ./m4/modechange.m4, ./m4/quote.m4, ./m4/readtokens.m4, ./m4/same.m4, ./m4/savedir.m4, ./m4/xstrtod.m4, ./m4/yesno.m4
+Files: ./m4/closeout.m4, ./m4/getugroups.m4, ./m4/idcache.m4, ./m4/memcoll.m4, ./m4/modechange.m4, ./m4/quote.m4, ./m4/readtokens.m4, ./m4/same.m4, ./m4/savedir.m4, ./m4/xstrtod.m4, ./m4/yesno.m4
 Copyright: 2002-2003, 2005-2006, 2009-2011 Free Software Foundation, Inc.
 License: GPL [REF14]
 
@@ -1092,7 +1088,7 @@ Files: ./lib/chdir-safer.c, ./lib/open-safer.c, ./lib/openat-die.c, ./m4/gethrxt
 Copyright: 2005-2006, 2008-2011 Free Software Foundation, Inc.
 License: GPL [REF14]
 
-Files: ./lib/creat-safer.c, ./lib/fd-safer-flag.c, ./lib/fd-safer.c, ./lib/mkdirat.c, ./lib/openat-priv.h, ./lib/pipe-safer.c, ./lib/pipe2-safer.c, ./lib/stdio--.h, ./lib/unlinkdir.c, ./lib/xtime.h, ./m4/argmatch.m4, ./m4/bison-i18n.m4, ./m4/chdir-safer.m4, ./m4/fprintftime.m4, ./m4/memcasecmp.m4, ./m4/readline.m4, ./m4/stdlib-safer.m4, ./m4/xnanosleep.m4
+Files: ./lib/creat-safer.c, ./lib/fd-safer-flag.c, ./lib/fd-safer.c, ./lib/mkdirat.c, ./lib/openat-priv.h, ./lib/pipe-safer.c, ./lib/pipe2-safer.c, ./lib/stdio--.h, ./lib/unlinkdir.c, ./lib/xtime.h, ./m4/bison-i18n.m4, ./m4/chdir-safer.m4, ./m4/memcasecmp.m4, ./m4/readline.m4, ./m4/xnanosleep.m4
 Copyright: 2005-2006, 2009-2011 Free Software Foundation, Inc.
 License: GPL [REF14]
 
@@ -1132,7 +1128,7 @@ Files: ./lib/xgetgroups.c
 Copyright: 2007-2011 Free Software Foundation, Inc
 License: GPL [REF14]
 
-Files: ./build-aux/git-version-gen, ./build-aux/mktempd, ./build-aux/pmccabe2html, ./lib/mgetgroups.c, ./lib/strerror.c, ./lib/xprintf.h, ./m4/mgetgroups.m4, ./m4/posix-shell.m4
+Files: ./build-aux/git-version-gen, ./build-aux/mktempd, ./build-aux/pmccabe2html, ./lib/mgetgroups.c, ./lib/xprintf.h, ./m4/mgetgroups.m4, ./m4/posix-shell.m4
 Copyright: 2007-2011 Free Software Foundation, Inc.
 License: GPL [REF14]
 
@@ -1152,9 +1148,13 @@ Files: ./lib/ftoastr.c, ./lib/ftoastr.h, ./lib/resource-ext.h
 Copyright: 2010-2011 Free Software Foundation, Inc.
 License: GPL [REF14]
 
-Files: ./lib/allocator.h, ./lib/careadlinkat.h, ./lib/get-rusage-as.c, ./lib/get-rusage-data.c, ./lib/vma-iter.c, ./lib/vma-iter.h
+Files: ./lib/allocator.h, ./lib/careadlinkat.h, ./lib/dtotimespec.c, ./lib/get-rusage-as.c, ./lib/get-rusage-data.c, ./lib/timespec-add.c, ./lib/timespec-sub.c, ./lib/vma-iter.c, ./lib/vma-iter.h, ./m4/stat-size.m4
 Copyright: 2011 Free Software Foundation, Inc.
 License: GPL [REF14]
+
+Files: ./build-aux/ylwrap
+Copyright: 1996, 1997, 1998, 1999, 2001, 2002, 2003, 2004, 2005, 2007, 2009, 2010 Free Software Foundation, Inc.
+License: GPL-2+
 
 Files: ./build-aux/ar-lib
 Copyright: 2010 Free Software Foundation, Inc.
@@ -1220,7 +1220,7 @@ Files: ./tests/test-flock.c, ./tests/test-parse-datetime.c, ./tests/test-quotear
 Copyright: 2008-2011 Free Software Foundation, Inc.
 License: GPL-3+
 
-Files: ./tests/test-getcwd.c, ./tests/test-link.c, ./tests/test-mkfifoat.c, ./tests/test-spawn-pipe.c
+Files: ./tests/test-getcwd.c, ./tests/test-link.c, ./tests/test-mkfifoat.c, ./tests/test-spawn-pipe-child.c, ./tests/test-spawn-pipe-main.c
 Copyright: 2009-2011 Free Software Foundation, Inc.
 License: GPL-3+
 
@@ -1232,7 +1232,7 @@ Files: ./tests/test-round-ieee.c, ./tests/test-roundf-ieee.c, ./tests/test-round
 Copyright: 2010-2011 Free Software Foundation, Inc.
 License: GPL-3+
 
-Files: ./tests/test-fclose.c
+Files: ./tests/test-fclose.c, ./tests/test-perror2.c
 Copyright: 2011 Free Software Foundation, Inc.
 License: GPL-3+
 
@@ -1420,7 +1420,7 @@ Files: ./tests/test-mbrtowc-w32.c, ./tests/test-wcrtomb-w32.c
 Copyright: 2008-2011 Free Software Foundation, Inc
 License: GPL-3+ 
 
-Files: ./tests/test-getdomainname.c, ./tests/test-memcasecmp.c, ./tests/test-memcoll.c, ./tests/unistr/test-chr.h, ./tests/unistr/test-cmp.h, ./tests/unistr/test-cmp2.h, ./tests/unistr/test-strchr.h
+Files: ./tests/test-getdomainname.c, ./tests/test-memcasecmp.c, ./tests/test-memcoll.c, ./tests/test-select.h, ./tests/unistr/test-chr.h, ./tests/unistr/test-cmp.h, ./tests/unistr/test-cmp2.h, ./tests/unistr/test-strchr.h
 Copyright: 2008-2011 Free Software Foundation, Inc.
 License: GPL-3+ 
 
@@ -1444,7 +1444,7 @@ Files: ./tests/test-nonblocking.c, ./tests/test-passfd.c, ./tests/test-setlocale
 Copyright: 2011 Free Software Foundation, Inc
 License: GPL-3+ 
 
-Files: ./tests/socket-client.h, ./tests/socket-server.h, ./tests/test-get-rusage-as.c, ./tests/test-get-rusage-data.c, ./tests/test-getloadavg.c, ./tests/test-ignore-value.c, ./tests/test-intprops.c, ./tests/test-netdb-c++.cc, ./tests/test-nonblocking-misc.h, ./tests/test-nonblocking-pipe-child.c, ./tests/test-nonblocking-pipe-main.c, ./tests/test-nonblocking-pipe.h, ./tests/test-nonblocking-reader.h, ./tests/test-nonblocking-socket-child.c, ./tests/test-nonblocking-socket-main.c, ./tests/test-nonblocking-socket.h, ./tests/test-nonblocking-writer.h, ./tests/test-sys_uio.c, ./tests/unistr/test-u16-strstr.c, ./tests/unistr/test-u32-strstr.c, ./tests/unistr/test-u8-strstr.c
+Files: ./tests/socket-client.h, ./tests/socket-server.h, ./tests/test-ffs.c, ./tests/test-ffsl.c, ./tests/test-ffsll.c, ./tests/test-float.c, ./tests/test-fseeko3.c, ./tests/test-get-rusage-as.c, ./tests/test-get-rusage-data.c, ./tests/test-getloadavg.c, ./tests/test-ignore-value.c, ./tests/test-intprops.c, ./tests/test-netdb-c++.cc, ./tests/test-nonblocking-misc.h, ./tests/test-nonblocking-pipe-child.c, ./tests/test-nonblocking-pipe-main.c, ./tests/test-nonblocking-pipe.h, ./tests/test-nonblocking-reader.h, ./tests/test-nonblocking-socket-child.c, ./tests/test-nonblocking-socket-main.c, ./tests/test-nonblocking-socket.h, ./tests/test-nonblocking-writer.h, ./tests/test-pathmax.c, ./tests/test-pselect.c, ./tests/test-pthread_sigmask1.c, ./tests/test-pthread_sigmask2.c, ./tests/test-sigprocmask.c, ./tests/test-sys_uio.c, ./tests/test-thread_create.c, ./tests/test-thread_self.c, ./tests/unistr/test-u16-strstr.c, ./tests/unistr/test-u32-strstr.c, ./tests/unistr/test-u8-strstr.c
 Copyright: 2011 Free Software Foundation, Inc.
 License: GPL-3+ 
 
@@ -1711,10 +1711,6 @@ Files: ./m4/nanosleep.m4
 Copyright: 1999-2001, 2003-2011 Free Software Foundation, Inc.
 License: LGPL [REF22]
 
-Files: ./lib/iconv.c
-Copyright: 1999-2001, 2007, 2009-2011 Free Software Foundation, Inc.
-License: LGPL [REF22]
-
 Files: ./lib/unistr/u16-mbtouc-unsafe.c, ./lib/unistr/u16-mbtouc.c, ./lib/unistr/u16-mbtoucr.c
 Copyright: 1999-2002, 2006-2007, 2009-2011 Free Software Foundation, Inc.
 License: LGPL [REF22]
@@ -1923,7 +1919,7 @@ Files: ./lib/argp-pin.c, ./lib/canon-host.h, ./lib/crc.h
 Copyright: 2005, 2009-2011 Free Software Foundation, Inc.
 License: LGPL [REF22]
 
-Files: ./lib/crc.c, ./m4/crc.m4
+Files: ./lib/crc.c
 Copyright: 2005-2006, 2009-2011 Free Software Foundation, Inc.
 License: LGPL [REF22]
 
@@ -1955,7 +1951,7 @@ Files: ./lib/ceil.c
 Copyright: 2007, 2009, 2010-2011 Free Software Foundation, Inc.
 License: LGPL [REF22]
 
-Files: ./lib/ceilf.c, ./lib/ceill.c, ./lib/fbufmode.h, ./lib/floor.c, ./lib/floorf.c, ./lib/floorl.c, ./lib/freadable.h, ./lib/frexpl.c, ./lib/fseek.c, ./lib/fseterr.h, ./lib/fwritable.h, ./lib/fwriting.h, ./lib/iconv_close.c, ./lib/isnanf.c, ./lib/isnanl.c, ./lib/printf-frexp.c, ./lib/printf-frexp.h, ./lib/printf-frexpl.c, ./lib/printf-frexpl.h, ./lib/round.c, ./lib/roundf.c, ./lib/roundl.c, ./lib/signbitf.c, ./lib/signbitl.c, ./lib/tmpfile.c, ./lib/truncf.c, ./lib/truncl.c, ./lib/unictype/block_test.c, ./lib/unictype/blocks.c, ./lib/unictype/categ_and.c, ./lib/unictype/categ_and_not.c, ./lib/unictype/categ_or.c, ./lib/unictype/sy_c_ident.c, ./lib/unictype/sy_c_whitespace.c, ./lib/unictype/sy_java_ident.c, ./lib/unictype/sy_java_whitespace.c, ./lib/unistr/u16-mbsnlen.c, ./lib/unistr/u32-mbsnlen.c, ./lib/unistr/u8-mbsnlen.c, ./lib/vprintf.c, ./m4/ceil.m4, ./m4/ceilf.m4, ./m4/ceill.m4, ./m4/check-math-lib.m4, ./m4/fbufmode.m4, ./m4/floor.m4, ./m4/floorf.m4, ./m4/floorl.m4, ./m4/fpieee.m4, ./m4/freadable.m4, ./m4/fseek.m4, ./m4/ftell.m4, ./m4/fwritable.m4, ./m4/fwriting.m4, ./m4/printf-frexp.m4, ./m4/printf-frexpl.m4, ./m4/round.m4, ./m4/roundl.m4, ./m4/tmpfile.m4
+Files: ./lib/ceilf.c, ./lib/ceill.c, ./lib/fbufmode.h, ./lib/floor.c, ./lib/floorf.c, ./lib/floorl.c, ./lib/freadable.h, ./lib/frexpl.c, ./lib/fseterr.h, ./lib/fwritable.h, ./lib/fwriting.h, ./lib/isnanf.c, ./lib/isnanl.c, ./lib/printf-frexp.c, ./lib/printf-frexp.h, ./lib/printf-frexpl.c, ./lib/printf-frexpl.h, ./lib/round.c, ./lib/roundf.c, ./lib/roundl.c, ./lib/signbitf.c, ./lib/signbitl.c, ./lib/tmpfile.c, ./lib/truncf.c, ./lib/truncl.c, ./lib/unictype/block_test.c, ./lib/unictype/blocks.c, ./lib/unictype/categ_and.c, ./lib/unictype/categ_and_not.c, ./lib/unictype/categ_or.c, ./lib/unictype/sy_c_ident.c, ./lib/unictype/sy_c_whitespace.c, ./lib/unictype/sy_java_ident.c, ./lib/unictype/sy_java_whitespace.c, ./lib/unistr/u16-mbsnlen.c, ./lib/unistr/u32-mbsnlen.c, ./lib/unistr/u8-mbsnlen.c, ./lib/vprintf.c, ./m4/ceil.m4, ./m4/ceilf.m4, ./m4/ceill.m4, ./m4/check-math-lib.m4, ./m4/fbufmode.m4, ./m4/floor.m4, ./m4/floorf.m4, ./m4/floorl.m4, ./m4/fpieee.m4, ./m4/freadable.m4, ./m4/fwritable.m4, ./m4/fwriting.m4, ./m4/printf-frexp.m4, ./m4/printf-frexpl.m4, ./m4/round.m4, ./m4/roundl.m4, ./m4/tmpfile.m4
 Copyright: 2007, 2009-2011 Free Software Foundation, Inc.
 License: LGPL [REF22]
 
@@ -1971,7 +1967,7 @@ Files: ./m4/exponentd.m4, ./m4/truncl.m4
 Copyright: 2007-2008, 2010-2011 Free Software Foundation, Inc.
 License: LGPL [REF22]
 
-Files: ./lib/fbufmode.c, ./lib/fpucw.h, ./lib/freadable.c, ./lib/freopen.c, ./lib/frexp.c, ./lib/fseterr.c, ./lib/ftell.c, ./lib/fwritable.c, ./lib/fwriting.c, ./lib/isfinite.c, ./lib/isinf.c, ./lib/isnan.c, ./lib/isnand-nolibm.h, ./lib/isnanf-nolibm.h, ./lib/isnanl-nolibm.h, ./lib/mbschr.c, ./lib/mbslen.c, ./lib/mbsnlen.c, ./lib/mbsrchr.c, ./lib/mbssep.c, ./lib/signbitd.c, ./m4/dprintf-posix.m4, ./m4/exponentf.m4, ./m4/exponentl.m4, ./m4/fprintf-posix.m4, ./m4/freopen.m4, ./m4/frexp.m4, ./m4/frexpl.m4, ./m4/isfinite.m4, ./m4/isinf.m4, ./m4/isnan.m4, ./m4/isnand.m4, ./m4/isnanf.m4, ./m4/isnanl.m4, ./m4/ldexpl.m4, ./m4/printf-posix-rpl.m4, ./m4/roundf.m4, ./m4/signbit.m4, ./m4/snprintf-posix.m4, ./m4/sprintf-posix.m4, ./m4/vasnprintf-posix.m4, ./m4/vasprintf-posix.m4, ./m4/vdprintf-posix.m4, ./m4/vfprintf-posix.m4, ./m4/vprintf-posix.m4, ./m4/vsnprintf-posix.m4, ./m4/vsprintf-posix.m4
+Files: ./lib/fbufmode.c, ./lib/fpucw.h, ./lib/freadable.c, ./lib/freopen.c, ./lib/frexp.c, ./lib/fseterr.c, ./lib/fwritable.c, ./lib/fwriting.c, ./lib/isfinite.c, ./lib/isinf.c, ./lib/isnan.c, ./lib/isnand-nolibm.h, ./lib/isnanf-nolibm.h, ./lib/isnanl-nolibm.h, ./lib/mbschr.c, ./lib/mbslen.c, ./lib/mbsnlen.c, ./lib/mbsrchr.c, ./lib/mbssep.c, ./lib/signbitd.c, ./m4/dprintf-posix.m4, ./m4/exponentf.m4, ./m4/exponentl.m4, ./m4/fprintf-posix.m4, ./m4/freopen.m4, ./m4/frexp.m4, ./m4/frexpl.m4, ./m4/iconv_open-utf.m4, ./m4/isfinite.m4, ./m4/isinf.m4, ./m4/isnan.m4, ./m4/isnand.m4, ./m4/isnanf.m4, ./m4/isnanl.m4, ./m4/ldexpl.m4, ./m4/printf-posix-rpl.m4, ./m4/roundf.m4, ./m4/signbit.m4, ./m4/snprintf-posix.m4, ./m4/sprintf-posix.m4, ./m4/vasnprintf-posix.m4, ./m4/vasprintf-posix.m4, ./m4/vdprintf-posix.m4, ./m4/vfprintf-posix.m4, ./m4/vprintf-posix.m4, ./m4/vsnprintf-posix.m4, ./m4/vsprintf-posix.m4
 Copyright: 2007-2011 Free Software Foundation, Inc.
 License: LGPL [REF22]
 
@@ -2015,7 +2011,7 @@ Files: ./lib/iswctype-impl.h, ./lib/iswctype.c, ./lib/towctrans-impl.h, ./lib/to
 Copyright: 2011 Free Software Foundation, Inc.
 License: LGPL [REF22]
 
-Files: ./lib/fchown-stub.c, ./lib/iconv_open-aix.gperf, ./lib/iconv_open-hpux.gperf, ./lib/iconv_open-irix.gperf, ./lib/iconv_open-osf.gperf, ./lib/iconv_open-solaris.gperf, ./lib/malloca.valgrind, ./lib/memchr.valgrind, ./lib/memchr2.valgrind, ./lib/mktime-internal.h, ./lib/rawmemchr.valgrind, ./lib/se-context.in.h, ./lib/strchrnul.valgrind, ./lib/unictype/bidi_of.h, ./lib/unictype/categ_M.h, ./lib/unictype/categ_of.h, ./lib/unictype/combiningclass.h, ./lib/unictype/joiningtype_of.h, ./lib/unictype/scripts.h, ./lib/unictype/scripts_byname.gperf, ./lib/uninorm/decomposition-table1.h, ./lib/uninorm/decomposition-table2.h
+Files: ./build-aux/snippet/_Noreturn.h, ./lib/fchown-stub.c, ./lib/ffsl.c, ./lib/ffsll.c, ./lib/iconv_open-aix.gperf, ./lib/iconv_open-hpux.gperf, ./lib/iconv_open-irix.gperf, ./lib/iconv_open-osf.gperf, ./lib/iconv_open-solaris.gperf, ./lib/malloca.valgrind, ./lib/memchr.valgrind, ./lib/memchr2.valgrind, ./lib/mktime-internal.h, ./lib/rawmemchr.valgrind, ./lib/se-context.in.h, ./lib/strchrnul.valgrind, ./lib/unictype/bidi_of.h, ./lib/unictype/categ_M.h, ./lib/unictype/categ_of.h, ./lib/unictype/combiningclass.h, ./lib/unictype/joiningtype_of.h, ./lib/unictype/scripts.h, ./lib/unictype/scripts_byname.gperf, ./lib/uninorm/decomposition-table1.h, ./lib/uninorm/decomposition-table2.h
 License: LGPL-2+ [REF23]
 
 Files: ./lib/random_r.c
@@ -2130,6 +2126,10 @@ Files: ./lib/gethostname.c
 Copyright: 1992, 2003, 2006, 2008-2011 Free Software Foundation, Inc.
 License: LGPL-2+ [REF23]
 
+Files: ./m4/largefile.m4
+Copyright: 1992-1996, 1998-2011 Free Software Foundation, Inc.
+License: LGPL-2+ [REF23]
+
 Files: ./lib/getpass.c
 Copyright: 1992-2001, 2003-2007, 2009-2011 Free Software Foundation, Inc.
 License: LGPL-2+ [REF23]
@@ -2162,7 +2162,7 @@ Files: ./lib/timegm.c
 Copyright: 1994, 1997, 2003-2004, 2006-2007, 2009-2011 Free Software Foundation, Inc.
 License: LGPL-2+ [REF23]
 
-Files: ./build-aux/link-warning.h
+Files: ./build-aux/snippet/link-warning.h
 Copyright: 1995, 1997, 2000, 2002-2003, 2007, 2009-2011 Free Software Foundation, Inc.
 License: LGPL-2+ [REF23]
 
@@ -2404,6 +2404,10 @@ License: LGPL-2+ [REF23]
 
 Files: ./lib/base64.c
 Copyright: 1999-2001, 2004-2006, 2009-2011 Free Software Foundation, Inc.
+License: LGPL-2+ [REF23]
+
+Files: ./lib/iconv.c
+Copyright: 1999-2001, 2007, 2009-2011 Free Software Foundation, Inc.
 License: LGPL-2+ [REF23]
 
 Files: ./lib/mbrtowc.c
@@ -2690,7 +2694,7 @@ Files: ./m4/intdiv0.m4
 Copyright: 2002, 2007-2008, 2010-2011 Free Software Foundation, Inc.
 License: LGPL-2+ [REF23]
 
-Files: ./m4/strerror_r.m4
+Files: ./m4/strerror.m4, ./m4/strerror_r.m4
 Copyright: 2002, 2007-2011 Free Software Foundation, Inc.
 License: LGPL-2+ [REF23]
 
@@ -2770,7 +2774,7 @@ Files: ./m4/getopt.m4, ./m4/md4.m4, ./m4/md5.m4, ./m4/sha1.m4
 Copyright: 2002-2006, 2008-2011 Free Software Foundation, Inc.
 License: LGPL-2+ [REF23]
 
-Files: ./lib/gc-pbkdf2-sha1.c, ./m4/clock_time.m4, ./m4/dirname.m4, ./m4/md2.m4, ./m4/read-file.m4, ./m4/stdbool.m4
+Files: ./lib/gc-pbkdf2-sha1.c, ./m4/clock_time.m4, ./m4/dirname.m4, ./m4/read-file.m4, ./m4/stdbool.m4
 Copyright: 2002-2006, 2009-2011 Free Software Foundation, Inc.
 License: LGPL-2+ [REF23]
 
@@ -2862,7 +2866,7 @@ Files: ./lib/cloexec.h, ./lib/getpass.h
 Copyright: 2004, 2009-2011 Free Software Foundation, Inc.
 License: LGPL-2+ [REF23]
 
-Files: ./lib/base64.h, ./m4/cloexec.m4
+Files: ./lib/base64.h
 Copyright: 2004-2006, 2009-2011 Free Software Foundation, Inc.
 License: LGPL-2+ [REF23]
 
@@ -2902,11 +2906,7 @@ Files: ./lib/inet_ntop.c
 Copyright: 2005-2006, 2008-2011 Free Software Foundation, Inc. / 1996-1999 by Internet Software Consortium
 License: LGPL-2+ [REF23]
 
-Files: ./m4/des.m4
-Copyright: 2005-2006, 2009-2010 Free Software Foundation, Inc.
-License: LGPL-2+ [REF23]
-
-Files: ./lib/hmac-md5.c, ./lib/hmac-sha1.c, ./lib/memxor.c, ./lib/rijndael-alg-fst.c, ./lib/rijndael-api-fst.c, ./lib/size_max.h, ./lib/strnlen1.c, ./m4/arcfour.m4, ./m4/arctwo.m4, ./m4/check-version.m4, ./m4/gc-pbkdf2-sha1.m4, ./m4/gc.m4, ./m4/hmac-md5.m4, ./m4/hmac-sha1.m4, ./m4/rijndael.m4
+Files: ./lib/hmac-md5.c, ./lib/hmac-sha1.c, ./lib/memxor.c, ./lib/rijndael-alg-fst.c, ./lib/rijndael-api-fst.c, ./lib/size_max.h, ./lib/strnlen1.c, ./m4/arctwo.m4, ./m4/gc.m4
 Copyright: 2005-2006, 2009-2011 Free Software Foundation, Inc.
 License: LGPL-2+ [REF23]
 
@@ -2934,7 +2934,7 @@ Files: ./lib/dirent.in.h, ./lib/fcntl.in.h, ./lib/inttypes.in.h, ./lib/signal.in
 Copyright: 2006-2011 Free Software Foundation, Inc.
 License: LGPL-2+ [REF23]
 
-Files: ./lib/float+.h, ./lib/ftello.c, ./lib/getpagesize.c, ./lib/iconv_open.c, ./lib/localename.h, ./lib/lseek.c, ./lib/sleep.c, ./lib/unictype/categ_none.c, ./m4/count-one-bits.m4, ./m4/float_h.m4, ./m4/fpurge.m4, ./m4/freading.m4, ./m4/gc-camellia.m4, ./m4/locale_h.m4, ./m4/localename.m4, ./m4/lseek.m4, ./m4/malloc.m4, ./m4/realloc.m4, ./m4/strings_h.m4, ./m4/strptime.m4, ./m4/sys_time_h.m4
+Files: ./lib/float+.h, ./lib/fseek.c, ./lib/ftello.c, ./lib/getpagesize.c, ./lib/iconv_close.c, ./lib/iconv_open.c, ./lib/localename.h, ./lib/lseek.c, ./lib/sleep.c, ./lib/unictype/categ_none.c, ./m4/count-one-bits.m4, ./m4/float_h.m4, ./m4/fpurge.m4, ./m4/freading.m4, ./m4/fseek.m4, ./m4/ftell.m4, ./m4/gc-camellia.m4, ./m4/locale_h.m4, ./m4/localename.m4, ./m4/lseek.m4, ./m4/malloc.m4, ./m4/realloc.m4, ./m4/strings_h.m4, ./m4/strptime.m4, ./m4/sys_time_h.m4
 Copyright: 2007, 2009-2011 Free Software Foundation, Inc.
 License: LGPL-2+ [REF23]
 
@@ -2946,7 +2946,7 @@ Files: ./lib/stdio-impl.h
 Copyright: 2007-2008, 2010-2011 Free Software Foundation, Inc.
 License: LGPL-2+ [REF23]
 
-Files: ./lib/count-one-bits.h, ./lib/fflush.c, ./lib/float.in.h, ./lib/fopen.c, ./lib/fpurge.c, ./lib/freadahead.c, ./lib/freadahead.h, ./lib/freading.c, ./lib/freading.h, ./lib/freadptr.c, ./lib/freadptr.h, ./lib/freadseek.c, ./lib/freadseek.h, ./lib/fseeko.c, ./lib/iconv.in.h, ./lib/locale.in.h, ./lib/netinet_in.in.h, ./lib/nl_langinfo.c, ./lib/open.c, ./lib/search.in.h, ./lib/strings.in.h, ./lib/sys_file.in.h, ./lib/sys_select.in.h, ./lib/sys_time.in.h, ./lib/time.in.h, ./lib/wchar.in.h, ./m4/fflush.m4, ./m4/fopen.m4, ./m4/fseeko.m4, ./m4/ftello.m4, ./m4/iconv_h.m4, ./m4/iconv_open.m4, ./m4/math_h.m4, ./m4/open.m4, ./m4/search_h.m4, ./m4/signal_h.m4, ./m4/sleep.m4, ./m4/stdio_h.m4, ./m4/stdlib_h.m4, ./m4/string_h.m4, ./m4/wchar_h.m4
+Files: ./lib/count-one-bits.h, ./lib/fflush.c, ./lib/float.in.h, ./lib/fopen.c, ./lib/fpurge.c, ./lib/freadahead.c, ./lib/freadahead.h, ./lib/freading.c, ./lib/freading.h, ./lib/freadptr.c, ./lib/freadptr.h, ./lib/freadseek.c, ./lib/freadseek.h, ./lib/fseeko.c, ./lib/ftell.c, ./lib/iconv.in.h, ./lib/locale.in.h, ./lib/netinet_in.in.h, ./lib/nl_langinfo.c, ./lib/open.c, ./lib/search.in.h, ./lib/strerror.c, ./lib/strings.in.h, ./lib/sys_file.in.h, ./lib/sys_select.in.h, ./lib/sys_time.in.h, ./lib/time.in.h, ./lib/wchar.in.h, ./m4/fflush.m4, ./m4/fopen.m4, ./m4/fseeko.m4, ./m4/ftello.m4, ./m4/iconv_h.m4, ./m4/iconv_open.m4, ./m4/math_h.m4, ./m4/open.m4, ./m4/search_h.m4, ./m4/signal_h.m4, ./m4/sleep.m4, ./m4/stdio_h.m4, ./m4/stdlib_h.m4, ./m4/string_h.m4, ./m4/wchar_h.m4
 Copyright: 2007-2011 Free Software Foundation, Inc.
 License: LGPL-2+ [REF23]
 
@@ -2966,7 +2966,7 @@ Files: ./lib/read.c, ./lib/stdio-read.c
 Copyright: 2008-2011 Free Software Foundation, Inc
 License: LGPL-2+ [REF23]
 
-Files: ./build-aux/unused-parameter.h, ./lib/accept.c, ./lib/bind.c, ./lib/bitrotate.h, ./lib/close.c, ./lib/connect.c, ./lib/errno.in.h, ./lib/flock.c, ./lib/fsync.c, ./lib/getdtablesize.c, ./lib/getpeername.c, ./lib/getsockname.c, ./lib/getsockopt.c, ./lib/glthread/cond.c, ./lib/ignore-value.h, ./lib/ioctl.c, ./lib/iswblank.c, ./lib/listen.c, ./lib/mbsinit.c, ./lib/mbsrtowcs-impl.h, ./lib/mbsrtowcs-state.c, ./lib/mbsrtowcs.c, ./lib/memchr2.h, ./lib/netdb.in.h, ./lib/perror.c, ./lib/rawmemchr.c, ./lib/recv.c, ./lib/recvfrom.c, ./lib/sched.in.h, ./lib/se-selinux.in.h, ./lib/select.c, ./lib/send.c, ./lib/sendto.c, ./lib/setsockopt.c, ./lib/shutdown.c, ./lib/sig-handler.h, ./lib/sigaction.c, ./lib/socket.c, ./lib/sockets.c, ./lib/sockets.h, ./lib/stdarg.in.h, ./lib/stdio-write.c, ./lib/str-two-way.h, ./lib/sys_ioctl.in.h, ./lib/sys_times.in.h, ./lib/times.c, ./lib/wcrtomb.c, ./lib/write.c, ./m4/btowc.m4, ./m4/close.m4, ./m4/cond.m4, ./m4/dirent_h.m4, ./m4/fclose.m4, ./m4/flock.m4, ./m4/fsync.m4, ./m4/getdtablesize.m4, ./m4/ioctl.m4, ./m4/mbsrtowcs.m4, ./m4/netdb_h.m4, ./m4/perror.m4, ./m4/posix_spawn.m4, ./m4/random_r.m4, ./m4/sched_h.m4, ./m4/servent.m4, ./m4/sigaction.m4, ./m4/sigpipe.m4, ./m4/socketlib.m4, ./m4/sockets.m4, ./m4/spawn_h.m4, ./m4/strsignal.m4, ./m4/strstr.m4, ./m4/sys_file_h.m4, ./m4/sys_ioctl_h.m4, ./m4/sys_times_h.m4, ./m4/sys_wait_h.m4, ./m4/thread.m4, ./m4/wcrtomb.m4, ./m4/write.m4
+Files: ./build-aux/snippet/unused-parameter.h, ./lib/accept.c, ./lib/bind.c, ./lib/bitrotate.h, ./lib/close.c, ./lib/connect.c, ./lib/errno.in.h, ./lib/flock.c, ./lib/fsync.c, ./lib/getdtablesize.c, ./lib/getpeername.c, ./lib/getsockname.c, ./lib/getsockopt.c, ./lib/glthread/cond.c, ./lib/ignore-value.h, ./lib/ioctl.c, ./lib/iswblank.c, ./lib/listen.c, ./lib/mbsinit.c, ./lib/mbsrtowcs-impl.h, ./lib/mbsrtowcs-state.c, ./lib/mbsrtowcs.c, ./lib/memchr2.h, ./lib/netdb.in.h, ./lib/perror.c, ./lib/rawmemchr.c, ./lib/recv.c, ./lib/recvfrom.c, ./lib/sched.in.h, ./lib/se-selinux.in.h, ./lib/select.c, ./lib/send.c, ./lib/sendto.c, ./lib/setsockopt.c, ./lib/shutdown.c, ./lib/sig-handler.h, ./lib/sigaction.c, ./lib/socket.c, ./lib/sockets.c, ./lib/sockets.h, ./lib/stdarg.in.h, ./lib/stdio-write.c, ./lib/str-two-way.h, ./lib/sys_ioctl.in.h, ./lib/sys_times.in.h, ./lib/times.c, ./lib/wcrtomb.c, ./lib/write.c, ./m4/btowc.m4, ./m4/close.m4, ./m4/cond.m4, ./m4/dirent_h.m4, ./m4/fclose.m4, ./m4/flock.m4, ./m4/fsync.m4, ./m4/getdtablesize.m4, ./m4/ioctl.m4, ./m4/mbsrtowcs.m4, ./m4/netdb_h.m4, ./m4/perror.m4, ./m4/posix_spawn.m4, ./m4/random_r.m4, ./m4/sched_h.m4, ./m4/servent.m4, ./m4/sigaction.m4, ./m4/sigpipe.m4, ./m4/socketlib.m4, ./m4/sockets.m4, ./m4/spawn_h.m4, ./m4/strsignal.m4, ./m4/strstr.m4, ./m4/sys_file_h.m4, ./m4/sys_ioctl_h.m4, ./m4/sys_times_h.m4, ./m4/sys_wait_h.m4, ./m4/thread.m4, ./m4/wcrtomb.m4, ./m4/write.m4
 Copyright: 2008-2011 Free Software Foundation, Inc.
 License: LGPL-2+ [REF23]
 
@@ -2974,19 +2974,19 @@ Files: ./lib/uninorm/composition-table.gperf
 Copyright: 2009 Free Software Foundation, Inc.
 License: LGPL-2+ [REF23]
 
-Files: ./build-aux/arg-nonnull.h, ./lib/array-mergesort.h, ./lib/ctype.in.h, ./lib/fcntl.c, ./lib/fd-hook.c, ./lib/fd-hook.h, ./lib/getfilecon.c, ./lib/isblank.c, ./lib/langinfo.in.h, ./lib/link.c, ./lib/pipe2.c, ./lib/pread.c, ./lib/pthread.in.h, ./lib/safe-alloc.c, ./lib/safe-alloc.h, ./lib/stat.c, ./lib/stddef.in.h, ./lib/sys_utsname.in.h, ./lib/uname.c, ./lib/uninorm/canonical-decomposition.c, ./lib/uninorm/decompose-internal.c, ./lib/uninorm/decompose-internal.h, ./lib/uninorm/decomposition-table.c, ./lib/uninorm/nfc.c, ./lib/uninorm/nfd.c, ./lib/uninorm/normalize-internal.h, ./lib/uninorm/u-normalize-internal.h, ./lib/uninorm/u32-normalize.c, ./lib/unlink.c, ./lib/usleep.c, ./m4/ctype.m4, ./m4/fcntl.m4, ./m4/isblank.m4, ./m4/langinfo_h.m4, ./m4/link.m4, ./m4/mkostemp.m4, ./m4/mkostemps.m4, ./m4/mkstemps.m4, ./m4/nl_langinfo.m4, ./m4/pipe2.m4, ./m4/pread.m4, ./m4/pthread.m4, ./m4/pty_h.m4, ./m4/safe-alloc.m4, ./m4/select.m4, ./m4/stat.m4, ./m4/stddef_h.m4, ./m4/sys_utsname_h.m4, ./m4/times.m4, ./m4/uname.m4, ./m4/unlink.m4, ./m4/usleep.m4
+Files: ./build-aux/snippet/arg-nonnull.h, ./lib/array-mergesort.h, ./lib/ctype.in.h, ./lib/fcntl.c, ./lib/fd-hook.c, ./lib/fd-hook.h, ./lib/getfilecon.c, ./lib/isblank.c, ./lib/langinfo.in.h, ./lib/link.c, ./lib/pipe2.c, ./lib/pread.c, ./lib/pthread.in.h, ./lib/safe-alloc.c, ./lib/safe-alloc.h, ./lib/stat.c, ./lib/stddef.in.h, ./lib/sys_utsname.in.h, ./lib/uname.c, ./lib/uninorm/canonical-decomposition.c, ./lib/uninorm/decompose-internal.c, ./lib/uninorm/decompose-internal.h, ./lib/uninorm/decomposition-table.c, ./lib/uninorm/nfc.c, ./lib/uninorm/nfd.c, ./lib/uninorm/normalize-internal.h, ./lib/uninorm/u-normalize-internal.h, ./lib/uninorm/u32-normalize.c, ./lib/unlink.c, ./lib/usleep.c, ./m4/ctype.m4, ./m4/fcntl.m4, ./m4/isblank.m4, ./m4/langinfo_h.m4, ./m4/link.m4, ./m4/mkostemp.m4, ./m4/mkostemps.m4, ./m4/mkstemps.m4, ./m4/nl_langinfo.m4, ./m4/pipe2.m4, ./m4/pread.m4, ./m4/pthread.m4, ./m4/pty_h.m4, ./m4/safe-alloc.m4, ./m4/select.m4, ./m4/stat.m4, ./m4/stddef_h.m4, ./m4/sys_utsname_h.m4, ./m4/times.m4, ./m4/uname.m4, ./m4/unlink.m4, ./m4/usleep.m4
 Copyright: 2009-2011 Free Software Foundation, Inc.
 License: LGPL-2+ [REF23]
 
-Files: ./build-aux/c++defs.h, ./build-aux/warn-on-use.h, ./lib/getlogin.c, ./lib/pty.in.h, ./lib/strerror_r.c, ./lib/termios.in.h, ./m4/asm-underscore.m4, ./m4/configmake.m4, ./m4/getlogin.m4, ./m4/libunistring-base.m4, ./m4/pipe.m4, ./m4/poll_h.m4, ./m4/pwrite.m4, ./m4/termios_h.m4, ./m4/waitpid.m4, ./m4/warn-on-use.m4
+Files: ./build-aux/snippet/c++defs.h, ./build-aux/snippet/warn-on-use.h, ./lib/getlogin.c, ./lib/pty.in.h, ./lib/strerror-override.c, ./lib/strerror-override.h, ./lib/strerror_r.c, ./lib/termios.in.h, ./m4/asm-underscore.m4, ./m4/configmake.m4, ./m4/getlogin.m4, ./m4/libunistring-base.m4, ./m4/pipe.m4, ./m4/poll_h.m4, ./m4/pwrite.m4, ./m4/termios_h.m4, ./m4/waitpid.m4, ./m4/warn-on-use.m4
 Copyright: 2010-2011 Free Software Foundation, Inc.
 License: LGPL-2+ [REF23]
 
-Files: ./lib/getcwd-lgpl.c, ./lib/mbtowc-impl.h, ./lib/mbtowc.c, ./lib/nonblocking.c, ./lib/nonblocking.h, ./lib/passfd.c, ./lib/passfd.h, ./lib/unictype/joiningtype_of.c, ./lib/wctomb-impl.h, ./lib/wctomb.c, ./m4/mbtowc.m4
+Files: ./lib/getcwd-lgpl.c, ./lib/mbtowc-impl.h, ./lib/mbtowc.c, ./lib/nonblocking.c, ./lib/nonblocking.h, ./lib/passfd.c, ./lib/passfd.h, ./lib/unictype/joiningtype_of.c, ./lib/wctomb-impl.h, ./lib/wctomb.c
 Copyright: 2011 Free Software Foundation, Inc
 License: LGPL-2+ [REF23]
 
-Files: ./lib/assert.in.h, ./lib/sys_uio.in.h, ./m4/assert_h.m4, ./m4/dup2-obsolete.m4, ./m4/iswblank.m4, ./m4/memchr-obsolete.m4, ./m4/nonblocking.m4, ./m4/passfd.m4, ./m4/read.m4, ./m4/strtod-obsolete.m4, ./m4/sys_uio_h.m4, ./m4/wctomb.m4
+Files: ./lib/assert.in.h, ./lib/ffs.c, ./lib/ffsl.h, ./lib/float.c, ./lib/pselect.c, ./lib/pthread_sigmask.c, ./lib/sys_uio.in.h, ./m4/assert_h.m4, ./m4/dup2-obsolete.m4, ./m4/ffs.m4, ./m4/ffsl.m4, ./m4/ffsll.m4, ./m4/iswblank.m4, ./m4/mbtowc.m4, ./m4/memchr-obsolete.m4, ./m4/nonblocking.m4, ./m4/passfd.m4, ./m4/pselect.m4, ./m4/pthread_sigmask.m4, ./m4/read.m4, ./m4/strtod-obsolete.m4, ./m4/sys_uio_h.m4, ./m4/timer_time.m4, ./m4/wctomb.m4
 Copyright: 2011 Free Software Foundation, Inc.
 License: LGPL-2+ [REF23]
 
