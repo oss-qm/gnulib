@@ -19,6 +19,7 @@ with the following additional commits:
     * [d21602d]->[aa4ddc3] pthread: Determine $(LIB_PTHREAD) correctly on IRIX 6.5.
     * [7c712d9]->[b34698e] imaxabs: Avoid link error on OSF/1 with DTK cc.
     * [d828cda]->[6add58a] imaxdiv: Avoid link error on OSF/1 with DTK cc.
+    * [ae006b4]->[4a9738e] strtoimax: Avoid link error on OSF/1 with DTK cc.
 __NEXTCOMMITMARKER__
 
 ----------------------------------------------------------------------
