@@ -7,12 +7,15 @@ tests/signature.h
 tests/macros.h
 
 Depends-on:
+fcntl-h
 ignore-value
 timespec
+dup
 usleep
 utimecmp
 
 configure.ac:
+AC_REQUIRE([AC_C_INLINE])
 
 Makefile.am:
 TESTS += test-futimens
