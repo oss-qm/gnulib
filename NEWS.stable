@@ -1,6 +1,21 @@
 			Gnulib stable snapshot
 			----------------------
 
+  * 20111211-stable
+
+Snapshot taken based on:
+
+commit b572c3a256e7bf1e4eecc8c36448c08093240a6a
+Date:   Sat Dec 3 13:09:58 2011 +0100
+
+with the following additional commits:
+
+    * [c69114d]->[b3a93d2] tests: Avoid spurious error message on platforms without mktemp program.
+    * [8446103]->[46519aa] autoupdate
+    * [7c25126]->[6057366] autoupdate
+
+----------------------------------------------------------------------
+
   * 20110908-stable
 
 Snapshot taken based on:
