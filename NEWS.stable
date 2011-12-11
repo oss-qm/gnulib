@@ -12,6 +12,7 @@ with the following additional commits:
 
     * [c69114d]->[b3a93d2] tests: Avoid spurious error message on platforms without mktemp program.
     * [8446103]->[46519aa] autoupdate
+    * [7c25126]->[6057366] autoupdate
 __NEXTCOMMITMARKER__
 
 ----------------------------------------------------------------------
