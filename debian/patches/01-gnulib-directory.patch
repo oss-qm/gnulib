@@ -3,9 +3,9 @@ Description: Sets the gnulib directory.
 
 Index: gnulib/gnulib-tool
 ===================================================================
---- gnulib.orig/gnulib-tool	2011-09-08 20:36:46.000000000 +0100
-+++ gnulib/gnulib-tool	2011-09-08 20:36:53.000000000 +0100
-@@ -443,7 +443,7 @@
+--- gnulib.orig/gnulib-tool	2011-12-11 06:54:46.000000000 +0000
++++ gnulib/gnulib-tool	2011-12-11 06:55:12.000000000 +0000
+@@ -455,7 +455,7 @@
        * ) self_abspathname=`echo "$self_abspathname" | sed -e 's,/[^/]*$,,'`/"$linkval" ;;
      esac
    done
