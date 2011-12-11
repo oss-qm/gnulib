@@ -10,6 +10,7 @@ Date:   Sat Dec 3 13:09:58 2011 +0100
 
 with the following additional commits:
 
+    * [c69114d]->[b3a93d2] tests: Avoid spurious error message on platforms without mktemp program.
 __NEXTCOMMITMARKER__
 
 ----------------------------------------------------------------------
