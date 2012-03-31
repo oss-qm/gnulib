@@ -1,6 +1,19 @@
 			Gnulib stable snapshot
 			----------------------
 
+  * 20120331-stable
+
+Snapshot taken based on:
+
+commit 1f28fa660e4ca110f073251a24ef3a94ad97ef69
+Date:   Sat Mar 24 16:41:21 2012 +0100
+
+with the following additional commits:
+
+__NEXTCOMMITMARKER__
+
+----------------------------------------------------------------------
+
   * 20111211-stable
 
 Snapshot taken based on:
