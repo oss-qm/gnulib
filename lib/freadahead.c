@@ -1,5 +1,5 @@
 /* Retrieve information about a FILE stream.
-   Copyright (C) 2007-2011 Free Software Foundation, Inc.
+   Copyright (C) 2007-2012 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -80,6 +80,10 @@ freadahead (FILE *fp)
   return (fp->__pushed_back
           ? fp->__get_limit - fp->__pushback_bufp + 1
           : fp->__get_limit - fp->__bufp);
+#elif defined EPLAN9                /* Plan9 */
+  if (fp->state == 4 /* WR */ || fp->rp >= fp->wp)
+    return 0;
+  return fp->wp - fp->rp;
 #elif defined SLOW_BUT_NO_HACKS     /* users can define this */
   abort ();
   return 0;

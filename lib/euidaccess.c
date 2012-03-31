@@ -1,6 +1,6 @@
 /* euidaccess -- check if effective user id can access file
 
-   Copyright (C) 1990-1991, 1995, 1998, 2000, 2003-2006, 2008-2011 Free
+   Copyright (C) 1990-1991, 1995, 1998, 2000, 2003-2006, 2008-2012 Free
    Software Foundation, Inc.
 
    This file is part of the GNU C Library.
@@ -66,7 +66,7 @@
 #endif
 
 /* Return 0 if the user has permission of type MODE on FILE;
-   otherwise, return -1 and set `errno'.
+   otherwise, return -1 and set 'errno'.
    Like access, except that it uses the effective user and group
    id's instead of the real ones, and it does not always check for read-only
    file system, text busy, etc.  */

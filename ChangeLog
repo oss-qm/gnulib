@@ -1,9 +1,4515 @@
+<<<<<<< HEAD
+=======
+2012-03-24  Bruno Haible  <bruno@clisp.org>
+
+	gnulib-tool: Avoid unintended error output from 'cmp'.
+	* gnulib-tool (func_add_file, func_update_file, func_import): Use
+	"cmp -s", not "cmp > /dev/null".
+
+2012-03-23  Stefano Lattarini  <stefano.lattarini@gmail.com>
+
+	gnulib-tool: fix imprecise comments w.r.t. an automake bug
+
+	It's not just Automake versions < 1.9b that creates an empty
+	pkgdatadir at installation time if pkgdata_DATA is specified
+	to empty; modern automake versions do this as well, at least
+	until automake 1.11.4 (not yet released at the moment of writing,
+	but soon to appear).  That behaviour was generally considered a
+	feature rather than a bug, at least until this discussion:
+	<http://lists.gnu.org/archive/html/automake/2012-03/msg00014.html>
+
+	See also automake bugs #10997 and #11030.
+
+	* gnulib-tool (func_emit_lib_Makefile_am): Adjust comments.  Add
+	reference to relevant automake bug numbers.
+	(func_emit_tests_Makefile_am): Likewise.
+
+2012-03-20  Reuben Thomas  <rrt@sc3d.org>
+
+	announce-gen: use Digest::SHA when possible
+	* build-aux/announce-gen: Use Digest::SHA when possible, falling
+	back to Digest::SHA1 if necessary.
+
+2012-03-20  Jim Meyering  <meyering@redhat.com>
+
+	tests: avoid gcc warnings about argv vs. const initializers
+	* tests/test-posix_spawn1.c (main): Cast to "(char *)" to avoid two
+	warnings about discarding 'const' qualifier from pointer target type.
+	* tests/test-posix_spawn2.c (main): Likewise.
+
+2012-03-20  Reuben Thomas  <rrt@sc3d.org>
+
+	README-release: simplify slightly
+	* top/README-release: Run "git checkout master" only once.
+
+2012-03-15  Mark Wielaard  <mark@klomp.org>
+
+	git-merge-changelog: add specific example on how to use with hg.
+	* lib/git-merge-changelog.c: Add example on how to use in .hgrc.
+
+2012-03-18  Mark Wielaard  <mark@klomp.org>
+
+	lib/git-merge-changelog.c (status): Report bugs to bug-gnulib@gnu.org.
+
+2012-03-18  Andreas Oberritter  <obi@opendreambox.org>
+
+	git-version-gen: don't let "prefix" envvar cause trouble
+	* build-aux/git-version-gen (prefix): Initialize properly,
+	so as not to use a value specified via the environment.
+	Details here: http://thread.gmane.org/gmane.comp.gnu.parted.bugs/10810
+
+2012-03-16  Paul Eggert  <eggert@cs.ucla.edu>
+
+	regex: diagnose too-large repeat counts in EREs
+	Previously, the code did not diagnose the too-large repeat count
+	in EREs like 'b{1000000000}'; instead, it silently treated the ERE
+	as if it were 'b\{1000000000}', which is unexpected.
+	* lib/regcomp.c (parse_dup_op): Fail with REG_ESIZE if a repeat count
+	is too large.  REG_ESIZE is used nowhere else, and the diagnostic
+	is a reasonable one for this problem.  Another option would be to
+	create a new REG_OVERFLOW error for repeat counts that are too large.
+	(fetch_number): Return RE_DUP_MAX + 1, not REG_ERROR, if the repeat
+	count is too large, so that the caller can distinguish the two cases.
+	* lib/regex.h (_REG_ESIZE): Document that this is now a generic
+	"Too large" return code, and that repeat counts are one example of this.
+
+2012-03-16  Paul Eggert  <eggert@cs.ucla.edu>
+
+	doc: some glibc x32 integer width issues
+	* doc/posix-headers/sys_types.texi (sys/types.h):
+	* doc/posix-headers/time.texi (time.h):
+	Mention that glibc x32 does not conform to POSIX in a couple of
+	areas related to integer widths.
+
+2012-03-15  Bruno Haible  <bruno@clisp.org>
+
+	fmal: Avoid test failure on OpenBSD 5.1/SPARC64.
+	* lib/fma.c (VOLATILE): New macro.
+	(FUNC): Use it to work around a GCC compiler bug.
+
+2012-03-13  Bruno Haible  <bruno@clisp.org>
+
+	hypotl: Bypass broken implementation in OpenBSD 5.1/SPARC.
+	* m4/hypotl.m4 (gl_FUNC_HYPOTL_WORKS): New macro.
+	(gl_FUNC_HYPOTL): Invoke it. If the function does not work, set
+	REPLACE_HYPOTL to 1.
+	* doc/posix-functions/hypotl.texi: Mention the OpenBSD 5.1/SPARC bug.
+
+2012-03-13  Bruno Haible  <bruno@clisp.org>
+
+	remainderl: Bypass broken implementation in OpenBSD 5.1/SPARC.
+	* m4/remainderl.m4 (gl_FUNC_REMAINDERL_WORKS): New macro.
+	(gl_FUNC_REMAINDERL): Invoke it. If the function does not work, set
+	REPLACE_REMAINDERL to 1.
+	* doc/posix-functions/remainderl.texi: Mention the OpenBSD 5.1/SPARC
+	bug.
+
+2012-03-13  Bruno Haible  <bruno@clisp.org>
+
+	sqrtl: Bypass broken implementation in OpenBSD 5.1/SPARC.
+	* lib/math.in.h (sqrtl): Replace it if REPLACE_SQRTL is 1.
+	* m4/sqrtl.m4 (gl_FUNC_SQRTL_WORKS): New macro.
+	(gl_FUNC_SQRTL): Invoke it. Set REPLACE_SQRTL to 1 if sqrtl() produces
+	too big rounding errors.
+	* m4/math_h.m4 (gl_MATH_H_DEFAULTS): Initialize REPLACE_SQRTL.
+	* modules/math (Makefile.am): Substitute REPLACE_SQRTL.
+	* modules/sqrtl (configure.ac): Consider REPLACE_SQRTL.
+	(Depends-on): Update conditions.
+	* tests/test-sqrtl.c (my_ldexpl): New function.
+	(main): Add test of a particular value.
+	* doc/posix-functions/sqrtl.texi: Mention the OpenBSD 5.1/SPARC bug.
+
+2012-03-13  Pádraig Brady  <P@draigBrady.com>
+
+	doc: Update timer_* platform portability notes.
+	* doc/posix-functions/timer_create.texi: Add platforms (OpenBSD 4.9)
+	that always return ENOSYS.
+	* doc/posix-functions/timer_delete.texi: Likewise.
+	* doc/posix-functions/timer_gettime.texi: Likewise.
+	* doc/posix-functions/timer_settime.texi: Likewise.
+
+2012-03-13  Bruno Haible  <bruno@clisp.org>
+
+	cbrtl: Bypass broken implementation in OpenBSD 5.1/SPARC.
+	* m4/cbrtl.m4 (gl_FUNC_CBRTL_WORKS): New macro.
+	(gl_FUNC_CBRTL): Invoke it. If the function does not work, set
+	REPLACE_CBRTL to 1.
+	* doc/posix-functions/cbrtl.texi: Mention the OpenBSD 5.1/SPARC bug.
+
+2012-03-13  Bruno Haible  <bruno@clisp.org>
+
+	remainderl: Avoid compilation error on AIX >= 5.2.
+	* lib/math.in.h (remainderl): Undefine macro from the system header.
+
+2012-03-13  Bruno Haible  <bruno@clisp.org>
+
+	Avoid compilation errors with MSVC option -fp:strict.
+	* lib/cbrt.c: Use MSVC specific pragma fenv_access.
+	* lib/cbrtf.c: Likewise.
+	Reported by Michael Goffioul <michael.goffioul@gmail.com>.
+
+2012-03-12  Bruno Haible  <bruno@clisp.org>
+
+	uninorm: Don't crash in out-of-memory conditions.
+	* lib/uninorm/u-normalize-internal.h (FUNC): Handle malloc() failure
+	gracefully.
+	* lib/uninorm/uninorm-filter.c (uninorm_filter_write): Likewise.
+	Based on a report and patch by Stephen Gallagher <sgallagh@redhat.com>.
+
+2012-03-13  Akim Demaille  <akim@lrde.epita.fr>
+
+	quote: fix syntax-check
+	* top/maint.mk (sc_prohibit_quote_without_use): quote.h
+	also exports quote_quoting_options.
+
+2012-03-12  Simon Josefsson  <simon@josefsson.org>
+
+	Collapse list of copyright years to ranges.  See
+	<https://lists.gnu.org/archive/html/bug-gnulib/2012-03/msg00051.html>.
+	* build-aux/bootstrap.conf, build-aux/csharpcomp.sh.in,
+	build-aux/csharpexec.sh.in, build-aux/gnupload,
+	build-aux/install-reloc, build-aux/javacomp.sh.in,
+	build-aux/javaexec.sh.in, build-aux/ldd.sh.in,
+	build-aux/move-if-change, build-aux/reloc-ldflags,
+	build-aux/relocatable.sh.in, build-aux/x-to-1.in: Fix copyright.
+
+2012-03-11  Bruno Haible  <bruno@clisp.org>
+
+	log2f-ieee: Work around test failure on NetBSD 5.1 and Solaris 10.
+	* m4/log2f-ieee.m4: New file.
+	* m4/log2f.m4 (gl_FUNC_LOG2F): If gl_FUNC_LOG2F_IEEE is present, test
+	whether log2f works with a minus zero argument. Replace it if not.
+	* modules/log2f-ieee (Files): Add m4/log2f-ieee.m4.
+	(Depends-on): Add log2-ieee.
+	(configure.ac): Invoke gl_FUNC_LOG2F_IEEE.
+	* doc/posix-functions/log2f.texi: Mention the log2f-ieee module.
+
+	log2-ieee: Work around test failure on NetBSD 5.1 and Solaris 10.
+	* m4/log2-ieee.m4: New file.
+	* m4/log2.m4 (gl_FUNC_LOG2): If gl_FUNC_LOG2_IEEE is present, test
+	whether log2 works with a minus zero argument. Replace it if not.
+	* modules/log2-ieee (Files): Add m4/log2-ieee.m4.
+	(configure.ac): Invoke gl_FUNC_LOG2_IEEE.
+	* doc/posix-functions/log2.texi: Mention the log2-ieee module.
+
+	Tests for module 'log2l-ieee'.
+	* modules/log2l-ieee-tests: New file.
+	* tests/test-log2l-ieee.c: New file.
+
+	New module 'log2l-ieee'.
+	* modules/log2l-ieee: New file.
+
+	Tests for module 'log2-ieee'.
+	* modules/log2-ieee-tests: New file.
+	* tests/test-log2-ieee.c: New file.
+
+	New module 'log2-ieee'.
+	* modules/log2-ieee: New file.
+
+	Tests for module 'log2f-ieee'.
+	* modules/log2f-ieee-tests: New file.
+	* tests/test-log2f-ieee.c: New file.
+	* tests/test-log2-ieee.h: New file.
+
+	New module 'log2f-ieee'.
+	* modules/log2f-ieee: New file.
+
+2012-03-11  Bruno Haible  <bruno@clisp.org>
+
+	Tests for module 'log2l'.
+	* modules/log2l-tests: New file.
+	* tests/test-log2l.c: New file.
+
+	New module 'log2l'.
+	* lib/math.in.h (log2l): New declaration.
+	* lib/log2l.c: New file.
+	* m4/log2l.m4: New file.
+	* m4/math_h.m4 (gl_MATH_H): Test whether log2l is declared.
+	(gl_MATH_H_DEFAULTS): Initialize GNULIB_LOG2L, HAVE_DECL_LOG2L,
+	REPLACE_LOG2L.
+	* modules/math (Makefile.am): Substitute GNULIB_LOG2L, HAVE_DECL_LOG2L,
+	REPLACE_LOG2L.
+	* modules/log2l: New file.
+	* tests/test-math-c++.cc: Check the declaration of log2l.
+	* doc/posix-functions/log2l.texi: Mention the new module and the IRIX
+	and OSF/1 problems.
+
+2012-03-11  Bruno Haible  <bruno@clisp.org>
+
+	Tests for module 'log2f'.
+	* modules/log2f-tests: New file.
+	* tests/test-log2f.c: New file.
+
+	New module 'log2f'.
+	* lib/math.in.h (log2f): New declaration.
+	* lib/log2f.c: New file.
+	* m4/log2f.m4: New file.
+	* m4/math_h.m4 (gl_MATH_H): Test whether log2f is declared.
+	(gl_MATH_H_DEFAULTS): Initialize GNULIB_LOG2F, HAVE_DECL_LOG2F,
+	REPLACE_LOG2F.
+	* modules/math (Makefile.am): Substitute GNULIB_LOG2F, HAVE_DECL_LOG2F,
+	REPLACE_LOG2F.
+	* modules/log2f: New file.
+	* tests/test-math-c++.cc: Check the declaration of log2f.
+	* doc/posix-functions/log2f.texi: Mention the new module and the IRIX
+	and OSF/1 and Cygwin problems.
+
+2012-03-11  Bruno Haible  <bruno@clisp.org>
+
+	Tests for module 'log2'.
+	* modules/log2-tests: New file.
+	* tests/test-log2.c: New file.
+	* tests/test-log2.h: New file.
+
+	New module 'log2'.
+	* lib/math.in.h (log2): New declaration.
+	* lib/log2.c: New file.
+	* m4/log2.m4: New file.
+	* m4/math_h.m4 (gl_MATH_H): Test whether log2 is declared.
+	(gl_MATH_H_DEFAULTS): Initialize GNULIB_LOG2, HAVE_DECL_LOG2,
+	REPLACE_LOG2.
+	* modules/math (Makefile.am): Substitute GNULIB_LOG2, HAVE_DECL_LOG2,
+	REPLACE_LOG2.
+	* modules/log2: New file.
+	* tests/test-math-c++.cc: Check the declaration of log2.
+	* doc/posix-functions/log2.texi: Mention the new module and the IRIX
+	and OSF/1 and Cygwin problems.
+
+2012-03-11  Bruno Haible  <bruno@clisp.org>
+
+	exp2* tests: More tests.
+	* tests/test-exp2.h (test_function): Test all integral arguments that
+	don't need to overflow or denormalized numbers.
+	* tests/test-exp2.c (MAX_EXP, MIN_EXP): New macros.
+	* tests/test-exp2f.c (MAX_EXP, MIN_EXP): Likewise.
+	* tests/test-exp2l.c (MAX_EXP, MIN_EXP): Likewise.
+
+2012-03-10  Bruno Haible  <bruno@clisp.org>
+
+	log1pl-ieee: Work around test failure on AIX 7.1.
+	* modules/log1pl-ieee (Depends-on): Add log1p-ieee.
+
+	log1pl-ieee: Work around test failure on IRIX 6.5.
+	* m4/log1pl-ieee.m4: New file.
+	* m4/log1pl.m4 (gl_FUNC_LOG1PL): If gl_FUNC_LOG1PL_IEEE is present,
+	test whether log1pl works with a minus zero argument. Replace it if
+	not.
+	* lib/math.in.h (log1pl): Override if REPLACE_LOG1PL is 1.
+	* m4/math_h.m4 (gl_MATH_H_DEFAULTS): Initialize REPLACE_LOG1PL.
+	* modules/math (Makefile.am): Substitute REPLACE_LOG1PL.
+	* modules/log1pl (configure.ac): Consider REPLACE_LOG1PL.
+	(Depends-on): Update conditions.
+	* modules/log1pl-ieee (Files): Add m4/log1p-ieee.m4, m4/minus-zero.m4,
+	m4/signbit.m4.
+	(configure.ac): Invoke gl_FUNC_LOG1PL_IEEE.
+	* doc/posix-functions/log1pl.texi: Mention the log1pl-ieee module.
+
+	log1pf-ieee: Work around test failure on OpenBSD 4.9 and AIX 7.1.
+	* m4/log1pf-ieee.m4: New file.
+	* m4/log1pf.m4 (gl_FUNC_LOG1PF): If gl_FUNC_LOG1PF_IEEE is present,
+	test whether log1pf works with a minus zero argument. Replace it if
+	not.
+	* modules/log1pf-ieee (Files): Add m4/log1pf-ieee.m4, m4/minus-zero.m4,
+	m4/signbit.m4.
+	(configure.ac): Invoke gl_FUNC_LOG1PF_IEEE.
+	* doc/posix-functions/log1pf.texi: Mention the log1pf-ieee module.
+
+	log1pf-ieee: Work around test failure on AIX 5.1 and HP-UX 11.
+	* modules/log1pf-ieee (Depends-on): Add log1p-ieee.
+	(configure.ac): Require gl_FUNC_LOG1PF.
+
+	log1p-ieee: Work around test failure on AIX 7.1 and HP-UX 11.
+	* m4/log1p-ieee.m4: New file.
+	* m4/log1p.m4 (gl_FUNC_LOG1P): If gl_FUNC_LOG1P_IEEE is present, test
+	whether log1p works with a minus zero argument. Replace it if not.
+	* lib/math.in.h (log1p): Override if REPLACE_LOG1P is 1.
+	* m4/math_h.m4 (gl_MATH_H_DEFAULTS): Initialize REPLACE_LOG1P.
+	* modules/math (Makefile.am): Substitute REPLACE_LOG1P.
+	* modules/log1p (configure.ac): Consider REPLACE_LOG1P.
+	(Depends-on): Update conditions.
+	* modules/log1p-ieee (Files): Add m4/log1p-ieee.m4, m4/minus-zero.m4,
+	m4/signbit.m4.
+	(configure.ac): Invoke gl_FUNC_LOG1P_IEEE.
+	* doc/posix-functions/log1p.texi: Mention the log1p-ieee module.
+
+	Tests for module 'log1pl-ieee'.
+	* modules/log1pl-ieee-tests: New file.
+	* tests/test-log1pl-ieee.c: New file.
+
+	New module 'log1pl-ieee'.
+	* modules/log1pl-ieee: New file.
+
+	Tests for module 'log1p-ieee'.
+	* modules/log1p-ieee-tests: New file.
+	* tests/test-log1p-ieee.c: New file.
+
+	New module 'log1p-ieee'.
+	* modules/log1p-ieee: New file.
+
+	Tests for module 'log1pf-ieee'.
+	* modules/log1pf-ieee-tests: New file.
+	* tests/test-log1pf-ieee.c: New file.
+	* tests/test-log1p-ieee.h: New file.
+
+	New module 'log1pf-ieee'.
+	* modules/log1pf-ieee: New file.
+
+2012-03-10  Bruno Haible  <bruno@clisp.org>
+
+	Tests for module 'log1pl'.
+	* modules/log1pl-tests: New file.
+	* tests/test-log1pl.c: New file.
+
+	New module 'log1pl'.
+	* lib/math.in.h (log1pl): New declaration.
+	* lib/log1pl.c: New file.
+	* m4/log1pl.m4: New file.
+	* m4/math_h.m4 (gl_MATH_H): Test whether log1pl is declared.
+	(gl_MATH_H_DEFAULTS): Initialize GNULIB_LOG1PL, HAVE_LOG1PL.
+	* modules/math (Makefile.am): Substitute GNULIB_LOG1PL, HAVE_LOG1PL.
+	* modules/log1pl: New file.
+	* tests/test-math-c++.cc: Check the declaration of log1pl.
+	* doc/posix-functions/log1pl.texi: Mention the new module.
+
+2012-03-10  Bruno Haible  <bruno@clisp.org>
+
+	Tests for module 'log1pf'.
+	* modules/log1pf-tests: New file.
+	* tests/test-log1pf.c: New file.
+
+	New module 'log1pf'.
+	* lib/math.in.h (log1pf): New declaration.
+	* lib/log1pf.c: New file.
+	* m4/log1pf.m4: New file.
+	* m4/math_h.m4 (gl_MATH_H): Test whether log1pf is declared.
+	(gl_MATH_H_DEFAULTS): Initialize GNULIB_LOG1PF, HAVE_LOG1PF,
+	REPLACE_LOG1PF.
+	* modules/math (Makefile.am): Substitute GNULIB_LOG1PF, HAVE_LOG1PF,
+	REPLACE_LOG1PF.
+	* modules/log1pf: New file.
+	* tests/test-math-c++.cc: Check the declaration of log1pf.
+	* doc/posix-functions/log1pf.texi: Mention the new module.
+
+2012-03-10  Bruno Haible  <bruno@clisp.org>
+
+	log1p tests: More tests.
+	* tests/test-log1p.h: New file.
+	* modules/log1p-tests (Files): Add tests/test-log1p.h, tests/randomd.c.
+	(Makefile.am): Add randomd.c to test_log1p_SOURCES.
+	* tests/test-log1p.c: Include <float.h> and test-log1p.h.
+	(main): Invoke test_function.
+
+	log1p: Provide replacement for Minix and MSVC.
+	* lib/math.in.h (log1p): New declaration.
+	* lib/log1p.c: New file.
+	* m4/log1p.m4: New file.
+	* m4/math_h.m4 (gl_MATH_H): Test whether log1p is declared.
+	(gl_MATH_H_DEFAULTS): Initialize GNULIB_LOG1P, HAVE_LOG1P.
+	* modules/math (Makefile.am): Substitute GNULIB_LOG1P, HAVE_LOG1P.
+	* modules/log1p (Files): Add lib/log1p.c, m4/log1p.m4.
+	(Depends-on): Add math, isnand, log, round.
+	(configure.ac): Invoke gl_FUNC_LOG1P. Arrange to compile replacement if
+	HAVE_LOG1P is 0.
+	* tests/test-math-c++.cc: Check the declaration of log1p.
+	* doc/posix-functions/log1p.texi: Mention the replacement.
+
+2012-03-10  Bruno Haible  <bruno@clisp.org>
+
+	math tests: Small simplification.
+	* tests/test-exp.h (test_function): Use the same err_bound for
+	'double' on platforms with sizeof (long double) == sizeof (double)
+	than on platforms with sizeof (long double) > sizeof (double).
+	* tests/test-exp2.h (test_function): Likewise.
+	* tests/test-expm1.h (test_function): Likewise.
+	* tests/test-log.h (test_function): Likewise.
+
+2012-03-10  Bruno Haible  <bruno@clisp.org>
+
+	Fix some comments.
+	* lib/expl.c: Fix an ambiguous comment.
+	* lib/expm1.c: Likewise.
+	* lib/expm1l.c: Likewise.
+	* lib/exp2.c: Likewise.
+	* lib/exp2l.c: Likewise.
+
+2012-03-10  Paul Eggert  <eggert@cs.ucla.edu>
+
+	regex: allow inclusion of <regex.h> before <limits.h>
+	Without this patch, portable programs had to include <limits.h> before
+	<regex.h> if they wanted a consistent value for RE_DUP_MAX.
+	I ran into this problem with a test version of GNU grep on Solaris 8.
+	* lib/regex.h: Include <limits.h> if _REGEX_INCLUDE_LIMITS_H.
+	This is done conditionally so that this change can be merged
+	back to glibc.
+	* m4/regex.m4 (gl_REGEX): Define _REGEX_INCLUDE_LIMITS_H if
+	using the included regex.
+
+	fts: depend on fdopendir
+	* modules/fts (Depends-on): Depend on fdopendir.  This is needed
+	on Solaris 8, at least, since it lacks fdopendir.  Evidently the
+	problem was introduced when fdopendir was split out.
+
+2012-03-10  Bruno Haible  <bruno@clisp.org>
+
+	Remove unused variables.
+	* m4/fmodf.m4 (gl_FUNC_FMODF): Remove unused variable 'i'.
+	* m4/remainderf.m4 (gl_FUNC_REMAINDERF): Likewise.
+
+2012-03-10  Bruno Haible  <bruno@clisp.org>
+
+	isnanf-nolibm: Fix last commit.
+	* lib/isnanf-nolibm.h [IRIX]: Don't include <ieeefp.h>. Declare isnanf.
+
+	isnanf-nolibm: Make it work on IRIX 6.5 with cc.
+	* lib/isnanf-nolibm.h [IRIX]: Include <ieeefp.h>.
+
+2012-03-10  Bruno Haible  <bruno@clisp.org>
+
+	logf-ieee: Work around test failure on NetBSD 5.1.
+	* m4/logf-ieee.m4: New file.
+	* m4/logf.m4 (gl_FUNC_LOGF): If gl_FUNC_LOGF_IEEE is present, test
+	whether logf works with a negative argument. Replace it if not.
+	* lib/logf.c (logf): For negative arguments, return NaN.
+	* modules/logf-ieee (Files): Add m4/logf-ieee.m4.
+	(configure.ac): Invoke gl_FUNC_LOGF_IEEE.
+	* doc/posix-functions/logf.texi: Mention the logf-ieee module.
+
+	logf-ieee: Work around test failure on Solaris 9.
+	* modules/logf-ieee (Depends-on): Add log-ieee.
+	(configure.ac): Require gl_FUNC_LOGF.
+
+	log-ieee: Work around test failure on NetBSD 5.1 and Solaris 11.
+	* m4/log-ieee.m4: New file.
+	* m4/log.m4 (gl_FUNC_LOG): If gl_FUNC_LOG_IEEE is present, test whether
+	log works with a negative argument. Replace it if not.
+	* lib/log.c (log): For negative arguments, return NaN.
+	* modules/log-ieee (Files): Add m4/log-ieee.m4.
+	(configure.ac): Invoke gl_FUNC_LOG_IEEE.
+	* doc/posix-functions/log.texi: Mention the log-ieee module.
+
+	Tests for module 'logl-ieee'.
+	* modules/logl-ieee-tests: New file.
+	* tests/test-logl-ieee.c: New file.
+
+	New module 'logl-ieee'.
+	* modules/logl-ieee: New file.
+
+	Tests for module 'log-ieee'.
+	* modules/log-ieee-tests: New file.
+	* tests/test-log-ieee.c: New file.
+
+	New module 'log-ieee'.
+	* modules/log-ieee: New file.
+
+	Tests for module 'logf-ieee'.
+	* modules/logf-ieee-tests: New file.
+	* tests/test-logf-ieee.c: New file.
+	* tests/test-log-ieee.h: New file.
+
+	New module 'logf-ieee'.
+	* modules/logf-ieee: New file.
+
+2012-03-10  Bruno Haible  <bruno@clisp.org>
+
+	log: Fix bug introduced on 2012-03-09.
+	* m4/log.m4 (gl_FUNC_LOG): Require gl_MATH_H_DEFAULTS.
+
+2012-03-10  Pádraig Brady  <P@draigBrady.com>
+
+	timer-time: link explicitly with pthreads on glibc
+	* m4/timer_time.m4 (LIB_TIMER_TIME): Add -lpthread
+	to support static linking, when newer glibc is
+	detected, as that contains pthread emulation of
+	POSIX timer functions where required.
+	* modules/timer-time: Depend on threadlib to
+	pull in the appropriate library to link.
+
+2012-03-10  Bruno Haible  <bruno@clisp.org>
+
+	log* tests: More tests.
+	* tests/test-log.h: New file.
+	* tests/test-log.c: Include <float.h>, minus-zero.h, test-log.h.
+	(main): Invoke test_function.
+	* tests/test-logf.c: Include <float.h>, minus-zero.h, test-log.h.
+	(main): Invoke test_function.
+	* tests/test-logl.c: Include <float.h>, minus-zero.h, test-log.h.
+	(main): Invoke test_function.
+	* modules/log-tests (Files): Add tests/test-log.h, tests/minus-zero.h,
+	tests/randomd.c.
+	(Makefile.am): Add randomd.c to test_log_SOURCES.
+	* modules/logf-tests (Files): Add tests/test-log.h, tests/minus-zero.h,
+	tests/randomf.c.
+	(Makefile.am): Add randomf.c to test_logf_SOURCES.
+	* modules/logl-tests (Files): Add tests/test-log.h, tests/minus-zero.h,
+	tests/randoml.c.
+	(Depends-on): Add 'float'.
+	(Makefile.am): Add randoml.c to test_logl_SOURCES.
+
+2012-03-09  Bruno Haible  <bruno@clisp.org>
+
+	logl: Work around OSF/1 5.1 bug.
+	* lib/math.in.h (logl): Override if REPLACE_LOGL is 1.
+	* lib/logl.c (logl): If logf exists, use it and provide just the
+	workaround.
+	* m4/logl.m4 (gl_FUNC_LOGL_WORKS): New macro.
+	(gl_FUNC_LOGL): Invoke it. Set REPLACE_LOGL.
+	* m4/math_h.m4 (gl_MATH_H_DEFAULTS): Initialize REPLACE_LOGL.
+	* modules/math (Makefile.am): Substitute REPLACE_LOGL.
+	* modules/logl (configure.ac): Consider REPLACE_LOGL.
+	(Depends-on): Update conditions.
+	* doc/posix-functions/logl.texi: Mention the OSF/1 5.1 problem.
+
+2012-03-09  Bruno Haible  <bruno@clisp.org>
+
+	logf: Work around OSF/1 5.1 bug.
+	* lib/math.in.h (logf): Override if REPLACE_LOGF is 1.
+	* lib/logf.c (logf): If logf exists, use it and provide just the
+	workaround.
+	* m4/logf.m4 (gl_FUNC_LOGF_WORKS): New macro.
+	(gl_FUNC_LOGF): Invoke it. Set REPLACE_LOGF.
+	* m4/math_h.m4 (gl_MATH_H_DEFAULTS): Initialize REPLACE_LOGF.
+	* modules/math (Makefile.am): Substitute REPLACE_LOGF.
+	* modules/logf (configure.ac): Consider REPLACE_LOGF.
+	(Depends-on): Update conditions.
+	* doc/posix-functions/logf.texi: Mention the OSF/1 5.1 problem.
+
+2012-03-09  Bruno Haible  <bruno@clisp.org>
+
+	log: Work around OSF/1 5.1 bug.
+	* lib/math.in.h (log): New declaration.
+	* lib/log.c: New file.
+	* m4/log.m4 (gl_FUNC_LOG_WORKS): New macro.
+	(gl_FUNC_LOG): Invoke it. Set REPLACE_LOG.
+	* m4/math_h.m4 (gl_MATH_H): Test whether log is declared.
+	(gl_MATH_H_DEFAULTS): Initialize GNULIB_LOG, REPLACE_LOG.
+	* modules/math (Makefile.am): Substitute GNULIB_LOG, REPLACE_LOG.
+	* modules/log (Files): Add lib/log.c.
+	(Depends-on): Add math.
+	(configure.ac): If REPLACE_LOG is 1, compile an override.
+	* tests/test-math-c++.cc: Check the declaration of log.
+	* doc/posix-functions/log.texi: Mention the OSF/1 5.1 problem.
+
+2012-03-09  Jim Meyering  <meyering@redhat.com>
+
+	readtokens.c: adjust wording in a comment
+	* lib/readtokens.c: Insert omitted "that" in a comment.
+
+2012-03-08  Paul Eggert  <eggert@cs.ucla.edu>
+
+	modechange: add notations +40, 00440, etc.
+	* lib/modechange.c (mode_compile): Support new notations
+	+40, -40, =440, 00440.  See <http://debbugs.gnu.org/8391>.
+
+2012-03-08  Bruno Haible  <bruno@clisp.org>
+
+	exp2l-ieee: Work around test failure on OpenBSD 4.9 and IRIX 6.5.
+	* m4/exp2l-ieee.m4: New file.
+	* m4/exp2l.m4 (gl_FUNC_EXP2L): If gl_FUNC_EXP2L_IEEE is present,
+	test whether exp2l works with a NaN argument and with a negative
+	infinity argument. Replace it if not.
+	* lib/math.in.h (exp2l): Override if REPLACE_EXP2L is 1.
+	* m4/math_h.m4 (gl_MATH_H_DEFAULTS): Initialize REPLACE_EXP2L.
+	* modules/math (Makefile.am): Substitute REPLACE_EXP2L.
+	* modules/exp2l (configure.ac): Consider REPLACE_EXP2L.
+	(Depends-on): Update conditions.
+	* modules/exp2l-ieee (Files): Add m4/exp2l-ieee.m4.
+	(configure.ac): Invoke gl_FUNC_EXP2L_IEEE.
+	* doc/posix-functions/exp2l.texi: Mention the exp2l-ieee module.
+
+	Tests for module 'exp2l-ieee'.
+	* modules/exp2l-ieee-tests: New file.
+	* tests/test-exp2l-ieee.c: New file.
+
+	New module 'exp2l-ieee'.
+	* modules/exp2l-ieee: New file.
+
+	Tests for module 'exp2-ieee'.
+	* modules/exp2-ieee-tests: New file.
+	* tests/test-exp2-ieee.c: New file.
+
+	New module 'exp2-ieee'.
+	* modules/exp2-ieee: New file.
+
+	Tests for module 'exp2f-ieee'.
+	* modules/exp2f-ieee-tests: New file.
+	* tests/test-exp2f-ieee.c: New file.
+	* tests/test-exp2-ieee.h: New file.
+
+	New module 'exp2f-ieee'.
+	* modules/exp2f-ieee: New file.
+
+2012-03-08  Bruno Haible  <bruno@clisp.org>
+
+	Tests for module 'exp2l'.
+	* modules/exp2l-tests: New file.
+	* tests/test-exp2l.c: New file.
+
+	New module 'exp2l'.
+	* lib/math.in.h (exp2l): New declaration.
+	* lib/exp2l.c: New file.
+	* lib/expl-table.c: New file, extracted from lib/expl.c.
+	* lib/expl.c (gl_expl_table): New declaration.
+	(expl): Remove expl_table. Update reference.
+	* m4/exp2l.m4: New file.
+	* m4/math_h.m4 (gl_MATH_H): Test whether exp2l is declared.
+	(gl_MATH_H_DEFAULTS): Initialize GNULIB_EXP2L, HAVE_DECL_EXP2L.
+	* modules/math (Makefile.am): Substitute GNULIB_EXP2L, HAVE_DECL_EXP2L.
+	* modules/exp2l: New file.
+	* modules/expl (Files): Add lib/expl-table.c.
+	(configure.ac): Compile also expl-table.c.
+	* tests/test-math-c++.cc: Check the declaration of exp2l.
+	* doc/posix-functions/exp2l.texi: Mention the new module and the IRIX
+	problem.
+
+2012-03-08  Bruno Haible  <bruno@clisp.org>
+
+	Tests for module 'exp2f'.
+	* modules/exp2f-tests: New file.
+	* tests/test-exp2f.c: New file.
+
+	New module 'exp2f'.
+	* lib/math.in.h (exp2f): New declaration.
+	* lib/exp2f.c: New file.
+	* m4/exp2f.m4: New file.
+	* m4/math_h.m4 (gl_MATH_H): Test whether exp2f is declared.
+	(gl_MATH_H_DEFAULTS): Initialize GNULIB_EXP2F, HAVE_DECL_EXP2F.
+	* modules/math (Makefile.am): Substitute GNULIB_EXP2F, HAVE_DECL_EXP2F.
+	* modules/exp2f: New file.
+	* tests/test-math-c++.cc: Check the declaration of exp2f.
+	* doc/posix-functions/exp2f.texi: Mention the new module and the
+	IRIX problem.
+
+2012-03-08  Bruno Haible  <bruno@clisp.org>
+
+	Tests for module 'exp2'.
+	* modules/exp2-tests: New file.
+	* tests/test-exp2.c: New file.
+	* tests/test-exp2.h: New file.
+
+        New module 'exp2'.
+        * lib/math.in.h (exp2): New declaration.
+        * lib/exp2.c: New file.
+        * m4/exp2.m4: New file.
+        * m4/math_h.m4 (gl_MATH_H): Test whether exp2 is declared.
+        (gl_MATH_H_DEFAULTS): Initialize GNULIB_EXP2, HAVE_DECL_EXP2,
+        REPLACE_EXP2.
+        * modules/math (Makefile.am): Substitute GNULIB_EXP2, HAVE_DECL_EXP2,
+        REPLACE_EXP2.
+        * modules/exp2: New file.
+        * tests/test-math-c++.cc: Check the declaration of exp2.
+        * doc/posix-functions/exp2.texi: Mention the new module and the IRIX
+        and OpenBSD problems.
+
+2012-03-08  Paul Eggert  <eggert@cs.ucla.edu>
+
+	savedir: fix comment typo
+	* lib/savedir.c (savedirstream): Fix typo in comment.
+
+2012-03-08  Bruno Haible  <bruno@clisp.org>
+
+	test-readtokens.c: use const; remove unwarranted cast
+	* tests/test-readtokens.c: Declare delim to be const, to avoid a cast.
+
+2012-03-08  Bruno Haible  <bruno@clisp.org>
+
+	fmal: Avoid compilation error on AIX.
+	* lib/math.in.h (fmal): Undefine macro before declaration. Needed on
+	AIX 5.2..7.1.
+
+2012-03-08  Bruno Haible  <bruno@clisp.org>
+
+	fma, fmaf, fmal: Override undeclared system functions on IRIX 6.5.
+	* m4/fma.m4 (gl_FUNC_FMA): If fma() exists but is not declared,
+	arrange to set REPLACE_FMA=1, not HAVE_FMA=0.
+	* m4/fmaf.m4 (gl_FUNC_FMAF): If fmaf() exists but is not declared,
+	arrange to set REPLACE_FMAF=1, not HAVE_FMAF=0.
+	* m4/fmal.m4 (gl_FUNC_FMAL): If fmal() exists but is not declared,
+	arrange to set REPLACE_FMAL=1, not HAVE_FMAL=0.
+
+2012-03-08  Bruno Haible  <bruno@clisp.org>
+
+	remainderf: Override buggy system function on IRIX 6.5.
+	* m4/remainderf.m4 (gl_FUNC_REMAINDERF_WORKS): New macro.
+	(gl_FUNC_REMAINDERF): Invoke it. Don't assume remainderf() is declared
+	when it exists.
+	* doc/posix-functions/remainderf.texi: Mention the IRIX problems.
+
+2012-03-08  Jim Meyering  <meyering@redhat.com>
+
+	test-readtokens.c: avoid const-related compilation warnings
+	* tests/test-readtokens.c: Avoid const-related compilation warnings.
+
+2012-03-07  Jim Meyering  <meyering@redhat.com>
+	    Bruno Haible  <bruno@clisp.org>
+
+	frexp-nolibm, frexpl-nolibm tests: Fix bug introduced on 2012-03-03.
+	* modules/frexp-nolibm-tests (Files): Add tests/test-frexp.h,
+	tests/randomd.c.
+	(Makefile.am): Add randomd.c to test_frexp_nolibm_SOURCES.
+	* modules/frexpl-nolibm-tests (Files): Add tests/test-frexp.h,
+	tests/randoml.c.
+	(Makefile.am): Add randoml.c to test_frexpl_nolibm_SOURCES.
+
+2012-03-07  Bruno Haible  <bruno@clisp.org>
+
+	expm1l: Avoid compilation error on AIX.
+	* lib/math.in.h (expm1l): Undefine macro before declaration. Needed on
+	AIX 5.2..7.1.
+
+2012-03-07  Bruno Haible  <bruno@clisp.org>
+
+	expm1l: Don't override undeclared system function on IRIX 6.5.
+	* lib/math.in.h (expm1l): Test HAVE_DECL_EXPM1L, not HAVE_EXPM1L.
+	* m4/expm1l.m4 (gl_FUNC_EXPM1L): Don't assume expm1l() is declared when
+	it exists. Set HAVE_DECL_EXPM1L.
+	* m4/math_h.m4 (gl_MATH_H_DEFAULTS): Initialize HAVE_DECL_EXPM1L, not
+	HAVE_EXPM1L.
+	* modules/math (Makefile.am): Substitute HAVE_DECL_EXPM1L, not
+	HAVE_EXPM1L.
+	* doc/posix-functions/expm1l.texi: Mention missing declaration problem.
+
+2012-03-07  Bruno Haible  <bruno@clisp.org>
+
+	remainderl: Don't override undeclared system function on IRIX 6.5.
+	* lib/math.in.h (remainderl): Test HAVE_DECL_REMAINDERL, not
+	HAVE_REMAINDERL.
+	* m4/remainderl.m4 (gl_FUNC_REMAINDERL): Don't assume remainderl() is
+	declared when it exists. Set HAVE_DECL_REMAINDERL.
+	* m4/math_h.m4 (gl_MATH_H_DEFAULTS): Initialize HAVE_DECL_REMAINDERL,
+	not HAVE_REMAINDERL.
+	* modules/math (Makefile.am): Substitute HAVE_DECL_REMAINDERL, not
+	HAVE_REMAINDERL.
+	* doc/posix-functions/remainderl.texi: Mention missing declaration
+	problem.
+
+2012-03-07  Bruno Haible  <bruno@clisp.org>
+
+	rintf: Don't override undeclared system function on IRIX 6.5.
+	* lib/math.in.h (rintf): Test HAVE_DECL_RINTF, not HAVE_RINTF.
+	* m4/rintf.m4 (gl_FUNC_RINTF): Don't assume rintf() is declared when it
+	exists. Set HAVE_DECL_RINTF.
+	* m4/math_h.m4 (gl_MATH_H_DEFAULTS): Initialize HAVE_DECL_RINTF, not
+	HAVE_RINTF.
+	* modules/math (Makefile.am): Substitute HAVE_DECL_RINTF, not
+	HAVE_RINTF.
+	* doc/posix-functions/rintf.texi: Mention missing declaration problem.
+
+2012-03-07  Bruno Haible  <bruno@clisp.org>
+
+	roundl: Avoid compilation error on AIX.
+	* lib/math.in.h (roundl): Undefine macro before declaration. Needed on
+	AIX 5.2..7.1.
+
+2012-03-07  Bruno Haible  <bruno@clisp.org>
+
+	roundl: Don't override undeclared system function on IRIX 6.5.
+	* m4/roundl.m4 (gl_FUNC_ROUNDL): Search for roundl() in the libraries
+	also when it is not declared. Set HAVE_ROUNDL. For replacement code,
+	test HAVE_ROUNDL, not HAVE_DECL_ROUNDL.
+	* modules/roundl (configure.ac): For replacement code, test
+	HAVE_ROUNDL, not HAVE_DECL_ROUNDL.
+	(Depends-on): Update conditions.
+	* doc/posix-functions/roundl.texi: Mention the IRIX problem.
+
+2012-03-07  Bruno Haible  <bruno@clisp.org>
+
+	roundf: Don't override undeclared system function on IRIX 6.5.
+	* m4/roundf.m4 (gl_FUNC_ROUNDF): Search for roundf() in the libraries
+	also when it is not declared. Set HAVE_ROUNDF. For replacement code,
+	test HAVE_ROUNDF, not HAVE_DECL_ROUNDF.
+	* modules/roundf (configure.ac): For replacement code, test
+	HAVE_ROUNDF, not HAVE_DECL_ROUNDF.
+	(Depends-on): Update conditions.
+	* modules/roundf-ieee (Depends-on): Update conditions.
+	* doc/posix-functions/roundf.texi: Mention the IRIX problem.
+
+2012-03-07  Bruno Haible  <bruno@clisp.org>
+
+	round: Don't override undeclared system function on IRIX 6.5.
+	* m4/check-math-lib.m4 (gl_CHECK_MATH_LIB): Accept an optional third
+	argument.
+	* m4/round.m4 (gl_FUNC_ROUND): Search for round() in the libraries
+	also when it is not declared. Set HAVE_ROUND. For replacement code,
+	test HAVE_ROUND, not HAVE_DECL_ROUND.
+	* modules/round (configure.ac): For replacement code, test HAVE_ROUND,
+	not HAVE_DECL_ROUND.
+	(Depends-on): Update conditions.
+	* modules/round-ieee (Depends-on): Update conditions.
+	* doc/posix-functions/round.texi: Mention the IRIX problem.
+
+2012-03-07  Bruno Haible  <bruno@clisp.org>
+
+	copysignf: Don't override undeclared system function on IRIX 6.5.
+	* lib/math.in.h (copysignf): Test HAVE_DECL_COPYSIGNF, not
+	HAVE_COPYSIGNF.
+	* m4/copysignf.m4 (gl_FUNC_COPYSIGNF): Don't assume copysignf() is
+	declared when it exists. Set HAVE_DECL_COPYSIGNF.
+	* m4/math_h.m4 (gl_MATH_H_DEFAULTS): Initialize HAVE_DECL_COPYSIGNF,
+	not HAVE_COPYSIGNF.
+	* modules/math (Makefile.am): Substitute HAVE_DECL_COPYSIGNF, not
+	HAVE_COPYSIGNF.
+	* doc/posix-functions/copysignf.texi: Mention missing declaration
+	problem.
+
+2012-03-07  Jim Meyering  <meyering@redhat.com>
+
+	readtokens: add tests
+	* modules/readtokens-tests: New file.
+	* tests/test-readtokens.c: New file.
+
+2012-03-07  Jim Meyering  <meyering@redhat.com>
+
+	quotearg: the module must now include quote.h
+	With commit v0.0-7133-g6417476, quotearg.c includes "quote.h".
+	So must the module.
+	* modules/quotearg (Files): Add quote.h.
+
+2012-03-06  Paul Eggert  <eggert@cs.ucla.edu>
+
+	readtokens: avoid core dumps with unusual calling patterns
+	Reported by Xu Zhongxing in <http://debbugs.gnu.org/10953>.
+	* lib/readtokens.c: Include limits.h.
+	(word, bits_per_word, get_nth_bit, set_nth_bit): New.
+	(readtoken): Don't cache the delimiters; the cache code was buggy
+	if !delim && saved_delim, or if the new n_delim differs from the old.
+	Also, it wasn't thread-safe.
+
+2012-03-07  Bruno Haible  <bruno@clisp.org>
+
+	quote: Adhere to common module description layout.
+	* modules/quote (Makefile.am): Add back empty section.
+
+2012-03-06  Akim Demaille  <demaille@gostai.com>
+
+	quote: fuse into quotearg
+	This patch is made for the benefit of Bison.
+	quote does not leave the choice of the quoting style to the user.
+	quoting_style provides poor customizability, yet quoting_options,
+	which is very rich, is hidden inside quotearg.c.  So in order to
+	allow quote customization, move its implementation to quotearg.c.
+	* lib/quote.c: Remove.
+	* modules/quote: Adjust.
+	* lib/quotearg.c (quoting_options_from_style): Fix a compiler
+	warning: provide all the members of literal structs.
+	(quote_quoting_options): New.
+	(quote, quote_n): Import implementation from quote.c.
+	* lib/quote.h: Import the comments from quote.c.
+	(quote_quoting_options): New.
+
+2012-03-06  Bruno Haible  <bruno@clisp.org>
+
+	Tests for module 'expm1l-ieee'.
+	* modules/expm1l-ieee-tests: New file.
+	* tests/test-expm1l-ieee.c: New file.
+
+	New module 'expm1l-ieee'.
+	* modules/expm1l-ieee: New file.
+
+	Tests for module 'expm1f-ieee'.
+	* modules/expm1f-ieee-tests: New file.
+	* tests/test-expm1f-ieee.c: New file.
+
+	New module 'expm1f-ieee'.
+	* modules/expm1f-ieee: New file.
+
+	Tests for module 'expm1-ieee'.
+	* modules/expm1-ieee-tests: New file.
+	* tests/test-expm1-ieee.c: New file.
+	* tests/test-expm1-ieee.h: New file.
+
+	New module 'expm1-ieee'.
+	* modules/expm1-ieee: New file.
+	* m4/expm1-ieee.m4: New file.
+	* m4/expm1.m4 (gl_FUNC_EXPM1): If gl_FUNC_EXPM1_IEEE is present, test
+	whether expm1 works with a minus zero argument. Replace it if not.
+	* lib/math.in.h (expm1): Override if REPLACE_EXPM1 is 1.
+	* m4/math_h.m4 (gl_MATH_H_DEFAULTS): Initialize REPLACE_EXPM1.
+	* modules/math (Makefile.am): Substitute REPLACE_EXPM1.
+	* modules/expm1 (configure.ac): Consider REPLACE_EXPM1.
+	(Depends-on): Update conditions.
+	* doc/posix-functions/expm1.texi: Mention the expm1-ieee module and the
+	AIX problem.
+
+2012-03-06  Bruno Haible  <bruno@clisp.org>
+
+	Work around expm1f bug on IRIX 6.5.
+	* lib/math.in.h (expm1f): Override if REPLACE_EXPM1F is 1.
+	* m4/expm1f.m4 (gl_FUNC_EXPM1F_WORKS): New macro.
+	(gl_FUNC_EXPM1F): Invoke it. Set REPLACE_EXPM1F to 1 if expm1f() does
+	not work.
+	* m4/math_h.m4 (gl_MATH_H_DEFAULTS): Initialize REPLACE_EXPM1F.
+	* modules/math (Makefile.am): Substitute REPLACE_EXPM1F.
+	* modules/expm1f (configure.ac): Consider REPLACE_EXPM1F.
+	(Depends-on): Update conditions.
+	* doc/posix-functions/expm1f.texi: Mention the IRIX 6.5 bug.
+
+2012-03-06  Bruno Haible  <bruno@clisp.org>
+
+	Tests for module 'expm1l'.
+	* modules/expm1l-tests: New file.
+	* tests/test-expm1l.c: New file.
+
+	New module 'expm1l'.
+	* lib/math.in.h (expm1l): New declaration.
+	* lib/expm1l.c: New file.
+	* m4/expm1l.m4: New file.
+	* m4/math_h.m4 (gl_MATH_H): Test whether expm1l is declared.
+	(gl_MATH_H_DEFAULTS): Initialize GNULIB_EXPM1L, HAVE_EXPM1L.
+	* modules/math (Makefile.am): Substitute GNULIB_EXPM1L, HAVE_EXPM1L.
+	* modules/expm1l: New file.
+	* tests/test-math-c++.cc: Check the declaration of expm1l.
+	* doc/posix-functions/expm1l.texi: Mention the new module.
+
+2012-03-06  Bruno Haible  <bruno@clisp.org>
+
+	Tests for module 'expm1f'.
+	* modules/expm1f-tests: New file.
+	* tests/test-expm1f.c: New file.
+
+	New module 'expm1f'.
+	* lib/math.in.h (expm1f): New declaration.
+	* lib/expm1f.c: New file.
+	* m4/expm1f.m4: New file.
+	* m4/math_h.m4 (gl_MATH_H): Test whether expm1f is declared.
+	(gl_MATH_H_DEFAULTS): Initialize GNULIB_EXPM1F, HAVE_EXPM1F.
+	* modules/math (Makefile.am): Substitute GNULIB_EXPM1F, HAVE_EXPM1F.
+	* modules/expm1f: New file.
+	* tests/test-math-c++.cc: Check the declaration of expm1f.
+	* doc/posix-functions/expm1f.texi: Mention the new module.
+
+2012-03-06  Bruno Haible  <bruno@clisp.org>
+
+	Tests for module 'expm1'.
+	* modules/expm1-tests: New file.
+	* tests/test-expm1.c: New file.
+	* tests/test-expm1.h: New file.
+
+	New module 'expm1'.
+	* lib/math.in.h (expm1): New declaration.
+	* lib/expm1.c: New file.
+	* m4/expm1.m4: New file.
+	* m4/math_h.m4 (gl_MATH_H): Test whether expm1 is declared.
+	(gl_MATH_H_DEFAULTS): Initialize GNULIB_EXPM1, HAVE_EXPM1.
+	* modules/math (Makefile.am): Substitute GNULIB_EXPM1, HAVE_EXPM1.
+	* modules/expm1: New file.
+	* tests/test-math-c++.cc: Check the declaration of expm1.
+	* doc/posix-functions/expm1.texi: Mention the new module.
+
+2012-03-06  Bruno Haible  <bruno@clisp.org>
+
+	math: Ensure declarations of math functions.
+	* modules/acosf (Depends-on): Add 'extensions'.
+	* modules/asinf (Depends-on): Likewise.
+	* modules/atan2f (Depends-on): Likewise.
+	* modules/atanf (Depends-on): Likewise.
+	* modules/cbrt (Depends-on): Likewise.
+	* modules/cbrtf (Depends-on): Likewise.
+	* modules/cbrtl (Depends-on): Likewise.
+	* modules/copysignf (Depends-on): Likewise.
+	* modules/copysignl (Depends-on): Likewise.
+	* modules/cosf (Depends-on): Likewise.
+	* modules/coshf (Depends-on): Likewise.
+	* modules/expf (Depends-on): Likewise.
+	* modules/fabsf (Depends-on): Likewise.
+	* modules/fabsl (Depends-on): Likewise.
+	* modules/fmaf (Depends-on): Likewise.
+	* modules/fmal (Depends-on): Likewise.
+	* modules/fmodf (Depends-on): Likewise.
+	* modules/fmodl (Depends-on): Likewise.
+	* modules/frexpf (Depends-on): Likewise.
+	* modules/frexpl (Depends-on): Likewise.
+	* modules/hypot (Depends-on): Likewise.
+	* modules/hypotf (Depends-on): Likewise.
+	* modules/hypotl (Depends-on): Likewise.
+	* modules/ldexpf (Depends-on): Likewise.
+	* modules/ldexpl (Depends-on): Likewise.
+	* modules/log10f (Depends-on): Likewise.
+	* modules/log10l (Depends-on): Likewise.
+	* modules/log1p (Depends-on): Likewise.
+	* modules/logb (Depends-on): Likewise.
+	* modules/logf (Depends-on): Likewise.
+	* modules/modff (Depends-on): Likewise.
+	* modules/modfl (Depends-on): Likewise.
+	* modules/powf (Depends-on): Likewise.
+	* modules/remainderf (Depends-on): Likewise.
+	* modules/remainderl (Depends-on): Likewise.
+	* modules/rintf (Depends-on): Likewise.
+	* modules/rintl (Depends-on): Likewise.
+	* modules/sinf (Depends-on): Likewise.
+	* modules/sinhf (Depends-on): Likewise.
+	* modules/sqrtf (Depends-on): Likewise.
+	* modules/tanf (Depends-on): Likewise.
+	* modules/tanhf (Depends-on): Likewise.
+	* m4/acosf.m4 (gl_FUNC_ACOSF): Require gl_USE_SYSTEM_EXTENSIONS.
+	* m4/asinf.m4 (gl_FUNC_ASINF): Likewise.
+	* m4/atan2f.m4 (gl_FUNC_ATAN2F): Likewise.
+	* m4/atanf.m4 (gl_FUNC_ATANF): Likewise.
+	* m4/cbrt.m4 (gl_FUNC_CBRT): Likewise.
+	* m4/cbrtf.m4 (gl_FUNC_CBRTF): Likewise.
+	* m4/cbrtl.m4 (gl_FUNC_CBRTL): Likewise.
+	* m4/copysignf.m4 (gl_FUNC_COPYSIGNF): Likewise.
+	* m4/copysignl.m4 (gl_FUNC_COPYSIGNL): Likewise.
+	* m4/cosf.m4 (gl_FUNC_COSF): Likewise.
+	* m4/coshf.m4 (gl_FUNC_COSHF): Likewise.
+	* m4/expf.m4 (gl_FUNC_EXPF): Likewise.
+	* m4/fabsf.m4 (gl_FUNC_FABSF): Likewise.
+	* m4/fabsl.m4 (gl_FUNC_FABSL): Likewise.
+	* m4/fmaf.m4 (gl_FUNC_FMAF): Likewise.
+	* m4/fmal.m4 (gl_FUNC_FMAL): Likewise.
+	* m4/fmodf.m4 (gl_FUNC_FMODF): Likewise.
+	* m4/fmodl.m4 (gl_FUNC_FMODL): Likewise.
+	* m4/frexpf.m4 (gl_FUNC_FREXPF): Likewise.
+	* m4/frexpl.m4 (gl_FUNC_FREXPL): Likewise.
+	* m4/hypot.m4 (gl_FUNC_HYPOT): Likewise.
+	* m4/hypotf.m4 (gl_FUNC_HYPOTF): Likewise.
+	* m4/hypotl.m4 (gl_FUNC_HYPOTL): Likewise.
+	* m4/ldexpf.m4 (gl_FUNC_LDEXPF): Likewise.
+	* m4/ldexpl.m4 (gl_FUNC_LDEXPL): Likewise.
+	* m4/log10f.m4 (gl_FUNC_LOG10F): Likewise.
+	* m4/log10l.m4 (gl_FUNC_LOF10L): Likewise.
+	* m4/logb.m4 (gl_FUNC_LOGB): Likewise.
+	* m4/logf.m4 (gl_FUNC_LOGF): Likewise.
+	* m4/modff.m4 (gl_FUNC_MODFF): Likewise.
+	* m4/modfl.m4 (gl_FUNC_MODFL): Likewise.
+	* m4/powf.m4 (gl_FUNC_POWF): Likewise.
+	* m4/remainderf.m4 (gl_FUNC_REMAINDERF): Likewise.
+	* m4/remainderl.m4 (gl_FUNC_REMAINDERL): Likewise.
+	* m4/rintf.m4 (gl_FUNC_RINTF): Likewise.
+	* m4/rintl.m4 (gl_FUNC_RINTL): Likewise.
+	* m4/sinf.m4 (gl_FUNC_SINF): Likewise.
+	* m4/sinhf.m4 (gl_FUNC_SINHF): Likewise.
+	* m4/sqrtf.m4 (gl_FUNC_SQRTF): Likewise.
+	* m4/tanf.m4 (gl_FUNC_TANF): Likewise.
+	* m4/tanhf.m4 (gl_FUNC_TANHF): Likewise.
+
+2012-03-06  Bruno Haible  <bruno@clisp.org>
+
+	math: Update module names in warnings.
+	* lib/math.in.h (acosl, asinl, atanl, cosl, expl, logl, sinl, sqrtl,
+	tanl): Use specific module name in warn-on-use warning.
+
+2012-03-06  Bruno Haible  <bruno@clisp.org>
+
+	expl: Simplify computation.
+	* lib/expl.c (expl): Simplify computation of exp_y. Fix comment.
+
+2012-03-05  Bruno Haible  <bruno@clisp.org>
+
+	exp* tests: More tests.
+	* tests/test-exp.h: New file.
+	* tests/test-exp.c: Include <float.h> and test-exp.h.
+	(main): Invoke test_function.
+	* tests/test-expf.c: Include <float.h> and test-exp.h.
+	(main): Invoke test_function.
+	* tests/test-expl.c: Include <float.h> and test-exp.h.
+	(main): Invoke test_function.
+	* modules/exp-tests (Files): Add tests/test-exp.h, tests/randomd.c.
+	(Makefile.am): Add randomd.c to test_exp_SOURCES.
+	* modules/expf-tests (Files): Add tests/test-exp.h, tests/randomf.c.
+	(Makefile.am): Add randomf.c to test_expf_SOURCES.
+	* modules/expl-tests (Files): Add tests/test-exp.h, tests/randoml.c.
+	(Depends-on): Add 'float'.
+	(Makefile.am): Add randoml.c to test_expl_SOURCES.
+
+	expl: Fix precision of computed result.
+	* lib/expl.c: Completely rewritten.
+	* modules/expl (Depends-on): Add isnanl, roundl, ldexpl. Remove floorl.
+	(Maintainer): Add me.
+	* m4/expl.m4 (gl_FUNC_EXPL): Update computation of EXPL_LIBM.
+
+2012-03-05  Bruno Haible  <bruno@clisp.org>
+
+	cbrt* tests: More tests.
+	* tests/test-cbrt.h: New file.
+	* tests/test-cbrt.c: Include <float.h> and test-cbrt.h.
+	(main): Invoke test_function.
+	* tests/test-cbrtf.c: Include <float.h> and test-cbrt.h.
+	(main): Invoke test_function.
+	* tests/test-cbrtl.c: Include <float.h> and test-cbrt.h.
+	(main): Invoke test_function.
+	* modules/cbrt-tests (Files): Add tests/test-cbrt.h, tests/randomd.c.
+	(Makefile.am): Add randomd.c to test_cbrt_SOURCES.
+	* modules/cbrtf-tests (Files): Add tests/test-cbrt.h, tests/randomf.c.
+	(Makefile.am): Add randomf.c to test_cbrtf_SOURCES.
+	* modules/cbrtl-tests (Files): Add tests/test-cbrt.h, tests/randoml.c.
+	(Depends-on): Add 'float'.
+	(Makefile.am): Add randoml.c to test_cbrtl_SOURCES.
+
+2012-03-05  Bruno Haible  <bruno@clisp.org>
+
+	hypot* tests: More tests.
+	* tests/test-hypot.h: New file, partially extracted from
+	tests/test-hypotl.c.
+	* tests/test-hypot.c: Include test-hypot.h.
+	(main): Invoke test_function.
+	* tests/test-hypotf.c: Include test-hypot.h.
+	(main): Invoke test_function.
+	* tests/test-hypotl.c: Include fpucw.h and test-hypot.h.
+	(main): Invoke BEGIN_LONG_DOUBLE_ROUNDING and test_function.
+	* modules/hypot-tests (Files): Add tests/test-hypot.h, tests/randomd.c.
+	(Makefile.am): Add randomd.c to test_hypot_SOURCES.
+	* modules/hypotf-tests (Files): Add tests/test-hypot.h,
+	tests/randomf.c.
+	(Makefile.am): Add randomf.c to test_hypotf_SOURCES.
+	* modules/hypotl-tests (Files): Add tests/test-hypot.h,
+	tests/randoml.c.
+	(Depends-on): Add 'fpucw', 'float'.
+	(Makefile.am): Add randoml.c to test_hypotl_SOURCES.
+
+2012-03-05  Bruno Haible  <bruno@clisp.org>
+
+	fpucw: Doc about FreeBSD.
+	* lib/fpucw.h: Mention FreeBSD in comments.
+
+2012-03-04  Bruno Haible  <bruno@clisp.org>
+
+	sqrt* tests: More tests.
+	* tests/test-sqrt.h: New file.
+	* tests/test-sqrt.c: Include <float.h> and test-sqrt.h.
+	(main): Invoke test_function.
+	* tests/test-sqrtf.c: Include <float.h> and test-sqrt.h.
+	(main): Invoke test_function.
+	* tests/test-sqrtl.c: Include <float.h> and test-sqrt.h.
+	(main): Invoke test_function.
+	* modules/sqrt-tests (Files): Add tests/test-sqrt.h, tests/randomd.c.
+	(Makefile.am): Add randomd.c to test_sqrt_SOURCES.
+	* modules/sqrtf-tests (Files): Add tests/test-sqrt.h, tests/randomf.c.
+	(Makefile.am): Add randomf.c to test_sqrtf_SOURCES.
+	* modules/sqrtl-tests (Files): Add tests/test-sqrt.h, tests/randoml.c.
+	(Depends-on): Add 'float'.
+	(Makefile.am): Add randoml.c to test_sqrtl_SOURCES.
+
+2012-03-04  Bruno Haible  <bruno@clisp.org>
+
+	remainder* tests: More tests.
+	* tests/test-remainder.h: New file, based on tests/test-fmod.h.
+	* tests/test-remainder.c: Include <float.h> and test-remainder.h.
+	(main): Invoke test_function.
+	* tests/test-remainderf.c: Include <float.h> and test-remainder.h.
+	(main): Invoke test_function.
+	* tests/test-remainderl.c: Include <float.h> and test-remainder.h.
+	(main): Invoke test_function.
+	* modules/remainder-tests (Files): Add tests/test-remainder.h,
+	tests/randomd.c.
+	(Makefile.am): Add randomd.c to test_remainder_SOURCES.
+	* modules/remainderf-tests (Files): Add tests/test-remainder.h,
+	tests/randomf.c.
+	(Makefile.am): Add randomf.c to test_remainderf_SOURCES.
+	* modules/remainderl-tests (Files): Add tests/test-remainder.h,
+	tests/randoml.c.
+	(Depends-on): Add 'float'.
+	(Makefile.am): Add randoml.c to test_remainderl_SOURCES.
+
+2012-03-04  Bruno Haible  <bruno@clisp.org>
+
+	remainder, remainderf, remainderl: Fix computation for large quotients.
+	* lib/remainder.c: Completely rewritten.
+	* lib/remainderf.c (remainderf): Use implementation of remainder.c with
+	USE_FLOAT.
+	* lib/remainderl.c (remainderl): Use implementation of remainder.c with
+	USE_LONG_DOUBLE.
+	* modules/remainder (Depends-on): Add isfinite, signbit, fabs, fmod,
+	isnand, isinf. Remove round, fma.
+	* modules/remainderf (Files): Add lib/remainder.c.
+	(Depends-on): Add isfinite, signbit, fabsf, fmodf, isnanf, isinf.
+	Remove roundf, fmaf.
+	* modules/remainderl (Files): Add lib/remainder.c.
+	(Depends-on): Add float, isfinite, signbit, fabsl, fmodl, isnanl,
+	isinf. Remove roundl, fmal.
+	* m4/remainder.m4 (gl_FUNC_REMAINDER): Update computation of
+	REMAINDER_LIBM.
+	* m4/remainderf.m4 (gl_FUNC_REMAINDERF): Update computation of
+	REMAINDERF_LIBM.
+	* m4/remainderl.m4 (gl_FUNC_REMAINDERL): Update computation of
+	REMAINDERL_LIBM.
+
+2012-03-04  Bruno Haible  <bruno@clisp.org>
+
+	fmod* tests: More tests.
+	* tests/test-fmod.h (my_ldexp): New function.
+	(test_function): Reduce amount of random numbers to test. Add tests
+	of very large quotients x / y.
+	* tests/test-fmod.c (MAX_EXP): New macro.
+	* tests/test-fmodf.c (MAX_EXP): Likewise.
+	* tests/test-fmodl.c (MAX_EXP): Likewise.
+
+2012-03-04  Bruno Haible  <bruno@clisp.org>
+
+	fmod, fmodl: Fix computation for large quotients x / y.
+	* lib/fmod.c: Completely rewritten.
+	* lib/fmodl.c (fmodl): Use implementation of fmod.c with
+	USE_LONG_DOUBLE.
+	* modules/fmod (Depends-on): Add isfinite, signbit, fabs, frexp, ldexp,
+	isnand. Remove fma.
+	* modules/fmodl (Files): Add lib/fmod.c.
+	(Depends-on): Add float, isfinite, signbit, fabsl,
+	frexpl, ldexpl, isnanl. Remove fma.
+	* m4/fmod.m4 (gl_FUNC_FMOD): Update computation of FMOD_LIBM.
+	* m4/fmodl.m4 (gl_FUNC_FMODL): Update computation of FMODL_LIBM.
+
+2012-03-03  Bruno Haible  <bruno@clisp.org>
+
+	fmod* tests: More tests.
+	* tests/test-fmod.h: New file.
+	* tests/test-fmod.c: Include <float.h> and test-fmod.h.
+	(main): Invoke test_function.
+	* tests/test-fmodf.c: Include <float.h> and test-fmod.h.
+	(main): Invoke test_function.
+	* tests/test-fmodl.c: Include <float.h> and test-fmod.h.
+	(main): Invoke test_function.
+	* modules/fmod-tests (Files): Add tests/test-fmod.h, tests/randomd.c.
+	(Makefile.am): Add randomd.c to test_fmod_SOURCES.
+	* modules/fmodf-tests (Files): Add tests/test-fmod.h, tests/randomf.c.
+	(Makefile.am): Add randomf.c to test_fmodf_SOURCES.
+	* modules/fmodl-tests (Files): Add tests/test-fmod.h, tests/randoml.c.
+	(Depends-on): Add 'float'.
+	(Makefile.am): Add randoml.c to test_fmodl_SOURCES.
+
+2012-03-03  Bruno Haible  <bruno@clisp.org>
+
+	rint* tests: More tests.
+	* tests/test-rint.h: New file, partially extracted from
+	tests/test-rintl.c.
+	* tests/test-rint.c: Include test-rint.h.
+	(main): Invoke test_function.
+	* tests/test-rintf.c: Include test-rint.h.
+	(main): Invoke test_function.
+	* tests/test-rintl.c: Include test-rint.h.
+	(main): Invoke test_function.
+	* modules/rint-tests (Files): Add tests/test-rint.h, tests/randomd.c.
+	(Makefile.am): Add randomd.c to test_rint_SOURCES.
+	* modules/rintf-tests (Files): Add tests/test-rint.h, tests/randomf.c.
+	(Makefile.am): Add randomf.c to test_rintf_SOURCES.
+	* modules/rintl-tests (Files): Add tests/test-rint.h, tests/randoml.c.
+	(Makefile.am): Add randoml.c to test_rintl_SOURCES.
+
+2012-03-03  Bruno Haible  <bruno@clisp.org>
+
+	modf* tests: More tests.
+	* tests/test-modf.h: New file.
+	* tests/test-modf.c: Include <float.h> and test-modf.h.
+	(main): Invoke test_function.
+	* tests/test-modff.c: Include <float.h> and test-modf.h.
+	(main): Invoke test_function.
+	* tests/test-modfl.c: Include <float.h> and test-modf.h.
+	(main): Invoke test_function.
+	* modules/modf-tests (Files): Add tests/test-modf.h, tests/randomd.c.
+	(Makefile.am): Add randomd.c to test_modf_SOURCES.
+	* modules/modff-tests (Files): Add tests/test-modf.h, tests/randomf.c.
+	(Makefile.am): Add randomf.c to test_modff_SOURCES.
+	* modules/modfl-tests (Files): Add tests/test-modf.h, tests/randoml.c.
+	(Depends-on): Add 'float'.
+	(Makefile.am): Add randoml.c to test_modfl_SOURCES.
+
+2012-03-03  Bruno Haible  <bruno@clisp.org>
+
+	fabs* tests: More tests.
+	* tests/test-fabs.h: New file, partially extracted from
+	tests/test-fabsl.c.
+	* tests/test-fabs.c (RANDOM): New macro.
+	* tests/test-fabsf.c (RANDOM): New macro.
+	* tests/test-fabsl.c (RANDOM): New macro.
+	* modules/fabs-tests (Files): Add tests/randomd.c.
+	(Makefile.am): Add randomd.c to test_fabs_SOURCES.
+	* modules/fabsf-tests (Files): Add tests/randomf.c.
+	(Makefile.am): Add randomf.c to test_fabsf_SOURCES.
+	* modules/fabsl-tests (Files): Add tests/randoml.c.
+	(Makefile.am): Add randoml.c to test_fabsl_SOURCES.
+
+2012-03-03  Bruno Haible  <bruno@clisp.org>
+
+	ldexp* tests: More tests.
+	* tests/test-ldexp.h (test_function): Add some pseudo-randomized tests.
+	* tests/test-ldexp.c (RANDOM): New macro.
+	* tests/test-ldexpf.c (RANDOM): New macro.
+	* tests/test-ldexpl.c (RANDOM): New macro.
+	* modules/ldexp-tests (Files): Add tests/randomd.c.
+	(Makefile.am): Add randomd.c to test_ldexp_SOURCES.
+	* modules/ldexpf-tests (Files): Add tests/randomf.c.
+	(Makefile.am): Add randomf.c to test_ldexpf_SOURCES.
+	* modules/ldexpl-tests (Files): Add tests/randoml.c.
+	(Makefile.am): Add randoml.c to test_ldexpl_SOURCES.
+
+2012-03-03  Bruno Haible  <bruno@clisp.org>
+
+	frexp* tests: More tests.
+	* tests/test-frexp.h (test_function): Add some pseudo-randomized tests.
+	* tests/test-frexp.c (RANDOM): New macro.
+	* tests/test-frexpf.c (RANDOM): New macro.
+	* tests/test-frexpl.c (RANDOM): New macro.
+	* modules/frexp-tests (Files): Add tests/randomd.c.
+	(Makefile.am): Add randomd.c to test_frexp_SOURCES.
+	* modules/frexpf-tests (Files): Add tests/randomf.c.
+	(Makefile.am): Add randomf.c to test_frexpf_SOURCES.
+	* modules/frexpl-tests (Files): Add tests/randoml.c.
+	(Makefile.am): Add randoml.c to test_frexpl_SOURCES.
+
+2012-03-03  Bruno Haible  <bruno@clisp.org>
+
+	Support for pseudo-random numbers in tests.
+	* tests/randomf.c: New file.
+	* tests/randomd.c: New file.
+	* tests/randoml.c: New file.
+	* tests/macros.h (randomf, randomd, randoml): New declarations.
+
+2012-03-03  Bruno Haible  <bruno@clisp.org>
+
+	frexp* tests: Refactor.
+	* tests/test-frexp.h: New file, extracted from tests/test-frexpl.c.
+	* tests/test-frexp.c: Include and use it.
+	* tests/test-frexpf.c: Likewise.
+	* tests/test-frexpl.c: Likewise.
+	* modules/frexp-tests (Files): Add tests/test-frexp.h.
+	* modules/frexpf-tests (Files): Likewise.
+	* modules/frexpl-tests (Files): Likewise.
+
+2012-03-02  Jim Meyering  <meyering@redhat.com>
+
+	maint: don't specify XZ_OPT=-9ev in dist-related rule
+	Using xz's -9 option is warranted only if you have a very large
+	tarball (see xz's documentation for the sizes vs. presets), and
+	requires 64MiB of memory at decompression time.
+	* top/maint.mk (alpha beta stable): Don't specify XZ_OPT=-9ev.
+	Automake's default of just "-e" is fine.  Override on a
+	per-package basis by setting XZ_OPT e.g., in cfg.mk.
+
+2012-03-01  Eric Blake  <eblake@redhat.com>
+
+	maint.mk: allow announcement for non-gnulib project
+	* maint.mk (announcement): Skip gnulib version if not used.
+
+2012-03-01  Jim Meyering  <meyering@redhat.com>
+
+	maint.mk: avoid spurious failure of _sc_search_regexp-using tests
+	* top/maint.mk: Initialize _sc_search_regexp parameters, so that
+	envvar settings cannot interfere.  Otherwise, setting envvars like
+	prohibit=foo require=bar, etc. would cause spurious test failures.
+
+2012-03-01  Eric Blake  <eblake@redhat.com>
+
+	maint.mk: add per-line exclusions to prohibitions
+	* maint.mk (_sc_search_regexp): Add $exclude parameter.
+	(sc_prohibit_strcmp, sc_unmarked_diagnostics)
+	(sc_const_long_option): Use it.
+
+2012-03-01  Bruno Haible  <bruno@clisp.org>
+
+	Tests for module 'expl-ieee'.
+	* modules/expl-ieee-tests: New file.
+	* tests/test-expl-ieee.c: New file.
+
+	New module 'expl-ieee'.
+	* modules/expl-ieee: New file.
+
+	Tests for module 'exp-ieee'.
+	* modules/exp-ieee-tests: New file.
+	* tests/test-exp-ieee.c: New file.
+
+	New module 'exp-ieee'.
+	* modules/exp-ieee: New file.
+
+	Tests for module 'expf-ieee'.
+	* modules/expf-ieee-tests: New file.
+	* tests/test-expf-ieee.c: New file.
+	* tests/test-exp-ieee.h: New file.
+
+	New module 'expf-ieee'.
+	* modules/expf-ieee: New file.
+
+2012-02-29  Bruno Haible  <bruno@clisp.org>
+
+	cbrtl-ieee: Work around test failure on IRIX 6.5.
+	* m4/cbrtl-ieee.m4: New file.
+	* m4/cbrtl.m4 (gl_FUNC_CBRTL): If gl_FUNC_CBRTL_IEEE is present,
+	test whether cbrtl works with a minus zero argument. Replace it if not.
+	* lib/math.in.h (cbrtl): Override if REPLACE_CBRTL is 1.
+	* m4/math_h.m4 (gl_MATH_H_DEFAULTS): Initialize REPLACE_CBRTL.
+	* modules/math (Makefile.am): Substitute REPLACE_CBRTL.
+	* modules/cbrtl (configure.ac): Consider REPLACE_CBRTL.
+	(Depends-on): Update conditions.
+	* modules/cbrtl-ieee (Files): Add m4/cbrtl-ieee.m4, m4/minus-zero.m4,
+	m4/signbit.m4.
+	(configure.ac): Invoke gl_FUNC_CBRTL_IEEE.
+	* lib/cbrtl.c (cbrtl) [IRIX]: Avoid an unnecessary addition.
+	* doc/posix-functions/cbrtl.texi: Mention the cbrtl-ieee module.
+
+	Tests for module 'cbrtl-ieee'.
+	* modules/cbrtl-ieee-tests: New file.
+	* tests/test-cbrtl-ieee.c: New file.
+
+	New module 'cbrtl-ieee'.
+	* modules/cbrtl-ieee: New file.
+
+	Tests for module 'cbrt-ieee'.
+	* modules/cbrt-ieee-tests: New file.
+	* tests/test-cbrt-ieee.c: New file.
+
+	New module 'cbrt-ieee'.
+	* modules/cbrt-ieee: New file.
+
+	Tests for module 'cbrtf-ieee'.
+	* modules/cbrtf-ieee-tests: New file.
+	* tests/test-cbrtf-ieee.c: New file.
+	* tests/test-cbrt-ieee.h: New file.
+
+	New module 'cbrtf-ieee'.
+	* modules/cbrtf-ieee: New file.
+
+2012-02-29  Bruno Haible  <bruno@clisp.org>
+
+	cbrtf: Work around bug in IRIX 6.5 system function.
+	* lib/math.in.h (cbrtf): Override if REPLACE_CBRTF is 1.
+	* m4/cbrtf.m4 (gl_FUNC_CBRTF_WORKS): New macro.
+	(gl_FUNC_CBRTF): Invoke it. Set REPLACE_CBRTF to 1 if cbrtf() does not
+	work.
+	* m4/math_h.m4 (gl_MATH_H_DEFAULTS): Initialize REPLACE_CBRTF.
+	* modules/math (Makefile.am): Substitute REPLACE_CBRTF.
+	* modules/cbrtf (configure.ac): Consider REPLACE_CBRTF.
+	(Depends-on): Update conditions.
+	* doc/posix-functions/cbrtf.texi: Mention the IRIX 6.5 problem.
+
+2012-02-29  Bruno Haible  <bruno@clisp.org>
+
+	Tests for module 'cbrtl'.
+	* modules/cbrtl-tests: New file.
+	* tests/test-cbrtl.c: New file.
+
+	New module 'cbrtl'.
+	* lib/math.in.h (cbrtl): New declaration.
+	* lib/cbrtl.c: New file.
+	* m4/cbrtl.m4: New file.
+	* m4/math_h.m4 (gl_MATH_H): Test whether cbrtl is declared.
+	(gl_MATH_H_DEFAULTS): Initialize GNULIB_CBRTL, HAVE_CBRTL,
+	HAVE_DECL_CBRTL.
+	* modules/math (Makefile.am): Substitute GNULIB_CBRTL, HAVE_CBRTL,
+	HAVE_DECL_CBRTL.
+	* modules/cbrtl: New file.
+	* tests/test-math-c++.cc: Check the declaration of cbrtl.
+	* doc/posix-functions/cbrtl.texi: Mention the new module.
+
+2012-02-29  Bruno Haible  <bruno@clisp.org>
+
+	Tests for module 'cbrtf'.
+	* modules/cbrtf-tests: New file.
+	* tests/test-cbrtf.c: New file.
+
+	New module 'cbrtf'.
+	* lib/math.in.h (cbrtf): New declaration.
+	* lib/cbrtf.c: New file.
+	* m4/cbrtf.m4: New file.
+	* m4/math_h.m4 (gl_MATH_H): Test whether cbrtf is declared.
+	(gl_MATH_H_DEFAULTS): Initialize GNULIB_CBRTF, HAVE_CBRTF,
+	HAVE_DECL_CBRTF.
+	* modules/math (Makefile.am): Substitute GNULIB_CBRTF, HAVE_CBRTF,
+	HAVE_DECL_CBRTF.
+	* modules/cbrtf: New file.
+	* tests/test-math-c++.cc: Check the declaration of cbrtf.
+	* doc/posix-functions/cbrtf.texi: Mention the new module.
+
+2012-02-29  Bruno Haible  <bruno@clisp.org>
+
+	cbrt: Provide replacement on MSVC and Minix.
+	* lib/math.in.h (cbrt): New declaration.
+	* lib/cbrt.c: New file.
+	* m4/cbrt.m4: New file.
+	* m4/math_h.m4 (gl_MATH_H): Test whether cbrt is declared.
+	(gl_MATH_H_DEFAULTS): Initialize GNULIB_CBRT, HAVE_CBRT.
+	* modules/math (Makefile.am): Substitute GNULIB_CBRT, HAVE_CBRT.
+	* modules/cbrt (Files): Add lib/cbrt.c, m4/cbrt.m4.
+	(Depends-on): Add dependencies.
+	(configure.ac): Arrange to compile replacement if HAVE_CBRT is 0.
+	* tests/test-math-c++.cc: Check the declaration of cbrt.
+	* doc/posix-functions/cbrt.texi: Mention that the module provides a
+	replacement.
+
+2012-02-29  Bruno Haible  <bruno@clisp.org>
+
+	hypotl-ieee: Work around test failure on OSF/1 and native Windows.
+	* m4/hypotl-ieee.m4: New file.
+	* m4/hypotl.m4 (gl_FUNC_HYPOTL): If gl_FUNC_HYPOTL_IEEE is present,
+	test whether hypotl works with mixed NaN and Infinity arguments.
+	Replace it if not.
+	* lib/math.in.h (hypotl): Override if REPLACE_HYPOTL is 1.
+	* m4/math_h.m4 (gl_MATH_H_DEFAULTS): Initialize REPLACE_HYPOTL.
+	* modules/math (Makefile.am): Substitute REPLACE_HYPOTL.
+	* modules/hypotl (configure.ac): Consider REPLACE_HYPOTL.
+	(Depends-on): Update conditions.
+	* modules/hypotl-ieee (Files): Add m4/hypotl-ieee.m4.
+	(Depends-on): Add hypot-ieee.
+	(configure.ac): Invoke gl_FUNC_HYPOTL_IEEE.
+	* doc/posix-functions/hypotl.texi: Mention the hypotl-ieee module.
+
+	hypotf-ieee: Work around test failure on OSF/1 and native Windows.
+	* m4/hypotf-ieee.m4: New file.
+	* m4/hypotf.m4 (gl_FUNC_HYPOTF): If gl_FUNC_HYPOTF_IEEE is present,
+	test whether hypotf works with mixed NaN and Infinity arguments.
+	Replace it if not.
+	* modules/hypotf-ieee (Files): Add m4/hypotf-ieee.m4.
+	(Depends-on): Add hypot-ieee.
+	(configure.ac): Invoke gl_FUNC_HYPOTF_IEEE.
+	* doc/posix-functions/hypotf.texi: Mention the hypotf-ieee module.
+
+	hypot-ieee: Work around test failure on OSF/1 and native Windows.
+	* lib/math.in.h (hypot): New declaration.
+	* lib/hypot.c: New file.
+	* m4/hypot-ieee.m4: New file.
+	* m4/hypot.m4 (gl_FUNC_HYPOT): If gl_FUNC_HYPOT_IEEE is present, test
+	whether hypot works with mixed NaN and Infinity arguments. Replace it
+	if not.
+	* m4/math_h.m4 (gl_MATH_H_DEFAULTS): Initialize GNULIB_HYPOT,
+	REPLACE_HYPOT.
+	* modules/math (Makefile.am): Substitute GNULIB_HYPOT, REPLACE_HYPOT.
+	* modules/hypot (Files): Add lib/hypot.c.
+	(Depends-on): Add dependencies.
+	(configure.ac): Arrange to compile replacement if REPLACE_HYPOT is 1.
+	* modules/hypot-ieee (Files): Add m4/hypot-ieee.m4.
+	(configure.ac): Invoke gl_FUNC_HYPOT_IEEE.
+	* tests/test-math-c++.cc: Check the declaration of hypot.
+	* doc/posix-functions/hypot.texi: Mention the hypot-ieee module.
+
+	Tests for module 'hypotl-ieee'.
+	* modules/hypotl-ieee-tests: New file.
+	* tests/test-hypotl-ieee.c: New file.
+
+	New module 'hypotl-ieee'.
+	* modules/hypotl-ieee: New file.
+
+	Tests for module 'hypot-ieee'.
+	* modules/hypot-ieee-tests: New file.
+	* tests/test-hypot-ieee.c: New file.
+
+	New module 'hypot-ieee'.
+	* modules/hypot-ieee: New file.
+
+	Tests for module 'hypotf-ieee'.
+	* modules/hypotf-ieee-tests: New file.
+	* tests/test-hypotf-ieee.c: New file.
+	* tests/test-hypot-ieee.h: New file.
+
+	New module 'hypotf-ieee'.
+	* modules/hypotf-ieee: New file.
+
+2012-02-29  Bruno Haible  <bruno@clisp.org>
+
+	Remove unused variables.
+	* m4/fmod.m4 (gl_FUNC_FMOD): Remove unused variable 'i'.
+	* m4/fmodl.m4 (gl_FUNC_FMODL): Likewise.
+	* m4/remainder.m4 (gl_FUNC_REMAINDER): Likewise.
+	* m4/remainderl.m4 (gl_FUNC_REMAINDERL): Likewise.
+
+2012-02-29  Eric Blake  <eblake@redhat.com>
+
+	termios: fix pid_t always, not just for tcgetsid
+	* doc/posix-headers/termios.texi (termios.h): Mention problem.
+	* lib/termios.in.h (include): Ensure pid_t on all platforms, not
+	just when building tcgetsid.
+
+2012-02-29  Bruno Haible  <bruno@clisp.org>
+
+	Tests for module 'hypotl'.
+	* modules/hypotl-tests: New file.
+	* tests/test-hypotl.c: New file.
+
+	New module 'hypotl'.
+	* lib/math.in.h (hypotl): New declaration.
+	* lib/hypotl.c: New file.
+	* m4/hypotl.m4: New file.
+	* m4/math_h.m4 (gl_MATH_H): Test whether hypotf is declared.
+	(gl_MATH_H_DEFAULTS): Initialize GNULIB_HYPOTL, HAVE_HYPOTL.
+	* modules/math (Makefile.am): Substitute GNULIB_HYPOTL, HAVE_HYPOTL.
+	* modules/hypotl: New file.
+	* tests/test-math-c++.cc: Check the hypotl declaration.
+	* doc/posix-functions/hypotl.texi: Mention the new module.
+
+2012-02-29  Eric Blake  <eblake@redhat.com>
+
+	tcgetsid: fix cygwin header bug
+	* lib/termios.in.h (includes) [Cygwin]: Ensure pid_t is defined.
+
+	docs: update cygwin progress
+	* doc/posix-functions/llround.texi (llround): Added in cygwin
+	1.7.8.
+	* doc/posix-functions/llroundf.texi (llroundf): Likewise.
+	* doc/glibc-functions/program_invocation_name.texi
+	(program_invocation_name): Likewise.
+	* doc/glibc-functions/program_invocation_short_name.texi
+	(program_invocation_short_name): Likewise.
+	* doc/glibc-functions/madvise.texi (madvise): Likewise.
+	* doc/glibc-functions/pthread_yield.texi (pthread_yield):
+	Likewise.
+	* doc/posix-functions/pthread_spin_destroy.texi
+	(pthread_spin_destroy): Added in cygwin 1.7.10.
+	* doc/posix-functions/pthread_spin_init.texi (pthread_spin_init):
+	Likewise.
+	* doc/posix-functions/pthread_spin_lock.texi (pthread_spin_lock):
+	Likewise.
+	* doc/posix-functions/pthread_spin_trylock.texi
+	(pthread_spin_trylock): Likewise.
+	* doc/posix-functions/pthread_spin_unlock.texi
+	(pthread_spin_unlock): Likewise.
+	* doc/posix-functions/pthread_setschedprio.texi
+	(pthread_setschedprio): Likewise.
+	* doc/posix-functions/pthread_attr_getstack.texi
+	(pthread_attr_getstack): Likewise.
+	* doc/pastposix-functions/pthread_attr_getstackaddr.texi
+	(pthread_attr_getstackaddr): Likewise.
+	* doc/glibc-functions/pthread_getattr_np.texi
+	(pthread_getattr_np): Likewise.
+	* doc/glibc-functions/sys_siglist.texi (sys_siglist): Likewise.
+	* doc/glibc-functions/sysinfo.texi (sysinfo): Likewise.
+	* doc/posix-functions/clock_settime.texi (clock_settime):
+	Likewise.
+	* doc/posix-functions/pthread_attr_getguardsize.texi
+	(pthread_attr_getguardsize): Likewise.
+	* doc/posix-functions/pthread_attr_setguardsize.texi
+	(pthread_attr_setguardsize): Likewise.
+	* doc/posix-functions/pthread_attr_setstack.texi
+	(pthread_attr_setstack): Likewise.
+	* doc/pastposix-functions/pthread_attr_setstackaddr.texi
+	(pthread_attr_setstackaddr): Likewise.
+	* doc/posix-functions/clock_getcpuclockid.texi
+	(clock_getcpuclockid): Likewise.
+	* doc/posix-functions/pthread_getcpuclockid.texi
+	(pthread_getcpuclockid): Likewise.
+	* doc/glibc-functions/error.texi (error): Likewise.
+	* doc/glibc-functions/error_at_line.texi (error_at_line):
+	Likewise.
+	* doc/glibc-functions/error_message_count.texi
+	(error_message_count): Likewise.
+	* doc/glibc-functions/error_one_per_line.texi
+	(error_one_per_line): Likewise.
+	* doc/glibc-functions/error_print_progname.texi
+	(error_print_progname): Likewise.
+	* doc/posix-functions/pthread_condattr_getclock.texi
+	(pthread_condattr_getclock): Likewise.
+	* doc/posix-functions/pthread_condattr_setclock.texi
+	(pthread_condattr_setclock): Likewise.
+	* doc/posix-functions/clock_nanosleep.texi (clock_nanosleep):
+	Likewise.
+	* doc/glibc-functions/getgrouplist.texi (getgrouplist): Likewise.
+	* doc/glibc-functions/getpt.texi (getpt): Likewise.
+	* doc/glibc-functions/get_current_dir_name.texi
+	(get_current_dir_name): Likewise.
+	* doc/glibc-functions/pthread_sigqueue.texi (pthread_sigqueue):
+	Likewise.
+	* doc/posix-functions/tcgetsid.texi (tcgetsid): Likewise, but with
+	wrong return type.
+	* doc/glibc-functions/scandirat.texi (scandirat): Added in cygwin
+	1.7.11.
+
+2012-02-29  Bruno Haible  <bruno@clisp.org>
+
+	Tests for module 'hypotf'.
+	* modules/hypotf-tests: New file.
+	* tests/test-hypotf.c: New file.
+
+	New module 'hypotf'.
+	* lib/math.in.h (hypotf): New declaration.
+	* lib/hypotf.c: New file.
+	* m4/hypotf.m4: New file.
+	* m4/math_h.m4 (gl_MATH_H): Test whether hypotf is declared.
+	(gl_MATH_H_DEFAULTS): Initialize GNULIB_HYPOTF, HAVE_HYPOTF,
+	REPLACE_HYPOTF.
+	* modules/math (Makefile.am): Substitute GNULIB_HYPOTF, HAVE_HYPOTF,
+	REPLACE_HYPOTF.
+	* modules/hypotf: New file.
+	* tests/test-math-c++.cc: Check the hypotf declaration.
+	* doc/posix-functions/hypotf.texi: Mention the new module.
+
+	hypot: Prepare for hypotf module.
+	* m4/hypot.m4: New file.
+	* modules/hypot (Files): Add m4/hypot.m4.
+	(configure.ac): Invoke gl_FUNC_HYPOT.
+
+2012-02-29  Bruno Haible  <bruno@clisp.org>
+
+	hypot tests: More tests.
+	* tests/test-hypot.c: Include <float.h>.
+	(main): Add tests about overflow and underflow.
+
+2012-02-29  Bruno Haible  <bruno@clisp.org>
+
+	math code: Add comments.
+	* lib/acosl.c: Add comment about related glibc source files.
+	* lib/asinl.c: Likewise.
+	* lib/atanl.c: Likewise.
+	* lib/expl.c: Likewise.
+	* lib/logl.c: Likewise.
+	* lib/sincosl.c: Likewise.
+	* lib/sinl.c: Likewise.
+	* lib/tanl.c: Likewise.
+	* lib/trigl.c: Likewise.
+	* lib/cosl.c: Likewise. Fix comments.
+
+2012-02-28  Bruno Haible  <bruno@clisp.org>
+
+	math: Ensure HUGE_VAL, HUGE_VALF, HUGE_VALL are defined.
+	* lib/math.in.h (HUGE_VAL, HUGE_VALF, HUGE_VALL): Define fallbacks.
+	* tests/test-math.c: Include macros.h. Check that HUGE_VAL, HUGE_VALF,
+	HUGE_VALL are defined.
+	(numeric_equald): Renamed from numeric_equal.
+	(numeric_equalf, numeric_equall): New functions.
+	(main): Check also HUGE_VALF, HUGE_VALL.
+	* modules/math-tests (Files): Add tests/macros.h.
+	* doc/posix-headers/math.texi: Document the problems with HUGE_VALF and
+	HUGE_VALL.
+
+2012-02-28  Bruno Haible  <bruno@clisp.org>
+
+	doc: Move ISO C11 feature notes into POSIX chapters.
+	* doc/posix-functions/aligned_alloc.texi: Renamed from
+	doc/glibc-functions/aligned_alloc.texi.
+	* doc/posix-functions/quick_exit.texi: Renamed from
+	doc/glibc-functions/quick_exit.texi.
+	* doc/posix-headers/uchar.texi: Renamed from
+	doc/glibc-headers/uchar.texi.
+	* doc/posix-functions/c16rtomb.texi: Renamed from
+	doc/glibc-functions/c16rtomb.texi.
+	* doc/posix-functions/c32rtomb.texi: Renamed from
+	doc/glibc-functions/c32rtomb.texi.
+	* doc/posix-functions/mbrtoc16.texi: Renamed from
+	doc/glibc-functions/mbrtoc16.texi.
+	* doc/posix-functions/mbrtoc32.texi: Renamed from
+	doc/glibc-functions/mbrtoc32.texi.
+	* doc/gnulib.texi: Update.
+	(Glibc uchar.h): Remove section.
+	Suggested by Eric Blake.
+
+2012-02-29  Paul Eggert  <eggert@cs.ucla.edu>
+
+	stdnoreturn: port to MSVC better
+	MSVC standard headers use __declspec(noreturn), so #define noreturn
+	to empty on that platform.  Reported by Bruno Haible in
+	<http://lists.gnu.org/archive/html/bug-gnulib/2012-02/msg00152.html>.
+	* lib/stdnoreturn.in.h (noreturn): Define to empty on MSVC.
+	* doc/posix-headers/stdnoreturn.texi (stdnoreturn.h): Document this.
+
+2012-02-28  Bruno Haible  <bruno@clisp.org>
+
+	doc: Mention new glibc headers and functions.
+	* doc/glibc-headers/uchar.texi: New file.
+	* doc/glibc-functions/aligned_alloc.texi: New file.
+	* doc/glibc-functions/c16rtomb.texi: New file.
+	* doc/glibc-functions/c32rtomb.texi: New file.
+	* doc/glibc-functions/clock_adjtime.texi: New file.
+	* doc/glibc-functions/fanotify_init.texi: New file.
+	* doc/glibc-functions/fanotify_mark.texi: New file.
+	* doc/glibc-functions/inet6_opt_append.texi: New file.
+	* doc/glibc-functions/inet6_opt_find.texi: New file.
+	* doc/glibc-functions/inet6_opt_finish.texi: New file.
+	* doc/glibc-functions/inet6_opt_get_val.texi: New file.
+	* doc/glibc-functions/inet6_opt_init.texi: New file.
+	* doc/glibc-functions/inet6_opt_next.texi: New file.
+	* doc/glibc-functions/inet6_opt_set_val.texi: New file.
+	* doc/glibc-functions/inet6_rth_add.texi: New file.
+	* doc/glibc-functions/inet6_rth_getaddr.texi: New file.
+	* doc/glibc-functions/inet6_rth_init.texi: New file.
+	* doc/glibc-functions/inet6_rth_reverse.texi: New file.
+	* doc/glibc-functions/inet6_rth_segments.texi: New file.
+	* doc/glibc-functions/inet6_rth_space.texi: New file.
+	* doc/glibc-functions/login.texi: New file.
+	* doc/glibc-functions/mbrtoc16.texi: New file.
+	* doc/glibc-functions/mbrtoc32.texi: New file.
+	* doc/glibc-functions/name_to_handle_at.texi: New file.
+	* doc/glibc-functions/ntp_gettimex.texi: New file.
+	* doc/glibc-functions/open_by_handle_at.texi: New file.
+	* doc/glibc-functions/prlimit.texi: New file.
+	* doc/glibc-functions/process_vm_readv.texi: New file.
+	* doc/glibc-functions/process_vm_writev.texi: New file.
+	* doc/glibc-functions/recvmmsg.texi: New file.
+	* doc/glibc-functions/scandirat.texi: New file.
+	* doc/glibc-functions/sendmmsg.texi: New file.
+	* doc/glibc-functions/setns.texi: New file.
+	* doc/glibc-functions/timespec_get.texi: New file.
+	* doc/gnulib.texi: Include them.
+	(Glibc sys/fanotify.h, Glibc sys/resource.h, Glibc uchar.h): New
+	sections.
+	Reported by Eric Blake.
+
+2012-02-28  Bruno Haible  <bruno@clisp.org>
+
+	Avoid compilation errors with MSVC option -fp:strict.
+	* lib/floor.c: Use MSVC specific pragma fenv_access.
+	* lib/ceil.c: Likewise.
+	* lib/trunc.c: Likewise.
+	* lib/round.c: Likewise.
+	* lib/rint.c: Likewise.
+	* lib/fma.c: Likewise.
+	* lib/integer_length.c: Likewise.
+	* m4/round.m4 (gl_FUNC_ROUND): Likewise.
+	* m4/roundf.m4 (gl_FUNC_ROUNDF): Likewise.
+	* tests/test-floor2.c: Likewise.
+	* tests/test-floorf2.c: Likewise.
+	* tests/test-ceil2.c: Likewise.
+	* tests/test-ceilf2.c: Likewise.
+	* tests/test-trunc2.c: Likewise.
+	* tests/test-truncf2.c: Likewise.
+	Reported by Michael Goffioul <michael.goffioul@gmail.com>.
+
+2012-02-27  Bruno Haible  <bruno@clisp.org>
+
+	Tests for module 'sqrtl-ieee'.
+	* modules/sqrtl-ieee-tests: New file.
+	* tests/test-sqrtl-ieee.c: New file.
+
+	New module 'sqrtl-ieee'.
+	* modules/sqrtl-ieee: New file.
+
+	Tests for module 'sqrt-ieee'.
+	* modules/sqrt-ieee-tests: New file.
+	* tests/test-sqrt-ieee.c: New file.
+
+	New module 'sqrt-ieee'.
+	* modules/sqrt-ieee: New file.
+
+	Tests for module 'sqrtf-ieee'.
+	* modules/sqrtf-ieee-tests: New file.
+	* tests/test-sqrtf-ieee.c: New file.
+	* tests/test-sqrt-ieee.h: New file.
+
+	New module 'sqrtf-ieee'.
+	* modules/sqrtf-ieee: New file.
+
+2012-02-27  Bruno Haible  <bruno@clisp.org>
+
+	remainderl-ieee: Work around test failure on OSF/1.
+	* m4/remainderl-ieee.m4: New file.
+	* m4/remainderl.m4 (gl_FUNC_REMAINDERL): If gl_FUNC_REMAINDERL_IEEE is
+	present, test whether remainderl works with a zero second argument.
+	Replace it if not.
+	* lib/math.in.h (remainderl): Override if REPLACE_REMAINDERL is 1.
+	* m4/math_h.m4 (gl_MATH_H_DEFAULTS): Initialize REPLACE_REMAINDERL.
+	* modules/math (Makefile.am): Substitute REPLACE_REMAINDERL.
+	* modules/remainderl (configure.ac): Consider REPLACE_REMAINDERL.
+	(Depends-on): Update conditions.
+	* modules/remainderl-ieee (Files): Add m4/remainderl-ieee.m4.
+	(Depends-on): Add remainder-ieee.
+	(configure.ac): Invoke gl_FUNC_REMAINDERL_IEEE.
+	* doc/posix-functions/remainderl.texi: Mention the remainderl-ieee
+	module.
+
+	remainderf-ieee: Work around test failure on OSF/1.
+	* m4/remainderf-ieee.m4: New file.
+	* m4/remainderf.m4 (gl_FUNC_REMAINDERF): If gl_FUNC_REMAINDERF_IEEE is
+	present, test whether remainderf works with a zero second argument.
+	Replace it if not.
+	* lib/math.in.h (remainderf): Override if REPLACE_REMAINDERF is 1.
+	* m4/math_h.m4 (gl_MATH_H_DEFAULTS): Initialize REPLACE_REMAINDERF.
+	* modules/math (Makefile.am): Substitute REPLACE_REMAINDERF.
+	* modules/remainderf (configure.ac): Consider REPLACE_REMAINDERF.
+	(Depends-on): Update conditions.
+	* modules/remainderf-ieee (Files): Add m4/remainderf-ieee.m4.
+	(Depends-on): Add remainder-ieee.
+	(configure.ac): Invoke gl_FUNC_REMAINDERF_IEEE.
+	* doc/posix-functions/remainderf.texi: Mention the remainderf-ieee
+	module.
+
+	remainder-ieee: Work around test failure on OSF/1.
+	* m4/remainder-ieee.m4: New file.
+	* m4/remainder.m4 (gl_FUNC_REMAINDER): If gl_FUNC_REMAINDER_IEEE is
+	present, test whether remainder works with a zero second argument.
+	Replace it if not.
+	* lib/math.in.h (remainder): Override if REPLACE_REMAINDER is 1.
+	* m4/math_h.m4 (gl_MATH_H_DEFAULTS): Initialize REPLACE_REMAINDER.
+	* modules/math (Makefile.am): Substitute REPLACE_REMAINDER.
+	* modules/remainder (configure.ac): Consider REPLACE_REMAINDER.
+	(Depends-on): Update dependencies.
+	* modules/remainder-ieee (Files): Add m4/remainder-ieee.m4.
+	(configure.ac): Invoke gl_FUNC_REMAINDER_IEEE.
+	* doc/posix-functions/remainder.texi: Mention the remainder-ieee module.
+
+	Tests for module 'remainderl-ieee'.
+	* modules/remainderl-ieee-tests: New file.
+	* tests/test-remainderl-ieee.c: New file.
+
+	New module 'remainderl-ieee'.
+	* modules/remainderl-ieee: New file.
+
+	Tests for module 'remainder-ieee'.
+	* modules/remainder-ieee-tests: New file.
+	* tests/test-remainder-ieee.c: New file.
+
+	New module 'remainder-ieee'.
+	* modules/remainder-ieee: New file.
+
+	Tests for module 'remainderf-ieee'.
+	* modules/remainderf-ieee-tests: New file.
+	* tests/test-remainderf-ieee.c: New file.
+	* tests/test-remainder-ieee.h: New file.
+
+	New module 'remainderf-ieee'.
+	* modules/remainderf-ieee: New file.
+
+2012-02-27  Bruno Haible  <bruno@clisp.org>
+
+	modff, modfl: Fix configure syntax error.
+	* m4/modff.m4 (gl_FUNC_MODFF): Insert ':' command in 'if'.
+	* m4/modfl.m4 (gl_FUNC_MODFL): Likewise.
+
+2012-02-27  Bruno Haible  <bruno@clisp.org>
+
+	fmodl-ieee: Work around test failures on OSF/1, MSVC 9.
+	* m4/fmodl-ieee.m4: New file.
+	* m4/fmodl.m4 (gl_FUNC_FMODL): If gl_FUNC_FMODL_IEEE is present, test
+	whether fmodl works with zero arguments. Replace it if not.
+	* modules/fmodl-ieee (Files): Add m4/fmodl-ieee.m4.
+	(Depends-on): Add fmod-ieee.
+	(configure.ac): Invoke gl_FUNC_FMODL_IEEE.
+	* doc/posix-functions/fmodl.texi: Mention the fmodl-ieee module.
+
+	fmodf-ieee: Work around test failure on OSF/1.
+	* m4/fmodf-ieee.m4: New file.
+	* m4/fmodf.m4 (gl_FUNC_FMODF): If gl_FUNC_FMODF_IEEE is present, test
+	whether fmodf works with zero arguments. Replace it if not.
+	* lib/math.in.h (fmodf): Override if REPLACE_FMODF is 1.
+	* m4/math_h.m4 (gl_MATH_H_DEFAULTS): Initialize REPLACE_FMODF.
+	* modules/math (Makefile.am): Substitute REPLACE_FMODF.
+	* modules/fmodf (configure.ac): Consider REPLACE_FMODF.
+	(Depends-on): Update dependencies.
+	* modules/fmodf-ieee (Files): Add m4/fmodf-ieee.m4.
+	(configure.ac): Invoke gl_FUNC_FMODF_IEEE.
+	* doc/posix-functions/fmodf.texi: Mention the problem on OSF/1.
+
+	fmodf-ieee: Work around test failure on MSVC 9.
+	* modules/fmodf-ieee (Depends-on): Add fmod-ieee.
+	* doc/posix-functions/fmodf.texi: Mention the fmodf-ieee module.
+
+	fmod-ieee: Work around test failures on OSF/1, mingw.
+	* m4/fmod-ieee.m4: New file.
+	* m4/fmod.m4 (gl_FUNC_FMOD): If gl_FUNC_FMOD_IEEE is present, test
+	whether fmod works with zero arguments. Replace it if not.
+	* lib/math.in.h (fmod): New declaration.
+	* lib/fmod.c: New file.
+	* m4/math_h.m4 (gl_MATH_H): Test whether fmod is declared.
+	(gl_MATH_H_DEFAULTS): Initialize GNULIB_FMOD, REPLACE_FMOD.
+	* modules/math (Makefile.am): Substitute GNULIB_FMOD, REPLACE_FMOD.
+	* modules/fmod (Files): Add lib/fmod.c.
+	(Depends-on): Add math, isinf, trunc, fma.
+	(configure.ac): Arrange to compile lib/fmod.c if needed.
+	* modules/fmod-ieee (Files): Add m4/fmod-ieee.m4, m4/minus-zero.m4,
+	m4/signbit.m4.
+	(configure.ac): Invoke gl_FUNC_FMOD_IEEE.
+	* tests/test-math-c++.cc: Check the declaration of fmod.
+	* doc/posix-functions/fmod.texi: Mention the fmod-ieee module.
+
+	fmodl-ieee: Fix test failures.
+	* lib/fmodl.c (fmodl): Treat Inf specially.
+	* modules/fmodl (Depends-on): Add isinf.
+
+	Tests for module 'fmodl-ieee'.
+	* modules/fmodl-ieee-tests: New file.
+	* tests/test-fmodl-ieee.c: New file.
+
+	New module 'fmodl-ieee'.
+	* modules/fmodl-ieee: New file.
+
+	Tests for module 'fmod-ieee'.
+	* modules/fmod-ieee-tests: New file.
+	* tests/test-fmod-ieee.c: New file.
+
+	New module 'fmod-ieee'.
+	* modules/fmod-ieee: New file.
+
+	Tests for module 'fmodf-ieee'.
+	* modules/fmodf-ieee-tests: New file.
+	* tests/test-fmodf-ieee.c: New file.
+	* tests/test-fmod-ieee.h: New file.
+
+	New module 'fmodf-ieee'.
+	* modules/fmodf-ieee: New file.
+
+2012-02-27  Bruno Haible  <bruno@clisp.org>
+
+	Tests for module 'rintl-ieee'.
+	* modules/rintl-ieee-tests: New file.
+	* tests/test-rintl-ieee.c: New file.
+
+	New module 'rintl-ieee'.
+	* modules/rintl-ieee: New file.
+
+	Tests for module 'rint-ieee'.
+	* modules/rint-ieee-tests: New file.
+	* tests/test-rint-ieee.c: New file.
+
+	New module 'rint-ieee'.
+	* modules/rint-ieee: New file.
+
+	Tests for module 'rintf-ieee'.
+	* modules/rintf-ieee-tests: New file.
+	* tests/test-rintf-ieee.c: New file.
+	* tests/test-rint-ieee.h: New file.
+
+	New module 'rintf-ieee'.
+	* modules/rintf-ieee: New file.
+
+2012-02-26  Paul Eggert  <eggert@cs.ucla.edu>
+
+	regex: re_search etc. should return -2 when memory exhausted
+	This bug was uncovered when testing 'grep'.  Without the fix,
+	re_search and friends return -1 when memory is exhausted, but -1
+	means no match, and this causes grep to falsely report no-match
+	instead of memory-exhaustion.  See
+	<http://sources.redhat.com/bugzilla/show_bug.cgi?id=13762>.
+	* lib/regexec.c (re_search_stub): Return -2 (not -1) if there is
+	trouble; this can occur if re_search_internal ran out of memory.
+
+2012-02-26  Bruno Haible  <bruno@clisp.org>
+
+	modfl-ieee: Work around test failures on IRIX, OSF/1, mingw.
+	* m4/modfl-ieee.m4: New file.
+	* m4/modfl.m4 (gl_FUNC_MODFL): If gl_FUNC_MODFL_IEEE is present, test
+	whether modfl works with Inf. Replace it if not.
+	* lib/math.in.h (modfl): Override if REPLACE_MODFF is 1.
+	* m4/math_h.m4 (gl_MATH_H_DEFAULTS): Initialize REPLACE_MODFL.
+	* modules/math (Makefile.am): Substitute REPLACE_MODFL.
+	* modules/modfl (configure.ac): Consider REPLACE_MODFL.
+	(Depends-on): Update dependencies.
+	* modules/modfl-ieee (Files): Add m4/modfl-ieee.m4, m4/minus-zero.m4,
+	m4/signbit.m4.
+	(configure.ac): Invoke gl_FUNC_MODFL_IEEE.
+	* doc/posix-functions/modfl.texi: Mention the modfl-ieee module.
+
+	modfl-ieee: Fix dependencies.
+	* modules/modfl-ieee (Depends-on): Add modf-ieee.
+
+	modfl-ieee: Fix test failures.
+	* lib/modfl.c (modfl): Treat NaN and Inf specially.
+	* modules/modfl (Depends-on): Add isfinite, isinf.
+
+	modff-ieee: Work around test failures on *BSD, IRIX, OSF/1, etc.
+	* m4/modff-ieee.m4: New file.
+	* m4/modff.m4 (gl_FUNC_MODFF): If gl_FUNC_MODFF_IEEE is present, test
+	whether modff works with NaN and Inf. Replace it if not.
+	* lib/math.in.h (modff): Override if REPLACE_MODFF is 1.
+	* m4/math_h.m4 (gl_MATH_H_DEFAULTS): Initialize REPLACE_MODFF.
+	* modules/math (Makefile.am): Substitute REPLACE_MODFF.
+	* modules/modff (configure.ac): Consider REPLACE_MODFF.
+	(Depends-on): Update dependencies.
+	* modules/modff-ieee (Files): Add m4/modff-ieee.m4, m4/minus-zero.m4,
+	m4/signbit.m4.
+	(Depends-on): Add modf-ieee.
+	(configure.ac): Invoke gl_FUNC_MODFF_IEEE.
+	* doc/posix-functions/modff.texi: Mention the modff-ieee module.
+
+	modf-ieee: Work around test failures on *BSD, IRIX, OSF/1, Cygwin.
+	* m4/modf-ieee.m4: New file.
+	* m4/modf.m4 (gl_FUNC_MODF): If gl_FUNC_MODF_IEEE is present, test
+	whether modf works with NaN and Inf. Replace it if not.
+	* lib/math.in.h (modf): New declaration.
+	* lib/modf.c: New file.
+	* m4/math_h.m4 (gl_MATH_H): Test whether modf is declared.
+	(gl_MATH_H_DEFAULTS): Initialize GNULIB_MODF, REPLACE_MODF.
+	* modules/math (Makefile.am): Substitute GNULIB_MODF, REPLACE_MODF.
+	* modules/modf (Files): Add lib/modf.c.
+	(Depends-on): Add math, isfinite, trunc, isinf.
+	(configure.ac): Addrange to compile lib/modf.c if needed.
+	* modules/modf-ieee (Files): Add m4/modf-ieee.m4, m4/minus-zero.m4,
+	m4/signbit.m4.
+	(configure.ac): Invoke gl_FUNC_MODF_IEEE.
+	* tests/test-math-c++.cc: Check the declaration of modf.
+	* doc/posix-functions/modf.texi: Mention the modf-ieee module.
+
+	Tests for module 'modfl-ieee'.
+	* modules/modfl-ieee-tests: New file.
+	* tests/test-modfl-ieee.c: New file.
+
+	New module 'modfl-ieee'.
+	* modules/modfl-ieee: New file.
+
+	Tests for module 'modf-ieee'.
+	* modules/modf-ieee-tests: New file.
+	* tests/test-modf-ieee.c: New file.
+
+	New module 'modf-ieee'.
+	* modules/modf-ieee: New file.
+
+	Tests for module 'modff-ieee'.
+	* modules/modff-ieee-tests: New file.
+	* tests/test-modff-ieee.c: New file.
+	* tests/test-modf-ieee.h: New file.
+
+	New module 'modff-ieee'.
+	* modules/modff-ieee: New file.
+
+2012-02-26  Bruno Haible  <bruno@clisp.org>
+
+	Tests for module 'fabsl-ieee'.
+	* modules/fabsl-ieee-tests: New file.
+	* tests/test-fabsl-ieee.c: New file.
+
+	New module 'fabsl-ieee'.
+	* modules/fabsl-ieee: New file.
+
+	Tests for module 'fabs-ieee'.
+	* modules/fabs-ieee-tests: New file.
+	* tests/test-fabs-ieee.c: New file.
+
+	New module 'fabs-ieee'.
+	* modules/fabs-ieee: New file.
+
+	Tests for module 'fabsf-ieee'.
+	* modules/fabsf-ieee-tests: New file.
+	* tests/test-fabsf-ieee.c: New file.
+	* tests/test-fabs-ieee.h: New file.
+
+	New module 'fabsf-ieee'.
+	* modules/fabsf-ieee: New file.
+
+2012-02-26  Bruno Haible  <bruno@clisp.org>
+
+	Tests for module 'fmal-ieee'.
+	* modules/fmal-ieee-tests: New file.
+	* tests/test-fmal-ieee.c: New file.
+
+	New module 'fmal-ieee'.
+	* modules/fmal-ieee: New file.
+
+	Tests for module 'fma-ieee'.
+	* modules/fma-ieee-tests: New file.
+	* tests/test-fma-ieee.c: New file.
+
+	New module 'fma-ieee'.
+	* modules/fma-ieee: New file.
+
+	Tests for module 'fmaf-ieee'.
+	* modules/fmaf-ieee-tests: New file.
+	* tests/test-fmaf-ieee.c: New file.
+	* tests/test-fma-ieee.h: New file.
+
+	New module 'fmaf-ieee'.
+	* modules/fmaf-ieee: New file.
+
+2012-02-26  Bruno Haible  <bruno@clisp.org>
+
+	Tests for module 'ldexpl-ieee'.
+	* modules/ldexpl-ieee-tests: New file.
+	* tests/test-ldexpl-ieee.c: New file.
+
+	New module 'ldexpl-ieee'.
+	* modules/ldexpl-ieee: New file.
+
+	Tests for module 'ldexp-ieee'.
+	* modules/ldexp-ieee-tests: New file.
+	* tests/test-ldexp-ieee.c: New file.
+
+	New module 'ldexp-ieee'.
+	* modules/ldexp-ieee: New file.
+
+	Tests for module 'ldexpf-ieee'.
+	* modules/ldexpf-ieee-tests: New file.
+	* tests/test-ldexpf-ieee.c: New file.
+	* tests/test-ldexp-ieee.h: New file.
+
+	New module 'ldexpf-ieee'.
+	* modules/ldexpf-ieee: New file.
+
+2012-02-26  Bruno Haible  <bruno@clisp.org>
+
+	Refactor frexp*-ieee tests.
+	* tests/test-frexp-ieee.h: New file.
+	* tests/test-frexpf-ieee.c: Include test-frexp-ieee.h.
+	(main): Just call test_function.
+	* tests/test-frexp-ieee.c: Include test-frexp-ieee.h.
+	(main): Just call test_function.
+	* tests/test-frexpl-ieee.c: Include test-frexp-ieee.h.
+	(main): Just call test_function.
+	* modules/frexpf-ieee-tests (Files): Add tests/test-frexp-ieee.h.
+	* modules/frexp-ieee-tests (Files): Likewise.
+	* modules/frexpl-ieee-tests (Files): Likewise.
+
+	Tests for module 'frexpl-ieee'.
+	* modules/frexpl-ieee-tests: New file.
+	* tests/test-frexpl-ieee.c: New file.
+
+	New module 'frexpl-ieee'.
+	* modules/frexpl-ieee: New file.
+
+	Tests for module 'frexp-ieee'.
+	* modules/frexp-ieee-tests: New file.
+	* tests/test-frexp-ieee.c: New file.
+
+	New module 'frexp-ieee'.
+	* modules/frexp-ieee: New file.
+
+	Tests for module 'frexpf-ieee'.
+	* modules/frexpf-ieee-tests: New file.
+	* tests/test-frexpf-ieee.c: New file.
+
+	New module 'frexpf-ieee'.
+	* modules/frexpf-ieee: New file.
+
+2012-02-26  Bruno Haible  <bruno@clisp.org>
+
+	roundl-ieee tests: More tests.
+	* tests/test-roundl-ieee.c: Include isnanl-nolibm.h, infinity.h, nan.h.
+	(main): Add tests for [MX] shaded specification in POSIX.
+	* modules/roundl-ieee-tests (Files): Add tests/infinity.h, tests/nan.h.
+	(Depends-on): Add isnanl-nolibm.
+
+	round-ieee tests: More tests.
+	* tests/test-round-ieee.c: Include isnand-nolibm.h, infinity.h, nan.h.
+	(main): Add tests for [MX] shaded specification in POSIX.
+	* modules/round-ieee-tests (Files): Add tests/infinity.h, tests/nan.h.
+	(Depends-on): Add isnand-nolibm.
+
+	roundf-ieee tests: More tests.
+	* tests/test-roundf-ieee.c: Include isnanf-nolibm.h, infinity.h, nan.h.
+	(main): Add tests for [MX] shaded specification in POSIX.
+	* modules/roundf-ieee-tests (Files): Add tests/infinity.h, tests/nan.h.
+	(Depends-on): Add isnanf-nolibm.
+
+	truncl-ieee tests: More tests.
+	* tests/test-truncl-ieee.c: Include isnanl-nolibm.h, infinity.h, nan.h.
+	(main): Add tests for [MX] shaded specification in POSIX.
+	* modules/truncl-ieee-tests (Files): Add tests/infinity.h, tests/nan.h.
+	(Depends-on): Add isnanl-nolibm.
+
+	trunc-ieee tests: More tests.
+	* tests/test-trunc-ieee.c: Include isnand-nolibm.h, infinity.h, nan.h.
+	(main): Add tests for [MX] shaded specification in POSIX.
+	* modules/trunc-ieee-tests (Files): Add tests/infinity.h, tests/nan.h.
+	(Depends-on): Add isnand-nolibm.
+
+	truncf-ieee tests: More tests.
+	* tests/test-truncf-ieee.c: Include isnanf-nolibm.h, infinity.h, nan.h.
+	(main): Add tests for [MX] shaded specification in POSIX.
+	* modules/truncf-ieee-tests (Files): Add tests/infinity.h, tests/nan.h.
+	(Depends-on): Add isnanf-nolibm.
+
+	ceill-ieee tests: More tests.
+	* tests/test-ceill-ieee.c: Include isnanl-nolibm.h, infinity.h, nan.h.
+	(main): Add tests for [MX] shaded specification in POSIX.
+	* modules/ceill-ieee-tests (Files): Add tests/infinity.h, tests/nan.h.
+	(Depends-on): Add isnanl-nolibm.
+
+	ceil-ieee tests: More tests.
+	* tests/test-ceil-ieee.c: Include isnand-nolibm.h, infinity.h, nan.h.
+	(main): Add tests for [MX] shaded specification in POSIX.
+	* modules/ceil-ieee-tests (Files): Add tests/infinity.h, tests/nan.h.
+	(Depends-on): Add isnand-nolibm.
+
+	ceilf-ieee tests: More tests.
+	* tests/test-ceilf-ieee.c: Include isnanf-nolibm.h, infinity.h, nan.h.
+	(main): Add tests for [MX] shaded specification in POSIX.
+	* modules/ceilf-ieee-tests (Files): Add tests/infinity.h, tests/nan.h.
+	(Depends-on): Add isnanf-nolibm.
+
+	floorl-ieee tests: More tests.
+	* tests/test-floorl-ieee.c: Include isnanl-nolibm.h, infinity.h, nan.h.
+	(main): Add tests for [MX] shaded specification in POSIX.
+	* modules/floorl-ieee-tests (Files): Add tests/infinity.h, tests/nan.h.
+	(Depends-on): Add isnanl-nolibm.
+
+	floor-ieee tests: More tests.
+	* tests/test-floor-ieee.c: Include isnand-nolibm.h, infinity.h, nan.h.
+	(main): Add tests for [MX] shaded specification in POSIX.
+	* modules/floor-ieee-tests (Files): Add tests/infinity.h, tests/nan.h.
+	(Depends-on): Add isnand-nolibm.
+
+	floorf-ieee tests: More tests.
+	* tests/test-floorf-ieee.c: Include isnanf-nolibm.h, infinity.h, nan.h.
+	(main): Add tests for [MX] shaded specification in POSIX.
+	* modules/floorf-ieee-tests (Files): Add tests/infinity.h, tests/nan.h.
+	(Depends-on): Add isnanf-nolibm.
+
+2012-02-26  Bruno Haible  <bruno@clisp.org>
+
+	fpieee: More comments.
+	* m4/fpieee.m4 (gl_FP_IEEE): Add more comments.
+
+2012-02-25  Bruno Haible  <bruno@clisp.org>
+
+	Tests for module 'log10l'.
+	* modules/log10l-tests: New file.
+	* tests/test-log10l.c: New file.
+	* tests/test-math-c++.cc: Check the declaration of log10l.
+
+	New module 'log10l'.
+	* lib/math.in.h (log10l): New declaration.
+	* lib/log10l.c: New file.
+	* m4/log10l.m4: New file.
+	* modules/log10l: New file.
+	* m4/math_h.m4 (gl_MATH_H): Test whether log10l is declared.
+	(gl_MATH_H_DEFAULTS): Initialize GNULIB_LOG10L, HAVE_LOG10L,
+	HAVE_DECL_LOG10L.
+	* modules/math (Makefile.am): Substitute GNULIB_LOG10L, HAVE_LOG10L,
+	HAVE_DECL_LOG10L.
+	* doc/posix-functions/log10l.texi: Mention the new module.
+
+2012-02-25  Bruno Haible  <bruno@clisp.org>
+
+	fmodl, remainder*: Avoid wrong results due to rounding errors.
+	* lib/fmodl.c (fmodl): Correct the result if it is not within the
+	expected bounds.
+	* lib/remainderf.c (remainderf): Likewise.
+	* lib/remainder.c (remainder): Likewise.
+	* lib/remainderl.c (remainderl): Likewise.
+
+2012-02-25  Bruno Haible  <bruno@clisp.org>
+
+	Tests for module 'remainderl'.
+	* modules/remainderl-tests: New file.
+	* tests/test-remainderl.c: New file.
+	* tests/test-math-c++.cc: Check the declaration of remainderl.
+
+	New module 'remainderl'.
+	* lib/math.in.h (remainderl): New declaration.
+	* lib/remainderl.c: New file.
+	* m4/remainderl.m4: New file.
+	* modules/remainderl: New file.
+	* m4/math_h.m4 (gl_MATH_H): Test whether remainderl is declared.
+	(gl_MATH_H_DEFAULTS): Initialize GNULIB_REMAINDERL, HAVE_REMAINDERL.
+	* modules/math (Makefile.am): Substitute GNULIB_REMAINDERL,
+	HAVE_REMAINDERL.
+	* doc/posix-functions/remainderl.texi: Mention the new module.
+
+2012-02-25  Bruno Haible  <bruno@clisp.org>
+
+	Tests for module 'remainderf'.
+	* modules/remainderf-tests: New file.
+	* tests/test-remainderf.c: New file.
+	* tests/test-math-c++.cc: Check the declaration of remainderf.
+
+	New module 'remainderf'.
+	* lib/math.in.h (remainderf): New declaration.
+	* lib/remainderf.c: New file.
+	* m4/remainderf.m4: New file.
+	* modules/remainderf: New file.
+	* m4/math_h.m4 (gl_MATH_H): Test whether remainderf is declared.
+	(gl_MATH_H_DEFAULTS): Initialize GNULIB_REMAINDERF, HAVE_REMAINDERF.
+	* modules/math (Makefile.am): Substitute GNULIB_REMAINDERF,
+	HAVE_REMAINDERF.
+	* doc/posix-functions/remainderf.texi: Mention the new module.
+
+2012-02-25  Bruno Haible  <bruno@clisp.org>
+
+	remainder: Support for MSVC.
+	* lib/math.in.h (remainder): New declaration.
+	* lib/remainder.c: New file.
+	* m4/remainder.m4: New file.
+	* modules/remainder (Files): Add lib/remainder.c, m4/remainder.m4.
+	(Depends-on): Add math, round, fma.
+	(configure.ac): Use results of gl_FUNC_REMAINDER.
+	* m4/math_h.m4 (gl_MATH_H): Test whether remainder is declared.
+	(gl_MATH_H_DEFAULTS): Initialize GNULIB_REMAINDER, HAVE_REMAINDER,
+	HAVE_DECL_REMAINDER.
+	* modules/math (Makefile.am): Substitute GNULIB_REMAINDER,
+	HAVE_REMAINDER, HAVE_DECL_REMAINDER.
+	* tests/test-math-c++.cc: Check the declaration of remainder.
+	* doc/posix-functions/remainder.texi: Mention that the MSVC and IRIX 5
+	problems are fixed.
+
+2012-02-25  Bruno Haible  <bruno@clisp.org>
+
+	Tests for module 'fmodl'.
+	* modules/fmodl-tests: New file.
+	* tests/test-fmodl.c: New file.
+	* tests/test-math-c++.cc: Check the declaration of fmodl.
+
+	New module 'fmodl'.
+	* lib/math.in.h (fmodl): New declaration.
+	* lib/fmodl.c: New file.
+	* m4/fmodl.m4: New file.
+	* m4/math_h.m4 (gl_MATH_H): Test whether fmodl is declared.
+	(gl_MATH_H_DEFAULTS): Initialize GNULIB_FMODL, HAVE_FMODL,
+	REPLACE_FMODL.
+	* modules/math (Makefile.am): Substitute GNULIB_FMODL, HAVE_FMODL,
+	REPLACE_FMODL.
+	* modules/fmodl: New file.
+	* doc/posix-functions/fmodl.texi: Mention the new module.
+
+2012-02-25  Bruno Haible  <bruno@clisp.org>
+
+	Tests for module 'modfl'.
+	* modules/modfl-tests: New file.
+	* tests/test-modfl.c: New file.
+	* tests/test-math-c++.cc: Check the declaration of modfl.
+
+	New module 'modfl'.
+	* lib/math.in.h (modfl): New declaration.
+	* lib/modfl.c: New file.
+	* m4/modfl.m4: New file.
+	* m4/math_h.m4 (gl_MATH_H): Test whether modfl is declared.
+	(gl_MATH_H_DEFAULTS): Initialize GNULIB_MODFL, HAVE_MODFL.
+	* modules/math (Makefile.am): Substitute GNULIB_MODFL, HAVE_MODFL.
+	* modules/modfl: New file.
+	* doc/posix-functions/modfl.texi: Mention the new module.
+
+2012-02-25  Bruno Haible  <bruno@clisp.org>
+
+	Tests for module 'fabsl'.
+	* modules/fabsl-tests: New file.
+	* tests/test-fabsl.c: New file.
+	* tests/test-math-c++.cc: Check the declaration of fabsl.
+
+	New module 'fabsl'.
+	* lib/math.in.h (fabsl): New declaration.
+	* lib/fabsl.c: New file.
+	* m4/fabsl.m4: New file.
+	* m4/math_h.m4 (gl_MATH_H): Test whether fabsl is declared.
+	(gl_MATH_H_DEFAULTS): Initialize GNULIB_FABSL, HAVE_FABSL,
+	REPLACE_FABSL.
+	* modules/math (Makefile.am): Substitute GNULIB_FABSL, HAVE_FABSL,
+	REPLACE_FABSL.
+	* modules/fabsl: New file.
+	* doc/posix-functions/fabsl.texi: Mention the new module.
+
+2012-02-25  Bruno Haible  <bruno@clisp.org>
+
+	fabs tests: More tests.
+	* tests/test-fabs.c: Include <string.h>, minus-zero.h.
+	(zero): New variable.
+	(main): Add tests for signed zero.
+	* modules/fabs-tests (Files): Add tests/minus-zero.h.
+
+	fabsf tests: More tests.
+	* tests/test-fabsf.c: Include <string.h>, minus-zero.h.
+	(zero): New variable.
+	(main): Add tests for signed zero.
+	* modules/fabsf-tests (Files): Add tests/minus-zero.h.
+
+2012-02-24  Bruno Haible  <bruno@clisp.org>
+
+	atanl: Provide function definition on MSVC.
+	* m4/atanl.m4 (gl_FUNC_ATANL): Test also whether atanl can be used as a
+	function pointer.
+	* lib/math.in.h (atanl): Undefine if it does not exist as a function.
+
+2012-02-24  Bruno Haible  <bruno@clisp.org>
+
+	acosl: Provide function definition on MSVC.
+	* m4/acosl.m4 (gl_FUNC_ACOSL): Test also whether acosl can be used as a
+	function pointer.
+	* lib/math.in.h (acosl): Undefine if it does not exist as a function.
+
+2012-02-24  Bruno Haible  <bruno@clisp.org>
+
+	asinl: Provide function definition on MSVC.
+	* m4/asinl.m4 (gl_FUNC_ASINL): Test also whether asinl can be used as a
+	function pointer.
+	* lib/math.in.h (asinl): Undefine if it does not exist as a function.
+
+2012-02-24  Bruno Haible  <bruno@clisp.org>
+
+	tanl: Provide function definition on MSVC.
+	* m4/tanl.m4 (gl_FUNC_TANL): Test also whether tanl can be used as a
+	function pointer.
+	* lib/math.in.h (tanl): Undefine if it does not exist as a function.
+
+2012-02-24  Bruno Haible  <bruno@clisp.org>
+
+	cosl: Provide function definition on MSVC.
+	* m4/cosl.m4 (gl_FUNC_COSL): Test also whether cosl can be used as a
+	function pointer.
+	* lib/math.in.h (cosl): Undefine if it does not exist as a function.
+
+2012-02-24  Bruno Haible  <bruno@clisp.org>
+
+	sinl: Provide function definition on MSVC.
+	* m4/sinl.m4 (gl_FUNC_SINL): Test also whether sinl can be used as a
+	function pointer.
+	* lib/math.in.h (sinl): Undefine if it does not exist as a function.
+
+2012-02-24  Bruno Haible  <bruno@clisp.org>
+
+	logl: Provide function definition on MSVC.
+	* m4/logl.m4 (gl_FUNC_LOGL): Test also whether logl can be used as a
+	function pointer.
+	* lib/math.in.h (logl): Undefine if it does not exist as a function.
+
+2012-02-24  Bruno Haible  <bruno@clisp.org>
+
+	expl: Provide function definition on MSVC.
+	* m4/expl.m4 (gl_FUNC_EXPL): Test also whether expl can be used as a
+	function pointer.
+	* lib/math.in.h (expl): Undefine if it does not exist as a function.
+
+2012-02-24  Bruno Haible  <bruno@clisp.org>
+
+	sqrtl: Provide function definition on MSVC.
+	* m4/sqrtl.m4 (gl_FUNC_SQRTL): Test also whether sqrtl can be used as
+	a function pointer.
+	* lib/math.in.h (sqrtl): Undefine if it does not exist as a function.
+
+2012-02-24  Bruno Haible  <bruno@clisp.org>
+
+	ceill: Provide function definition on MSVC.
+	* m4/ceill.m4 (gl_FUNC_CEILL_LIBS): Test also whether ceill can be
+	used as a function pointer.
+	* lib/math.in.h (ceill): Undefine if it is not declared as a function.
+
+2012-02-24  Bruno Haible  <bruno@clisp.org>
+
+	floorl: Provide function definition on MSVC.
+	* m4/floorl.m4 (gl_FUNC_FLOORL_LIBS): Test also whether floorl can be
+	used as a function pointer.
+	* lib/math.in.h (floorl): Undefine if it is not declared as a function.
+
+2012-02-24  Bruno Haible  <bruno@clisp.org>
+
+	ceilf: Provide function definition on MSVC.
+	* m4/ceilf.m4 (gl_FUNC_CEILF_LIBS): Test also whether ceilf can be
+	used as a function pointer.
+	* lib/math.in.h (ceilf): Undefine if it is not declared as a function.
+
+2012-02-24  Bruno Haible  <bruno@clisp.org>
+
+	floorf: Provide function definition on MSVC.
+	* m4/floorf.m4 (gl_FUNC_FLOORF_LIBS): Test also whether floorf can be
+	used as a function pointer.
+	* lib/math.in.h (floorf): Undefine if it is not declared as a function.
+
+2012-02-24  Paul Eggert  <eggert@cs.ucla.edu>
+
+	stdnoreturn: new module
+	This implements a replacement for C11's <stdnoreturn.h>.
+	* doc/gnulib.texi (Header File Substitutes): Add stdnoreturn.
+	* doc/posix-headers/stdnoreturn.texi, lib/stdnoreturn.in.h:
+	* m4/stdnoreturn.m4, modules/stdnoreturn, modules/stdnoreturn-tests:
+	* tests/test-stdnoreturn.c: New files.
+
+2012-02-24  Stanislav Brabec  <sbrabec@suse.cz>  (tiny change)
+
+	regex: fix false multibyte matches in some regular expressions
+	See <http://sourceware.org/bugzilla/show_bug.cgi?id=13637>
+	and <http://sourceware.org/ml/libc-alpha/2012-02/msg00521.html>.
+	* lib/regex_internal.c (re_string_skip_chars):
+	Fix miscomputation of remain_len that may cause incomplete
+	multi-byte character and false match.
+
+2012-02-24  Jim Meyering  <meyering@redhat.com>
+
+	maint.mk: tell sc_prohibit_strcmp to ding "0 == strcmp (...)", too
+	* top/maint.mk (sc_prohibit_strcmp): Also prohibit uses of strcmp
+	uses with "==" *before* the call, e.g., 0 == strcmp (...)
+	Remove now-unnecessary str''cmp obfuscation.
+	Suggested by Akim Demaille.
+
+2012-02-24  Bruno Haible  <bruno@clisp.org>
+
+	streq: Rename macro.
+	* lib/streq.h (STREQ_OPT): Renamed from STREQ.
+	* NEWS: Mention the change.
+	* lib/mbrtowc.c (mbrtowc): Update.
+	* lib/uniwidth/cjk.h (is_cjk_encoding): Update.
+	* lib/wcwidth.c (wcwidth): Update.
+	Suggested by Akim Demaille and Jim Meyering.
+
+2012-02-20  Paul Eggert  <eggert@cs.ucla.edu>
+
+	regex: fix typo in definition of MIN
+	* lib/regex_internal.h (MIN): Fix typo.  Problem reported by Thomas
+	Schwinge in <http://sourceware.org/bugzilla/show_bug.cgi?id=11638#c4>.
+
+2012-02-19  Paul Eggert  <eggert@cs.ucla.edu>
+	    Bruno Haible  <bruno@clisp.org>
+
+	acl: Don't use ACL_CNT and similar ops, since they are unreliable.
+	* lib/file-has-acl.c (file_has_acl) [HP-UX, NonStop Kernel]: Read the
+	entries into a stack-allocated buffer directly.
+	* lib/copy-acl.c (qcopy_acl) [HP-UX, NonStop Kernel]: Likewise.
+
+2012-02-19  Paul Eggert  <eggert@cs.ucla.edu>
+	    Bruno Haible  <bruno@clisp.org>
+
+	acl: Don't use GETACLCNT and similar ops, since they are unreliable.
+
+	 - There were several instances of this pattern:
+
+	     for (;;) {
+	       n = acl (f, GETACLCNT, 0, NULL);
+	       [ allocate an array A of size N ]
+	       if (acl (f, GETACL, n, a) == n)
+		 break;
+	     }
+
+	   This loop might never terminate if some other process is constantly
+	   manipulating the file's ACL.  The loop should be rewritten to
+	   terminate.
+
+	 - The acl (... GETACLNT ...) call is merely an optimization; its value
+	   is merely a hint as to how big to make the array.  A better
+	   optimization is to avoid the acl (... GETACLNT ...)  call entirely,
+	   and just guess a reasonably-big size, growing the size and trying
+	   again if it's not large enough.  This guarantees termination, and
+	   saves a system call.
+
+	* lib/acl-internal.h: Include <limits.h>.
+	(MIN, SIZE_MAX): New macros.
+	* lib/file-has-acl.c (file_has_acl) [Solaris]: Read the entries into
+	a stack-allocated buffer, and use malloc if it does not fit. Don't
+	use GETACLCNT.
+	* lib/set-mode-acl.c (qset_acl) [Solaris]: Likewise.
+
+2012-02-19  Bruno Haible  <bruno@clisp.org>
+
+	acl: Fix endless loop on Solaris with vxfs.
+	* lib/file-has-acl.c (file_has_acl) [Solaris]: Treat a failing
+	acl()/facl() call for ACE_GETACL like a failing call for ACE_GETACLCNT.
+	* lib/set-mode-acl.c (qset_acl) [Solaris]: Likewise.
+	* lib/copy-acl.c (qcopy_acl)[Solaris]: Likewise.
+	* tests/test-sameacls.c (main)[Solaris]: Likewise.
+	Reported by Bill Jones in
+	<http://debbugs.gnu.org/cgi/bugreport.cgi?bug=10639>, via Paul Eggert.
+
+2012-02-19  Bruno Haible  <bruno@clisp.org>
+
+	acl: Fix copy-acl test failure on Solaris 11 2011-11.
+	* lib/file-has-acl.c (NEW_ACE_WRITEA_DATA): New macro.
+	(acl_ace_nontrivial): Relax the restrictions on access_masks[] so
+	that this function returns 0 in some more cases.
+
+2012-02-19  Bruno Haible  <bruno@clisp.org>
+
+	acl: Update doc references.
+	* doc/acl-resources.txt: Update links to Solaris documentation.
+
+2012-02-19  Bruno Haible  <bruno@clisp.org>
+
+	Fix test failure in many locales on Solaris 11.
+	* tests/test-pipe-filter-gi1.c (main): Don't use range expression in
+	'tr' arguments.
+	* tests/test-pipe-filter-ii1.c (main): Likewise.
+	* build-aux/bootstrap (check_versions): Run 'tr' command with range
+	expressions in the C locale.
+	* m4/fnmatch.m4 (gl_FUNC_FNMATCH_POSIX): Likewise.
+	* m4/host-os.m4 (gl_HOST_OS): Likewise.
+
+2012-02-19  Bruno Haible  <bruno@clisp.org>
+
+	gnulib-tool: Improve usage message.
+	* gnulib-tool (func_usage): Move doc of --help and --version to the
+	section "Operation modes".
+
+2012-02-18  Reuben Thomas  <rrt@sc3d.org>
+
+	README-release: make it easier to execute commands
+	* top/README-release: break commands out on to separate lines.
+
+2012-02-16  Stefano Lattarini  <stefano.lattarini@gmail.com>
+
+	GNUmakefile: simplify detection of unconfigured trees
+	* top/GNUmakefile: Use $(wildcard) instead of $(shell) to determine
+	whether the tree make is being run from is already configured or
+	not.  Related simplifications.
+
+2012-02-13  Simon Josefsson  <simon@josefsson.org>
+
+	* gnulib-tool (func_usage): Document --help and --version.
+
+2012-02-11  Jim Meyering  <meyering@redhat.com>
+
+	bootstrap: don't exit 0 upon gnulib-tool failure
+	* build-aux/bootstrap (gnulib_tool): If gnulib-tool fails, exit with
+	its exit status, not 0.
+
+2011-12-19  Reuben Thomas  <rrt@sc3d.org>
+
+	README-release: various improvements
+	* top/README-release: Give a command to push changes for the
+	release.  Add "distcheck" to list of other pre-release checks.
+	Fix instance of "make stable" which should be "make TYPE".
+
+2012-02-09  Paul Eggert  <eggert@cs.ucla.edu>
+
+	maint: replace FSF snail-mail addresses with URLs
+	* config/argz.mk, lib/accept4.c, lib/alignof.h, lib/alloca.in.h:
+	* lib/alphasort.c, lib/arcfour.c, lib/arcfour.h, lib/arctwo.c:
+	* lib/arctwo.h, lib/argz.c, lib/arpa_inet.in.h, lib/asnprintf.c:
+	* lib/asprintf.c, lib/assert.in.h, lib/base32.c, lib/base32.h:
+	* lib/base64.c, lib/base64.h, lib/c-ctype.c, lib/c-ctype.h:
+	* lib/c-strcase.h, lib/c-strcasecmp.c, lib/c-strncasecmp.c:
+	* lib/check-version.c, lib/check-version.h, lib/config.charset:
+	* lib/ctype.in.h, lib/des.c, lib/des.h, lib/dup3.c, lib/errno.in.h:
+	* lib/float+.h, lib/fnmatch.c, lib/fnmatch.in.h, lib/fnmatch_loop.c:
+	* lib/fseeko.c, lib/gai_strerror.c, lib/gc-gnulib.c:
+	* lib/gc-libgcrypt.c, lib/gc-pbkdf2-sha1.c, lib/gc.h:
+	* lib/getaddrinfo.c, lib/getdelim.c, lib/getfilecon.c, lib/getline.c:
+	* lib/getlogin_r.c, lib/getpass.c, lib/getpass.h, lib/gettext.h:
+	* lib/gettimeofday.c, lib/glob.in.h, lib/glthread/cond.c:
+	* lib/glthread/cond.h, lib/glthread/lock.c, lib/glthread/lock.h:
+	* lib/glthread/thread.c, lib/glthread/thread.h:
+	* lib/glthread/threadlib.c, lib/glthread/yield.h, lib/hmac-md5.c:
+	* lib/hmac-sha1.c, lib/hmac.h, lib/iconv.c, lib/iconv.in.h:
+	* lib/iconv_close.c, lib/iconv_open.c, lib/inet_ntop.c, lib/isfinite.c:
+	* lib/isinf.c, lib/iswblank.c, lib/langinfo.in.h, lib/link.c:
+	* lib/localcharset.c, lib/localcharset.h, lib/lseek.c, lib/malloc.c:
+	* lib/malloca.c, lib/malloca.h, lib/md2.c, lib/md2.h, lib/md4.c:
+	* lib/md4.h, lib/md5.c, lib/md5.h, lib/memmem.c, lib/mempcpy.c:
+	* lib/memset.c, lib/memxor.c, lib/memxor.h, lib/minmax.h, lib/mktime.c:
+	* lib/msvc-inval.c, lib/msvc-inval.h, lib/msvc-nothrow.c:
+	* lib/msvc-nothrow.h, lib/netdb.in.h, lib/netinet_in.in.h, lib/nproc.c:
+	* lib/nproc.h, lib/obstack_printf.c, lib/pathmax.h, lib/pipe.c:
+	* lib/pipe2.c, lib/poll.c, lib/poll.in.h, lib/printf-args.c:
+	* lib/printf-args.h, lib/printf-parse.c, lib/printf-parse.h:
+	* lib/pselect.c, lib/pthread.in.h, lib/pty-private.h, lib/pty.in.h:
+	* lib/read-file.c, lib/read-file.h, lib/ref-add.sin, lib/ref-del.sin:
+	* lib/regcomp.c, lib/regex.c, lib/regex.h, lib/regex_internal.c:
+	* lib/regex_internal.h, lib/regexec.c, lib/rijndael-alg-fst.c:
+	* lib/rijndael-alg-fst.h, lib/rijndael-api-fst.c:
+	* lib/rijndael-api-fst.h, lib/rint.c, lib/rintf.c, lib/rintl.c:
+	* lib/round.c, lib/roundf.c, lib/roundl.c, lib/scandir.c, lib/select.c:
+	* lib/sha1.c, lib/sha1.h, lib/size_max.h, lib/snprintf.c:
+	* lib/stdalign.in.h, lib/stdarg.in.h, lib/stdbool.in.h:
+	* lib/stddef.in.h, lib/stdint.in.h, lib/stdio.in.h, lib/str-kmp.h:
+	* lib/str-two-way.h, lib/strcasecmp.c, lib/strcasestr.c, lib/strdup.c:
+	* lib/striconv.c, lib/striconv.h, lib/string.in.h, lib/strings.in.h:
+	* lib/strncasecmp.c, lib/strndup.c, lib/strnlen.c, lib/strpbrk.c:
+	* lib/strptime.c, lib/strsep.c, lib/strstr.c, lib/strverscmp.c:
+	* lib/sys_file.in.h, lib/sys_ioctl.in.h, lib/sys_select.in.h:
+	* lib/sys_socket.in.h, lib/sys_stat.in.h, lib/sys_time.in.h:
+	* lib/sys_times.in.h, lib/sys_types.in.h, lib/sys_uio.in.h:
+	* lib/sys_utsname.in.h, lib/sys_wait.in.h, lib/tcgetsid.c:
+	* lib/termios.in.h, lib/time.in.h, lib/time_r.c, lib/timegm.c:
+	* lib/times.c, lib/unictype/3level.h, lib/unictype/3levelbit.h:
+	* lib/unistd.in.h, lib/vasnprintf.c, lib/vasnprintf.h, lib/vasprintf.c:
+	* lib/vsnprintf.c, lib/waitpid.c, lib/wchar.in.h, lib/wctype.in.h:
+	* lib/xsize.h, tests/test-closein.c, tests/test-des.c:
+	* tests/test-fclose.c, tests/test-fgetc.c, tests/test-filevercmp.c:
+	* tests/test-fputc.c, tests/test-fread.c, tests/test-fwrite.c:
+	* tests/test-gc-arcfour.c, tests/test-gc-arctwo.c, tests/test-gc-des.c:
+	* tests/test-gc-hmac-md5.c, tests/test-gc-hmac-sha1.c:
+	* tests/test-gc-md2.c, tests/test-gc-md4.c, tests/test-gc-md5.c:
+	* tests/test-gc-pbkdf2-sha1.c, tests/test-gc-rijndael.c:
+	* tests/test-gc-sha1.c, tests/test-gc.c, tests/test-getdelim.c:
+	* tests/test-getline.c, tests/test-getndelim2.c, tests/test-md2.c:
+	* tests/test-md4.c, tests/test-parse-datetime.c, tests/test-perror.c:
+	* tests/test-perror2.c, tests/test-pipe.c, tests/test-pipe2.c:
+	* tests/test-poll.c, tests/test-quotearg-simple.c:
+	* tests/test-quotearg.c, tests/test-quotearg.h:
+	* tests/test-round-ieee.c, tests/test-round1.c:
+	* tests/test-roundf-ieee.c, tests/test-roundf1.c:
+	* tests/test-roundl-ieee.c, tests/test-roundl.c:
+	* tests/test-safe-alloc.c, tests/test-sigpipe.c:
+	* tests/test-spawn-pipe-child.c, tests/test-spawn-pipe-main.c:
+	* tests/test-strerror.c, tests/test-strerror_r.c:
+	* tests/test-strsignal.c, tests/test-strverscmp.c:
+	* tests/test-xmemdup0.c:
+	Replace FSF snail mail addresses with URLs, as per GNU coding
+	standards.  See glibc bug
+	<http://sourceware.org/bugzilla/show_bug.cgi?id=13673>.
+
+2011-12-22  Reuben Thomas  <rrt@sc3d.org>
+
+	README-release: capitalize a word and split a line
+	* top/README-release: Fix punctuation and spacing.
+
+2012-02-08  Akim Demaille  <demaille@gostai.com>
+
+	fatal-signal: use C prototypes (with explicit void).
+	* lib/fatal-signal.c (uninstall_handlers, install_handlers)
+	(init_fatal_signal_set, block_fatal_signals): Fix signatures.
+
+2012-02-07  Paul Eggert  <eggert@cs.ucla.edu>
+
+	regex: spelling fix
+	* lib/regexec.c: spelling fix
+
+	regex: rely on stdint.h for SIZE_MAX
+	* lib/regex_internal.h (SIZE_MAX): Remove; stdint.h supplies this now.
+
+2012-02-07  Paul Eggert  <eggert@cs.ucla.edu>
+
+	regex: merge glibc changes
+
+	* lib/regcomp.c (init_dfa): Tighten overflow checks to test
+	for IDX_MAX too, since IDX_MAX can be much less than SIZE_MAX.
+	(init_word_char): Work even if bitset words are not exactly 32 or
+	64 bits wide.  Don't assume there are no padding bits.
+	* lib/regex.c [_LIBC]: Do not include <config.h>.
+	[!_LIBC]: Add pragmas to ignore -Wsuggest-attributes=pure
+	and -Wtype-limits.
+	* lib/regex.h (__USE_GNU): Renamed from __USE_GNU_REGEX, to avoid
+	needless disagreement with glibc.  All uses changed.  Define it to
+	1 only if _GNU_SOURCE, to match glibc.
+	(_REG_RM_NAME): Remove; no longer needed, since the names in
+	question are now all protected by __USE_GNU.
+	(_REG_RE_NAME): Remove; replaced by glibc's __REPB_PREFIX.
+	(REG_TRANSLATE_TYPE): Remove; replaced by glibc's __RE_TRANSLATE_TYPE.
+	* lib/regex_internal.h (MIN): New macro.
+
+	2012-01-03 Ulrich Drepper <drepper@gmail.com>
+	* lib/regcomp.c (init_word_char): Optimize regex a bit.
+
+	2011-12-30 Jakub Jelinek <jakub@redhat.com>
+	* lib/regex_internal.c (re_string_fetch_byte_case):
+	Fix up regcomp/regexec.  The problem is that parse_bracket_symbol
+	is miscompiled, and it turns out it is because of an incorrect
+	attribute on re_string_fetch_byte_case.  Unlike
+	re_string_peek_byte_case, this one is really not pure, it modifies
+	memory (increments pstr->cur_idx), and with the pure attribute GCC
+	assumed it doesn't and it cached the presumed value of
+	regexp->cur_idx in a variable across the
+	 for (;; ++i)
+	   {
+	     if (i >= BRACKET_NAME_BUF_SIZE)
+	       return REG_EBRACK;
+	     if (token->type == OP_OPEN_CHAR_CLASS)
+	       ch = re_string_fetch_byte_case (regexp);
+	     else
+	       ch = re_string_fetch_byte (regexp);
+	     if (re_string_eoi(regexp))
+	       return REG_EBRACK;
+	     if (ch == delim && re_string_peek_byte (regexp, 0) == ']')
+	       break;
+	     elem->opr.name[i] = ch;
+	   }
+
+	2011-11-29 Andreas Schwab <schwab@redhat.com>
+	* lib/regcomp.c (build_equiv_class):
+	Fix access after end of search string in regex matcher.
+
+	2011-11-12 Ulrich Drepper <drepper@redhat.com>
+	* lib/regex_internal.c, lib/regex_internal.h: Fix warnings in regex.
+
+	2011-10-12 Ulrich Drepper <drepper@redhat.com>
+	* lib/regcomp.c (parse_branch): One more regex memory leak fixed.
+
+	2011-10-11 Ulrich Drepper <drepper@redhat.com>
+	* lib/regcomp.c (parse_branch, parse_sub_exp):
+	More regex memory leak fixes and tests.
+	(parse_sub_exp, parse_bracket_exp):
+	Fix memory leak for some invalid regular expressions.
+
+	2011-05-28 Ulrich Drepper <drepper@gmail.com>
+	* lib/regex_internal.c, lib/regexec.c:
+	Fix unnecessary overallocation due to incomplete character.  When
+	incomplete characters are found at the end of a string the code
+	ran amok and allocated lots of memory.  Stricter limits are now in
+	place.
+
+	2011-05-20 Reuben Thomas <rrt@sc3d.org>
+	* lib/regex.h: Update documentation.
+
+	2011-05-16 Aharon Robbins <arnold@skeeve.com>
+	* lib/regex.h: Update RE_SYNTAX*_AWK constants.
+
+	2010-05-05 Andreas Schwab <schwab@redhat.com>
+	* lib/regexec.c (find_collation_sequence_value):
+	Fix lookup of collation sequence value during regexp matching.
+
+	2010-01-22 Ulrich Drepper <drepper@redhat.com>
+	* lib/regex_internal.c (re_dfa_add_node): Extend overflow detection.
+
+	2008-01-16 Ulrich Drepper <drepper@redhat.com>
+	* lib/regex.h: Cleanup namespace.
+
+	2007-11-26 Ulrich Drepper <drepper@redhat.com>
+	* lib/regex.h (REG_ENOSYS): Define REG_ENOSYS also for __USE_XOPEN2K.
+
+	2007-08-26 Ulrich Drepper <drepper@redhat.com>
+	* lib/regex_internal.h: Prevent some declarations and definitions
+	to be seen when used in tests.
+
+	2005-05-06 Ulrich Drepper <drepper@redhat.com>
+	* lib/regex_internal.h: Include bits/libc-lock.h or define dummy
+	__libc_lock_* macros if not _LIBC.
+	(struct re_dfa_t): Add lock.
+
+2012-02-07  Eric Blake  <eblake@redhat.com>
+
+	maint.mk: also prohibit lower-case @var@
+	* top/maint.mk (sc_makefile_at_at_check): Enhance check to cover
+	lower case, like @top_srcdir@.
+
+2012-02-04  Eric Blake  <eblake@redhat.com>
+
+	canonicalize: avoid uninitialized memory use
+	* lib/canonicalize-lgpl.c (__realpath): Avoid possibility of
+	random '/' left in dest.
+	* lib/canonicalize.c (canonicalize_filename_mode): Likewise.
+
+2012-02-04  Bruno Haible  <bruno@clisp.org>
+
+	isatty: Fix test failure of ptsname_r on native Windows.
+	* lib/isatty.c (_isatty_nothrow): Upon exception, return 0, not -1,
+	and don't set errno.
+	(isatty): Test first whether fd is valid. Set errno when returning 0.
+
+2012-02-04  Bruno Haible  <bruno@clisp.org>
+
+	spawn-pipe tests: Fix a NULL program name in a diagnostic.
+	* tests/test-spawn-pipe-main.c: Include progname.h.
+	(main): Invoke set_program_name.
+	* modules/spawn-pipe-tests (Depends-on): Add progname.
+
+	nonblocking-socket tests: Fix a NULL program name in a diagnostic.
+	* tests/test-nonblocking-socket-main.c: Include progname.h.
+	(main): Invoke set_program_name.
+	* modules/nonblocking-socket-tests (Depends-on): Add progname.
+
+	nonblocking-pipe tests: Fix a NULL program name in a diagnostic.
+	* tests/test-nonblocking-pipe-main.c: Include progname.h.
+	(main): Invoke set_program_name.
+	* modules/nonblocking-pipe-tests (Depends-on): Add progname.
+
+2012-02-04  Eric Blake  <eblake@redhat.com>
+
+	canonicalize-lgpl: fix // handling
+	* lib/canonicalize-lgpl.c (__realpath): Don't convert /// to //.
+
+	canonicalize: fix // handling
+	* lib/canonicalize.c (canonicalize_filename_mode): Don't convert
+	/// to //, since only // is special.
+
+2012-02-04  Bruno Haible  <bruno@clisp.org>
+
+	ioctl: Fix test failure on native Windows.
+	* lib/ioctl.c: Include msvc-nothrow.h.
+	(primary_ioctl): If fd is not a valid handle, set errno to EBADF.
+
+2012-02-04  Bruno Haible  <bruno@clisp.org>
+
+	fsync: Avoid test failure on native Windows.
+	* lib/fsync.c (fsync) [Windows]: Don't fail if the handle is merely
+	read-only.
+
+2012-02-04  Bruno Haible  <bruno@clisp.org>
+
+	sys_select: Avoid syntax error on OpenBSD 5.0.
+	* lib/sys_select.in.h [OpenBSD]: When /usr/include/pthread.h is
+	currently being included, just include the system's <sys/select.h>.
+
+2012-02-04  Bruno Haible  <bruno@clisp.org>
+
+	sys_select: Avoid syntax error on OpenBSD 5.0.
+	* lib/sys_select.in.h: Include <signal.h> only after the include_next
+	<sys/select.h>, not before.
+	Reported by Jiri B <jirib@devio.us>.
+
+2012-02-04  Bruno Haible  <bruno@clisp.org>
+
+	get-rusage-as, get-rusage-data tests: Avoid test failure with gcc-4.7.
+	* tests/test-get-rusage-as.c (main): Assign the malloc() results to
+	global variables.
+	* tests/test-get-rusage-data.c (main): Likewise.
+	Reported by Jim Meyering.
+
+2012-02-04  Bruno Haible  <bruno@clisp.org>
+
+	stdioext: Fix last commit.
+	* lib/fwritable.c [EPLAN9]: Include <fcntl.h>.
+
+2012-02-03  Bruno Haible  <bruno@clisp.org>
+
+	stdioext: Add tentative support for Plan9.
+	* lib/stdio-impl.h: Include <errno.h>.
+	* lib/fseterr.c (fseterr) [EPLAN9]: Add conditional code.
+	* lib/freadable.c (freadable): Likewise.
+	* lib/fwritable.c (fwritable): Likewise.
+	* lib/fbufmode.c (fbufmode): Likewise.
+	* lib/freading.c (freading): Likewise.
+	* lib/fwriting.c (fwriting): Likewise.
+	* lib/freadptr.c (freadptr): Likewise.
+	* lib/freadseek.c (freadptrinc): Likewise.
+	* lib/freadahead.c (freadahead): Likewise.
+	* lib/fpurge.c (fpurge): Likewise.
+	* lib/fseeko.c (rpl_fseeko): Likewise.
+	* m4/fpending.m4 (gl_PREREQ_FPENDING): Add a variant for Plan9.
+	Reported by Jens Staal <staal1978@gmail.com>.
+
+2012-02-02  Jim Meyering  <meyering@redhat.com>
+
+	file-has-acl: suppress a warning from gcc -Wsuggest-attribute=const
+	* lib/file-has-acl.c (file_has_acl): This function (for some #ifdefs)
+	would evoke a new gcc warning.  Given all of the #ifdefs, it is better
+	not even to try to add the attribute.  Instead, add a pragma to suppress
+	the suggestion/warning.
+
+2012-01-31  Karl Berry  <karl@gnu.org>
+
+	setstate doc: typo.
+	* doc/posix-functions/setstate.texi (setstate): { not (.
+
+2012-01-31  Bruno Haible  <bruno@clisp.org>
+
+	popen: Make more robust on Windows.
+	* lib/popen.c: On native Windows, use the _popen based code even if
+	HAVE_POPEN is set.
+	* doc/posix-functions/popen.texi: Mention necessity of COMSPEC
+	environment variable on native Windows.
+
+2012-01-30  Bruno Haible  <bruno@clisp.org>
+
+	pclose: Fix typo.
+	* lib/stdio.in.h (pclose): Fix typo in warning message.
+
+2012-01-30  Bruno Haible  <bruno@clisp.org>
+
+	doc about getlogin_r, setstate.
+	* doc/posix-functions/getlogin_r.texi: List the incompatible
+	declaration problem under "not fixed by gnulib".
+	* doc/posix-functions/setstate.texi: Mention incompatible declaration
+	problem on Solaris 11 and other platforms.
+
+2012-01-30  Chuanchang Jia  <chuanchang.jia@gmail.com>  (tiny change)
+	    Bruno Haible  <bruno@clisp.org>
+
+	poll tests: Make test more robust.
+	* tests/test-poll.c: Include macros.h.
+	(test_accept_first, test_pair, test_socket_pair, test_pipe): Verify
+	return value of various I/O operations.
+	* modules/poll-tests (Files): Add tests/macros.h.
+
+2012-01-30  Bruno Haible  <bruno@clisp.org>
+
+	sys_stat: Fix support for mingw64 and MSVC.
+	* lib/sys_stat.in.h (stat) [AIX]: Don't redefine 'stat' if the system
+	header files already do it.
+	(stat) [mingw, msvc]: Redefine the symbol to which stat is defined, not
+	stat itself.
+	Reported by Marc-André Lureau <marcandre.lureau@redhat.com>.
+
+2012-01-30  Bruno Haible  <bruno@clisp.org>
+
+	wcwidth: Work around bug in UTF-8 locale on OpenBSD 5.0.
+	* m4/wcwidth.m4 (gl_FUNC_WCWIDTH): Test also wcwidth of U+05B0.
+	* doc/posix-functions/wcwidth.texi: Mention the OpenBSD 5.0 bug.
+
+2012-01-29  Bruno Haible  <bruno@clisp.org>
+
+	quotearg: Fix test failure on MacOS X 10.5.
+	* tests/test-quotearg-simple.c: Include localcharset.h.
+	(main): If the locale encoding is not ASCII, bypass the tests of
+	locale_quoting_style and clocale_quoting_style.
+	* modules/quotearg-tests (Depends-on): Add 'localcharset'.
+
+2012-01-29  Jim Meyering  <meyering@redhat.com>
+
+	maint.mk: sc_prohibit_canonicalize_without_use: avoid false positive
+	* top/maint.mk (sc_prohibit_canonicalize_without_use): Also
+	detect uses of canonicalize_file_name.
+
+2012-01-28  Bruno Haible  <bruno@clisp.org>
+
+	test-framework-sh: Fix test failure with AIX 7.1 diff.
+	* tests/init.sh (compare_): Don't use 'diff -u' if it inserts a space
+	in column 1, like 'diff -c' does.
+	* tests/test-init.sh (test_compare): Don't repeat the test from init.sh
+	whether 'diff -u' is used. Instead, test whether the output contains
+	some '@' character.
+
+2012-01-28  Paul Eggert  <eggert@cs.ucla.edu>
+
+	strtoimax: eliminate need for stdint.h, inttypes.h checks
+	* m4/strtoimax.m4 (gl_FUNC_STRTOIMAX): Don't use
+	gl_AC_HEADER_STDINT_H or gl_AC_HEADER_INTTYPES_H.  This reduces
+	the prerequisites for a recently-introduced strtoimax test.
+	I guess this might cause strtoimax to be replaced when not
+	strictly necessary on older hosts, but this shouldn't introduce
+	any bugs and it should make Emacs 'configure' faster on typical
+	modern hosts.  Problem discovered when importing the latest gnulib
+	to an Emacs test version.
+	* modules/strtoimax (Files): Remove m4/stdint_h.m4, m4/inttypes_h.m4.
+
+2012-01-28  Bruno Haible  <bruno@clisp.org>
+
+	sys_time: Override 'struct timeval' on some native Windows platforms.
+	* m4/sys_time_h.m4 (gl_HEADER_SYS_TIME_H_BODY): Test whether tv_sec
+	has the right type. Set REPLACE_STRUCT_TIMEVAL if not.
+	(gl_HEADER_SYS_TIME_H_DEFAULTS): Initialize REPLACE_STRUCT_TIMEVAL.
+	* lib/sys_time.in.h: Include <winsock2.h> also when 'struct timeval'
+	needs to be overridden.
+	(timeval): Override if REPLACE_STRUCT_TIMEVAL is set.
+	* modules/sys_time (Makefile.am): Substitute REPLACE_STRUCT_TIMEVAL.
+	* tests/test-sys_select.c: Check that the tv_sec member has the same
+	size as a 'time_t'.
+	* tests/test-sys_time.c: Likewise.
+	* m4/gettimeofday.m4 (gl_FUNC_GETTIMEOFDAY): If REPLACE_STRUCT_TIMEVAL
+	is set, set also REPLACE_GETTIMEOFDAY.
+	* lib/gettimeofday.c (gettimeofday): If 'struct timeval' is overridden,
+	convert the resulting 'struct timeval' before returning.
+	* lib/select.c: Include <sys/time.h>.
+	(select, timeval): Undefine at the right place.
+	* modules/select (Depends-on): Add sys_time.
+	* doc/posix-headers/sys_time.texi: Mention the problem with tv_sec on
+	some Windows platforms.
+	Reported by Marc-André Lureau <marcandre.lureau@redhat.com>.
+
+2012-01-28  Marc-André Lureau  <marcandre.lureau@redhat.com>  (tiny change)
+
+	accept4, fcntl, socket modules: Avoid warnings on x86_64 mingw64.
+	* lib/accept4.c (accept4): Use intptr_t to convert handle pointer to
+	an integer.
+	* lib/fcntl.c (dupfd): Likewise.
+	* lib/w32sock.h (SOCKET_TO_FD): Likewise.
+
+2012-01-28  Bruno Haible  <bruno@clisp.org>
+
+	fcntl: Avoid compilation error on native Windows.
+	* modules/fcntl (Depends-on): Add 'close'.
+
+2012-01-28  Marc-André Lureau  <marcandre.lureau@redhat.com>  (tiny change)
+
+	select, poll, isatty: Avoid warnings on x86_64 mingw64.
+	* lib/select.c (IsConsoleHandle): Use intptr_t to convert handle
+	pointer to an integer.
+	* lib/poll.c (IsConsoleHandle): Likewise.
+	* lib/isatty.c (IsConsoleHandle): Likewise.
+
+2012-01-28  Jim Meyering  <meyering@redhat.com>
+
+	doc: clarify README-release
+	* top/README-release: Clarify: you should make a point to have
+	the latest stable versions of build tools in your PATH, and the
+	reference to buildreq is solely for its list of tool names, not
+	for its minimal-functional version numbers.
+	Prompted by discussion with Reuben Thomas and Gary V. Vaughan.
+
+	maint.mk: use more readable (yet functionally equivalent) quoting
+	It is common to quote a single quote in a single quoted string like
+	this:  '...'\''...'.  Unless you know the idiom, that looks like
+	gibberish, so prefer to double-quote the string when possible.
+	Then you can use a more readable, lone single quote: "...'..."
+	* top/maint.mk (sc_cast_of_argument_to_free): Quoting like this
+	"don't" is more readable than the equivalent 'don'\''t'.
+	(sc_cast_of_x_alloc_return_value): Likewise.
+	(sc_cast_of_alloca_return_value): Likewise.
+	(sc_makefile_path_separator_check): Similar: use ":" in '...',
+	rather than '\'':'\''.
+
+2012-01-27  Paul Eggert  <eggert@cs.ucla.edu>
+
+	stdalign: relax _Alignof and tighten _Alignas test
+	* m4/stdalign.m4 (gl_STDALIGN_H): Relax the _Alignof test,
+	as it was too strict: alignof must divide offsetof, but it need
+	not equal offsetof.  Inspired by Joseph S. Myers's comment
+	<http://gcc.gnu.org/bugzilla/show_bug.cgi?id=52023#c10>.
+	Conversely, tighten the _Alignas test a bit, as the resulting
+	alignment must be exactly 8.
+
+2012-01-27  Bruno Haible  <bruno@clisp.org>
+
+	stdalign: Document the last change.
+	* doc/posix-headers/stdalign.texi: Mention GCC bug 52023.
+
+2012-01-27  Paul Eggert  <eggert@cs.ucla.edu>
+
+	stdalign: check that alignof and offsetof are consistent
+	* m4/stdalign.m4 (gl_STDALIGN_H): Check for GCC bug 52023.
+	Problem reported for gnulib by Richard W.M. Jones in
+	<http://lists.gnu.org/archive/html/bug-gnulib/2012-01/msg00340.html>.
+
+2012-01-27  Jim Meyering  <meyering@redhat.com>
+
+	update-copyright: accept new option: UPDATE_COPYRIGHT_USE_INTERVALS=2
+	* build-aux/update-copyright: When UPDATE_COPYRIGHT_USE_INTERVALS=2,
+	convert a sequence with gaps to the minimal containing range.
+	For example, convert 2000, 2004-2007, 2009 to 2000-2009.
+	* tests/test-update-copyright.sh: Test for this.
+	The FSF confirmed it is ok to do this, assuming there is at
+	least one significant change per year in the affected range:
+	http://thread.gmane.org/gmane.comp.lib.gnulib.bugs/29554/focus=29860
+
+2012-01-26  Bruno Haible  <bruno@clisp.org>
+
+	pipe2: refine doc about thread-safety
+	* doc/glibc-functions/pipe2.texi: Clarify the extent of the
+	multithread-safety problem.
+	* doc/glibc-functions/accept4.texi: Likewise.
+
+2012-01-26  Bruno Haible  <bruno@clisp.org>
+
+	posix_spawn_file_actions_addopen: Fix 2012-01-08 commit.
+	* m4/posix_spawn.m4 (gl_FUNC_POSIX_SPAWN_FILE_ACTIONS_ADDOPEN):
+	In the test program, include <fcntl.h>, for O_RDONLY.
+
+2012-01-26  Eric Blake  <eblake@redhat.com>
+
+	pipe2: document lack of thread-safety in replacement
+	* doc/glibc-functions/pipe2.texi (pipe2): Mention thread safety
+	issue in replacement.
+	* doc/glibc-functions/accept4.texi (accept4): Likewise.
+	Based on a report by Eric Wong.
+
+2012-01-24  Marc-André Lureau  <marcandre.lureau@redhat.com>  (tiny change)
+	    Bruno Haible  <bruno@clisp.org>
+
+	malloca: Avoid warnings on x86_64 mingw64.
+	* lib/malloca.c: Include <stdint.h>.
+	(mmalloca, freea): Use uintptr_t to convert pointers to integers.
+	* modules/malloca (Depends-on): Add stdint.
+	* modules/relocatable-prog-wrapper (Depends-on): Likewise.
+
+2012-01-25  Paul Eggert  <eggert@cs.ucla.edu>
+
+	obstack: remove __STDC__ conditionals
+	* lib/obstack.h: Remove __STDC__ conditionals, as suggested by Joseph
+	S. Myers in <http://cygwin.com/ml/libc-alpha/2012-01/msg00104.html>.
+	This leaves lib/localcharset.c, m4/iconv.m4, and a confusing comment in
+	m4/include_next.m4 as the only gnulib-maintained places that still
+	refer to __STDC__.
+
+2012-01-24  Bruno Haible  <bruno@clisp.org>
+
+	havelib: Modern quoting.
+	* build-aux/config.rpath: Quote 'like this', not `like this', as per
+	the recent change to the GNU coding standards.
+
+2012-01-24  Bruno Haible  <bruno@clisp.org>
+
+	stdint: Improve support for Android.
+	* lib/stdint.in.h: Test __ANDROID__, not __BIONIC__.
+	Reported by Simon Josefsson <simon@josefsson.org>.
+
+2012-01-23  Paul Eggert  <eggert@cs.ucla.edu>
+
+	doc: omit trailing empty lines from INSTALL etc.
+	* doc/Makefile (INSTALL): Omit trailing empty lines.
+	(INSTALL.ISO, INSTALL.UTF-8): Build from INSTALL, so that these also
+	omit trailing empty lines.  This simplifies the build procedure.
+
+2012-01-23  Jim Meyering  <meyering@redhat.com>
+
+	tests: avoid spurious warnings about gl_sockets_startup
+	Fedora rawhide's gcc version 4.7.0 20120119 with -Wunused-value
+	would warn about every use of "gl_sockets_startup (SOCKETS_1_1);"
+	reporting a "statement with no effect".
+	* tests/test-accept.c (main): Mark as "(void)".
+	* tests/test-accept4.c (main): Likewise.
+	* tests/test-bind.c (main): Likewise.
+	* tests/test-connect.c (main): Likewise.
+	* tests/test-getpeername.c (main): Likewise.
+	* tests/test-getsockname.c (main): Likewise.
+	* tests/test-getsockopt.c (main): Likewise.
+	* tests/test-listen.c (main): Likewise.
+	* tests/test-recv.c (main): Likewise.
+	* tests/test-recvfrom.c (main): Likewise.
+	* tests/test-send.c (main): Likewise.
+	* tests/test-sendto.c (main): Likewise.
+	* tests/test-setsockopt.c (main): Likewise.
+	* tests/test-shutdown.c (main): Likewise.
+
+2012-01-21  Bruno Haible  <bruno@clisp.org>
+
+	locale-fr.m4: Fix for Android.
+	* m4/locale-fr.m4 (gt_LOCALE_FR, gt_LOCALE_FR_UTF8): Avoid compilation
+	failure of the test program on Bionic libc.
+
+2012-01-21  Jim Meyering  <meyering@redhat.com>
+
+	bootstrap: fail when bootstrap_post_import_hook fails
+	Otherwise, it's far too easy to miss diagnostics emitted
+	between gnulib-tool's output and that of running configure.
+	* build-aux/bootstrap: Fail when bootstrap_post_import_hook fails.
+
+2012-01-17  Jim Meyering  <meyering@redhat.com>
+
+	maint: enable sc_trailing_blank
+	* build-aux/pmccabe.css: Remove trailing blanks.
+	* doc/acl-cygwin.txt: Likewise.
+	* doc/gnu-oids.texi: Likewise
+	* cfg.mk: Enable sc_trailing_blank.
+	Exempt build-aux/texinfo.tex and doc/Copyright/assign.future.manual.
+
+2012-01-17  Jim Meyering  <meyering@redhat.com>
+
+	maint: enable sc_prohibit_openat_without_use
+	* cfg.mk: Enable sc_prohibit_openat_without_use.
+	Exempt lib/selinux-at.c.
+
+2012-01-17  Jim Meyering  <meyering@redhat.com>
+
+	maint: enable sc_prohibit_cloexec_without_use
+	* cfg.mk: Enable sc_prohibit_cloexec_without_use.
+	* lib/dup-safer-flag.c: Don't include "cloexec.h".  Not needed.
+
+2012-01-17  Jim Meyering  <meyering@redhat.com>
+
+	maint: enable sc_prohibit_intprops_without_use
+	* cfg.mk: Enable sc_prohibit_intprops_without_use
+	* tests/test-nanosleep.c: Don't include "intprops.h".  Not needed.
+
+2012-01-17  Jim Meyering  <meyering@redhat.com>
+
+	maint: enable sc_prohibit_hash_pjw_without_use
+	* cfg.mk: Enable sc_prohibit_hash_pjw_without_use.
+	* top/maint.mk (sc_prohibit_hash_pjw_without_use): Adjust regexp
+	to match any use of \<hash_pjw\>, i.e., not necessarily with a
+	following " (".
+
+2012-01-17  Jim Meyering  <meyering@redhat.com>
+
+	maint: enable double-word-prohibiting rule
+	* cfg.mk (local-checks-to-skip): Enable sc_prohibit_doubled_word.
+	Exempt three files.
+
+2012-01-17  Jim Meyering  <meyering@redhat.com>
+
+	maint: remove empty lines at EOF, but excluding modules/*
+	Apply syntax rules at home as well as abroad.  Most changes
+	were induced by running this:
+	  make srcdir=. _build-aux=build-aux -f top/maint.mk \
+	    sc_prohibit_empty_lines_at_EOF | grep -v modules/ \
+	    | xargs perl -pi -0777 -e 's/\n\n+$/\n/'
+	* cfg.mk (local-checks-to-skip): Enable sc_prohibit_empty_lines_at_EOF.
+	Exempt modules/* and two binary files.
+	Also exempt doc/INSTALL*, per request from Bruno Haible.
+	* doc/regexprops-generic.texi: *Add* a newline at EOF.  There was none.
+	* doc/Copyright/assign.translation.manual: Remove empty lines at EOF.
+	* doc/Copyright/request-assign.future: Likewise.
+	* doc/Copyright/request-disclaim.changes: Likewise.
+	* doc/INSTALL: Likewise.
+	* doc/INSTALL.ISO: Likewise.
+	* doc/INSTALL.UTF-8: Likewise.
+	* doc/acl-cygwin.txt: Likewise.
+	* doc/acl-resources.txt: Likewise.
+	* doc/fdl-1.2.texi: Likewise.
+	* doc/fdl-1.3.texi: Likewise.
+	* doc/fdl.texi: Likewise.
+	* lib/argp-pin.c: Likewise.
+	* lib/round.c: Likewise.
+	* lib/unicase/u16-totitle.c: Likewise.
+	* lib/unictype/block_test.c: Likewise.
+	* lib/uninorm/canonical-decomposition.c: Likewise.
+	* m4/README: Likewise.
+	* m4/relocatable-lib.m4: Likewise.
+	* tests/test-isnand-nolibm.c: Likewise.
+	* tests/test-isnand.c: Likewise.
+	* tests/uninorm/NormalizationTest.txt: Likewise.
+
+2012-01-17  Jim Meyering  <meyering@redhat.com>
+
+	maint: add framework to run syntax-check rules against gnulib sources
+	* cfg.mk: New file, to disable all currently-failing tests.
+	We'll enable them one by one, as they are made to pass.
+	* Makefile (sc_maint): New rule.
+
+2012-01-21  Bruno Haible  <bruno@clisp.org>
+
+	stdint: Add support for Android.
+	* lib/stdint.in.h: When included from Bionic <sys/types.h>, just
+	include the system's <stdint.h>.
+	Reported by Simon Josefsson <simon@josefsson.org>.
+
+2012-01-19  Jim Meyering  <meyering@redhat.com>
+
+	bootstrap: add bootstrap_post_import_hook
+	Bison does still need something like the gnulib_mk_hook whose
+	invocation I had to remove along with slurp in commit 767ccd40.
+	Technically, we could get along without it, but doing so would
+	have required living with a warning and a mandatory post-bootstrap
+	automake rerun.
+	* build-aux/bootstrap (gnulib_mk_hook): Remove definition, too.
+	(bootstrap_post_import_hook): New function.
+	Invoke it after gnulib-tool --import and before autoreconf.
+
+2012-01-18  Jim Meyering  <meyering@redhat.com>
+
+	gitlog-to-changelog: don't use "no_"-prefixed variable name
+	* build-aux/gitlog-to-changelog (main): Use getopt's "!" attribute
+	to enable both --cluster and --no-cluster.  Change variable name,
+	s/\$no_cluster/$cluster/, and reverse usage to match.
+
+	gitlog-to-changelog: use "||", not "or" in expressions
+	* build-aux/gitlog-to-changelog (main): Use "||", not "or" in
+	expressions.
+
+2012-01-17  Joel E. Denny  <joeldenny@joeldenny.org>
+
+	gitlog-to-changelog: new option --no-cluster
+	* build-aux/gitlog-to-changelog: New option --no-cluster, disables
+	clustering of adjacent commit messages.
+
+2012-01-17  Jim Meyering  <meyering@redhat.com>
+
+	maint: spell file systems with two words, not one
+	* m4/ls-mntd-fs.m4 (MOUNTED_INTERIX_STATVFS): Spell file systems with
+	two words, not one.
+
+2012-01-16  Jim Meyering  <meyering@redhat.com>
+
+	bootstrap: add a FIXME comment to ensure we eventually remove the hack
+	* build-aux/bootstrap (gnulib_tool_options): Add comment.
+
+2012-01-16  Eric Blake  <eblake@redhat.com>
+
+	bootstrap: cater to autoconf 2.59
+	* build-aux/bootstrap (AUTORECONF): Work even when --no-recursive
+	is not available.
+
+	bootstrap: properly check for libtool
+	* build-aux/bootstrap (libtoolize): Also run libtool when older
+	usage is detected.
+
+2012-01-15  Bruno Haible  <bruno@clisp.org>
+
+	Improve support for MSVC 9.
+	* lib/unistd.in.h: Include <io.h> when needed to avoid redefinition
+	clashes on MSVC.
+	* lib/fcntl.in.h: Likewise.
+	* lib/stdlib.in.h: Likewise.
+	* lib/sys_stat.in.h: Likewise.
+
+2011-01-15  Stefano Lattarini  <stefano.lattarini@gmail.com>
+
+	gnupload: we hold the master copy of this script now
+	For motivation and more information, see:
+	<http://lists.gnu.org/archive/html/bug-gnulib/2012-01/msg00222.html>
+	* build-aux/gnupload: Make it clear in the heading comments that the
+	master copy of this file is maintained by gnulib.  Since we are at
+	it, bump its copyright year and ...
+	($scriptversion): ... the date in its version.
+	($usage): Patches and bug reports should be sent to the gnulib list,
+	not the automake one.
+	* config/srclist.txt: Don't try to sync 'gnupload' from automake
+	anymore.
+
+2012-01-15  Bruno Haible  <bruno@clisp.org>
+
+	Fix module 'random'.
+	* m4/stdlib_h.m4 (gl_STDLIB_H): Test whether random, srandom,
+	initstate, setstate are declared.
+
+2012-01-14  Bruno Haible  <bruno@clisp.org>
+
+	Tests for module 'random'.
+	* modules/random-tests: New file.
+	* tests/test-random.c: New file, based on tests/test-random_r.c.
+
+	New module 'random'.
+	* lib/stdlib.in.h (random, srandom, initstate, setstate): New
+	declarations.
+	* lib/random.c: New file, based on glibc/stdlib/random.c.
+	* m4/random.m4: New file.
+	* m4/stdlib_h.m4 (gl_STDLIB_H_DEFAULTS): Initialize GNULIB_RANDOM,
+	HAVE_RANDOM.
+	* modules/stdlib (Makefile.am): Substitute GNULIB_RANDOM, HAVE_RANDOM.
+	* modules/random: New file.
+	* config/srclist.txt: Add an entry for random.c.
+	* doc/posix-functions/random.texi: Mention the 'random' module.
+	* doc/posix-functions/initstate.texi: Likewise.
+	* doc/posix-functions/setstate.texi: Likewise.
+	* doc/posix-functions/srandom.texi: Likewise.
+
+2012-01-12  Bruno Haible  <bruno@clisp.org>
+
+	random_r: Use common idioms.
+	* lib/random_r.c: Include <stdlib.h> first.
+
+	random_r: Override incompatible API on AIX, OSF/1.
+	* lib/stdlib.in.h (random_r, srandom_r, initstate_r, setstate_r):
+	Override the system function if REPLACE_RANDOM_R is 1.
+	* m4/random_r.m4 (gl_FUNC_RANDOM_R): Require AC_CANONICAL_HOST. On AIX
+	and OSF/1, set REPLACE_RANDOM_R.
+	* m4/stdlib_h.m4 (gl_STDLIB_H_DEFAULTS): Initialize REPLACE_RANDOM_R.
+	* modules/stdlib (Makefile.am): Substitute REPLACE_RANDOM_R.
+	* modules/random_r (configure.ac): Test REPLACE_RANDOM_R.
+	* doc/glibc-functions/initstate_r.texi: Mention the AIX, OSF/1 problem.
+	* doc/glibc-functions/random_r.texi: Likewise.
+	* doc/glibc-functions/setstate_r.texi: Likewise.
+
+	random_r: Support for MSVC 9.
+	* lib/random_r.c: Include stdint.h, not inttypes.h.
+
+2012-01-12  Eric Blake  <eblake@redhat.com>
+
+	inet_ntop: guard extra work by IF_LINT
+	* lib/inet_ntop.c (inet_ntop6): Mark spurious initialization, for
+	better code generation when not checking for warnings.
+	Suggested by Paul Eggert and Jim Meyering.
+
+	strptime: fix regression on mingw
+	* lib/strptime.c (__strptime_internal) [!_LIBC && !HAVE_TM_GMTOFF]:
+	Fix regression.  Reported by Bruno Haible.
+
+2012-01-11  Reuben Thomas  <rrt@sc3d.org>
+	    Bruno Haible  <bruno@clisp.org>
+
+	copy-file: add error-code-returning variant.
+	* lib/copy-file.h (GL_COPY_ERR_*): New enumeration items.
+	(qcopy_file_preserving): New declaration.
+	* lib/copy-file.c (qcopy_file_preserving): Renamed from
+	copy_file_preserving. Change return type to 'int'. Don't emit an error
+	message here.
+	(copy_file_preserving): New function.
+	* tests/test-copy-file.c: Include <stdlib.h>.
+	(main): Test qcopy_file_preserving if the environment variable
+	NO_STDERR_OUTPUT is set.
+	* tests/test-copy-file-1.sh: Invoke test-copy-file.sh a second time,
+	with NO_STDERR_OUTPUT
+	* tests/test-copy-file-2.sh: Likewise.
+
+2012-01-10  Bruno Haible  <bruno@clisp.org>
+
+	copy-file: Use 'quote' module consistently.
+	* lib/copy-file.c (copy_file_preserving): Use quote().
+
+	copy-file: Refactor.
+	* lib/copy-file.c: Include quote.h.
+	(copy_file_preserving): Call qcopy_acl instead of copy_acl. Emit error
+	message here.
+	* modules/copy-file (Depends-on): Add quote.
+
+	acl: Export qcopy_acl.
+	* lib/acl.h (qcopy_acl): New declaration.
+	* lib/copy-acl.c (qcopy_acl): Make non-static.
+
+	acl: Rename a local variable.
+	* lib/set-mode-acl.c (set_acl): Use same variable name as in copy_acl.
+
+	acl: Align return values of copy_acl and qcopy_acl.
+	* lib/copy-acl.c (copy_acl): Return the same value as qcopy_acl,
+	maybe < -1.
+
+2012-01-11  Eric Blake  <eblake@redhat.com>
+
+	strptime: silence gcc warnings
+	* lib/strptime.c (__strptime_internal) [!_NL_CURRENT],
+	[!_LIBC && !HAVE_TM_GMTOFF]: Avoid unused variables.
+	Reported by Daniel P. Berrange.
+
+	inet_ntop: silence gcc warning
+	* lib/inet_ntop.c (inet_ntop6): Initialize best.base.
+	Reported by Daniel P. Berrange.
+
+2012-01-11  Dmitry V. Levin  <ldv@altlinux.org>
+
+	getloadavg test: skip the test on GNU/Linux without /proc mounted
+	GNU libc implements getloadavg(3) on Linux by parsing /proc/loadavg
+	file.  When /proc is not mounted, it always fails with ENOENT.
+	* tests/test-getloadavg.c (main): Treat ENOENT return code from
+	getloadavg(3) the same way as ENOSYS and ENOTSUP.
+
+2012-01-10  Bruno Haible  <bruno@clisp.org>
+
+	regex: Avoid link error on MSVC 9.
+	* modules/regex (Depends-on): Add wctype.
+
+2012-01-10  Bruno Haible  <bruno@clisp.org>
+
+	doc: Mention --with-tests option.
+	* gnulib-tool (func_usage): Suggest --with-tests for --test etc.
+	* doc/gnulib.texi (Extra tests modules): Mention the need to pass
+	--with-tests.
+	Reported by Reuben Thomas.
+
+2012-01-10  Reuben Thomas  <rrt@sc3d.org>
+
+	users.txt: order package names lexicographically.
+	* users.txt: Order package names lexicographically.
+
+2012-01-10  Jim Meyering  <meyering@redhat.com>
+
+	maint.mk: fix description in comment
+	* top/maint.mk (require_exactly_one_NL_at_EOF_): Fix comment.
+
+	ignore-value: remove deprecated ignore_ptr function
+	* lib/ignore-value.h (ignore_ptr): Remove deprecated function.
+	* NEWS: Note this.
+
+2012-01-09  Jim Meyering  <meyering@redhat.com>
+
+	test-init.sh: avoid a subshell
+	* tests/test-init.sh: Remove protective subshell.
+	Suggested by Bernhard Voelker.  While a subshell is normally
+	required to protect against older shells (Solaris, FreeBSD) that
+	warn about a missing program before performing redirection, the
+	shell-selection tests performed by init.sh probably exclude any
+	offending shell.
+
+2012-01-08  Bruno Haible  <bruno@clisp.org>
+
+	setlocale tests: Avoid test failure on Solaris 11 2011-11.
+	* tests/test-setlocale2.sh: Use 'env' to set the LC_ALL environment
+	variable.
+
+2012-01-08  Bruno Haible  <bruno@clisp.org>
+
+	posix_spawn_file_actions_addopen: Work around Solaris 11 2011-11 bug.
+	* m4/spawn_h.m4 (gl_SPAWN_H_DEFAULTS): Initialize
+	REPLACE_POSIX_SPAWN_FILE_ACTIONS_ADDOPEN.
+	* m4/posix_spawn.m4 (gl_FUNC_POSIX_SPAWN_FILE_ACTIONS_ADDOPEN): New
+	macro.
+	* lib/spawn.in.h (posix_spawn_file_actions_addopen): Test
+	REPLACE_POSIX_SPAWN_FILE_ACTIONS_ADDOPEN, not REPLACE_POSIX_SPAWN.
+	* lib/spawn_faction_addopen.c: Add workaround implementation if
+	HAVE_WORKING_POSIX_SPAWN.
+	* modules/spawn (Makefile): Substitute
+	REPLACE_POSIX_SPAWN_FILE_ACTIONS_ADDOPEN.
+	* modules/posix_spawn_file_actions_addopen (configure.ac): Invoke
+	gl_FUNC_POSIX_SPAWN_FILE_ACTIONS_ADDOPEN. Test
+	REPLACE_POSIX_SPAWN_FILE_ACTIONS_ADDOPEN, not REPLACE_POSIX_SPAWN.
+	(Depends-on): Update conditions.
+	* doc/posix-functions/posix_spawn_file_actions_addopen.texi: Mention
+	the Solaris 11 bug.
+
+2012-01-08  Bruno Haible  <bruno@clisp.org>
+
+	posix_spawn_file_actions_adddup2: Work around Solaris 11 2011-11 bug.
+	* m4/spawn_h.m4 (gl_SPAWN_H_DEFAULTS): Initialize
+	REPLACE_POSIX_SPAWN_FILE_ACTIONS_ADDDUP2.
+	* m4/posix_spawn.m4 (gl_FUNC_POSIX_SPAWN_FILE_ACTIONS_ADDDUP2): New
+	macro.
+	* lib/spawn.in.h (posix_spawn_file_actions_adddup2): Test
+	REPLACE_POSIX_SPAWN_FILE_ACTIONS_ADDDUP2, not REPLACE_POSIX_SPAWN.
+	* lib/spawn_faction_adddup2.c: Add workaround implementation if
+	HAVE_WORKING_POSIX_SPAWN.
+	* modules/spawn (Makefile): Substitute
+	REPLACE_POSIX_SPAWN_FILE_ACTIONS_ADDDUP2.
+	* modules/posix_spawn_file_actions_adddup2 (configure.ac): Invoke
+	gl_FUNC_POSIX_SPAWN_FILE_ACTIONS_ADDDUP2. Test
+	REPLACE_POSIX_SPAWN_FILE_ACTIONS_ADDDUP2, not REPLACE_POSIX_SPAWN.
+	(Depends-on): Update conditions.
+	* doc/posix-functions/posix_spawn_file_actions_adddup2.texi: Mention
+	the Solaris 11 bug.
+
+2012-01-08  Bruno Haible  <bruno@clisp.org>
+
+	posix_spawn_file_actions_addclose: Work around Solaris 11 2011-11 bug.
+	* m4/spawn_h.m4 (gl_SPAWN_H_DEFAULTS): Initialize
+	REPLACE_POSIX_SPAWN_FILE_ACTIONS_ADDCLOSE.
+	* m4/posix_spawn.m4 (gl_POSIX_SPAWN_BODY): Define
+	HAVE_WORKING_POSIX_SPAWN.
+	(gl_FUNC_POSIX_SPAWN_FILE_ACTIONS_ADDCLOSE): New macro.
+	* lib/spawn.in.h (posix_spawn_file_actions_addclose): Test
+	REPLACE_POSIX_SPAWN_FILE_ACTIONS_ADDCLOSE, not REPLACE_POSIX_SPAWN.
+	* lib/spawn_faction_addclose.c: Add workaround implementation if
+	HAVE_WORKING_POSIX_SPAWN.
+	* modules/spawn (Makefile): Substitute
+	REPLACE_POSIX_SPAWN_FILE_ACTIONS_ADDCLOSE.
+	* modules/posix_spawn_file_actions_addclose (configure.ac): Invoke
+	gl_FUNC_POSIX_SPAWN_FILE_ACTIONS_ADDCLOSE. Test
+	REPLACE_POSIX_SPAWN_FILE_ACTIONS_ADDCLOSE, not REPLACE_POSIX_SPAWN.
+	(Depends-on): Update conditions.
+	* doc/posix-functions/posix_spawn_file_actions_addclose.texi: Mention
+	the Solaris 11 bug.
+
+2012-01-08  Bruno Haible  <bruno@clisp.org>
+
+	doc: Update for Solaris 11 2011-11.
+	* doc/*/*.texi: Mention Solaris 11 2011-11 where appropriate.
+	* m4/printf.m4: Update comments.
+
+2012-01-08  Bruno Haible  <bruno@clisp.org>
+
+	mktime: Avoid compilation error on Solaris 11.
+	* lib/mktime.c (WRAPV): Define to 0 on all non-glibc systems.
+
+2012-01-08  Bruno Haible  <bruno@clisp.org>
+
+	doc: Small fix.
+	* doc/posix-headers/nl_types.texi: Correct platforms list.
+
+2012-01-08  Simon Josefsson  <simon@josefsson.org>
+
+	Add lgpl-3.0 module.
+	* MODULES.html.sh (Support for building documentation): Add
+	lgpl-3.0.
+	* modules/lgpl-3.0: New file.
+
+2012-01-08  Jim Meyering  <meyering@redhat.com>
+
+	select.c: indent with spaces, not TABs
+	* lib/select.c (windows_poll_handle): Indent with spaces, not TABs.
+
+2012-01-07  Paolo Bonzini  <bonzini@gnu.org>
+
+	quotearg: do not use grave accent for left quote
+	* lib/quotearg.c (gettext_quote): Map "`" to "'" for
+	locale_quoting_style.
+	(quotearg_buffer_restyled): Fix example.
+	* tests/test-quotearg-simple.c (results_g): Adjust test vectors.
+
+2012-01-07  Paolo Bonzini  <bonzini@gnu.org>
+
+	quotearg: fall back to Unicode single quotes in UTF-8, GB-18030 locales
+	Most programs do not have translation catalogs for English and much
+	less separate catalogs for British and American English.  Drop the
+	suggestion to translators about these two, and provide it
+	automatically for Unicode locales.  Like most programs, even those
+	using American English, we use single quotation marks.  This conflicts
+	with the American typographic convention, but works better when you
+	cite the entire error message within double quotes.  It also tries not
+	to clash with established practice and with what non-gnulib programs
+	will usually do.
+	* lib/quotearg.c (gettext_quote): Hard-code U+2018 and U+2019 when
+	using an UTF-8 or GB-18030 locale.  The list of other locales with
+	quotes was provided by Bruno Haible.
+	(quotearg_buffer_restyled): Adjust instructions to translators.
+	* lib/quotearg.h (locale_quoting_style): Do not put an example in the
+	text, since this would be wrong when using Unicode.
+	* modules/quotearg: Depend on c-strcaseeq.
+
+2012-01-07  Paolo Bonzini  <bonzini@gnu.org>
+
+	quotearg: fix Wikipedia link
+	* lib/quotearg.c (quotearg_buffer_restyled): Fix link to Wikipedia.
+
+2012-01-07  Simon Josefsson  <simon@josefsson.org>
+
+	Fix for mingw with MSVC9.
+	* m4/ld-version-script.m4: Check that compiler rejects version
+	scripts with syntax errors.  Reported by Bruno Haible
+	<bruno@clisp.org>.
+
+2012-01-06  Bruno Haible  <bruno@clisp.org>
+
+	Talk about "native Windows API", not "Woe32".
+	* lib/accept4.c: Update comments to mention native Windows.
+	* lib/execute.c: Likewise.
+	* lib/fatal-signal.c: Likewise.
+	* lib/localcharset.c: Likewise.
+	* lib/nanosleep.c: Likewise.
+	* lib/nl_langinfo.c: Likewise.
+	* lib/pclose.c: Likewise.
+	* lib/pipe-filter-gi.c: Likewise.
+	* lib/pipe-filter-ii.c: Likewise.
+	* lib/pipe.c: Likewise.
+	* lib/pipe2.c: Likewise.
+	* lib/popen.c: Likewise.
+	* lib/progreloc.c: Likewise.
+	* lib/relocatable.c: Likewise.
+	* lib/sigaction.c: Likewise.
+	* lib/sigprocmask.c: Likewise.
+	* lib/spawn-pipe.h: Likewise.
+	* lib/spawn-pipe.c: Likewise.
+	* lib/spawni.c: Likewise.
+	* lib/stat-time.h: Likewise.
+	* lib/w32spawn.h: Likewise.
+	* tests/test-isatty.c: Likewise.
+	* lib/config.charset: More comments.
+	* doc/gnulib-intro.texi: Mention native Windows.
+	* doc/posix-functions/_Exit_C99.texi: Likewise.
+	* doc/posix-headers/fcntl.texi: Likewise.
+
+2012-01-06  Guillem Jover  <guillem@hadrons.org>  (tiny change)
+
+	argp: Avoid crash if translator uses % characters in a translation.
+	* lib/argp-parse.c (argp_version_parser): Use a "%s" format string.
+	Reported by Mats Erik Andersson <gnu@gisladisker.se>.
+
+2012-01-06  Paul Eggert  <eggert@cs.ucla.edu>
+
+	doc: C11 and C++11 are now official
+	* doc/posix-headers/assert.texi, doc/posix-headers/stdalign.texi:
+	* doc/verify.texi, stdalign.in.h, verify.h, m4/gnulib-common.m4:
+	* m4/stdalign.m4, modules/assert-h, modules/snippet/_Noreturn:
+	* modules/stdalign:
+	Replace references to draft C1X to C11, and to draft C++0X to C++11.
+
+2012-01-06  Bruno Haible  <bruno@clisp.org>
+
+	uc-is-grapheme-break tests: Tweak.
+	* tests/unigbrk/test-uc-is-grapheme-break.c (main): Fix an error
+	message.
+
+2012-01-06  Bruno Haible  <bruno@clisp.org>
+
+	test-init.sh: correct the test for diff -u
+	* tests/test-init.sh: Also redirect stdout to /dev/null.
+
+2012-01-05  Paul Eggert  <eggert@cs.ucla.edu>
+
+	Use ', not `, for quoting output.
+	* build-aux/announce-gen (usage, sizes, print_news_deltas)
+	(print_changelog_deltas, get_tool_versions, main program):
+	* build-aux/git-version-gen:
+	* build-aux/gitlog-to-changelog (usage, parse_amend_file):
+	* build-aux/move-if-change (help):
+	* build-aux/useless-if-before-free (usage, main program):
+	* check-module (parse_module_file, usage)
+	(find_included_lib_files, check_module):
+	* lib/argmatch.c (main) [TEST]:
+	* lib/argp-help.c (_help):
+	* lib/getopt1.c (main) [TEST]:
+	* lib/git-merge-changelog.c (usage):
+	* lib/xstrtol-error.c (xstrtol_error):
+	* m4/alloca.m4 (_AC_LIBOBJ_ALLOCA):
+	* m4/argz.m4 (gl_FUNC_ARGZ):
+	* m4/bison.m4 (gl_BISON):
+	* m4/calloc.m4 (gl_FUNC_CALLOC_GNU):
+	* m4/extensions.m4 (AC_USE_SYSTEM_EXTENSIONS):
+	* m4/flexmember.m4 (AC_C_FLEXIBLE_ARRAY_MEMBER):
+	* m4/fpending.m4 (gl_PREREQ_FPENDING):
+	* m4/gc-random.m4 (gl_GC_RANDOM):
+	* m4/intl.m4 (gt_CHECK_DECL):
+	* m4/link-follow.m4 (gl_FUNC_LINK_FOLLOWS_SYMLINK):
+	* m4/longlong.m4 (AC_TYPE_LONG_LONG_INT)
+	(AC_TYPE_UNSIGNED_LONG_LONG_INT):
+	* m4/ls-mntd-fs.m4 (gl_LIST_MOUNTED_FILE_SYSTEMS):
+	* m4/lstat.m4 (gl_FUNC_LSTAT_FOLLOWS_SLASHED_SYMLINK):
+	* m4/onceonly.m4 (AC_CHECK_FUNCS_ONCE):
+	* m4/posixver.m4 (gl_DEFAULT_POSIX2_VERSION):
+	* tests/test-dirname.c (main):
+	* tests/test-getpass.c (main):
+	* tests/test-iconvme.c (main):
+	* tests/test-parse-datetime.c (LOG):
+	* tests/test-xstrtoimax.sh:
+	* tests/test-xstrtol.sh:
+	* tests/test-xstrtoll.sh:
+	* tests/test-xstrtoumax.sh:
+	* tests/unigbrk/test-uc-is-grapheme-break.c (main):
+	* top/GNUmakefile (abort-due-to-no-makefile):
+	Quote 'like this', not `like this', as per the recent change to
+	the GNU coding standards.
+
+2012-01-05  Bruno Haible  <bruno@clisp.org>
+
+	strtoimax: Don't force a replacement on systems where intmax_t is int.
+	* m4/strtoimax.m4 (gl_FUNC_STRTOIMAX): Use a different test if
+	'intmax_t' is not larger than 'int'.
+	Reported by Pádraig Brady <P@draigBrady.com>.
+
+2012-01-05  Bruno Haible  <bruno@clisp.org>
+
+	doc: Mention NetBSD bugs.
+	* doc/posix-functions/*printf.texi: Mention a NetBSD 5.1 bug.
+	* doc/posix-functions/nl_langinfo.texi: Mention another NetBSD 5.1 bug.
+
+2012-01-05  Bruno Haible  <bruno@clisp.org>
+
+	strtoumax tests: Enhance tests.
+	* tests/test-strtoumax.c (main): Add tests for large values.
+
+2012-01-05  Bruno Haible  <bruno@clisp.org>
+
+	strtoimax: Work around AIX 5.1 bug.
+	* lib/inttypes.in.h (strtoimax): Allow overriding the system's
+	definition.
+	* m4/strtoimax.m4 (gl_FUNC_STRTOIMAX): Check against the AIX 5.1 bug.
+	Set HAVE_STRTOIMAX.
+	* m4/inttypes.m4 (gl_INTTYPES_H_DEFAULTS): Initialize
+	REPLACE_STRTOIMAX.
+	* modules/inttypes-incomplete (Makefile.am): Substitute
+	REPLACE_STRTOIMAX.
+	* modules/strtoimax (Files): Add m4/stdint_h.m4, m4/inttypes_h.m4.
+	(configure.ac): Test HAVE_STRTOIMAX, REPLACE_STRTOIMAX.
+	(Depends-on): Update conditions.
+	* tests/test-strtoimax.c (main): Add tests for large values.
+	* doc/posix-functions/strtoimax.texi: Mention the AIX 5.1 bug.
+
+2012-01-05  Bruno Haible  <bruno@clisp.org>
+
+	inttypes: Modernize.
+	* lib/inttypes.in.h (strtoimax, strtoumax): Use the C++ safe idioms.
+	* modules/inttypes-incomplete (Depends-on): Add snippet/c++defs.
+	(Makefile.am): Update inttypes.h rule.
+
+2012-01-05  Jim Meyering  <meyering@redhat.com>
+
+	init.sh: don't waste a subshell just to redirect stderr
+	* tests/init.sh: In testing for diff -u and diff -c, use a
+	stderr-redirecting exec inside `...` rather than a subshell.
+
+	test-init.sh: avoid failure on HP-UX 11.00
+	* tests/test-init.sh: Skip "diff -u"-comparing step when compare
+	resolves to diff -c or cmp.  Reported by Bruno Haible.
+
+2012-01-05  Bruno Haible  <bruno@clisp.org>
+
+	Tests for module 'strtoull'.
+	* modules/strtoull-tests: New file.
+	* tests/test-strtoull.c: New file, based on tests/test-strtoumax.c.
+
+2012-01-05  Bruno Haible  <bruno@clisp.org>
+
+	Tests for module 'strtoll'.
+	* modules/strtoll-tests: New file.
+	* tests/test-strtoll.c: New file, based on tests/test-strtoimax.c.
+
+2012-01-05  Bruno Haible  <bruno@clisp.org>
+
+	Tests for module 'strtoul'.
+	* modules/strtoul-tests: New file.
+	* tests/test-strtoul.c: New file, based on tests/test-strtoumax.c.
+
+2012-01-05  Bruno Haible  <bruno@clisp.org>
+
+	Tests for module 'strtol'.
+	* modules/strtol-tests: New file.
+	* tests/test-strtol.c: New file, based on tests/test-strtoimax.c.
+
+2012-01-04  Jim Meyering  <meyering@redhat.com>
+
+	test-init.sh: accommodate Solaris 5.10's different diff -u output
+	* tests/test-init.sh: Also exempt @@ lines from the comparison
+	of diff output, since Solaris 5.10 and GNU diff formats differ.
+	Reported by Stefano Lattarini.
+
+2012-01-04  Paul Eggert  <eggert@cs.ucla.edu>
+
+	test-posixtm: don't assume signed integer wraparound
+	* tests/test-posixtm.c (main): Don't assume wraparound semantics
+	after signed integer overflow.  Inspired by (though it may not
+	fix) Bruno Haible's bug report in
+	<http://lists.gnu.org/archive/html/bug-gnulib/2012-01/msg00066.html>.
+
+	Spell out "Windows 9x" and "Windows XP".
+	* lib/poll.c, lib/select.c: In comments, replace "Win9x" with
+	"Windows 9x" and "WinXP" with "Windows XP".
+
+2012-01-04  Jim Meyering  <meyering@redhat.com>
+
+	test-vc-list-files-cvs.sh: remove obsolete comment
+	* tests/test-vc-list-files-cvs.sh: Remove obsolete comment about
+	double exit.  Now that's all encapsulated via skip_ and Exit.
+
+2012-01-04  Bruno Haible  <bruno@clisp.org>
+
+	Talk about "native Windows API", not "Win32".
+	* lib/classpath.c: Update comments to mention native Windows.
+	* lib/csharpexec.c: Likewise.
+	* lib/dup2.c: Likewise.
+	* lib/error.c: Likewise.
+	* lib/fcntl.c: Likewise.
+	* lib/filename.h: Likewise.
+	* lib/findprog.c: Likewise.
+	* lib/get-rusage-as.c: Likewise.
+	* lib/get-rusage-data.c: Likewise.
+	* lib/getpagesize.c: Likewise.
+	* lib/javaexec.c: Likewise.
+	* lib/msvc-inval.c: Likewise.
+	* lib/msvc-nothrow.c: Likewise.
+	* lib/nanosleep.c: Likewise.
+	* lib/nonblocking.c: Likewise.
+	* lib/printf-parse.c: Likewise.
+	* lib/setlocale.c: Likewise.
+	* lib/sigaction.c: Likewise.
+	* lib/strerror_r.c: Likewise.
+	* lib/tmpdir.c: Likewise.
+	* lib/vasnprintf.c: Likewise.
+	* lib/w32spawn.h: Likewise.
+	* lib/waitpid.c: Likewise.
+	* lib/stdio.in.h (fdopen, fopen, freopen): Likewise.
+	* m4/locale-ar.m4: Likewise.
+	* m4/locale-fr.m4: Likewise.
+	* m4/locale-ja.m4: Likewise.
+	* m4/locale-tr.m4: Likewise.
+	* m4/locale-zh.m4: Likewise.
+	* m4/printf.m4: Likewise.
+	* tests/test-cloexec.c: Likewise.
+	* tests/test-copy-acl.sh: Likewise.
+	* tests/test-copy-file.sh: Likewise.
+	* tests/test-file-has-acl.sh: Likewise.
+	* tests/test-set-mode-acl.sh: Likewise.
+	* tests/test-dup-safer.c: Likewise.
+	* tests/test-dup2.c: Likewise.
+	* tests/test-dup3.c: Likewise.
+	* tests/test-fcntl.c: Likewise.
+	* tests/test-nonblocking-pipe.h: Likewise.
+	* tests/test-nonblocking-socket.h: Likewise.
+	* tests/test-pipe.c: Likewise.
+	* tests/test-pipe2.c: Likewise.
+	* tests/test-spawn-pipe-child.c: Likewise.
+	* doc/acl-resources.txt: Likewise.
+	* lib/getaddrinfo.c (WINDOWS_NATIVE): Renamed from WIN32_NATIVE.
+	* tests/test-poll.c (WINDOWS_NATIVE): Likewise.
+	* tests/test-select.h (WINDOWS_NATIVE): Likewise.
+	* lib/localcharset.c: Update comments to mention native Windows.
+	(WINDOWS_NATIVE): Renamed from WIN32_NATIVE.
+	* lib/localename.c: Likewise.
+	* lib/progreloc.c: Likewise.
+	* lib/relocatable.c: Likewise.
+	* lib/poll.c (WINDOWS_NATIVE): Renamed from WIN32_NATIVE.
+	(windows_compute_revents): Renamed from win32_compute_revents.
+	(windows_compute_revents_socket): Renamed from
+	win32_compute_revents_socket.
+	* lib/select.c: Update comments to mention native Windows.
+	(windows_poll_handle): Renamed from win32_poll_handle.
+	* m4/threadlib.m4: Update comments to mention native Windows.
+	(gl_THREADLIB_EARLY_BODY, gl_THREADLIB_BODY): Expect
+	--enable-threads=windows instead of --enable-threads=win32. Set
+	USE_WINDOWS_THREADS, not USE_WIN32_THREADS.
+	* lib/glthread/lock.h: Update comments to mention native Windows.
+	(USE_WINDOWS_THREADS): Renamed from USE_WIN32_THREADS.
+	* lib/glthread/lock.c (USE_WINDOWS_THREADS): Renamed from
+	USE_WIN32_THREADS.
+	* lib/glthread/cond.h (USE_WINDOWS_THREADS): Likewise.
+	* lib/glthread/cond.c (USE_WINDOWS_THREADS): Likewise.
+	* lib/glthread/thread.h (USE_WINDOWS_THREADS): Likewise.
+	* lib/glthread/thread.c (USE_WINDOWS_THREADS): Likewise.
+	* lib/glthread/tls.h (USE_WINDOWS_THREADS): Likewise.
+	* lib/glthread/tls.c (USE_WINDOWS_THREADS): Likewise.
+	* lib/glthread/yield.h (USE_WINDOWS_THREADS): Likewise.
+	* tests/test-cond.c (USE_WINDOWS_THREADS): Likewise.
+	* tests/test-thread_create.c (USE_WINDOWS_THREADS): Likewise.
+	* tests/test-lock.c (USE_WINDOWS_THREADS): Likewise.
+	(TEST_WINDOWS_THREADS): Renamed from TEST_WIN32_THREADS.
+	* tests/test-tls.c: Likewise.
+	Rationale:
+	Microsoft renamed the "Win32 API" to "Windows API", as it is available
+	on both 32-bit and 64-bit Windows systems.
+	But in gnulib, we treat Cygwin like a Unix platform, therefore the main
+	line of distinction is between "native Windows" on one side and Unix/
+	POSIX systems on the other side. More details in
+	<https://lists.gnu.org/archive/html/bug-gnulib/2012-01/msg00027.html>.
+	Suggested by Paul Eggert.
+
+2012-01-03  Bruno Haible  <bruno@clisp.org>
+
+	isatty: Support for MSVC 9.
+	* doc/posix-functions/isatty.texi: Mention the MSVC problem.
+	* lib/isatty.c: Include <errno.h>, msvc-inval.h.
+	(_isatty_nothrow): New function.
+	(isatty): Use it instead of _isatty.
+	(IsConsoleHandle): Add comment, from Paolo Bonzini.
+	* lib/poll.c (IsConsoleHandle): Likewise.
+	* lib/select.c (IsConsoleHandle): Likewise.
+	* m4/isatty.m4 (gl_FUNC_ISATTY): Fix comment. Reported by Eli Zaretskii.
+	(gl_PREREQ_ISATTY): New macro.
+	* modules/isatty (Depends-on): Add msvc-inval.
+	(configure.ac): Invoke gl_PREREQ_ISATTY.
+
+2012-01-03  Jim Meyering  <meyering@redhat.com>
+
+	maint.mk: remove temporary transition aid from over 1.5 years ago
+	* top/maint.mk (_prohibit_regexp): Remove definition whose sole
+	purpose was to aid in the transition (avoiding silent malfunction)
+	from that old name to the new _sc_search_regexp.  This shim was
+	added by commit 219c504b.
+
+	init.sh: do not try to accommodate compare arguments starting with "-"
+	* tests/init.sh (compare_dev_null_): Do not try to accommodate
+	compare arguments that start with "-".  Besides, we do not worry
+	about this when invoking diff or cmp; why start now with sed?
+	Using "--" to separate options from argument would trigger sed
+	failure in at least Solaris 7, HP-UX 11.00, IRIX 6.5, FreeBSD 6.4,
+	OpenBSD 4.9 and NetBSD 5.1.  Reported by Bruno Haible.
+
+2012-01-02  Bruno Haible  <bruno@clisp.org>
+
+	Enhance tests for module 'isatty'.
+	* modules/isatty-tests (Depends-on): Add pipe-posix.
+	* tests/test-isatty.c: Include <fcntl.h>.
+	(DEV_NULL): New macro.
+	(main): Test the resut of isatty() also on regular files, pipes, and
+	/dev/null.
+
+	New module 'isatty'.
+	* lib/unistd.in.h (isatty): New declaration.
+	* lib/isatty.c: New file, based on an idea of
+	Bastien Roucariès <roucaries.bastien@gmail.com>.
+	* m4/isatty.m4: New file.
+	* m4/unistd_h.m4 (gl_UNISTD_H): Test whether isatty is declared.
+	(gl_UNISTD_H_DEFAULTS): Initialize GNULIB_ISATTY, REPLACE_ISATTY.
+	* modules/unistd (Makefile.am): Substitute GNULIB_ISATTY,
+	REPLACE_ISATTY.
+	* modules/isatty: New file.
+	* doc/posix-functions/isatty.texi: Mention the new module.
+	Suggested by Paolo Bonzini.
+
+2012-01-02  Bruno Haible  <bruno@clisp.org>
+
+	canonicalize: Tweak 2011-12-29 commit.
+	* lib/canonicalize.c (canonicalize_filename_mode): Fix typo in comment.
+	* lib/canonicalize.h (canonicalize_filename_mode): Update specification.
+
+2012-01-02  Jim Meyering  <meyering@redhat.com>
+
+	gitlog-to-changelog: describe input syntax in --help output
+	* build-aux/gitlog-to-changelog (usage) [SPECIAL SYNTAX]: New section.
+
+	gitlog-to-changelog: fix typo in --help: show backslash before email @
+	* build-aux/gitlog-to-changelog (usage): An "@" was backslash-escaped
+	in sources, but not in actual output.
+
+2011-12-30  Jim Meyering  <meyering@redhat.com>
+
+	gitlog-to-changelog: don't malfunction when name contains %-directive
+	* build-aux/gitlog-to-changelog (main): Don't let a %-directive
+	in a name string cause trouble.  E.g., with a user name of "%s",
+	gitlog-to-changelog would fail with "Missing argument in sprintf at..."
+
+2011-12-30  Gary V. Vaughan  <gary@gnu.org>
+
+	gitlog-to-changelog: Copyright-paperwork-exempt: yes == (tiny change)
+	* build-aux/gitlog-to-changelog (main): Map the string, at beginning
+	of line in a git commit log, "Copyright-paperwork-exempt: yes", to
+	the "  (tiny change)" notation that is appended to the standard
+	ChangeLog "date  name  email" header line.
+
+2012-01-01  Jim Meyering  <meyering@redhat.com>
+
+	test-framework-sh: init.sh: fix "make dist" failure
+	When using gnulib-tool's --with-tests option and any module that
+	depends on test-framework-sh, "make dist" would fail due to the
+	lack of init.sh *in lib/*.  The EXTRA_DIST += init.sh is required
+	in the gltests directory, and not in the gllib/ directory.
+	One way to work around that is to move the EXTRA_DIST += init.sh
+	from the primary module to the -tests one:
+	* modules/test-framework-sh-tests (EXTRA_DIST): Add init.sh here, ...
+	* modules/test-framework-sh (Makefile.am): ...not here.
+	Reported by Tom G. Christensen in
+	http://thread.gmane.org/gmane.comp.lib.gnulib.bugs/29519
+
+	version-etc: update copyright year reported by --version
+	* lib/version-etc.c (COPYRIGHT_YEAR): Update to 2012.
+
+2011-12-31  Pádraig Brady  <P@draigBrady.com>
+
+	canonicalize: only stat() if required
+	* lib/canonicalize.c (canonicalize_filename_mode):
+	Avoid calling l?stat() when both CAN_MISSING,
+	and CAN_NOLINKS are set, as we neither need
+	to resolve symlinks or test component existence.
+
+2011-12-31  Paul Eggert  <eggert@cs.ucla.edu>
+
+	doc: cover st_ino issues once; add OpenVMS etc.
+	* doc/posix-functions/stat.texi (stat):
+	* doc/posix-functions/lstat.texi (lstat):
+	* doc/posix-functions/fstatat.texi (fstatat):
+	* doc/posix-functions/fstat.texi (fstat):
+	Move general 'struct stat' stuff to sys_stat.texi,
+	leaving behind a pointer.
+	* doc/posix-headers/sys_stat.texi (sys/stat.h):
+	Merge duplicate info about 'struct stat' problems into here.
+	Mention issues with OpenVMS, GNU/Linux NFS, NetApp, ClearCase,
+	and suggest partial workarounds.
+
+	same-inode: port to OpenVMS
+	* lib/same-inode.h (SAME_INODE): Port to OpenVMS by checking all
+	three st_ino values.
+
+2011-12-30  Pádraig Brady  <P@draigBrady.com>
+
+	canonicalize: fix references to stat() and lstat()
+	* lib/canonicalize.c (canonicalize_filename_mode):
+	Ensure references always resolve to a replacement
+	function if required (even via a macro).
+
+2011-12-30  Jim Meyering  <meyering@redhat.com>
+
+	gitlog-to-changelog: remove a little duplication
+	* build-aux/gitlog-to-changelog (main): Grep @lines once,
+	rather than twice.
+
+2011-12-29  Pádraig Brady  <P@draigBrady.com>
+
+	canonicalize: add support for not resolving symlinks
+	* lib/canonicalize.h: Add the CAN_NOLINKS flag to
+	indicate we don't want to follow symlinks.  Also
+	provide CAN_MODE_MASK to aid setting these existing
+	mutually exclusive values.
+	* lib/canonicalize.c (canonicalize_filename_mode):
+	Extract the flags from can_mode parameter, which
+	are currently just used to select between stat()
+	and lstat().  Also ensure that mutually exclusive
+	values are flagged immediately as invalid.
+	* tests/test-canonicalize.c: Verify symlinks are
+	not followed, and that invalid flag combinations
+	are diagnosed.
+
+2011-12-25  Jim Meyering  <meyering@redhat.com>
+
+	gitlog-to-changelog: do not clump multi-paragraph entries
+	Identical header lines (date,name,email+coauthors) are suppressed,
+	thus putting all entries with those same characteristics under
+	a single header.  However, when a log entry consists of two or
+	more paragraphs, it may not be clear where it starts and ends.
+	This change makes it so that such an entry is always separated
+	from others by a header line, even when that header would
+	otherwise be suppressed.
+	* build-aux/gitlog-to-changelog: Implement the above.
+	Inspired by a related request from Stefano Lattarini in
+	http://thread.gmane.org/gmane.comp.lib.gnulib.bugs/29456
+
+2011-12-25  Paul Eggert  <eggert@cs.ucla.edu>
+
+	announce-gen: fix `cmd' typo in diagnostic
+	* build-aux/announce-gen (print_changelog_deltas): Fix typo in
+	diagnostic: a missing '$' meant that the command was not output.
+
+2011-12-23  Jim Meyering  <meyering@redhat.com>
+
+	test-framework-sh: distribute init.sh
+	* modules/test-framework-sh (EXTRA_DIST): Append init.sh.
+	Otherwise, "make -C gnulib-tests check" (at least in grep) would
+	fail due to the lack of init.sh.
+
+	maint: remove explicit Files: tests/init.sh; depend on test-framework-sh
+	* modules/atexit-tests: Rather than listing tests/init.sh,
+	now that there's a module for it, simply depend on that new module.
+	* modules/closein-tests: Likewise.
+	* modules/exclude-tests: Likewise.
+	* modules/getcwd-tests: Likewise.
+	* modules/perror-tests: Likewise.
+	* modules/pread-tests: Likewise.
+	* modules/pwrite-tests: Likewise.
+	* modules/vc-list-files-tests: Likewise.
+	* modules/verify-tests: Likewise.
+	* modules/xalloc-die-tests: Likewise.
+	* modules/xstrtoimax-tests: Likewise.
+	* modules/xstrtol-tests: Likewise.
+	* modules/xstrtoll-tests: Likewise.
+	* modules/xstrtoumax-tests: Likewise.
+	* modules/yesno-tests: Likewise.
+
+2011-12-22  Jim Meyering  <meyering@redhat.com>
+
+	test-framework-sh: add minimal tests of init.sh's compare function
+	* modules/test-framework-sh-tests: New file.
+	* tests/test-init.sh: New file.
+
+	test-framework-sh: new module
+	* modules/test-framework-sh: New file.
+	* MODULES.html.sh (Support for maintaining and releasing projects):
+	List it.
+
+	init.sh: do not emit simulated diff output to stderr
+	* tests/init.sh (compare_dev_null_): Print to stdout, not stderr.
+
+2011-12-22  Reuben Thomas  <rrt@sc3d.org>
+
+	.gitignore: ignore gnulib.dvi and regex.info
+	* doc/.gitignore:add gnulib.dvi and regex.info
+
+2011-12-22  Jim Meyering  <meyering@redhat.com>
+
+	init.sh: correct previous change
+	* tests/init.sh (compare): My previous change was wrong.
+	Don't clobber "$?".  Spotted by Stefano Lattarini and Pádraig Brady.
+
+	init.sh: avoid unwarranted test failure when using "set -e"
+	* tests/init.sh (compare): Ignore nonzero exit from compare_dev_null_.
+	Otherwise, in a test script that uses "set -e" (like many in vc-dwim)
+	a use like "compare exp out" would get evoke an unconditional failure.
+
+2011-12-21  Alfred M. Szmidt  <ams@gnu.org>
+
+	bootstrap: fix it to honor $ACLOCAL_FLAGS once again
+	The 2011-12-17 change, commit 767ccd40, replaced a manual invocation
+	of aclocal that used explicit $ACLOCAL_FLAGS with an invocation of
+	autoreconf that did not.
+	* build-aux/bootstrap: Use $ACLOCAL_FLAGS when invoking autoreconf.
+	Reported by Mats Erik Andersson <gnu@gisladisker.se>.
+
+2011-12-17  Jim Meyering  <meyering@redhat.com>
+
+	bootstrap: remove some now-unneeded code
+	This script arose back when gnulib-tool was young.
+	Since then, it has seen improvements that render much of this
+	script unnecessary.  In particular, it can now make symlinks
+	to the files it uses.  Also, I no longer see as much value in
+	marking files as read-only via comments.
+	If you relied on the symlink-creation feature of the preceding
+	version of this script, you can get most of that functionality
+	by adding the --symlink option to the definition of
+	gnulib_tool_option_extras in your bootstrap.conf file.
+	* build-aux/bootstrap (AUTOPOINT, AUTORECONF): Factor out definitions.
+	Run autopoint and libtoolize *before* gnulib-tool.
+	After it, run an abbreviated autoreconf, rather than a loop around
+	all tools.
+	(slirp, bt_mark_as_generated): Remove functions.
+
+2011-12-18  Paul Eggert  <eggert@cs.ucla.edu>
+
+	ftoastr: fix typo
+	* lib/ftoastr.h: Fix misspelling in comment.
+
+2011-12-18  Reuben Thomas  <rrt@sc3d.org>
+
+	* top/README-release: fix punctuation.
+
+2011-12-17  Jim Meyering  <meyering@redhat.com>
+
+	bootstrap: correct the recent buildreq change
+	The 2011-12-07 commit, 39f5f1e4, omitted some '*'s, and thus
+	had no effect.
+	* build-aux/bootstrap (buildreq): Bracket each search term with
+	"*...*", so that the shell "case" statement works as intended.
+	Add comments.
+
+2011-12-17  Bernhard Voelker  <mail@bernhard-voelker.de>
+
+	build: let bootstrap resort to wget when downloading .po files
+	* build-aux/bootstrap (download_po_files): Fallback to wget when
+	downloading the .po files via rsync fails.  This is necessary to
+	bootstrap from behind a strict firewall.
+
+2011-12-15  Paul Eggert  <eggert@cs.ucla.edu>
+
+	stdint: don't assume C++11 when compiling with g++
+	Problem reported for glibc 2.14 and g++ by Alexander V. Lukyanov in
+	<http://lists.gnu.org/archive/html/bug-gnulib/2011-12/msg00099.html>.
+	* m4/stdint.m4 (gl_STDINT_H): Don't go to extra work to make it
+	work also in C++ before C++11, as that improperly inhibits
+	generating a substitute stdint.h for that case.
+
+2011-12-15  Paul Eggert  <eggert@cs.ucla.edu>
+
+	alloca: protect comment from gnulib-tool
+	* lib/alloca.c: Change "GCC version 2" to "GCC 2" in comment, so
+	that gnulib-tool doesn't think it's a license, and munge it to
+	say "GCC version 3".
+
+2011-12-15  Ludovic Courtès  <ludo@gnu.org>  (tiny change)
+
+	localcharset: Use an absolute path in TESTS_ENVIRONMENT.
+	* modules/localcharset (LOCALCHARSET_TESTS_ENVIRONMENT): Use
+	$(abs_top_builddir) instead of $(top_builddir).
+
+2011-12-14  Alex Nelson  <ajnelson@cs.ucsc.edu>  (tiny change)
+
+	strftime-tests: also test nanoseconds
+	* tests/test-strftime.c (T): Add a test of %N.
+
+2011-12-13  Paul Eggert  <eggert@cs.ucla.edu>
+
+	inttypes, stdint: add C++11 support
+	C++11 says there's no need to define __STDC_CONSTANT_MACROS etc.
+	when including inttypes.h and stdint.h.  Support this change to
+	the standard.
+	* doc/posix-headers/inttypes.texi (inttypes.h):
+	* doc/posix-headers/stdint.texi (stdint.h): Document this.
+	* lib/inttypes.in.h (__STDC_FORMAT_MACROS) [! __cplusplus]:
+	Define if not defined already, for the benefit of pre-C++11 hosts.
+	Define the standard format macros (e.g., PRId8) always.
+	* lib/stdint.in.h (__STDC_CONSTANT_MACROS, __STDC_LIMIT_MACROS):
+	Likewise, if __cpluspus.  Define the standard constant and limit
+	macros (e.g., INT8_C, INT8_MAX) always.
+	* m4/inttypes.m4 (gl_INTTYPES_INCOMPLETE): Do not define
+	GL_TRIGGER_STDC_LIMIT_MACROS or __STDC_LIMIT_MACROS; no longer needed.
+	* m4/stdint.m4 (gl_STDINT_H): Update comments about these macros.
+	* tests/test-inttypes.c (__STDC_LIMIT_MACROS, __STDC_CONSTANT_MACROS)
+	(__STDC_FORMAT_MACROS): Do not define, since we assume C++11 API now.
+	* tests/test-stdint.c (__STDC_LIMIT_MACROS, __STDC_CONSTANT_MACROS):
+	Likewise.
+
+2011-12-12  Paul Eggert  <eggert@cs.ucla.edu>
+
+	nonblocking tests: Fix test failure on Linux/PPC.
+	Suggested by Prerna Saxena in
+	<http://lists.gnu.org/archive/html/bug-gnulib/2011-12/msg00080.html>.
+	* tests/test-nonblocking-pipe.h (PIPE_DATA_BLOCK_SIZE) [Linux/PPC64]:
+	Set to 1100000.
+
+2011-12-12  Jim Meyering  <meyering@redhat.com>
+
+	argmatch: don't hard-code `' when listing valid option arguments
+	* lib/argmatch.c (argmatch_valid): Don't hard-code `%s'.  Instead,
+	use the quote function to add quotes.  Use fputs rather than
+	fprintf for the format string with no format directive.
+
+2011-12-07  Eric Blake  <eblake@redhat.com>
+
+	bootstrap: detect tools required by gnulib-tool
+	* build-aux/bootstrap (buildreq): Provide minimum implicit
+	dependencies.
+	* DEPENDENCIES: Mention patch as a prereq.
+
+2011-12-04  Bruno Haible  <bruno@clisp.org>
+
+	sethostname: Port to Windows platforms.
+	* lib/sethostname.c: Provide an alternate implementation for Windows
+	platforms.
+	* tests/test-sethostname2.c (geteuid): Redefine on Cygwin.
+	(main): Skip the test if sethostname() fails with EPERM. On Windows
+	platforms, don't check the result of gethostname().
+
+>>>>>>> snapshot-start
 2011-12-04  Bruno Haible  <bruno@clisp.org>
 	    Jim Meyering  <meyering@redhat.com>
 
 	tests: Avoid spurious error message on platforms without mktemp program.
 	* tests/init.sh (mktempd_): Run mktemp in a subcommand.
 
+<<<<<<< HEAD
+=======
+2011-12-04  Bruno Haible  <bruno@clisp.org>
+
+	sethostname: Fix documentation.
+	* doc/glibc-functions/sethostname.texi: Move the Solaris problem to the
+	"not fixed" section.
+
+2011-12-03  Bruno Haible  <bruno@clisp.org>
+
+	gnulib-tool: Verify that the License field is present and non-empty.
+	* gnulib-tool (func_get_license_raw): New function, extracted from
+	func_get_license.
+	(func_get_license): Use it. Warn if the module is not a test module and
+	has no license.
+	Suggested by Jim Meyering.
+
+2011-12-03  Bruno Haible  <bruno@clisp.org>
+
+	sethostname tests: Fix link error on mingw.
+	* tests/test-sethostname1.c: New file, extracted from
+	tests/test-sethostname.c.
+	* tests/test-sethostname2.c: New file, extracted from
+	tests/test-sethostname.c.
+	* tests/test-sethostname.c: Remove file.
+	* modules/sethostname-tests (Files): Add tests/test-sethostname1.c,
+	tests/test-sethostname2.c. Remove tests/test-sethostname.c.
+	(Depends-on): Add gethostname.
+	(Makefile.am): Compile both test-sethostname1 and test-sethostname2.
+	Link the latter with $(GETHOSTNAME_LIB).
+
+	sethostname tests: Fix compilation error on mingw.
+	* tests/test-sethostname.c: Don't include <sys/types.h>.
+	(geteuid): Use a dummy value without uid_t.
+	* modules/sethostname-tests (Depends-on): Remove sys_types.
+
+	sethostname tests: Avoid a gcc warning.
+	* tests/test-sethostname.c (main): Remove an unused variable.
+
+	Tweak last commit.
+	* modules/sethostname-tests (Files): Sort by decreasing importance.
+	(configure.ac): Check for geteuid.
+	* tests/test-sethostname.c (main): Emit error messages to stderr. Skip
+	the test when there's nothing to test. Drop an unnecessary cast.
+	Improve an error message. Verify that the final sethostname() call
+	succeeds.
+
+2011-12-01  Ben Walton  <bwalton@artsci.utoronto.ca>
+
+	Add a test suite for the sethostname module.
+	* modules/sethostname-tests: New file.  A test program
+	for the sethostname module.
+	* tests/test-sethostname.c: Likewise.
+
+2011-12-03  Bruno Haible  <bruno@clisp.org>
+
+	Tweak last commit.
+	* lib/unistd.in.h (sethostname): Keep declarations in alphabetic order.
+	Fix preprocessor directives indentation. Fix typos.
+	* m4/unistd_h.m4 (gl_UNISTD_H_DEFAULTS): Keep alphabetic order.
+	* modules/unistd (Makefile): Likewise.
+
+2011-12-01  Ben Walton  <bwalton@artsci.utoronto.ca>
+
+	Integrate the sethostname module into unistd.
+	* lib/unistd.in.h: Integrate the SETHOSTNAME preprocessor handling
+	into the unistd.h header.
+	* m4/unistd_h.m4: Setup the autoconf handling for the SETHOSTNAME
+	preprocessor directives.
+	* modules/unistd: Setup the Makefile substitutions of the
+	SETHOSTNAME preprocessor directives.
+
+2011-12-03  Bruno Haible  <bruno@clisp.org>
+
+	Tweak last commit.
+	* lib/sethostname.c: Don't include <string.h>.
+	(sethostname): No need to copy the argument string to the stack. Don't
+	call clearerr. Preserve errno when fprintf failed.
+	* m4/sethostname.m4 (gl_FUNC_SETHOSTNAME): Comment about HOST_NAME_MAX.
+	Don't invoke AC_REPLACE_FUNCS.
+	* modules/sethostname (Link): Remove empty section.
+	* doc/glibc-functions/sethostname.texi: Gnulib does not fix the ENOSYS
+	failure problem.
+
+2011-12-01  Ben Walton  <bwalton@artsci.utoronto.ca>
+
+	New module 'sethostname'.
+	* lib/sethostname.c (sethostname): New file.  Provide sethostname
+	for systems that lack it.
+	* m4/sethostname.m4 (gl_FUNC_SETHOSTNAME): New file.  Detection of
+	sethostname declaration and function.
+	* modules/sethostname: New file.  Define the sethostname module.
+
+2011-12-03  Bruno Haible  <bruno@clisp.org>
+
+	Tweak last commit.
+	* m4/gethostname.m4 (gl_PREREQ_HOST_NAME_MAX): Trim blank line.
+
+2011-12-01  Ben Walton  <bwalton@artsci.utoronto.ca>
+
+	Split the HOST_NAME_MAX detection into a separate m4 macro.
+	* m4/gethostname.m4 (gl_PREREQ_HOST_NAME_MAX): Make this a separate
+	macro so it can be used by the pending sethostname module.
+
+>>>>>>> snapshot-start
 2011-12-03  Bruno Haible  <bruno@clisp.org>
 
 	Fix module descriptions syntax.
@@ -90208,7 +94714,7 @@
 	coding: utf-8
 	End:
 
-	Copyright (C) 1997-2011 Free Software Foundation, Inc.
+	Copyright (C) 1997-2012 Free Software Foundation, Inc.
 
 	Copying and distribution of this file, with or without
 	modification, are permitted provided the copyright notice

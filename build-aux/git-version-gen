@@ -1,8 +1,8 @@
 #!/bin/sh
 # Print a version string.
-scriptversion=2011-11-13.13; # UTC
+scriptversion=2012-03-18.17; # UTC
 
-# Copyright (C) 2007-2011 Free Software Foundation, Inc.
+# Copyright (C) 2007-2012 Free Software Foundation, Inc.
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -92,14 +92,16 @@ Options:
 
 Running without arguments will suffice in most cases."
 
+prefix=v
+
 while test $# -gt 0; do
   case $1 in
     --help) echo "$usage"; exit 0;;
     --version) echo "$version"; exit 0;;
     --prefix) shift; prefix="$1";;
     -*)
-      echo "$0: Unknown option \`$1'." >&2
-      echo "$0: Try \`--help' for more information." >&2
+      echo "$0: Unknown option '$1'." >&2
+      echo "$0: Try '--help' for more information." >&2
       exit 1;;
     *)
       if test -z "$tarball_version_file"; then
@@ -107,7 +109,7 @@ while test $# -gt 0; do
       elif test -z "$tag_sed_script"; then
         tag_sed_script="$1"
       else
-        echo "$0: extra non-option argument \`$1'." >&2
+        echo "$0: extra non-option argument '$1'." >&2
         exit 1
       fi;;
   esac
@@ -120,7 +122,6 @@ if test -z "$tarball_version_file"; then
 fi
 
 tag_sed_script="${tag_sed_script:-s/x/x/}"
-prefix="${prefix:-v}"
 
 nl='
 '

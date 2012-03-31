@@ -1,5 +1,5 @@
-# floorf.m4 serial 11
-dnl Copyright (C) 2007, 2009-2011 Free Software Foundation, Inc.
+# floorf.m4 serial 12
+dnl Copyright (C) 2007, 2009-2012 Free Software Foundation, Inc.
 dnl This file is free software; the Free Software Foundation
 dnl gives unlimited permission to copy and/or distribute it,
 dnl with or without modifications, as long as this notice is preserved.
@@ -78,8 +78,9 @@ AC_DEFUN([gl_FUNC_FLOORF_LIBS],
            # define __NO_MATH_INLINES 1 /* for glibc */
            #endif
            #include <math.h>
+           float (*funcptr) (float) = floorf;
            float x;]],
-         [[x = floorf(x);]])],
+         [[x = funcptr(x) + floorf(x);]])],
       [gl_cv_func_floorf_libm=])
     if test "$gl_cv_func_floorf_libm" = "?"; then
       save_LIBS="$LIBS"
@@ -90,8 +91,9 @@ AC_DEFUN([gl_FUNC_FLOORF_LIBS],
              # define __NO_MATH_INLINES 1 /* for glibc */
              #endif
              #include <math.h>
+             float (*funcptr) (float) = floorf;
              float x;]],
-           [[x = floorf(x);]])],
+           [[x = funcptr(x) + floorf(x);]])],
         [gl_cv_func_floorf_libm="-lm"])
       LIBS="$save_LIBS"
     fi

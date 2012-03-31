@@ -5,7 +5,11 @@
 @c For double-sided printing, uncomment:
 @c @setchapternewpage odd
 @c This date is automagically updated when you save this file:
+<<<<<<< HEAD
 @set lastupdate December 2, 2011
+=======
+@set lastupdate March 20, 2012
+>>>>>>> snapshot-start
 @c %**end of header
 
 @dircategory GNU organization
@@ -24,7 +28,7 @@ Information for maintainers of GNU software, last updated @value{lastupdate}.
 
 Copyright @copyright{} 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999,
 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009,
-2010, 2011 Free Software Foundation, Inc.
+2010, 2011, 2012 Free Software Foundation, Inc.
 
 @quotation
 Permission is granted to copy, distribute and/or modify this document
@@ -57,7 +61,7 @@ Texts.  A copy of the license is included in the section entitled
 @menu
 * Preface::
 * Getting Help::
-* Getting a GNU Account::
+* GNU Accounts and Resources::
 * Stepping Down::
 * Recruiting Developers::
 * Legal Matters::
@@ -161,10 +165,12 @@ hardware.  You can email them at @email{sysadmin@@fsf.org}, but please
 try not to burden them unnecessarily.
 
 
-@node Getting a GNU Account
-@chapter Getting a GNU Account
+@node GNU Accounts and Resources
+@chapter GNU Accounts and Resources
 @cindex shell account, on fencepost
-@cindex @code{fencepost.gnu.org} GNU machine
+@cindex @code{fencepost.gnu.org} GNU login host
+@cindex resources for GNU developers
+@cindex development resources
 
 @c We want to repeat this text later, so define a macro.
 @macro gdgnuorgtext
@@ -178,6 +184,28 @@ the package.
 @end macro
 
 @gdgnuorgtext{}
+
+Other resources available to GNU maintainers are described at
+@url{http://www.gnu.org/software/devel.html}, as well as throughout
+this document.  In brief:
+
+@itemize @bullet
+@item Login accounts (see above).
+
+@item Version control (@pxref{Old Versions}).
+
+@item Mailing lists (@pxref{Mail}).
+
+@item Web pages (@pxref{Web Pages}).
+
+@item Mirrored release areas (@pxref{Distributions}).
+
+@cindex Hydra
+@cindex @code{platform-testers} mailing list
+@item Pre-release portability testing, both automated (via Hydra) and
+on request (via volunteers).
+
+@end itemize
 
 
 @node Stepping Down
@@ -874,6 +902,10 @@ Texinfo manual, and see
 @url{http://www.gnu.org/licenses/fdl-howto.html} for more advice about
 how to use the GNU FDL.
 
+If you write a manual that people might want to buy on paper, please
+write to @email{maintainers@@gnu.org} to tell the FSF about it.  We
+might want to publish it.
+
 If the manual is over 400 pages, or if the FSF thinks it might be a
 good choice for publishing on paper, then please include the GNU GPL,
 as in the notice above.  Please also include our standard invariant
@@ -1113,8 +1145,8 @@ default configuration for antispam purposes (see below).
 To create and maintain simple aliases and unmanaged lists, you can
 edit @file{/com/mailer/aliases} on the main GNU server.  If you don't
 have an account there, please read
-@url{http://www.gnu.org/software/README.accounts.html} (@pxref{Getting
-a GNU Account}).
+@url{http://www.gnu.org/software/README.accounts.html} (@pxref{GNU
+Accounts and Resources}).
 
 But if you don't want to learn how to do those things, you can
 alternatively ask @email{alias-file@@gnu.org} to add you to the
@@ -1234,7 +1266,7 @@ upgrades, problems, and the like.
 @node Distributions
 @chapter Distributions
 
-It is important to follow the GNU conventions when making GNU software
+Please follow the GNU conventions when making GNU software
 distributions.
 
 @menu
@@ -1333,18 +1365,21 @@ which subdirectory to find each file in.
 It's wise to test your patch by applying it to a copy of the old
 version, and checking that the result exactly matches the new version.
 
+
 @node Distribution on ftp.gnu.org
 @section Distribution on @code{ftp.gnu.org}
 @cindex GNU ftp site
 @cindex @code{ftp.gnu.org}, the GNU release site
 
-GNU packages are distributed through the directory @file{/gnu} on
-@code{ftp.gnu.org}, via both HTTP and FTP.  Each package should have a
-subdirectory named after the package, and all the distribution files
-for the package should go in that subdirectory.
+We strongly recommend using @code{ftp.gnu.org} to distribute official
+releases.  If you want to also distribute the package from a site of
+your own, that is fine.  To use some other site instead of
+@code{ftp.gnu.org} is acceptable, provided it allows connections from
+anyone anywhere.
 
-@xref{Automated FTP Uploads}, for procedural details of putting new
-versions on @code{ftp.gnu.org}.
+@xref{Automated FTP Uploads}, for the procedural details of putting
+new versions on @code{ftp.gnu.org}.
+
 
 @node Test Releases
 @section Test Releases
@@ -1359,8 +1394,8 @@ but send it only to a group of volunteers that you have recruited.  (Use
 a suitable GNU mailing list/newsgroup to recruit them.)
 
 We normally use the server @code{alpha.gnu.org} for pretests and
-prerelease versions.  @xref{Automated FTP Uploads}, for procedural details
-of putting new versions on @code{alpha.gnu.org}.
+prerelease versions.  @xref{Automated FTP Uploads}, for the procedural
+details of putting new versions on @code{alpha.gnu.org}.
 
 Once a program gets to be widely used and people expect it to work
 solidly, it is a good idea to do pretest releases before each ``real''
@@ -1403,7 +1438,7 @@ In order to upload new releases to @code{ftp.gnu.org} or
 information.  Then, you can perform uploads yourself, with no
 intervention needed by the system administrators.
 
-The general idea is that releases should be crytographically signed
+The general idea is that releases should be cryptographically signed
 before they are made publicly available.
 
 @menu
@@ -1726,7 +1761,7 @@ on the GNU Planet web page.
 
 @cindex announcement mailing list, project-specific
 You can maintain your own mailing list (typically
-@email{info-@var{package}@@gnu.org}) for announcements as well if you
+@indicateurl{info-@var{package}@@gnu.org}) for announcements as well if you
 like.  For your own list, of course you decide as you see fit what
 events are worth announcing.  (@xref{Mail}, for setting this up, and
 more suggestions on handling mail for your package.)
@@ -1748,7 +1783,7 @@ Your package's download location (normally
 @indicateurl{http://ftp.gnu.org/gnu/@var{package}/}).  It is also
 useful to mention the mirror list at
 @url{http://www.gnu.org/order/ftp.html}, and that
-@url{http://ftpmirror.gnu.org/@var{package/}} will automatically
+@indicateurl{http://ftpmirror.gnu.org/@var{package/}} will automatically
 redirect to a nearby mirror.
 
 @item
@@ -2125,6 +2160,17 @@ documentation, and announcements and articles that you publish in your
 role as the maintainer of a GNU package.  If you want to explain the
 terminology and its reasons, you can refer to the URL
 @url{http://www.gnu.org/gnu/linux-and-gnu.html}.
+
+To make it clear that Linux is a kernel, not an operating system,
+please take care to avoid using the term ``Linux system'' in those
+materials.  If you want to have occasion to make a statement about
+systems in which the kernel is Linux, write ``systems in which the
+kernel is Linux'' or ``systems with Linux as the kernel.''  That
+explicitly contrasts the system and the kernel, and will help readers
+understand the difference between the two.  Please avoid simplified
+forms such as ``Linux-based systems'' because those fail to highlight
+the difference between the kernel and the system, and could encourage
+readers to overlook the distinction.
 
 To contrast the GNU system properly with respect to GNU/Linux, you can
 call it ``GNU/Hurd'' or ``the GNU/Hurd system''.  However, when that

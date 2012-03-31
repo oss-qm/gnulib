@@ -1,5 +1,5 @@
-# locale-ar.m4 serial 3
-dnl Copyright (C) 2003, 2005-2011 Free Software Foundation, Inc.
+# locale-ar.m4 serial 5
+dnl Copyright (C) 2003, 2005-2012 Free Software Foundation, Inc.
 dnl This file is free software; the Free Software Foundation
 dnl gives unlimited permission to copy and/or distribute it,
 dnl with or without modifications, as long as this notice is preserved.
@@ -26,9 +26,9 @@ char buf[16];
 int main () {
   /* Check whether the given locale name is recognized by the system.  */
 #if (defined _WIN32 || defined __WIN32__) && !defined __CYGWIN__
-  /* On native Win32, setlocale(category, "") looks at the system settings,
+  /* On native Windows, setlocale(category, "") looks at the system settings,
      not at the environment variables.  Also, when an encoding suffix such
-     as ".65001" or ".54936" is speficied, it succeeds but sets the LC_CTYPE
+     as ".65001" or ".54936" is specified, it succeeds but sets the LC_CTYPE
      category of the locale to "C".  */
   if (setlocale (LC_ALL, getenv ("LC_ALL")) == NULL
       || strcmp (setlocale (LC_CTYPE, NULL), "C") == 0)
@@ -65,7 +65,7 @@ changequote([,])dnl
         # "ja" as "Japanese" or "Japanese_Japan.932",
         # and similar.
         mingw*)
-          # Note that on native Win32, the Arabic locale is
+          # Note that on native Windows, the Arabic locale is
           # "Arabic_Saudi Arabia.1256", and CP1256 is very different from
           # ISO-8859-6, so we cannot use it here.
           gt_cv_locale_ar=none
