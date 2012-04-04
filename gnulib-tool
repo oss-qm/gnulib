@@ -1,6 +1,6 @@
 #! /bin/sh
 #
-# Copyright (C) 2002-2011 Free Software Foundation, Inc.
+# Copyright (C) 2002-2012 Free Software Foundation, Inc.
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -164,11 +164,15 @@ Operation modes:
       --update              update the current package, restore files omitted
                             from version control
       --create-testdir      create a scratch package with the given modules
+                            (pass --with-tests to include the unit tests)
       --create-megatestdir  create a mega scratch package with the given modules
                             one by one and all together
+                            (pass --with-tests to include the unit tests)
       --test                test the combination of the given modules
+                            (pass --with-tests to include the unit tests)
                             (recommended to use CC=\"gcc -Wall\" here)
       --megatest            test the given modules one by one and all together
+                            (pass --with-tests to include the unit tests)
                             (recommended to use CC=\"gcc -Wall\" here)
       --extract-description        extract the description
       --extract-comment            extract the comment
@@ -186,6 +190,8 @@ Operation modes:
       --extract-maintainer         report the maintainer(s) inside gnulib
       --extract-tests-module       report the unit test module, if it exists
       --copy-file                  copy a file that is not part of any module
+      --help                Show this help text.
+      --version             Show version and authorship information.
 
 General options:
 
@@ -2375,31 +2381,50 @@ func_get_link_directive ()
   fi
 }
 
+# func_get_license_raw module
+# Input:
+# - local_gnulib_dir  from --local-dir
+# - modcache          true or false, from --cache-modules/--no-cache-modules
+func_get_license_raw ()
+{
+  if ! $modcache; then
+    func_lookup_file "modules/$1"
+    sed -n -e "/^License$sed_extract_prog" < "$lookedup_file"
+  else
+    func_cache_lookup_module "$1"
+    # Output the field's value, including the final newline (if any).
+    if $have_associative; then
+      if eval 'test -n "${modcache_license[$1]+set}"'; then
+        eval 'echo "${modcache_license[$1]}"'
+      fi
+    else
+      eval "field_set=\"\$${cachevar}_license_set\""
+      if test -n "$field_set"; then
+        eval "field_value=\"\$${cachevar}_license\""
+        echo "${field_value}"
+      fi
+    fi
+  fi
+}
+
 # func_get_license module
 # Input:
 # - local_gnulib_dir  from --local-dir
 # - modcache          true or false, from --cache-modules/--no-cache-modules
 func_get_license ()
 {
-  {
-    if ! $modcache; then
-      func_lookup_file "modules/$1"
-      sed -n -e "/^License$sed_extract_prog" < "$lookedup_file"
-    else
-      func_cache_lookup_module "$1"
-      # Output the field's value, including the final newline (if any).
-      if $have_associative; then
-        if eval 'test -n "${modcache_license[$1]+set}"'; then
-          eval 'echo "${modcache_license[$1]}"'
-        fi
-      else
-        eval "field_set=\"\$${cachevar}_license_set\""
-        if test -n "$field_set"; then
-          eval "field_value=\"\$${cachevar}_license\""
-          echo "${field_value}"
-        fi
+  # Warn if the License field is missing.
+  case "$1" in
+    *-tests ) ;;
+    * )
+      license=`func_get_license_raw "$1"`
+      if test -z "$license"; then
+        func_warning "module $1 lacks a License"
       fi
-    fi
+      ;;
+  esac
+  {
+    func_get_license_raw "$1"
     # The default is GPL.
     echo "GPL"
   } | sed -e 's,^ *$,,' | sed -e 1q
@@ -3126,7 +3151,7 @@ func_add_file ()
          || { test -n "$lsymbolic" \
               && test "$lookedup_file" = "$local_gnulib_dir/$f"; }; } \
        && test -z "$lookedup_tmp" \
-       && cmp "$lookedup_file" "$tmpfile" > /dev/null; then
+       && cmp -s "$lookedup_file" "$tmpfile"; then
       func_ln_if_changed "$lookedup_file" "$destdir/$g"
     else
       mv -f "$tmpfile" "$destdir/${g}" || func_fatal_error "failed"
@@ -3155,7 +3180,7 @@ func_add_file ()
 # - already_present  nonempty if the file should already exist, empty otherwise
 func_update_file ()
 {
-  if cmp "$destdir/$g" "$tmpfile" > /dev/null; then
+  if cmp -s "$destdir/$g" "$tmpfile"; then
     : # The file has not changed.
   else
     # Replace the file.
@@ -3170,7 +3195,7 @@ func_update_file ()
            || { test -n "$lsymbolic" \
                 && test "$lookedup_file" = "$local_gnulib_dir/$f"; }; } \
          && test -z "$lookedup_tmp" \
-         && cmp "$lookedup_file" "$tmpfile" > /dev/null; then
+         && cmp -s "$lookedup_file" "$tmpfile"; then
         func_ln_if_changed "$lookedup_file" "$destdir/$g"
       else
         mv -f "$tmpfile" "$destdir/${g}" || func_fatal_error "failed"
@@ -3323,8 +3348,12 @@ func_emit_lib_Makefile_am ()
     echo "noinst_HEADERS ="
     echo "noinst_LIBRARIES ="
     echo "noinst_LTLIBRARIES ="
-    # Automake versions < 1.9b create an empty pkgdatadir at installation time
-    # if you specify pkgdata_DATA to empty. This is a workaround.
+    # Automake versions < 1.11.4 create an empty pkgdatadir at
+    # installation time if you specify pkgdata_DATA to empty.
+    # See automake bugs #10997 and #11030:
+    #  * http://debbugs.gnu.org/10997
+    #  * http://debbugs.gnu.org/11030
+    # So we need this workaround.
     if grep '^pkgdata_DATA *+=' "$tmp"/allsnippets > /dev/null; then
       echo "pkgdata_DATA ="
     fi
@@ -3644,8 +3673,12 @@ func_emit_tests_Makefile_am ()
       echo "check_LIBRARIES = libtests.a"
     fi
   fi
-  # Automake versions < 1.9b create an empty pkgdatadir at installation time
-  # if you specify pkgdata_DATA to empty. This is a workaround.
+  # Automake versions < 1.11.4 create an empty pkgdatadir at
+  # installation time if you specify pkgdata_DATA to empty.
+  # See automake bugs #10997 and #11030:
+  #  * http://debbugs.gnu.org/10997
+  #  * http://debbugs.gnu.org/11030
+  # So we need this workaround.
   if grep '^pkgdata_DATA *+=' "$tmp"/main_snippets "$tmp"/longrunning_snippets > /dev/null; then
     echo "pkgdata_DATA ="
   fi
@@ -4876,7 +4909,7 @@ s,//*$,/,'
   modules="$main_modules"
   func_emit_lib_Makefile_am > "$tmpfile"
   if test -f "$destdir"/$sourcebase/$makefile_am; then
-    if cmp "$destdir"/$sourcebase/$makefile_am "$tmpfile" > /dev/null; then
+    if cmp -s "$destdir"/$sourcebase/$makefile_am "$tmpfile"; then
       rm -f "$tmpfile"
     else
       if $doit; then
@@ -4907,7 +4940,7 @@ s,//*$,/,'
       func_lookup_file build-aux/po/$file
       cat "$lookedup_file" > "$tmpfile"
       if test -f "$destdir"/$pobase/$file; then
-        if cmp "$destdir"/$pobase/$file "$tmpfile" > /dev/null; then
+        if cmp -s "$destdir"/$pobase/$file "$tmpfile"; then
           rm -f "$tmpfile"
         else
           if $doit; then
@@ -4934,7 +4967,7 @@ s,//*$,/,'
     func_dest_tmpfilename $pobase/Makevars
     func_emit_po_Makevars > "$tmpfile"
     if test -f "$destdir"/$pobase/Makevars; then
-      if cmp "$destdir"/$pobase/Makevars "$tmpfile" > /dev/null; then
+      if cmp -s "$destdir"/$pobase/Makevars "$tmpfile"; then
         rm -f "$tmpfile"
       else
         if $doit; then
@@ -4960,7 +4993,7 @@ s,//*$,/,'
     func_dest_tmpfilename $pobase/POTFILES.in
     func_emit_po_POTFILES_in > "$tmpfile"
     if test -f "$destdir"/$pobase/POTFILES.in; then
-      if cmp "$destdir"/$pobase/POTFILES.in "$tmpfile" > /dev/null; then
+      if cmp -s "$destdir"/$pobase/POTFILES.in "$tmpfile"; then
         rm -f "$tmpfile"
       else
         if $doit; then
@@ -5009,7 +5042,7 @@ s,//*$,/,'
           }
       ) > "$tmpfile"
       if test -f "$destdir"/$pobase/LINGUAS; then
-        if cmp "$destdir"/$pobase/LINGUAS "$tmpfile" > /dev/null; then
+        if cmp -s "$destdir"/$pobase/LINGUAS "$tmpfile"; then
           rm -f "$tmpfile"
         else
           echo "Updating $pobase/LINGUAS (backup in $pobase/LINGUAS~)"
@@ -5098,7 +5131,7 @@ s,//*$,/,'
     fi
   ) > "$tmpfile"
   if test -f "$destdir"/$m4base/gnulib-cache.m4; then
-    if cmp "$destdir"/$m4base/gnulib-cache.m4 "$tmpfile" > /dev/null; then
+    if cmp -s "$destdir"/$m4base/gnulib-cache.m4 "$tmpfile"; then
       rm -f "$tmpfile"
     else
       if $doit; then
@@ -5237,7 +5270,7 @@ s,//*$,/,'
     echo "])"
   ) > "$tmpfile"
   if test -f "$destdir"/$m4base/gnulib-comp.m4; then
-    if cmp "$destdir"/$m4base/gnulib-comp.m4 "$tmpfile" > /dev/null; then
+    if cmp -s "$destdir"/$m4base/gnulib-comp.m4 "$tmpfile"; then
       rm -f "$tmpfile"
     else
       if $doit; then
@@ -5272,7 +5305,7 @@ s,//*$,/,'
     modules="$testsrelated_modules"
     func_emit_tests_Makefile_am "${macro_prefix}tests_WITNESS" > "$tmpfile"
     if test -f "$destdir"/$testsbase/$makefile_am; then
-      if cmp "$destdir"/$testsbase/$makefile_am "$tmpfile" > /dev/null; then
+      if cmp -s "$destdir"/$testsbase/$makefile_am "$tmpfile"; then
         rm -f "$tmpfile"
       else
         if $doit; then
@@ -5535,7 +5568,7 @@ func_create_testdir ()
   # its dependencies.
   saved_inctests="$inctests"
   # When computing transitive closures, don't consider $module to depend on
-  # $module-tests. Need this becauses tests are implicitly GPL and may depend
+  # $module-tests. Need this because tests are implicitly GPL and may depend
   # on GPL modules - therefore we don't want a warning in this case.
   inctests=""
   for requested_module in $specified_modules; do

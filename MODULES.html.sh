@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-# Copyright (C) 2002-2011 Free Software Foundation, Inc.
+# Copyright (C) 2002-2012 Free Software Foundation, Inc.
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -2329,14 +2329,14 @@ func_all_modules ()
   func_module mbfile
   func_end_table
 
-  element="Support for systems lacking draft ISO C 1X"
-  func_section_wrap c1x_sup
+  element="Support for systems lacking ISO C11"
+  func_section_wrap c11_sup
   func_wrap H2
   func_echo "$element"
 
   element="Core language properties"
   element=`printf "%s" "$element" | sed -e "$sed_lt" -e "$sed_gt"`
-  func_section_wrap c1x_core_properties
+  func_section_wrap c11_core_properties
   func_wrap H3
   func_echo "$element"
 
@@ -3504,6 +3504,7 @@ func_all_modules ()
   func_module gpl-2.0
   func_module gpl-3.0
   func_module lgpl-2.1
+  func_module lgpl-3.0
   func_module pmccabe2html
   func_module regexprops-generic
   func_end_table
@@ -3525,6 +3526,7 @@ func_all_modules ()
   func_module maintainer-makefile
   func_module mktempd
   func_module readme-release
+  func_module test-framework-sh
   func_module update-copyright
   func_module useless-if-before-free
   func_module vc-list-files

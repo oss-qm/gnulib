@@ -1,7 +1,7 @@
 /* sha512.c - Functions to compute SHA512 and SHA384 message digest of files or
    memory blocks according to the NIST specification FIPS-180-2.
 
-   Copyright (C) 2005-2006, 2008-2011 Free Software Foundation, Inc.
+   Copyright (C) 2005-2006, 2008-2012 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -59,7 +59,7 @@ static const unsigned char fillbuf[128] = { 0x80, 0 /* , 0, 0, ...  */ };
 
 /*
   Takes a pointer to a 512 bit block of data (eight 64 bit ints) and
-  intializes it to the start constants of the SHA512 algorithm.  This
+  initializes it to the start constants of the SHA512 algorithm.  This
   must be called before using hash in the call to sha512_hash
 */
 void

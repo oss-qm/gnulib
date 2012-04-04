@@ -1,5 +1,5 @@
 /* Retrieve information about a FILE stream.
-   Copyright (C) 2007-2011 Free Software Foundation, Inc.
+   Copyright (C) 2007-2012 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -52,6 +52,10 @@ fwriting (FILE *fp)
 # else
   return (fp->__buffer < fp->__put_limit /*|| fp->__bufp == fp->__get_limit ??*/);
 # endif
+#elif defined EPLAN9                /* Plan9 */
+  if (fp->state == 0 /* CLOSED */ || fp->state == 3 /* RD */)
+    return 0;
+  return (fp->state == 4 /* WR */ && (fp->bufl == 0 || fp->wp < fp->rp));
 #else
 # error "Please port gnulib fwriting.c to your platform!"
 #endif

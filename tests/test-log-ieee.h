@@ -1,7 +1,5 @@
-/* quote.c - quote arguments for output
-
-   Copyright (C) 1998-2001, 2003, 2005-2006, 2009-2011 Free Software
-   Foundation, Inc.
+/* Test of log*() function family.
+   Copyright (C) 2012 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -16,25 +14,27 @@
    You should have received a copy of the GNU General Public License
    along with this program.  If not, see <http://www.gnu.org/licenses/>.  */
 
-/* Written by Paul Eggert <eggert@twinsun.com> */
-
-#include <config.h>
-
-#include "quotearg.h"
-#include "quote.h"
-
-/* Return an unambiguous printable representation of NAME,
-   allocated in slot N, suitable for diagnostics.  */
-char const *
-quote_n (int n, char const *name)
+static void
+test_function (void)
 {
-  return quotearg_n_style (n, locale_quoting_style, name);
-}
+  /* [MX] shaded specification in POSIX.  */
 
-/* Return an unambiguous printable representation of NAME,
-   suitable for diagnostics.  */
-char const *
-quote (char const *name)
-{
-  return quote_n (0, name);
+  /* Negative arguments.  */
+  ASSERT (ISNAN (LOG (- L_(0.00001))));
+  ASSERT (ISNAN (LOG (- L_(1.0))));
+  ASSERT (ISNAN (LOG (- L_(1000000.0))));
+  ASSERT (ISNAN (LOG (- INFINITY)));
+
+  /* NaN.  */
+  ASSERT (ISNAN (LOG (NAN)));
+
+  /* Only rational value.  */
+  {
+    DOUBLE z = LOG (L_(1.0));
+    ASSERT (z == L_(0.0));
+    ASSERT (!signbit (z));
+  }
+
+  /* Infinity.  */
+  ASSERT (LOG (INFINITY) == INFINITY);
 }
