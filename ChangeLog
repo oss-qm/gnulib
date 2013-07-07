@@ -1,3 +1,11 @@
+2013-07-06  Paul Eggert  <eggert@cs.ucla.edu>
+
+	fnmatch: don't goto over declaration
+	* lib/fnmatch_loop.c (FCT): Hoist local up one level, to avoid
+	undefined behavior for goto over a declaration.
+	Problem reported by Charlie Brown in
+	<http://lists.gnu.org/archive/html/bug-gnulib/2013-07/msg00009.html>.
+
 2013-07-03  Eric Blake  <eblake@redhat.com>
 
 	mgetgroups: relax license to LGPLv2+
