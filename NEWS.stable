@@ -1,7 +1,6 @@
 			Gnulib stable snapshot
 			----------------------
 
-
   * 20130805-stable
 
 Snapshot taken based on:
@@ -19,7 +18,6 @@ with the following additional commits:
     * [c96bab3]->[9e801ad] fnmatch: don't goto over declaration
     * [de3b502]->[cce1478] autoupdate
     * [03e96cc]->[78b78bc] autoupdate
-__NEXTCOMMITMARKER__
 
 ----------------------------------------------------------------------
 
