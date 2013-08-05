@@ -16,6 +16,7 @@ with the following additional commits:
     * [240af58]->[dbe7a05] nproc: relax license to LGPLv2+
     * [33758ba]->[121180e] xalloc-oversized: relax license to LGPLv2+
     * [612ef3f]->[a08b131] mgetgroups: relax license to LGPLv2+
+    * [c96bab3]->[9e801ad] fnmatch: don't goto over declaration
 __NEXTCOMMITMARKER__
 
 ----------------------------------------------------------------------
