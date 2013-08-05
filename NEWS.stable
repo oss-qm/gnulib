@@ -1,6 +1,20 @@
 			Gnulib stable snapshot
 			----------------------
 
+
+  * 20130805-stable
+
+Snapshot taken based on:
+
+commit ef5856c0c4c6302b6cac9c7cefb4e6cbdcf127be
+Date:   Tue Jun 11 00:10:21 2013 -0700
+
+with the following additional commits:
+
+__NEXTCOMMITMARKER__
+
+----------------------------------------------------------------------
+
   * 20120404-stable
 
 Snapshot taken based on:
