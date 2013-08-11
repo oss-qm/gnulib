@@ -1,30 +1,33 @@
-This package was debianized by Daniel Baumann <daniel@debian.org> on
-Thu,  1 Jun 2006 00:00:00 +0200.
-
-It was downloaded from <git://git.savannah.gnu.org/gnulib.git>.
-
-> The files in here are mostly copyright (C) Free Software Foundation, and
-> are under assorted licenses.  Mostly, but not entirely, GPL.
->
-> Many modules are provided dual-license, either GPL or LGPL at your
-> option.  The headers of files in the lib directory (e.g., lib/error.c)
-> state GPL for convenience, since the bulk of current gnulib users are
-> GPL'd programs.  But the files in the modules directory (e.g.,
-> modules/error) state the true license of each file, and when you use
-> 'gnulib-tool --lgpl --import <modules>', gnulib-tool either rewrites
-> the files to have an LGPL header as part of copying them from gnulib
-> to your project directory, or fails because the modules you requested
-> were not licensed under LGPL.
->
-> Some of the source files in lib/ have different licenses.  Also, the
-> copy of maintain.texi in doc/ has a verbatim-copying license, and
-> doc/standards.texi and make-stds.texi are GFDL.
-
-Detailed copyright information follows, see debian/clscan/README
-in the gnulib source package for information on updating this.
+Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Contact: bug-gnulib@gnu.org
+Source: Stable snapshot page: http://erislabs.net/ianb/projects/gnulib
+        Homepage: http://www.gnu.org/software/gnulib/
+        Stable git: git://erislabs.net/gnulib.git
+        Upstream git: git://git.savannah.gnu.org/gnulib.git
+License:
+ The files in here are mostly copyright (C) Free Software Foundation, and
+ are under assorted licenses.  Mostly, but not entirely, GPL.
+ .
+ Many modules are provided dual-license, either GPL or LGPL at your
+ option.  The headers of files in the lib directory (e.g., lib/error.c)
+ state GPL for convenience, since the bulk of current gnulib users are
+ GPL'd programs.  But the files in the modules directory (e.g.,
+ modules/error) state the true license of each file, and when you use
+ 'gnulib-tool --lgpl --import <modules>', gnulib-tool either rewrites
+ the files to have an LGPL header as part of copying them from gnulib
+ to your project directory, or fails because the modules you requested
+ were not licensed under LGPL.
+ .
+ Some of the source files in lib/ have different licenses.  Also, the
+ copy of maintain.texi in doc/ has a verbatim-copying license, and
+ doc/standards.texi and make-stds.texi are GFDL.
+ .
+ Detailed copyright information follows, see debian/clscan/README
+ in the gnulib source package for information on updating this.
 
 Files: debian/*
-Copyright: 2006-2008, Daniel Baumann <daniel@debian.org> /  2009-2011 Ian Beckwith <ianb@debian.org>
+Copyright: 2009-2013 Ian Beckwith <ianb@debian.org>
+           2006-2008 Daniel Baumann <daniel@debian.org>
 License: GPL-2
 
 Files: modules/*

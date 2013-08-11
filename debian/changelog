@@ -7,8 +7,9 @@ gnulib (20130805+stable-1) unstable; urgency=low
   * Refresh 01-gnulib-directory.patch.
   * Update lintian overrides for magical shebangs.
   * Standards-Version: 3.9.4 (no changes).
+  * debian/copyright: refresh, switch to machine-interpretable format.
 
- -- Ian Beckwith <ianb@debian.org>  Sun, 11 Aug 2013 13:03:53 +0100
+ -- Ian Beckwith <ianb@debian.org>  Sun, 11 Aug 2013 21:16:48 +0100
 
 gnulib (20120404+stable-1) unstable; urgency=low
 
