@@ -2,6 +2,8 @@ gnulib (20130805+stable-1) unstable; urgency=low
 
   * Resumed making upstream snapshots - sorry about the gap.
   * Packaged upstream stable snapshot (Closes: #687986, #710325).
+  * Fix gnulib-tool --version, also show snapshot and debian
+    package version (Closes: #710330).
   * Refresh 01-gnulib-directory.patch.
   * Update lintian overrides for magical shebangs.
   * Standards-Version: 3.9.4 (no changes).
