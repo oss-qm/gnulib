@@ -10,3 +10,4 @@ gnulib: executable-not-elf-or-script usr/share/gnulib/build-aux/gitlog-to-change
 gnulib: executable-not-elf-or-script usr/share/gnulib/build-aux/announce-gen
 gnulib: executable-not-elf-or-script usr/share/gnulib/build-aux/useless-if-before-free
 gnulib: executable-not-elf-or-script usr/share/gnulib/build-aux/update-copyright
+gnulib: executable-not-elf-or-script usr/share/gnulib/build-aux/prefix-gnulib-mk
