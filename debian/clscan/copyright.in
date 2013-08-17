@@ -40,6 +40,7 @@ License: other
   > Copying and distribution of this file, with or without modification,
   > in any medium, are permitted without royalty provided the copyright
   > notice and this notice are preserved.
+  .
   From modules/COPYING:
   > The files in this directory describe the gnulib modules.
   > The following copyright notice applies to each of these
@@ -49,4 +50,3 @@ License: other
   > This file is free software; the Free Software Foundation
   > gives unlimited permission to copy and/or distribute it,
   > with or without modifications, as long as this notice is preserved.
-

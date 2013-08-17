@@ -18,50 +18,50 @@ our $NEWFILES="$CLSCANDIR/new.txt";
 our $COPYRIGHTSTUB="$CLSCANDIR/copyright.in";
 
 my $gpl_boilerplate=<<"EOL";
-This program is free software: you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation; either version 3 of the License, or
-(at your option) any later version.
-
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
-
-You should have received a copy of the GNU General Public License
-along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ This program is free software: you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation; either version 3 of the License, or
+ (at your option) any later version.
+ .
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+ .
+ You should have received a copy of the GNU General Public License
+ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 EOL
 
 my $lgpl2_boilerplate=<<"EOL";
-This program is free software; you can redistribute it and/or modify it
-under the terms of the GNU Library General Public License as published
-by the Free Software Foundation; either version 2, or (at your option)
-any later version.
-
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-Library General Public License for more details.
-
-You should have received a copy of the GNU Library General Public
-License along with this program; if not, write to the Free Software
-Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301,
-USA.
+ This program is free software; you can redistribute it and/or modify it
+ under the terms of the GNU Library General Public License as published
+ by the Free Software Foundation; either version 2, or (at your option)
+ any later version.
+ .
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ Library General Public License for more details.
+ .
+ You should have received a copy of the GNU Library General Public
+ License along with this program; if not, write to the Free Software
+ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301,
+ USA.
 EOL
 
 my $lgpl3_boilerplate=<<"EOL";
-This program is free software: you can redistribute it and/or modify
-it under the terms of the GNU Lesser General Public License as published by
-the Free Software Foundation; either version 3 of the License, or
-(at your option) any later version.
-
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
-
-You should have received a copy of the GNU General Public License
-along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ This program is free software: you can redistribute it and/or modify
+ it under the terms of the GNU Lesser General Public License as published by
+ the Free Software Foundation; either version 3 of the License, or
+ (at your option) any later version.
+ .
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+ .
+ You should have received a copy of the GNU General Public License
+ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 EOL
 
 # license overrides as specified in modules/*
@@ -173,6 +173,7 @@ sub write_copyright
     }
     my %refs=();
     my $refnum="00";
+    print COPYRIGHT license_trailer(sort keys(%$licenses));
     for my $license (sort keys(%$licenses))
     {
 	for my $license_text (sort keys(%{$licenses->{$license}}))
@@ -189,12 +190,18 @@ sub write_copyright
 		$licensestr .= " [REF$refnum]";
 		$refs{$licensestr}=$license_text;
 	    }
+            else
+            {
+                if(!length($license)) {
+                    $licensestr="unknown";
+                }
+            }
 	    for my $copyright (sort keys(%{$licenses->{$license}->{$license_text}}))
 	    {
 		next if(!length($license) && !length($copyright) && !length($license_text));
 		my @filelist=sort @{$licenses->{$license}->{$license_text}->{$copyright}};
-		print COPYRIGHT "Files: ", join(', ', @filelist), "\n";
-		print COPYRIGHT "Copyright: $copyright\n" if length($copyright);
+		print COPYRIGHT "Files: ", join(' ', @filelist), "\n";
+		print COPYRIGHT "Copyright: ". (length($copyright) ? $copyright : "unknown" ) . "\n";
 		print COPYRIGHT "License: $licensestr\n" if length($licensestr);
 		print COPYRIGHT "\n";
 	    }
@@ -204,10 +211,10 @@ sub write_copyright
     {
 	print COPYRIGHT "License: $ref\n";
 	my @text=split(/\n/, $refs{$ref});
+        @text=map { ($_ eq "") ? "." : $_; } @text;
 	print COPYRIGHT map { "    " . $_ . "\n" } @text;
 	print COPYRIGHT "\n";
     }
-    print COPYRIGHT license_trailer(sort keys(%$licenses));
     close(COPYRIGHT);
 }
 
@@ -251,25 +258,26 @@ sub license_trailer
 	    }
 	}
     }
-    my $text="\n";
+    my $text="  .\n";
     # if just one, use standard style
     if(keys(%types_found) == 1)
     {
 	my ($file, $name)=each(%types_found);
-	$text .= "The complete text of the $name can be\n";
-	$text .= "found in /usr/share/common-licenses/$file\n";
+	$text .= "  The complete text of the $name can be\n";
+	$text .= "  found in /usr/share/common-licenses/$file\n";
     }
     else
     {
 	# more than one, use table.
-	$text .= "The complete text of standard licenses referenced above\n";
-	$text .= "can be found in /usr/share/common-licenses/ as follows:\n\n";
+	$text .= "  The complete text of standard licenses referenced above\n";
+	$text .= "  can be found in /usr/share/common-licenses/ as follows:\n  .\n  ";
 	$text .= sprintf("%-60s %s\n", "LICENSE", "FILE");
 	for my $type (sort keys(%types_found))
 	{
-	    $text .= sprintf("%-60s %s\n", $license_data->{$type}, $type);
+	    $text .= sprintf("  %-60s %s\n", $license_data->{$type}, $type);
 	}
     }
+    $text .= "\n\n";
     return $text;
 }
 
