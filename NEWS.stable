@@ -12,6 +12,7 @@ with the following additional commits:
 
     * [7a0c729]->[d78c62e] maint: fix public-submodule-commit to work with newer git
     * [cfe23e8]->[79ca097] autoupdate
+    * [5088dc5]->[] manywarnings: remove -Wmudflap
 __NEXTCOMMITMARKER__
 
 ----------------------------------------------------------------------
