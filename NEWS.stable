@@ -1,6 +1,20 @@
 			Gnulib stable snapshot
 			----------------------
 
+  * 20140202-stable
+
+Snapshot taken based on:
+
+commit a39d4083cab589d7cd6a13e8a4b8db8875261d75
+Date:   Wed Jan 1 05:19:01 2014 -0800
+
+with the following additional commits:
+
+    * [7a0c729]->[d78c62e] maint: fix public-submodule-commit to work with newer git
+__NEXTCOMMITMARKER__
+
+----------------------------------------------------------------------
+
   * 20130805-stable
 
 Snapshot taken based on:
