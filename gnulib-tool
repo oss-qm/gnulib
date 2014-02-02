@@ -1,6 +1,6 @@
 #! /bin/sh
 #
-# Copyright (C) 2002-2013 Free Software Foundation, Inc.
+# Copyright (C) 2002-2014 Free Software Foundation, Inc.
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -897,6 +897,9 @@ fi
 if test "X$1" = "X--no-reexec"; then
   shift
 fi
+
+# Unset CDPATH.  Otherwise, output from 'cd dir' can surprise callers.
+(unset CDPATH) >/dev/null 2>&1 && unset CDPATH
 
 # Command-line option processing.
 # Removes the OPTIONS from the arguments. Sets the variables:

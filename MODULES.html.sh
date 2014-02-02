@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-# Copyright (C) 2002-2013 Free Software Foundation, Inc.
+# Copyright (C) 2002-2014 Free Software Foundation, Inc.
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -1757,6 +1757,7 @@ func_all_modules ()
   func_begin_table
   func_module count-leading-zeros
   func_module count-one-bits
+  func_module count-trailing-zeros
   func_module ffs
   func_module ffsl
   func_module ffsll

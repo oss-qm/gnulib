@@ -3,7 +3,7 @@
 @setfilename standards.info
 @settitle GNU Coding Standards
 @c This date is automagically updated when you save this file:
-@set lastupdate July 20, 2013
+@set lastupdate December 17, 2013
 @c %**end of header
 
 @dircategory GNU organization
@@ -295,9 +295,13 @@ speed, the best language to use is C.  C++ is ok too, but please don't
 make heavy use of templates.  So is Java, if you compile it.
 
 When highest efficiency is not required, other languages commonly used
-in the free software community, such as Python and Ruby, are ok too.
-We encourage use of Lisp and Scheme as well.  Please implement the GNU
-configure and make interface no matter which language you use.
+in the free software community, such as Scheme, Python, Ruby, and
+Java, are OK too.  Scheme, as implemented by GNU@tie{}Guile, plays a
+particular role in the GNU System: it is the preferred language to
+extend programs written in C/C++, and also a fine language for a wide
+range of applications.  The more GNU components use Guile and Scheme,
+the more users are able to extend and combine them (@pxref{The Emacs
+Thesis,,, guile, GNU Guile Reference Manual}).
 
 Many programs are designed to be extensible: they include an interpreter
 for a language that is higher level than C.  Often much of the program
@@ -2285,8 +2289,8 @@ Print the version number.
 @cindex X.509
 
 The OID (object identifier) 1.3.6.1.4.1.11591 has been assigned to the
-GNU Project (thanks to Werner Koch).  These are used for SNMP, LDAP,
-X.509 certificates, and so on.  The web site
+GNU Project (thanks to Sergey Poznyakoff).  These are used for SNMP,
+LDAP, X.509 certificates, and so on.  The web site
 @url{http://www.alvestrand.no/objectid} has a (voluntary) listing of
 many OID assignments.
 
@@ -2367,6 +2371,11 @@ when writing GNU software.
 @node Formatting
 @section Formatting Your Source Code
 @cindex formatting source code
+
+@cindex line length
+@cindex length of source lines
+Please keep the length of source lines to 79 characters or less, for
+maximum readability in the widest range of environments.
 
 @cindex open brace
 @cindex braces, in C source
@@ -3236,8 +3245,9 @@ the option @option{--quoting-style} of GNU @code{ls}.
 @section Mmap
 @findex mmap
 
-Don't assume that @code{mmap} either works on all files or fails
-for all files.  It may work on some files and fail on others.
+If you use @code{mmap} to read or write files, don't assume it either
+works on all files or fails for all files.  It may work on some files
+and fail on others.
 
 The proper way to use @code{mmap} is to try it on the specific file for
 which you want to use it---and if @code{mmap} doesn't work, fall back on
@@ -3903,7 +3913,8 @@ corresponding to most of the standard directory variables
 
 @example
 --prefix --exec-prefix --bindir --sbindir --libexecdir --sysconfdir
---sharedstatedir --localstatedir --libdir --includedir --oldincludedir
+--sharedstatedir --localstatedir --runstatedir
+--libdir --includedir --oldincludedir
 --datarootdir --datadir --infodir --localedir --mandir --docdir
 --htmldir --dvidir --pdfdir --psdir
 @end example

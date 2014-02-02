@@ -5,7 +5,7 @@
 @c For double-sided printing, uncomment:
 @c @setchapternewpage odd
 @c This date is automagically updated when you save this file:
-@set lastupdate July 19, 2013
+@set lastupdate October 9, 2013
 @c %**end of header
 
 @dircategory GNU organization
@@ -147,11 +147,11 @@ committee members.  Additional information is in
 
 @cindex down, when GNU machines are
 @cindex outage, of GNU machines
-@cindex @url{http://identi.ca/group/fsfstatus}
+@cindex @url{https://pumprock.net/fsfstatus}
 If you find that any GNU computer systems (@code{fencepost.gnu.org},
 @code{ftp.gnu.org}, @code{www.gnu.org}, @code{savannah.gnu.org},
 @dots{}) seem to be down, you can check the current status at
-@url{http://identi.ca/group/fsfstatus}.  Most likely the problem, if
+@url{http://pumprock.net/fsfstatus}.  Most likely the problem, if
 it can be alleviated at the FSF end, is already being worked on.
 
 @cindex sysadmin, FSF
@@ -292,13 +292,19 @@ as you maintain the program, to avoid legal difficulties.
 @cindex assignments, copyright
 @cindex disclaimers
 
-If you maintain an FSF-copyrighted package
-certain legal procedures are required when incorporating legally significant
-changes written by other people.  This ensures that the FSF has the
-legal right to distribute the package, and the standing to defend its
-GPL-covered status in court if necessary.
+If you maintain an FSF-copyrighted package, certain legal procedures
+are required when incorporating legally significant changes written by
+other people.  This ensures that the FSF has the legal right to
+distribute the package, and the standing to defend its GPL-covered
+status in court if necessary.
 
-@strong{Before} incorporating significant changes, make sure that the
+GNU packages need not be FSF-copyrighted; this is up to the author(s),
+generally at the time the package is dubbed GNU.  When copyright is
+assigned to the FSF, the FSF can act to stop GPL violations about the
+package.  Otherwise, legal actions are up to the author(s).  The rest
+of this section is about the case when a package is FSF-copyrighted.
+
+@emph{Before} incorporating significant changes, make sure that the
 person who wrote the changes has signed copyright papers and that the
 Free Software Foundation has received and signed them.  We may also
 need an employer's disclaimer from the person's employer, which
@@ -385,16 +391,19 @@ When the contributor emails the form to the FSF, the FSF sends per an
 electronic (usually PDF) copy of the assignment.  This, or whatever
 response is required, should happen within five business days of the
 initial request.  If no reply from the FSF comes after that time,
-please send a reminder.  If you still get no response after an
+please send a reminder.  If there is still no response after an
 additional week, please write to @email{maintainers@@gnu.org} about it.
 
-After receiving the necessary form, all contributors then print it and
-sign it.  Contributors located in the USA or Germany can then email or
-fax a scanned copy back to the FSF (or use postal mail, if they
-prefer).  Contributors residing outside the USA or Germany must mail
-the signed form to the FSF via postal mail.  To emphasize, the
-necessary distinction is between residents and non-residents of these
-countries; citizenship does not matter.
+After receiving the necessary form, the contributor needs to sign it.
+Contributors residing in the USA may use GPG in order to sign their
+assignment.  Contributors located in the USA or Germany can print,
+sign, and then email (or fax) a scanned copy back to the FSF.
+(Specific instructions for both cases are sent with the assignment
+form.)  They may use postal mail, if they prefer. Contributors
+residing outside the USA or Germany must mail the signed form to the
+FSF via postal mail.  To emphasize, the necessary distinction is
+between residents and non-residents of these countries; citizenship
+does not matter.
 
 For less common cases, we have template files you should send to the
 contributor.  Be sure to fill in the name of the person and the name
@@ -1566,6 +1575,10 @@ corresponding packages.
 The upload system will email receipts to the given email addresses
 when an upload is made, either successfully or unsuccessfully.
 
+Should you later have to update your GPG key, you'll have to re-submit
+it to both Savannah and @email{ftp-upload@@gnu.org}, as these systems
+are not connected.
+
 
 @node Automated Upload Procedure
 @subsection Automated Upload Procedure
@@ -1702,8 +1715,9 @@ is optional, and ignored if present:@*
 @t{comment: let's hope this works!}
 @end table
 
-Putting the above together, the complete contents of the directive
-file @file{foo-1.0.tar.gz.directive} for our example would be:
+Putting all of the above together, the complete contents of the
+directive file @file{foo-1.0.tar.gz.directive} for our example would
+be:
 
 @example
 version: 1.2
