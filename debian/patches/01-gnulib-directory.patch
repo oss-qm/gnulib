@@ -3,8 +3,8 @@ Description: Sets the gnulib directory.
 
 Index: gnulib/gnulib-tool
 ===================================================================
---- gnulib.orig/gnulib-tool	2013-08-11 12:33:21.000000000 +0100
-+++ gnulib/gnulib-tool	2013-08-11 15:05:06.000000000 +0100
+--- gnulib.orig/gnulib-tool	2014-02-03 00:56:56.000000000 +0000
++++ gnulib/gnulib-tool	2014-02-03 00:57:02.000000000 +0000
 @@ -323,12 +323,13 @@
      version=' '`cd "$gnulib_dir" && ./build-aux/git-version-gen /dev/null | sed -e 's/-dirty/-modified/'`
    else

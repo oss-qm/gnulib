@@ -1,3 +1,37 @@
+2014-01-22  Paul Eggert  <eggert@cs.ucla.edu>
+
+	qacl: check for fchmod
+	* m4/acl.m4 (gl_FUNC_ACL): Check for fchmod, since acl-internal.h
+	and qset-acl.c both use HAVE_FCHMOD.
+
+2014-01-06  Eric Blake  <eblake@redhat.com>
+
+	include_next: port to autoconf 2.63
+	* m4/gnulib-common.m4 (AS_VAR_COPY): Define if missing.
+
+2014-01-03  Paul Eggert  <eggert@cs.ucla.edu>
+
+	doc: use ASCII in .texi files where UTF-8 isn't needed
+	* doc/posix-functions/crypt.texi, doc/posix-functions/encrypt.texi:
+	* doc/posix-functions/setkey.texi, doc/regex.texi:
+	Use ASCII input, not UTF-8.
+
+2014-01-02  Jim Meyering  <meyering@fb.com>
+
+	manywarnings: remove -Wmudflap
+	* m4/manywarnings.m4 (gl_MANYWARN_ALL_GCC): Remove -Wmudflap, since
+	it is no longer supported in gcc-4.9-to-be.
+
+2014-01-01  Jim Meyering  <meyering@fb.com>
+
+	maint: fix public-submodule-commit to work with newer git
+	* top/maint.mk (public-submodule-commit): Remove excess quoting.
+	We were over-quoting the test arguments, and somewhere prior to
+	version 1.8.5.2.229, git stopped removing those excess quotes,
+	which made the test fail, since the unexpanded strings would
+	always differ; using GIT_TRACE=1 confirmed that the git merge-base
+	command wasn't even being run.
+
 2014-01-01  Paul Eggert  <eggert@cs.ucla.edu>
 
 	doc: update main copyright year
