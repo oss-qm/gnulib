@@ -14,7 +14,7 @@ with the following additional commits:
     * [cfe23e8]->[79ca097] autoupdate
     * [5088dc5]->[7e54a06] manywarnings: remove -Wmudflap
     * [fe3419d]->[cd56634] doc: use ASCII in .texi files where UTF-8 isn't needed
-    * [580240a]->[] include_next: port to autoconf 2.63
+    * [580240a]->[a2d14e0] include_next: port to autoconf 2.63
 __NEXTCOMMITMARKER__
 
 ----------------------------------------------------------------------
