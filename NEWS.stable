@@ -16,7 +16,7 @@ with the following additional commits:
     * [fe3419d]->[cd56634] doc: use ASCII in .texi files where UTF-8 isn't needed
     * [580240a]->[a2d14e0] include_next: port to autoconf 2.63
     * [e446f25]->[c092018] relocatable-shell: Update suggested usage in maintainer documentation.
-    * [7514946]->[] qacl: check for fchmod
+    * [7514946]->[2d49283] qacl: check for fchmod
 __NEXTCOMMITMARKER__
 
 ----------------------------------------------------------------------
