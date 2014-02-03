@@ -11,6 +11,7 @@ Date:   Wed Jan 1 05:19:01 2014 -0800
 with the following additional commits:
 
     * [7a0c729]->[d78c62e] maint: fix public-submodule-commit to work with newer git
+    * [cfe23e8]->[79ca097] autoupdate
 __NEXTCOMMITMARKER__
 
 ----------------------------------------------------------------------
