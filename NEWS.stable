@@ -18,7 +18,6 @@ with the following additional commits:
     * [e446f25]->[c092018] relocatable-shell: Update suggested usage in maintainer documentation.
     * [7514946]->[2d49283] qacl: check for fchmod
     * [497f4cd]->[8c28db1] autoupdate
-__NEXTCOMMITMARKER__
 
 ----------------------------------------------------------------------
 
