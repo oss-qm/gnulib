@@ -15,6 +15,7 @@ with the following additional commits:
     * [5088dc5]->[7e54a06] manywarnings: remove -Wmudflap
     * [fe3419d]->[cd56634] doc: use ASCII in .texi files where UTF-8 isn't needed
     * [580240a]->[a2d14e0] include_next: port to autoconf 2.63
+    * [e446f25]->[c092018] relocatable-shell: Update suggested usage in maintainer documentation.
 __NEXTCOMMITMARKER__
 
 ----------------------------------------------------------------------
