@@ -2,8 +2,9 @@ gnulib (20140202+stable-1) unstable; urgency=low
 
   * New upstream stable snapshot.
   * Refresh patches.
+  * Standards-Version: 3.9.5 (no changes).
 
- -- Ian Beckwith <ianb@debian.org>  Mon, 03 Feb 2014 01:03:57 +0000
+ -- Ian Beckwith <ianb@debian.org>  Sun, 16 Feb 2014 12:23:28 +0000
 
 gnulib (20130805+stable-1) unstable; urgency=low
 
