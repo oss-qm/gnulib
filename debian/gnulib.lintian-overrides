@@ -1,9 +1,20 @@
+# false positive - maintainer's guide discusses invariant sections
+# but is actually licensed GFDL-1.3+-NIV
+# will report lintian bug when this package is uploaded
+gnulib source: license-problem-gfdl-invariants doc/maintain.texi
+
 # gnulib's doc directory contains various important GNU files:
 # licenses, maintainers guide, etc.
 # The gnulib git repo is the canonical source for most or all
 # of these docs.
 gnulib: extra-license-file usr/share/gnulib/doc/COPYING.LESSERv2
 gnulib: extra-license-file usr/share/gnulib/doc/COPYING.LESSERv3
+gnulib: extra-license-file usr/share/gnulib/doc/COPYINGv2
+gnulib: extra-license-file usr/share/gnulib/doc/COPYINGv3
+gnulib: extra-license-file usr/share/gnulib/doc/gpl-2.0.texi
+gnulib: extra-license-file usr/share/gnulib/doc/gpl-3.0.texi
+gnulib: extra-license-file usr/share/gnulib/doc/lgpl-2.1.texi
+gnulib: extra-license-file usr/share/gnulib/doc/lgpl-3.0.texi
 
 # scripts below invoke themselves with excessively magical non-shebang lines
 gnulib: executable-not-elf-or-script usr/share/gnulib/build-aux/gitlog-to-changelog
