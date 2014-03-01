@@ -22,12 +22,3 @@ Index: gnulib/gnulib-tool
  Copyright (C) $year Free Software Foundation, Inc.
  License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
  This is free software: you are free to change and redistribute it.
-@@ -453,7 +454,7 @@
-       * ) self_abspathname=`echo "$self_abspathname" | sed -e 's,/[^/]*$,,'`/"$linkval" ;;
-     esac
-   done
--  gnulib_dir=`echo "$self_abspathname" | sed -e 's,/[^/]*$,,'`
-+  gnulib_dir=/usr/share/gnulib
- }
- 
- # func_tmpdir

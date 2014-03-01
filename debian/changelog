@@ -1,3 +1,14 @@
+gnulib (20140202+stable-2) unstable; urgency=low
+
+  * Don't hardcode gnulib directory in 01-gnulib-directory.patch.
+    Instead, install gnulib-tool into the gnulib directory and symlink to
+    it from /usr/bin, like the docs say to do.
+  * Package git-merge-changelog (Closes: #646013).
+  * Override for lintian getting confused by example GFDL blurbs.
+  * Bump debhelper compat level to 9 for hardening flags.
+
+ -- Samuel Bronson <naesten@gmail.com>  Wed, 06 Nov 2013 21:41:19 -0500
+
 gnulib (20140202+stable-1) unstable; urgency=low
 
   * New upstream stable snapshot.

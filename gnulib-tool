@@ -454,7 +454,7 @@ func_gnulib_dir ()
       * ) self_abspathname=`echo "$self_abspathname" | sed -e 's,/[^/]*$,,'`/"$linkval" ;;
     esac
   done
-  gnulib_dir=/usr/share/gnulib
+  gnulib_dir=`echo "$self_abspathname" | sed -e 's,/[^/]*$,,'`
 }
 
 # func_tmpdir
