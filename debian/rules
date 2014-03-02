@@ -53,7 +53,6 @@ override_dh_auto_install-indep:
 	# Remove unused files
 	rm -f debian/gnulib/usr/share/gnulib/doc/gnulib.info
 	rm -f debian/gnulib/usr/share/gnulib/doc/gnulib.html
-	rm -f debian/gnulib/usr/share/gnulib/doc/updated-stamp
 	rm -f debian/gnulib/usr/share/gnulib/modules/COPYING
 	rm -f debian/gnulib/usr/share/gnulib/*/.cvsignore debian/gnulib/usr/share/gnulib/.cvsignore
 	rm -f debian/gnulib/usr/share/gnulib/*/.gitignore debian/gnulib/usr/share/gnulib/.gitignore
