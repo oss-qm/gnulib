@@ -10,8 +10,11 @@ gnulib (20140202+stable-2) unstable; urgency=low
     + Bump debhelper compat level to 9 for hardening flags.
   * Man page for git-merge-changelog adapted
     from comments at the top of git-merge-changelog.c
+  * Remove duplicate copies of documentation (Closes: #728933).
+  * Tweak list of top-level files installed.
+  * doc-base: add Format: Info version of manual.
 
- -- Ian Beckwith <ianb@debian.org>  Sun, 02 Mar 2014 19:39:23 +0000
+ -- Ian Beckwith <ianb@debian.org>  Sun, 02 Mar 2014 23:04:10 +0000
 
 gnulib (20140202+stable-1) unstable; urgency=low
 
