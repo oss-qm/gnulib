@@ -1,36 +1,41 @@
 #!/usr/bin/make -f
 
+#EXPORT DH_VERBOSE=1
+
 %:
-	dh ${@} --sourcedirectory=utils
+	dh ${@}
 
 override_dh_auto_clean:
 	$(MAKE) -C doc clean
-	rm -rf utils/*
+	-rm -rf debian/git-merge-changelog.src
+	-rm -f debian/git-merge-changelog.1
 	dh_auto_clean
 
 override_dh_auto_configure-arch:
 	./gnulib-tool --create-testdir --without-tests -S \
-		--dir=utils git-merge-changelog
-	dh_auto_configure
-
-override_dh_auto_install-arch:
-	dh_auto_install --destdir=debian/git-merge-changelog
+		--dir=debian/git-merge-changelog.src git-merge-changelog
+	dh_auto_configure --sourcedir debian/git-merge-changelog.src
 
 override_dh_auto_build-indep:
 	$(MAKE) -C doc info
 	$(MAKE) -C doc html
 
+override_dh_auto_build-arch:
+	dh_auto_build --sourcedir debian/git-merge-changelog.src
+	pod2man --section=1 debian/git-merge-changelog.pod debian/git-merge-changelog.1
+
+override_dh_auto_install-arch:
+	dh_auto_install --sourcedir=debian/git-merge-changelog.src --destdir=debian/git-merge-changelog
+
 override_dh_auto_install-indep:
 	mkdir -p debian/gnulib/usr/bin
 	cp -a check-module debian/gnulib/usr/bin
-
 	mkdir -p debian/gnulib/usr/share/gnulib
 	cp -a build-aux posix-modules config doc lib m4 modules top tests \
 	      MODULES.html.sh Makefile gnulib-tool \
 	      debian/gnulib/usr/share/gnulib
 	ln -s ../share/gnulib/gnulib-tool debian/gnulib/usr/bin
-
-	# Fixing permissions
+	# Fix permissions
 	chmod 0755 debian/gnulib/usr/share/gnulib/build-aux/config.guess
 	chmod 0755 debian/gnulib/usr/share/gnulib/build-aux/config.sub
 	chmod 0755 debian/gnulib/usr/share/gnulib/build-aux/gendocs.sh
@@ -45,8 +50,7 @@ override_dh_auto_install-indep:
 	chmod 0644 debian/gnulib/usr/share/gnulib/tests/test-fflush.c
 	chmod 0755 debian/gnulib/usr/share/gnulib/tests/test-posix_spawn1.in.sh
 	chmod 0755 debian/gnulib/usr/share/gnulib/tests/test-posix_spawn2.in.sh
-
-	# Removing unused files
+	# Remove unused files
 	rm -f debian/gnulib/usr/share/gnulib/modules/COPYING
 	rm -f debian/gnulib/usr/share/gnulib/*/.cvsignore
 	rm -f debian/gnulib/usr/share/gnulib/*/.gitignore
